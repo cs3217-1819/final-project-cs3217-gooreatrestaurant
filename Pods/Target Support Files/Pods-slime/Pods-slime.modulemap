@@ -1,0 +1,6 @@
+framework module Pods_slime {
+  umbrella header "Pods-slime-umbrella.h"
+
+  export *
+  module * { export * }
+}

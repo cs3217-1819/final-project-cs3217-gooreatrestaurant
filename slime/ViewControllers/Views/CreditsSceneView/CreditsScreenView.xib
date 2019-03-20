@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CreditsScreenView" customModule="slime" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="812" height="375"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Credits" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fFS-hh-xwc" customClass="TextLabel" customModule="slime" customModuleProvider="target">
+                    <rect key="frame" x="36" y="36" width="90" height="35.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="style" value="h0"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="color" value="white1"/>
+                    </userDefinedRuntimeAttributes>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nVm-wz-Px7">
+                    <rect key="frame" x="36" y="107.5" width="740" height="231.5"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lim Hui Qi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WcV-rb-8KD" customClass="TextLabel" customModule="slime" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="79" height="23.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="style" value="h1"/>
+                                <userDefinedRuntimeAttribute type="string" keyPath="color" value="white1"/>
+                            </userDefinedRuntimeAttributes>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gabriel Tan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yh8-Kx-053" customClass="TextLabel" customModule="slime" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="39.5" width="93.5" height="23.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="style" value="h1"/>
+                                <userDefinedRuntimeAttribute type="string" keyPath="color" value="white1"/>
+                            </userDefinedRuntimeAttributes>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Anthony Tantra" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="geF-MT-8GR" customClass="TextLabel" customModule="slime" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="79" width="125.5" height="23.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="style" value="h1"/>
+                                <userDefinedRuntimeAttribute type="string" keyPath="color" value="white1"/>
+                            </userDefinedRuntimeAttributes>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="samuel henry kurniawan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OkJ-uc-BCZ" customClass="TextLabel" customModule="slime" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="118.5" width="200.5" height="23.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="style" value="h1"/>
+                                <userDefinedRuntimeAttribute type="string" keyPath="color" value="white1"/>
+                            </userDefinedRuntimeAttributes>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="OkJ-uc-BCZ" firstAttribute="leading" secondItem="nVm-wz-Px7" secondAttribute="leading" id="7R3-oz-98j"/>
+                        <constraint firstItem="yh8-Kx-053" firstAttribute="leading" secondItem="nVm-wz-Px7" secondAttribute="leading" id="8Mm-8B-x1L"/>
+                        <constraint firstItem="yh8-Kx-053" firstAttribute="top" secondItem="WcV-rb-8KD" secondAttribute="bottom" constant="16" id="DkG-1a-jTB"/>
+                        <constraint firstItem="OkJ-uc-BCZ" firstAttribute="top" secondItem="geF-MT-8GR" secondAttribute="bottom" constant="16" id="OH9-ib-pkR"/>
+                        <constraint firstItem="geF-MT-8GR" firstAttribute="leading" secondItem="nVm-wz-Px7" secondAttribute="leading" id="RG4-7h-xoH"/>
+                        <constraint firstItem="WcV-rb-8KD" firstAttribute="top" secondItem="nVm-wz-Px7" secondAttribute="top" id="eNU-yC-cxR"/>
+                        <constraint firstItem="geF-MT-8GR" firstAttribute="top" secondItem="yh8-Kx-053" secondAttribute="bottom" constant="16" id="gJI-wK-J28"/>
+                        <constraint firstItem="WcV-rb-8KD" firstAttribute="leading" secondItem="nVm-wz-Px7" secondAttribute="leading" id="wef-Pe-Yxl"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y7B-S8-gOS">
+                    <rect key="frame" x="744" y="36" width="32" height="32"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="32" id="EXC-c3-5OA"/>
+                        <constraint firstAttribute="width" constant="32" id="mwc-44-TZe"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="nVm-wz-Px7" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="36" id="FRz-NZ-efX"/>
+                <constraint firstAttribute="trailing" secondItem="Y7B-S8-gOS" secondAttribute="trailing" constant="36" id="LZZ-Lc-RLt"/>
+                <constraint firstItem="fFS-hh-xwc" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="36" id="Pf2-d6-ejR"/>
+                <constraint firstItem="nVm-wz-Px7" firstAttribute="top" secondItem="fFS-hh-xwc" secondAttribute="bottom" constant="36" id="YMz-sP-cZx"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="nVm-wz-Px7" secondAttribute="trailing" constant="36" id="aLJ-bA-jnF"/>
+                <constraint firstItem="Y7B-S8-gOS" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="36" id="c5c-ij-9XN"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="nVm-wz-Px7" secondAttribute="bottom" constant="36" id="hnn-Qy-CRw"/>
+                <constraint firstItem="fFS-hh-xwc" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="36" id="pVw-kG-vcv"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="anthonyLabel" destination="geF-MT-8GR" id="2QX-Nw-k5I"/>
+                <outlet property="backButton" destination="Y7B-S8-gOS" id="dS4-ZP-j5i"/>
+                <outlet property="gabrielLabel" destination="yh8-Kx-053" id="vne-Ho-iH9"/>
+                <outlet property="henryLabel" destination="OkJ-uc-BCZ" id="8dY-mk-ZGC"/>
+                <outlet property="huiqiLabel" destination="WcV-rb-8KD" id="9GK-EO-mjJ"/>
+            </connections>
+            <point key="canvasLocation" x="129.59999999999999" y="152.47376311844079"/>
+        </view>
+    </objects>
+</document>

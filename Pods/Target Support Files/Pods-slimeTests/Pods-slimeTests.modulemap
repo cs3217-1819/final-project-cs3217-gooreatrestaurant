@@ -1,0 +1,6 @@
+framework module Pods_slimeTests {
+  umbrella header "Pods-slimeTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

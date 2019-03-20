@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="Alert" customModule="slime" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="495" height="230"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorem ipsum generator Lorem ipsum generator Lorem ipsum generator " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="neV-Gn-819" customClass="TextLabel" customModule="slime" customModuleProvider="target">
+                    <rect key="frame" x="36" y="58" width="423" height="43"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="style" value="p1"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="color" value="white2"/>
+                    </userDefinedRuntimeAttributes>
+                </label>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="S4y-iu-MNe">
+                    <rect key="frame" x="36" y="137" width="423" height="57"/>
+                </stackView>
+                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mvS-6u-ogM">
+                    <rect key="frame" x="36" y="-24" width="423" height="64"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pcd-Fj-J7o" customClass="TextLabel" customModule="slime" customModuleProvider="target">
+                            <rect key="frame" x="16" y="12" width="391" height="40"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="style" value="h0"/>
+                                <userDefinedRuntimeAttribute type="string" keyPath="color" value="white1"/>
+                            </userDefinedRuntimeAttributes>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="64" id="QcN-e1-Kfc"/>
+                        <constraint firstItem="pcd-Fj-J7o" firstAttribute="centerY" secondItem="mvS-6u-ogM" secondAttribute="centerY" id="bz9-th-pzB"/>
+                        <constraint firstItem="pcd-Fj-J7o" firstAttribute="leading" secondItem="mvS-6u-ogM" secondAttribute="leading" constant="16" id="eih-D9-Rkd"/>
+                        <constraint firstAttribute="trailing" secondItem="pcd-Fj-J7o" secondAttribute="trailing" constant="16" id="gxv-Zh-F8x"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="8"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="neV-Gn-819" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="36" id="4ph-4M-rnY"/>
+                <constraint firstItem="S4y-iu-MNe" firstAttribute="top" secondItem="neV-Gn-819" secondAttribute="bottom" constant="36" id="5oN-iI-3G2"/>
+                <constraint firstItem="mvS-6u-ogM" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="36" id="Lw0-Po-Suk"/>
+                <constraint firstItem="mvS-6u-ogM" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="-24" id="RkF-Ps-4zM"/>
+                <constraint firstItem="S4y-iu-MNe" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="36" id="Ygr-VS-LJS"/>
+                <constraint firstItem="S4y-iu-MNe" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="byX-7k-AnQ"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="neV-Gn-819" secondAttribute="trailing" constant="36" id="g8I-lG-nUL"/>
+                <constraint firstItem="neV-Gn-819" firstAttribute="top" secondItem="mvS-6u-ogM" secondAttribute="bottom" constant="18" id="rpO-D2-R7x"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="mvS-6u-ogM" secondAttribute="trailing" constant="36" id="uPI-92-WZd"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="S4y-iu-MNe" secondAttribute="trailing" constant="36" id="uoc-6p-tiz"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="S4y-iu-MNe" secondAttribute="bottom" constant="36" id="wie-Ic-t8a"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="actionStackView" destination="S4y-iu-MNe" id="sht-NZ-aPN"/>
+                <outlet property="descriptionLabel" destination="neV-Gn-819" id="rMz-qP-H4l"/>
+                <outlet property="titleLabel" destination="pcd-Fj-J7o" id="WIB-E6-mW0"/>
+            </connections>
+            <point key="canvasLocation" x="234.40000000000001" y="-43.178410794602705"/>
+        </view>
+    </objects>
+</document>

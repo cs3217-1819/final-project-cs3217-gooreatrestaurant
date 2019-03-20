@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="LevelDetailsBox" customModule="slime" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="250" height="100"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NZp-Oj-YoS">
+                    <rect key="frame" x="0.0" y="0.0" width="250" height="100"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1-1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mff-ps-jFR" customClass="TextLabel" customModule="slime" customModuleProvider="target">
+                            <rect key="frame" x="8" y="8" width="234" height="12"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="style" value="psmall"/>
+                                <userDefinedRuntimeAttribute type="string" keyPath="color" value="white5"/>
+                            </userDefinedRuntimeAttributes>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Level Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z0E-kD-p8u" customClass="TextLabel" customModule="slime" customModuleProvider="target">
+                            <rect key="frame" x="8" y="20" width="234" height="20"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="style" value="h2"/>
+                                <userDefinedRuntimeAttribute type="string" keyPath="color" value="white3"/>
+                            </userDefinedRuntimeAttributes>
+                        </label>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Ucd-KF-j52">
+                            <rect key="frame" x="8" y="42" width="234" height="50"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xNs-hy-aKp">
+                                    <rect key="frame" x="0.0" y="0.0" width="109" height="50"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Best Score" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9SF-yX-66G" customClass="TextLabel" customModule="slime" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="109" height="14"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="style" value="hsub"/>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="color" value="white5"/>
+                                            </userDefinedRuntimeAttributes>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yev-62-VKF" customClass="TextLabel" customModule="slime" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="14" width="109" height="20"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="color" value="white2"/>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="style" value="h2"/>
+                                            </userDefinedRuntimeAttributes>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="Yev-62-VKF" secondAttribute="trailing" id="Qkz-6m-fgm"/>
+                                        <constraint firstItem="9SF-yX-66G" firstAttribute="top" secondItem="xNs-hy-aKp" secondAttribute="top" id="SHo-VF-UTb"/>
+                                        <constraint firstItem="Yev-62-VKF" firstAttribute="leading" secondItem="xNs-hy-aKp" secondAttribute="leading" id="Wme-ha-pDV"/>
+                                        <constraint firstAttribute="trailing" secondItem="9SF-yX-66G" secondAttribute="trailing" id="Zrt-gf-9p7"/>
+                                        <constraint firstItem="9SF-yX-66G" firstAttribute="leading" secondItem="xNs-hy-aKp" secondAttribute="leading" id="ll4-5Y-Rga"/>
+                                        <constraint firstItem="Yev-62-VKF" firstAttribute="top" secondItem="9SF-yX-66G" secondAttribute="bottom" id="uqe-Lz-blb"/>
+                                    </constraints>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fey-Em-mCu">
+                                    <rect key="frame" x="125" y="0.0" width="109" height="50"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rating" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WtU-j9-gVO" customClass="TextLabel" customModule="slime" customModuleProvider="target">
+                                            <rect key="frame" x="70.5" y="28" width="30.5" height="14"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="style" value="hsub"/>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="color" value="white1"/>
+                                            </userDefinedRuntimeAttributes>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="WtU-j9-gVO" secondAttribute="trailing" constant="8" id="Mt8-7j-8xJ"/>
+                                        <constraint firstAttribute="bottom" secondItem="WtU-j9-gVO" secondAttribute="bottom" constant="8" id="SBj-tG-oVh"/>
+                                    </constraints>
+                                </view>
+                            </subviews>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="VYZ-86-dN8"/>
+                            </constraints>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="z0E-kD-p8u" firstAttribute="leading" secondItem="NZp-Oj-YoS" secondAttribute="leading" constant="8" id="0on-P8-pCg"/>
+                        <constraint firstItem="z0E-kD-p8u" firstAttribute="top" secondItem="mff-ps-jFR" secondAttribute="bottom" id="HS7-v8-6Hv"/>
+                        <constraint firstAttribute="trailing" secondItem="z0E-kD-p8u" secondAttribute="trailing" constant="8" id="Iko-LK-9Ap"/>
+                        <constraint firstAttribute="trailing" secondItem="Ucd-KF-j52" secondAttribute="trailing" constant="8" id="OXJ-UX-Wx8"/>
+                        <constraint firstAttribute="trailing" secondItem="mff-ps-jFR" secondAttribute="trailing" constant="8" id="P66-ml-9HM"/>
+                        <constraint firstAttribute="bottom" secondItem="Ucd-KF-j52" secondAttribute="bottom" constant="8" id="YOC-S2-lHy"/>
+                        <constraint firstItem="Ucd-KF-j52" firstAttribute="leading" secondItem="NZp-Oj-YoS" secondAttribute="leading" constant="8" id="atA-qx-2R7"/>
+                        <constraint firstItem="mff-ps-jFR" firstAttribute="top" secondItem="NZp-Oj-YoS" secondAttribute="top" constant="8" id="ktj-Vx-MsV"/>
+                        <constraint firstItem="mff-ps-jFR" firstAttribute="leading" secondItem="NZp-Oj-YoS" secondAttribute="leading" constant="8" id="yJS-3o-W2Y"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.border.cornerRadius">
+                            <integer key="value" value="8"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="NZp-Oj-YoS" secondAttribute="bottom" id="9XY-Uy-Y6H"/>
+                <constraint firstItem="NZp-Oj-YoS" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="bHh-3e-NgC"/>
+                <constraint firstAttribute="trailing" secondItem="NZp-Oj-YoS" secondAttribute="trailing" id="nmZ-Ry-EgG"/>
+                <constraint firstItem="NZp-Oj-YoS" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="rtg-GT-GQb"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="bestScore" destination="Yev-62-VKF" id="1mX-gB-ArI"/>
+                <outlet property="levelId" destination="mff-ps-jFR" id="wlL-yW-siH"/>
+                <outlet property="levelName" destination="z0E-kD-p8u" id="amU-8m-R0y"/>
+            </connections>
+            <point key="canvasLocation" x="40" y="46.776611694152926"/>
+        </view>
+    </objects>
+</document>
