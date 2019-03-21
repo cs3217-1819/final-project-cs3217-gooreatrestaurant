@@ -24,6 +24,7 @@
 		8BD816B122422D2700586180 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD816B022422D2700586180 /* GameScene.swift */; };
 		8BD816B3224262F100586180 /* AnalogJoystick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD816B2224262F100586180 /* AnalogJoystick.swift */; };
 		8BD816B72242645A00586180 /* Slime.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 8BD816B62242645A00586180 /* Slime.atlas */; };
+		8BD816B922426D1400586180 /* BDButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD816B822426D1400586180 /* BDButton.swift */; };
 		BA7CC9239365F389C9C1FA05 /* Pods_slime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7F0D50F4B0E911D0C328800 /* Pods_slime.framework */; };
 		EC21B40022420CA700827121 /* LevelPlayButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC21B3FF22420CA700827121 /* LevelPlayButton.xib */; };
 		EC21B40222420D4100827121 /* DesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC21B40122420D4100827121 /* DesignableView.swift */; };
@@ -150,6 +151,7 @@
 		8BD816B022422D2700586180 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		8BD816B2224262F100586180 /* AnalogJoystick.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalogJoystick.swift; sourceTree = "<group>"; };
 		8BD816B62242645A00586180 /* Slime.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = Slime.atlas; path = ../../../TEST_Project/Slime.atlas; sourceTree = "<group>"; };
+		8BD816B822426D1400586180 /* BDButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BDButton.swift; sourceTree = "<group>"; };
 		E7F0D50F4B0E911D0C328800 /* Pods_slime.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_slime.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC21B3FF22420CA700827121 /* LevelPlayButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LevelPlayButton.xib; sourceTree = "<group>"; };
 		EC21B40122420D4100827121 /* DesignableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableView.swift; sourceTree = "<group>"; };
@@ -373,6 +375,7 @@
 				EC38247E223A2985000D7148 /* PlayMenuButton */,
 				EC3824502238FB3D000D7148 /* ButtonController.swift */,
 				ECD4557522411340006AF78D /* UpButton.xib */,
+				8BD816B822426D1400586180 /* BDButton.swift */,
 			);
 			path = Buttons;
 			sourceTree = "<group>";
@@ -910,6 +913,7 @@
 				EC382479223A1BE7000D7148 /* PrimaryButtonColor.swift in Sources */,
 				ECA66DC4223D5F4000D1D0BC /* CreditsScreenView.swift in Sources */,
 				EC449B96223BB1D400A8EA35 /* StoryModeLevelSelectView.swift in Sources */,
+				8BD816B922426D1400586180 /* BDButton.swift in Sources */,
 				ECD4556E2240FBFA006AF78D /* PlayerBox.swift in Sources */,
 				ECD455672240F974006AF78D /* ViewControllerProtocol.swift in Sources */,
 				EC21B40222420D4100827121 /* DesignableView.swift in Sources */,

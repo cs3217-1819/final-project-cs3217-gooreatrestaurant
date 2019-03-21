@@ -39,6 +39,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         return js
     }()
 
+    lazy var playButton: BDButton = {
+        var button = BDButton(imageNamed: "Up", buttonAction: {
+            self.slime.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 3))
+            })
+        button.setScale(0.1)
+        button.isEnabled = true
+        button.position =  CGPoint(x: ScreenSize.width * 0.5 - 45, y: ScreenSize.height * -0.5 + 45)
+        button.zPosition = 4
+        return button
+    }()
+
     override func didMove(to view: SKView) {
         self.physicsWorld.contactDelegate = self
         view.showsPhysics = true
@@ -58,6 +69,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func setupNodes() {
         anchorPoint = CGPoint(x: 0.5, y: 0.5)
         addChild(background)
+        addChild(playButton)
     }
 
     func setupJoystick() {
@@ -197,17 +209,5 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         spaceshipBorder.physicsBody?.categoryBitMask = worldCategory
         spaceshipBorder.physicsBody?.isDynamic = false
         self.addChild(spaceshipBorder)
-    }
-
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        print("A")
-        //        if let touch = touches.first, stick == atPoint(touch.location(in: self)) {
-        //            tracking = true
-        //            beginHandler?()
-        //        }
-    }
-
-    func addUpButton() {
-        let upButton = SKSpriteNode(imageNamed: "Up")
     }
 }

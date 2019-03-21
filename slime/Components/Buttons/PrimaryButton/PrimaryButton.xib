@@ -23,7 +23,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="290" height="196"/>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Button" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3pV-oU-x0X" customClass="TextLabel" customModule="slime" customModuleProvider="target">
-                            <rect key="frame" x="104" y="80.5" width="82.5" height="35.5"/>
+                            <rect key="frame" x="119.5" y="88" width="51" height="20.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
