@@ -678,6 +678,7 @@
 				EC3824172238803A000D7148 /* Frameworks */,
 				EC3824182238803A000D7148 /* Resources */,
 				951CADF22146F6016F102A11 /* [CP] Embed Pods Frameworks */,
+				1DE97EE322438E22007CBD89 /* Run Script */,
 			);
 			buildRules = (
 			);
@@ -797,6 +798,25 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		1DE97EE322438E22007CBD89 /* Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "
+";
+		};
 		603C85CE3C13985DFB535341 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1115,7 +1135,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = CZ7H96C646;
+				DEVELOPMENT_TEAM = W76H98A34A;
 				INFOPLIST_FILE = slime/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1136,7 +1156,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = CZ7H96C646;
+				DEVELOPMENT_TEAM = W76H98A34A;
 				INFOPLIST_FILE = slime/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
