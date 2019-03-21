@@ -285,20 +285,20 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		8B81EFAE22434318007BFDB0 /* Sprite.atlas */ = {
+		8B81EFAE22434318007BFDB0 /* Slime.atlas */ = {
 			isa = PBXGroup;
 			children = (
 				8B81EFB522434378007BFDB0 /* slime1.png */,
 				8B81EFB622434378007BFDB0 /* slime2.png */,
 				8B81EFB722434378007BFDB0 /* slime3.png */,
 			);
-			path = Sprite.atlas;
+			path = Slime.atlas;
 			sourceTree = "<group>";
 		};
 		8BD816B42242643C00586180 /* Sprites */ = {
 			isa = PBXGroup;
 			children = (
-				8B81EFAE22434318007BFDB0 /* Sprite.atlas */,
+				8B81EFAE22434318007BFDB0 /* Slime.atlas */,
 			);
 			path = Sprites;
 			sourceTree = "<group>";
