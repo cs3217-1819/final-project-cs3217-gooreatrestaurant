@@ -20,9 +20,7 @@
 		1D4934AD224213E200A73173 /* Plate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4934A1224213E200A73173 /* Plate.swift */; };
 		1D4934AF224213E200A73173 /* Spaceship.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4934A3224213E200A73173 /* Spaceship.swift */; };
 		37DD4A30AF224607DB45BEA8 /* Pods_slimeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AEF608125BA354580F060C8 /* Pods_slimeTests.framework */; };
-		8B81EFB822434378007BFDB0 /* slime1.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B81EFB522434378007BFDB0 /* slime1.png */; };
-		8B81EFB922434378007BFDB0 /* slime2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B81EFB622434378007BFDB0 /* slime2.png */; };
-		8B81EFBA22434378007BFDB0 /* slime3.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B81EFB722434378007BFDB0 /* slime3.png */; };
+		8B81EFBC224344AD007BFDB0 /* Slime.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 8B81EFBB224344AD007BFDB0 /* Slime.atlas */; };
 		8BD816AF22422C6700586180 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD816AE22422C6700586180 /* Extensions.swift */; };
 		8BD816B122422D2700586180 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD816B022422D2700586180 /* GameScene.swift */; };
 		8BD816B3224262F100586180 /* AnalogJoystick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD816B2224262F100586180 /* AnalogJoystick.swift */; };
@@ -149,9 +147,7 @@
 		5C1D406302B065DC29582229 /* Pods-slime.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-slime.debug.xcconfig"; path = "Pods/Target Support Files/Pods-slime/Pods-slime.debug.xcconfig"; sourceTree = "<group>"; };
 		6735932F665D31728CAAB2F4 /* Pods-slimeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-slimeTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-slimeTests/Pods-slimeTests.debug.xcconfig"; sourceTree = "<group>"; };
 		7AEF608125BA354580F060C8 /* Pods_slimeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_slimeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8B81EFB522434378007BFDB0 /* slime1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = slime1.png; sourceTree = "<group>"; };
-		8B81EFB622434378007BFDB0 /* slime2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = slime2.png; sourceTree = "<group>"; };
-		8B81EFB722434378007BFDB0 /* slime3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = slime3.png; sourceTree = "<group>"; };
+		8B81EFBB224344AD007BFDB0 /* Slime.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Slime.atlas; sourceTree = "<group>"; };
 		8BD816AE22422C6700586180 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		8BD816B022422D2700586180 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		8BD816B2224262F100586180 /* AnalogJoystick.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalogJoystick.swift; sourceTree = "<group>"; };
@@ -285,20 +281,10 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		8B81EFAE22434318007BFDB0 /* Slime.atlas */ = {
-			isa = PBXGroup;
-			children = (
-				8B81EFB522434378007BFDB0 /* slime1.png */,
-				8B81EFB622434378007BFDB0 /* slime2.png */,
-				8B81EFB722434378007BFDB0 /* slime3.png */,
-			);
-			path = Slime.atlas;
-			sourceTree = "<group>";
-		};
 		8BD816B42242643C00586180 /* Sprites */ = {
 			isa = PBXGroup;
 			children = (
-				8B81EFAE22434318007BFDB0 /* Slime.atlas */,
+				8B81EFBB224344AD007BFDB0 /* Slime.atlas */,
 			);
 			path = Sprites;
 			sourceTree = "<group>";
@@ -784,21 +770,19 @@
 				ECD45541223FA21E006AF78D /* Modal.xib in Resources */,
 				EC449B8E223BAD4400A8EA35 /* MapDot.xib in Resources */,
 				EC38246A223A1803000D7148 /* Rubik-Light.ttf in Resources */,
-				8B81EFB922434378007BFDB0 /* slime2.png in Resources */,
 				ECD4556C2240FBED006AF78D /* PlayerBox.xib in Resources */,
 				EC3824252238803D000D7148 /* Assets.xcassets in Resources */,
 				ECA66DC2223D5DD100D1D0BC /* CreditsScreenView.xib in Resources */,
 				EC38246E223A1803000D7148 /* Rubik-Italic.ttf in Resources */,
 				EC449B9B223BB9EA00A8EA35 /* levels.json in Resources */,
 				EC382480223A2999000D7148 /* PlayMenuButton.xib in Resources */,
+				8B81EFBC224344AD007BFDB0 /* Slime.atlas in Resources */,
 				EC382471223A1803000D7148 /* Rubik-MediumItalic.ttf in Resources */,
 				ECD4557622411340006AF78D /* UpButton.xib in Resources */,
-				8B81EFB822434378007BFDB0 /* slime1.png in Resources */,
 				EC38243F223882C5000D7148 /* PrimaryButton.xib in Resources */,
 				EC3824232238803A000D7148 /* Main.storyboard in Resources */,
 				EC38245F223A17F7000D7148 /* Squidgy Slimes.ttf in Resources */,
 				EC40E4AE223F97E50073D755 /* SettingsScreenView.xib in Resources */,
-				8B81EFBA22434378007BFDB0 /* slime3.png in Resources */,
 				EC382472223A1803000D7148 /* Rubik-Medium.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
