@@ -39,9 +39,6 @@ class Stage: SKScene {
         spaceship.setItemsMovement()
         spaceship.stopItemsFromEnteringWalls()
 
-        // TO DO remove this
-        spaceship.slimes[0].interact()
-
         super.didEvaluateActions()
     }
 
