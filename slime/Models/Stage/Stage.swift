@@ -35,6 +35,13 @@ class Stage: SKScene {
         players.removeAll { $0 == player }
     }
 
+    var slimeToControl: Slime? {
+        guard spaceship.slimes.count > 0 else {
+            return nil
+        }
+        return spaceship.slimes[0]
+    }
+
     override func didEvaluateActions() {
         spaceship.setItemsMovement()
         spaceship.stopItemsFromEnteringWalls()

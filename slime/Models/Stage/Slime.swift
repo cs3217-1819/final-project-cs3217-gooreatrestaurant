@@ -21,10 +21,29 @@ class Slime: SKSpriteNode {
 
     init(inPosition position: CGPoint, withSize size: CGSize = StageConstants.slimeSize, andParents ship: Spaceship) {
         self.spaceship = ship
-        super.init(texture: nil, color: .blue, size: size)
-        self.position = position
 
-        self.physicsBody = SKPhysicsBody(rectangleOf: size)
+        let slimeAnimatedAtlas = SKTextureAtlas(named: "Slime")
+        var walkFrames: [SKTexture] = []
+
+        let numImages = slimeAnimatedAtlas.textureNames.count
+        for i in 1...numImages {
+            let slimeTextureName = "slime\(i)"
+            walkFrames.append(slimeAnimatedAtlas.textureNamed(slimeTextureName))
+        }
+
+        super.init(texture: walkFrames[0], color: .clear, size: size)
+        self.position = position
+        self.zPosition = 2
+        self.physicsBody = SKPhysicsBody(texture: slimeAnimatedAtlas.textureNamed("slime1"), size: size)
+        self.physicsBody?.allowsRotation = false
+
+        // animate slime
+        self.run(SKAction.repeatForever(
+            SKAction.animate(with: walkFrames,
+                             timePerFrame: 0.2,
+                             resize: false,
+                             restore: true)),
+                 withKey: "walkingInPlaceSlime")
     }
 
     required init?(coder aDecoder: NSCoder) {

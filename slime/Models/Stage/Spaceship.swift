@@ -23,6 +23,7 @@ class Spaceship: SKSpriteNode {
         spaceshipBody.filteringMode = .nearest
         super.init(texture: spaceshipBody, color: .clear, size: size)
         self.position = position
+        self.zPosition = 0
     }
 
     // There is some part of the node in the walls when not all parts of the node (total area) in all the rooms
