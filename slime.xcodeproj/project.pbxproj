@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1D493497224213D700A73173 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D493496224213D700A73173 /* Game.swift */; };
 		1D4934A4224213E200A73173 /* Stage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D493498224213E200A73173 /* Stage.swift */; };
 		1D4934A5224213E200A73173 /* CookingEquipment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D493499224213E200A73173 /* CookingEquipment.swift */; };
 		1D4934A6224213E200A73173 /* Table.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D49349A224213E200A73173 /* Table.swift */; };
@@ -130,7 +129,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1D493496224213D700A73173 /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		1D493498224213E200A73173 /* Stage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Stage.swift; path = Stage/Stage.swift; sourceTree = "<group>"; };
 		1D493499224213E200A73173 /* CookingEquipment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CookingEquipment.swift; path = Stage/CookingEquipment.swift; sourceTree = "<group>"; };
 		1D49349A224213E200A73173 /* Table.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Table.swift; path = Stage/Table.swift; sourceTree = "<group>"; };
@@ -539,7 +537,6 @@
 				1D493498224213E200A73173 /* Stage.swift */,
 				1D49349C224213E200A73173 /* StageConstants.swift */,
 				1D49349A224213E200A73173 /* Table.swift */,
-				1D493496224213D700A73173 /* Game.swift */,
 				EC449B9D223BBA0300A8EA35 /* Level.swift */,
 				ECD455712240FFC7006AF78D /* Player.swift */,
 			);
@@ -948,7 +945,6 @@
 				ECD455702240FEDE006AF78D /* PlayerBoxController.swift in Sources */,
 				EC449B81223B8C0C00A8EA35 /* PlayScreenView.swift in Sources */,
 				EC40E4AC223D61320073D755 /* CreditsSceneViewController.swift in Sources */,
-				1D493497224213D700A73173 /* Game.swift in Sources */,
 				EC449B7B223B83DA00A8EA35 /* Router.swift in Sources */,
 				ECD455512240B510006AF78D /* AlertController.swift in Sources */,
 				EC449B7F223B889400A8EA35 /* TitleScreenView.swift in Sources */,

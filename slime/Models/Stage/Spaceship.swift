@@ -16,13 +16,13 @@ class Spaceship: SKSpriteNode {
     var cookingEquipments: [CookingEquipment] = []
     var ingredientsOnFloor: [Ingredient] = []
     var platesOnFloor: [Plate] = []
-    let wallPhysics: SKNode = SKNode()
 
     // position is in the center
     init(inPosition position: CGPoint, withSize size: CGSize) {
-        super.init(texture: SKTexture(imageNamed: "Space Main Body.png"), color: .clear, size: size)
+        let spaceshipBody = SKTexture(imageNamed: "SpaceshipMAIN")
+        spaceshipBody.filteringMode = .nearest
+        super.init(texture: spaceshipBody, color: .clear, size: size)
         self.position = position
-        self.addChild(wallPhysics)
     }
 
     // There is some part of the node in the walls when not all parts of the node (total area) in all the rooms
@@ -44,10 +44,6 @@ class Spaceship: SKSpriteNode {
         let acceptablePrecision = StageConstants.precision * nodeArea
 
         return abs(nodeArea - totalArea) > acceptablePrecision
-    }
-
-    func addWalls(_ walls: CGPath) {
-        wallPhysics.physicsBody = SKPhysicsBody(edgeChainFrom: walls)
     }
 
     func addRoom(inPosition position: CGPoint, withSize size: CGSize) {
