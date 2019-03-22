@@ -20,6 +20,12 @@ class Stage: SKScene {
         spaceship = Spaceship(inPosition: StageConstants.spaceshipPosition, withSize: StageConstants.spaceshipSize)
         super.init(size: size)
 
+        let background = SKSpriteNode(imageNamed: "background-1")
+        background.position = StageConstants.spaceshipPosition
+        background.size = size
+        background.zPosition = -1
+        self.addChild(background)
+
         self.addChild(spaceship)
     }
 
