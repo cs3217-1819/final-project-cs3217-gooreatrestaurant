@@ -10,7 +10,7 @@ import UIKit
 
 class StoryModeLevelSelectController: ViewController<StoryModeLevelSelectView>,
     UIScrollViewDelegate {
-    private var dotControllers: [MapDotController] = []
+    private var dotControllers: [LevelPlaceController] = []
     private var levels: [Level] = []
     private var currentDotIndex = 0
     
@@ -53,7 +53,7 @@ class StoryModeLevelSelectController: ViewController<StoryModeLevelSelectView>,
     func configureDots() {
         var contentRect: CGRect = CGRect.zero
         for (idx, level) in levels.enumerated() {
-            let dotController = MapDotController(with: view.scrollView, using: level, index: idx, context: context)
+            let dotController = LevelPlaceController(with: view.scrollView, using: level, index: idx, context: context)
             dotController.configure()
             view.scrollView.addSubview(dotController.view)
             contentRect = contentRect.union(dotController.view.frame)
@@ -68,7 +68,7 @@ class StoryModeLevelSelectController: ViewController<StoryModeLevelSelectView>,
     
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         var bestDiff: CGFloat = CGFloat.infinity
-        var bestDot: MapDotController?
+        var bestDot: LevelPlaceController?
         var bestIndex: Int = 0
         for (idx, dotController) in dotControllers.enumerated() {
             guard let diff = dotController.getScrollOffsetDiff(contentOffsetY: scrollView.contentOffset.y) else {
@@ -97,10 +97,8 @@ class StoryModeLevelSelectController: ViewController<StoryModeLevelSelectView>,
         
         for (idx, control) in dotControllers.enumerated() {
             if idx != bestIndex {
-                control.moveRandom()
                 control.unfocus()
             } else {
-                control.moveToCenter()
                 control.focus()
             }
         }

@@ -91,9 +91,11 @@
 		EC449B98223BB20400A8EA35 /* StoryModeLevelSelectController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC449B97223BB20400A8EA35 /* StoryModeLevelSelectController.swift */; };
 		EC449B9B223BB9EA00A8EA35 /* levels.json in Resources */ = {isa = PBXBuildFile; fileRef = EC449B9A223BB9E900A8EA35 /* levels.json */; };
 		EC449B9E223BBA0300A8EA35 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC449B9D223BBA0300A8EA35 /* Level.swift */; };
+		EC4924E42246163C007B9797 /* LevelPlaceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC4924E32246163C007B9797 /* LevelPlaceView.xib */; };
+		EC4924E8224618E6007B9797 /* LevelPlaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4924E7224618E6007B9797 /* LevelPlaceView.swift */; };
 		EC79FFEA22422336002E8FE7 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4934A2224213E200A73173 /* Order.swift */; };
 		EC79FFEE2242238C002E8FE7 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC79FFED2242238C002E8FE7 /* GameViewController.swift */; };
-		ECA66DBE223D2A1B00D1D0BC /* MapDotController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA66DBD223D2A1B00D1D0BC /* MapDotController.swift */; };
+		ECA66DBE223D2A1B00D1D0BC /* LevelPlaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA66DBD223D2A1B00D1D0BC /* LevelPlaceController.swift */; };
 		ECA66DC2223D5DD100D1D0BC /* CreditsScreenView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECA66DC1223D5DD100D1D0BC /* CreditsScreenView.xib */; };
 		ECA66DC4223D5F4000D1D0BC /* CreditsScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA66DC3223D5F4000D1D0BC /* CreditsScreenView.swift */; };
 		ECD45541223FA21E006AF78D /* Modal.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECD45540223FA21E006AF78D /* Modal.xib */; };
@@ -222,8 +224,10 @@
 		EC449B97223BB20400A8EA35 /* StoryModeLevelSelectController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryModeLevelSelectController.swift; sourceTree = "<group>"; };
 		EC449B9A223BB9E900A8EA35 /* levels.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = levels.json; sourceTree = "<group>"; };
 		EC449B9D223BBA0300A8EA35 /* Level.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
+		EC4924E32246163C007B9797 /* LevelPlaceView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LevelPlaceView.xib; sourceTree = "<group>"; };
+		EC4924E7224618E6007B9797 /* LevelPlaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelPlaceView.swift; sourceTree = "<group>"; };
 		EC79FFED2242238C002E8FE7 /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
-		ECA66DBD223D2A1B00D1D0BC /* MapDotController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDotController.swift; sourceTree = "<group>"; };
+		ECA66DBD223D2A1B00D1D0BC /* LevelPlaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelPlaceController.swift; sourceTree = "<group>"; };
 		ECA66DC1223D5DD100D1D0BC /* CreditsScreenView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreditsScreenView.xib; sourceTree = "<group>"; };
 		ECA66DC3223D5F4000D1D0BC /* CreditsScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsScreenView.swift; sourceTree = "<group>"; };
 		ECD45540223FA21E006AF78D /* Modal.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Modal.xib; sourceTree = "<group>"; };
@@ -508,10 +512,12 @@
 			children = (
 				EC449B8D223BAD4400A8EA35 /* MapDot.xib */,
 				EC449B8F223BADBB00A8EA35 /* LevelDetailsBox.xib */,
-				ECA66DBD223D2A1B00D1D0BC /* MapDotController.swift */,
+				ECA66DBD223D2A1B00D1D0BC /* LevelPlaceController.swift */,
 				EC449B91223BB01C00A8EA35 /* LevelDetailsBox.swift */,
 				EC449B93223BB08700A8EA35 /* LevelDetailsBoxController.swift */,
 				EC21B3FF22420CA700827121 /* LevelPlayButton.xib */,
+				EC4924E32246163C007B9797 /* LevelPlaceView.xib */,
+				EC4924E7224618E6007B9797 /* LevelPlaceView.swift */,
 			);
 			path = LevelSelect;
 			sourceTree = "<group>";
@@ -772,6 +778,7 @@
 				EC38246A223A1803000D7148 /* Rubik-Light.ttf in Resources */,
 				ECD4556C2240FBED006AF78D /* PlayerBox.xib in Resources */,
 				EC3824252238803D000D7148 /* Assets.xcassets in Resources */,
+				EC4924E42246163C007B9797 /* LevelPlaceView.xib in Resources */,
 				ECA66DC2223D5DD100D1D0BC /* CreditsScreenView.xib in Resources */,
 				EC38246E223A1803000D7148 /* Rubik-Italic.ttf in Resources */,
 				EC449B9B223BB9EA00A8EA35 /* levels.json in Resources */,
@@ -909,6 +916,7 @@
 				1D4934A9224213E200A73173 /* Ingredient.swift in Sources */,
 				1D4934A8224213E200A73173 /* StageConstants.swift in Sources */,
 				1D4934A7224213E200A73173 /* Ladder.swift in Sources */,
+				EC4924E8224618E6007B9797 /* LevelPlaceView.swift in Sources */,
 				1D4934A6224213E200A73173 /* Table.swift in Sources */,
 				EC382479223A1BE7000D7148 /* PrimaryButtonColor.swift in Sources */,
 				ECA66DC4223D5F4000D1D0BC /* CreditsScreenView.swift in Sources */,
@@ -940,7 +948,7 @@
 				EC38244F2238F023000D7148 /* PrimaryButton.swift in Sources */,
 				EC449B85223BA48100A8EA35 /* LevelSelectView.swift in Sources */,
 				1D4934AB224213E200A73173 /* Food.swift in Sources */,
-				ECA66DBE223D2A1B00D1D0BC /* MapDotController.swift in Sources */,
+				ECA66DBE223D2A1B00D1D0BC /* LevelPlaceController.swift in Sources */,
 				EC449B9E223BBA0300A8EA35 /* Level.swift in Sources */,
 				ECD455722240FFC7006AF78D /* Player.swift in Sources */,
 				EC449B7D223B873600A8EA35 /* RouterViewController.swift in Sources */,

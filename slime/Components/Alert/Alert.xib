@@ -23,13 +23,13 @@
                     <nil key="highlightedColor"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="string" keyPath="style" value="p1"/>
-                        <userDefinedRuntimeAttribute type="string" keyPath="color" value="white2"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="color" value="pink1"/>
                     </userDefinedRuntimeAttributes>
                 </label>
                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="S4y-iu-MNe">
                     <rect key="frame" x="36" y="137" width="423" height="57"/>
                 </stackView>
-                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mvS-6u-ogM">
+                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mvS-6u-ogM" customClass="DesignableView" customModule="slime" customModuleProvider="target">
                     <rect key="frame" x="36" y="-24" width="423" height="64"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pcd-Fj-J7o" customClass="TextLabel" customModule="slime" customModuleProvider="target">
@@ -39,7 +39,7 @@
                             <nil key="highlightedColor"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="string" keyPath="style" value="h0"/>
-                                <userDefinedRuntimeAttribute type="string" keyPath="color" value="white1"/>
+                                <userDefinedRuntimeAttribute type="string" keyPath="color" value="pink2"/>
                             </userDefinedRuntimeAttributes>
                         </label>
                     </subviews>
@@ -51,9 +51,8 @@
                         <constraint firstAttribute="trailing" secondItem="pcd-Fj-J7o" secondAttribute="trailing" constant="16" id="gxv-Zh-F8x"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                            <integer key="value" value="8"/>
-                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="rounded" value="YES"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="background" value="pink7"/>
                     </userDefinedRuntimeAttributes>
                 </view>
             </subviews>
