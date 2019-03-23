@@ -74,9 +74,7 @@ class MainController: UIViewController {
         toView.frame = toView.frame.offsetBy(dx: diff.x, dy: diff.y)
         toView.frame = CGRect(x: diff.x, y: diff.y, width: view.bounds.width, height: view.bounds.height)
         toView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        print("before context")
         secondVC.use(context: context)
-        print("after context")
         secondVC.configureSubviews()
         
         

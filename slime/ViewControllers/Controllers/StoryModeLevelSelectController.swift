@@ -53,7 +53,6 @@ class StoryModeLevelSelectController: ViewController<StoryModeLevelSelectView>,
     func configureDots() {
         var contentRect: CGRect = CGRect.zero
         for (idx, level) in levels.enumerated() {
-            print(context)
             let dotController = MapDotController(with: view.scrollView, using: level, index: idx, context: context)
             dotController.configure()
             view.scrollView.addSubview(dotController.view)

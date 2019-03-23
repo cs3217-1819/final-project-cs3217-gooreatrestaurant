@@ -13,6 +13,7 @@ class ScrollingBackgroundViewController {
     
     init(with view: UIView) {
         background = UIImageView(frame: view.frame.scale(by: 2))
+        background.contentMode = .scaleAspectFill
         background.frame = background.frame.offsetBy(dx: -view.frame.width, dy: -view.frame.height)
         background.image = ImageProvider.get("background")
         
@@ -21,6 +22,7 @@ class ScrollingBackgroundViewController {
         }, completion: nil)
         view.addSubview(background)
         view.sendSubviewToBack(background)
+        
     }
     
     func toAlpha(_ alpha: CGFloat) {
