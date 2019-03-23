@@ -34,18 +34,26 @@
                         <userDefinedRuntimeAttribute type="string" keyPath="color" value="white8"/>
                     </userDefinedRuntimeAttributes>
                 </label>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="ASW-E1-ho3">
+                    <rect key="frame" x="36" y="91.5" width="740" height="247.5"/>
+                </stackView>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="A64-4L-JyT" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="36" id="NWe-Gv-60N"/>
+                <constraint firstItem="ASW-E1-ho3" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="36" id="Q0J-F7-Ef1"/>
                 <constraint firstItem="CeN-92-XA5" firstAttribute="leading" secondItem="A64-4L-JyT" secondAttribute="trailing" constant="36" id="Vza-oa-aFf"/>
                 <constraint firstItem="CeN-92-XA5" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="36" id="Ykn-FV-gWD"/>
                 <constraint firstItem="A64-4L-JyT" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="36" id="eRg-e1-P7F"/>
+                <constraint firstItem="ASW-E1-ho3" firstAttribute="top" secondItem="CeN-92-XA5" secondAttribute="bottom" constant="16" id="vlA-4v-RBp"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="ASW-E1-ho3" secondAttribute="bottom" constant="36" id="x5E-hW-Y8d"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="ASW-E1-ho3" secondAttribute="trailing" constant="36" id="yU8-tq-4j4"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
                 <outlet property="backButton" destination="A64-4L-JyT" id="PJf-of-GFW"/>
+                <outlet property="recipeBlobs" destination="ASW-E1-ho3" id="fnz-br-etJ"/>
             </connections>
             <point key="canvasLocation" x="106" y="133"/>
         </view>
