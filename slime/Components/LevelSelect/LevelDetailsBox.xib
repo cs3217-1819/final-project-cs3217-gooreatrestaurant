@@ -16,7 +16,7 @@
             <rect key="frame" x="0.0" y="0.0" width="250" height="100"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NZp-Oj-YoS">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NZp-Oj-YoS" customClass="DesignableView" customModule="slime" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="0.0" width="250" height="100"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1-1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mff-ps-jFR" customClass="TextLabel" customModule="slime" customModuleProvider="target">
@@ -26,7 +26,7 @@
                             <nil key="highlightedColor"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="string" keyPath="style" value="psmall"/>
-                                <userDefinedRuntimeAttribute type="string" keyPath="color" value="white5"/>
+                                <userDefinedRuntimeAttribute type="string" keyPath="color" value="pink4"/>
                             </userDefinedRuntimeAttributes>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Level Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z0E-kD-p8u" customClass="TextLabel" customModule="slime" customModuleProvider="target">
@@ -36,7 +36,7 @@
                             <nil key="highlightedColor"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="string" keyPath="style" value="h2"/>
-                                <userDefinedRuntimeAttribute type="string" keyPath="color" value="white3"/>
+                                <userDefinedRuntimeAttribute type="string" keyPath="color" value="pink2"/>
                             </userDefinedRuntimeAttributes>
                         </label>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Ucd-KF-j52">
@@ -52,7 +52,7 @@
                                             <nil key="highlightedColor"/>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="string" keyPath="style" value="hsub"/>
-                                                <userDefinedRuntimeAttribute type="string" keyPath="color" value="white5"/>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="color" value="pink4"/>
                                             </userDefinedRuntimeAttributes>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yev-62-VKF" customClass="TextLabel" customModule="slime" customModuleProvider="target">
@@ -61,7 +61,7 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                             <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="string" keyPath="color" value="white2"/>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="color" value="pink2"/>
                                                 <userDefinedRuntimeAttribute type="string" keyPath="style" value="h2"/>
                                             </userDefinedRuntimeAttributes>
                                         </label>
@@ -85,7 +85,7 @@
                                             <nil key="highlightedColor"/>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="string" keyPath="style" value="hsub"/>
-                                                <userDefinedRuntimeAttribute type="string" keyPath="color" value="white1"/>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="color" value="pink1"/>
                                             </userDefinedRuntimeAttributes>
                                         </label>
                                     </subviews>
@@ -113,9 +113,8 @@
                         <constraint firstItem="mff-ps-jFR" firstAttribute="leading" secondItem="NZp-Oj-YoS" secondAttribute="leading" constant="8" id="yJS-3o-W2Y"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="layer.border.cornerRadius">
-                            <integer key="value" value="8"/>
-                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="rounded" value="YES"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="background" value="pink7"/>
                     </userDefinedRuntimeAttributes>
                 </view>
             </subviews>
