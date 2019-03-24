@@ -171,6 +171,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         spaceshipBorder.position = CGPoint(x: self.frame.midX, y: self.frame.midY)
         let ground = SKShapeNode(points: &gameAreaCoord, count: gameAreaCoord.count)
         let blockedArea = SKShapeNode(points: &unaccessibleAreaCoord, count: unaccessibleAreaCoord.count)
+        spaceshipBorder.name = "BoundedArea"
         spaceshipBorder.physicsBody = SKPhysicsBody(edgeLoopFrom: ground.path!)
         spaceshipBorder.physicsBody?.categoryBitMask = worldCategory
         spaceshipBorder.physicsBody?.isDynamic = false
@@ -178,9 +179,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
         let blockedAreaBorder = SKNode()
         blockedAreaBorder.position = CGPoint(x: 0, y: 0)
+        blockedAreaBorder.name = "BoundedArea"
         blockedAreaBorder.physicsBody = SKPhysicsBody(edgeLoopFrom: blockedArea.path!)
         blockedAreaBorder.physicsBody?.categoryBitMask = worldCategory
         blockedAreaBorder.physicsBody?.isDynamic = false
         self.addChild(blockedAreaBorder)
+    }
+
+    func didBegin(_ contact: SKPhysicsContact) {
+        if(contact.bodyA.node?.name == "BoundedArea") {
+            //this line is added as since there is gravitational force applying downwards, the slime will
+            //continue to exert force downwards as well even if there is no movement
+            self.slime.physicsBody?.velocity = CGVector(dx: (self.slime.physicsBody?.velocity.dx)!, dy: 0)
+        }
     }
 }
