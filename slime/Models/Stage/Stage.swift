@@ -20,6 +20,12 @@ class Stage: SKScene {
         spaceship = Spaceship(inPosition: StageConstants.spaceshipPosition, withSize: StageConstants.spaceshipSize)
         super.init(size: size)
 
+        let background = SKSpriteNode(imageNamed: "background-1")
+        background.position = StageConstants.spaceshipPosition
+        background.size = size
+        background.zPosition = -1
+        self.addChild(background)
+
         self.addChild(spaceship)
     }
 
@@ -35,12 +41,16 @@ class Stage: SKScene {
         players.removeAll { $0 == player }
     }
 
+    var slimeToControl: Slime? {
+        guard spaceship.slimes.count > 0 else {
+            return nil
+        }
+        return spaceship.slimes[0]
+    }
+
     override func didEvaluateActions() {
         spaceship.setItemsMovement()
         spaceship.stopItemsFromEnteringWalls()
-
-        // TO DO remove this
-        spaceship.slimes[0].interact()
 
         super.didEvaluateActions()
     }
