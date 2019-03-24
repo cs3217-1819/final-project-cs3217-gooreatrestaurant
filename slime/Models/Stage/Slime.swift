@@ -84,11 +84,11 @@ class Slime: SKSpriteNode {
 
         // print(self.physicsBody!.velocity)
         if cantMoveXDirection {
-            self.physicsBody?.velocity.dx = 0.0
+            // self.physicsBody?.velocity.dx = 0.0
         }
 
         if cantMoveYDirection {
-            self.physicsBody?.velocity.dy = 0.0
+            // self.physicsBody?.velocity.dy = 0.0
         }
     }
 
@@ -101,15 +101,18 @@ class Slime: SKSpriteNode {
 
         if (movementBitmask & (1 << 0)) != 0 {
             physics.velocity.dx = speed
+            self.xScale = abs(self.xScale)
         }
 
-        if (movementBitmask & (1 << 1)) != 0 && abs(physics.velocity.dy) < StageConstants.speedToAllowJump {
+        if (movementBitmask & (1 << 1)) != 0 {
             physics.velocity.dy = speed
         }
 
         if (movementBitmask & (1 << 2)) != 0 {
             physics.velocity.dx = -speed
+            self.xScale = -(abs(self.xScale))
         }
+        stopMovements()
     }
 
     func stopMovements() {

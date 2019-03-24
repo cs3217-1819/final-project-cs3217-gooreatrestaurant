@@ -30,6 +30,13 @@ class StageConstants {
     static let ingredientSize = CGSize(width: 500, height: 100)
     static let cookerSize = CGSize(width: 500, height: 300)
 
+    static let joystickSize = CGFloat(1500.0)
+    static let joystickPosition = CGPoint(x: 0.1 * Double(maxXAxisUnits),
+                                          y: 0.1 * Double(maxYAxisUnits))
+
+    static let jumpButtonPosition = CGPoint(x: 0.9 * Double(maxXAxisUnits),
+                                            y: 0.1 * Double(maxYAxisUnits))
+
     enum IngredientType {
         case potato
         case junk
