@@ -25,7 +25,7 @@ class StageConstants {
     static let spaceshipSize = CGSize(width: 6000, height: 8000)
     static let spaceshipPosition = CGPoint(x: 6000, y: 5000)
 
-    static let slimeSize = CGSize(width: 250, height: 300)
+    static let slimeSize = CGSize(width: 300, height: 300)
     static let plateSize = CGSize(width: 500, height: 100)
     static let ingredientSize = CGSize(width: 500, height: 100)
     static let cookerSize = CGSize(width: 500, height: 300)
