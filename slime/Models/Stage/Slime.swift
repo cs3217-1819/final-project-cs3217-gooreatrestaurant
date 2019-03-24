@@ -36,6 +36,7 @@ class Slime: SKSpriteNode {
         self.zPosition = 2
         self.physicsBody = SKPhysicsBody(texture: slimeAnimatedAtlas.textureNamed("slime1"), size: size)
         self.physicsBody?.allowsRotation = false
+        self.physicsBody?.collisionBitMask = StageConstants.wallCategoryCollision
 
         // animate slime
         self.run(SKAction.repeatForever(
@@ -64,34 +65,6 @@ class Slime: SKSpriteNode {
         }
     }
 
-    func stopFromEnteringWalls() {
-        guard let velocity = self.physicsBody?.velocity else {
-            return
-        }
-
-        let nextX = position.x + StageConstants.magicNumberMultiplier * velocity.dx
-        let nextY = position.y + StageConstants.magicNumberMultiplier * velocity.dy
-
-        let nodeMovedX = SKSpriteNode(color: .clear, size: self.size)
-        nodeMovedX.position = CGPoint(x: nextX, y: self.position.y)
-
-        let nodeMovedY = SKSpriteNode(color: .clear, size: self.size)
-        nodeMovedY.position = CGPoint(x: self.position.x, y: nextY)
-
-        let cantMoveXDirection = spaceship.isIntersectingWithWalls(nodeMovedX)
-        let cantMoveYDirection = spaceship.isIntersectingWithWalls(nodeMovedY)
-        self.physicsBody?.affectedByGravity = !cantMoveYDirection
-
-        // print(self.physicsBody!.velocity)
-        if cantMoveXDirection {
-            // self.physicsBody?.velocity.dx = 0.0
-        }
-
-        if cantMoveYDirection {
-            // self.physicsBody?.velocity.dy = 0.0
-        }
-    }
-
     func checkMovement() {
         let speed = StageConstants.movementSpeed
 
@@ -101,7 +74,7 @@ class Slime: SKSpriteNode {
 
         if (movementBitmask & (1 << 0)) != 0 {
             physics.velocity.dx = speed
-            self.xScale = abs(self.xScale)
+            self.xScale = -abs(self.xScale)
         }
 
         if (movementBitmask & (1 << 1)) != 0 {
@@ -110,7 +83,7 @@ class Slime: SKSpriteNode {
 
         if (movementBitmask & (1 << 2)) != 0 {
             physics.velocity.dx = -speed
-            self.xScale = -(abs(self.xScale))
+            self.xScale = abs(self.xScale)
         }
         stopMovements()
     }

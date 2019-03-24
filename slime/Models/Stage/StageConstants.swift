@@ -37,6 +37,8 @@ class StageConstants {
     static let jumpButtonPosition = CGPoint(x: 0.9 * Double(maxXAxisUnits),
                                             y: 0.1 * Double(maxYAxisUnits))
 
+    static let wallCategoryCollision: UInt32 = 1 << 0
+
     enum IngredientType {
         case potato
         case junk

@@ -56,8 +56,6 @@ class Stage: SKScene {
         self.addChild(analogJoystick)
 
         analogJoystick.trackingHandler = { [unowned self] data in
-            print(data.velocity)
-            print(self.slimeToControl)
             if data.velocity.x > 0.0 {
                 self.slimeToControl?.moveRight()
             } else if data.velocity.x < 0.0 {
@@ -91,7 +89,6 @@ class Stage: SKScene {
 
     override func didEvaluateActions() {
         spaceship.setItemsMovement()
-        spaceship.stopItemsFromEnteringWalls()
 
         super.didEvaluateActions()
     }

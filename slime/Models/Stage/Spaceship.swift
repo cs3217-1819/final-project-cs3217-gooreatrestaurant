@@ -26,26 +26,6 @@ class Spaceship: SKSpriteNode {
         self.zPosition = 0
     }
 
-    // There is some part of the node in the walls when not all parts of the node (total area) in all the rooms
-    func isIntersectingWithWalls(_ node: SKNode) -> Bool {
-        let nodeFrame = node.frame
-
-        var totalArea = 0.0
-
-        for room in rooms {
-            let roomFrame = room.frame
-            let intersection = nodeFrame.intersection(roomFrame)
-
-            let intersectionArea = Double(intersection.width) * Double(intersection.height)
-            totalArea += intersectionArea
-        }
-
-        let nodeArea = Double(nodeFrame.width) * Double(nodeFrame.height)
-
-        let acceptablePrecision = StageConstants.precision * nodeArea
-
-        return abs(nodeArea - totalArea) > acceptablePrecision
-    }
 
     func addRoom(inPosition position: CGPoint, withSize size: CGSize) {
         let room = Room(withPosition: position, andSize: size)
@@ -82,10 +62,17 @@ class Spaceship: SKSpriteNode {
         self.addChild(plate)
     }
 
-    func stopItemsFromEnteringWalls() {
-        for slime in slimes {
-            slime.stopFromEnteringWalls()
-        }
+    func addWalls(withPoints points: [CGPoint]) {
+        var pointsList = points
+        let shape = SKShapeNode(points: &pointsList, count: points.count)
+        let wall = SKNode()
+
+        // 0, 0 is in the spaceship's center
+        wall.position = CGPoint(x: 0, y: 0)
+        wall.physicsBody = SKPhysicsBody(edgeLoopFrom: shape.path!)
+        wall.physicsBody?.categoryBitMask = StageConstants.wallCategoryCollision
+        wall.physicsBody?.isDynamic = false
+        self.addChild(wall)
     }
 
     func setItemsMovement() {
