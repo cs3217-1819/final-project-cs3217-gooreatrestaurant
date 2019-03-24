@@ -147,67 +147,39 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         spaceship.zPosition = 1
         addChild(spaceship)
 
+        var coordArray: [String] = []
+        var gameAreaCoord: [CGPoint] = []
+        var unaccessibleAreaCoord: [CGPoint] = []
+        guard let path = Bundle.main.path(forResource: "LevelDesign", ofType: "plist")  else {
+            print("Error loading path")
+            return
+        }
 
-        // create the ground
+        let contents = NSDictionary(contentsOfFile: path)
+        coordArray = contents?.object(forKey: "Level 1") as! [String]
+        for item in coordArray {
+            gameAreaCoord.append(NSCoder.cgPoint(for: item))
+        }
+
+        coordArray = contents?.object(forKey: "Level1UnaccessibleArea") as! [String]
+        for item in coordArray {
+            unaccessibleAreaCoord.append(NSCoder.cgPoint(for: item))
+        }
+
         let spaceshipBorder = SKNode()
-        spaceshipBorder.position = CGPoint(x: 0, y: 0)
-        var physicsBorderCoord = [CGPoint(x: -115, y: 125),
-                                  CGPoint(x: -115, y: 70),
-                                  CGPoint(x: -165, y: 70),
-                                  CGPoint(x: -165, y: 0),
-                                  CGPoint(x: -115, y: 0),
-                                  CGPoint(x: -115, y: -10),
-                                  CGPoint(x: -145, y: -10),
-                                  CGPoint(x: -145, y: -75),
-                                  CGPoint(x: -85, y: -75),
-                                  CGPoint(x: -85, y: -160),
-                                  CGPoint(x: 20, y: -160),
-                                  CGPoint(x: 20, y: -140),
-                                  CGPoint(x: 55, y: -140),
-                                  CGPoint(x: 55, y: -160),
-                                  CGPoint(x: 120, y: -160)]
-        var secondSetCoord = [CGPoint(x: 120, y: -80),
-                              CGPoint(x: 55, y: -80),
-                              CGPoint(x: 55, y: -100),
-                              CGPoint(x: 20, y: -100),
-                              CGPoint(x: 20, y: -80),
-                              CGPoint(x: -35, y: -80),
-                              CGPoint(x: -35, y: -75),
-                              CGPoint(x: 25, y: -75),
-                              CGPoint(x: 25, y: -50),
-                              CGPoint(x: 160, y: -50),
-                              CGPoint(x: 160, y: 50),
-                              CGPoint(x: 110, y: 50)]
-        var thirdSetCoord = [CGPoint(x: 110, y: 95),
-                             CGPoint(x: 90, y: 95),
-                             CGPoint(x: 90, y: 125)]
-        physicsBorderCoord += secondSetCoord
-        physicsBorderCoord += thirdSetCoord
-        let ground = SKShapeNode(points: &physicsBorderCoord, count: physicsBorderCoord.count)
-
-        var middleSetCoord = [CGPoint(x: -40, y: -10),
-                              CGPoint(x: 10, y: -10),
-                              CGPoint(x: 10, y: 10),
-                              CGPoint(x: 55, y: 10),
-                              CGPoint(x: 55, y: 55),
-                              CGPoint(x: -20, y: 55),
-                              CGPoint(x: -20, y: -5),
-                              CGPoint(x: -40, y: -5)]
-        let mid = SKShapeNode(points: &middleSetCoord, count: middleSetCoord.count)
-        let spaceshipBorder2 = SKNode()
-        spaceshipBorder2.position = CGPoint(x: 0, y: 0)
-        spaceshipBorder2.physicsBody = SKPhysicsBody(edgeLoopFrom: mid.path!)
-        spaceshipBorder2.physicsBody?.categoryBitMask = worldCategory
-        spaceshipBorder2.physicsBody?.isDynamic = false
-        self.addChild(spaceshipBorder2)
-
-        let wallNode = SKShapeNode()
-        wallNode.physicsBody = SKPhysicsBody(edgeLoopFrom: ground.path!)
-        wallNode.position = CGPoint(x: self.frame.midX, y: self.frame.midY)
-
-        spaceshipBorder.physicsBody = wallNode.physicsBody
+        spaceshipBorder.position = CGPoint(x: self.frame.midX, y: self.frame.midY)
+        let ground = SKShapeNode(points: &gameAreaCoord, count: gameAreaCoord.count)
+        let blockedArea = SKShapeNode(points: &unaccessibleAreaCoord, count: unaccessibleAreaCoord.count)
+        spaceshipBorder.physicsBody = SKPhysicsBody(edgeLoopFrom: ground.path!)
         spaceshipBorder.physicsBody?.categoryBitMask = worldCategory
         spaceshipBorder.physicsBody?.isDynamic = false
         self.addChild(spaceshipBorder)
+
+        let blockedAreaBorder = SKNode()
+        blockedAreaBorder.position = CGPoint(x: 0, y: 0)
+        blockedAreaBorder.physicsBody = SKPhysicsBody(edgeLoopFrom: blockedArea.path!)
+        blockedAreaBorder.physicsBody?.categoryBitMask = worldCategory
+        blockedAreaBorder.physicsBody?.isDynamic = false
+        self.addChild(blockedAreaBorder)
     }
 }

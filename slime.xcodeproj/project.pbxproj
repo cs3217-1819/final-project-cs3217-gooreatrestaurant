@@ -24,6 +24,7 @@
 		8BD816B122422D2700586180 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD816B022422D2700586180 /* GameScene.swift */; };
 		8BD816B3224262F100586180 /* AnalogJoystick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD816B2224262F100586180 /* AnalogJoystick.swift */; };
 		8BD816B922426D1400586180 /* BDButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD816B822426D1400586180 /* BDButton.swift */; };
+		8BEDCD392247F10100E24A20 /* LevelDesign.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8BEDCD382247F10100E24A20 /* LevelDesign.plist */; };
 		BA7CC9239365F389C9C1FA05 /* Pods_slime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7F0D50F4B0E911D0C328800 /* Pods_slime.framework */; };
 		EC21B40022420CA700827121 /* LevelPlayButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC21B3FF22420CA700827121 /* LevelPlayButton.xib */; };
 		EC21B40222420D4100827121 /* DesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC21B40122420D4100827121 /* DesignableView.swift */; };
@@ -156,6 +157,7 @@
 		8BD816B022422D2700586180 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		8BD816B2224262F100586180 /* AnalogJoystick.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalogJoystick.swift; sourceTree = "<group>"; };
 		8BD816B822426D1400586180 /* BDButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BDButton.swift; sourceTree = "<group>"; };
+		8BEDCD382247F10100E24A20 /* LevelDesign.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = LevelDesign.plist; sourceTree = "<group>"; };
 		E7F0D50F4B0E911D0C328800 /* Pods_slime.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_slime.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC21B3FF22420CA700827121 /* LevelPlayButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LevelPlayButton.xib; sourceTree = "<group>"; };
 		EC21B40122420D4100827121 /* DesignableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableView.swift; sourceTree = "<group>"; };
@@ -352,6 +354,7 @@
 				EC3824242238803D000D7148 /* Assets.xcassets */,
 				EC3824262238803D000D7148 /* LaunchScreen.storyboard */,
 				EC3824292238803D000D7148 /* Info.plist */,
+				8BEDCD382247F10100E24A20 /* LevelDesign.plist */,
 			);
 			path = slime;
 			sourceTree = "<group>";
@@ -785,6 +788,7 @@
 				EC38246F223A1803000D7148 /* Rubik-LightItalic.ttf in Resources */,
 				EC449B90223BADBB00A8EA35 /* LevelDetailsBox.xib in Resources */,
 				EC449B77223B81FE00A8EA35 /* PlayScreenView.xib in Resources */,
+				8BEDCD392247F10100E24A20 /* LevelDesign.plist in Resources */,
 				EC21B4052242155600827121 /* LoadingScreenView.xib in Resources */,
 				ECD4555C2240F1FB006AF78D /* MultiplayerScreenView.xib in Resources */,
 				ECD4554D2240B0AF006AF78D /* Alert.xib in Resources */,
