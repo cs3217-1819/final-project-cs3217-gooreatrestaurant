@@ -15,9 +15,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     private var spaceship:SKNode!
     private var slimeWalkingFrames: [SKTexture] = []
 
-    let birdCategory: UInt32 = 1 << 0
+    let slimeCategory: UInt32 = 1 << 0
     let worldCategory: UInt32 = 1 << 1
-    let pipeCategory: UInt32 = 1 << 2
+    let interactableObjCategory: UInt32 = 1 << 2
     let scoreCategory: UInt32 = 1 << 3
 
     enum NodesZPosition: CGFloat {
@@ -111,9 +111,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         slime.physicsBody?.isDynamic = true
         slime.physicsBody?.allowsRotation = false
 
-        slime.physicsBody?.categoryBitMask = birdCategory
-        slime.physicsBody?.collisionBitMask = worldCategory | pipeCategory
-        slime.physicsBody?.contactTestBitMask = worldCategory | pipeCategory
+        slime.physicsBody?.categoryBitMask = slimeCategory
+        slime.physicsBody?.collisionBitMask = worldCategory | interactableObjCategory
+        slime.physicsBody?.contactTestBitMask = worldCategory | interactableObjCategory
 
         addChild(slime)
     }

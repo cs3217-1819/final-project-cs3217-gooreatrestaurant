@@ -10,4 +10,5 @@ import UIKit
 
 class SettingsScreenView: UIView {
     @IBOutlet var backButton: UIView!
+    @IBOutlet var recipeBlobs: UIStackView!
 }

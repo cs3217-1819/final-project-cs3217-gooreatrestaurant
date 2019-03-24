@@ -16,13 +16,12 @@
             <rect key="frame" x="0.0" y="0.0" width="457" height="416"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wsR-vK-TSR">
+                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wsR-vK-TSR" customClass="DesignableView" customModule="slime" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="0.0" width="457" height="416"/>
                     <color key="backgroundColor" name="selectedControlColor" catalog="System" colorSpace="catalog"/>
                     <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                            <integer key="value" value="8"/>
-                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="rounded" value="YES"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="background" value="pink5"/>
                     </userDefinedRuntimeAttributes>
                 </view>
             </subviews>

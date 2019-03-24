@@ -20,13 +20,13 @@
                     <rect key="frame" x="0.0" y="0.0" width="160" height="88"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Play" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xx7-2O-nG1" customClass="TextLabel" customModule="slime" customModuleProvider="target">
-                            <rect key="frame" x="50" y="24.5" width="60.5" height="39.5"/>
+                            <rect key="frame" x="64" y="34" width="32" height="20.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                             <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="string" keyPath="style" value="h0"/>
-                                <userDefinedRuntimeAttribute type="string" keyPath="color" value="white2"/>
+                                <userDefinedRuntimeAttribute type="string" keyPath="style" value="h1"/>
+                                <userDefinedRuntimeAttribute type="string" keyPath="color" value="pink2"/>
                             </userDefinedRuntimeAttributes>
                         </label>
                     </subviews>
@@ -37,7 +37,7 @@
                     </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="rounded" value="YES"/>
-                        <userDefinedRuntimeAttribute type="string" keyPath="background" value="white7"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="background" value="pink6"/>
                     </userDefinedRuntimeAttributes>
                 </view>
             </subviews>

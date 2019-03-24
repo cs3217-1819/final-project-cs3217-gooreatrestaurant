@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="XibView" customModule="slime" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="OrderBlob" customModule="slime" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="171" height="144"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="recipe-blob" translatesAutoresizingMaskIntoConstraints="NO" id="znc-Q5-Ozf">
+                    <rect key="frame" x="0.0" y="0.0" width="171" height="144"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="recipe-knife" translatesAutoresizingMaskIntoConstraints="NO" id="bFY-PN-NYk">
+                    <rect key="frame" x="61.5" y="8" width="48" height="48"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="48" id="9WO-Hh-ZFu"/>
+                        <constraint firstAttribute="height" constant="48" id="v3x-hH-dKa"/>
+                    </constraints>
+                </imageView>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Llp-DC-758">
+                    <rect key="frame" x="16" y="64" width="139" height="64"/>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Llp-DC-758" secondAttribute="trailing" constant="16" id="Av4-BJ-860"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="znc-Q5-Ozf" secondAttribute="trailing" id="JKL-FI-Stf"/>
+                <constraint firstItem="znc-Q5-Ozf" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="JYU-wx-dsU"/>
+                <constraint firstItem="Llp-DC-758" firstAttribute="top" secondItem="bFY-PN-NYk" secondAttribute="bottom" constant="8" id="Ny0-za-Nzc"/>
+                <constraint firstAttribute="bottom" secondItem="Llp-DC-758" secondAttribute="bottom" constant="16" id="ias-Jg-Ppr"/>
+                <constraint firstItem="znc-Q5-Ozf" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="lzv-9c-mK8"/>
+                <constraint firstItem="Llp-DC-758" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="nQT-Pe-3e3"/>
+                <constraint firstItem="bFY-PN-NYk" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="q6s-57-LUU"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="znc-Q5-Ozf" secondAttribute="bottom" id="sRO-gn-qzx"/>
+                <constraint firstItem="bFY-PN-NYk" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="ydv-bJ-Hzk"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="orderGoal" destination="bFY-PN-NYk" id="wqA-RE-fyk"/>
+                <outlet property="orderInstructions" destination="Llp-DC-758" id="Hc2-LG-CQD"/>
+            </connections>
+            <point key="canvasLocation" x="-109.59999999999999" y="-187.1064467766117"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="recipe-blob" width="512" height="512"/>
+        <image name="recipe-knife" width="512" height="512"/>
+    </resources>
+</document>

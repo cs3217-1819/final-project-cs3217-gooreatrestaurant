@@ -18,6 +18,13 @@ class LevelDetailsBoxController {
         self.view = trueView
     }
     
+    init(using xibView: XibView) {
+        guard let trueView = xibView.contentView as? LevelDetailsBox else {
+            fatalError("View type is incorrect")
+        }
+        self.view = trueView
+    }
+    
     func configure() {
         view.layer.cornerRadius = 8
         view.clipsToBounds = true
