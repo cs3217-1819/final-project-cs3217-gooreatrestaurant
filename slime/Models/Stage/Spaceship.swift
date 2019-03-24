@@ -75,13 +75,6 @@ class Spaceship: SKSpriteNode {
         self.addChild(wall)
     }
 
-    func setItemsMovement() {
-        for slime in slimes {
-            slime.setMaximumFallingSpeed()
-            slime.checkMovement()
-        }
-    }
-
     required init?(coder aDecoder: NSCoder) {
         fatalError("initiation using storyboard is not implemented yet.")
     }

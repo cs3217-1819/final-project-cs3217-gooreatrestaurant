@@ -57,9 +57,9 @@ class Stage: SKScene {
 
         analogJoystick.trackingHandler = { [unowned self] data in
             if data.velocity.x > 0.0 {
-                self.slimeToControl?.moveRight()
+                self.slimeToControl?.moveRight(withSpeed: data.velocity.x)
             } else if data.velocity.x < 0.0 {
-                self.slimeToControl?.moveLeft()
+                self.slimeToControl?.moveLeft(withSpeed: -data.velocity.x)
             }
 
             if data.velocity.y > 0.0 {
@@ -85,12 +85,6 @@ class Stage: SKScene {
             return nil
         }
         return spaceship.slimes[0]
-    }
-
-    override func didEvaluateActions() {
-        spaceship.setItemsMovement()
-
-        super.didEvaluateActions()
     }
 
     required init?(coder aDecoder: NSCoder) {

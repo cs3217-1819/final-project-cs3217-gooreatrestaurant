@@ -16,9 +16,6 @@ class Slime: SKSpriteNode {
     var ingredientsCarried: Ingredient?
     var plateCarried: Plate?
 
-    // from rightmost bit to leftmost bit: right, up, left
-    var movementBitmask: UInt8 = 0
-
     init(inPosition position: CGPoint, withSize size: CGSize = StageConstants.slimeSize, andParents ship: Spaceship) {
         self.spaceship = ship
 
@@ -55,53 +52,25 @@ class Slime: SKSpriteNode {
         return ingredientsCarried != nil || plateCarried != nil
     }
 
-    func setMaximumFallingSpeed() {
-        guard let velocity = self.physicsBody?.velocity else {
-            return
-        }
-
-        if velocity.dy < -StageConstants.maxFallSpeed {
-            self.physicsBody?.velocity.dy = -StageConstants.maxFallSpeed
-        }
-    }
-
-    func checkMovement() {
-        let speed = StageConstants.movementSpeed
-
-        guard let physics = self.physicsBody else {
-            return
-        }
-
-        if (movementBitmask & (1 << 0)) != 0 {
-            physics.velocity.dx = speed
-            self.xScale = -abs(self.xScale)
-        }
-
-        if (movementBitmask & (1 << 1)) != 0 {
-            physics.velocity.dy = speed
-        }
-
-        if (movementBitmask & (1 << 2)) != 0 {
-            physics.velocity.dx = -speed
-            self.xScale = abs(self.xScale)
-        }
-        stopMovements()
-    }
-
-    func stopMovements() {
-        movementBitmask = 0
-    }
-
-    func moveLeft() {
-        movementBitmask |= (1 << 2)
+    func moveLeft(withSpeed speed: CGFloat) {
+        self.physicsBody?.velocity.dx = -speed * StageConstants.speedMultiplier
+        self.xScale = abs(self.xScale)
     }
 
     func jump() {
-        movementBitmask |= (1 << 1)
+        guard let physicsBody = self.physicsBody else {
+            return
+        }
+
+        if physicsBody.velocity.dy == 0.0 {
+            physicsBody.applyImpulse(CGVector(dx: 0.0, dy: StageConstants.jumpSpeed))
+        }
+
     }
 
-    func moveRight() {
-        movementBitmask |= (1 << 0)
+    func moveRight(withSpeed speed: CGFloat) {
+        self.physicsBody?.velocity.dx = speed * StageConstants.speedMultiplier
+        self.xScale = -abs(self.xScale)
     }
 
     private func takeItem(_ item: SKSpriteNode) {
