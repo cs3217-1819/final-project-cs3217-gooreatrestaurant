@@ -155,6 +155,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             return
         }
 
+        //Level 1
         let contents = NSDictionary(contentsOfFile: path)
         coordArray = contents?.object(forKey: "Level 1") as! [String]
         for item in coordArray {
