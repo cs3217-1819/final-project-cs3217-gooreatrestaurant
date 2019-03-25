@@ -11,23 +11,23 @@ import UIKit
 class StageConstants {
 
     static let maxPlayer = 4
-    static let maxXAxisUnits = 12000
-    static let maxYAxisUnits = 10000
+    static let maxXAxisUnits = ScreenSize.width
+    static let maxYAxisUnits = ScreenSize.height
 
     static let speedMultiplier = CGFloat(1.0)
     static let jumpSpeed = 1000.0
 
-    static let spaceshipSize = CGSize(width: 6000, height: 8000)
-    static let spaceshipPosition = CGPoint(x: 6000, y: 5000)
+    static let spaceshipSize = CGSize(width: 400, height: 400)
+    static let spaceshipPosition = CGPoint.zero
 
     static let slimeSize = CGSize(width: 300, height: 300)
     static let plateSize = CGSize(width: 500, height: 100)
     static let ingredientSize = CGSize(width: 500, height: 100)
     static let cookerSize = CGSize(width: 500, height: 300)
 
-    static let joystickSize = CGFloat(1500.0)
-    static let joystickPosition = CGPoint(x: 0.1 * Double(maxXAxisUnits),
-                                          y: 0.1 * Double(maxYAxisUnits))
+    static let joystickSize = CGFloat(100)
+    static let joystickPosition = CGPoint(x: ScreenSize.width * -0.5 + joystickSize / 2 + 45,
+                                          y: ScreenSize.height * -0.5 + joystickSize / 2 + 45)
 
     static let jumpButtonPosition = CGPoint(x: 0.9 * Double(maxXAxisUnits),
                                             y: 0.1 * Double(maxYAxisUnits))

@@ -22,7 +22,7 @@ class Spaceship: SKSpriteNode {
         let spaceshipBody = SKTexture(imageNamed: "SpaceshipMAIN")
         spaceshipBody.filteringMode = .nearest
         super.init(texture: spaceshipBody, color: .clear, size: size)
-        self.position = position
+        self.position = CGPoint.zero
         self.zPosition = 0
     }
 

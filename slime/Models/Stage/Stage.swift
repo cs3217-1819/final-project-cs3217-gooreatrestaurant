@@ -22,9 +22,12 @@ class Stage: SKScene {
 
         let background = SKSpriteNode(imageNamed: "background-1")
         background.position = StageConstants.spaceshipPosition
+        anchorPoint = CGPoint(x: 0.5, y: 0.5)
         background.size = size
+        background.scaleTo(screenWidthPercentage: 1.0)
         background.zPosition = -1
         self.addChild(background)
+
 
         self.addChild(spaceship)
         setupControl()
