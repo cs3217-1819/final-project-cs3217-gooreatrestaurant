@@ -11,12 +11,6 @@ import SpriteKit
 
 class Spaceship: SKSpriteNode {
 
-    var rooms: [Room] = []
-    var slimes: [Slime] = []
-    var cookingEquipments: [CookingEquipment] = []
-    var ingredientsOnFloor: [Ingredient] = []
-    var platesOnFloor: [Plate] = []
-
     // position is in the center
     init(inPosition position: CGPoint, withSize size: CGSize) {
         let spaceshipBody = SKTexture(imageNamed: "SpaceshipMAIN")
@@ -29,14 +23,12 @@ class Spaceship: SKSpriteNode {
     func addRoom(inPosition position: CGPoint, withSize size: CGSize) {
         let room = Room(withPosition: position, andSize: size)
         room.name = "room"
-        rooms.append(room)
         self.addChild(room)
     }
 
     func addSlime(inPosition position: CGPoint, withSize size: CGSize = StageConstants.slimeSize) {
         let slime = Slime(inPosition: position, withSize: size)
         slime.name = "slime"
-        slimes.append(slime)
         self.addChild(slime)
     }
 
@@ -45,7 +37,6 @@ class Spaceship: SKSpriteNode {
                         withSize size: CGSize = StageConstants.ingredientSize) {
         let ingredient = Ingredient(type: type, size: size, inLocation: position)
         ingredient.name = "ingredient"
-        ingredientsOnFloor.append(ingredient)
         self.addChild(ingredient)
     }
 
@@ -54,7 +45,6 @@ class Spaceship: SKSpriteNode {
                    withSize size: CGSize = StageConstants.cookerSize) {
         let cooker = CookingEquipment(type: type, size: size, inLocation: position)
         cooker.name = "cooker"
-        cookingEquipments.append(cooker)
         self.addChild(cooker)
     }
 
@@ -62,7 +52,6 @@ class Spaceship: SKSpriteNode {
                   withSize size: CGSize = StageConstants.plateSize) {
         let plate = Plate(inPosition: position, withSize: size)
         plate.name = "plate"
-        platesOnFloor.append(plate)
         self.addChild(plate)
     }
 
