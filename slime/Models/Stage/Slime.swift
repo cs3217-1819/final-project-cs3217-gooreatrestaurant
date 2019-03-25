@@ -11,14 +11,7 @@ import SpriteKit
 
 class Slime: SKSpriteNode {
 
-    let spaceship: Spaceship
-
-    var ingredientsCarried: Ingredient?
-    var plateCarried: Plate?
-
-    init(inPosition position: CGPoint, withSize size: CGSize = StageConstants.slimeSize, andParents ship: Spaceship) {
-        self.spaceship = ship
-
+    init(inPosition position: CGPoint, withSize size: CGSize = StageConstants.slimeSize) {
         let slimeAnimatedAtlas = SKTextureAtlas(named: "Slime")
         var walkFrames: [SKTexture] = []
 
@@ -46,6 +39,30 @@ class Slime: SKSpriteNode {
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("initiation using storyboard is not implemented yet.")
+    }
+
+    var plateCarried: Plate? {
+        guard let node = childNode(withName: "plate") else {
+            return nil
+        }
+
+        return node as? Plate
+    }
+
+    var ingredientsCarried: Ingredient? {
+        guard let node = childNode(withName: "ingredient") else {
+            return nil
+        }
+
+        return node as? Ingredient
+    }
+
+    var spaceship: Spaceship? {
+        guard let node = parent else {
+            return nil
+        }
+
+        return node as? Spaceship
     }
 
     var isCarryingSomething: Bool {
@@ -84,9 +101,7 @@ class Slime: SKSpriteNode {
         guard !self.isCarryingSomething else {
             return
         }
-
         self.takeItem(plate)
-        self.plateCarried = plate
     }
 
     private func takeIngredient(_ ingredient: Ingredient) {
@@ -95,7 +110,6 @@ class Slime: SKSpriteNode {
         }
 
         self.takeItem(ingredient)
-        self.ingredientsCarried = ingredient
     }
 
     private func cook(using equipment: CookingEquipment) {
@@ -106,6 +120,7 @@ class Slime: SKSpriteNode {
         ingredient.cook(using: equipment)
     }
 
+    // this Bool is success/fail
     private func putIngredient(into plate: Plate) -> Bool {
         guard let ingredient = self.ingredientsCarried else {
             return false
@@ -117,60 +132,9 @@ class Slime: SKSpriteNode {
         }
 
         ingredient.removeFromParent()
-        ingredientsCarried = nil
         return true
     }
 
     func interact() {
-        var hasInteracted = false
-        if !self.isCarryingSomething {
-
-            for ingredient in spaceship.ingredientsOnFloor {
-                if self.frame.intersects(ingredient.frame) {
-                    self.takeIngredient(ingredient)
-                    spaceship.ingredientsOnFloor.removeAll(where: { $0 == ingredient })
-                    hasInteracted = true
-                    break
-                }
-            }
-
-            guard hasInteracted == false else {
-                return
-            }
-
-            for plate in spaceship.platesOnFloor {
-                if self.frame.intersects(plate.frame) {
-                    self.takePlate(plate)
-                    spaceship.platesOnFloor.removeAll(where: { $0 == plate })
-                    hasInteracted = true
-                    break
-                }
-            }
-
-        } else if self.ingredientsCarried != nil {
-
-            for cooker in spaceship.cookingEquipments {
-                if self.frame.intersects(cooker.frame) {
-                    self.cook(using: cooker)
-                    hasInteracted = false
-                    break
-                }
-            }
-
-            guard hasInteracted == false else {
-                return
-            }
-
-            for plate in spaceship.platesOnFloor {
-                var success = false
-                if self.frame.intersects(plate.frame) {
-                    success = self.putIngredient(into: plate)
-                }
-                if success {
-                    hasInteracted = true
-                    break
-                }
-            }
-        }
     }
 }

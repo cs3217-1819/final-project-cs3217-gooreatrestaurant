@@ -34,7 +34,7 @@ class Spaceship: SKSpriteNode {
     }
 
     func addSlime(inPosition position: CGPoint, withSize size: CGSize = StageConstants.slimeSize) {
-        let slime = Slime(inPosition: position, withSize: size, andParents: self)
+        let slime = Slime(inPosition: position, withSize: size)
         slime.name = "slime"
         slimes.append(slime)
         self.addChild(slime)
