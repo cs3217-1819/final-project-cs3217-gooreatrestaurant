@@ -62,6 +62,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
         buildSpaceship()
         buildPlayArea()
+        buildLadder(position: CGPoint(x: -100, y: -21))
+        buildLadder(position: CGPoint(x: -100, y: -50))
+
+        buildLadder(position: CGPoint(x: -60, y: -135))
+        buildLadder(position: CGPoint(x: -60, y: -90))
+        buildLadder(position: CGPoint(x: -60, y: -45))
+        buildLadder(position: CGPoint(x: -60, y: 0))
+        buildLadder(position: CGPoint(x: -60, y: 45))
+
+        buildLadder(position: CGPoint(x: 90, y: -25))
+        buildLadder(position: CGPoint(x: 90, y: 20))
+        buildLadder(position: CGPoint(x: 90, y: 65))
         buildSlime()
         animateSlime()
     }
@@ -77,8 +89,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
         analogJoystick.trackingHandler = { [unowned self] data in
             let originalPos = self.slime.position
-            self.slime.position = CGPoint(x: self.slime.position.x + (data.velocity.x * self.velocityMultiplier),
-                                          y: self.slime.position.y + (data.velocity.y * self.velocityMultiplier))
+            let newXPos = self.slime.position.x + (data.velocity.x * self.velocityMultiplier)
+            var newYPos = self.slime.position.y
+            for body in (self.slime.physicsBody?.allContactedBodies())! {
+                if (body.node?.name == "LadderBody") {
+                    self.slime.physicsBody?.isDynamic = false
+                    newYPos = self.slime.position.y + (data.velocity.y * self.velocityMultiplier)
+                }
+            }
+            if (self.slime.physicsBody?.allContactedBodies().count == 0) {
+                self.slime.physicsBody?.isDynamic = true
+            }
+            self.slime.position = CGPoint(x: newXPos, y: newYPos)
             //self.hero.zRotation = data.angular
             var multiplierForDirection: CGFloat
             if originalPos.x < self.slime.position.x {
@@ -112,7 +134,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         slime.physicsBody?.allowsRotation = false
 
         slime.physicsBody?.categoryBitMask = slimeCategory
-        slime.physicsBody?.collisionBitMask = worldCategory | interactableObjCategory
+        slime.physicsBody?.collisionBitMask = worldCategory
         slime.physicsBody?.contactTestBitMask = worldCategory | interactableObjCategory
 
         addChild(slime)
@@ -194,6 +216,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         spaceship.setScale(0.1)
         spaceship.zPosition = 2
         addChild(spaceship)
+
+        let ladderBody = SKNode()
+        ladderBody.position = position
+        ladderBody.name = "LadderBody"
+        ladderBody.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 10, height: 45))
+        ladderBody.physicsBody?.categoryBitMask = interactableObjCategory
+        ladderBody.physicsBody?.isDynamic = false
+        self.addChild(ladderBody)
     }
 
     func didBegin(_ contact: SKPhysicsContact) {
