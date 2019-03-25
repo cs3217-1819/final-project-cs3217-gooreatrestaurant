@@ -27,6 +27,15 @@ class Slime: SKSpriteNode {
         self.physicsBody = SKPhysicsBody(texture: slimeAnimatedAtlas.textureNamed("slime1"), size: size)
         self.physicsBody?.allowsRotation = false
         self.physicsBody?.collisionBitMask = StageConstants.wallCategoryCollision
+        self.physicsBody?.categoryBitMask = StageConstants.slimeCategory
+        self.physicsBody?.contactTestBitMask = 0
+
+        self.physicsBody?.contactTestBitMask |= StageConstants.cookerCategory
+        self.physicsBody?.contactTestBitMask |= StageConstants.plateCategory
+        self.physicsBody?.contactTestBitMask |= StageConstants.ingredientCategory
+        self.physicsBody?.contactTestBitMask |= StageConstants.tableCategory
+        self.physicsBody?.contactTestBitMask |= StageConstants.slimeCategory
+        self.physicsBody?.contactTestBitMask |= StageConstants.ladderCategory
 
         // animate slime
         self.run(SKAction.repeatForever(
@@ -40,6 +49,7 @@ class Slime: SKSpriteNode {
     required init?(coder aDecoder: NSCoder) {
         fatalError("initiation using storyboard is not implemented yet.")
     }
+
 
     var plateCarried: Plate? {
         guard let node = childNode(withName: "plate") else {

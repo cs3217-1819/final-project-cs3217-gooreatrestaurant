@@ -15,6 +15,8 @@ class Plate: SKSpriteNode {
     init(inPosition position: CGPoint, withSize size: CGSize = StageConstants.plateSize) {
         super.init(texture: nil, color: .black, size: size)
         self.physicsBody = SKPhysicsBody(rectangleOf: size)
+        self.physicsBody?.categoryBitMask = StageConstants.plateCategory
+        self.physicsBody?.collisionBitMask = StageConstants.wallCategoryCollision
     }
 
     required init?(coder aDecoder: NSCoder) {

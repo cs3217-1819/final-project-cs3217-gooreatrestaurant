@@ -17,6 +17,9 @@ class Ingredient: SKSpriteNode {
         self.type = type
         super.init(texture: nil, color: .red, size: size)
         self.position = location
+        self.physicsBody = SKPhysicsBody(rectangleOf: size)
+        self.physicsBody?.categoryBitMask = StageConstants.ingredientCategory
+        self.physicsBody?.collisionBitMask = StageConstants.wallCategoryCollision
     }
 
     func cook(using equipment: CookingEquipment) {
