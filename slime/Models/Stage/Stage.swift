@@ -27,6 +27,45 @@ class Stage: SKScene {
         self.addChild(background)
 
         self.addChild(spaceship)
+        setupControl()
+    }
+
+    lazy var analogJoystick: AnalogJoystick = {
+        let js = AnalogJoystick(diameter: StageConstants.joystickSize,
+                                colors: nil,
+                                images: (substrate: #imageLiteral(resourceName: "jSubstrate"),
+                                stick: #imageLiteral(resourceName: "jStick")))
+        js.position = StageConstants.joystickPosition
+        js.zPosition = 1
+        return js
+    }()
+
+    lazy var playButton: BDButton = {
+        var button = BDButton(imageNamed: "Up", buttonAction: {
+            self.slimeToControl?.jump()
+            })
+        button.setScale(1)
+        button.isEnabled = true
+        button.position = StageConstants.jumpButtonPosition
+        button.zPosition = 4
+        return button
+    }()
+
+    func setupControl() {
+        self.addChild(playButton)
+        self.addChild(analogJoystick)
+
+        analogJoystick.trackingHandler = { [unowned self] data in
+            if data.velocity.x > 0.0 {
+                self.slimeToControl?.moveRight(withSpeed: data.velocity.x)
+            } else if data.velocity.x < 0.0 {
+                self.slimeToControl?.moveLeft(withSpeed: -data.velocity.x)
+            }
+
+            if data.velocity.y > 0.0 {
+                self.slimeToControl?.jump()
+            }
+        }
     }
 
     // if the player is already in the list, will do nothing
@@ -46,13 +85,6 @@ class Stage: SKScene {
             return nil
         }
         return spaceship.slimes[0]
-    }
-
-    override func didEvaluateActions() {
-        spaceship.setItemsMovement()
-        spaceship.stopItemsFromEnteringWalls()
-
-        super.didEvaluateActions()
     }
 
     required init?(coder aDecoder: NSCoder) {

@@ -38,21 +38,20 @@ class GameViewController: UIViewController {
         let size1 = CGSize(width: 1000, height: 2000)
         let size2 = CGSize(width: 1000, height: 1000)
 
-        let path1 = CGMutablePath()
-        path1.move(to: CGPoint(x: -3000, y: -2000))
-        path1.addLine(to: CGPoint(x: 3000, y: -2000))
-        path1.addLine(to: CGPoint(x: 3000, y: 2000))
-        path1.addLine(to: CGPoint(x: 1000, y: 2000))
-        path1.addLine(to: CGPoint(x: 1000, y: 0))
-        path1.addLine(to: CGPoint(x: -1000, y: 0))
-        path1.addLine(to: CGPoint(x: -1000, y: 2000))
-        path1.addLine(to: CGPoint(x: -3000, y: 2000))
-        path1.addLine(to: CGPoint(x: -3000, y: -2000))
+        let path1 = [CGPoint(x: -1500, y: -1000),
+                     CGPoint(x: 1500, y: -1000),
+                     CGPoint(x: 1500, y: 1000),
+                     CGPoint(x: 500, y: 1000),
+                     CGPoint(x: 500, y: 0),
+                     CGPoint(x: -500, y: 0),
+                     CGPoint(x: -500, y: 1000),
+                     CGPoint(x: -1500, y: 1000)]
 
         // stage?.spaceship.addWalls(path1)
         stage.spaceship.addRoom(inPosition: pos1, withSize: size1)
         stage.spaceship.addRoom(inPosition: pos2, withSize: size2)
         stage.spaceship.addRoom(inPosition: pos3, withSize: size1)
+        stage.spaceship.addWalls(withPoints: path1)
         stage.spaceship.addSlime(inPosition: pos4)
         stage.spaceship.addIngredients(type: .potato, inPosition: pos4)
         stage.spaceship.addCooker(type: .frying, inPosition: pos5)
