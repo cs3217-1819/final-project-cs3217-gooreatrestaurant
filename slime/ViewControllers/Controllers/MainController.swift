@@ -15,7 +15,6 @@ class MainController: UIViewController {
     private var router: Router {
         return context.router
     }
-    private var routerVC: ViewControllerProtocol?
     private var bgControl: ScrollingBackgroundViewController?
     
     override func viewWillLayoutSubviews() {
@@ -23,80 +22,56 @@ class MainController: UIViewController {
             // TODO: more robust checking, deinit when rotate
             bgControl = ScrollingBackgroundViewController(with: view)
         }
-        
-        if routerVC == nil {
-            setupView()
-        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         context = Context(using: self)
-        setupRouter()
+        setupView()
     }
     
-    func setupView() {
+    // Perform segue called from context
+    func performSegue(from fromVC: ViewControllerProtocol,
+                      to toVC: ViewControllerProtocol,
+                      coordsDiff: CGPoint) {
+        adjustBackground()
+        let screenSize = CGPoint(x: view.frame.width, y: view.frame.height)
+        // points based on scale of screen size
+        let diff = coordsDiff .* screenSize
+        
+        let toView = toVC.getView()
+        toView.frame = CGRect(x: diff.x, y: diff.y, width: view.bounds.width, height: view.bounds.height)
+        toView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        toVC.use(context: context)
+        toVC.configureSubviews()
+        
+        view.addSubview(toView)
+        let fromVCFrame = fromVC.getView().frame
+        UIView.animate(withDuration: 1.0, animations: {
+            fromVC.getView().frame = fromVCFrame.offsetBy(dx: -diff.x, dy: -diff.y)
+            toView.frame = toView.frame.offsetBy(dx: -diff.x, dy: -diff.y)
+        }, completion: { finished in
+            print(fromVC.getView().frame)
+            fromVC.onDisappear()
+        })
+    }
+    
+    private func setupView() {
+        adjustBackground()
+        let vc = router.currentViewController
+        vc.use(context: context)
+        vc.configureSubviews()
+        vc.getView().frame = view.bounds
+        vc.getView().autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.addSubview(vc.getView())
+    }
+    
+    private func adjustBackground() {
         if router.currentRoute == .TitleScreen {
             bgControl?.toAlpha(1.0)
         } else {
             bgControl?.toAlpha(0.5)
         }
-        guard let vc = routerVC else {
-            // No existing VC, just place view on screen
-            routerVC = router.getCurrentViewController()
-            routerVC?.configureSubviews()
-            routerVC?.use(context: context)
-            guard let routerView = routerVC?.getView() else {
-                return
-            }
-            routerView.frame = view.bounds
-            routerView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-            view.addSubview(routerView)
-            return
-        }
-        // Do transition based on coordinates
-        guard let previousRoute = router.previousRoute else {
-            return
-        }
-        // TODO: refactor this trash
-        let vc1coords = previousRoute.coordinates
-        let vc2coords = router.currentRoute.coordinates
-        
-        let screenSize = CGPoint(x: view.frame.width, y: view.frame.height)
-        // points based on scale of screen size
-        let truev1 = vc1coords .* screenSize
-        let truev2 = vc2coords .* screenSize
-        let diff = truev2 - truev1
-        
-        let secondVC = router.getCurrentViewController()
-        let toView = secondVC.getView()
-        toView.frame = toView.frame.offsetBy(dx: diff.x, dy: diff.y)
-        toView.frame = CGRect(x: diff.x, y: diff.y, width: view.bounds.width, height: view.bounds.height)
-        toView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        secondVC.use(context: context)
-        secondVC.configureSubviews()
-        
-        
-        view.addSubview(toView)
-        routerVC = secondVC
-        UIView.animate(withDuration: 1.0, animations: {
-            vc.getView().frame = vc.getView().frame.offsetBy(dx: -diff.x, dy: -diff.y)
-            toView.frame = toView.frame.offsetBy(dx: -diff.x, dy: -diff.y)
-        }, completion: { finished in
-            vc.onDisappear()
-        })
-    }
-    
-    func setupRouter() {
-        router.transitionHandler.subscribe { route in
-            DispatchQueue.main.async {
-                self.setupView()
-            }
-        }
-    }
-    
-    func segueToGame() {
-        
     }
 }

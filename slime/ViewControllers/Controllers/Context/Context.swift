@@ -11,13 +11,13 @@ import UIKit
 class Context {
     let router = Router(with: .TitleScreen)
     private var baseView: UIView {
-        return viewController.view
+        return mainController.view
     }
-    private let viewController: UIViewController
+    private let mainController: MainController
     private let modal = ModalController()
     
-    init(using viewController: UIViewController) {
-        self.viewController = viewController
+    init(using viewController: MainController) {
+        self.mainController = viewController
     }
     
     func showModal(view: UIView) {
@@ -46,7 +46,21 @@ class Context {
         modal.open(with: baseView, closeOnOutsideTap: true)
     }
     
+    func routeTo(_ route: Route) {
+        let previousRoute = router.currentRoute
+        let previousVC = router.currentViewController
+        router.routeTo(route)
+        mainController.performSegue(from: previousVC,
+                                    to: router.currentViewController,
+                                    coordsDiff: router.currentRoute.coordinates - previousRoute.coordinates)
+    }
+    
+    func routeToAndPrepareFor(_ route: Route) -> ViewControllerProtocol {
+        routeTo(route)
+        return router.currentViewController
+    }
+    
     func segueToGame() {
-        viewController.performSegue(withIdentifier: "toGame", sender: nil)
+        mainController.performSegue(withIdentifier: "toGame", sender: nil)
     }
 }

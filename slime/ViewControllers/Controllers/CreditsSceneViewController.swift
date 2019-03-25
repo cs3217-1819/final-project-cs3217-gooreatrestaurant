@@ -23,7 +23,7 @@ class CreditsSceneViewController: ViewController<CreditsScreenView> {
         
         let controller = ButtonController(using: view.backButton)
         controller.onTap {
-            self.router.routeTo(.TitleScreen)
+            self.context.routeTo(.TitleScreen)
         }
         remember(controller)
     }

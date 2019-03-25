@@ -16,11 +16,11 @@ class MultiplayerScreenViewController: ViewController<MultiplayerScreenView> {
     private func setupButtons() {
         let hostControl = ButtonController(using: view.hostRoomButton)
         hostControl.onTap {
-            self.router.routeTo(.MultiplayerLobby)
+            self.context.routeTo(.MultiplayerLobby)
         }
         let joinControl = ButtonController(using: view.joinRoomButton)
         joinControl.onTap {
-            self.router.routeTo(.MultiplayerLobby)
+            self.context.routeTo(.MultiplayerLobby)
         }
         
         remember(hostControl)
