@@ -97,6 +97,9 @@
 		EC4924ED2246210C007B9797 /* OrderBlob.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4924EC2246210C007B9797 /* OrderBlob.swift */; };
 		EC4924EF22462174007B9797 /* OrderBlobController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4924EE22462174007B9797 /* OrderBlobController.swift */; };
 		EC4924F12246220A007B9797 /* OrderBlobRecipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4924F02246220A007B9797 /* OrderBlobRecipe.swift */; };
+		EC4924F42248D616007B9797 /* RatingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC4924F32248D616007B9797 /* RatingView.xib */; };
+		EC4924F62248D638007B9797 /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4924F52248D638007B9797 /* RatingView.swift */; };
+		EC4924F82248D877007B9797 /* RatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4924F72248D877007B9797 /* RatingViewController.swift */; };
 		EC79FFEA22422336002E8FE7 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4934A2224213E200A73173 /* Order.swift */; };
 		EC79FFEE2242238C002E8FE7 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC79FFED2242238C002E8FE7 /* GameViewController.swift */; };
 		ECA66DBE223D2A1B00D1D0BC /* LevelPlaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA66DBD223D2A1B00D1D0BC /* LevelPlaceController.swift */; };
@@ -234,6 +237,9 @@
 		EC4924EC2246210C007B9797 /* OrderBlob.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderBlob.swift; sourceTree = "<group>"; };
 		EC4924EE22462174007B9797 /* OrderBlobController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderBlobController.swift; sourceTree = "<group>"; };
 		EC4924F02246220A007B9797 /* OrderBlobRecipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderBlobRecipe.swift; sourceTree = "<group>"; };
+		EC4924F32248D616007B9797 /* RatingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RatingView.xib; sourceTree = "<group>"; };
+		EC4924F52248D638007B9797 /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
+		EC4924F72248D877007B9797 /* RatingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingViewController.swift; sourceTree = "<group>"; };
 		EC79FFED2242238C002E8FE7 /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		ECA66DBD223D2A1B00D1D0BC /* LevelPlaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelPlaceController.swift; sourceTree = "<group>"; };
 		ECA66DC1223D5DD100D1D0BC /* CreditsScreenView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreditsScreenView.xib; sourceTree = "<group>"; };
@@ -371,6 +377,7 @@
 		EC38243D223882AF000D7148 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				EC4924F22248D601007B9797 /* Rating */,
 				EC4924E922461FD1007B9797 /* OrderBlob */,
 				ECD4556A2240FBDD006AF78D /* PlayerBox */,
 				ECD4554B2240B097006AF78D /* Alert */,
@@ -570,6 +577,16 @@
 				EC4924F02246220A007B9797 /* OrderBlobRecipe.swift */,
 			);
 			path = OrderBlob;
+			sourceTree = "<group>";
+		};
+		EC4924F22248D601007B9797 /* Rating */ = {
+			isa = PBXGroup;
+			children = (
+				EC4924F32248D616007B9797 /* RatingView.xib */,
+				EC4924F52248D638007B9797 /* RatingView.swift */,
+				EC4924F72248D877007B9797 /* RatingViewController.swift */,
+			);
+			path = Rating;
 			sourceTree = "<group>";
 		};
 		EC79FFEC2242238C002E8FE7 /* Game */ = {
@@ -792,6 +809,7 @@
 				EC21B4052242155600827121 /* LoadingScreenView.xib in Resources */,
 				ECD4555C2240F1FB006AF78D /* MultiplayerScreenView.xib in Resources */,
 				ECD4554D2240B0AF006AF78D /* Alert.xib in Resources */,
+				EC4924F42248D616007B9797 /* RatingView.xib in Resources */,
 				EC38246B223A1803000D7148 /* Rubik-Regular.ttf in Resources */,
 				EC449B75223B7E6300A8EA35 /* TitleScreenView.xib in Resources */,
 				EC21B40022420CA700827121 /* LevelPlayButton.xib in Resources */,
@@ -955,6 +973,7 @@
 				EC449B22223A35BE00A8EA35 /* PlayScreenViewController.swift in Sources */,
 				1D4934A5224213E200A73173 /* CookingEquipment.swift in Sources */,
 				EC449B98223BB20400A8EA35 /* StoryModeLevelSelectController.swift in Sources */,
+				EC4924F62248D638007B9797 /* RatingView.swift in Sources */,
 				1D4934A9224213E200A73173 /* Ingredient.swift in Sources */,
 				1D4934A8224213E200A73173 /* StageConstants.swift in Sources */,
 				EC4924ED2246210C007B9797 /* OrderBlob.swift in Sources */,
@@ -995,6 +1014,7 @@
 				EC449B9E223BBA0300A8EA35 /* Level.swift in Sources */,
 				ECD455722240FFC7006AF78D /* Player.swift in Sources */,
 				EC449B7D223B873600A8EA35 /* RouterViewController.swift in Sources */,
+				EC4924F82248D877007B9797 /* RatingViewController.swift in Sources */,
 				EC3824562239116D000D7148 /* CGRectExtension.swift in Sources */,
 				8BD816B122422D2700586180 /* GameScene.swift in Sources */,
 				ECD45546223FAFBE006AF78D /* ContextController.swift in Sources */,

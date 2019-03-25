@@ -23,13 +23,14 @@ class PlayScreenViewController: ViewController<PlayScreenView> {
             .set(title: "Single Player Mode")
             .set(description: "Play alone to cure your depression!")
         singlePlayerButtonController.onTap {
-            self.router.routeTo(.LevelSelect)
+            self.context.routeTo(.LevelSelect)
         }
         let multiplayerButtonController = PlayMenuButtonController(using: view.multiplayerButton)
             .set(title: "Multiplayer Mode")
             .set(description: "Wreck havoc with your friends!")
+            .set(imageName: "slime-multiplayer")
         multiplayerButtonController.onTap {
-            self.router.routeTo(.MultiplayerScreen)
+            self.context.routeTo(.MultiplayerScreen)
         }
         let levelEditorButtonController = PlayMenuButtonController(using: view.levelEditorButton)
             .set(title: "Level Editor")

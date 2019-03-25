@@ -12,16 +12,17 @@ class TextStyles {
     private static let titleFontName = "SquidgySlimes"
     private static let readingFontName = "Rubik-Regular"
     static let headerStyles: [String: CGFloat] = [
-        "h0": 40,
-        "h1": 30,
-        "h2": 20,
-        "hsub": 14
+        "h0": 34,
+        "h1": 28,
+        "h2": 22,
+        "h3": 20,
+        "hsub": 16
     ]
     static let textStyles: [String: CGFloat] = [
-        "p0": 24,
+        "p0": 22,
         "p1": 18,
-        "p2": 14,
-        "psmall": 10
+        "p2": 16,
+        "psmall": 14
     ]
     
     static func getStyle(_ label: String) -> UIFont? {

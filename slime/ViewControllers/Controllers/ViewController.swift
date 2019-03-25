@@ -36,7 +36,7 @@ class ViewController<View: UIView>: ViewControllerProtocol {
         let upButton = UIView.initFromNib("UpButton")
         let control = ButtonController(using: upButton)
         control.onTap {
-            self.router.routeTo(route)
+            self.context.routeTo(route)
         }
         
         view.addSubview(upButton)

@@ -16,9 +16,6 @@ class Slime: SKSpriteNode {
     var ingredientsCarried: Ingredient?
     var plateCarried: Plate?
 
-    // from rightmost bit to leftmost bit: right, up, left
-    var movementBitmask: UInt8 = 0
-
     init(inPosition position: CGPoint, withSize size: CGSize = StageConstants.slimeSize, andParents ship: Spaceship) {
         self.spaceship = ship
 
@@ -36,6 +33,7 @@ class Slime: SKSpriteNode {
         self.zPosition = 2
         self.physicsBody = SKPhysicsBody(texture: slimeAnimatedAtlas.textureNamed("slime1"), size: size)
         self.physicsBody?.allowsRotation = false
+        self.physicsBody?.collisionBitMask = StageConstants.wallCategoryCollision
 
         // animate slime
         self.run(SKAction.repeatForever(
@@ -54,78 +52,25 @@ class Slime: SKSpriteNode {
         return ingredientsCarried != nil || plateCarried != nil
     }
 
-    func setMaximumFallingSpeed() {
-        guard let velocity = self.physicsBody?.velocity else {
-            return
-        }
-
-        if velocity.dy < -StageConstants.maxFallSpeed {
-            self.physicsBody?.velocity.dy = -StageConstants.maxFallSpeed
-        }
-    }
-
-    func stopFromEnteringWalls() {
-        guard let velocity = self.physicsBody?.velocity else {
-            return
-        }
-
-        let nextX = position.x + StageConstants.magicNumberMultiplier * velocity.dx
-        let nextY = position.y + StageConstants.magicNumberMultiplier * velocity.dy
-
-        let nodeMovedX = SKSpriteNode(color: .clear, size: self.size)
-        nodeMovedX.position = CGPoint(x: nextX, y: self.position.y)
-
-        let nodeMovedY = SKSpriteNode(color: .clear, size: self.size)
-        nodeMovedY.position = CGPoint(x: self.position.x, y: nextY)
-
-        let cantMoveXDirection = spaceship.isIntersectingWithWalls(nodeMovedX)
-        let cantMoveYDirection = spaceship.isIntersectingWithWalls(nodeMovedY)
-        self.physicsBody?.affectedByGravity = !cantMoveYDirection
-
-        // print(self.physicsBody!.velocity)
-        if cantMoveXDirection {
-            self.physicsBody?.velocity.dx = 0.0
-        }
-
-        if cantMoveYDirection {
-            self.physicsBody?.velocity.dy = 0.0
-        }
-    }
-
-    func checkMovement() {
-        let speed = StageConstants.movementSpeed
-
-        guard let physics = self.physicsBody else {
-            return
-        }
-
-        if (movementBitmask & (1 << 0)) != 0 {
-            physics.velocity.dx = speed
-        }
-
-        if (movementBitmask & (1 << 1)) != 0 && abs(physics.velocity.dy) < StageConstants.speedToAllowJump {
-            physics.velocity.dy = speed
-        }
-
-        if (movementBitmask & (1 << 2)) != 0 {
-            physics.velocity.dx = -speed
-        }
-    }
-
-    func stopMovements() {
-        movementBitmask = 0
-    }
-
-    func moveLeft() {
-        movementBitmask |= (1 << 2)
+    func moveLeft(withSpeed speed: CGFloat) {
+        self.physicsBody?.velocity.dx = -speed * StageConstants.speedMultiplier
+        self.xScale = abs(self.xScale)
     }
 
     func jump() {
-        movementBitmask |= (1 << 1)
+        guard let physicsBody = self.physicsBody else {
+            return
+        }
+
+        if physicsBody.velocity.dy == 0.0 {
+            physicsBody.applyImpulse(CGVector(dx: 0.0, dy: StageConstants.jumpSpeed))
+        }
+
     }
 
-    func moveRight() {
-        movementBitmask |= (1 << 0)
+    func moveRight(withSpeed speed: CGFloat) {
+        self.physicsBody?.velocity.dx = speed * StageConstants.speedMultiplier
+        self.xScale = -abs(self.xScale)
     }
 
     private func takeItem(_ item: SKSpriteNode) {
