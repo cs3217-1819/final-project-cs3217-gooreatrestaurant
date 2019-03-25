@@ -52,7 +52,6 @@ class MainController: UIViewController {
             fromVC.getView().frame = fromVCFrame.offsetBy(dx: -diff.x, dy: -diff.y)
             toView.frame = toView.frame.offsetBy(dx: -diff.x, dy: -diff.y)
         }, completion: { finished in
-            print(fromVC.getView().frame)
             fromVC.onDisappear()
         })
     }
@@ -70,8 +69,10 @@ class MainController: UIViewController {
     private func adjustBackground() {
         if router.currentRoute == .TitleScreen {
             bgControl?.toAlpha(1.0)
+            bgControl?.transitionTo("background")
         } else {
             bgControl?.toAlpha(0.5)
+            bgControl?.transitionTo("background-1")
         }
     }
 }

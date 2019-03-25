@@ -28,6 +28,7 @@ class PlayScreenViewController: ViewController<PlayScreenView> {
         let multiplayerButtonController = PlayMenuButtonController(using: view.multiplayerButton)
             .set(title: "Multiplayer Mode")
             .set(description: "Wreck havoc with your friends!")
+            .set(imageName: "slime-multiplayer")
         multiplayerButtonController.onTap {
             self.context.routeTo(.MultiplayerScreen)
         }
