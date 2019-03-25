@@ -45,6 +45,11 @@ class PlayMenuButtonController {
         return self
     }
     
+    func set(imageName: String) -> PlayMenuButtonController {
+        button.imageView.image = UIImage(named: imageName)
+        return self
+    }
+    
     func onTap(_ callback: @escaping () -> ()) {
         buttonController.onTap(callback)
     }

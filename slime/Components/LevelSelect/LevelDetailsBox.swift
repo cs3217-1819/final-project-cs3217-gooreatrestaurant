@@ -12,4 +12,5 @@ class LevelDetailsBox: UIView {
     @IBOutlet var levelId: TextLabel!
     @IBOutlet var levelName: TextLabel!
     @IBOutlet var bestScore: TextLabel!
+    @IBOutlet var ratingView: XibView!
 }

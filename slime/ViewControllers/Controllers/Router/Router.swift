@@ -48,32 +48,18 @@ class Router {
         return transitionHandler.currentRoute
     }
     let transitionHandler: RouteTransitionHandler
-    private var currentVC: ViewControllerProtocol
+    private(set) var currentViewController: ViewControllerProtocol
     
     init(with route: Route) {
         transitionHandler = RouteTransitionHandler(route: route)
-        // TODO: change this
-        currentVC = TitleScreenViewController(with: UIView.initFromNib("TitleScreenView"))
+        currentViewController = Router.getControllerFor(route: route)
         
         transitionHandler.subscribe { route in
-            self.currentVC = self.getControllerFor(route: route)
+            self.currentViewController = Router.getControllerFor(route: route)
         }
     }
     
-    func routeTo(_ route: Route)  {
-        transitionHandler.onNext(route)
-    }
-    
-    func routeToAndPrepareFor(_ route: Route) -> ViewControllerProtocol {
-        routeTo(route)
-        return currentVC
-    }
-    
-    func getCurrentViewController() -> ViewControllerProtocol {
-        return currentVC
-    }
-    
-    func getControllerFor(route: Route) -> ViewControllerProtocol {
+    static func getControllerFor(route: Route) -> ViewControllerProtocol {
         switch(route) {
         case .TitleScreen:
             return TitleScreenViewController(with: UIView.initFromNib("TitleScreenView"))
@@ -92,5 +78,9 @@ class Router {
         case .LoadingScreen:
             return LoadingScreenViewController(with: UIView.initFromNib("LoadingScreenView"))
         }
+    }
+    
+    func routeTo(_ route: Route)  {
+        transitionHandler.onNext(route)
     }
 }

@@ -10,12 +10,14 @@ import UIKit
 
 class LevelDetailsBoxController {
     let view: LevelDetailsBox
+    private var ratingViewController: RatingViewController
     
     init(using view: UIView) {
         guard let trueView = view as? LevelDetailsBox else {
             fatalError("View type is incorrect")
         }
         self.view = trueView
+        ratingViewController = RatingViewController(with: self.view.ratingView, rating: 2)
     }
     
     init(using xibView: XibView) {
@@ -23,11 +25,13 @@ class LevelDetailsBoxController {
             fatalError("View type is incorrect")
         }
         self.view = trueView
+        ratingViewController = RatingViewController(with: self.view.ratingView, rating: 2)
     }
     
     func configure() {
         view.layer.cornerRadius = 8
         view.clipsToBounds = true
+        ratingViewController.configure()
     }
     
     func set(id: String) -> LevelDetailsBoxController {

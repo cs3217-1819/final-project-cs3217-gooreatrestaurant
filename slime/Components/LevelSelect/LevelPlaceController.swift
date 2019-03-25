@@ -54,7 +54,7 @@ class LevelPlaceController {
         
         playButtonController = ButtonController(using: view.playButton)
         playButtonController?.onTap {
-            self.context.router.routeTo(.LoadingScreen)
+            self.context.routeTo(.LoadingScreen)
         }
         
         isActive.asObservable().distinctUntilChanged().subscribe { event in
