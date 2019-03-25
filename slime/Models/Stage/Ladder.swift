@@ -10,5 +10,11 @@ import UIKit
 import SpriteKit
 
 class Ladder: SKSpriteNode {
-
+//    init(inPosition position: CGPoint, inQuantity quantity: Int) {
+//        super.init(texture: <#T##SKTexture?#>, color: .clear, size: <#T##CGSize#>)
+//    }
+//    
+//    required init?(coder aDecoder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+//    }
 }

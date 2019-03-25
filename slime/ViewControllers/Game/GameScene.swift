@@ -105,7 +105,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         slime = SKSpriteNode(texture: firstFrameTexture)
         slime.position = CGPoint(x: frame.midX, y: frame.midY - 50)
         slime.scaleTo(screenWidthPercentage: 0.03)
-        slime.zPosition = 2
+        slime.zPosition = 3
 
         slime.physicsBody = SKPhysicsBody(texture: slimeAnimatedAtlas.textureNamed("slime1"), size: slime.size)
         slime.physicsBody?.isDynamic = true
@@ -184,6 +184,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         blockedAreaBorder.physicsBody?.categoryBitMask = worldCategory
         blockedAreaBorder.physicsBody?.isDynamic = false
         self.addChild(blockedAreaBorder)
+    }
+
+    func buildLadder(position: CGPoint) {
+        let ladder = SKTexture(imageNamed: "Ladder")
+        ladder.filteringMode = .nearest // shorter form for SKTextureFilteringMode.Nearest
+        spaceship = SKSpriteNode(texture: ladder)
+        spaceship.position = position
+        spaceship.setScale(0.1)
+        spaceship.zPosition = 2
+        addChild(spaceship)
     }
 
     func didBegin(_ contact: SKPhysicsContact) {
