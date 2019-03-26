@@ -15,12 +15,12 @@ class StageConstants {
     static let maxYAxisUnits = ScreenSize.height
 
     static let speedMultiplier = CGFloat(1.0)
-    static let jumpSpeed = 10.0
+    static let jumpSpeed = 3.0
 
     static let spaceshipSize = CGSize(width: 400, height: 400)
     static let spaceshipPosition = CGPoint.zero
 
-    static let slimeSize = CGSize(width: 30, height: 30)
+    static let slimeSize = CGSize(width: 25, height: 25)
     static let plateSize = CGSize(width: 500, height: 100)
     static let ingredientSize = CGSize(width: 500, height: 100)
     static let cookerSize = CGSize(width: 500, height: 300)

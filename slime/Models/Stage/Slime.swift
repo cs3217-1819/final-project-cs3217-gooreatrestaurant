@@ -25,6 +25,7 @@ class Slime: SKSpriteNode {
         self.position = position
         self.zPosition = 2
         self.physicsBody = SKPhysicsBody(texture: slimeAnimatedAtlas.textureNamed("slime1"), size: size)
+        self.physicsBody?.isDynamic = true
         self.physicsBody?.allowsRotation = false
         self.physicsBody?.collisionBitMask = StageConstants.wallCategoryCollision
         self.physicsBody?.categoryBitMask = StageConstants.slimeCategory
