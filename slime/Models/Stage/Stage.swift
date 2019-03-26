@@ -16,6 +16,10 @@ class Stage: SKScene {
     // RI: the players are unique
     var players: [Player] = []
 
+    override func didMove(to view: SKView) {
+        view.showsPhysics = true
+    }
+
     override init(size: CGSize = CGSize(width: StageConstants.maxXAxisUnits, height: StageConstants.maxYAxisUnits)) {
         spaceship = Spaceship(inPosition: StageConstants.spaceshipPosition, withSize: StageConstants.spaceshipSize)
         super.init(size: size)

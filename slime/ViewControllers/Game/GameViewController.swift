@@ -25,7 +25,6 @@ class GameViewController: UIViewController {
         skView.ignoresSiblingOrder = true
         skView.showsFPS = true
         skView.showsNodeCount = true
-        skView.showsPhysics = true
         view.addSubview(skview)
 
         //temporarily, just for testing
@@ -55,6 +54,7 @@ class GameViewController: UIViewController {
 //        stage.spaceship.addWalls(withPoints: path1)
         stage.spaceship.addSlime(inPosition: CGPoint.zero)
         stage.spaceship.addRoom(inPosition: CGPoint.zero, withSize: CGSize(width: 100, height: 100))
+        stage.spaceship.addWalls(inLevel: "Level 1")
 //        stage.spaceship.addIngredients(type: .potato, inPosition: pos4)
 //        stage.spaceship.addCooker(type: .frying, inPosition: pos5)
     }
