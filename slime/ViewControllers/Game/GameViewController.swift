@@ -32,6 +32,16 @@ class GameViewController: UIViewController {
         stage.spaceship.addWalls(inLevel: "Level1UnaccessibleArea")
         stage.spaceship.addLadder(inPosition: CGPoint(x: -100, y: -21))
         stage.spaceship.addLadder(inPosition: CGPoint(x: -100, y: -50))
+    
+        stage.spaceship.addLadder(inPosition: CGPoint(x: -60, y: -135))
+        stage.spaceship.addLadder(inPosition: CGPoint(x: -60, y: -90))
+        stage.spaceship.addLadder(inPosition: CGPoint(x: -60, y: -45))
+        stage.spaceship.addLadder(inPosition: CGPoint(x: -60, y: 0))
+        stage.spaceship.addLadder(inPosition: CGPoint(x: -60, y: 45))
+
+        stage.spaceship.addLadder(inPosition: CGPoint(x: 90, y: -25))
+        stage.spaceship.addLadder(inPosition: CGPoint(x: 90, y: 20))
+        stage.spaceship.addLadder(inPosition: CGPoint(x: 90, y: 65))
 //        stage.spaceship.addIngredients(type: .potato, inPosition: pos4)
 //        stage.spaceship.addCooker(type: .frying, inPosition: pos5)
     }
