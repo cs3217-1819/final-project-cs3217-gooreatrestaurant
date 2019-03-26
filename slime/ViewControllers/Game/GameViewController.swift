@@ -27,31 +27,6 @@ class GameViewController: UIViewController {
         skView.showsNodeCount = true
         view.addSubview(skview)
 
-        //temporarily, just for testing
-        // TO DO: remove this
-//        let pos1 = CGPoint(x: -1000, y: 0)
-//        let pos4 = CGPoint(x: -500, y: -950)
-//        let pos5 = CGPoint(x: -1400, y: -950)
-//        let pos6 = CGPoint(x: 1500, y: -950)
-//        let pos2 = CGPoint(x: 0, y: -500)
-//        let pos3 = CGPoint(x: 1000, y: 0)
-//        let size1 = CGSize(width: 1000, height: 2000)
-//        let size2 = CGSize(width: 1000, height: 1000)
-//
-//        let path1 = [CGPoint(x: -1500, y: -1000),
-//                     CGPoint(x: 1500, y: -1000),
-//                     CGPoint(x: 1500, y: 1000),
-//                     CGPoint(x: 500, y: 1000),
-//                     CGPoint(x: 500, y: 0),
-//                     CGPoint(x: -500, y: 0),
-//                     CGPoint(x: -500, y: 1000),
-//                     CGPoint(x: -1500, y: 1000)]
-//
-//        // stage?.spaceship.addWalls(path1)
-//        stage.spaceship.addRoom(inPosition: pos1, withSize: size1)
-//        stage.spaceship.addRoom(inPosition: pos2, withSize: size2)
-//        stage.spaceship.addRoom(inPosition: pos3, withSize: size1)
-//        stage.spaceship.addWalls(withPoints: path1)
         stage.spaceship.addSlime(inPosition: CGPoint.zero)
         stage.spaceship.addRoom(inPosition: CGPoint.zero, withSize: CGSize(width: 100, height: 100))
         stage.spaceship.addWalls(inLevel: "Level 1")
