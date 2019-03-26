@@ -27,13 +27,13 @@ class Spaceship: SKSpriteNode {
         room.position = CGPoint(x: 0, y: 0)
         room.setScale(0.4)
         room.zPosition = 1
-        room.name = "room"
+        room.name = StageConstants.roomName
         self.addChild(room)
     }
 
     func addSlime(inPosition position: CGPoint, withSize size: CGSize = StageConstants.slimeSize) {
         let slime = Slime(inPosition: position, withSize: size)
-        slime.name = "slime"
+        slime.name = StageConstants.slimeName
         self.addChild(slime)
     }
 
@@ -41,7 +41,7 @@ class Spaceship: SKSpriteNode {
                         inPosition position: CGPoint,
                         withSize size: CGSize = StageConstants.ingredientSize) {
         let ingredient = Ingredient(type: type, size: size, inLocation: position)
-        ingredient.name = "ingredient"
+        ingredient.name = StageConstants.ingredientName
         self.addChild(ingredient)
     }
 
@@ -49,14 +49,14 @@ class Spaceship: SKSpriteNode {
                    inPosition position: CGPoint,
                    withSize size: CGSize = StageConstants.cookerSize) {
         let cooker = CookingEquipment(type: type, size: size, inLocation: position)
-        cooker.name = "cooker"
+        cooker.name = StageConstants.cookerName
         self.addChild(cooker)
     }
 
     func addPlate(inPosition position: CGPoint,
                   withSize size: CGSize = StageConstants.plateSize) {
         let plate = Plate(inPosition: position, withSize: size)
-        plate.name = "plate"
+        plate.name = StageConstants.plateName
         self.addChild(plate)
     }
 

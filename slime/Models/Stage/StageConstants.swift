@@ -17,6 +17,13 @@ class StageConstants {
     static let speedMultiplier = CGFloat(1.0)
     static let jumpSpeed = 3.0
 
+    // node naming
+    static let ingredientName = "ingredient"
+    static let plateName = "plate"
+    static let cookerName = "cooker"
+    static let roomName = "room"
+    static let slimeName = "slime"
+
     // spaceship size and position
     static let spaceshipSize = CGSize(width: 400, height: 400)
     static let spaceshipPosition = CGPoint.zero

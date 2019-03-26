@@ -103,6 +103,21 @@ class Slime: SKSpriteNode {
         interact()
     }
 
+    func moveUp(withSpeed speed: CGFloat) {
+
+    }
+
+    // func checkLadderInteraction() {
+    //     guard let contactedBodies = self.physicsBody?.allContactedBodies() else {
+    //         return
+    //     }
+
+    //     var inContactWithLadder = false
+
+    //     for body in contactedBodies {
+    //     }
+    // }
+
     private func takeItem(_ item: SKSpriteNode) {
         item.removeFromParent()
         item.position.x = 0.0
@@ -155,12 +170,8 @@ class Slime: SKSpriteNode {
             return
         }
 
-        for body in contactedBodies {
-            guard let node = body.node else {
-                continue
-            }
-
-            guard let ingredient = node as? Ingredient else {
+        for body in contactedBodies where body.node?.name == StageConstants.ingredientName {
+            guard let ingredient = body.node as? Ingredient else {
                 continue
             }
 
@@ -173,12 +184,8 @@ class Slime: SKSpriteNode {
             return
         }
 
-        for body in contactedBodies {
-            guard let node = body.node else {
-                continue
-            }
-
-            guard let plate = node as? Plate else {
+        for body in contactedBodies where body.node?.name == StageConstants.plateName {
+            guard let plate = body.node as? Plate else {
                 continue
             }
 
@@ -195,12 +202,8 @@ class Slime: SKSpriteNode {
             return
         }
 
-        for body in contactedBodies {
-            guard let node = body.node else {
-                continue
-            }
-
-            guard let cooker = node as? CookingEquipment else {
+        for body in contactedBodies where body.node?.name == StageConstants.cookerName {
+            guard let cooker = body.node as? CookingEquipment else {
                 continue
             }
 
@@ -213,12 +216,8 @@ class Slime: SKSpriteNode {
             return
         }
 
-        for body in contactedBodies {
-            guard let node = body.node else {
-                continue
-            }
-
-            guard let plate = node as? Plate else {
+        for body in contactedBodies where body.node?.name == StageConstants.plateName{
+            guard let plate = body.node as? Plate else {
                 continue
             }
 
