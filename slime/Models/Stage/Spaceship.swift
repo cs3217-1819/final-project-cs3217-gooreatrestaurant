@@ -86,6 +86,7 @@ class Spaceship: SKSpriteNode {
 
     func addLadder(inPosition position: CGPoint) {
         let ladder = Ladder(inPosition: position)
+        ladder.name = StageConstants.ladderName
         self.addChild(ladder)
     }
 

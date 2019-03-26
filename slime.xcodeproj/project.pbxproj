@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D220289224AB12E0080CF7D /* Slime+Movements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D220288224AB12E0080CF7D /* Slime+Movements.swift */; };
 		1D4934A4224213E200A73173 /* Stage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D493498224213E200A73173 /* Stage.swift */; };
 		1D4934A5224213E200A73173 /* CookingEquipment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D493499224213E200A73173 /* CookingEquipment.swift */; };
 		1D4934A6224213E200A73173 /* Table.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D49349A224213E200A73173 /* Table.swift */; };
@@ -138,6 +139,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1D220288224AB12E0080CF7D /* Slime+Movements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Slime+Movements.swift"; path = "Stage/Slime+Movements.swift"; sourceTree = "<group>"; };
 		1D493498224213E200A73173 /* Stage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Stage.swift; path = Stage/Stage.swift; sourceTree = "<group>"; };
 		1D493499224213E200A73173 /* CookingEquipment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CookingEquipment.swift; path = Stage/CookingEquipment.swift; sourceTree = "<group>"; };
 		1D49349A224213E200A73173 /* Table.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Table.swift; path = Stage/Table.swift; sourceTree = "<group>"; };
@@ -548,6 +550,7 @@
 		EC449B9C223BB9F900A8EA35 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				1D220288224AB12E0080CF7D /* Slime+Movements.swift */,
 				1D493499224213E200A73173 /* CookingEquipment.swift */,
 				1D49349F224213E200A73173 /* Food.swift */,
 				1D49349D224213E200A73173 /* Ingredient.swift */,
@@ -1017,6 +1020,7 @@
 				ECD455632240F4A8006AF78D /* MultiplayerLobbyView.swift in Sources */,
 				EC40E4B4223F98EF0073D755 /* RouteTransitionHandler.swift in Sources */,
 				EC38244D22389DAD000D7148 /* UIViewExtension.swift in Sources */,
+				1D220289224AB12E0080CF7D /* Slime+Movements.swift in Sources */,
 				EC4924F12246220A007B9797 /* OrderBlobRecipe.swift in Sources */,
 				EC38241E2238803A000D7148 /* AppDelegate.swift in Sources */,
 			);

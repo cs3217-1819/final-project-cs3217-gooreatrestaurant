@@ -66,8 +66,14 @@ class Stage: SKScene {
                 self.slimeToControl?.moveLeft(withSpeed: -data.velocity.x)
             }
 
-            if data.velocity.y > 0.0 {
+            if data.velocity.y > abs(data.velocity.x) {
                 self.slimeToControl?.jump()
+            }
+
+            if data.velocity.y > 0.0 {
+                self.slimeToControl?.moveUp(withSpeed: data.velocity.y)
+            } else if data.velocity.y < 0.0 {
+                self.slimeToControl?.moveDown(withSpeed: -data.velocity.y)
             }
         }
     }
@@ -82,6 +88,11 @@ class Stage: SKScene {
     // if the player is not found, will do nothing
     func removePlayer(_ player: Player) {
         players.removeAll { $0 == player }
+    }
+
+    override func didSimulatePhysics() {
+        self.slimeToControl?.resetMovement()
+        super.didSimulatePhysics()
     }
 
     var slimeToControl: Slime? {

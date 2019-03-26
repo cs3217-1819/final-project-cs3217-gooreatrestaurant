@@ -11,6 +11,8 @@ import SpriteKit
 
 class Slime: SKSpriteNode {
 
+    var isContactingWithLadder = false
+    
     init(inPosition position: CGPoint, withSize size: CGSize = StageConstants.slimeSize) {
         let slimeAnimatedAtlas = SKTextureAtlas(named: "Slime")
         var walkFrames: [SKTexture] = []
@@ -79,44 +81,6 @@ class Slime: SKSpriteNode {
     var isCarryingSomething: Bool {
         return ingredientsCarried != nil || plateCarried != nil
     }
-
-    func moveLeft(withSpeed speed: CGFloat) {
-        self.physicsBody?.velocity.dx = -speed * StageConstants.speedMultiplier
-        self.xScale = abs(self.xScale)
-        interact()
-    }
-
-    func jump() {
-        guard let physicsBody = self.physicsBody else {
-            return
-        }
-
-        if physicsBody.velocity.dy == 0.0 {
-            physicsBody.applyImpulse(CGVector(dx: 0.0, dy: StageConstants.jumpSpeed))
-        }
-
-    }
-
-    func moveRight(withSpeed speed: CGFloat) {
-        self.physicsBody?.velocity.dx = speed * StageConstants.speedMultiplier
-        self.xScale = -abs(self.xScale)
-        interact()
-    }
-
-    func moveUp(withSpeed speed: CGFloat) {
-
-    }
-
-    // func checkLadderInteraction() {
-    //     guard let contactedBodies = self.physicsBody?.allContactedBodies() else {
-    //         return
-    //     }
-
-    //     var inContactWithLadder = false
-
-    //     for body in contactedBodies {
-    //     }
-    // }
 
     private func takeItem(_ item: SKSpriteNode) {
         item.removeFromParent()

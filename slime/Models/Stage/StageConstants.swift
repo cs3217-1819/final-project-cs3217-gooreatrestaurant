@@ -23,6 +23,7 @@ class StageConstants {
     static let cookerName = "cooker"
     static let roomName = "room"
     static let slimeName = "slime"
+    static let ladderName = "ladder"
 
     // spaceship size and position
     static let spaceshipSize = CGSize(width: 400, height: 400)
