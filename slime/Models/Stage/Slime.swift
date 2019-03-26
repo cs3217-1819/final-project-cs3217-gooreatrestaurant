@@ -11,14 +11,7 @@ import SpriteKit
 
 class Slime: SKSpriteNode {
 
-    let spaceship: Spaceship
-
-    var ingredientsCarried: Ingredient?
-    var plateCarried: Plate?
-
-    init(inPosition position: CGPoint, withSize size: CGSize = StageConstants.slimeSize, andParents ship: Spaceship) {
-        self.spaceship = ship
-
+    init(inPosition position: CGPoint, withSize size: CGSize = StageConstants.slimeSize) {
         let slimeAnimatedAtlas = SKTextureAtlas(named: "Slime")
         var walkFrames: [SKTexture] = []
 
@@ -34,6 +27,15 @@ class Slime: SKSpriteNode {
         self.physicsBody = SKPhysicsBody(texture: slimeAnimatedAtlas.textureNamed("slime1"), size: size)
         self.physicsBody?.allowsRotation = false
         self.physicsBody?.collisionBitMask = StageConstants.wallCategoryCollision
+        self.physicsBody?.categoryBitMask = StageConstants.slimeCategory
+        self.physicsBody?.contactTestBitMask = 0
+
+        self.physicsBody?.contactTestBitMask |= StageConstants.cookerCategory
+        self.physicsBody?.contactTestBitMask |= StageConstants.plateCategory
+        self.physicsBody?.contactTestBitMask |= StageConstants.ingredientCategory
+        self.physicsBody?.contactTestBitMask |= StageConstants.tableCategory
+        self.physicsBody?.contactTestBitMask |= StageConstants.slimeCategory
+        self.physicsBody?.contactTestBitMask |= StageConstants.ladderCategory
 
         // animate slime
         self.run(SKAction.repeatForever(
@@ -48,6 +50,31 @@ class Slime: SKSpriteNode {
         fatalError("initiation using storyboard is not implemented yet.")
     }
 
+
+    var plateCarried: Plate? {
+        guard let node = childNode(withName: "plate") else {
+            return nil
+        }
+
+        return node as? Plate
+    }
+
+    var ingredientsCarried: Ingredient? {
+        guard let node = childNode(withName: "ingredient") else {
+            return nil
+        }
+
+        return node as? Ingredient
+    }
+
+    var spaceship: Spaceship? {
+        guard let node = parent else {
+            return nil
+        }
+
+        return node as? Spaceship
+    }
+
     var isCarryingSomething: Bool {
         return ingredientsCarried != nil || plateCarried != nil
     }
@@ -55,6 +82,7 @@ class Slime: SKSpriteNode {
     func moveLeft(withSpeed speed: CGFloat) {
         self.physicsBody?.velocity.dx = -speed * StageConstants.speedMultiplier
         self.xScale = abs(self.xScale)
+        interact()
     }
 
     func jump() {
@@ -71,12 +99,14 @@ class Slime: SKSpriteNode {
     func moveRight(withSpeed speed: CGFloat) {
         self.physicsBody?.velocity.dx = speed * StageConstants.speedMultiplier
         self.xScale = -abs(self.xScale)
+        interact()
     }
 
     private func takeItem(_ item: SKSpriteNode) {
         item.removeFromParent()
         item.position.x = 0.0
         item.position.y = 0.5 * (self.size.height + item.size.height)
+        item.physicsBody = nil
         self.addChild(item)
     }
 
@@ -84,9 +114,7 @@ class Slime: SKSpriteNode {
         guard !self.isCarryingSomething else {
             return
         }
-
         self.takeItem(plate)
-        self.plateCarried = plate
     }
 
     private func takeIngredient(_ ingredient: Ingredient) {
@@ -95,7 +123,6 @@ class Slime: SKSpriteNode {
         }
 
         self.takeItem(ingredient)
-        self.ingredientsCarried = ingredient
     }
 
     private func cook(using equipment: CookingEquipment) {
@@ -106,6 +133,7 @@ class Slime: SKSpriteNode {
         ingredient.cook(using: equipment)
     }
 
+    // this Bool is success/fail
     private func putIngredient(into plate: Plate) -> Bool {
         guard let ingredient = self.ingredientsCarried else {
             return false
@@ -117,60 +145,103 @@ class Slime: SKSpriteNode {
         }
 
         ingredient.removeFromParent()
-        ingredientsCarried = nil
         return true
     }
 
-    func interact() {
+    func interactWithoutCarryingAnything() {
         var hasInteracted = false
-        if !self.isCarryingSomething {
+        guard let contactedBodies = self.physicsBody?.allContactedBodies() else {
+            return
+        }
 
-            for ingredient in spaceship.ingredientsOnFloor {
-                if self.frame.intersects(ingredient.frame) {
-                    self.takeIngredient(ingredient)
-                    spaceship.ingredientsOnFloor.removeAll(where: { $0 == ingredient })
-                    hasInteracted = true
-                    break
-                }
+        for body in contactedBodies {
+            guard let node = body.node else {
+                continue
             }
 
-            guard hasInteracted == false else {
-                return
+            guard let ingredient = node as? Ingredient else {
+                continue
             }
 
-            for plate in spaceship.platesOnFloor {
-                if self.frame.intersects(plate.frame) {
-                    self.takePlate(plate)
-                    spaceship.platesOnFloor.removeAll(where: { $0 == plate })
-                    hasInteracted = true
-                    break
-                }
+            hasInteracted = true
+            self.takeIngredient(ingredient)
+            break
+        }
+
+        guard hasInteracted == false else {
+            return
+        }
+
+        for body in contactedBodies {
+            guard let node = body.node else {
+                continue
             }
 
-        } else if self.ingredientsCarried != nil {
-
-            for cooker in spaceship.cookingEquipments {
-                if self.frame.intersects(cooker.frame) {
-                    self.cook(using: cooker)
-                    hasInteracted = false
-                    break
-                }
+            guard let plate = node as? Plate else {
+                continue
             }
 
-            guard hasInteracted == false else {
-                return
+            hasInteracted = true
+            self.takePlate(plate)
+            break
+        }
+
+    }
+
+    func interactWhileCarryingIngredient() {
+        var hasInteracted = false
+        guard let contactedBodies = self.physicsBody?.allContactedBodies() else {
+            return
+        }
+
+        for body in contactedBodies {
+            guard let node = body.node else {
+                continue
             }
 
-            for plate in spaceship.platesOnFloor {
-                var success = false
-                if self.frame.intersects(plate.frame) {
-                    success = self.putIngredient(into: plate)
-                }
-                if success {
-                    hasInteracted = true
-                    break
-                }
+            guard let cooker = node as? CookingEquipment else {
+                continue
             }
+
+            hasInteracted = true
+            self.cook(using: cooker)
+            break
+        }
+
+        guard hasInteracted == false else {
+            return
+        }
+
+        for body in contactedBodies {
+            guard let node = body.node else {
+                continue
+            }
+
+            guard let plate = node as? Plate else {
+                continue
+            }
+
+            let success = self.putIngredient(into: plate)
+            guard success == true else {
+                continue
+            }
+
+            hasInteracted = true
+            break
+        }
+    }
+
+    func interactWhileCarryingPlate() {
+
+    }
+
+    func interact() {
+        if !isCarryingSomething {
+            interactWithoutCarryingAnything()
+        } else if plateCarried != nil {
+            interactWhileCarryingPlate()
+        } else {
+            interactWhileCarryingIngredient()
         }
     }
 }

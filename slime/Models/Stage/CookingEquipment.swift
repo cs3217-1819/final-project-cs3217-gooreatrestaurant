@@ -22,5 +22,7 @@ class CookingEquipment: SKSpriteNode {
         self.position = location
         self.physicsBody = SKPhysicsBody(rectangleOf: size)
         self.physicsBody?.isDynamic = false
+        self.physicsBody?.categoryBitMask = StageConstants.cookerCategory
+        self.physicsBody?.collisionBitMask = StageConstants.wallCategoryCollision
     }
 }

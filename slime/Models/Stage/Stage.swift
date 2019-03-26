@@ -84,10 +84,19 @@ class Stage: SKScene {
     }
 
     var slimeToControl: Slime? {
-        guard spaceship.slimes.count > 0 else {
-            return nil
+        var playerSlime: Slime?
+
+        spaceship.enumerateChildNodes(withName: "slime") {
+            node, stop in
+
+            guard let slime = node as? Slime else {
+                return
+            }
+
+            playerSlime = slime
+            stop.initialize(to: true)
         }
-        return spaceship.slimes[0]
+        return playerSlime
     }
 
     required init?(coder aDecoder: NSCoder) {
