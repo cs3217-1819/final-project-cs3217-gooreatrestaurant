@@ -13,7 +13,6 @@
 		1D4934A7224213E200A73173 /* Ladder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D49349B224213E200A73173 /* Ladder.swift */; };
 		1D4934A8224213E200A73173 /* StageConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D49349C224213E200A73173 /* StageConstants.swift */; };
 		1D4934A9224213E200A73173 /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D49349D224213E200A73173 /* Ingredient.swift */; };
-		1D4934AA224213E200A73173 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D49349E224213E200A73173 /* Room.swift */; };
 		1D4934AB224213E200A73173 /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D49349F224213E200A73173 /* Food.swift */; };
 		1D4934AC224213E200A73173 /* Slime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4934A0224213E200A73173 /* Slime.swift */; };
 		1D4934AD224213E200A73173 /* Plate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4934A1224213E200A73173 /* Plate.swift */; };
@@ -145,7 +144,6 @@
 		1D49349B224213E200A73173 /* Ladder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Ladder.swift; path = Stage/Ladder.swift; sourceTree = "<group>"; };
 		1D49349C224213E200A73173 /* StageConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StageConstants.swift; path = Stage/StageConstants.swift; sourceTree = "<group>"; };
 		1D49349D224213E200A73173 /* Ingredient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Ingredient.swift; path = Stage/Ingredient.swift; sourceTree = "<group>"; };
-		1D49349E224213E200A73173 /* Room.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Room.swift; path = Stage/Room.swift; sourceTree = "<group>"; };
 		1D49349F224213E200A73173 /* Food.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Food.swift; path = Stage/Food.swift; sourceTree = "<group>"; };
 		1D4934A0224213E200A73173 /* Slime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Slime.swift; path = Stage/Slime.swift; sourceTree = "<group>"; };
 		1D4934A1224213E200A73173 /* Plate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Plate.swift; path = Stage/Plate.swift; sourceTree = "<group>"; };
@@ -556,7 +554,6 @@
 				1D49349B224213E200A73173 /* Ladder.swift */,
 				1D4934A2224213E200A73173 /* Order.swift */,
 				1D4934A1224213E200A73173 /* Plate.swift */,
-				1D49349E224213E200A73173 /* Room.swift */,
 				1D4934A0224213E200A73173 /* Slime.swift */,
 				1D4934A3224213E200A73173 /* Spaceship.swift */,
 				1D493498224213E200A73173 /* Stage.swift */,
@@ -963,7 +960,6 @@
 				1D4934AC224213E200A73173 /* Slime.swift in Sources */,
 				ECD4554A223FB133006AF78D /* ViewController.swift in Sources */,
 				EC38245422390789000D7148 /* ScrollingBackgroundViewController.swift in Sources */,
-				1D4934AA224213E200A73173 /* Room.swift in Sources */,
 				EC38244722388CB1000D7148 /* PrimaryButtonController.swift in Sources */,
 				EC449B89223BAA8100A8EA35 /* LevelSelectViewController.swift in Sources */,
 				1D4934AF224213E200A73173 /* Spaceship.swift in Sources */,
