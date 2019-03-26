@@ -226,11 +226,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.addChild(ladderBody)
     }
 
-    func didBegin(_ contact: SKPhysicsContact) {
-        if(contact.bodyA.node?.name == "BoundedArea") {
-            //this line is added as since there is gravitational force applying downwards, the slime will
-            //continue to exert force downwards as well even if there is no movement
-            self.slime.physicsBody?.velocity = CGVector(dx: (self.slime.physicsBody?.velocity.dx)!, dy: 0)
-        }
-    }
+//    func didBegin(_ contact: SKPhysicsContact) {
+//        if(contact.bodyA.node?.name == "BoundedArea") {
+//            //this line is added as since there is gravitational force applying downwards, the slime will
+//            //continue to exert force downwards as well even if there is no movement
+//            self.slime.physicsBody?.velocity = CGVector(dx: (self.slime.physicsBody?.velocity.dx)!, dy: 0)
+//        }
+//    }
 }

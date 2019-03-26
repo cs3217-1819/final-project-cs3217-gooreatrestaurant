@@ -10,11 +10,19 @@ import UIKit
 import SpriteKit
 
 class Ladder: SKSpriteNode {
-//    init(inPosition position: CGPoint, inQuantity quantity: Int) {
-//        super.init(texture: <#T##SKTexture?#>, color: .clear, size: <#T##CGSize#>)
-//    }
-//    
-//    required init?(coder aDecoder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
+    init(inPosition position: CGPoint) {
+        let ladder = SKTexture(imageNamed: "Ladder")
+        ladder.filteringMode = .nearest
+        super.init(texture: ladder, color: .clear, size: StageConstants.ladderSize)
+        self.position = position
+        self.zPosition = 2
+
+        self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 10, height: 45))
+        self.physicsBody?.categoryBitMask = StageConstants.ladderCategory
+        self.physicsBody?.isDynamic = false
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 }

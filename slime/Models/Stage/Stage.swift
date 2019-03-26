@@ -23,7 +23,6 @@ class Stage: SKScene {
     override init(size: CGSize = CGSize(width: StageConstants.maxXAxisUnits, height: StageConstants.maxYAxisUnits)) {
         spaceship = Spaceship(inPosition: StageConstants.spaceshipPosition, withSize: StageConstants.spaceshipSize)
         super.init(size: size)
-
         let background = SKSpriteNode(imageNamed: "background-1")
         background.position = StageConstants.spaceshipPosition
         anchorPoint = CGPoint(x: 0.5, y: 0.5)
@@ -31,8 +30,6 @@ class Stage: SKScene {
         background.scaleTo(screenWidthPercentage: 1.0)
         background.zPosition = -1
         self.addChild(background)
-
-
         self.addChild(spaceship)
         setupControl()
     }
