@@ -43,11 +43,11 @@ class Stage: SKScene {
         return js
     }()
 
-    lazy var playButton: BDButton = {
+    lazy var jumpButton: BDButton = {
         var button = BDButton(imageNamed: "Up", buttonAction: {
             self.slimeToControl?.jump()
             })
-        button.setScale(1)
+        button.setScale(0.1)
         button.isEnabled = true
         button.position = StageConstants.jumpButtonPosition
         button.zPosition = 4
@@ -55,7 +55,7 @@ class Stage: SKScene {
     }()
 
     func setupControl() {
-        self.addChild(playButton)
+        self.addChild(jumpButton)
         self.addChild(analogJoystick)
 
         analogJoystick.trackingHandler = { [unowned self] data in
