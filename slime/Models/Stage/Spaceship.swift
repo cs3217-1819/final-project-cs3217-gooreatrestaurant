@@ -65,26 +65,30 @@ class Spaceship: SKSpriteNode {
     func addWalls(inLevel levelName: String) {
         var coordArray: [String] = []
         var gameAreaCoord: [CGPoint] = []
-//        var unaccessibleAreaCoord: [CGPoint] = []
+
         guard let path = Bundle.main.path(forResource: "LevelDesign", ofType: "plist")  else {
             print("Error loading path")
             return
         }
-//
-//        //Level 1
+
         let contents = NSDictionary(contentsOfFile: path)
         coordArray = contents?.object(forKey: levelName) as! [String]
         for item in coordArray {
             gameAreaCoord.append(NSCoder.cgPoint(for: item))
         }
 
-        let spaceshipBorder = SKNode()
-        spaceshipBorder.position = CGPoint(x: self.frame.midX, y: self.frame.midY)
+        let wallBorder = SKNode()
+        wallBorder.position = CGPoint(x: self.frame.midX, y: self.frame.midY)
         let ground = SKShapeNode(points: &gameAreaCoord, count: gameAreaCoord.count)
-        spaceshipBorder.physicsBody = SKPhysicsBody(edgeLoopFrom: ground.path!)
-        spaceshipBorder.physicsBody?.categoryBitMask = StageConstants.wallCategoryCollision
-        spaceshipBorder.physicsBody?.isDynamic = false
-        self.addChild(spaceshipBorder)
+        wallBorder.physicsBody = SKPhysicsBody(edgeLoopFrom: ground.path!)
+        wallBorder.physicsBody?.categoryBitMask = StageConstants.wallCategoryCollision
+        wallBorder.physicsBody?.isDynamic = false
+        self.addChild(wallBorder)
+    }
+
+    func addLadder(inPosition position: CGPoint) {
+        let ladder = Ladder(inPosition: position)
+        self.addChild(ladder)
     }
 
     required init?(coder aDecoder: NSCoder) {
