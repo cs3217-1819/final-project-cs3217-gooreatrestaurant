@@ -13,10 +13,14 @@ class Ingredient: SKSpriteNode {
     var type: StageConstants.IngredientType
     var processed = false
 
-    init(type: StageConstants.IngredientType, size: CGSize, inLocation location: CGPoint) {
+    init(type: StageConstants.IngredientType,
+         size: CGSize = StageConstants.ingredientSize,
+         inPosition position: CGPoint) {
+
         self.type = type
         super.init(texture: nil, color: .red, size: size)
-        self.position = location
+        self.name = StageConstants.ingredientName
+        self.position = position
         self.physicsBody = SKPhysicsBody(rectangleOf: size)
         self.physicsBody?.categoryBitMask = StageConstants.ingredientCategory
         self.physicsBody?.collisionBitMask = StageConstants.wallCategoryCollision

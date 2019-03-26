@@ -24,6 +24,8 @@ class StageConstants {
     static let roomName = "room"
     static let slimeName = "slime"
     static let ladderName = "ladder"
+    static let plateStorageName = "plate-storage"
+    static let ingredientContainerName = "ingredient-container"
 
     // spaceship size and position
     static let spaceshipSize = CGSize(width: 400, height: 400)
@@ -31,10 +33,11 @@ class StageConstants {
 
     // elements size
     static let slimeSize = CGSize(width: 25, height: 25)
-    static let plateSize = CGSize(width: 40, height: 40)
-    static let ingredientSize = CGSize(width: 40, height: 20)
+    static let plateSize = CGSize(width: 40, height: 10)
+    static let ingredientSize = CGSize(width: 40, height: 10)
     static let cookerSize = CGSize(width: 40, height: 30)
     static let ladderSize = CGSize(width: 50, height: 50)
+    static let storageSize = CGSize(width: 40, height: 30)
 
     // controller size and position
     static let joystickSize = CGFloat(100)
@@ -54,6 +57,7 @@ class StageConstants {
     static let tableCategory: UInt32 = 1 << 3
     static let slimeCategory: UInt32 = 1 << 4
     static let ladderCategory: UInt32 = 1 << 5
+    static let storageCategory: UInt32 = 1 << 6
 
     enum IngredientType {
         case potato

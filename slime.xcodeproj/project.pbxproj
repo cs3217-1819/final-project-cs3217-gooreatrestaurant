@@ -7,17 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1D220289224AB12E0080CF7D /* Slime+Movements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D220288224AB12E0080CF7D /* Slime+Movements.swift */; };
-		1D4934A4224213E200A73173 /* Stage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D493498224213E200A73173 /* Stage.swift */; };
-		1D4934A5224213E200A73173 /* CookingEquipment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D493499224213E200A73173 /* CookingEquipment.swift */; };
-		1D4934A6224213E200A73173 /* Table.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D49349A224213E200A73173 /* Table.swift */; };
-		1D4934A7224213E200A73173 /* Ladder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D49349B224213E200A73173 /* Ladder.swift */; };
-		1D4934A8224213E200A73173 /* StageConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D49349C224213E200A73173 /* StageConstants.swift */; };
-		1D4934A9224213E200A73173 /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D49349D224213E200A73173 /* Ingredient.swift */; };
-		1D4934AB224213E200A73173 /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D49349F224213E200A73173 /* Food.swift */; };
-		1D4934AC224213E200A73173 /* Slime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4934A0224213E200A73173 /* Slime.swift */; };
-		1D4934AD224213E200A73173 /* Plate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4934A1224213E200A73173 /* Plate.swift */; };
-		1D4934AF224213E200A73173 /* Spaceship.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4934A3224213E200A73173 /* Spaceship.swift */; };
+		1D22029A224AB5850080CF7D /* Plate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D22028E224AB5850080CF7D /* Plate.swift */; };
+		1D22029B224AB5850080CF7D /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D22028F224AB5850080CF7D /* Food.swift */; };
+		1D22029C224AB5850080CF7D /* Ladder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D220290224AB5850080CF7D /* Ladder.swift */; };
+		1D22029D224AB5850080CF7D /* Slime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D220291224AB5850080CF7D /* Slime.swift */; };
+		1D22029E224AB5850080CF7D /* CookingEquipment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D220292224AB5850080CF7D /* CookingEquipment.swift */; };
+		1D22029F224AB5850080CF7D /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D220293224AB5850080CF7D /* Order.swift */; };
+		1D2202A0224AB5850080CF7D /* Slime+Movements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D220294224AB5850080CF7D /* Slime+Movements.swift */; };
+		1D2202A1224AB5850080CF7D /* Stage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D220295224AB5850080CF7D /* Stage.swift */; };
+		1D2202A2224AB5850080CF7D /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D220296224AB5850080CF7D /* Ingredient.swift */; };
+		1D2202A3224AB5850080CF7D /* StageConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D220297224AB5850080CF7D /* StageConstants.swift */; };
+		1D2202A4224AB5850080CF7D /* Table.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D220298224AB5850080CF7D /* Table.swift */; };
+		1D2202A5224AB5850080CF7D /* Spaceship.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D220299224AB5850080CF7D /* Spaceship.swift */; };
+		1D2202AD224AB68F0080CF7D /* PlateStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2202AC224AB68F0080CF7D /* PlateStorage.swift */; };
+		1D2202AF224AB8C30080CF7D /* IngredientContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2202AE224AB8C30080CF7D /* IngredientContainer.swift */; };
 		37DD4A30AF224607DB45BEA8 /* Pods_slimeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AEF608125BA354580F060C8 /* Pods_slimeTests.framework */; };
 		8B81EFBC224344AD007BFDB0 /* Slime.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 8B81EFBB224344AD007BFDB0 /* Slime.atlas */; };
 		8BD816AF22422C6700586180 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD816AE22422C6700586180 /* Extensions.swift */; };
@@ -100,7 +103,6 @@
 		EC4924F42248D616007B9797 /* RatingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC4924F32248D616007B9797 /* RatingView.xib */; };
 		EC4924F62248D638007B9797 /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4924F52248D638007B9797 /* RatingView.swift */; };
 		EC4924F82248D877007B9797 /* RatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4924F72248D877007B9797 /* RatingViewController.swift */; };
-		EC79FFEA22422336002E8FE7 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4934A2224213E200A73173 /* Order.swift */; };
 		EC79FFEE2242238C002E8FE7 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC79FFED2242238C002E8FE7 /* GameViewController.swift */; };
 		ECA66DBE223D2A1B00D1D0BC /* LevelPlaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA66DBD223D2A1B00D1D0BC /* LevelPlaceController.swift */; };
 		ECA66DC2223D5DD100D1D0BC /* CreditsScreenView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECA66DC1223D5DD100D1D0BC /* CreditsScreenView.xib */; };
@@ -139,18 +141,20 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1D220288224AB12E0080CF7D /* Slime+Movements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Slime+Movements.swift"; path = "Stage/Slime+Movements.swift"; sourceTree = "<group>"; };
-		1D493498224213E200A73173 /* Stage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Stage.swift; path = Stage/Stage.swift; sourceTree = "<group>"; };
-		1D493499224213E200A73173 /* CookingEquipment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CookingEquipment.swift; path = Stage/CookingEquipment.swift; sourceTree = "<group>"; };
-		1D49349A224213E200A73173 /* Table.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Table.swift; path = Stage/Table.swift; sourceTree = "<group>"; };
-		1D49349B224213E200A73173 /* Ladder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Ladder.swift; path = Stage/Ladder.swift; sourceTree = "<group>"; };
-		1D49349C224213E200A73173 /* StageConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StageConstants.swift; path = Stage/StageConstants.swift; sourceTree = "<group>"; };
-		1D49349D224213E200A73173 /* Ingredient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Ingredient.swift; path = Stage/Ingredient.swift; sourceTree = "<group>"; };
-		1D49349F224213E200A73173 /* Food.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Food.swift; path = Stage/Food.swift; sourceTree = "<group>"; };
-		1D4934A0224213E200A73173 /* Slime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Slime.swift; path = Stage/Slime.swift; sourceTree = "<group>"; };
-		1D4934A1224213E200A73173 /* Plate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Plate.swift; path = Stage/Plate.swift; sourceTree = "<group>"; };
-		1D4934A2224213E200A73173 /* Order.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Order.swift; path = Stage/Order.swift; sourceTree = "<group>"; };
-		1D4934A3224213E200A73173 /* Spaceship.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Spaceship.swift; path = Stage/Spaceship.swift; sourceTree = "<group>"; };
+		1D22028E224AB5850080CF7D /* Plate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Plate.swift; path = slime/Models/Stage/FoodRelated/Plate.swift; sourceTree = SOURCE_ROOT; };
+		1D22028F224AB5850080CF7D /* Food.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Food.swift; path = slime/Models/Stage/FoodRelated/Food.swift; sourceTree = SOURCE_ROOT; };
+		1D220290224AB5850080CF7D /* Ladder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Ladder.swift; path = slime/Models/Stage/Ladder.swift; sourceTree = SOURCE_ROOT; };
+		1D220291224AB5850080CF7D /* Slime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Slime.swift; path = slime/Models/Stage/Slime/Slime.swift; sourceTree = SOURCE_ROOT; };
+		1D220292224AB5850080CF7D /* CookingEquipment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CookingEquipment.swift; path = slime/Models/Stage/FoodRelated/CookingEquipment.swift; sourceTree = SOURCE_ROOT; };
+		1D220293224AB5850080CF7D /* Order.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Order.swift; path = slime/Models/Stage/Order.swift; sourceTree = SOURCE_ROOT; };
+		1D220294224AB5850080CF7D /* Slime+Movements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Slime+Movements.swift"; path = "slime/Models/Stage/Slime/Slime+Movements.swift"; sourceTree = SOURCE_ROOT; };
+		1D220295224AB5850080CF7D /* Stage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Stage.swift; path = slime/Models/Stage/Stage.swift; sourceTree = SOURCE_ROOT; };
+		1D220296224AB5850080CF7D /* Ingredient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Ingredient.swift; path = slime/Models/Stage/FoodRelated/Ingredient.swift; sourceTree = SOURCE_ROOT; };
+		1D220297224AB5850080CF7D /* StageConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StageConstants.swift; path = slime/Models/Stage/StageConstants.swift; sourceTree = SOURCE_ROOT; };
+		1D220298224AB5850080CF7D /* Table.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Table.swift; path = slime/Models/Stage/Table.swift; sourceTree = SOURCE_ROOT; };
+		1D220299224AB5850080CF7D /* Spaceship.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Spaceship.swift; path = slime/Models/Stage/Spaceship.swift; sourceTree = SOURCE_ROOT; };
+		1D2202AC224AB68F0080CF7D /* PlateStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlateStorage.swift; sourceTree = "<group>"; };
+		1D2202AE224AB8C30080CF7D /* IngredientContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientContainer.swift; sourceTree = "<group>"; };
 		2A2746E58E1E2C60194FCE38 /* Pods-slimeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-slimeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-slimeTests/Pods-slimeTests.release.xcconfig"; sourceTree = "<group>"; };
 		5C1D406302B065DC29582229 /* Pods-slime.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-slime.debug.xcconfig"; path = "Pods/Target Support Files/Pods-slime/Pods-slime.debug.xcconfig"; sourceTree = "<group>"; };
 		6735932F665D31728CAAB2F4 /* Pods-slimeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-slimeTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-slimeTests/Pods-slimeTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -288,6 +292,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1D2202A9224AB6310080CF7D /* Stage */ = {
+			isa = PBXGroup;
+			children = (
+				1D2202AB224AB6470080CF7D /* FoodRelated */,
+				1D2202AA224AB6400080CF7D /* Slime */,
+				1D220290224AB5850080CF7D /* Ladder.swift */,
+				1D220293224AB5850080CF7D /* Order.swift */,
+				1D220299224AB5850080CF7D /* Spaceship.swift */,
+				1D220295224AB5850080CF7D /* Stage.swift */,
+				1D220297224AB5850080CF7D /* StageConstants.swift */,
+				1D220298224AB5850080CF7D /* Table.swift */,
+			);
+			path = Stage;
+			sourceTree = "<group>";
+		};
+		1D2202AA224AB6400080CF7D /* Slime */ = {
+			isa = PBXGroup;
+			children = (
+				1D220291224AB5850080CF7D /* Slime.swift */,
+				1D220294224AB5850080CF7D /* Slime+Movements.swift */,
+			);
+			path = Slime;
+			sourceTree = "<group>";
+		};
+		1D2202AB224AB6470080CF7D /* FoodRelated */ = {
+			isa = PBXGroup;
+			children = (
+				1D220292224AB5850080CF7D /* CookingEquipment.swift */,
+				1D22028F224AB5850080CF7D /* Food.swift */,
+				1D220296224AB5850080CF7D /* Ingredient.swift */,
+				1D22028E224AB5850080CF7D /* Plate.swift */,
+				1D2202AC224AB68F0080CF7D /* PlateStorage.swift */,
+				1D2202AE224AB8C30080CF7D /* IngredientContainer.swift */,
+			);
+			path = FoodRelated;
+			sourceTree = "<group>";
+		};
 		2C56C6A98CE3F70C0052C8F2 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -550,18 +591,7 @@
 		EC449B9C223BB9F900A8EA35 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				1D220288224AB12E0080CF7D /* Slime+Movements.swift */,
-				1D493499224213E200A73173 /* CookingEquipment.swift */,
-				1D49349F224213E200A73173 /* Food.swift */,
-				1D49349D224213E200A73173 /* Ingredient.swift */,
-				1D49349B224213E200A73173 /* Ladder.swift */,
-				1D4934A2224213E200A73173 /* Order.swift */,
-				1D4934A1224213E200A73173 /* Plate.swift */,
-				1D4934A0224213E200A73173 /* Slime.swift */,
-				1D4934A3224213E200A73173 /* Spaceship.swift */,
-				1D493498224213E200A73173 /* Stage.swift */,
-				1D49349C224213E200A73173 /* StageConstants.swift */,
-				1D49349A224213E200A73173 /* Table.swift */,
+				1D2202A9224AB6310080CF7D /* Stage */,
 				EC449B9D223BBA0300A8EA35 /* Level.swift */,
 				ECD455712240FFC7006AF78D /* Player.swift */,
 			);
@@ -952,33 +982,32 @@
 				EC449B83223B917C00A8EA35 /* CGPointExtension.swift in Sources */,
 				ECD455652240F5B6006AF78D /* MultiplayerScreenViewController.swift in Sources */,
 				EC38247D223A2344000D7148 /* UIColorExtension.swift in Sources */,
-				EC79FFEA22422336002E8FE7 /* Order.swift in Sources */,
 				EC382484223A2B6C000D7148 /* PlayMenuButtonController.swift in Sources */,
 				ECD455532240B5D1006AF78D /* AlertAction.swift in Sources */,
+				1D2202A1224AB5850080CF7D /* Stage.swift in Sources */,
+				1D22029C224AB5850080CF7D /* Ladder.swift in Sources */,
 				ECD4554F2240B3B3006AF78D /* Alert.swift in Sources */,
 				ECD4555E2240F44A006AF78D /* MultiplayerScreenView.swift in Sources */,
-				1D4934AD224213E200A73173 /* Plate.swift in Sources */,
 				EC40E4B2223F986D0073D755 /* SettingsScreenViewController.swift in Sources */,
 				EC40E4B0223F983E0073D755 /* SettingsScreenView.swift in Sources */,
-				1D4934AC224213E200A73173 /* Slime.swift in Sources */,
 				ECD4554A223FB133006AF78D /* ViewController.swift in Sources */,
+				1D2202AF224AB8C30080CF7D /* IngredientContainer.swift in Sources */,
 				EC38245422390789000D7148 /* ScrollingBackgroundViewController.swift in Sources */,
 				EC38244722388CB1000D7148 /* PrimaryButtonController.swift in Sources */,
 				EC449B89223BAA8100A8EA35 /* LevelSelectViewController.swift in Sources */,
-				1D4934AF224213E200A73173 /* Spaceship.swift in Sources */,
 				EC449B79223B82A600A8EA35 /* MainController.swift in Sources */,
 				EC449B94223BB08700A8EA35 /* LevelDetailsBoxController.swift in Sources */,
 				ECD45548223FAFFF006AF78D /* Context.swift in Sources */,
 				EC449B22223A35BE00A8EA35 /* PlayScreenViewController.swift in Sources */,
-				1D4934A5224213E200A73173 /* CookingEquipment.swift in Sources */,
 				EC449B98223BB20400A8EA35 /* StoryModeLevelSelectController.swift in Sources */,
+				1D22029D224AB5850080CF7D /* Slime.swift in Sources */,
+				1D22029F224AB5850080CF7D /* Order.swift in Sources */,
 				EC4924F62248D638007B9797 /* RatingView.swift in Sources */,
-				1D4934A9224213E200A73173 /* Ingredient.swift in Sources */,
-				1D4934A8224213E200A73173 /* StageConstants.swift in Sources */,
+				1D2202A2224AB5850080CF7D /* Ingredient.swift in Sources */,
+				1D22029A224AB5850080CF7D /* Plate.swift in Sources */,
 				EC4924ED2246210C007B9797 /* OrderBlob.swift in Sources */,
-				1D4934A7224213E200A73173 /* Ladder.swift in Sources */,
 				EC4924E8224618E6007B9797 /* LevelPlaceView.swift in Sources */,
-				1D4934A6224213E200A73173 /* Table.swift in Sources */,
+				1D2202A3224AB5850080CF7D /* StageConstants.swift in Sources */,
 				EC382479223A1BE7000D7148 /* PrimaryButtonColor.swift in Sources */,
 				ECA66DC4223D5F4000D1D0BC /* CreditsScreenView.swift in Sources */,
 				EC449B96223BB1D400A8EA35 /* StoryModeLevelSelectView.swift in Sources */,
@@ -986,15 +1015,17 @@
 				ECD4556E2240FBFA006AF78D /* PlayerBox.swift in Sources */,
 				ECD455672240F974006AF78D /* ViewControllerProtocol.swift in Sources */,
 				EC21B40222420D4100827121 /* DesignableView.swift in Sources */,
+				1D2202AD224AB68F0080CF7D /* PlateStorage.swift in Sources */,
 				EC79FFEE2242238C002E8FE7 /* GameViewController.swift in Sources */,
 				8BD816AF22422C6700586180 /* Extensions.swift in Sources */,
 				EC4924EF22462174007B9797 /* OrderBlobController.swift in Sources */,
 				EC21B409224217E200827121 /* LoadingScreenViewController.swift in Sources */,
+				1D2202A0224AB5850080CF7D /* Slime+Movements.swift in Sources */,
 				EC382482223A2AF5000D7148 /* PlayMenuButton.swift in Sources */,
 				EC449B92223BB01C00A8EA35 /* LevelDetailsBox.swift in Sources */,
 				EC3824512238FB3D000D7148 /* ButtonController.swift in Sources */,
+				1D2202A4224AB5850080CF7D /* Table.swift in Sources */,
 				EC38245A223A0F6F000D7148 /* TextLabel.swift in Sources */,
-				1D4934A4224213E200A73173 /* Stage.swift in Sources */,
 				ECD455702240FEDE006AF78D /* PlayerBoxController.swift in Sources */,
 				EC449B81223B8C0C00A8EA35 /* PlayScreenView.swift in Sources */,
 				EC40E4AC223D61320073D755 /* CreditsSceneViewController.swift in Sources */,
@@ -1002,15 +1033,16 @@
 				ECD455512240B510006AF78D /* AlertController.swift in Sources */,
 				EC449B7F223B889400A8EA35 /* TitleScreenView.swift in Sources */,
 				EC3824202238803A000D7148 /* TitleScreenViewController.swift in Sources */,
+				1D2202A5224AB5850080CF7D /* Spaceship.swift in Sources */,
 				EC38244B22389649000D7148 /* ImageProvider.swift in Sources */,
 				EC38244322388389000D7148 /* XibView.swift in Sources */,
 				ECD455692240FB23006AF78D /* MultiplayerLobbyViewController.swift in Sources */,
 				EC21B407224216C500827121 /* LoadingScreenView.swift in Sources */,
 				EC38244F2238F023000D7148 /* PrimaryButton.swift in Sources */,
 				EC449B85223BA48100A8EA35 /* LevelSelectView.swift in Sources */,
-				1D4934AB224213E200A73173 /* Food.swift in Sources */,
 				ECA66DBE223D2A1B00D1D0BC /* LevelPlaceController.swift in Sources */,
 				EC449B9E223BBA0300A8EA35 /* Level.swift in Sources */,
+				1D22029E224AB5850080CF7D /* CookingEquipment.swift in Sources */,
 				ECD455722240FFC7006AF78D /* Player.swift in Sources */,
 				EC449B7D223B873600A8EA35 /* RouterViewController.swift in Sources */,
 				EC4924F82248D877007B9797 /* RatingViewController.swift in Sources */,
@@ -1019,8 +1051,8 @@
 				ECD45546223FAFBE006AF78D /* ContextController.swift in Sources */,
 				ECD455632240F4A8006AF78D /* MultiplayerLobbyView.swift in Sources */,
 				EC40E4B4223F98EF0073D755 /* RouteTransitionHandler.swift in Sources */,
+				1D22029B224AB5850080CF7D /* Food.swift in Sources */,
 				EC38244D22389DAD000D7148 /* UIViewExtension.swift in Sources */,
-				1D220289224AB12E0080CF7D /* Slime+Movements.swift in Sources */,
 				EC4924F12246220A007B9797 /* OrderBlobRecipe.swift in Sources */,
 				EC38241E2238803A000D7148 /* AppDelegate.swift in Sources */,
 			);

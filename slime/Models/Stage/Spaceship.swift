@@ -33,15 +33,13 @@ class Spaceship: SKSpriteNode {
 
     func addSlime(inPosition position: CGPoint, withSize size: CGSize = StageConstants.slimeSize) {
         let slime = Slime(inPosition: position, withSize: size)
-        slime.name = StageConstants.slimeName
         self.addChild(slime)
     }
 
     func addIngredients(type: StageConstants.IngredientType,
                         inPosition position: CGPoint,
                         withSize size: CGSize = StageConstants.ingredientSize) {
-        let ingredient = Ingredient(type: type, size: size, inLocation: position)
-        ingredient.name = StageConstants.ingredientName
+        let ingredient = Ingredient(type: type, size: size, inPosition: position)
         self.addChild(ingredient)
     }
 
@@ -49,14 +47,12 @@ class Spaceship: SKSpriteNode {
                    inPosition position: CGPoint,
                    withSize size: CGSize = StageConstants.cookerSize) {
         let cooker = CookingEquipment(type: type, size: size, inLocation: position)
-        cooker.name = StageConstants.cookerName
         self.addChild(cooker)
     }
 
     func addPlate(inPosition position: CGPoint,
                   withSize size: CGSize = StageConstants.plateSize) {
         let plate = Plate(inPosition: position, withSize: size)
-        plate.name = StageConstants.plateName
         self.addChild(plate)
     }
 
@@ -86,8 +82,17 @@ class Spaceship: SKSpriteNode {
 
     func addLadder(inPosition position: CGPoint) {
         let ladder = Ladder(inPosition: position)
-        ladder.name = StageConstants.ladderName
         self.addChild(ladder)
+    }
+
+    func addPlateStorage(inPosition position: CGPoint) {
+        let plateStorage = PlateStorage(inPosition: position)
+        self.addChild(plateStorage)
+    }
+
+    func addIngredientContainer(ofType type: StageConstants.IngredientType, inPosition position: CGPoint) {
+        let ingredientContainer = IngredientContainer(ofType: type, inPosition: position)
+        self.addChild(ingredientContainer)
     }
 
     required init?(coder aDecoder: NSCoder) {

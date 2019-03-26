@@ -14,6 +14,7 @@ class Ladder: SKSpriteNode {
         let ladder = SKTexture(imageNamed: "Ladder")
         ladder.filteringMode = .nearest
         super.init(texture: ladder, color: .clear, size: StageConstants.ladderSize)
+        self.name = StageConstants.ladderName
         self.position = position
         self.zPosition = 2
 

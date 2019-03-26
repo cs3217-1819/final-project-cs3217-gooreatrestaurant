@@ -24,6 +24,9 @@ class Slime: SKSpriteNode {
         }
 
         super.init(texture: walkFrames[0], color: .clear, size: size)
+
+        self.name = StageConstants.slimeName
+
         self.position = position
         self.zPosition = 3
         self.physicsBody = SKPhysicsBody(texture: slimeAnimatedAtlas.textureNamed("slime1"), size: size)
@@ -39,6 +42,7 @@ class Slime: SKSpriteNode {
         self.physicsBody?.contactTestBitMask |= StageConstants.tableCategory
         self.physicsBody?.contactTestBitMask |= StageConstants.slimeCategory
         self.physicsBody?.contactTestBitMask |= StageConstants.ladderCategory
+        self.physicsBody?.contactTestBitMask |= StageConstants.storageCategory
 
         // animate slime
         self.run(SKAction.repeatForever(
@@ -105,6 +109,16 @@ class Slime: SKSpriteNode {
         self.takeItem(ingredient)
     }
 
+    private func takePlate(fromStorage storage: PlateStorage) {
+        let plate = storage.takePlate()
+        self.takePlate(plate)
+    }
+
+    private func takeIngredient(fromContainer container: IngredientContainer) {
+        let ingredient = container.takeIngredient()
+        self.takeIngredient(ingredient)
+    }
+
     private func cook(using equipment: CookingEquipment) {
         guard let ingredient = self.ingredientsCarried else {
             return
@@ -158,6 +172,33 @@ class Slime: SKSpriteNode {
             break
         }
 
+        guard hasInteracted == false else {
+            return
+        }
+
+        for body in contactedBodies where body.node?.name == StageConstants.ingredientContainerName {
+            guard let container = body.node as? IngredientContainer else {
+                continue
+            }
+
+            hasInteracted = true
+            self.takeIngredient(fromContainer: container)
+            break
+        }
+
+        guard hasInteracted == false else {
+            return
+        }
+
+        for body in contactedBodies where body.node?.name == StageConstants.plateStorageName {
+            guard let storage = body.node as? PlateStorage else {
+                continue
+            }
+
+            hasInteracted = true
+            self.takePlate(fromStorage: storage)
+            break
+        }
     }
 
     func interactWhileCarryingIngredient() {

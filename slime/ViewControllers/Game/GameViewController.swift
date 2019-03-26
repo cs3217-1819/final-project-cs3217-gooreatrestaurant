@@ -43,6 +43,9 @@ class GameViewController: UIViewController {
         stage.spaceship.addLadder(inPosition: CGPoint(x: 90, y: -25))
         stage.spaceship.addLadder(inPosition: CGPoint(x: 90, y: 20))
         stage.spaceship.addLadder(inPosition: CGPoint(x: 90, y: 65))
+
+        stage.spaceship.addPlateStorage(inPosition: CGPoint(x: -100, y: -21))
+        stage.spaceship.addIngredientContainer(ofType: .potato, inPosition: (CGPoint(x: -60, y: 45)))
     }
 
     lazy var skView: SKView = {

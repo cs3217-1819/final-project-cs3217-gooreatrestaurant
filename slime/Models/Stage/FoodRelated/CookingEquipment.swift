@@ -19,6 +19,7 @@ class CookingEquipment: SKSpriteNode {
     init(type: StageConstants.CookingType, size: CGSize, inLocation location: CGPoint) {
         self.type = type
         super.init(texture: nil, color: .green, size: size)
+        self.name = StageConstants.cookerName
         self.position = location
         self.physicsBody = SKPhysicsBody(rectangleOf: size)
         self.physicsBody?.isDynamic = false
