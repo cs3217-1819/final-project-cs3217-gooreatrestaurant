@@ -53,7 +53,8 @@ class GameViewController: UIViewController {
 //        stage.spaceship.addRoom(inPosition: pos2, withSize: size2)
 //        stage.spaceship.addRoom(inPosition: pos3, withSize: size1)
 //        stage.spaceship.addWalls(withPoints: path1)
-//        stage.spaceship.addSlime(inPosition: pos4)
+        stage.spaceship.addSlime(inPosition: CGPoint.zero)
+        stage.spaceship.addRoom(inPosition: CGPoint.zero, withSize: CGSize(width: 100, height: 100))
 //        stage.spaceship.addIngredients(type: .potato, inPosition: pos4)
 //        stage.spaceship.addCooker(type: .frying, inPosition: pos5)
     }

@@ -14,7 +14,7 @@ class Room: SKSpriteNode {
 
     // position is the center of the node
     init(withPosition position: CGPoint, andSize size: CGSize) {
-        super.init(texture: nil, color: .white, size: size)
+        super.init(texture: nil, color: .clear, size: size)
         self.position = position
     }
 

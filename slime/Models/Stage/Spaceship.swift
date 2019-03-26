@@ -21,7 +21,14 @@ class Spaceship: SKSpriteNode {
     }
 
     func addRoom(inPosition position: CGPoint, withSize size: CGSize) {
-        let room = Room(withPosition: position, andSize: size)
+        let spaceshipBody = SKTexture(imageNamed: "Area")
+        spaceshipBody.filteringMode = .nearest // shorter form for SKTextureFilteringMode.Nearest
+        let room = SKSpriteNode(texture: spaceshipBody)
+        room.position = CGPoint(x: 0, y: 0)
+        room.setScale(0.4)
+        room.zPosition = 1
+        //room = Room(withPosition: position, andSize: size)
+//        let room = Room(withPosition: position, andSize: size)
         room.name = "room"
         self.addChild(room)
     }
@@ -56,6 +63,44 @@ class Spaceship: SKSpriteNode {
     }
 
     func addWalls(withPoints points: [CGPoint]) {
+//        var coordArray: [String] = []
+//        var gameAreaCoord: [CGPoint] = []
+//        var unaccessibleAreaCoord: [CGPoint] = []
+//        guard let path = Bundle.main.path(forResource: "LevelDesign", ofType: "plist")  else {
+//            print("Error loading path")
+//            return
+//        }
+//
+//        //Level 1
+//        let contents = NSDictionary(contentsOfFile: path)
+//        coordArray = contents?.object(forKey: "Level 1") as! [String]
+//        for item in coordArray {
+//            gameAreaCoord.append(NSCoder.cgPoint(for: item))
+//        }
+//
+//        coordArray = contents?.object(forKey: "Level1UnaccessibleArea") as! [String]
+//        for item in coordArray {
+//            unaccessibleAreaCoord.append(NSCoder.cgPoint(for: item))
+//        }
+//
+//        let spaceshipBorder = SKNode()
+//        spaceshipBorder.position = CGPoint(x: self.frame.midX, y: self.frame.midY)
+//        let ground = SKShapeNode(points: &gameAreaCoord, count: gameAreaCoord.count)
+//        let blockedArea = SKShapeNode(points: &unaccessibleAreaCoord, count: unaccessibleAreaCoord.count)
+//        spaceshipBorder.name = "BoundedArea"
+//        spaceshipBorder.physicsBody = SKPhysicsBody(edgeLoopFrom: ground.path!)
+//        spaceshipBorder.physicsBody?.categoryBitMask = worldCategory
+//        spaceshipBorder.physicsBody?.isDynamic = false
+//        self.addChild(spaceshipBorder)
+//
+//        let blockedAreaBorder = SKNode()
+//        blockedAreaBorder.position = CGPoint(x: 0, y: 0)
+//        blockedAreaBorder.name = "BoundedArea"
+//        blockedAreaBorder.physicsBody = SKPhysicsBody(edgeLoopFrom: blockedArea.path!)
+//        blockedAreaBorder.physicsBody?.categoryBitMask = worldCategory
+//        blockedAreaBorder.physicsBody?.isDynamic = false
+//        self.addChild(blockedAreaBorder)
+
         var pointsList = points
         let shape = SKShapeNode(points: &pointsList, count: points.count)
         let wall = SKNode()
