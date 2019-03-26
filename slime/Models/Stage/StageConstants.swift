@@ -21,9 +21,9 @@ class StageConstants {
     static let spaceshipPosition = CGPoint.zero
 
     static let slimeSize = CGSize(width: 30, height: 30)
-    static let plateSize = CGSize(width: 500, height: 100)
-    static let ingredientSize = CGSize(width: 500, height: 100)
-    static let cookerSize = CGSize(width: 500, height: 300)
+    static let plateSize = CGSize(width: 40, height: 40)
+    static let ingredientSize = CGSize(width: 40, height: 20)
+    static let cookerSize = CGSize(width: 40, height: 30)
 
     static let joystickSize = CGFloat(100)
     static let joystickPosition = CGPoint(x: ScreenSize.width * -0.5 + joystickSize / 2 + 45,

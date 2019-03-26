@@ -20,15 +20,13 @@ class Spaceship: SKSpriteNode {
         self.zPosition = 0
     }
 
-    func addRoom(inPosition position: CGPoint, withSize size: CGSize) {
+    func addRoom() {
         let spaceshipBody = SKTexture(imageNamed: "Area")
         spaceshipBody.filteringMode = .nearest // shorter form for SKTextureFilteringMode.Nearest
         let room = SKSpriteNode(texture: spaceshipBody)
         room.position = CGPoint(x: 0, y: 0)
         room.setScale(0.4)
         room.zPosition = 1
-        //room = Room(withPosition: position, andSize: size)
-//        let room = Room(withPosition: position, andSize: size)
         room.name = "room"
         self.addChild(room)
     }
