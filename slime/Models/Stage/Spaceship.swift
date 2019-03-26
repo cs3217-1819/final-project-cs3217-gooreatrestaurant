@@ -85,34 +85,6 @@ class Spaceship: SKSpriteNode {
         spaceshipBorder.physicsBody?.categoryBitMask = StageConstants.wallCategoryCollision
         spaceshipBorder.physicsBody?.isDynamic = false
         self.addChild(spaceshipBorder)
-
-//        coordArray = contents?.object(forKey: "Level1UnaccessibleArea") as! [String]
-//        for item in coordArray {
-//            unaccessibleAreaCoord.append(NSCoder.cgPoint(for: item))
-//        }
-//
-//        let blockedArea = SKShapeNode(points: &unaccessibleAreaCoord, count: unaccessibleAreaCoord.count)
-//        spaceshipBorder.name = "BoundedArea"
-//
-//        let blockedAreaBorder = SKNode()
-//        blockedAreaBorder.position = CGPoint(x: 0, y: 0)
-//        blockedAreaBorder.name = "BoundedArea"
-//        blockedAreaBorder.physicsBody = SKPhysicsBody(edgeLoopFrom: blockedArea.path!)
-//        blockedAreaBorder.physicsBody?.categoryBitMask = worldCategory
-//        blockedAreaBorder.physicsBody?.isDynamic = false
-//        self.addChild(blockedAreaBorder)
-
-//        var pointsList = points
-//        let shape = SKShapeNode(points: &pointsList, count: points.count)
-//        let wall = SKNode()
-//        wall.name = "wall"
-//
-//        // 0, 0 is in the spaceship's center
-//        wall.position = CGPoint(x: 0, y: 0)
-//        wall.physicsBody = SKPhysicsBody(edgeLoopFrom: shape.path!)
-//        wall.physicsBody?.categoryBitMask = StageConstants.wallCategoryCollision
-//        wall.physicsBody?.isDynamic = false
-//        self.addChild(wall)
     }
 
     required init?(coder aDecoder: NSCoder) {
