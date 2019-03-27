@@ -45,7 +45,7 @@ protocol GameDatabase {
     ///       room is already full
     ///     - onError: a closure fired when an error
     ///       occurs
-    func joinRoom(forRoomId id: String, _ onSuccess: @escaping () -> Void, _ onRoomFull: @escaping () -> Void, _ onError: @escaping (Error) -> Void)
+    func joinRoom(forRoomId id: String, _ onSuccess: @escaping () -> Void, _ onRoomFull: @escaping () -> Void, _ onRoomNotExist: @escaping () -> Void, _ onError: @escaping (Error) -> Void)
     
     /// opens or closes a room so it can be shown to
     /// everyone. this method will flip the
@@ -207,7 +207,7 @@ class GameDB: GameDatabase {
     // MARK: Methods related to Room state
     
     func observeRoomState(forRoomId id: String, _ onDataChange: @escaping (RoomModel) -> Void, _ onRoomClose: @escaping () -> Void, _ onError: @escaping (Error) -> Void) {
-        let ref = dbRef.child("rooms/\(id)")
+        let ref = dbRef.child("rooms/\(id)/")
         
         let handle = ref.observe(.value, with: { (snap) in
             guard let roomDict = snap.value as? [String : AnyObject] else {
@@ -215,6 +215,8 @@ class GameDB: GameDatabase {
                 onRoomClose()
                 return
             }
+            
+            print(roomDict)
             
             // populate room object
             let roomName = roomDict["room_name"] as? String ?? ""
@@ -244,7 +246,7 @@ class GameDB: GameDatabase {
         self.observers.append(Observer(withHandle: handle, withRef: ref))
     }
     
-    func joinRoom(forRoomId id: String, _ onSuccess: @escaping () -> Void, _ onRoomFull: @escaping () -> Void, _ onError: @escaping (Error) -> Void) {
+    func joinRoom(forRoomId id: String, _ onSuccess: @escaping () -> Void, _ onRoomFull: @escaping () -> Void, _ onRoomNotExist: @escaping () -> (), _ onError: @escaping (Error) -> Void) {
         let ref = dbRef.child("rooms/\(id)")
         
         guard let user = GameAuth.currentUser else {
@@ -252,8 +254,10 @@ class GameDB: GameDatabase {
         }
         
         ref.observeSingleEvent(of: .value, with: { (snap) in
+            
             guard let roomDict = snap.value as? [String : AnyObject] else {
                 // room not valid
+                onRoomNotExist()
                 return
             }
             
@@ -263,6 +267,7 @@ class GameDB: GameDatabase {
             
             if hasStarted {
                 // invalid room
+                onRoomFull()
                 return
             }
             

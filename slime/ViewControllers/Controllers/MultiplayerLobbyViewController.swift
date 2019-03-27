@@ -19,13 +19,7 @@ class MultiplayerLobbyViewController: ViewController<MultiplayerLobbyView> {
         view.playerFourView
     ]
     
-    func set(roomCode: String) {
-        self.roomId = roomCode
-        view.roomCodeLabel.text = roomCode
-    }
-    
     override func configureSubviews() {
-        setupRoom()
         configureUpButton(to: .MultiplayerScreen)
     }
     
@@ -43,14 +37,16 @@ class MultiplayerLobbyViewController: ViewController<MultiplayerLobbyView> {
         }
     }
     
-    private func setupRoomDetails() {
+    private func setupRoomDetails(id: String) {
         // TODO:
+        view.roomCodeLabel.text = id
     }
     
-    private func setupRoom() {
-        self.context.db.observeRoomState(forRoomId: self.roomId, { (room) in
+    func setupRoom(withId id: String) {
+        self.roomId = id
+        self.context.db.observeRoomState(forRoomId: id, { (room) in
             self.setupPlayers(forPlayers: room.players)
-            self.setupRoomDetails()
+            self.setupRoomDetails(id: id)
             
             if room.gameIsCreated {
                 self.setLoadingAlert(withDescription: "Pumping slimes into spaceship...")
@@ -72,7 +68,7 @@ class MultiplayerLobbyViewController: ViewController<MultiplayerLobbyView> {
             // host left the room
             self.setErrorAlert(withDescription: "The host has left the room...")
             self.presentActiveAlert(dismissible: true)
-            self.router.routeTo(.MultiplayerScreen)
+            self.context.routeTo(.MultiplayerScreen)
         }) { (err) in
             self.setErrorAlert(withDescription: err as! String)
             self.presentActiveAlert(dismissible: true)
@@ -139,6 +135,7 @@ class MultiplayerLobbyViewController: ViewController<MultiplayerLobbyView> {
     private func leaveRoomAndRoute(to route: Route) {
         self.context.db.leaveRoom(fromRoomId: self.roomId, {
             self.context.routeTo(route)
+            self.context.db.removeAllObservers()
         }, { (err) in
             self.setErrorAlert(withDescription: err as! String)
             self.presentActiveAlert(dismissible: true)

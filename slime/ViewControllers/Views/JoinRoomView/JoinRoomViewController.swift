@@ -17,7 +17,7 @@ class JoinRoomViewController: ViewController<JoinRoomView> {
         codeInputController.configure()
         codeInputController.onComplete { code in
             let lobbyController: MultiplayerLobbyViewController = self.context.routeToAndPrepareFor(.MultiplayerLobby)
-            lobbyController.set(roomCode: code)
+            lobbyController.setupRoom(withId: code)
         }
         numberPadController.configure()
         
