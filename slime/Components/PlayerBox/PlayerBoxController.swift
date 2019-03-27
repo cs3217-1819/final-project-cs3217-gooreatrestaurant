@@ -9,9 +9,9 @@
 import UIKit
 import RxSwift
 
-class PlayerBoxController {
+class PlayerBoxController: Controller {
+    let view: PlayerBox
     private let disposeBag = DisposeBag()
-    private let view: PlayerBox
     private var player = BehaviorSubject(value: Player(name: "TestPlayer", level: 1))
     
     init(using view: UIView) {
@@ -28,7 +28,9 @@ class PlayerBoxController {
             fatalError("Content view is unavailable")
         }
         self.view = trueView
-        
+    }
+    
+    func configure() {
         setupReactive()
     }
     

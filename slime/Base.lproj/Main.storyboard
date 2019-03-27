@@ -17,16 +17,29 @@
                     <view key="view" contentMode="scaleToFill" id="gah-7C-02z">
                         <rect key="frame" x="0.0" y="0.0" width="812" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F9O-Dm-JUO">
+                                <rect key="frame" x="0.0" y="0.0" width="812" height="375"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="F9O-Dm-JUO" secondAttribute="bottom" id="0Ju-i3-Rnp"/>
+                            <constraint firstItem="F9O-Dm-JUO" firstAttribute="top" secondItem="egW-NA-RNe" secondAttribute="top" id="4cd-QW-ydC"/>
+                            <constraint firstAttribute="trailing" secondItem="F9O-Dm-JUO" secondAttribute="trailing" id="S7i-qK-Fnz"/>
+                            <constraint firstItem="F9O-Dm-JUO" firstAttribute="leading" secondItem="gah-7C-02z" secondAttribute="leading" id="wTM-MW-7cM"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="egW-NA-RNe"/>
                     </view>
                     <connections>
+                        <outlet property="underlyingView" destination="F9O-Dm-JUO" id="Wdq-Um-Y5G"/>
                         <segue destination="fx1-Mm-IkR" kind="show" identifier="toGame" id="25m-7d-rcI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cbT-e4-hjs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-621" y="49"/>
+            <point key="canvasLocation" x="-621.42857142857144" y="48.799999999999997"/>
         </scene>
         <!--Game View Controller-->
         <scene sceneID="uG1-Lz-z43">

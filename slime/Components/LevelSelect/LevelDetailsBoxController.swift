@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LevelDetailsBoxController {
+class LevelDetailsBoxController: Controller {
     let view: LevelDetailsBox
     private var ratingViewController: RatingViewController
     

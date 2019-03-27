@@ -8,7 +8,7 @@
 
 import UIKit
 
-class OrderBlobController {
+class OrderBlobController: Controller {
     let view: OrderBlob
     private let parent: UIStackView
     private let recipe: OrderBlobRecipe

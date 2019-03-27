@@ -15,6 +15,7 @@ enum Route {
     case CreditsScreen
     case SettingsScreen
     case MultiplayerScreen
+    case MultiplayerJoinRoomScreen
     case MultiplayerLobby
     case LoadingScreen
     
@@ -32,8 +33,10 @@ enum Route {
             return CGPoint(x: 1, y: 0)
         case .MultiplayerScreen:
             return CGPoint(x: -1, y: 1)
-        case .MultiplayerLobby:
+        case .MultiplayerJoinRoomScreen:
             return CGPoint(x: -1, y: 2)
+        case .MultiplayerLobby:
+            return CGPoint(x: -1, y: 3)
         case .LoadingScreen:
             return CGPoint(x: 0, y: 50)
         }
@@ -73,6 +76,8 @@ class Router {
             return SettingsScreenViewController(with: UIView.initFromNib("SettingsScreenView"))
         case .MultiplayerScreen:
             return MultiplayerScreenViewController(with: UIView.initFromNib("MultiplayerScreenView"))
+        case .MultiplayerJoinRoomScreen:
+            return JoinRoomViewController(with: UIView.initFromNib("JoinRoomView"))
         case .MultiplayerLobby:
             return MultiplayerLobbyViewController(with: UIView.initFromNib("MultiplayerLobbyView"))
         case .LoadingScreen:

@@ -58,12 +58,12 @@ class ViewController<View: UIView>: ViewControllerProtocol {
         configureUpButton(to: previousRoute)
     }
     
-    internal func rememberAll(_ controllers: [AnyObject]) {
+    internal func rememberAll<ControllerType: Controller>(_ controllers: [ControllerType]) {
         self.controllers.append(contentsOf: controllers)
     }
     
     // Used for storing references to controllers
-    internal func remember(_ controller: AnyObject) {
+    internal func remember<ControllerType: Controller>(_ controller: ControllerType) {
         controllers.append(controller)
     }
     

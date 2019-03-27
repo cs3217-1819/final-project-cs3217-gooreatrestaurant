@@ -9,9 +9,11 @@
 import UIKit
 import RxSwift
 
-class PlayMenuButtonController {
+class PlayMenuButtonController: Controller {
+    var view: UIView {
+        return button
+    }
     private let disposeBag = DisposeBag()
-    
     private let buttonController: ButtonController
     private let button: PlayMenuButton
     private var title = BehaviorSubject(value: "")
@@ -31,7 +33,9 @@ class PlayMenuButtonController {
         }
         self.button = button
         buttonController = ButtonController(using: button)
-        
+    }
+    
+    func configure() {
         setupReactive()
     }
     
