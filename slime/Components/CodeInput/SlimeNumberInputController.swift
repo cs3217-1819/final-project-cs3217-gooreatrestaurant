@@ -12,8 +12,9 @@ import RxSwift
 class SlimeNumberInputController: Controller {
     enum Color {
         case yellow
+        case blue
+        case purple
         case green
-        case red
     }
     
     let view: SlimeNumberInputView
@@ -71,7 +72,16 @@ class SlimeNumberInputController: Controller {
             guard let element = event.element else {
                 return
             }
-            // do image change
+            switch(element) {
+            case .yellow:
+                self.view.slimeImageView.image = ImageProvider.get("numberpad-button-yellow")
+            case .blue:
+                self.view.slimeImageView.image = ImageProvider.get("numberpad-button-blue")
+            case .purple:
+                self.view.slimeImageView.image = ImageProvider.get("numberpad-button-purple")
+            case .green:
+                self.view.slimeImageView.image = ImageProvider.get("numberpad-button-green")
+            }
         }.disposed(by: disposeBag)
     }
 }

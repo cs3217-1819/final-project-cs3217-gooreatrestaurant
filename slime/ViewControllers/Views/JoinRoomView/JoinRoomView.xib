@@ -17,10 +17,11 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="stq-3P-Xtj" customClass="XibView" customModule="slime" customModuleProvider="target">
-                    <rect key="frame" x="36" y="139" width="740" height="200"/>
+                    <rect key="frame" x="256" y="139" width="300" height="200"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="200" id="8Xh-It-Tx7"/>
+                        <constraint firstAttribute="width" constant="300" id="Yxy-Qd-q31"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="string" keyPath="nibName" value="SlimeNumberPadView"/>
@@ -39,12 +40,10 @@
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="stq-3P-Xtj" secondAttribute="trailing" constant="36" id="F22-u6-MTC"/>
                 <constraint firstItem="Gm5-zF-aYI" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Ibz-e3-PjO"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="stq-3P-Xtj" secondAttribute="bottom" constant="36" id="Jr1-Se-2ul"/>
                 <constraint firstItem="stq-3P-Xtj" firstAttribute="top" secondItem="Gm5-zF-aYI" secondAttribute="bottom" constant="16" id="YeP-y3-Uo3"/>
                 <constraint firstItem="stq-3P-Xtj" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="bFD-a2-woH"/>
-                <constraint firstItem="stq-3P-Xtj" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="36" id="o33-5A-s7P"/>
                 <constraint firstItem="Gm5-zF-aYI" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="16" id="tQf-es-lpm"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

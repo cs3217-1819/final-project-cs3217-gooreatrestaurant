@@ -50,7 +50,7 @@ class SlimeNumberPadController: Controller {
             let num = idx
             let controller = SlimeNumberInputController(withXib: padView)
                 .set(number: num)
-                .set(color: .yellow)
+                .set(color: .blue)
                 .onTap {
                     self.responder?.respondTo(num)
                 }
@@ -59,7 +59,7 @@ class SlimeNumberPadController: Controller {
         }
         
         let backspaceController = SlimeNumberInputController(withXib: backspaceButton)
-            .set(text: "Backspace")
+            .set(text: "←")
             .set(color: .green)
             .onTap {
                 self.responder?.respondToBackspace()
@@ -69,10 +69,11 @@ class SlimeNumberPadController: Controller {
         
         let clearController = SlimeNumberInputController(withXib: clearButton)
             .set(text: "Clear")
-            .set(color: .red)
+            .set(color: .purple)
             .onTap {
                 self.responder?.respondToClear()
             }
+        clearController.configure()
         padControllers.append(clearController)
     }
 }
