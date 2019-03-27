@@ -144,6 +144,10 @@
 		ECF75F02224B17CA00537237 /* JoinRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF75F01224B17CA00537237 /* JoinRoomView.swift */; };
 		ECF75F04224B182400537237 /* JoinRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF75F03224B182400537237 /* JoinRoomViewController.swift */; };
 		F92ECADF224BADEC0040A4E2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F92ECADE224BADEC0040A4E2 /* GoogleService-Info.plist */; };
+		F92ECAE2224BAE8F0040A4E2 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92ECAE1224BAE8F0040A4E2 /* Database.swift */; };
+		F92ECAE4224BAEBD0040A4E2 /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92ECAE3224BAEBD0040A4E2 /* Authentication.swift */; };
+		F92ECAE6224BAEDB0040A4E2 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92ECAE5224BAEDB0040A4E2 /* Room.swift */; };
+		F92ECAE8224BAEEF0040A4E2 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92ECAE7224BAEEF0040A4E2 /* Game.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -301,6 +305,10 @@
 		ECF75F01224B17CA00537237 /* JoinRoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinRoomView.swift; sourceTree = "<group>"; };
 		ECF75F03224B182400537237 /* JoinRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinRoomViewController.swift; sourceTree = "<group>"; };
 		F92ECADE224BADEC0040A4E2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F92ECAE1224BAE8F0040A4E2 /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
+		F92ECAE3224BAEBD0040A4E2 /* Authentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
+		F92ECAE5224BAEDB0040A4E2 /* Room.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
+		F92ECAE7224BAEEF0040A4E2 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		FC54AF03EC549BA6D820D01E /* Pods-slime.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-slime.release.xcconfig"; path = "Pods/Target Support Files/Pods-slime/Pods-slime.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -421,6 +429,7 @@
 		EC38241C2238803A000D7148 /* slime */ = {
 			isa = PBXGroup;
 			children = (
+				F92ECAE0224BAE800040A4E2 /* Network */,
 				8BD816B42242643C00586180 /* Sprites */,
 				EC449B9C223BB9F900A8EA35 /* Models */,
 				EC449B99223BB7D700A8EA35 /* Data */,
@@ -803,6 +812,17 @@
 			path = PlayerBox;
 			sourceTree = "<group>";
 		};
+		F92ECAE0224BAE800040A4E2 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				F92ECAE1224BAE8F0040A4E2 /* Database.swift */,
+				F92ECAE3224BAEBD0040A4E2 /* Authentication.swift */,
+				F92ECAE5224BAEDB0040A4E2 /* Room.swift */,
+				F92ECAE7224BAEEF0040A4E2 /* Game.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1041,6 +1061,7 @@
 				ECD45543223FACC4006AF78D /* ModalController.swift in Sources */,
 				EC382475223A1AA4000D7148 /* ColorStyles.swift in Sources */,
 				EC449B83223B917C00A8EA35 /* CGPointExtension.swift in Sources */,
+				F92ECAE4224BAEBD0040A4E2 /* Authentication.swift in Sources */,
 				ECD455652240F5B6006AF78D /* MultiplayerScreenViewController.swift in Sources */,
 				EC38247D223A2344000D7148 /* UIColorExtension.swift in Sources */,
 				EC382484223A2B6C000D7148 /* PlayMenuButtonController.swift in Sources */,
@@ -1058,6 +1079,7 @@
 				EC38244722388CB1000D7148 /* PrimaryButtonController.swift in Sources */,
 				EC449B89223BAA8100A8EA35 /* LevelSelectViewController.swift in Sources */,
 				EC449B79223B82A600A8EA35 /* MainController.swift in Sources */,
+				F92ECAE2224BAE8F0040A4E2 /* Database.swift in Sources */,
 				EC449B94223BB08700A8EA35 /* LevelDetailsBoxController.swift in Sources */,
 				ECF75F00224B131800537237 /* CodeInputController.swift in Sources */,
 				ECD45548223FAFFF006AF78D /* Context.swift in Sources */,
@@ -1096,6 +1118,7 @@
 				ECD455702240FEDE006AF78D /* PlayerBoxController.swift in Sources */,
 				EC449B81223B8C0C00A8EA35 /* PlayScreenView.swift in Sources */,
 				EC40E4AC223D61320073D755 /* CreditsSceneViewController.swift in Sources */,
+				F92ECAE6224BAEDB0040A4E2 /* Room.swift in Sources */,
 				EC449B7B223B83DA00A8EA35 /* Router.swift in Sources */,
 				ECD455512240B510006AF78D /* AlertController.swift in Sources */,
 				ECF75F04224B182400537237 /* JoinRoomViewController.swift in Sources */,
@@ -1104,6 +1127,7 @@
 				EC449B7F223B889400A8EA35 /* TitleScreenView.swift in Sources */,
 				EC3824202238803A000D7148 /* TitleScreenViewController.swift in Sources */,
 				1D2202A5224AB5850080CF7D /* Spaceship.swift in Sources */,
+				F92ECAE8224BAEEF0040A4E2 /* Game.swift in Sources */,
 				EC38244B22389649000D7148 /* ImageProvider.swift in Sources */,
 				EC38244322388389000D7148 /* XibView.swift in Sources */,
 				ECD455692240FB23006AF78D /* MultiplayerLobbyViewController.swift in Sources */,
