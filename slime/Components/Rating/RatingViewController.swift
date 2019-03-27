@@ -9,7 +9,7 @@
 import UIKit
 import RxSwift
 
-class RatingViewController {
+class RatingViewController: Controller {
     let view: RatingView
     let observableRating: BehaviorSubject<Int>
     lazy private var emptyImage = UIImage(named: "rating-empty")

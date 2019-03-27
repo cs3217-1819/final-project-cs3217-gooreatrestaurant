@@ -21,6 +21,7 @@ class MainController: UIViewController {
         if bgControl == nil {
             // TODO: more robust checking, deinit when rotate
             bgControl = ScrollingBackgroundViewController(with: view)
+            bgControl?.configure()
         }
     }
     

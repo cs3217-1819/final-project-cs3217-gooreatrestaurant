@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="XibView" customModule="slime" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="SlimeNumberInputView" customModule="slime" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="154" height="112"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="numberpad-button" translatesAutoresizingMaskIntoConstraints="NO" id="N4H-mP-iHM">
+                    <rect key="frame" x="0.0" y="0.0" width="154" height="112"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vWC-Xx-KCC" customClass="TextLabel" customModule="slime" customModuleProvider="target">
+                    <rect key="frame" x="73" y="39.5" width="8" height="33.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="style" value="h0"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="color" value="white7"/>
+                    </userDefinedRuntimeAttributes>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="vWC-Xx-KCC" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="AtH-Hu-zPX"/>
+                <constraint firstItem="N4H-mP-iHM" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="CC0-Um-UTv"/>
+                <constraint firstItem="vWC-Xx-KCC" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="F42-Ww-5lf"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="N4H-mP-iHM" secondAttribute="bottom" id="LNO-Gn-jtZ"/>
+                <constraint firstItem="N4H-mP-iHM" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="SSX-Gi-b3T"/>
+                <constraint firstAttribute="trailing" secondItem="N4H-mP-iHM" secondAttribute="trailing" id="kdd-GU-rSr"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="numberLabel" destination="vWC-Xx-KCC" id="Z40-13-358"/>
+            </connections>
+            <point key="canvasLocation" x="-38.399999999999999" y="-96.251874062968525"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="numberpad-button" width="512" height="512"/>
+    </resources>
+</document>

@@ -107,6 +107,11 @@
 		ECA66DBE223D2A1B00D1D0BC /* LevelPlaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA66DBD223D2A1B00D1D0BC /* LevelPlaceController.swift */; };
 		ECA66DC2223D5DD100D1D0BC /* CreditsScreenView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECA66DC1223D5DD100D1D0BC /* CreditsScreenView.xib */; };
 		ECA66DC4223D5F4000D1D0BC /* CreditsScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA66DC3223D5F4000D1D0BC /* CreditsScreenView.swift */; };
+		ECD2441E224AFFDD00767A56 /* SlimeNumberInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD2441D224AFFDD00767A56 /* SlimeNumberInputView.swift */; };
+		ECD24420224AFFEB00767A56 /* SlimeNumberInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECD2441F224AFFEB00767A56 /* SlimeNumberInputView.xib */; };
+		ECD24422224B011B00767A56 /* SlimeNumberInputController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD24421224B011B00767A56 /* SlimeNumberInputController.swift */; };
+		ECD24424224B018800767A56 /* Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD24423224B018800767A56 /* Controller.swift */; };
+		ECD24426224B02C900767A56 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD24425224B02C900767A56 /* Logger.swift */; };
 		ECD45541223FA21E006AF78D /* Modal.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECD45540223FA21E006AF78D /* Modal.xib */; };
 		ECD45543223FACC4006AF78D /* ModalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD45542223FACC4006AF78D /* ModalController.swift */; };
 		ECD45546223FAFBE006AF78D /* ContextController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD45545223FAFBE006AF78D /* ContextController.swift */; };
@@ -248,6 +253,11 @@
 		ECA66DBD223D2A1B00D1D0BC /* LevelPlaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelPlaceController.swift; sourceTree = "<group>"; };
 		ECA66DC1223D5DD100D1D0BC /* CreditsScreenView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreditsScreenView.xib; sourceTree = "<group>"; };
 		ECA66DC3223D5F4000D1D0BC /* CreditsScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsScreenView.swift; sourceTree = "<group>"; };
+		ECD2441D224AFFDD00767A56 /* SlimeNumberInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlimeNumberInputView.swift; sourceTree = "<group>"; };
+		ECD2441F224AFFEB00767A56 /* SlimeNumberInputView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SlimeNumberInputView.xib; sourceTree = "<group>"; };
+		ECD24421224B011B00767A56 /* SlimeNumberInputController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlimeNumberInputController.swift; sourceTree = "<group>"; };
+		ECD24423224B018800767A56 /* Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controller.swift; sourceTree = "<group>"; };
+		ECD24425224B02C900767A56 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		ECD45540223FA21E006AF78D /* Modal.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Modal.xib; sourceTree = "<group>"; };
 		ECD45542223FACC4006AF78D /* ModalController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalController.swift; sourceTree = "<group>"; };
 		ECD45545223FAFBE006AF78D /* ContextController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextController.swift; sourceTree = "<group>"; };
@@ -418,6 +428,7 @@
 		EC38243D223882AF000D7148 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				ECD2441C224AFF9D00767A56 /* CodeInput */,
 				EC4924F22248D601007B9797 /* Rating */,
 				EC4924E922461FD1007B9797 /* OrderBlob */,
 				ECD4556A2240FBDD006AF78D /* PlayerBox */,
@@ -457,6 +468,8 @@
 				EC21B40122420D4100827121 /* DesignableView.swift */,
 				8BD816AE22422C6700586180 /* Extensions.swift */,
 				8BD816B2224262F100586180 /* AnalogJoystick.swift */,
+				ECD24423224B018800767A56 /* Controller.swift */,
+				ECD24425224B02C900767A56 /* Logger.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -626,6 +639,16 @@
 				8BD816B022422D2700586180 /* GameScene.swift */,
 			);
 			path = Game;
+			sourceTree = "<group>";
+		};
+		ECD2441C224AFF9D00767A56 /* CodeInput */ = {
+			isa = PBXGroup;
+			children = (
+				ECD2441D224AFFDD00767A56 /* SlimeNumberInputView.swift */,
+				ECD2441F224AFFEB00767A56 /* SlimeNumberInputView.xib */,
+				ECD24421224B011B00767A56 /* SlimeNumberInputController.swift */,
+			);
+			path = CodeInput;
 			sourceTree = "<group>";
 		};
 		ECD4553F223FA135006AF78D /* Modal */ = {
@@ -834,6 +857,7 @@
 				EC449B87223BA49D00A8EA35 /* LevelSelectView.xib in Resources */,
 				EC38246F223A1803000D7148 /* Rubik-LightItalic.ttf in Resources */,
 				EC449B90223BADBB00A8EA35 /* LevelDetailsBox.xib in Resources */,
+				ECD24420224AFFEB00767A56 /* SlimeNumberInputView.xib in Resources */,
 				EC449B77223B81FE00A8EA35 /* PlayScreenView.xib in Resources */,
 				8BEDCD392247F10100E24A20 /* LevelDesign.plist in Resources */,
 				EC21B4052242155600827121 /* LoadingScreenView.xib in Resources */,
@@ -1012,6 +1036,7 @@
 				ECA66DC4223D5F4000D1D0BC /* CreditsScreenView.swift in Sources */,
 				EC449B96223BB1D400A8EA35 /* StoryModeLevelSelectView.swift in Sources */,
 				8BD816B922426D1400586180 /* BDButton.swift in Sources */,
+				ECD24424224B018800767A56 /* Controller.swift in Sources */,
 				ECD4556E2240FBFA006AF78D /* PlayerBox.swift in Sources */,
 				ECD455672240F974006AF78D /* ViewControllerProtocol.swift in Sources */,
 				EC21B40222420D4100827121 /* DesignableView.swift in Sources */,
@@ -1031,6 +1056,8 @@
 				EC40E4AC223D61320073D755 /* CreditsSceneViewController.swift in Sources */,
 				EC449B7B223B83DA00A8EA35 /* Router.swift in Sources */,
 				ECD455512240B510006AF78D /* AlertController.swift in Sources */,
+				ECD24422224B011B00767A56 /* SlimeNumberInputController.swift in Sources */,
+				ECD2441E224AFFDD00767A56 /* SlimeNumberInputView.swift in Sources */,
 				EC449B7F223B889400A8EA35 /* TitleScreenView.swift in Sources */,
 				EC3824202238803A000D7148 /* TitleScreenViewController.swift in Sources */,
 				1D2202A5224AB5850080CF7D /* Spaceship.swift in Sources */,
@@ -1039,6 +1066,7 @@
 				ECD455692240FB23006AF78D /* MultiplayerLobbyViewController.swift in Sources */,
 				EC21B407224216C500827121 /* LoadingScreenView.swift in Sources */,
 				EC38244F2238F023000D7148 /* PrimaryButton.swift in Sources */,
+				ECD24426224B02C900767A56 /* Logger.swift in Sources */,
 				EC449B85223BA48100A8EA35 /* LevelSelectView.swift in Sources */,
 				ECA66DBE223D2A1B00D1D0BC /* LevelPlaceController.swift in Sources */,
 				EC449B9E223BBA0300A8EA35 /* Level.swift in Sources */,
