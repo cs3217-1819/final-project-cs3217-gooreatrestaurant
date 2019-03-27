@@ -9,6 +9,7 @@
 class TitleScreenViewController: ViewController<TitleScreenView> {
     override func configureSubviews() {
         setupButtons()
+        setupAnonymousAuth()
     }
     
     private func setupButtons() {
@@ -42,5 +43,10 @@ class TitleScreenViewController: ViewController<TitleScreenView> {
         remember(creditsButtonController)
     }
 
+    private func setupAnonymousAuth() {
+        GameAuth.signInAnonymously { (err) in
+            print(err)
+        }
+    }
 }
 

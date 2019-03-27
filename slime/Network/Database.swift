@@ -503,10 +503,10 @@ class GameDB: GameDatabase {
                 return
             }
             
-            for (id, room) in roomDict {
-                let roomDescriptionDict = room as? [String : AnyObject]
-                // TODO
-            }
+//            for (id, room) in roomDict {
+//                let roomDescriptionDict = room as? [String : AnyObject]
+//                // TODO
+//            }
         }) { (err) in
             // ah
         }
@@ -573,9 +573,9 @@ class GameDB: GameDatabase {
         let ref = dbRef.child("games/\(id)")
         
         let handle = ref.observe(.value, with: { (snap) in
-            guard let roomDict = snap.value as? [String : AnyObject] else {
-                return
-            }
+//            guard let roomDict = snap.value as? [String : AnyObject] else {
+//                return
+//            }
             
             // populate room object
             // TODO
