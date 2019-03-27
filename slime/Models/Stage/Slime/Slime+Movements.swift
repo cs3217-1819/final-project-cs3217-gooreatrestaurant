@@ -28,13 +28,11 @@ extension Slime {
     func moveLeft(withSpeed speed: CGFloat) {
         self.physicsBody?.velocity.dx = -speed * StageConstants.speedMultiplier
         self.xScale = abs(self.xScale)
-        interact()
     }
 
     func moveRight(withSpeed speed: CGFloat) {
         self.physicsBody?.velocity.dx = speed * StageConstants.speedMultiplier
         self.xScale = -abs(self.xScale)
-        interact()
     }
 
     func moveUp(withSpeed speed: CGFloat) {
