@@ -499,9 +499,9 @@ class GameDB: GameDatabase {
         let listOfRooms: [RoomModel] = []
         
         ref.observeSingleEvent(of: .value, with: { (snap) in
-            guard let roomDict = snap.value as? [String : AnyObject] else {
-                return
-            }
+//            guard let roomDict = snap.value as? [String : AnyObject] else {
+//                return
+//            }
             
 //            for (id, room) in roomDict {
 //                let roomDescriptionDict = room as? [String : AnyObject]

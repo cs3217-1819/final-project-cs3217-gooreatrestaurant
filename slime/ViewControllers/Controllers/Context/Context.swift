@@ -10,6 +10,7 @@ import UIKit
 
 class Context {
     let router = Router(with: .TitleScreen)
+    let db: GameDatabase = GameDB()
     private var baseView: UIView {
         return mainController.view
     }
