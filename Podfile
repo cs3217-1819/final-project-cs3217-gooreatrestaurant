@@ -10,6 +10,9 @@ target 'slime' do
   pod 'RxCocoa', '~> 4.0'
   pod 'RxGesture'
   pod 'SnapKit', '~> 4.0.0'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Core'
+  pod 'Firebase/Database'
 
   target 'slimeTests' do
     inherit! :search_paths
