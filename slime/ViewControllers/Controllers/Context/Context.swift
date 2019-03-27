@@ -47,6 +47,10 @@ class Context {
         modal.open(with: baseView, closeOnOutsideTap: true)
     }
     
+    func closeAlert() {
+        modal.close()
+    }
+    
     func routeTo(_ route: Route) {
         let previousRoute = router.currentRoute
         let previousVC = router.currentViewController
