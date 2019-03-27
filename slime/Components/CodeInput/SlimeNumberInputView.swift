@@ -10,4 +10,5 @@ import UIKit
 
 class SlimeNumberInputView: UIView {
     @IBOutlet var numberLabel: TextLabel!
+    @IBOutlet var slimeImageView: UIImageView!
 }

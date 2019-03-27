@@ -7,20 +7,71 @@
 //
 
 import UIKit
+import RxSwift
 
 class SlimeNumberInputController: Controller {
-    let view: SlimeNumberInputView
-    let number: Int
+    enum Color {
+        case yellow
+        case green
+        case red
+    }
     
-    init(with view: UIView, number: Int) {
+    let view: SlimeNumberInputView
+    private let text = BehaviorSubject(value: "")
+    private let color = BehaviorSubject<Color>(value: .yellow)
+    private let buttonController: ButtonController
+    private let disposeBag = DisposeBag()
+    
+    init(with view: UIView?) {
         guard let trueView = view as? SlimeNumberInputView else {
             fatalError("Nib class is wrong")
         }
         self.view = trueView
-        self.number = number
+        
+        buttonController = ButtonController(using: self.view)
+    }
+    
+    convenience init(withXib xibView: XibView) {
+        self.init(with: xibView.contentView)
     }
     
     func configure() {
-        view.numberLabel.text = "\(number)"
+        setupReactive()
+    }
+    
+    func set(number: Int) -> SlimeNumberInputController {
+        text.onNext("\(number)")
+        return self
+    }
+    
+    func set(text: String) -> SlimeNumberInputController {
+        self.text.onNext(text)
+        return self
+    }
+    
+    func set(color: Color) -> SlimeNumberInputController {
+        self.color.onNext(color)
+        return self
+    }
+    
+    func onTap(_ callback: @escaping () -> ()) -> SlimeNumberInputController {
+        buttonController.onTap(callback)
+        return self
+    }
+    
+    private func setupReactive() {
+        text.distinctUntilChanged().subscribe { event in
+            guard let element = event.element else {
+                return
+            }
+            self.view.numberLabel.text = element
+        }.disposed(by: disposeBag)
+        
+        color.distinctUntilChanged().subscribe { event in
+            guard let element = event.element else {
+                return
+            }
+            // do image change
+        }.disposed(by: disposeBag)
     }
 }

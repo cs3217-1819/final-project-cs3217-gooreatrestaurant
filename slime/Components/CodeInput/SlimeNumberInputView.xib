@@ -43,6 +43,7 @@
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
                 <outlet property="numberLabel" destination="vWC-Xx-KCC" id="Z40-13-358"/>
+                <outlet property="slimeImageView" destination="N4H-mP-iHM" id="XhZ-Z0-h4J"/>
             </connections>
             <point key="canvasLocation" x="-38.399999999999999" y="-96.251874062968525"/>
         </view>

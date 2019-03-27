@@ -112,6 +112,12 @@
 		ECD24422224B011B00767A56 /* SlimeNumberInputController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD24421224B011B00767A56 /* SlimeNumberInputController.swift */; };
 		ECD24424224B018800767A56 /* Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD24423224B018800767A56 /* Controller.swift */; };
 		ECD24426224B02C900767A56 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD24425224B02C900767A56 /* Logger.swift */; };
+		ECD24428224B0A9300767A56 /* SlimeNumberPadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECD24427224B0A9300767A56 /* SlimeNumberPadView.xib */; };
+		ECD2442A224B0C9E00767A56 /* SlimeNumberPadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD24429224B0C9E00767A56 /* SlimeNumberPadView.swift */; };
+		ECD2442C224B0D0800767A56 /* SlimeNumberPadController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD2442B224B0D0800767A56 /* SlimeNumberPadController.swift */; };
+		ECD2442E224B108200767A56 /* NumberPadResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD2442D224B108200767A56 /* NumberPadResponder.swift */; };
+		ECD24431224B114400767A56 /* JoinRoomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECD24430224B114400767A56 /* JoinRoomView.xib */; };
+		ECD24433224B11F800767A56 /* CodeInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECD24432224B11F800767A56 /* CodeInputView.xib */; };
 		ECD45541223FA21E006AF78D /* Modal.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECD45540223FA21E006AF78D /* Modal.xib */; };
 		ECD45543223FACC4006AF78D /* ModalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD45542223FACC4006AF78D /* ModalController.swift */; };
 		ECD45546223FAFBE006AF78D /* ContextController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD45545223FAFBE006AF78D /* ContextController.swift */; };
@@ -133,6 +139,10 @@
 		ECD455702240FEDE006AF78D /* PlayerBoxController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD4556F2240FEDE006AF78D /* PlayerBoxController.swift */; };
 		ECD455722240FFC7006AF78D /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD455712240FFC7006AF78D /* Player.swift */; };
 		ECD4557622411340006AF78D /* UpButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECD4557522411340006AF78D /* UpButton.xib */; };
+		ECF75EFE224B12C100537237 /* CodeInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF75EFD224B12C100537237 /* CodeInputView.swift */; };
+		ECF75F00224B131800537237 /* CodeInputController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF75EFF224B131800537237 /* CodeInputController.swift */; };
+		ECF75F02224B17CA00537237 /* JoinRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF75F01224B17CA00537237 /* JoinRoomView.swift */; };
+		ECF75F04224B182400537237 /* JoinRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF75F03224B182400537237 /* JoinRoomViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -258,6 +268,12 @@
 		ECD24421224B011B00767A56 /* SlimeNumberInputController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlimeNumberInputController.swift; sourceTree = "<group>"; };
 		ECD24423224B018800767A56 /* Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controller.swift; sourceTree = "<group>"; };
 		ECD24425224B02C900767A56 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		ECD24427224B0A9300767A56 /* SlimeNumberPadView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SlimeNumberPadView.xib; sourceTree = "<group>"; };
+		ECD24429224B0C9E00767A56 /* SlimeNumberPadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlimeNumberPadView.swift; sourceTree = "<group>"; };
+		ECD2442B224B0D0800767A56 /* SlimeNumberPadController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlimeNumberPadController.swift; sourceTree = "<group>"; };
+		ECD2442D224B108200767A56 /* NumberPadResponder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberPadResponder.swift; sourceTree = "<group>"; };
+		ECD24430224B114400767A56 /* JoinRoomView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JoinRoomView.xib; sourceTree = "<group>"; };
+		ECD24432224B11F800767A56 /* CodeInputView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CodeInputView.xib; sourceTree = "<group>"; };
 		ECD45540223FA21E006AF78D /* Modal.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Modal.xib; sourceTree = "<group>"; };
 		ECD45542223FACC4006AF78D /* ModalController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalController.swift; sourceTree = "<group>"; };
 		ECD45545223FAFBE006AF78D /* ContextController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextController.swift; sourceTree = "<group>"; };
@@ -279,6 +295,10 @@
 		ECD4556F2240FEDE006AF78D /* PlayerBoxController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerBoxController.swift; sourceTree = "<group>"; };
 		ECD455712240FFC7006AF78D /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		ECD4557522411340006AF78D /* UpButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UpButton.xib; sourceTree = "<group>"; };
+		ECF75EFD224B12C100537237 /* CodeInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeInputView.swift; sourceTree = "<group>"; };
+		ECF75EFF224B131800537237 /* CodeInputController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeInputController.swift; sourceTree = "<group>"; };
+		ECF75F01224B17CA00537237 /* JoinRoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinRoomView.swift; sourceTree = "<group>"; };
+		ECF75F03224B182400537237 /* JoinRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinRoomViewController.swift; sourceTree = "<group>"; };
 		FC54AF03EC549BA6D820D01E /* Pods-slime.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-slime.release.xcconfig"; path = "Pods/Target Support Files/Pods-slime/Pods-slime.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -565,6 +585,7 @@
 		EC449B73223B7E4A00A8EA35 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				ECD2442F224B113400767A56 /* JoinRoomView */,
 				EC21B4032242150A00827121 /* LoadingScreenView */,
 				ECD4555F2240F48D006AF78D /* MultiplayerLobbyView */,
 				ECD4555A2240F195006AF78D /* MultiplayerScreenView */,
@@ -647,8 +668,25 @@
 				ECD2441D224AFFDD00767A56 /* SlimeNumberInputView.swift */,
 				ECD2441F224AFFEB00767A56 /* SlimeNumberInputView.xib */,
 				ECD24421224B011B00767A56 /* SlimeNumberInputController.swift */,
+				ECD24427224B0A9300767A56 /* SlimeNumberPadView.xib */,
+				ECD24429224B0C9E00767A56 /* SlimeNumberPadView.swift */,
+				ECD2442B224B0D0800767A56 /* SlimeNumberPadController.swift */,
+				ECD2442D224B108200767A56 /* NumberPadResponder.swift */,
+				ECD24432224B11F800767A56 /* CodeInputView.xib */,
+				ECF75EFD224B12C100537237 /* CodeInputView.swift */,
+				ECF75EFF224B131800537237 /* CodeInputController.swift */,
 			);
 			path = CodeInput;
+			sourceTree = "<group>";
+		};
+		ECD2442F224B113400767A56 /* JoinRoomView */ = {
+			isa = PBXGroup;
+			children = (
+				ECD24430224B114400767A56 /* JoinRoomView.xib */,
+				ECF75F01224B17CA00537237 /* JoinRoomView.swift */,
+				ECF75F03224B182400537237 /* JoinRoomViewController.swift */,
+			);
+			path = JoinRoomView;
 			sourceTree = "<group>";
 		};
 		ECD4553F223FA135006AF78D /* Modal */ = {
@@ -852,6 +890,7 @@
 				EC382470223A1803000D7148 /* Rubik-BlackItalic.ttf in Resources */,
 				EC382473223A1803000D7148 /* Rubik-Black.ttf in Resources */,
 				ECD455612240F499006AF78D /* MultiplayerLobbyView.xib in Resources */,
+				ECD24431224B114400767A56 /* JoinRoomView.xib in Resources */,
 				EC4924EB22461FEC007B9797 /* OrderBlob.xib in Resources */,
 				EC38246C223A1803000D7148 /* Rubik-BoldItalic.ttf in Resources */,
 				EC449B87223BA49D00A8EA35 /* LevelSelectView.xib in Resources */,
@@ -865,6 +904,7 @@
 				ECD4554D2240B0AF006AF78D /* Alert.xib in Resources */,
 				EC4924F42248D616007B9797 /* RatingView.xib in Resources */,
 				EC38246B223A1803000D7148 /* Rubik-Regular.ttf in Resources */,
+				ECD24428224B0A9300767A56 /* SlimeNumberPadView.xib in Resources */,
 				EC449B75223B7E6300A8EA35 /* TitleScreenView.xib in Resources */,
 				EC21B40022420CA700827121 /* LevelPlayButton.xib in Resources */,
 				EC449B8B223BACD500A8EA35 /* StoryModeLevelSelectView.xib in Resources */,
@@ -885,6 +925,7 @@
 				EC3824232238803A000D7148 /* Main.storyboard in Resources */,
 				EC38245F223A17F7000D7148 /* Squidgy Slimes.ttf in Resources */,
 				EC40E4AE223F97E50073D755 /* SettingsScreenView.xib in Resources */,
+				ECD24433224B11F800767A56 /* CodeInputView.xib in Resources */,
 				EC382472223A1803000D7148 /* Rubik-Medium.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1016,18 +1057,23 @@
 				EC40E4B0223F983E0073D755 /* SettingsScreenView.swift in Sources */,
 				ECD4554A223FB133006AF78D /* ViewController.swift in Sources */,
 				1D2202AF224AB8C30080CF7D /* IngredientContainer.swift in Sources */,
+				ECF75F02224B17CA00537237 /* JoinRoomView.swift in Sources */,
 				EC38245422390789000D7148 /* ScrollingBackgroundViewController.swift in Sources */,
 				EC38244722388CB1000D7148 /* PrimaryButtonController.swift in Sources */,
 				EC449B89223BAA8100A8EA35 /* LevelSelectViewController.swift in Sources */,
 				EC449B79223B82A600A8EA35 /* MainController.swift in Sources */,
 				EC449B94223BB08700A8EA35 /* LevelDetailsBoxController.swift in Sources */,
+				ECF75F00224B131800537237 /* CodeInputController.swift in Sources */,
 				ECD45548223FAFFF006AF78D /* Context.swift in Sources */,
 				EC449B22223A35BE00A8EA35 /* PlayScreenViewController.swift in Sources */,
 				EC449B98223BB20400A8EA35 /* StoryModeLevelSelectController.swift in Sources */,
 				1D22029D224AB5850080CF7D /* Slime.swift in Sources */,
 				1D22029F224AB5850080CF7D /* Order.swift in Sources */,
 				EC4924F62248D638007B9797 /* RatingView.swift in Sources */,
+				ECF75EFE224B12C100537237 /* CodeInputView.swift in Sources */,
 				1D2202A2224AB5850080CF7D /* Ingredient.swift in Sources */,
+				ECD2442E224B108200767A56 /* NumberPadResponder.swift in Sources */,
+				ECD2442C224B0D0800767A56 /* SlimeNumberPadController.swift in Sources */,
 				1D22029A224AB5850080CF7D /* Plate.swift in Sources */,
 				EC4924ED2246210C007B9797 /* OrderBlob.swift in Sources */,
 				EC4924E8224618E6007B9797 /* LevelPlaceView.swift in Sources */,
@@ -1056,6 +1102,7 @@
 				EC40E4AC223D61320073D755 /* CreditsSceneViewController.swift in Sources */,
 				EC449B7B223B83DA00A8EA35 /* Router.swift in Sources */,
 				ECD455512240B510006AF78D /* AlertController.swift in Sources */,
+				ECF75F04224B182400537237 /* JoinRoomViewController.swift in Sources */,
 				ECD24422224B011B00767A56 /* SlimeNumberInputController.swift in Sources */,
 				ECD2441E224AFFDD00767A56 /* SlimeNumberInputView.swift in Sources */,
 				EC449B7F223B889400A8EA35 /* TitleScreenView.swift in Sources */,
@@ -1074,6 +1121,7 @@
 				ECD455722240FFC7006AF78D /* Player.swift in Sources */,
 				EC449B7D223B873600A8EA35 /* RouterViewController.swift in Sources */,
 				EC4924F82248D877007B9797 /* RatingViewController.swift in Sources */,
+				ECD2442A224B0C9E00767A56 /* SlimeNumberPadView.swift in Sources */,
 				EC3824562239116D000D7148 /* CGRectExtension.swift in Sources */,
 				8BD816B122422D2700586180 /* GameScene.swift in Sources */,
 				ECD45546223FAFBE006AF78D /* ContextController.swift in Sources */,
