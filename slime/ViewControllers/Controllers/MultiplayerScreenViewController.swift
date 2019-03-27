@@ -20,7 +20,7 @@ class MultiplayerScreenViewController: ViewController<MultiplayerScreenView> {
         }
         let joinControl = ButtonController(using: view.joinRoomButton)
         joinControl.onTap {
-            self.context.routeTo(.MultiplayerLobby)
+            self.context.routeTo(.MultiplayerJoinRoomScreen)
         }
         
         remember(hostControl)

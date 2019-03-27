@@ -9,7 +9,7 @@
 import UIKit
 import RxSwift
 
-class LevelPlaceController {
+class LevelPlaceController: Controller {
     let view: LevelPlaceView
     private(set) var offsetValue: CGPoint?
     

@@ -13,18 +13,24 @@ class TitleScreenViewController: ViewController<TitleScreenView> {
     
     private func setupButtons() {
         let playButtonController = PrimaryButtonController(using: view.playButton)
+        playButtonController.configure()
+        _ = playButtonController
             .set(color: .green)
             .set(label: "Play")
         playButtonController.onTap {
             self.context.routeTo(.PlayScreen)
         }
         let settingsButtonController = PrimaryButtonController(using: view.settingsButton)
+        settingsButtonController.configure()
+        _ = settingsButtonController
             .set(color: .blue)
             .set(label: "Settings")
         settingsButtonController.onTap {
             self.context.routeTo(.SettingsScreen)
         }
         let creditsButtonController = PrimaryButtonController(using: view.creditsButton)
+        creditsButtonController.configure()
+        _ = creditsButtonController
             .set(color: .purple)
             .set(label: "Credits")
         creditsButtonController.onTap {

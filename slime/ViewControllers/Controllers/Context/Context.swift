@@ -55,9 +55,9 @@ class Context {
                                     coordsDiff: router.currentRoute.coordinates - previousRoute.coordinates)
     }
     
-    func routeToAndPrepareFor(_ route: Route) -> ViewControllerProtocol {
+    func routeToAndPrepareFor<Control: ViewControllerProtocol>(_ route: Route) -> Control {
         routeTo(route)
-        return router.currentViewController
+        return router.currentViewController as! Control
     }
     
     func segueToGame() {

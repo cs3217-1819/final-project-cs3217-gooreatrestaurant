@@ -8,14 +8,17 @@
 import UIKit
 
 class MultiplayerLobbyViewController: ViewController<MultiplayerLobbyView> {
-    private var playerViews: [XibView] {
-        return [
-            view.playerOneView,
-            view.playerTwoView,
-            view.playerThreeView,
-            view.playerFourView
-        ]
+    private lazy var playerViews: [XibView] = [
+        view.playerOneView,
+        view.playerTwoView,
+        view.playerThreeView,
+        view.playerFourView
+    ]
+    
+    func set(roomCode: String) {
+        view.roomCodeLabel.text = roomCode
     }
+    
     override func configureSubviews() {
         setupPlayers()
         configureUpButton(to: .MultiplayerScreen)

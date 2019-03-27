@@ -10,17 +10,25 @@ import UIKit
 import RxSwift
 
 class MainController: UIViewController {
+    @IBOutlet var underlyingView: UIView!
     private let disposeBag = DisposeBag()
     private var context: Context!
     private var router: Router {
         return context.router
     }
     private var bgControl: ScrollingBackgroundViewController?
+    fileprivate var isSetup: Bool = false
     
     override func viewWillLayoutSubviews() {
         if bgControl == nil {
-            // TODO: more robust checking, deinit when rotate
-            bgControl = ScrollingBackgroundViewController(with: view)
+            // TODO: more robust checking
+            bgControl = ScrollingBackgroundViewController(with: underlyingView)
+            bgControl?.configure()
+        }
+        
+        if !isSetup {
+            setupView()
+            isSetup = true
         }
     }
     
@@ -28,7 +36,7 @@ class MainController: UIViewController {
         super.viewDidLoad()
         
         context = Context(using: self)
-        setupView()
+        
     }
     
     // Perform segue called from context
@@ -36,17 +44,17 @@ class MainController: UIViewController {
                       to toVC: ViewControllerProtocol,
                       coordsDiff: CGPoint) {
         adjustBackground()
-        let screenSize = CGPoint(x: view.frame.width, y: view.frame.height)
+        let screenSize = CGPoint(x: underlyingView.frame.width, y: underlyingView.frame.height)
         // points based on scale of screen size
         let diff = coordsDiff .* screenSize
         
         let toView = toVC.getView()
-        toView.frame = CGRect(x: diff.x, y: diff.y, width: view.bounds.width, height: view.bounds.height)
+        toView.frame = CGRect(x: diff.x, y: diff.y, width: underlyingView.bounds.width, height: underlyingView.bounds.height)
         toView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         toVC.use(context: context)
         toVC.configureSubviews()
         
-        view.addSubview(toView)
+        underlyingView.addSubview(toView)
         let fromVCFrame = fromVC.getView().frame
         UIView.animate(withDuration: 1.0, animations: {
             fromVC.getView().frame = fromVCFrame.offsetBy(dx: -diff.x, dy: -diff.y)
@@ -61,9 +69,9 @@ class MainController: UIViewController {
         let vc = router.currentViewController
         vc.use(context: context)
         vc.configureSubviews()
-        vc.getView().frame = view.bounds
+        vc.getView().frame = underlyingView.bounds
         vc.getView().autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        view.addSubview(vc.getView())
+        underlyingView.addSubview(vc.getView())
     }
     
     private func adjustBackground() {

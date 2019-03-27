@@ -10,15 +10,15 @@ import UIKit
 import SnapKit
 import RxSwift
 
-class ModalController {
+class ModalController: Controller {
     private let disposeBag = DisposeBag()
-    let modalView: UIView
+    let view: UIView
     var innerView: UIView?
     var backgroundView: UIView?
     
     // Wraps a modal around the given view
     init() {
-        modalView = UIView.initFromNib("Modal")
+        view = UIView.initFromNib("Modal")
     }
     
     func setContent(_ view: UIView) {
@@ -29,12 +29,12 @@ class ModalController {
     }
     
     func configure() {
-        guard let view = innerView else {
+        guard let trueInnerView = innerView else {
             return
         }
-        modalView.addSubview(view)
-        modalView.snp.makeConstraints { make in
-            make.size.equalTo(view)
+        view.addSubview(trueInnerView)
+        view.snp.makeConstraints { make in
+            make.size.equalTo(trueInnerView)
         }
     }
     
@@ -44,23 +44,23 @@ class ModalController {
     
     func open(with parent: UIView, closeOnOutsideTap: Bool) {
         let background = createBackground(for: parent, closeOnOutsideTap: closeOnOutsideTap)
-        modalView.alpha = 0
-        parent.addSubview(modalView)
-        modalView.centerInParent()
-        modalView.layoutIfNeeded()
+        view.alpha = 0
+        parent.addSubview(view)
+        view.centerInParent()
+        view.layoutIfNeeded()
         UIView.animate(withDuration: 0.5, animations: {
-            self.modalView.alpha = 1
+            self.view.alpha = 1
             background.alpha = 1
         })
     }
     
     func close() {
-        modalView.alpha = 1
+        view.alpha = 1
         UIView.animate(withDuration: 0.3, animations: {
-            self.modalView.alpha = 0
+            self.view.alpha = 0
             self.backgroundView?.alpha = 0
         }, completion: { _ in
-            self.modalView.removeFromSuperview()
+            self.view.removeFromSuperview()
             self.backgroundView?.removeFromSuperview()
             self.backgroundView = nil
         })

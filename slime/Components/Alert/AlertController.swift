@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AlertController {
+class AlertController: Controller {
     let view: Alert
     let modalController: ModalController
     private var title: String?
@@ -42,6 +42,8 @@ class AlertController {
         for action in actions {
             let actionView = UIView.initFromNib("PrimaryButton")
             let controller = PrimaryButtonController(using: actionView)
+            controller.configure()
+            _ = controller
                 .set(label: action.label)
             switch(action.type) {
             case .Normal:
