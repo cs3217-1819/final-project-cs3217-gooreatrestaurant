@@ -143,6 +143,7 @@
 		ECF75F00224B131800537237 /* CodeInputController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF75EFF224B131800537237 /* CodeInputController.swift */; };
 		ECF75F02224B17CA00537237 /* JoinRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF75F01224B17CA00537237 /* JoinRoomView.swift */; };
 		ECF75F04224B182400537237 /* JoinRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF75F03224B182400537237 /* JoinRoomViewController.swift */; };
+		F92ECADF224BADEC0040A4E2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F92ECADE224BADEC0040A4E2 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -299,6 +300,7 @@
 		ECF75EFF224B131800537237 /* CodeInputController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeInputController.swift; sourceTree = "<group>"; };
 		ECF75F01224B17CA00537237 /* JoinRoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinRoomView.swift; sourceTree = "<group>"; };
 		ECF75F03224B182400537237 /* JoinRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinRoomViewController.swift; sourceTree = "<group>"; };
+		F92ECADE224BADEC0040A4E2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FC54AF03EC549BA6D820D01E /* Pods-slime.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-slime.release.xcconfig"; path = "Pods/Target Support Files/Pods-slime/Pods-slime.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -429,6 +431,7 @@
 				EC38241D2238803A000D7148 /* AppDelegate.swift */,
 				EC3824212238803A000D7148 /* Main.storyboard */,
 				EC3824242238803D000D7148 /* Assets.xcassets */,
+				F92ECADE224BADEC0040A4E2 /* GoogleService-Info.plist */,
 				EC3824262238803D000D7148 /* LaunchScreen.storyboard */,
 				EC3824292238803D000D7148 /* Info.plist */,
 				8BEDCD382247F10100E24A20 /* LevelDesign.plist */,
@@ -895,6 +898,7 @@
 				EC38246C223A1803000D7148 /* Rubik-BoldItalic.ttf in Resources */,
 				EC449B87223BA49D00A8EA35 /* LevelSelectView.xib in Resources */,
 				EC38246F223A1803000D7148 /* Rubik-LightItalic.ttf in Resources */,
+				F92ECADF224BADEC0040A4E2 /* GoogleService-Info.plist in Resources */,
 				EC449B90223BADBB00A8EA35 /* LevelDetailsBox.xib in Resources */,
 				ECD24420224AFFEB00767A56 /* SlimeNumberInputView.xib in Resources */,
 				EC449B77223B81FE00A8EA35 /* PlayScreenView.xib in Resources */,
@@ -952,7 +956,8 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\n";
+			shellScript = "
+";
 		};
 		603C85CE3C13985DFB535341 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
