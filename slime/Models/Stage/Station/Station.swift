@@ -11,10 +11,12 @@ import SpriteKit
 
 class Station: SKSpriteNode {
 
-    init(inPosition position: CGPoint, withSize size: CGSize = StageConstants.stationSize) {
+    init(inPosition position: CGPoint, withSize size: CGSize) {
         super.init(texture: nil, color: .yellow, size: size)
         self.name = StageConstants.stationName
         self.position = position
+        self.zPosition = StageConstants.stationZPos
+
         self.physicsBody = SKPhysicsBody(rectangleOf: size)
         self.physicsBody?.isDynamic = false
         self.physicsBody?.categoryBitMask = StageConstants.stationCategory
