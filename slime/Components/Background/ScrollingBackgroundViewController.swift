@@ -8,18 +8,26 @@
 
 import UIKit
 
-class ScrollingBackgroundViewController {
+class ScrollingBackgroundViewController: Controller {
+    var view: UIView {
+        return background
+    }
+    private let parent: UIView
     private let background: UIView
     private var backgroundImageView: UIImageView
     private var imageName: String
     
     init(with view: UIView) {
+        parent = view
         imageName = "background"
         background = UIView(frame: view.frame.scale(by: 2))
         backgroundImageView = UIImageView(frame: background.frame)
         backgroundImageView.frame = background.bounds
         background.addSubview(backgroundImageView)
-        setupView(view: view)
+    }
+    
+    func configure() {
+        setupView(parent: parent)
     }
     
     func toAlpha(_ alpha: CGFloat) {
@@ -51,16 +59,16 @@ class ScrollingBackgroundViewController {
         })
     }
     
-    private func setupView(view: UIView) {
+    private func setupView(parent: UIView) {
         background.contentMode = .scaleAspectFill
-        background.frame = background.frame.offsetBy(dx: -view.frame.width, dy: -view.frame.height)
+        background.frame = background.frame.offsetBy(dx: -parent.frame.width, dy: -parent.frame.height)
         backgroundImageView.image = ImageProvider.get(imageName)
         
         UIView.animate(withDuration: 10.0, delay: 0.0, options: [.repeat, .autoreverse], animations: {
-            self.background.frame = self.background.frame.offsetBy(dx: view.frame.width, dy: view.frame.height)
+            self.background.frame = self.background.frame.offsetBy(dx: parent.frame.width, dy: parent.frame.height)
         }, completion: nil)
-        view.addSubview(background)
-        view.sendSubviewToBack(background)
+        parent.addSubview(background)
+        parent.sendSubviewToBack(background)
     }
     
     deinit {

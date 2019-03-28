@@ -10,6 +10,7 @@ import UIKit
 
 class Context {
     let router = Router(with: .TitleScreen)
+    let db: GameDatabase = GameDB()
     private var baseView: UIView {
         return mainController.view
     }
@@ -46,6 +47,10 @@ class Context {
         modal.open(with: baseView, closeOnOutsideTap: true)
     }
     
+    func closeAlert() {
+        modal.close()
+    }
+    
     func routeTo(_ route: Route) {
         let previousRoute = router.currentRoute
         let previousVC = router.currentViewController
@@ -55,9 +60,9 @@ class Context {
                                     coordsDiff: router.currentRoute.coordinates - previousRoute.coordinates)
     }
     
-    func routeToAndPrepareFor(_ route: Route) -> ViewControllerProtocol {
+    func routeToAndPrepareFor<Control: ViewControllerProtocol>(_ route: Route) -> Control {
         routeTo(route)
-        return router.currentViewController
+        return router.currentViewController as! Control
     }
     
     func segueToGame() {

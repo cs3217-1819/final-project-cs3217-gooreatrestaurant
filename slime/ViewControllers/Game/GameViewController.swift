@@ -29,8 +29,8 @@ class GameViewController: UIViewController {
 
         stage.spaceship.addSlime(inPosition: CGPoint(x: 0, y: -50))
         stage.spaceship.addRoom()
-        stage.spaceship.addWalls(inLevel: "Level 1")
-        stage.spaceship.addWalls(inLevel: "Level1UnaccessibleArea")
+        stage.spaceship.addPlayingArea(inLevel: "Level 1")
+    
         stage.spaceship.addLadder(inPosition: CGPoint(x: -100, y: -21))
         stage.spaceship.addLadder(inPosition: CGPoint(x: -100, y: -50))
     

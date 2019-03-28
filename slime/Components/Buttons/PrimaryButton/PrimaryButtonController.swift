@@ -9,8 +9,10 @@
 import UIKit
 import RxSwift
 
-class PrimaryButtonController {
-    
+class PrimaryButtonController: Controller {
+    var view: UIView {
+        return button
+    }
     private let disposeBag = DisposeBag()
     
     private let buttonController: ButtonController
@@ -34,7 +36,9 @@ class PrimaryButtonController {
         }
         self.button = button
         buttonController = ButtonController(using: button)
-        
+    }
+    
+    func configure() {
         setupReactive()
     }
     

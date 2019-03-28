@@ -20,12 +20,16 @@ class PlayScreenViewController: ViewController<PlayScreenView> {
     
     private func configureButtons() {
         let singlePlayerButtonController = PlayMenuButtonController(using: view.singlePlayerButton)
+        singlePlayerButtonController.configure()
+        _ = singlePlayerButtonController
             .set(title: "Single Player Mode")
             .set(description: "Play alone to cure your depression!")
         singlePlayerButtonController.onTap {
             self.context.routeTo(.LevelSelect)
         }
         let multiplayerButtonController = PlayMenuButtonController(using: view.multiplayerButton)
+        multiplayerButtonController.configure()
+        _ = multiplayerButtonController
             .set(title: "Multiplayer Mode")
             .set(description: "Wreck havoc with your friends!")
             .set(imageName: "slime-multiplayer")
@@ -33,6 +37,8 @@ class PlayScreenViewController: ViewController<PlayScreenView> {
             self.context.routeTo(.MultiplayerScreen)
         }
         let levelEditorButtonController = PlayMenuButtonController(using: view.levelEditorButton)
+        levelEditorButtonController.configure()
+        _ = levelEditorButtonController
             .set(title: "Level Editor")
             .set(description: "Edit some levels!")
         levelEditorButtonController.onTap {

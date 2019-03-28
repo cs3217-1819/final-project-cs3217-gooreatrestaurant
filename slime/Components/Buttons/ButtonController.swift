@@ -11,11 +11,15 @@ import RxSwift
 import RxCocoa
 import RxGesture
 
-class ButtonController {
+class ButtonController: Controller {
     private let disposeBag = DisposeBag()
     let view: UIView
     init(using view: UIView) {
         self.view = view
+    }
+    
+    func configure() {
+        
     }
     
     func onTap(_ callback: @escaping () -> ()) {

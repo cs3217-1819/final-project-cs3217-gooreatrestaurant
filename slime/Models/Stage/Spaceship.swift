@@ -56,21 +56,25 @@ class Spaceship: SKSpriteNode {
         self.addChild(plate)
     }
 
-    func addWalls(inLevel levelName: String) {
-        var coordArray: [String] = []
-        var gameAreaCoord: [CGPoint] = []
-
+    func addPlayingArea(inLevel levelName: String) {
+        //Generating the walls
         guard let path = Bundle.main.path(forResource: "LevelDesign", ofType: "plist")  else {
             print("Error loading path")
             return
         }
+        let dictionary = NSDictionary(contentsOfFile: path)
+        let temp = dictionary?.value(forKey: levelName) as! [[String]]
 
-        let contents = NSDictionary(contentsOfFile: path)
-        coordArray = contents?.object(forKey: levelName) as! [String]
-        for item in coordArray {
+        for item in temp {
+            addWall(inCoord: item)
+        }
+    }
+
+    func addWall(inCoord coordinates: [String]) {
+        var gameAreaCoord: [CGPoint] = []
+        for item in coordinates {
             gameAreaCoord.append(NSCoder.cgPoint(for: item))
         }
-
         let wallBorder = SKNode()
         wallBorder.position = CGPoint(x: self.frame.midX, y: self.frame.midY)
         let ground = SKShapeNode(points: &gameAreaCoord, count: gameAreaCoord.count)

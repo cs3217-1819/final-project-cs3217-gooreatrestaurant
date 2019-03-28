@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="XibView" customModule="slime" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CodeInputView" customModule="slime" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="318" height="83"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="DNj-bU-5I7">
+                    <rect key="frame" x="0.0" y="0.0" width="318" height="83"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="clY-NI-gbG" customClass="TextLabel" customModule="slime" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="8" height="83"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="style" value="h0"/>
+                                <userDefinedRuntimeAttribute type="string" keyPath="color" value="white0"/>
+                            </userDefinedRuntimeAttributes>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QgO-je-UuJ" customClass="TextLabel" customModule="slime" customModuleProvider="target">
+                            <rect key="frame" x="51.5" y="0.0" width="8" height="83"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="style" value="h0"/>
+                                <userDefinedRuntimeAttribute type="string" keyPath="color" value="white0"/>
+                            </userDefinedRuntimeAttributes>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="epM-3k-xi8" customClass="TextLabel" customModule="slime" customModuleProvider="target">
+                            <rect key="frame" x="103.5" y="0.0" width="8" height="83"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="style" value="h0"/>
+                                <userDefinedRuntimeAttribute type="string" keyPath="color" value="white0"/>
+                            </userDefinedRuntimeAttributes>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="87V-sI-KSA" customClass="TextLabel" customModule="slime" customModuleProvider="target">
+                            <rect key="frame" x="155" y="0.0" width="8" height="83"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="style" value="h0"/>
+                                <userDefinedRuntimeAttribute type="string" keyPath="color" value="white0"/>
+                            </userDefinedRuntimeAttributes>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A4b-1s-uiz" customClass="TextLabel" customModule="slime" customModuleProvider="target">
+                            <rect key="frame" x="206.5" y="0.0" width="8" height="83"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="style" value="h0"/>
+                                <userDefinedRuntimeAttribute type="string" keyPath="color" value="white0"/>
+                            </userDefinedRuntimeAttributes>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G74-9B-PO7" customClass="TextLabel" customModule="slime" customModuleProvider="target">
+                            <rect key="frame" x="258.5" y="0.0" width="8" height="83"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="style" value="h0"/>
+                                <userDefinedRuntimeAttribute type="string" keyPath="color" value="white0"/>
+                            </userDefinedRuntimeAttributes>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ub8-Co-xSN" customClass="TextLabel" customModule="slime" customModuleProvider="target">
+                            <rect key="frame" x="310" y="0.0" width="8" height="83"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="style" value="h0"/>
+                                <userDefinedRuntimeAttribute type="string" keyPath="color" value="white0"/>
+                            </userDefinedRuntimeAttributes>
+                        </label>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="DNj-bU-5I7" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="3bc-Xo-hl7"/>
+                <constraint firstItem="DNj-bU-5I7" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="3gh-Fk-ja3"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="DNj-bU-5I7" secondAttribute="trailing" id="d15-ES-CsA"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="DNj-bU-5I7" secondAttribute="bottom" id="hGX-nk-yXJ"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="inputFive" destination="G74-9B-PO7" id="wCJ-bK-sfy"/>
+                <outlet property="inputFour" destination="A4b-1s-uiz" id="Vhd-FZ-a44"/>
+                <outlet property="inputOne" destination="clY-NI-gbG" id="D9d-WI-2S4"/>
+                <outlet property="inputSix" destination="Ub8-Co-xSN" id="LLp-As-aLL"/>
+                <outlet property="inputThree" destination="epM-3k-xi8" id="VaG-oJ-gTv"/>
+                <outlet property="inputTwo" destination="QgO-je-UuJ" id="ZmX-TX-BHH"/>
+            </connections>
+            <point key="canvasLocation" x="92.799999999999997" y="-122.78860569715144"/>
+        </view>
+    </objects>
+</document>
