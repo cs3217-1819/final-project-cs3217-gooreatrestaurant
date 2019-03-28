@@ -192,6 +192,29 @@ struct Observer {
 }
 
 /**
+ a list of constants representing all the
+ Firebase keys currently available. The naming
+ for the constants are dependent on how deep
+ the keys are in the JSON tree.
+ */
+struct FirebaseKeys {
+    // room keys
+    static let rooms = "rooms"
+    static let rooms_roomName = "room_name"
+    static let rooms_mapName = "map_name"
+    static let rooms_roomId = "room_id"
+    static let rooms_hasStarted = "has_started"
+    static let rooms_isOpen = "is_open"
+    static let rooms_isGameCreated = "is_game_created"
+    static let rooms_players = "players"
+    static let rooms_players_isReady = "is_ready"
+    static let rooms_players_isHost = "is_host"
+    
+    // game keys
+    static let games = "games"
+}
+
+/**
  Implementation of GameDatabase using
  Firebase Realtime Database
  */
@@ -207,7 +230,7 @@ class GameDB: GameDatabase {
     // MARK: Methods related to Room state
     
     func observeRoomState(forRoomId id: String, _ onDataChange: @escaping (RoomModel) -> Void, _ onRoomClose: @escaping () -> Void, _ onError: @escaping (Error) -> Void) {
-        let ref = dbRef.child("rooms/\(id)/")
+        let ref = dbRef.child(FirebaseKeys.rooms + "/\(id)/")
         
         let handle = ref.observe(.value, with: { (snap) in
             guard let roomDict = snap.value as? [String : AnyObject] else {
@@ -219,19 +242,19 @@ class GameDB: GameDatabase {
             print(roomDict)
             
             // populate room object
-            let roomName = roomDict["room_name"] as? String ?? ""
-            let mapName = roomDict["map_name"] as? String ?? ""
-            let roomId = roomDict["room_id"] as? String ?? ""
-            let hasStarted = roomDict["has_started"] as? Bool ?? false
-            let isOpen = roomDict["is_open"] as? Bool ?? false
-            let isGameCreated = roomDict["is_game_created"] as? Bool ?? false
-            let players = roomDict["players"] as? [String : AnyObject] ?? [:]
+            let roomName = roomDict[FirebaseKeys.rooms_roomName] as? String ?? ""
+            let mapName = roomDict[FirebaseKeys.rooms_mapName] as? String ?? ""
+            let roomId = roomDict[FirebaseKeys.rooms_roomId] as? String ?? ""
+            let hasStarted = roomDict[FirebaseKeys.rooms_hasStarted] as? Bool ?? false
+            let isOpen = roomDict[FirebaseKeys.rooms_isOpen] as? Bool ?? false
+            let isGameCreated = roomDict[FirebaseKeys.rooms_isGameCreated] as? Bool ?? false
+            let players = roomDict[FirebaseKeys.rooms_players] as? [String : AnyObject] ?? [:]
             
             let roomRes = RoomModel(name: roomName, map: mapName, id: roomId, hasStarted: hasStarted, gameIsCreated: isGameCreated, isOpen: isOpen)
             
             for (playerUid, playerDescription) in players {
-                let isHost = playerDescription["is_host"] as? Bool ?? false
-                let isReady = playerDescription["is_ready"] as? Bool ?? false
+                let isHost = playerDescription[FirebaseKeys.rooms_players_isHost] as? Bool ?? false
+                let isReady = playerDescription[FirebaseKeys.rooms_players_isReady] as? Bool ?? false
                 
                 let player = RoomPlayerModel(uid: playerUid, isHost: isHost, isReady: isReady)
                 
@@ -247,7 +270,7 @@ class GameDB: GameDatabase {
     }
     
     func joinRoom(forRoomId id: String, _ onSuccess: @escaping () -> Void, _ onRoomFull: @escaping () -> Void, _ onRoomNotExist: @escaping () -> (), _ onError: @escaping (Error) -> Void) {
-        let ref = dbRef.child("rooms/\(id)")
+        let ref = dbRef.child(FirebaseKeys.rooms + "/\(id)")
         
         guard let user = GameAuth.currentUser else {
             return
@@ -261,7 +284,7 @@ class GameDB: GameDatabase {
                 return
             }
             
-            guard let hasStarted = roomDict["has_started"] as? Bool else {
+            guard let hasStarted = roomDict[FirebaseKeys.rooms_hasStarted] as? Bool else {
                 return
             }
             
@@ -271,13 +294,12 @@ class GameDB: GameDatabase {
                 return
             }
             
-            guard let players = roomDict["players"] as? [String : AnyObject] else {
+            guard let players = roomDict[FirebaseKeys.rooms_players] as? [String : AnyObject] else {
                 return
             }
             
             if players[user.uid] != nil {
                 // player already inside game
-                print("invalid")
                 return
             }
             
@@ -288,7 +310,7 @@ class GameDB: GameDatabase {
             }
             
             let newPlayerDict = self.createRoomPlayerDict(isHost: false, uid: user.uid)
-            let currentUserRef = ref.child("players/\(user.uid)")
+            let currentUserRef = ref.child(FirebaseKeys.rooms_players + "/\(user.uid)")
             
             currentUserRef.setValue(newPlayerDict[user.uid], withCompletionBlock: { (err, ref) in
                 if let error = err {
@@ -314,14 +336,14 @@ class GameDB: GameDatabase {
     ///     - uid: the uid of the user
     /// - Returns: a dictinoary ready to be inserted
     private func createRoomPlayerDict(isHost: Bool, uid: String) -> [String : AnyObject] {
-        let newPlayerDescriptionDict: [String : AnyObject] = ["is_host": isHost as AnyObject,
-                                                              "is_ready": isHost as AnyObject]
+        let newPlayerDescriptionDict: [String : AnyObject] = [FirebaseKeys.rooms_players_isHost: isHost as AnyObject,
+             FirebaseKeys.rooms_players_isReady: isHost as AnyObject]
         
         return [uid : newPlayerDescriptionDict as AnyObject]
     }
     
     func changeRoomOpenState(forRoomId id: String, _ onError: @escaping (Error) -> Void) {
-        let ref = dbRef.child("rooms/\(id)/is_open")
+        let ref = dbRef.child(FirebaseKeys.rooms + "/\(id)/" + FirebaseKeys.rooms_players_isHost)
         
         ref.observeSingleEvent(of: .value) { (snap) in
             guard let isOpen = snap.value as? Bool else {
@@ -342,7 +364,7 @@ class GameDB: GameDatabase {
             return
         }
         
-        let ref = dbRef.child("rooms/\(id)/players/\(user.uid)/is_ready")
+        let ref = dbRef.child(FirebaseKeys.rooms + "/\(id)/" + FirebaseKeys.rooms_players + "/\(user.uid)/" + FirebaseKeys.rooms_players_isReady)
         
         ref.observeSingleEvent(of: .value, with: { (snap) in
             guard let isReady = snap.value as? Bool else {
@@ -360,7 +382,7 @@ class GameDB: GameDatabase {
     }
     
     func updateRoomName(to roomName: String, forRoomId id: String, _ onError: @escaping (Error) -> Void) {
-        let ref = dbRef.child("rooms/\(id)/room_name")
+        let ref = dbRef.child(FirebaseKeys.rooms + "/\(id)/" + FirebaseKeys.rooms_roomName)
         
         ref.setValue(roomName) { (err, ref) in
             if let error = err {
@@ -376,11 +398,10 @@ class GameDB: GameDatabase {
         let roomId = generateRandomId()
         
         guard let user = Auth.auth().currentUser else {
-            print("Invalid user, unable to create room")
             return
         }
         
-        let ref = dbRef.child("rooms/\(roomId)")
+        let ref = dbRef.child(FirebaseKeys.rooms + "/\(roomId)")
         
         ref.observeSingleEvent(of: .value, with: { (snap) in
             if snap.value as? [String : AnyObject] != nil {
@@ -398,13 +419,13 @@ class GameDB: GameDatabase {
             let playerDict: [String : AnyObject] = self.createRoomPlayerDict(isHost: true, uid: user.uid)
             
             // populates dictionary to fit the db
-            roomDict.updateValue(name as AnyObject, forKey: "room_name")
-            roomDict.updateValue(map as AnyObject, forKey: "map_name")
-            roomDict.updateValue(roomId as AnyObject, forKey: "room_id")
-            roomDict.updateValue(false as AnyObject, forKey: "has_started")
-            roomDict.updateValue(false as AnyObject, forKey: "is_game_created")
-            roomDict.updateValue(false as AnyObject, forKey: "is_open")
-            roomDict.updateValue(playerDict as AnyObject, forKey: "players")
+            roomDict.updateValue(name as AnyObject, forKey: FirebaseKeys.rooms_roomName)
+            roomDict.updateValue(map as AnyObject, forKey: FirebaseKeys.rooms_mapName)
+            roomDict.updateValue(roomId as AnyObject, forKey: FirebaseKeys.rooms_roomId)
+            roomDict.updateValue(false as AnyObject, forKey: FirebaseKeys.rooms_hasStarted)
+            roomDict.updateValue(false as AnyObject, forKey: FirebaseKeys.rooms_isGameCreated)
+            roomDict.updateValue(false as AnyObject, forKey: FirebaseKeys.rooms_isOpen)
+            roomDict.updateValue(playerDict as AnyObject, forKey: FirebaseKeys.rooms_players)
             
             ref.setValue(roomDict, withCompletionBlock: { (err, ref) in
                 if let error = err {
@@ -423,13 +444,13 @@ class GameDB: GameDatabase {
     }
     
     func closeRoom(forRoomId id: String, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void) {
-        let ref = dbRef.child("rooms/\(id)")
+        let ref = dbRef.child(FirebaseKeys.rooms + "/\(id)")
         
         guard let user = Auth.auth().currentUser else {
             return
         }
         
-        ref.child("players/\(user.uid)/is_host").observeSingleEvent(of: .value, with: { (snap) in
+        ref.child(FirebaseKeys.rooms_players + "/\(user.uid)/" + FirebaseKeys.rooms_players_isHost).observeSingleEvent(of: .value, with: { (snap) in
             guard snap.value as? Bool ?? false else {
                 // user is not host, unable to close room
                 return
@@ -468,8 +489,8 @@ class GameDB: GameDatabase {
             return
         }
         
-        let ref = dbRef.child("rooms/\(id)/players/\(user.uid)")
-        let isHostRef = dbRef.child("rooms/\(id)/players/\(user.uid)/is_host")
+        let ref = dbRef.child(FirebaseKeys.rooms + "/\(id)/" + FirebaseKeys.rooms_players + "/\(user.uid)")
+        let isHostRef = dbRef.child(FirebaseKeys.rooms + "/\(id)/" + FirebaseKeys.rooms_players + "/\(user.uid)/" + FirebaseKeys.rooms_players_isHost)
         
         isHostRef.observeSingleEvent(of: .value, with: { (snap) in
             guard let isHost = snap.value as? Bool else {
@@ -500,7 +521,7 @@ class GameDB: GameDatabase {
     }
     
     func getOpenRooms(limitTo count: Int, _ onError: @escaping (Error) -> Void) -> [RoomModel] {
-        let ref = dbRef.child("rooms").queryEqual(toValue: true, childKey: "is_open").queryLimited(toFirst: UInt(count))
+        let ref = dbRef.child(FirebaseKeys.rooms).queryEqual(toValue: true, childKey: FirebaseKeys.rooms_isOpen).queryLimited(toFirst: UInt(count))
         let listOfRooms: [RoomModel] = []
         
         ref.observeSingleEvent(of: .value, with: { (snap) in
@@ -520,8 +541,8 @@ class GameDB: GameDatabase {
     }
     
     func startGame(forRoom room: RoomModel, _ onComplete: @escaping () -> Void,_ onError: @escaping (Error) -> Void) {
-        let hasStartedRef = dbRef.child("rooms/\(room.id)/has_started")
-        let roomCreatedRef = dbRef.child("rooms/\(room.id)/is_game_created")
+        let hasStartedRef = dbRef.child(FirebaseKeys.rooms + "/\(room.id)/" + FirebaseKeys.rooms_hasStarted)
+        let roomCreatedRef = dbRef.child(FirebaseKeys.rooms + "/\(room.id)/" + FirebaseKeys.rooms_isGameCreated)
         
         hasStartedRef.setValue(true) { (err, ref) in
             if let error = err {
@@ -548,7 +569,7 @@ class GameDB: GameDatabase {
     }
     
     func createGame(forRoom room: RoomModel, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void) {
-        let ref = dbRef.child("games/\(room.id)")
+        let ref = dbRef.child(FirebaseKeys.games + "/\(room.id)")
         
         // populates dictionary required for game
         let gameDict: [String : AnyObject] = [:]
@@ -565,7 +586,7 @@ class GameDB: GameDatabase {
     }
     
     func changeRoomMap(fromRoomId id: String, toMapId mapId: String, _ onError: @escaping (Error) -> Void) {
-        let ref = dbRef.child("rooms/\(id)/map_name")
+        let ref = dbRef.child(FirebaseKeys.rooms + "/\(id)/" + FirebaseKeys.rooms_mapName)
         
         ref.setValue(mapId) { (err, ref) in
             if let error = err {
@@ -575,7 +596,7 @@ class GameDB: GameDatabase {
     }
     
     func observeGameState(forGameId id: String, _ onDataChange: @escaping (GameModel) -> Void, _ onError: @escaping (Error) -> Void) {
-        let ref = dbRef.child("games/\(id)")
+        let ref = dbRef.child(FirebaseKeys.games + "/\(id)")
         
         let handle = ref.observe(.value, with: { (snap) in
 //            guard let roomDict = snap.value as? [String : AnyObject] else {
