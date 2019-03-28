@@ -11,13 +11,13 @@ import SpriteKit
 
 class IngredientStorage: Station {
 
-    let type: StageConstants.IngredientType
+    let ingredientType: StageConstants.IngredientType
 
     init(ofType type: StageConstants.IngredientType,
          inPosition position: CGPoint,
          withSize size: CGSize = StageConstants.stationSize) {
 
-        self.type = type
+        self.ingredientType = type
         super.init(inPosition: position, withSize: size)
         self.color = .purple
     }
@@ -37,11 +37,11 @@ class IngredientStorage: Station {
         guard ableToProcess(item) == true else {
             return nil
         }
-        return Ingredient(type: self.type, inPosition: self.position)
+        return Ingredient(type: self.ingredientType, inPosition: self.position)
     }
 
     // TO DO remove this
     func takeIngredient() -> Ingredient {
-        return Ingredient(type: self.type, inPosition: self.position)
+        return Ingredient(type: self.ingredientType, inPosition: self.position)
     }
 }
