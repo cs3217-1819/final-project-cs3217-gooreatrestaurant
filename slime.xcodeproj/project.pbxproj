@@ -24,6 +24,8 @@
 		1DE6FC5E224CA4AD00B36F48 /* StoreFront.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE6FC5D224CA4AD00B36F48 /* StoreFront.swift */; };
 		1DE6FC61224CA9A200B36F48 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE6FC60224CA9A200B36F48 /* Recipe.swift */; };
 		1DE6FC63224D12F600B36F48 /* IngredientStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE6FC62224D12F600B36F48 /* IngredientStorage.swift */; };
+		1DE6FC65224D1D3900B36F48 /* Oven.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE6FC64224D1D3900B36F48 /* Oven.swift */; };
+		1DE6FC67224D1E3C00B36F48 /* FryingEquipment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE6FC66224D1E3C00B36F48 /* FryingEquipment.swift */; };
 		37DD4A30AF224607DB45BEA8 /* Pods_slimeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AEF608125BA354580F060C8 /* Pods_slimeTests.framework */; };
 		8B81EFBC224344AD007BFDB0 /* Slime.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 8B81EFBB224344AD007BFDB0 /* Slime.atlas */; };
 		8BD816AF22422C6700586180 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD816AE22422C6700586180 /* Extensions.swift */; };
@@ -181,6 +183,8 @@
 		1DE6FC5D224CA4AD00B36F48 /* StoreFront.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreFront.swift; sourceTree = "<group>"; };
 		1DE6FC60224CA9A200B36F48 /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		1DE6FC62224D12F600B36F48 /* IngredientStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IngredientStorage.swift; sourceTree = "<group>"; };
+		1DE6FC64224D1D3900B36F48 /* Oven.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Oven.swift; sourceTree = "<group>"; };
+		1DE6FC66224D1E3C00B36F48 /* FryingEquipment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FryingEquipment.swift; sourceTree = "<group>"; };
 		2A2746E58E1E2C60194FCE38 /* Pods-slimeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-slimeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-slimeTests/Pods-slimeTests.release.xcconfig"; sourceTree = "<group>"; };
 		5C1D406302B065DC29582229 /* Pods-slime.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-slime.debug.xcconfig"; path = "Pods/Target Support Files/Pods-slime/Pods-slime.debug.xcconfig"; sourceTree = "<group>"; };
 		6735932F665D31728CAAB2F4 /* Pods-slimeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-slimeTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-slimeTests/Pods-slimeTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -390,6 +394,8 @@
 			isa = PBXGroup;
 			children = (
 				1D220292224AB5850080CF7D /* CookingEquipment.swift */,
+				1DE6FC64224D1D3900B36F48 /* Oven.swift */,
+				1DE6FC66224D1E3C00B36F48 /* FryingEquipment.swift */,
 			);
 			path = CookingEquipment;
 			sourceTree = "<group>";
@@ -1156,6 +1162,7 @@
 				1D2202A5224AB5850080CF7D /* Spaceship.swift in Sources */,
 				F92ECAE8224BAEEF0040A4E2 /* Game.swift in Sources */,
 				1DE6FC5C224CA46700B36F48 /* Table.swift in Sources */,
+				1DE6FC65224D1D3900B36F48 /* Oven.swift in Sources */,
 				EC38244B22389649000D7148 /* ImageProvider.swift in Sources */,
 				EC38244322388389000D7148 /* XibView.swift in Sources */,
 				ECD455692240FB23006AF78D /* MultiplayerLobbyViewController.swift in Sources */,
@@ -1175,6 +1182,7 @@
 				ECD45546223FAFBE006AF78D /* ContextController.swift in Sources */,
 				ECD455632240F4A8006AF78D /* MultiplayerLobbyView.swift in Sources */,
 				EC40E4B4223F98EF0073D755 /* RouteTransitionHandler.swift in Sources */,
+				1DE6FC67224D1E3C00B36F48 /* FryingEquipment.swift in Sources */,
 				1D22029B224AB5850080CF7D /* Food.swift in Sources */,
 				EC38244D22389DAD000D7148 /* UIViewExtension.swift in Sources */,
 				EC4924F12246220A007B9797 /* OrderBlobRecipe.swift in Sources */,

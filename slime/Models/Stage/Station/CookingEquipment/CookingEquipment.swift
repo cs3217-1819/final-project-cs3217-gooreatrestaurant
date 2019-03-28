@@ -16,9 +16,15 @@ class CookingEquipment: Station {
 
     init(type: StageConstants.CookingType,
          inPosition position: CGPoint,
-         withSize size: CGSize = StageConstants.stationSize) {
+         withSize size: CGSize,
+         canProcessIngredients ingredients: [StageConstants.IngredientType] = []) {
 
         self.cookingType = type
+
+        for ingredient in ingredients {
+            _ = ingredientsAllowed.insert(ingredient)
+        }
+
         super.init(inPosition: position, withSize: size)
         self.color = .green
     }
