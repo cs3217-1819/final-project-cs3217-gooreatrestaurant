@@ -114,7 +114,7 @@ class Slime: SKSpriteNode {
         self.takePlate(plate)
     }
 
-    private func takeIngredient(fromContainer container: IngredientContainer) {
+    private func takeIngredient(fromContainer container: IngredientStorage) {
         let ingredient = container.takeIngredient()
         self.takeIngredient(ingredient)
     }
@@ -177,7 +177,7 @@ class Slime: SKSpriteNode {
         }
 
         for body in contactedBodies where body.node?.name == StageConstants.ingredientContainerName {
-            guard let container = body.node as? IngredientContainer else {
+            guard let container = body.node as? IngredientStorage else {
                 continue
             }
 

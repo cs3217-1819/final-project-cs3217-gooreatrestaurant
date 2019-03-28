@@ -94,9 +94,9 @@ class Spaceship: SKSpriteNode {
         self.addChild(plateStorage)
     }
 
-    func addIngredientContainer(ofType type: StageConstants.IngredientType, inPosition position: CGPoint) {
-        let ingredientContainer = IngredientContainer(ofType: type, inPosition: position)
-        self.addChild(ingredientContainer)
+    func addIngredientStorage(ofType type: StageConstants.IngredientType, inPosition position: CGPoint) {
+        let ingredientStorage = IngredientStorage(ofType: type, inPosition: position)
+        self.addChild(ingredientStorage)
     }
 
     required init?(coder aDecoder: NSCoder) {
