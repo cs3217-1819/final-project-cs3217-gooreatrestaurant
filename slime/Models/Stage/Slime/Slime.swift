@@ -28,7 +28,7 @@ class Slime: SKSpriteNode {
         self.name = StageConstants.slimeName
 
         self.position = position
-        self.zPosition = 3
+        self.zPosition = StageConstants.slimeZPos
         self.physicsBody = SKPhysicsBody(texture: slimeAnimatedAtlas.textureNamed("slime1"), size: size)
         self.physicsBody?.isDynamic = true
         self.physicsBody?.allowsRotation = false
@@ -114,7 +114,7 @@ class Slime: SKSpriteNode {
         self.takePlate(plate)
     }
 
-    private func takeIngredient(fromContainer container: IngredientContainer) {
+    private func takeIngredient(fromContainer container: IngredientStorage) {
         let ingredient = container.takeIngredient()
         self.takeIngredient(ingredient)
     }
@@ -177,7 +177,7 @@ class Slime: SKSpriteNode {
         }
 
         for body in contactedBodies where body.node?.name == StageConstants.ingredientContainerName {
-            guard let container = body.node as? IngredientContainer else {
+            guard let container = body.node as? IngredientStorage else {
                 continue
             }
 

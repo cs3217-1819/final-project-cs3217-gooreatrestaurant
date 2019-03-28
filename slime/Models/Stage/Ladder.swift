@@ -16,7 +16,7 @@ class Ladder: SKSpriteNode {
         super.init(texture: ladder, color: .clear, size: StageConstants.ladderSize)
         self.name = StageConstants.ladderName
         self.position = position
-        self.zPosition = 2
+        self.zPosition = StageConstants.ladderZPos
 
         self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 10, height: 45))
         self.physicsBody?.categoryBitMask = StageConstants.ladderCategory

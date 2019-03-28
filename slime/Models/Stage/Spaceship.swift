@@ -46,8 +46,8 @@ class Spaceship: SKSpriteNode {
     func addCooker(type: StageConstants.CookingType,
                    inPosition position: CGPoint,
                    withSize size: CGSize = StageConstants.cookerSize) {
-        let cooker = CookingEquipment(type: type, size: size, inLocation: position)
-        self.addChild(cooker)
+        // let cooker = CookingEquipment(type: type, inLocation: position, size: size)
+//        self.addChild(cooker)
     }
 
     func addPlate(inPosition position: CGPoint,
@@ -94,9 +94,9 @@ class Spaceship: SKSpriteNode {
         self.addChild(plateStorage)
     }
 
-    func addIngredientContainer(ofType type: StageConstants.IngredientType, inPosition position: CGPoint) {
-        let ingredientContainer = IngredientContainer(ofType: type, inPosition: position)
-        self.addChild(ingredientContainer)
+    func addIngredientStorage(ofType type: StageConstants.IngredientType, inPosition position: CGPoint) {
+        let ingredientStorage = IngredientStorage(ofType: type, inPosition: position)
+        self.addChild(ingredientStorage)
     }
 
     required init?(coder aDecoder: NSCoder) {

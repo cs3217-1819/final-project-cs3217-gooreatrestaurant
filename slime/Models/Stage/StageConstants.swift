@@ -10,6 +10,8 @@ import UIKit
 
 class StageConstants {
 
+    // TO DO Remove all storage variables
+
     static let maxPlayer = 4
     static let maxXAxisUnits = ScreenSize.width
     static let maxYAxisUnits = ScreenSize.height
@@ -26,6 +28,7 @@ class StageConstants {
     static let ladderName = "ladder"
     static let plateStorageName = "plate-storage"
     static let ingredientContainerName = "ingredient-container"
+    static let stationName = "station"
 
     // spaceship size and position
     static let spaceshipSize = CGSize(width: 400, height: 400)
@@ -38,6 +41,7 @@ class StageConstants {
     static let cookerSize = CGSize(width: 40, height: 30)
     static let ladderSize = CGSize(width: 50, height: 50)
     static let storageSize = CGSize(width: 40, height: 30)
+    static let stationSize = CGSize(width: 40, height: 30)
 
     // controller size and position
     static let joystickSize = CGFloat(100)
@@ -60,6 +64,16 @@ class StageConstants {
     static let slimeCategory: UInt32 = 1 << 4
     static let ladderCategory: UInt32 = 1 << 5
     static let storageCategory: UInt32 = 1 << 6
+    static let stationCategory: UInt32 = 1 << 6
+
+    // zPosition list
+    static let backgroundZPos = CGFloat(-1)
+    static let spaceshipZPos = CGFloat(0)
+    static let ladderZPos = CGFloat(1)
+    static let slimeZPos = CGFloat(2)
+    static let stationZPos = CGFloat(3)
+    static let joystickZPos = CGFloat(4)
+    static let buttonZPos = CGFloat(4)
 
     enum IngredientType {
         case potato
@@ -72,6 +86,7 @@ class StageConstants {
     }
 
     enum CookingType {
+        case baking
         case frying
     }
 

@@ -28,7 +28,7 @@ class Stage: SKScene {
         anchorPoint = CGPoint(x: 0.5, y: 0.5)
         background.size = size
         background.scaleTo(screenWidthPercentage: 1.0)
-        background.zPosition = -1
+        background.zPosition = StageConstants.backgroundZPos
         self.addChild(background)
         self.addChild(spaceship)
         setupControl()
@@ -40,7 +40,7 @@ class Stage: SKScene {
                                 images: (substrate: #imageLiteral(resourceName: "jSubstrate"),
                                 stick: #imageLiteral(resourceName: "jStick")))
         js.position = StageConstants.joystickPosition
-        js.zPosition = 1
+        js.zPosition = StageConstants.joystickZPos
         return js
     }()
 
@@ -51,7 +51,7 @@ class Stage: SKScene {
         button.setScale(0.1)
         button.isEnabled = true
         button.position = StageConstants.jumpButtonPosition
-        button.zPosition = 4
+        button.zPosition = StageConstants.buttonZPos
         return button
     }()
 
@@ -62,7 +62,7 @@ class Stage: SKScene {
         button.setScale(0.1)
         button.isEnabled = true
         button.position = StageConstants.interactButtonPosition
-        button.zPosition = 4
+        button.zPosition = StageConstants.buttonZPos
         return button
     }()
 
@@ -121,6 +121,10 @@ class Stage: SKScene {
             stop.initialize(to: true)
         }
         return playerSlime
+    }
+
+    func serve(_ plate: Plate) {
+        
     }
 
     required init?(coder aDecoder: NSCoder) {
