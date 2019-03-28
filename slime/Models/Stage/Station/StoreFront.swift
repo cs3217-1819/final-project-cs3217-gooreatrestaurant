@@ -13,7 +13,7 @@ class StoreFront: Station {
 
     override init(inPosition position: CGPoint, withSize size: CGSize = StageConstants.stationSize) {
         super.init(inPosition: position, withSize: size)
-        self.color = .red
+        self.color = .black
     }
     
     required init?(coder aDecoder: NSCoder) {
