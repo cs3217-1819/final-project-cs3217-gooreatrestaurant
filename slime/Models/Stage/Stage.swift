@@ -123,6 +123,10 @@ class Stage: SKScene {
         return playerSlime
     }
 
+    func serve(_ plate: Plate) {
+        
+    }
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("initiation using storyboard is not implemented yet.")
     }

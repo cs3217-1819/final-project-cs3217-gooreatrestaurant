@@ -29,7 +29,7 @@ class Table: Station {
 
     override func process(_ item: SKSpriteNode?) -> SKSpriteNode? {
         guard ableToProcess(item) == true else {
-            return nil
+            return item
         }
 
         guard let itemToPut = item else {
