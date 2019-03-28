@@ -26,6 +26,7 @@
 		1DE6FC63224D12F600B36F48 /* IngredientStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE6FC62224D12F600B36F48 /* IngredientStorage.swift */; };
 		1DE6FC65224D1D3900B36F48 /* Oven.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE6FC64224D1D3900B36F48 /* Oven.swift */; };
 		1DE6FC67224D1E3C00B36F48 /* FryingEquipment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE6FC66224D1E3C00B36F48 /* FryingEquipment.swift */; };
+		1DE6FC6B224D26A200B36F48 /* Trash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE6FC6A224D26A200B36F48 /* Trash.swift */; };
 		37DD4A30AF224607DB45BEA8 /* Pods_slimeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AEF608125BA354580F060C8 /* Pods_slimeTests.framework */; };
 		8B81EFBC224344AD007BFDB0 /* Slime.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 8B81EFBB224344AD007BFDB0 /* Slime.atlas */; };
 		8BD816AF22422C6700586180 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD816AE22422C6700586180 /* Extensions.swift */; };
@@ -185,6 +186,7 @@
 		1DE6FC62224D12F600B36F48 /* IngredientStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IngredientStorage.swift; sourceTree = "<group>"; };
 		1DE6FC64224D1D3900B36F48 /* Oven.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Oven.swift; sourceTree = "<group>"; };
 		1DE6FC66224D1E3C00B36F48 /* FryingEquipment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FryingEquipment.swift; sourceTree = "<group>"; };
+		1DE6FC6A224D26A200B36F48 /* Trash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trash.swift; sourceTree = "<group>"; };
 		2A2746E58E1E2C60194FCE38 /* Pods-slimeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-slimeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-slimeTests/Pods-slimeTests.release.xcconfig"; sourceTree = "<group>"; };
 		5C1D406302B065DC29582229 /* Pods-slime.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-slime.debug.xcconfig"; path = "Pods/Target Support Files/Pods-slime/Pods-slime.debug.xcconfig"; sourceTree = "<group>"; };
 		6735932F665D31728CAAB2F4 /* Pods-slimeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-slimeTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-slimeTests/Pods-slimeTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -386,6 +388,7 @@
 				1DE6FC59224CA45700B36F48 /* Station.swift */,
 				1DE6FC5B224CA46700B36F48 /* Table.swift */,
 				1DE6FC5D224CA4AD00B36F48 /* StoreFront.swift */,
+				1DE6FC6A224D26A200B36F48 /* Trash.swift */,
 			);
 			path = Station;
 			sourceTree = "<group>";
@@ -1142,6 +1145,7 @@
 				1DE6FC63224D12F600B36F48 /* IngredientStorage.swift in Sources */,
 				8BD816AF22422C6700586180 /* Extensions.swift in Sources */,
 				EC4924EF22462174007B9797 /* OrderBlobController.swift in Sources */,
+				1DE6FC6B224D26A200B36F48 /* Trash.swift in Sources */,
 				EC21B409224217E200827121 /* LoadingScreenViewController.swift in Sources */,
 				1D2202A0224AB5850080CF7D /* Slime+Movements.swift in Sources */,
 				EC382482223A2AF5000D7148 /* PlayMenuButton.swift in Sources */,
