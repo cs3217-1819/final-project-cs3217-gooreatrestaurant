@@ -57,7 +57,7 @@ class Stage: SKScene {
 
     lazy var interactButton: BDButton = {
         var button = BDButton(imageNamed: "Interact", buttonAction: {
-            print("TEST")
+            self.slimeToControl?.interact()
             })
         button.setScale(0.1)
         button.isEnabled = true
