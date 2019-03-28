@@ -11,13 +11,13 @@ import SpriteKit
 
 class Station: SKSpriteNode {
 
-    init(inPosition position: CGPoint, withSize size: CGSize) {
+    init(inPosition position: CGPoint, withSize size: CGSize = StageConstants.stationSize) {
         super.init(texture: nil, color: .yellow, size: size)
         self.name = StageConstants.stationName
         self.position = position
         self.physicsBody = SKPhysicsBody(rectangleOf: size)
         self.physicsBody?.isDynamic = false
-        self.physicsBody?.categoryBitMask = StageConstants.storageCategory
+        self.physicsBody?.categoryBitMask = StageConstants.stationCategory
         self.physicsBody?.collisionBitMask = StageConstants.wallCategoryCollision
     }
 

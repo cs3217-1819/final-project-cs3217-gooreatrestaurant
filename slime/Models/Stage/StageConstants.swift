@@ -62,6 +62,7 @@ class StageConstants {
     static let slimeCategory: UInt32 = 1 << 4
     static let ladderCategory: UInt32 = 1 << 5
     static let storageCategory: UInt32 = 1 << 6
+    static let stationCategory: UInt32 = 1 << 6
 
     enum IngredientType {
         case potato
