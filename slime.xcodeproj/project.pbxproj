@@ -295,6 +295,7 @@
 		1D2202A9224AB6310080CF7D /* Stage */ = {
 			isa = PBXGroup;
 			children = (
+				1DE6FC58224C9FA200B36F48 /* Station */,
 				1D2202AB224AB6470080CF7D /* FoodRelated */,
 				1D2202AA224AB6400080CF7D /* Slime */,
 				1D220290224AB5850080CF7D /* Ladder.swift */,
@@ -327,6 +328,13 @@
 				1D2202AE224AB8C30080CF7D /* IngredientContainer.swift */,
 			);
 			path = FoodRelated;
+			sourceTree = "<group>";
+		};
+		1DE6FC58224C9FA200B36F48 /* Station */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Station;
 			sourceTree = "<group>";
 		};
 		2C56C6A98CE3F70C0052C8F2 /* Pods */ = {
