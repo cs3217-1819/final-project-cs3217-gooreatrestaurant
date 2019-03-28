@@ -9,21 +9,32 @@
 import UIKit
 import SpriteKit
 
-class PlateStorage: SKSpriteNode {
+class PlateStorage: Station {
+
+    override init(inPosition position: CGPoint, withSize size: CGSize = StageConstants.stationSize) {
+        super.init(inPosition: position, withSize: size)
+        self.color = .red
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
-    init(inPosition position: CGPoint, withSize size: CGSize = StageConstants.storageSize) {
-        super.init(texture: nil, color: .yellow, size: size)
-        self.name = StageConstants.plateStorageName
-        self.position = position
-        self.physicsBody = SKPhysicsBody(rectangleOf: size)
-        self.physicsBody?.isDynamic = false
-        self.physicsBody?.categoryBitMask = StageConstants.storageCategory
-        self.physicsBody?.collisionBitMask = StageConstants.wallCategoryCollision
+    
+    override func ableToProcess(_ item: SKSpriteNode?) -> Bool {
+        if item == nil {
+            return true
+        }
+        return false
     }
 
+    override func process(_ item: SKSpriteNode?) -> SKSpriteNode? {
+        guard ableToProcess(item) == true else {
+            return nil
+        }
+        return Plate(inPosition: self.position)
+    }
+
+    // TO DO Remove this
     func takePlate() -> Plate {
         return Plate(inPosition: self.position)
     }
