@@ -6,6 +6,8 @@
 //  Copyright © 2019 nus.cs3217.a0166733y. All rights reserved.
 //
 
-protocol Station {
+import SpriteKit
 
+protocol Station {
+    func process(_ item: SKSpriteNode?)
 }
