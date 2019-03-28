@@ -26,6 +26,7 @@ class StageConstants {
     static let ladderName = "ladder"
     static let plateStorageName = "plate-storage"
     static let ingredientContainerName = "ingredient-container"
+    static let stationName = "station"
 
     // spaceship size and position
     static let spaceshipSize = CGSize(width: 400, height: 400)
@@ -38,6 +39,7 @@ class StageConstants {
     static let cookerSize = CGSize(width: 40, height: 30)
     static let ladderSize = CGSize(width: 50, height: 50)
     static let storageSize = CGSize(width: 40, height: 30)
+    static let stationSize = CGSize(width: 40, height: 30)
 
     // controller size and position
     static let joystickSize = CGFloat(100)
