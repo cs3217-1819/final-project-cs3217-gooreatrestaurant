@@ -21,7 +21,7 @@ class Food: NSObject {
         if ingredients[ingredient.type] != nil {
             return false
         }
-        ingredients[ingredient.type] = ingredient.processed
+        // ingredients[ingredient.type] = ingredient.processed
         type = checkFoodType()
         return true
     }

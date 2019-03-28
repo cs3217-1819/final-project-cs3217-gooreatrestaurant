@@ -86,6 +86,7 @@ class StageConstants {
     }
 
     enum CookingType {
+        case baking
         case frying
     }
 

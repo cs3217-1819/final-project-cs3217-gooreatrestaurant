@@ -9,21 +9,46 @@
 import UIKit
 import SpriteKit
 
-class CookingEquipment: SKSpriteNode {
-    let type: StageConstants.CookingType
+class CookingEquipment: Station {
+
+    let cookingType: StageConstants.CookingType
+    var ingredientsAllowed: Set<StageConstants.IngredientType> = []
+
+    init(type: StageConstants.CookingType,
+         inPosition position: CGPoint,
+         withSize size: CGSize = StageConstants.stationSize) {
+
+        self.cookingType = type
+        super.init(inPosition: position, withSize: size)
+        self.color = .green
+    }
+
+    override func ableToProcess(_ item: SKSpriteNode?) -> Bool {
+        if item is Ingredient {
+            return true
+        }
+        return false
+    }
+
+    override func process(_ item: SKSpriteNode?) -> SKSpriteNode? {
+        guard ableToProcess(item) == true else {
+            return nil
+        }
+
+        guard let ingredient = item as? Ingredient else {
+            return nil
+        }
+
+        if ingredientsAllowed.contains(ingredient.type) {
+            ingredient.cook(by: self.cookingType)
+        } else {
+            ingredient.ruin()
+        }
+
+        return ingredient
+    }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-
-    init(type: StageConstants.CookingType, size: CGSize, inLocation location: CGPoint) {
-        self.type = type
-        super.init(texture: nil, color: .green, size: size)
-        self.name = StageConstants.cookerName
-        self.position = location
-        self.physicsBody = SKPhysicsBody(rectangleOf: size)
-        self.physicsBody?.isDynamic = false
-        self.physicsBody?.categoryBitMask = StageConstants.cookerCategory
-        self.physicsBody?.collisionBitMask = StageConstants.wallCategoryCollision
     }
 }
