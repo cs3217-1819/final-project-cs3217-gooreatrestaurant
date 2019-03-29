@@ -97,6 +97,36 @@ class Slime: SKSpriteNode {
         return itemCarried != nil
     }
 
+    private func takeItem(_ item: SKSpriteNode?) {
+        guard let itemToTake = item else {
+            return
+        }
+
+        itemToTake.removeFromParent()
+        itemToTake.position.x = 0.0
+        itemToTake.position.y = 0.5 * (self.size.height + itemToTake.size.height)
+        itemToTake.physicsBody = nil
+        self.addChild(itemToTake)
+    }
+
     func interact() {
+        spaceship?.enumerateChildNodes(withName: StageConstants.stationName) {
+            (node, stop) in
+
+            guard let station = node as? Station else {
+                return
+            }
+
+            if station.ableToProcess(self.itemCarried) {
+
+                let itemToProcess = self.itemCarried
+                itemToProcess?.removeFromParent()
+
+                let itemProcessed = station.process(itemToProcess)
+                self.takeItem(itemProcessed)
+
+                stop.initialize(to: true)
+            }
+        }
     }
 }
