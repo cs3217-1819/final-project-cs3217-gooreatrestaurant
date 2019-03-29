@@ -19,6 +19,7 @@
 		1D2202A3224AB5850080CF7D /* StageConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D220297224AB5850080CF7D /* StageConstants.swift */; };
 		1D2202A5224AB5850080CF7D /* Spaceship.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D220299224AB5850080CF7D /* Spaceship.swift */; };
 		1D2202AD224AB68F0080CF7D /* PlateStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2202AC224AB68F0080CF7D /* PlateStorage.swift */; };
+		1DD6EBE1224E368C006FF6CD /* ChoppingEquipment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD6EBE0224E368C006FF6CD /* ChoppingEquipment.swift */; };
 		1DE6FC5A224CA45700B36F48 /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE6FC59224CA45700B36F48 /* Station.swift */; };
 		1DE6FC5C224CA46700B36F48 /* Table.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE6FC5B224CA46700B36F48 /* Table.swift */; };
 		1DE6FC5E224CA4AD00B36F48 /* StoreFront.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE6FC5D224CA4AD00B36F48 /* StoreFront.swift */; };
@@ -180,6 +181,7 @@
 		1D220297224AB5850080CF7D /* StageConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StageConstants.swift; path = slime/Models/Stage/StageConstants.swift; sourceTree = SOURCE_ROOT; };
 		1D220299224AB5850080CF7D /* Spaceship.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Spaceship.swift; path = slime/Models/Stage/Spaceship.swift; sourceTree = SOURCE_ROOT; };
 		1D2202AC224AB68F0080CF7D /* PlateStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlateStorage.swift; sourceTree = "<group>"; };
+		1DD6EBE0224E368C006FF6CD /* ChoppingEquipment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoppingEquipment.swift; sourceTree = "<group>"; };
 		1DE6FC59224CA45700B36F48 /* Station.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Station.swift; sourceTree = "<group>"; };
 		1DE6FC5B224CA46700B36F48 /* Table.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Table.swift; sourceTree = "<group>"; };
 		1DE6FC5D224CA4AD00B36F48 /* StoreFront.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreFront.swift; sourceTree = "<group>"; };
@@ -401,6 +403,7 @@
 				1D220292224AB5850080CF7D /* CookingEquipment.swift */,
 				1DE6FC64224D1D3900B36F48 /* Oven.swift */,
 				1DE6FC66224D1E3C00B36F48 /* FryingEquipment.swift */,
+				1DD6EBE0224E368C006FF6CD /* ChoppingEquipment.swift */,
 			);
 			path = CookingEquipment;
 			sourceTree = "<group>";
@@ -1133,6 +1136,7 @@
 				ECD2442E224B108200767A56 /* NumberPadResponder.swift in Sources */,
 				ECD2442C224B0D0800767A56 /* SlimeNumberPadController.swift in Sources */,
 				1D22029A224AB5850080CF7D /* Plate.swift in Sources */,
+				1DD6EBE1224E368C006FF6CD /* ChoppingEquipment.swift in Sources */,
 				EC4924ED2246210C007B9797 /* OrderBlob.swift in Sources */,
 				EC4924E8224618E6007B9797 /* LevelPlaceView.swift in Sources */,
 				1D2202A3224AB5850080CF7D /* StageConstants.swift in Sources */,
