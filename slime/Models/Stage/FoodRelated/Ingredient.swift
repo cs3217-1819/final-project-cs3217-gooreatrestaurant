@@ -27,11 +27,11 @@ class Ingredient: SKSpriteNode {
     }
 
     func cook(by method: StageConstants.CookingType) {
-        
+        self.processed = method
     }
 
     func ruin() {
-
+        self.type = .junk
     }
 
     required init?(coder aDecoder: NSCoder) {
