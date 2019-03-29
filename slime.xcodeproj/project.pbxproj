@@ -633,6 +633,7 @@
 				ECD45544223FAFA5006AF78D /* Context */,
 				EC40E4B5223F9C890073D755 /* Router */,
 				EC38241F2238803A000D7148 /* TitleScreenViewController.swift */,
+				ECF75F03224B182400537237 /* JoinRoomViewController.swift */,
 				EC449B21223A35BE00A8EA35 /* PlayScreenViewController.swift */,
 				EC449B88223BAA8100A8EA35 /* LevelSelectViewController.swift */,
 				EC449B78223B82A600A8EA35 /* MainController.swift */,
@@ -750,7 +751,6 @@
 			children = (
 				ECD24430224B114400767A56 /* JoinRoomView.xib */,
 				ECF75F01224B17CA00537237 /* JoinRoomView.swift */,
-				ECF75F03224B182400537237 /* JoinRoomViewController.swift */,
 			);
 			path = JoinRoomView;
 			sourceTree = "<group>";
