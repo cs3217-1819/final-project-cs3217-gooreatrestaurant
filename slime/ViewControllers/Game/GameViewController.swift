@@ -18,32 +18,13 @@ class GameViewController: UIViewController {
         let stage = Stage()
         let skview = SKView(frame: view.safeAreaLayoutGuide.layoutFrame)
         skview.frame = CGRect(x: 0.0, y: 0.0, width: ScreenSize.width, height: ScreenSize.height)
-        let scene = GameScene(size: CGSize(width: ScreenSize.width, height: ScreenSize.height))
-        scene.scaleMode = .aspectFill
-        // skview.presentScene(scene)
         skview.presentScene(stage)
         skView.ignoresSiblingOrder = true
         skView.showsFPS = true
         skView.showsNodeCount = true
         view.addSubview(skview)
 
-        stage.spaceship.addSlime(inPosition: CGPoint(x: 0, y: -50))
-        stage.spaceship.addRoom()
-        stage.spaceship.addPlayingArea(inLevel: "Level 1")
-    
-        stage.spaceship.addLadder(inPosition: CGPoint(x: -100, y: -21))
-        stage.spaceship.addLadder(inPosition: CGPoint(x: -100, y: -50))
-    
-        stage.spaceship.addLadder(inPosition: CGPoint(x: -60, y: -135))
-        stage.spaceship.addLadder(inPosition: CGPoint(x: -60, y: -90))
-        stage.spaceship.addLadder(inPosition: CGPoint(x: -60, y: -45))
-        stage.spaceship.addLadder(inPosition: CGPoint(x: -60, y: 0))
-        stage.spaceship.addLadder(inPosition: CGPoint(x: -60, y: 45))
-
-        stage.spaceship.addLadder(inPosition: CGPoint(x: 90, y: -25))
-        stage.spaceship.addLadder(inPosition: CGPoint(x: 90, y: 20))
-        stage.spaceship.addLadder(inPosition: CGPoint(x: 90, y: 65))
-
+        stage.spaceship.generateLevel(inLevel: "Level1")
     }
 
     lazy var skView: SKView = {
