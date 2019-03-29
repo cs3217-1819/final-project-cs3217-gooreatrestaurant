@@ -76,17 +76,9 @@ class StageConstants {
         case junk
     }
 
-    enum FoodType {
-        case fries
-        case junk
-    }
-
     enum CookingType {
         case baking
         case chopping
         case frying
     }
-
-    static let wayToCook: [IngredientType: CookingType] = [.potato: .frying]
-    static let recipes: [Food] = []
 }

@@ -43,7 +43,7 @@ class Ingredient: SKSpriteNode {
     }
 }
 
-extension Ingredient: Hashable {
+extension Ingredient {
     static func == (lhs: Ingredient, rhs: Ingredient) -> Bool {
         return lhs.type == rhs.type && lhs.processed == rhs.processed
     }
