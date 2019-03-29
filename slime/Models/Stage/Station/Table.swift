@@ -19,12 +19,16 @@ class Table: Station {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
+    var item: SKNode? {
+        return children.first
+    }
+
     override func ableToProcess(_ item: SKSpriteNode?) -> Bool {
-        if item == nil {
-            return false
+        if (item == nil && self.item != nil) || (item != nil && self.item == nil) {
+            return true
         }
-        return true
+        return false
     }
 
     override func process(_ item: SKSpriteNode?) -> SKSpriteNode? {
@@ -32,14 +36,28 @@ class Table: Station {
             return item
         }
 
-        guard let itemToPut = item else {
-            return item
+        if self.item == nil {
+
+            guard let itemToPut = item else {
+                return item
+            }
+
+            itemToPut.removeFromParent()
+            itemToPut.position = CGPoint(x: 0.0, y: 0.5 * (itemToPut.size.height + self.size.height))
+            addChild(itemToPut)
+            return nil
+
+        } else {
+
+            guard let itemToTake = self.item else {
+                return nil
+            }
+
+            itemToTake.removeFromParent()
+            return itemToTake
+
         }
 
-        itemToPut.removeFromParent()
-        itemToPut.position = CGPoint(x: 0.0, y: 0.5 * (itemToPut.size.height + self.size.height))
-        addChild(itemToPut)
-        return nil
     }
 
 }
