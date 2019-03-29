@@ -11,9 +11,9 @@ import SpriteKit
 
 class IngredientStorage: Station {
 
-    let type: StageConstants.IngredientType
+    let type: IngredientType
 
-    init(ofType type: StageConstants.IngredientType,
+    init(ofType type: IngredientType,
          inPosition position: CGPoint,
          withSize size: CGSize = StageConstants.stationSize) {
 

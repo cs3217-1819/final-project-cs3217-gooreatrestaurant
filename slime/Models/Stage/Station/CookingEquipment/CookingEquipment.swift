@@ -11,13 +11,13 @@ import SpriteKit
 
 class CookingEquipment: Station {
 
-    let cookingType: StageConstants.CookingType
-    var ingredientsAllowed: Set<StageConstants.IngredientType> = []
+    let cookingType: CookingType
+    var ingredientsAllowed: Set<IngredientType> = []
 
-    init(type: StageConstants.CookingType,
+    init(type: CookingType,
          inPosition position: CGPoint,
          withSize size: CGSize,
-         canProcessIngredients ingredients: [StageConstants.IngredientType] = []) {
+         canProcessIngredients ingredients: [IngredientType] = []) {
 
         self.cookingType = type
 

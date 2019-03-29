@@ -10,10 +10,10 @@ import UIKit
 import SpriteKit
 
 class Ingredient: SKSpriteNode {
-    var type: StageConstants.IngredientType
-    var processed: StageConstants.CookingType?
+    var type: IngredientType
+    var processed: CookingType?
 
-    init(type: StageConstants.IngredientType,
+    init(type: IngredientType,
          size: CGSize = StageConstants.ingredientSize,
          inPosition position: CGPoint) {
 
@@ -26,7 +26,7 @@ class Ingredient: SKSpriteNode {
         self.physicsBody?.collisionBitMask = StageConstants.wallCategoryCollision
     }
 
-    func cook(by method: StageConstants.CookingType) {
+    func cook(by method: CookingType) {
         if self.processed == nil {
             self.processed = method
         } else {

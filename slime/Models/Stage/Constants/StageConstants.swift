@@ -70,15 +70,4 @@ class StageConstants {
     static let stationZPos = CGFloat(3)
     static let joystickZPos = CGFloat(4)
     static let buttonZPos = CGFloat(4)
-
-    enum IngredientType {
-        case potato
-        case junk
-    }
-
-    enum CookingType {
-        case baking
-        case chopping
-        case frying
-    }
 }
