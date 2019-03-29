@@ -30,10 +30,10 @@
 		37DD4A30AF224607DB45BEA8 /* Pods_slimeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AEF608125BA354580F060C8 /* Pods_slimeTests.framework */; };
 		8B81EFBC224344AD007BFDB0 /* Slime.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 8B81EFBB224344AD007BFDB0 /* Slime.atlas */; };
 		8BD816AF22422C6700586180 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD816AE22422C6700586180 /* Extensions.swift */; };
-		8BD816B122422D2700586180 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD816B022422D2700586180 /* GameScene.swift */; };
 		8BD816B3224262F100586180 /* AnalogJoystick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD816B2224262F100586180 /* AnalogJoystick.swift */; };
 		8BD816B922426D1400586180 /* BDButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD816B822426D1400586180 /* BDButton.swift */; };
-		8BEDCD392247F10100E24A20 /* LevelDesign.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8BEDCD382247F10100E24A20 /* LevelDesign.plist */; };
+		8BEDCD392247F10100E24A20 /* Level1.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8BEDCD382247F10100E24A20 /* Level1.plist */; };
+		8BEDCD43224E089A00E24A20 /* SerializableGameData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEDCD42224E089A00E24A20 /* SerializableGameData.swift */; };
 		BA7CC9239365F389C9C1FA05 /* Pods_slime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7F0D50F4B0E911D0C328800 /* Pods_slime.framework */; };
 		EC21B40022420CA700827121 /* LevelPlayButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC21B3FF22420CA700827121 /* LevelPlayButton.xib */; };
 		EC21B40222420D4100827121 /* DesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC21B40122420D4100827121 /* DesignableView.swift */; };
@@ -194,10 +194,10 @@
 		7AEF608125BA354580F060C8 /* Pods_slimeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_slimeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B81EFBB224344AD007BFDB0 /* Slime.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Slime.atlas; sourceTree = "<group>"; };
 		8BD816AE22422C6700586180 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		8BD816B022422D2700586180 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		8BD816B2224262F100586180 /* AnalogJoystick.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalogJoystick.swift; sourceTree = "<group>"; };
 		8BD816B822426D1400586180 /* BDButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BDButton.swift; sourceTree = "<group>"; };
-		8BEDCD382247F10100E24A20 /* LevelDesign.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = LevelDesign.plist; sourceTree = "<group>"; };
+		8BEDCD382247F10100E24A20 /* Level1.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Level1.plist; sourceTree = "<group>"; };
+		8BEDCD42224E089A00E24A20 /* SerializableGameData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerializableGameData.swift; sourceTree = "<group>"; };
 		E7F0D50F4B0E911D0C328800 /* Pods_slime.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_slime.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC21B3FF22420CA700827121 /* LevelPlayButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LevelPlayButton.xib; sourceTree = "<group>"; };
 		EC21B40122420D4100827121 /* DesignableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableView.swift; sourceTree = "<group>"; };
@@ -479,7 +479,7 @@
 				F92ECADE224BADEC0040A4E2 /* GoogleService-Info.plist */,
 				EC3824262238803D000D7148 /* LaunchScreen.storyboard */,
 				EC3824292238803D000D7148 /* Info.plist */,
-				8BEDCD382247F10100E24A20 /* LevelDesign.plist */,
+				8BEDCD382247F10100E24A20 /* Level1.plist */,
 			);
 			path = slime;
 			sourceTree = "<group>";
@@ -539,6 +539,7 @@
 				ECD24423224B018800767A56 /* Controller.swift */,
 				ECD24425224B02C900767A56 /* Logger.swift */,
 				F92ECAE9224D1B490040A4E2 /* FadeInOutSegue.swift */,
+				8BEDCD42224E089A00E24A20 /* SerializableGameData.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -706,7 +707,6 @@
 			isa = PBXGroup;
 			children = (
 				EC79FFED2242238C002E8FE7 /* GameViewController.swift */,
-				8BD816B022422D2700586180 /* GameScene.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -959,7 +959,7 @@
 				EC449B90223BADBB00A8EA35 /* LevelDetailsBox.xib in Resources */,
 				ECD24420224AFFEB00767A56 /* SlimeNumberInputView.xib in Resources */,
 				EC449B77223B81FE00A8EA35 /* PlayScreenView.xib in Resources */,
-				8BEDCD392247F10100E24A20 /* LevelDesign.plist in Resources */,
+				8BEDCD392247F10100E24A20 /* Level1.plist in Resources */,
 				EC21B4052242155600827121 /* LoadingScreenView.xib in Resources */,
 				ECD4555C2240F1FB006AF78D /* MultiplayerScreenView.xib in Resources */,
 				ECD4554D2240B0AF006AF78D /* Alert.xib in Resources */,
@@ -1125,6 +1125,7 @@
 				ECD45548223FAFFF006AF78D /* Context.swift in Sources */,
 				EC449B22223A35BE00A8EA35 /* PlayScreenViewController.swift in Sources */,
 				EC449B98223BB20400A8EA35 /* StoryModeLevelSelectController.swift in Sources */,
+				8BEDCD43224E089A00E24A20 /* SerializableGameData.swift in Sources */,
 				1D22029D224AB5850080CF7D /* Slime.swift in Sources */,
 				1D22029F224AB5850080CF7D /* Order.swift in Sources */,
 				EC4924F62248D638007B9797 /* RatingView.swift in Sources */,
@@ -1186,7 +1187,6 @@
 				EC4924F82248D877007B9797 /* RatingViewController.swift in Sources */,
 				ECD2442A224B0C9E00767A56 /* SlimeNumberPadView.swift in Sources */,
 				EC3824562239116D000D7148 /* CGRectExtension.swift in Sources */,
-				8BD816B122422D2700586180 /* GameScene.swift in Sources */,
 				ECD45546223FAFBE006AF78D /* ContextController.swift in Sources */,
 				ECD455632240F4A8006AF78D /* MultiplayerLobbyView.swift in Sources */,
 				EC40E4B4223F98EF0073D755 /* RouteTransitionHandler.swift in Sources */,
@@ -1359,7 +1359,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = W76H98A34A;
+				DEVELOPMENT_TEAM = CZ7H96C646;
 				INFOPLIST_FILE = slime/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1380,7 +1380,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = W76H98A34A;
+				DEVELOPMENT_TEAM = CZ7H96C646;
 				INFOPLIST_FILE = slime/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

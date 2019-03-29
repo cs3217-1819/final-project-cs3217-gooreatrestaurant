@@ -20,6 +20,23 @@ class Spaceship: SKSpriteNode {
         self.zPosition = 0
     }
 
+    func generateLevel(inLevel levelName: String) {
+        if let levelDesignURL = Bundle.main.url(forResource: levelName, withExtension: "plist") {
+            do {
+                let data = try? Data(contentsOf: levelDesignURL)
+                let decoder = PropertyListDecoder()
+                let value = try decoder.decode(SerializableGameData.self, from: data!)
+                addRoom()
+                addSlime(inPosition: NSCoder.cgPoint(for: value.slimeInitPos))
+                addWall(inCoord: value.border)
+                addWall(inCoord: value.blockedArea)
+                addLadder(inPositions: value.ladder)
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+    }
+
     func addRoom() {
         let spaceshipBody = SKTexture(imageNamed: "Area")
         spaceshipBody.filteringMode = .nearest // shorter form for SKTextureFilteringMode.Nearest
@@ -56,20 +73,6 @@ class Spaceship: SKSpriteNode {
         self.addChild(plate)
     }
 
-    func addPlayingArea(inLevel levelName: String) {
-        //Generating the walls
-        guard let path = Bundle.main.path(forResource: "LevelDesign", ofType: "plist")  else {
-            print("Error loading path")
-            return
-        }
-        let dictionary = NSDictionary(contentsOfFile: path)
-        let temp = dictionary?.value(forKey: levelName) as! [[String]]
-
-        for item in temp {
-            addWall(inCoord: item)
-        }
-    }
-
     func addWall(inCoord coordinates: [String]) {
         var gameAreaCoord: [CGPoint] = []
         for item in coordinates {
@@ -84,9 +87,11 @@ class Spaceship: SKSpriteNode {
         self.addChild(wallBorder)
     }
 
-    func addLadder(inPosition position: CGPoint) {
-        let ladder = Ladder(inPosition: position)
-        self.addChild(ladder)
+    func addLadder(inPositions positions: [String]) {
+        for position in positions {
+            let ladder = Ladder(inPosition: NSCoder.cgPoint(for: position))
+            self.addChild(ladder)
+        }
     }
 
     func addPlateStorage(inPosition position: CGPoint) {
