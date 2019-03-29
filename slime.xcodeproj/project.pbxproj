@@ -479,7 +479,6 @@
 				F92ECADE224BADEC0040A4E2 /* GoogleService-Info.plist */,
 				EC3824262238803D000D7148 /* LaunchScreen.storyboard */,
 				EC3824292238803D000D7148 /* Info.plist */,
-				8BEDCD382247F10100E24A20 /* Level1.plist */,
 			);
 			path = slime;
 			sourceTree = "<group>";
@@ -667,6 +666,7 @@
 		EC449B99223BB7D700A8EA35 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				8BEDCD382247F10100E24A20 /* Level1.plist */,
 				EC449B9A223BB9E900A8EA35 /* levels.json */,
 			);
 			path = Data;
