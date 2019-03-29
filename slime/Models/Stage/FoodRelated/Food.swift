@@ -12,15 +12,11 @@ import SpriteKit
 class Food: NSObject {
     private(set) var ingredientsList: [Ingredient : Int] = [:]
 
-    init() {
-        super.init()
-    }
-
     func addIngredients(_ ingredient: Ingredient) {
         if ingredientsList[ingredient] == nil {
             ingredientsList[ingredient] = 1
         } else {
-            ingredientsList[ingredient] += 1
+            ingredientsList[ingredient]? += 1
         }
     }
 }

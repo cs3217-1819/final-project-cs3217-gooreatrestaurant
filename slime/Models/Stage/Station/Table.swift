@@ -25,7 +25,12 @@ class Table: Station {
     }
 
     override func ableToProcess(_ item: SKSpriteNode?) -> Bool {
-        if (item == nil && self.item != nil) || (item != nil && self.item == nil) {
+
+        let willTake = (item == nil && self.item != nil)
+        let willPut = (item != nil && self.item == nil)
+        let willAddIngredient = (item is Ingredient && self.item is Plate)
+
+        if willTake || willPut || willAddIngredient {
             return true
         }
         return false
@@ -36,7 +41,11 @@ class Table: Station {
             return item
         }
 
-        if self.item == nil {
+        let willTake = (item == nil && self.item != nil)
+        let willPut = (item != nil && self.item == nil)
+        let willAddIngredient = (item is Ingredient && self.item is Plate)
+
+        if willPut {
 
             guard let itemToPut = item else {
                 return item
@@ -47,16 +56,30 @@ class Table: Station {
             addChild(itemToPut)
             return nil
 
-        } else {
+        } else if willTake {
 
-            guard let itemToTake = self.item else {
+            guard let itemToTake = self.item as? SKSpriteNode else {
                 return nil
             }
 
             itemToTake.removeFromParent()
             return itemToTake
 
+        } else if willAddIngredient {
+
+            guard let plate = self.item as? Plate else {
+                return item
+            }
+
+            guard let ingredient = item as? Ingredient else {
+                return item
+            }
+
+            plate.food.addIngredients(ingredient)
+            return nil
         }
+
+        return item
 
     }
 
