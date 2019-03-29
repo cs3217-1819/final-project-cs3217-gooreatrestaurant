@@ -27,7 +27,11 @@ class Ingredient: SKSpriteNode {
     }
 
     func cook(by method: StageConstants.CookingType) {
-        self.processed = method
+        if self.processed == nil {
+            self.processed = method
+        } else {
+            self.ruin()
+        }
     }
 
     func ruin() {
@@ -36,5 +40,11 @@ class Ingredient: SKSpriteNode {
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+}
+
+extension Ingredient: Hashable {
+    static func == (lhs: Ingredient, rhs: Ingredient) -> Bool {
+        return lhs.type == rhs.type && lhs.processed == rhs.processed
     }
 }
