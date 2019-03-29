@@ -23,9 +23,4 @@ class Plate: SKSpriteNode {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
-    // Bool here is success / fail
-    func putIngredient(_ ingredient: Ingredient) -> Bool {
-        return self.food.addIngredient(ingredient)
-    }
 }

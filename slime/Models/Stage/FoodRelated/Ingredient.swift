@@ -26,26 +26,12 @@ class Ingredient: SKSpriteNode {
         self.physicsBody?.collisionBitMask = StageConstants.wallCategoryCollision
     }
 
-    func cook(using equipment: CookingEquipment) {
-        // process(by: equipment.type)
-        self.color = .gray
-    }
-
     func cook(by method: StageConstants.CookingType) {
         
     }
 
     func ruin() {
 
-    }
-
-    private func process(by method: StageConstants.CookingType) {
-        if StageConstants.wayToCook[type] == method {
-            // wrong
-            processed = nil
-        } else {
-            self.type = .junk
-        }
     }
 
     required init?(coder aDecoder: NSCoder) {

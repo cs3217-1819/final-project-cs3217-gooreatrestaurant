@@ -73,6 +73,18 @@ class Slime: SKSpriteNode {
         return node as? Ingredient
     }
 
+    var itemCarried: SKSpriteNode? {
+        if let plate = plateCarried {
+            return plate
+        } 
+
+        if let ingredient = ingredientsCarried {
+            return ingredient
+        }
+
+        return nil
+    }
+
     var spaceship: Spaceship? {
         guard let node = parent else {
             return nil
@@ -82,63 +94,7 @@ class Slime: SKSpriteNode {
     }
 
     var isCarryingSomething: Bool {
-        return ingredientsCarried != nil || plateCarried != nil
-    }
-
-    private func takeItem(_ item: SKSpriteNode) {
-        item.removeFromParent()
-        item.position.x = 0.0
-        item.position.y = 0.5 * (self.size.height + item.size.height)
-        item.physicsBody = nil
-        self.addChild(item)
-    }
-
-    private func takePlate(_ plate: Plate) {
-        guard !self.isCarryingSomething else {
-            return
-        }
-        self.takeItem(plate)
-    }
-
-    private func takeIngredient(_ ingredient: Ingredient) {
-        guard !self.isCarryingSomething else {
-            return
-        }
-
-        self.takeItem(ingredient)
-    }
-
-    private func takePlate(fromStorage storage: PlateStorage) {
-        let plate = storage.takePlate()
-        self.takePlate(plate)
-    }
-
-    private func takeIngredient(fromContainer container: IngredientStorage) {
-        let ingredient = container.takeIngredient()
-        self.takeIngredient(ingredient)
-    }
-
-    private func cook(using equipment: CookingEquipment) {
-        guard let ingredient = self.ingredientsCarried else {
-            return
-        }
-
-        ingredient.cook(using: equipment)
-    }
-
-    // this Bool is success/fail
-    private func putIngredient(into plate: Plate) -> Bool {
-        guard let ingredient = self.ingredientsCarried else {
-            return false
-        }
-
-        // it will continue if it successfully put
-        guard plate.putIngredient(ingredient) == true else {
-            return false
-        }
-
-        ingredient.removeFromParent()
-        return true
+        return itemCarried != nil
     }
 
     func interact() {
