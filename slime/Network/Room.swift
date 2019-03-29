@@ -50,6 +50,10 @@ class RoomPlayerModel {
     var uid: String = ""
     var isHost: Bool = false
     var isReady: Bool = false
+    // TODO: replace with name of player, generated or otherwise
+    var name: String {
+        return uid
+    }
     
     init(uid: String, isHost: Bool, isReady: Bool) {
         self.uid = uid

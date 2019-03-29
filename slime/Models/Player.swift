@@ -17,4 +17,9 @@ class Player: NSObject {
         self.name = name
         self.level = level
     }
+    
+    init(from model: RoomPlayerModel) {
+        name = model.name
+        level = 1
+    }
 }
