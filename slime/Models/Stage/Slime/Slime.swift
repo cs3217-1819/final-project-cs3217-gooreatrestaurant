@@ -42,7 +42,6 @@ class Slime: SKSpriteNode {
         self.physicsBody?.contactTestBitMask |= StageConstants.tableCategory
         self.physicsBody?.contactTestBitMask |= StageConstants.slimeCategory
         self.physicsBody?.contactTestBitMask |= StageConstants.ladderCategory
-        self.physicsBody?.contactTestBitMask |= StageConstants.storageCategory
 
         // animate slime
         self.run(SKAction.repeatForever(
@@ -142,111 +141,6 @@ class Slime: SKSpriteNode {
         return true
     }
 
-    func interactWithoutCarryingAnything() {
-        var hasInteracted = false
-        guard let contactedBodies = self.physicsBody?.allContactedBodies() else {
-            return
-        }
-
-        for body in contactedBodies where body.node?.name == StageConstants.ingredientName {
-            guard let ingredient = body.node as? Ingredient else {
-                continue
-            }
-
-            hasInteracted = true
-            self.takeIngredient(ingredient)
-            break
-        }
-
-        guard hasInteracted == false else {
-            return
-        }
-
-        for body in contactedBodies where body.node?.name == StageConstants.plateName {
-            guard let plate = body.node as? Plate else {
-                continue
-            }
-
-            hasInteracted = true
-            self.takePlate(plate)
-            break
-        }
-
-        guard hasInteracted == false else {
-            return
-        }
-
-        for body in contactedBodies where body.node?.name == StageConstants.ingredientContainerName {
-            guard let container = body.node as? IngredientStorage else {
-                continue
-            }
-
-            hasInteracted = true
-            self.takeIngredient(fromContainer: container)
-            break
-        }
-
-        guard hasInteracted == false else {
-            return
-        }
-
-        for body in contactedBodies where body.node?.name == StageConstants.plateStorageName {
-            guard let storage = body.node as? PlateStorage else {
-                continue
-            }
-
-            hasInteracted = true
-            self.takePlate(fromStorage: storage)
-            break
-        }
-    }
-
-    func interactWhileCarryingIngredient() {
-        var hasInteracted = false
-        guard let contactedBodies = self.physicsBody?.allContactedBodies() else {
-            return
-        }
-
-        for body in contactedBodies where body.node?.name == StageConstants.cookerName {
-            guard let cooker = body.node as? CookingEquipment else {
-                continue
-            }
-
-            hasInteracted = true
-            self.cook(using: cooker)
-            break
-        }
-
-        guard hasInteracted == false else {
-            return
-        }
-
-        for body in contactedBodies where body.node?.name == StageConstants.plateName{
-            guard let plate = body.node as? Plate else {
-                continue
-            }
-
-            let success = self.putIngredient(into: plate)
-            guard success == true else {
-                continue
-            }
-
-            hasInteracted = true
-            break
-        }
-    }
-
-    func interactWhileCarryingPlate() {
-
-    }
-
     func interact() {
-        if !isCarryingSomething {
-            interactWithoutCarryingAnything()
-        } else if plateCarried != nil {
-            interactWhileCarryingPlate()
-        } else {
-            interactWhileCarryingIngredient()
-        }
     }
 }

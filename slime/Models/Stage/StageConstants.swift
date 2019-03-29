@@ -26,8 +26,6 @@ class StageConstants {
     static let roomName = "room"
     static let slimeName = "slime"
     static let ladderName = "ladder"
-    static let plateStorageName = "plate-storage"
-    static let ingredientContainerName = "ingredient-container"
     static let stationName = "station"
 
     // spaceship size and position
@@ -40,7 +38,6 @@ class StageConstants {
     static let ingredientSize = CGSize(width: 40, height: 10)
     static let cookerSize = CGSize(width: 40, height: 30)
     static let ladderSize = CGSize(width: 50, height: 50)
-    static let storageSize = CGSize(width: 40, height: 30)
     static let stationSize = CGSize(width: 40, height: 30)
 
     // controller size and position
@@ -63,7 +60,6 @@ class StageConstants {
     static let tableCategory: UInt32 = 1 << 3
     static let slimeCategory: UInt32 = 1 << 4
     static let ladderCategory: UInt32 = 1 << 5
-    static let storageCategory: UInt32 = 1 << 6
     static let stationCategory: UInt32 = 1 << 6
 
     // zPosition list
