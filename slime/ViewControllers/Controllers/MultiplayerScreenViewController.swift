@@ -34,29 +34,7 @@ class MultiplayerScreenViewController: ViewController<MultiplayerScreenView> {
         }
         let joinControl = ButtonController(using: view.joinRoomButton)
         joinControl.onTap {
-            // TODO: show dialog box to add room id
-            let roomJoinId = "28280"
-            
-            self.setLoadingAlert(withDescription: "Teleporting slime agent...")
-            self.presentActiveAlert(dismissible: true)
-            
-            self.context.db.joinRoom(forRoomId: roomJoinId, {
-                let vc: MultiplayerLobbyViewController = self.context.routeToAndPrepareFor(.MultiplayerLobby)
-                vc.setupRoom(withId: roomJoinId)
-                
-                self.context.closeAlert()
-            }, {
-                // room contains 4 players already
-                self.setErrorAlert(withDescription: "Room if full!")
-                self.presentActiveAlert(dismissible: true)
-            }, {
-                // room does not exist
-                self.setErrorAlert(withDescription: "Room does not exist!!")
-                self.presentActiveAlert(dismissible: true)
-            }, { (err) in
-                self.setErrorAlert(withDescription: err as! String)
-                self.presentActiveAlert(dismissible: true)
-            })
+            self.context.routeTo(.MultiplayerJoinRoomScreen)
         }
         
         remember(hostControl)

@@ -12,7 +12,7 @@ import RxSwift
 class PlayerBoxController: Controller {
     let view: PlayerBox
     private let disposeBag = DisposeBag()
-    private var player = BehaviorSubject(value: Player(name: "TestPlayer", level: 1))
+    private var player = BehaviorSubject<Player?>(value: nil)
     
     init(using view: UIView) {
         guard let trueView = view as? PlayerBox else {
@@ -38,6 +38,14 @@ class PlayerBoxController: Controller {
         self.player.onNext(player)
     }
     
+    func removePlayer() {
+        self.player.onNext(nil)
+    }
+    
+    private func setConnected() {
+        view.backgroundColor = ColorStyles.getColor("pink4")
+    }
+    
     private func setName(_ name: String) {
         view.nameLabel.text = name
     }
@@ -46,14 +54,35 @@ class PlayerBoxController: Controller {
         view.levelLabel.text = "Level \(level)"
     }
     
+    private func setHost(_ isHost: Bool) {
+        if isHost {
+            view.hostCrownImageView.alpha = 1
+        } else {
+            view.hostCrownImageView.alpha = 0
+        }
+    }
+    
+    private func setNotConnected() {
+        view.backgroundColor = ColorStyles.getColor("white4")
+        view.avatarImageView.image = ImageProvider.get("mc-slime-single")
+        setName("Disconnected")
+        view.levelLabel.text = ""
+    }
+    
     private func setupReactive() {
         player.asObservable()
             .subscribe { event in
-                guard let player = event.element else {
+                guard let optionalPlayer = event.element else {
                     return
                 }
+                guard let player = optionalPlayer else {
+                    self.setNotConnected()
+                    return
+                }
+                self.setConnected()
                 self.setName(player.name)
                 self.setLevel(player.level)
+                self.setHost(player.isHost)
             }.disposed(by: disposeBag)
     }
 }

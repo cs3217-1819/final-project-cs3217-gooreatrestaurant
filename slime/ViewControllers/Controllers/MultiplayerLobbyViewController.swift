@@ -19,21 +19,30 @@ class MultiplayerLobbyViewController: ViewController<MultiplayerLobbyView> {
         view.playerFourView
     ]
     
+    private lazy var playerControllers: [PlayerBoxController] = [
+        PlayerBoxController(using: playerViews[0]),
+        PlayerBoxController(using: playerViews[1]),
+        PlayerBoxController(using: playerViews[2]),
+        PlayerBoxController(using: playerViews[3]),
+    ]
+    
     override func configureSubviews() {
         configureUpButton(to: .MultiplayerScreen)
+        for controller in playerControllers {
+            controller.configure()
+        }
     }
     
     private func setupPlayers(forPlayers players: [RoomPlayerModel]) {
-        for _ in players {
-            // TODO: populate player
-        }
-        
-        for i in 0...3 {
-            let player = Player(name: "Hello", level: i + 5)
-            let control = PlayerBoxController(using: playerViews[i])
-            control.setPlayer(player)
+        let playerCount = players.count
+        for i in 0..<playerViews.count {
+            if i >= playerCount {
+                playerControllers[i].removePlayer()
+                continue
+            }
             
-            remember(control)
+            let roomPlayer = Player(from: players[i])
+            playerControllers[i].setPlayer(roomPlayer)
         }
     }
     
