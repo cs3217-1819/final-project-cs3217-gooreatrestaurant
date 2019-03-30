@@ -52,15 +52,28 @@
                         <userDefinedRuntimeAttribute type="string" keyPath="nibName" value="PrimaryButton"/>
                     </userDefinedRuntimeAttributes>
                 </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6yy-ix-2TB" customClass="XibView" customModule="slime" customModuleProvider="target">
+                    <rect key="frame" x="536" y="36" width="240" height="128"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="240" id="2jJ-Ca-AFh"/>
+                        <constraint firstAttribute="height" constant="128" id="f2d-IH-TKM"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="nibName" value="UserInfoView"/>
+                    </userDefinedRuntimeAttributes>
+                </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstItem="6yy-ix-2TB" firstAttribute="top" secondItem="cI2-Re-6Om" secondAttribute="top" constant="36" id="70i-ZI-r6P"/>
                 <constraint firstItem="z5i-hl-RFm" firstAttribute="centerX" secondItem="qZj-mx-hPM" secondAttribute="centerX" id="7cD-ua-bRm"/>
                 <constraint firstAttribute="bottom" secondItem="3Jp-Li-nZF" secondAttribute="bottom" constant="36" id="I9r-jE-CJv"/>
                 <constraint firstAttribute="bottom" secondItem="Qug-F1-4pr" secondAttribute="bottom" constant="32" id="L4X-KK-YJj"/>
                 <constraint firstItem="z5i-hl-RFm" firstAttribute="top" secondItem="cI2-Re-6Om" secondAttribute="top" constant="36" id="Pdh-Xq-olf"/>
                 <constraint firstItem="Qug-F1-4pr" firstAttribute="leading" secondItem="3Jp-Li-nZF" secondAttribute="trailing" constant="32" id="UM3-D5-B2W"/>
                 <constraint firstAttribute="bottom" secondItem="wMS-We-Vto" secondAttribute="bottom" constant="32" id="WgQ-gr-Fde"/>
+                <constraint firstItem="cI2-Re-6Om" firstAttribute="trailing" secondItem="6yy-ix-2TB" secondAttribute="trailing" constant="36" id="ccE-FE-0kR"/>
                 <constraint firstItem="3Jp-Li-nZF" firstAttribute="leading" secondItem="wMS-We-Vto" secondAttribute="trailing" constant="32" id="jsh-3K-x7Q"/>
                 <constraint firstItem="3Jp-Li-nZF" firstAttribute="centerX" secondItem="qZj-mx-hPM" secondAttribute="centerX" id="wbe-iI-3Tu"/>
             </constraints>
@@ -72,6 +85,7 @@
                 <outlet property="creditsButton" destination="wMS-We-Vto" id="8mm-FL-os7"/>
                 <outlet property="playButton" destination="3Jp-Li-nZF" id="8gP-ag-I8a"/>
                 <outlet property="settingsButton" destination="Qug-F1-4pr" id="TaB-nm-KGq"/>
+                <outlet property="userInfoView" destination="6yy-ix-2TB" id="yvw-he-m1I"/>
             </connections>
             <point key="canvasLocation" x="1161.5999999999999" y="-104.34782608695653"/>
         </view>
