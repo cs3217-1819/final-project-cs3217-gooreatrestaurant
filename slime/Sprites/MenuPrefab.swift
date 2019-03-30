@@ -12,7 +12,8 @@ import SpriteKit
 class MenuPrefab : SKSpriteNode {
     override init(texture: SKTexture?, color: UIColor, size: CGSize) {
         super.init(texture: texture, color: color, size: size)
-        self.position = CGPoint.zero
+        self.position = CGPoint(x: ScreenSize.width * 0.5 - 60,
+                                y: ScreenSize.height * 0.5 - 60)
         self.zPosition = 5
     }
 

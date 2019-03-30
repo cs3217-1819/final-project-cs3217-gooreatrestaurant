@@ -7,6 +7,8 @@
 //
 
 enum IngredientType {
+    case apple
+    case dough
     case potato
     case junk
 }

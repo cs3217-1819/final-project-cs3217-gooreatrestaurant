@@ -128,6 +128,7 @@ class Stage: SKScene {
     }
 
     func generateMenu() {
+        let applePieRecipe = Recipe(withCompulsoryIngredients: <#T##[IngredientType]#>, withOptionalIngredients: <#T##[(type: IngredientType, probability: Double)]#>)
         let spaceshipBody = SKTexture(imageNamed: "Menu-Slimes_01")
         spaceshipBody.filteringMode = .nearest
         let temp = MenuPrefab.init(texture: spaceshipBody, color: .clear, size: CGSize(width: 100, height: 100))
