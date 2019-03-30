@@ -37,6 +37,7 @@
 		8BD816B922426D1400586180 /* BDButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD816B822426D1400586180 /* BDButton.swift */; };
 		8BEDCD392247F10100E24A20 /* Level1.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8BEDCD382247F10100E24A20 /* Level1.plist */; };
 		8BEDCD43224E089A00E24A20 /* SerializableGameData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEDCD42224E089A00E24A20 /* SerializableGameData.swift */; };
+		8BEDCD45224F3EC900E24A20 /* MenuPrefab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEDCD44224F3EC900E24A20 /* MenuPrefab.swift */; };
 		BA7CC9239365F389C9C1FA05 /* Pods_slime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7F0D50F4B0E911D0C328800 /* Pods_slime.framework */; };
 		EC21B40022420CA700827121 /* LevelPlayButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC21B3FF22420CA700827121 /* LevelPlayButton.xib */; };
 		EC21B40222420D4100827121 /* DesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC21B40122420D4100827121 /* DesignableView.swift */; };
@@ -204,6 +205,7 @@
 		8BD816B822426D1400586180 /* BDButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BDButton.swift; sourceTree = "<group>"; };
 		8BEDCD382247F10100E24A20 /* Level1.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Level1.plist; sourceTree = "<group>"; };
 		8BEDCD42224E089A00E24A20 /* SerializableGameData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerializableGameData.swift; sourceTree = "<group>"; };
+		8BEDCD44224F3EC900E24A20 /* MenuPrefab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuPrefab.swift; sourceTree = "<group>"; };
 		E7F0D50F4B0E911D0C328800 /* Pods_slime.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_slime.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC21B3FF22420CA700827121 /* LevelPlayButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LevelPlayButton.xib; sourceTree = "<group>"; };
 		EC21B40122420D4100827121 /* DesignableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableView.swift; sourceTree = "<group>"; };
@@ -437,6 +439,7 @@
 			isa = PBXGroup;
 			children = (
 				8B81EFBB224344AD007BFDB0 /* Slime.atlas */,
+				8BEDCD44224F3EC900E24A20 /* MenuPrefab.swift */,
 			);
 			path = Sprites;
 			sourceTree = "<group>";
@@ -1132,6 +1135,7 @@
 				EC40E4B0223F983E0073D755 /* SettingsScreenView.swift in Sources */,
 				ECD4554A223FB133006AF78D /* ViewController.swift in Sources */,
 				1DE6FC5E224CA4AD00B36F48 /* StoreFront.swift in Sources */,
+				8BEDCD45224F3EC900E24A20 /* MenuPrefab.swift in Sources */,
 				ECF75F02224B17CA00537237 /* JoinRoomView.swift in Sources */,
 				EC38245422390789000D7148 /* ScrollingBackgroundViewController.swift in Sources */,
 				EC38244722388CB1000D7148 /* PrimaryButtonController.swift in Sources */,
@@ -1379,7 +1383,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = W76H98A34A;
+				DEVELOPMENT_TEAM = CZ7H96C646;
 				INFOPLIST_FILE = slime/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1400,7 +1404,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = W76H98A34A;
+				DEVELOPMENT_TEAM = CZ7H96C646;
 				INFOPLIST_FILE = slime/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
