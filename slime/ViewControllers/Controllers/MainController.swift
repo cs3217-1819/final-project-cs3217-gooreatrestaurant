@@ -36,7 +36,19 @@ class MainController: UIViewController {
         super.viewDidLoad()
         
         context = Context(using: self)
-        
+        setupHideKeyboardOnTap()
+    }
+    
+    func setupHideKeyboardOnTap() {
+        self.view.addGestureRecognizer(self.endEditingRecognizer())
+        self.navigationController?.navigationBar.addGestureRecognizer(self.endEditingRecognizer())
+    }
+    
+    /// Dismisses the keyboard from self.view
+    private func endEditingRecognizer() -> UIGestureRecognizer {
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(self.view.endEditing(_:)))
+        tap.cancelsTouchesInView = false
+        return tap
     }
     
     // Perform segue called from context

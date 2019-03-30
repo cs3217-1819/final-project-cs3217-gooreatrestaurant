@@ -14,28 +14,21 @@ import Foundation
  */
 class LocalData {
     static let it = LocalData()
-    private(set) var user: UserCharacter?
     
     private init() {
-        user = LocalDataProvider.it.getUser()
+        
+    }
+    
+    func getUserCharacter() -> UserCharacter? {
+        return LocalDataProvider.it.getUser()
     }
     
     func createCharacter(named name: String) {
-        guard self.user == nil else {
-            // User already exists
-            return
-        }
         let user = UserCharacter(named: name)
         LocalDataProvider.it.save(user: user)
-        
-        self.user = LocalDataProvider.it.getUser()
     }
     
-    func saveCharacter() {
-        guard let characterToSave = user else {
-            // No user exists
-            return
-        }
+    func saveCharacter(_ characterToSave: UserCharacter) {
         LocalDataProvider.it.save(user: characterToSave)
     }
 }

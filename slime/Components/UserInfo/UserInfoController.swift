@@ -13,18 +13,15 @@ class UserInfoController: Controller {
     let view: UserInfoView
     private let disposeBag = DisposeBag()
     private var progressBarController: ProgressBarController?
-    private let character = BehaviorSubject<UserCharacter?>(value: nil)
+    private let character: BehaviorSubject<UserCharacter>
     
-    init(usingXib xibView: XibView) {
+    init(usingXib xibView: XibView, boundTo rxChar: BehaviorSubject<UserCharacter>) {
         guard let trueView = xibView.contentView as? UserInfoView else {
             Logger.it.error("Nib class is wrong")
             fatalError()
         }
+        character = rxChar
         view = trueView
-    }
-    
-    func set(character: UserCharacter) {
-        self.character.onNext(character)
     }
     
     func configure() {
@@ -39,10 +36,7 @@ class UserInfoController: Controller {
     
     private func setupReactive() {
         character.subscribe { event in
-            guard let optionalPlayer = event.element else {
-                return
-            }
-            guard let player = optionalPlayer else {
+            guard let player = event.element else {
                 return
             }
             self.refreshView(player: player)

@@ -14,23 +14,21 @@ class TitleScreenViewController: ViewController<TitleScreenView> {
     }
     
     private func setupUserInfo() {
-        guard let character = LocalData.it.user else {
+        guard let charSubject = context.userCharacter else {
             return
         }
-        let userInfoController = UserInfoController(usingXib: view.userInfoView)
-        userInfoController.set(character: character)
+        let userInfoController = UserInfoController(usingXib: view.userInfoView, boundTo: charSubject)
         userInfoController.configure()
         remember(userInfoController)
     }
     
     private func setupButtons() {
         let playButtonController = PrimaryButtonController(using: view.playButton)
-        playButtonController.configure()
-        _ = playButtonController
             .set(color: .green)
             .set(label: "Play")
+        playButtonController.configure()
         playButtonController.onTap {
-            if LocalData.it.user != nil {
+            if self.context.userCharacter != nil {
                 // user exists
                 self.context.routeTo(.PlayScreen)
             }
@@ -38,20 +36,19 @@ class TitleScreenViewController: ViewController<TitleScreenView> {
             self.startCreateUserProcedure()
         }
         let settingsButtonController = PrimaryButtonController(using: view.settingsButton)
-        settingsButtonController.configure()
-        _ = settingsButtonController
             .set(color: .blue)
             .set(label: "Settings")
+        settingsButtonController.configure()
         settingsButtonController.onTap {
-            self.context.routeTo(.SettingsScreen)
+            self.context.gainCharacterExp(10)
+            // self.context.routeTo(.SettingsScreen)
         }
         let creditsButtonController = PrimaryButtonController(using: view.creditsButton)
-        creditsButtonController.configure()
-        _ = creditsButtonController
             .set(color: .purple)
             .set(label: "Credits")
+        creditsButtonController.configure()
         creditsButtonController.onTap {
-            self.context.routeTo(.CreditsScreen)
+            self.context.routeTo(.CharacterCreationScreen)
         }
         
         remember(playButtonController)

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="XibView" customModule="slime" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="TextInputView" customModule="slime" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="350" height="86"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wWS-ys-Lms" customClass="DesignableView" customModule="slime" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="350" height="86"/>
+                    <subviews>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eGg-90-4eo" customClass="TextField" customModule="slime" customModuleProvider="target">
+                            <rect key="frame" x="16" y="28.5" width="318" height="49.5"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="style" value="p0"/>
+                            </userDefinedRuntimeAttributes>
+                        </textField>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CgE-1a-C23" customClass="TextLabel" customModule="slime" customModuleProvider="target">
+                            <rect key="frame" x="16" y="8" width="318" height="20.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="style" value="p2"/>
+                                <userDefinedRuntimeAttribute type="string" keyPath="color" value="white1"/>
+                            </userDefinedRuntimeAttributes>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="CgE-1a-C23" firstAttribute="leading" secondItem="wWS-ys-Lms" secondAttribute="leading" constant="16" id="6eq-dL-pOt"/>
+                        <constraint firstAttribute="trailing" secondItem="eGg-90-4eo" secondAttribute="trailing" constant="16" id="9gn-Ae-UUW"/>
+                        <constraint firstAttribute="bottom" secondItem="eGg-90-4eo" secondAttribute="bottom" constant="8" id="aro-b8-rgh"/>
+                        <constraint firstItem="CgE-1a-C23" firstAttribute="top" secondItem="wWS-ys-Lms" secondAttribute="top" constant="8" id="cmc-QT-Mfh"/>
+                        <constraint firstAttribute="trailing" secondItem="CgE-1a-C23" secondAttribute="trailing" constant="16" id="dfr-4D-i6e"/>
+                        <constraint firstItem="eGg-90-4eo" firstAttribute="top" secondItem="CgE-1a-C23" secondAttribute="bottom" id="pXL-WR-esu"/>
+                        <constraint firstItem="eGg-90-4eo" firstAttribute="leading" secondItem="wWS-ys-Lms" secondAttribute="leading" constant="16" id="vFw-Je-290"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="rounded" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="wWS-ys-Lms" secondAttribute="trailing" id="BRX-Iw-Stx"/>
+                <constraint firstItem="wWS-ys-Lms" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="GGv-vo-9VL"/>
+                <constraint firstItem="wWS-ys-Lms" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Vyk-kE-baa"/>
+                <constraint firstItem="wWS-ys-Lms" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="z3z-5z-rcx"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="inputField" destination="eGg-90-4eo" id="Yh2-wq-VZI"/>
+                <outlet property="labelLabel" destination="CgE-1a-C23" id="vNY-EE-SkN"/>
+            </connections>
+            <point key="canvasLocation" x="19.199999999999999" y="-214.99250374812596"/>
+        </view>
+    </objects>
+</document>
