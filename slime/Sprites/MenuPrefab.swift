@@ -23,11 +23,16 @@ class MenuPrefab : SKSpriteNode {
     func addRecipe(inString: String) {
         //Adding image of the main recipe
         let dish = SKSpriteNode(imageNamed: inString)
-        dish.position = CGPoint(x: 0, y: 30)
+        dish.position = CGPoint(x: 0, y: 20)
         dish.zPosition = 5
         dish.size = CGSize(width: 50, height: 50)
 
         //Add the ingredients
+        let ingredient = SKSpriteNode(imageNamed: "Apple")
+        ingredient.position = CGPoint(x: 0, y: -50)
+        ingredient.zPosition = 5
+        ingredient.size = CGSize(width: 20, height: 20)
+        dish.addChild(ingredient)
 
         self.addChild(dish)
     }

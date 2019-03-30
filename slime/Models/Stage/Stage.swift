@@ -133,7 +133,6 @@ class Stage: SKScene {
         let temp = MenuPrefab.init(texture: spaceshipBody, color: .clear, size: CGSize(width: 100, height: 100))
         temp.addRecipe(inString: "ApplePie")
         self.addChild(temp)
-
     }
 
     required init?(coder aDecoder: NSCoder) {
