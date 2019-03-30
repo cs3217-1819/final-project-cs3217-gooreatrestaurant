@@ -15,10 +15,13 @@ class MenuPrefab : SKSpriteNode {
         print("A")
         self.position = CGPoint.zero
         self.zPosition = 5
-        addChild(self)
     }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    func temp() {
+        print("TEST")
     }
 }
