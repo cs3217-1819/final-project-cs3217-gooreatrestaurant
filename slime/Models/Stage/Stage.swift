@@ -131,10 +131,9 @@ class Stage: SKScene {
         let spaceshipBody = SKTexture(imageNamed: "Menu-Slimes_01")
         spaceshipBody.filteringMode = .nearest
         let temp = MenuPrefab.init(texture: spaceshipBody, color: .clear, size: CGSize(width: 100, height: 100))
-        temp.temp()
+        temp.addRecipe(inString: "ApplePie")
         self.addChild(temp)
 
-        let base = SKTexture(imageNamed: "ApplePie")
     }
 
     required init?(coder aDecoder: NSCoder) {

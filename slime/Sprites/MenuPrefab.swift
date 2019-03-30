@@ -12,7 +12,6 @@ import SpriteKit
 class MenuPrefab : SKSpriteNode {
     override init(texture: SKTexture?, color: UIColor, size: CGSize) {
         super.init(texture: texture, color: color, size: size)
-        print("A")
         self.position = CGPoint.zero
         self.zPosition = 5
     }
@@ -21,7 +20,15 @@ class MenuPrefab : SKSpriteNode {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func temp() {
-        print("TEST")
+    func addRecipe(inString: String) {
+        //Adding image of the main recipe
+        let dish = SKSpriteNode(imageNamed: inString)
+        dish.position = CGPoint(x: 0, y: 30)
+        dish.zPosition = 5
+        dish.size = CGSize(width: 50, height: 50)
+
+        //Add the ingredients
+
+        self.addChild(dish)
     }
 }
