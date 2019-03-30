@@ -29,10 +29,20 @@ class MenuPrefab : SKSpriteNode {
 
         //Add the ingredients
         let ingredient = SKSpriteNode(imageNamed: "Apple")
-        ingredient.position = CGPoint(x: 0, y: -50)
-        ingredient.zPosition = 5
+        ingredient.position = CGPoint(x: 0, y: -40)
         ingredient.size = CGSize(width: 20, height: 20)
         dish.addChild(ingredient)
+
+        //Adding the countdown bar
+        let blackBar = SKSpriteNode(imageNamed: "Black bar")
+        blackBar.position = CGPoint(x: 35, y: -25)
+        blackBar.size = CGSize(width: 45, height: 40)
+        dish.addChild(blackBar)
+
+        let greenBar = SKSpriteNode(imageNamed: "Green bar")
+        greenBar.position = CGPoint(x: 0, y: 0)
+        greenBar.size = CGSize(width: 40, height: 40)
+        blackBar.addChild(greenBar)
 
         self.addChild(dish)
     }
