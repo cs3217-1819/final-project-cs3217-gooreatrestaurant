@@ -46,5 +46,13 @@ class MenuPrefab : SKSpriteNode {
         blackBar.addChild(greenBar)
 
         self.addChild(dish)
+
+        countdown(inBar: greenBar)
+    }
+
+    func countdown(inBar: SKSpriteNode) {
+        print("A")
+        inBar.yScale = 0.5
+        print(inBar.yScale)
     }
 }
