@@ -9,6 +9,7 @@
 import UIKit
 
 class PlayerBox: UIView {
+    @IBOutlet var hostCrownImageView: UIImageView!
     @IBOutlet var avatarImageView: UIImageView!
     @IBOutlet var nameLabel: TextLabel!
     @IBOutlet var levelLabel: TextLabel!

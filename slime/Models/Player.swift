@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 class Player: NSObject {
+    var isHost = false
     var name: String
     var level: Int
     
@@ -21,5 +22,6 @@ class Player: NSObject {
     init(from model: RoomPlayerModel) {
         name = model.name
         level = 1
+        isHost = model.isHost
     }
 }

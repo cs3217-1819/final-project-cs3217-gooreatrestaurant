@@ -42,6 +42,10 @@ class PlayerBoxController: Controller {
         self.player.onNext(nil)
     }
     
+    private func setConnected() {
+        view.backgroundColor = ColorStyles.getColor("pink4")
+    }
+    
     private func setName(_ name: String) {
         view.nameLabel.text = name
     }
@@ -50,7 +54,16 @@ class PlayerBoxController: Controller {
         view.levelLabel.text = "Level \(level)"
     }
     
+    private func setHost(_ isHost: Bool) {
+        if isHost {
+            view.hostCrownImageView.alpha = 1
+        } else {
+            view.hostCrownImageView.alpha = 0
+        }
+    }
+    
     private func setNotConnected() {
+        view.backgroundColor = ColorStyles.getColor("white4")
         view.avatarImageView.image = ImageProvider.get("mc-slime-single")
         setName("Disconnected")
         view.levelLabel.text = ""
@@ -59,15 +72,17 @@ class PlayerBoxController: Controller {
     private func setupReactive() {
         player.asObservable()
             .subscribe { event in
-                guard let player = event.element else {
+                guard let optionalPlayer = event.element else {
                     return
                 }
-                guard let truePlayer = player else {
+                guard let player = optionalPlayer else {
                     self.setNotConnected()
                     return
                 }
-                self.setName(truePlayer.name)
-                self.setLevel(truePlayer.level)
+                self.setConnected()
+                self.setName(player.name)
+                self.setLevel(player.level)
+                self.setHost(player.isHost)
             }.disposed(by: disposeBag)
     }
 }
