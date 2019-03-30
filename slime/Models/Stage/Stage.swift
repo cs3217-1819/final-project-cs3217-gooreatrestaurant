@@ -127,6 +127,14 @@ class Stage: SKScene {
         
     }
 
+    func generateMenu() {
+        let spaceshipBody = SKTexture(imageNamed: "ApplePie")
+        spaceshipBody.filteringMode = .nearest
+        let temp = MenuPrefab.init(texture: spaceshipBody, color: .clear, size: CGSize(width: 100, height: 100))
+
+        let base = SKTexture(imageNamed: "ApplePie")
+    }
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("initiation using storyboard is not implemented yet.")
     }

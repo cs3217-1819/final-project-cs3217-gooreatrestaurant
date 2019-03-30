@@ -25,6 +25,7 @@ class GameViewController: UIViewController {
         view.addSubview(skview)
 
         stage.spaceship.generateLevel(inLevel: "Level1")
+        stage.generateMenu()
     }
 
     lazy var skView: SKView = {
