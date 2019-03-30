@@ -10,13 +10,13 @@ import UIKit
 import SpriteKit
 
 class Food: NSObject {
-    private(set) var ingredientsList: [Ingredient : Int] = [:]
+    private(set) var ingredientsList: [Ingredient:Int] = [:]
 
     func addIngredients(_ ingredient: Ingredient) {
+
         if ingredientsList[ingredient] == nil {
-            ingredientsList[ingredient] = 1
-        } else {
-            ingredientsList[ingredient]? += 1
+            ingredientsList[ingredient] = 0
         }
+        ingredientsList[ingredient]? += 1
     }
 }

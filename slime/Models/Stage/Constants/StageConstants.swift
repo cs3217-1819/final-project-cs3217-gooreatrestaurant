@@ -10,8 +10,6 @@ import UIKit
 
 class StageConstants {
 
-    // TO DO Remove all storage variables
-
     static let maxPlayer = 4
     static let maxXAxisUnits = ScreenSize.width
     static let maxYAxisUnits = ScreenSize.height
@@ -70,4 +68,7 @@ class StageConstants {
     static let stationZPos = CGFloat(3)
     static let joystickZPos = CGFloat(4)
     static let buttonZPos = CGFloat(4)
+
+    // gameplay related
+    static let defaultOptionalProbability = 0.5
 }

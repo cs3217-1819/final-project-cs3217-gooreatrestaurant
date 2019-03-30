@@ -15,7 +15,7 @@ class Ingredient: SKSpriteNode {
 
     init(type: IngredientType,
          size: CGSize = StageConstants.ingredientSize,
-         inPosition position: CGPoint) {
+         inPosition position: CGPoint = CGPoint.zero) {
 
         self.type = type
         super.init(texture: nil, color: .red, size: size)
