@@ -52,7 +52,6 @@ class StageConstants {
     static let wallCategoryCollision: UInt32 = 1 << 0
 
     // category bitmask
-    static let cookerCategory: UInt32 = 1 << 0
     static let plateCategory: UInt32 = 1 << 1
     static let ingredientCategory: UInt32 = 1 << 2
     static let tableCategory: UInt32 = 1 << 3
