@@ -11,25 +11,23 @@ import UIKit
 class Recipe: NSObject {
     private(set) var ingredientsNeeded: [Ingredient:Int] = [:]
 
-    init(withCompulsoryIngredients compulsoryIngredients: [IngredientType],
-         withOptionalIngredients optionalIngredients: [(type: IngredientType, probability: Double)]) {
+    init(withCompulsoryIngredients compulsoryIngredients: [Ingredient],
+         withOptionalIngredients optionalIngredients: [(item: Ingredient, probability: Double)]) {
 
         var ingredientsRequirement = compulsoryIngredients
 
         for ingredientData in optionalIngredients {
-            let ingredientType = ingredientData.type
+            let ingredient = ingredientData.item
             let probability = ingredientData.probability
 
             guard drand48() < probability else {
                 continue
             }
 
-            ingredientsRequirement.append(ingredientType)
+            ingredientsRequirement.append(ingredient)
         }
 
-        for ingredientType in ingredientsRequirement {
-            let ingredient = Ingredient(type: ingredientType)
-
+        for ingredient in ingredientsRequirement {
             if ingredientsNeeded[ingredient] == nil {
                 ingredientsNeeded[ingredient] = 0
             }
@@ -40,12 +38,12 @@ class Recipe: NSObject {
         super.init()
     }
 
-    convenience init(withCompulsoryIngredients compulsoryIngredients: [IngredientType],
-                     withOptionalIngredients optionalIngredients: [IngredientType]) {
-        var optionalIngredientTuples: [(type: IngredientType, probability: Double)] = []
+    convenience init(withCompulsoryIngredients compulsoryIngredients: [Ingredient],
+                     withOptionalIngredients optionalIngredients: [Ingredient]) {
+        var optionalIngredientTuples: [(item: Ingredient, probability: Double)] = []
 
-        for ingredientType in optionalIngredients {
-            let optionalIngredientTuple = (type: ingredientType,
+        for ingredient in optionalIngredients {
+            let optionalIngredientTuple = (item: ingredient,
                                            probability: StageConstants.defaultOptionalProbability)
             optionalIngredientTuples.append(optionalIngredientTuple)
         }
@@ -53,8 +51,8 @@ class Recipe: NSObject {
         self.init(withCompulsoryIngredients: compulsoryIngredients, withOptionalIngredients: optionalIngredientTuples)
     }
 
-    convenience init(withIngredients ingredients: [IngredientType]) {
-        let optionalIngredients: [(type: IngredientType, probability: Double)] = []
+    convenience init(withIngredients ingredients: [Ingredient]) {
+        let optionalIngredients: [(item: Ingredient, probability: Double)] = []
 
         self.init(withCompulsoryIngredients: ingredients, withOptionalIngredients: optionalIngredients)
     }
