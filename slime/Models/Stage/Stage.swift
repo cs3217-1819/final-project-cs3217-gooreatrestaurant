@@ -10,9 +10,12 @@ import UIKit
 import SpriteKit
 
 class Stage: SKScene {
+    typealias DictString = [String: String]
+    typealias RecipeData = [String: [DictString]]
+
     var spaceship: Spaceship
     var orders: [Order] = []
-    var possibleRecipe: Set<Recipe> = []
+    var possibleRecipes: Set<Recipe> = []
 
     // RI: the players are unique
     var players: [Player] = []
@@ -53,9 +56,94 @@ class Stage: SKScene {
                 spaceship.addStoreFront(inPosition: value.storefront)
                 spaceship.addTable(inPositions: value.table)
                 spaceship.addTrashBin(inPositions: value.trashBin)
+
+                var ingredientStorageData: [(type: String, position: String)] = []
+                for data in value.ingredientStorage {
+                    guard let type = data["type"] else {
+                        continue
+                    }
+                    guard let pos = data["position"] else {
+                        continue
+                    }
+                    ingredientStorageData.append((type: type, position: pos))
+                }
+                spaceship.addIngredientStorage(withDetails: ingredientStorageData)
+
+                self.initializeOrders(withData: value.possibleRecipes)
             } catch {
                 print(error.localizedDescription)
             }
+        }
+    }
+
+    private func getIngredient(fromDictionaryData data: [String: String]) -> Ingredient? {
+        guard let type = data["type"] else {
+            return nil
+        }
+
+        guard let ingredientEnum = Int(type) else {
+            return nil
+        }
+
+        guard let ingredientType = IngredientType(rawValue: ingredientEnum) else {
+            return nil
+        }
+
+        let ingredient = Ingredient(type: ingredientType)
+
+        guard let processing = data["processing"] else {
+            return nil
+        }
+
+        guard let processingEnum = Int(processing) else {
+            return nil
+        }
+
+        guard let processingType = CookingType(rawValue: processingEnum) else {
+            return nil
+        }
+
+        ingredient.processed = processingType
+        return ingredient
+    }
+
+    func initializeOrders(withData data: [RecipeData]) {
+        for datum in data {
+            var compulsoryIngredients: [Ingredient] = []
+            var optionalIngredients: [(item: Ingredient, probability: Double)] = []
+            for ingredientData in datum["compulsoryIngredients"] ?? [] {
+                guard let ingredient = getIngredient(fromDictionaryData: ingredientData) else {
+                    continue
+                }
+                compulsoryIngredients.append(ingredient)
+            }
+
+            for ingredientData in datum["optionalIngredients"] ?? [] {
+                guard let ingredient = getIngredient(fromDictionaryData: ingredientData) else {
+                    continue
+                }
+
+                guard let probabilityString = ingredientData["probability"] else {
+                    continue
+                }
+
+                guard let probability = Double(probabilityString) else {
+                    continue
+                }
+
+                optionalIngredients.append((item: ingredient, probability: probability))
+            }
+            let recipe = Recipe(withCompulsoryIngredients: compulsoryIngredients,
+                                withOptionalIngredients: optionalIngredients)
+            _ = possibleRecipes.insert(recipe)
+        }
+
+        guard !possibleRecipes.isEmpty else {
+            return
+        }
+
+        while orders.count < StageConstants.numbersOfOrdersShown {
+            self.addRandomOrder()
         }
     }
 
@@ -160,17 +248,12 @@ class Stage: SKScene {
                                         where:{ $0.recipeWanted.ingredientsNeeded == ingredientsPrepared }) else {
             return
         }
-
-        if matchedOrder >= StageConstants.numbersOfOrdersShown {
-            return
-        }
-
         orders.remove(at: matchedOrder)
         self.addRandomOrder()
     }
 
     func generateRandomRecipe() -> Recipe? {
-        return self.possibleRecipe.randomElement()?.regenerateRecipe()
+        return self.possibleRecipes.randomElement()?.regenerateRecipe()
     }
 
     func addRandomOrder() {

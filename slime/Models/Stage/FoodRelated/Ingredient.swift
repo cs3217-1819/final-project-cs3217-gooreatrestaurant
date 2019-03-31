@@ -27,11 +27,7 @@ class Ingredient: SKSpriteNode {
     }
 
     func cook(by method: CookingType) {
-        if self.processed == nil {
-            self.processed = method
-        } else {
-            self.ruin()
-        }
+        self.processed = method
     }
 
     func ruin() {
