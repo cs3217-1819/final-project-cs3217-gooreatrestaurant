@@ -71,4 +71,5 @@ class StageConstants {
 
     // gameplay related
     static let defaultOptionalProbability = 0.5
+    static let defaultTimeLimitOrder = 60
 }

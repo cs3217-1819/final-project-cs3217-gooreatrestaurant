@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Recipe: NSObject {
+class Recipe {
     private(set) var ingredientsNeeded: [Ingredient:Int] = [:]
 
     init(withCompulsoryIngredients compulsoryIngredients: [Ingredient],
@@ -34,8 +34,6 @@ class Recipe: NSObject {
 
             ingredientsNeeded[ingredient]? += 1
         }
-
-        super.init()
     }
 
     convenience init(withCompulsoryIngredients compulsoryIngredients: [Ingredient],
