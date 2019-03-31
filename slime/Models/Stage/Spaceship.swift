@@ -27,7 +27,7 @@ class Spaceship: SKSpriteNode {
                 let decoder = PropertyListDecoder()
                 let value = try decoder.decode(SerializableGameData.self, from: data!)
                 addRoom()
-                addSlime(inPosition: NSCoder.cgPoint(for: value.slimeInitPos))
+                addSlime(inPosition: value.slimeInitPos)
                 addWall(inCoord: value.border)
                 addWall(inCoord: value.blockedArea)
                 addLadder(inPositions: value.ladder)
@@ -48,29 +48,9 @@ class Spaceship: SKSpriteNode {
         self.addChild(room)
     }
 
-    func addSlime(inPosition position: CGPoint, withSize size: CGSize = StageConstants.slimeSize) {
-        let slime = Slime(inPosition: position, withSize: size)
+    func addSlime(inPosition position: String) {
+        let slime = Slime(inPosition: NSCoder.cgPoint(for: position), withSize: size)
         self.addChild(slime)
-    }
-
-    func addIngredients(type: IngredientType,
-                        inPosition position: CGPoint,
-                        withSize size: CGSize = StageConstants.ingredientSize) {
-        let ingredient = Ingredient(type: type, size: size, inPosition: position)
-        self.addChild(ingredient)
-    }
-
-    func addCooker(type: CookingType,
-                   inPosition position: CGPoint,
-                   withSize size: CGSize = StageConstants.cookerSize) {
-        // let cooker = CookingEquipment(type: type, inLocation: position, size: size)
-//        self.addChild(cooker)
-    }
-
-    func addPlate(inPosition position: CGPoint,
-                  withSize size: CGSize = StageConstants.plateSize) {
-        let plate = Plate(inPosition: position, withSize: size)
-        self.addChild(plate)
     }
 
     func addWall(inCoord coordinates: [String]) {
@@ -94,14 +74,65 @@ class Spaceship: SKSpriteNode {
         }
     }
 
-    func addPlateStorage(inPosition position: CGPoint) {
-        let plateStorage = PlateStorage(inPosition: position)
-        self.addChild(plateStorage)
+    func addChoppingEquipment(inPositions positions: [String]) {
+        for position in positions {
+            let equipment = ChoppingEquipment(inPosition: NSCoder.cgPoint(for: position))
+            self.addChild(equipment)
+        }
     }
 
-    func addIngredientStorage(ofType type: IngredientType, inPosition position: CGPoint) {
-        let ingredientStorage = IngredientStorage(ofType: type, inPosition: position)
-        self.addChild(ingredientStorage)
+    func addFryingEquipment(inPositions positions: [String]) {
+        for position in positions {
+            let equipment = FryingEquipment(inPosition: NSCoder.cgPoint(for: position))
+            self.addChild(equipment)
+        }
+    }
+
+    func addOven(inPositions positions: [String]) {
+        for position in positions {
+            let oven = Oven(inPosition: NSCoder.cgPoint(for: position))
+            self.addChild(oven)
+        }
+    }
+
+    func addIngredientStorage(withDetails details: [(type: String, position: String)]) {
+        for ingredientData in details {
+            guard let ingredientEnum = Int(ingredientData.type) else {
+                continue
+            }
+
+            guard let ingredientType = IngredientType(rawValue: ingredientEnum) else {
+                continue
+            }
+            let storage = IngredientStorage(ofType: ingredientType, inPosition: NSCoder.cgPoint(for: ingredientData.position))
+            self.addChild(storage)
+        }
+    }
+
+    func addPlateStorage(inPositions positions: [String]) {
+        for position in positions {
+            let storage = PlateStorage(inPosition: NSCoder.cgPoint(for: position))
+            self.addChild(storage)
+        }
+    }
+
+    func addStoreFront(inPosition position: String) {
+        let storefront = StoreFront(inPosition: NSCoder.cgPoint(for: position))
+        self.addChild(storefront)
+    }
+
+    func addTable(inPositions positions: [String]) {
+        for position in positions {
+            let table = Table(inPosition: NSCoder.cgPoint(for: position))
+            self.addChild(table)
+        }
+    }
+
+    func addTrashBin(inPositions positions: [String]) {
+        for position in positions {
+            let trashBin = Trash(inPosition: NSCoder.cgPoint(for: position))
+            self.addChild(trashBin)
+        }
     }
 
     required init?(coder aDecoder: NSCoder) {
