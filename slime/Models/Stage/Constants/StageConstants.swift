@@ -72,5 +72,5 @@ class StageConstants {
     // gameplay related
     static let defaultOptionalProbability = 0.5
     static let defaultTimeLimitOrder = 60
-    static let numbersOfOrdersShown = 100
+    static let numbersOfOrdersShown = 5
 }

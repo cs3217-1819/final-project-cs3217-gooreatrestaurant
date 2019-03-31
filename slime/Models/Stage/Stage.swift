@@ -12,6 +12,7 @@ import SpriteKit
 class Stage: SKScene {
     var spaceship: Spaceship
     var orders: [Order] = []
+    var possibleRecipe: Set<Recipe> = []
 
     // RI: the players are unique
     var players: [Player] = []
@@ -158,6 +159,18 @@ class Stage: SKScene {
         }
 
         orders.remove(at: matchedOrder)
+        self.addRandomOrder()
+    }
+
+    func generateRandomRecipe() -> Recipe? {
+        return self.possibleRecipe.randomElement()?.regenerateRecipe()
+    }
+
+    func addRandomOrder() {
+        guard let randomRecipe = self.generateRandomRecipe() else {
+            return
+        }
+        self.addOrder(ofRecipe: randomRecipe)
     }
 
     required init?(coder aDecoder: NSCoder) {

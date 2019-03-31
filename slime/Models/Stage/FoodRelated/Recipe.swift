@@ -8,11 +8,16 @@
 
 import UIKit
 
-class Recipe {
+class Recipe: NSObject {
     private(set) var ingredientsNeeded: [Ingredient:Int] = [:]
+    private let originalCompulsoryIngredients: [Ingredient]
+    private let originalOptionalIngredients: [(item: Ingredient, probability: Double)]
 
     init(withCompulsoryIngredients compulsoryIngredients: [Ingredient],
          withOptionalIngredients optionalIngredients: [(item: Ingredient, probability: Double)]) {
+
+        self.originalCompulsoryIngredients = compulsoryIngredients
+        self.originalOptionalIngredients = optionalIngredients
 
         var ingredientsRequirement = compulsoryIngredients
 
@@ -53,5 +58,10 @@ class Recipe {
         let optionalIngredients: [(item: Ingredient, probability: Double)] = []
 
         self.init(withCompulsoryIngredients: ingredients, withOptionalIngredients: optionalIngredients)
+    }
+
+    func regenerateRecipe() -> Recipe {
+        return Recipe(withCompulsoryIngredients: originalCompulsoryIngredients,
+                      withOptionalIngredients: originalOptionalIngredients)
     }
 }
