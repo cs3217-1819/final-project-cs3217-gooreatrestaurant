@@ -90,6 +90,11 @@ class Stage: SKScene {
         }
     }
 
+    func addOrder(ofRecipe recipe: Recipe, withinTime time: Int = StageConstants.defaultTimeLimitOrder) {
+        let order = Order(recipe, withinTime: time)
+        orders.append(order)
+    }
+
     // if the player is already in the list, will do nothing
     func addPlayer(_ player: Player) {
         if !players.contains(player) && players.count < StageConstants.maxPlayer {
@@ -124,7 +129,18 @@ class Stage: SKScene {
     }
 
     func serve(_ plate: Plate) {
-        
+        let foodToServe = plate.food
+        let ingredientsPrepared = foodToServe.ingredientsList
+        guard let matchedOrder = orders.firstIndex(
+                                        where:{ $0.recipeWanted.ingredientsNeeded == ingredientsPrepared }) else {
+            return
+        }
+
+        if matchedOrder >= StageConstants.numbersOfOrdersShown {
+            return
+        }
+
+        orders.remove(at: matchedOrder)
     }
 
     required init?(coder aDecoder: NSCoder) {
