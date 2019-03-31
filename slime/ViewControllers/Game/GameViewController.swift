@@ -24,7 +24,7 @@ class GameViewController: UIViewController {
         skView.showsNodeCount = true
         view.addSubview(skview)
 
-        stage.spaceship.generateLevel(inLevel: "Level1")
+        stage.generateLevel(inLevel: "Level1")
     }
 
     lazy var skView: SKView = {

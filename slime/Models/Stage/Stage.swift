@@ -34,6 +34,23 @@ class Stage: SKScene {
         setupControl()
     }
 
+    func generateLevel(inLevel levelName: String) {
+        if let levelDesignURL = Bundle.main.url(forResource: levelName, withExtension: "plist") {
+            do {
+                let data = try? Data(contentsOf: levelDesignURL)
+                let decoder = PropertyListDecoder()
+                let value = try decoder.decode(SerializableGameData.self, from: data!)
+                spaceship.addRoom()
+                spaceship.addSlime(inPosition: value.slimeInitPos)
+                spaceship.addWall(inCoord: value.border)
+                spaceship.addWall(inCoord: value.blockedArea)
+                spaceship.addLadder(inPositions: value.ladder)
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+    }
+
     lazy var analogJoystick: AnalogJoystick = {
         let js = AnalogJoystick(diameter: StageConstants.joystickSize,
                                 colors: nil,

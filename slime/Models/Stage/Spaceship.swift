@@ -20,23 +20,6 @@ class Spaceship: SKSpriteNode {
         self.zPosition = 0
     }
 
-    func generateLevel(inLevel levelName: String) {
-        if let levelDesignURL = Bundle.main.url(forResource: levelName, withExtension: "plist") {
-            do {
-                let data = try? Data(contentsOf: levelDesignURL)
-                let decoder = PropertyListDecoder()
-                let value = try decoder.decode(SerializableGameData.self, from: data!)
-                addRoom()
-                addSlime(inPosition: value.slimeInitPos)
-                addWall(inCoord: value.border)
-                addWall(inCoord: value.blockedArea)
-                addLadder(inPositions: value.ladder)
-            } catch {
-                print(error.localizedDescription)
-            }
-        }
-    }
-
     func addRoom() {
         let spaceshipBody = SKTexture(imageNamed: "Area")
         spaceshipBody.filteringMode = .nearest // shorter form for SKTextureFilteringMode.Nearest
