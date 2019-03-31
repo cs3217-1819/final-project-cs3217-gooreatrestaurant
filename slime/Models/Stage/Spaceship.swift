@@ -49,7 +49,7 @@ class Spaceship: SKSpriteNode {
     }
 
     func addSlime(inPosition position: String) {
-        let slime = Slime(inPosition: NSCoder.cgPoint(for: position), withSize: size)
+        let slime = Slime(inPosition: NSCoder.cgPoint(for: position))
         self.addChild(slime)
     }
 
