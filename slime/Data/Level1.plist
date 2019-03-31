@@ -61,5 +61,63 @@
 		<string>{90,95}</string>
 		<string>{90,125}</string>
 	</array>
+	<!-- Temporarily -->
+	<key>choppingEquipment</key>
+	<array>
+		<string>{-60,0}</string>
+	</array>
+	<key>fryingEquipment</key>
+	<array>
+	</array>
+	<key>oven</key>
+	<array>
+	</array>
+	<key>ingredientStorage</key>
+	<array>
+		<dict>
+			<key>type</key>
+			<string>1</string>
+			<key>position</key>
+			<string>{-100, -21}</string>
+		</dict>
+	</array>
+	<key>plateStorage</key>
+	<array>
+		<string>{-60,-135}</string>
+	</array>
+	<key>storefront</key>
+	<string>{0,-50}</string>
+	<key>table</key>
+	<array>
+		<string>{0, -135}</string>
+	</array>
+	<key>trashBin</key>
+	<array>
+	</array>
+	<key>possibleRecipes</key>
+	<array>
+		<dict>
+			<key>compulsoryIngredients</key>
+			<array>
+				<dict>
+					<key>type</key>
+					<string>1</string>
+					<key>processing</key>
+					<string>1</string>
+				</dict>
+			</array>
+			<key>optionalIngredients</key>
+			<array>
+				<dict>
+					<key>type</key>
+					<string>1</string>
+					<key>processing</key>
+					<string>1</string>
+					<key>probability</key>
+					<string>0.0</string>
+				</dict>
+			</array>
+		</dict>
+	</array>
 </dict>
 </plist>

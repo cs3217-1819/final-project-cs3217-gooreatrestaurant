@@ -46,6 +46,13 @@ class Stage: SKScene {
                 spaceship.addWall(inCoord: value.border)
                 spaceship.addWall(inCoord: value.blockedArea)
                 spaceship.addLadder(inPositions: value.ladder)
+                spaceship.addChoppingEquipment(inPositions: value.choppingEquipment)
+                spaceship.addFryingEquipment(inPositions: value.fryingEquipment)
+                spaceship.addOven(inPositions: value.oven)
+                spaceship.addPlateStorage(inPositions: value.plateStorage)
+                spaceship.addStoreFront(inPosition: value.storefront)
+                spaceship.addTable(inPositions: value.table)
+                spaceship.addTrashBin(inPositions: value.trashBin)
             } catch {
                 print(error.localizedDescription)
             }
