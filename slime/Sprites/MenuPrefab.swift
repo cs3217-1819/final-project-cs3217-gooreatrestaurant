@@ -41,7 +41,8 @@ class MenuPrefab : SKSpriteNode {
         dish.addChild(blackBar)
 
         let greenBar = SKSpriteNode(imageNamed: "Green bar")
-        greenBar.position = CGPoint(x: 0, y: 0)
+        greenBar.anchorPoint = CGPoint(x: 0, y: 0)
+        greenBar.position = CGPoint(x: -20, y: -20)
         greenBar.size = CGSize(width: 40, height: 40)
         blackBar.addChild(greenBar)
 
@@ -51,8 +52,13 @@ class MenuPrefab : SKSpriteNode {
     }
 
     func countdown(inBar: SKSpriteNode) {
-        print("A")
-        inBar.yScale = 0.5
-        print(inBar.yScale)
+
+        var height = inBar.size.height
+//        for i in 1...10 {
+//            print(i)
+//            height = height * CGFloat(i)
+//            inBar.size = CGSize(width: inBar.size.width, height: height)
+//        }
+         inBar.size = CGSize(width: inBar.size.width, height: height * 0.2)
     }
 }
