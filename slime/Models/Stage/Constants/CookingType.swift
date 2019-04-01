@@ -7,7 +7,8 @@
 //
 
 enum CookingType: Int {
-    case baking = 0
+    case notProcessed = 0
+    case baking
     case chopping
     case frying
 }

@@ -76,7 +76,7 @@ class Stage: SKScene {
         }
     }
 
-    private func getIngredient(fromDictionaryData data: [String: String]) -> Ingredient? {
+    private func getIngredientData(fromDictionaryData data: [String: String]) -> IngredientData? {
         guard let type = data["type"] else {
             return nil
         }
@@ -88,8 +88,6 @@ class Stage: SKScene {
         guard let ingredientType = IngredientType(rawValue: ingredientEnum) else {
             return nil
         }
-
-        let ingredient = Ingredient(type: ingredientType)
 
         guard let processing = data["processing"] else {
             return nil
@@ -103,27 +101,27 @@ class Stage: SKScene {
             return nil
         }
 
-        ingredient.processed = processingType
-        return ingredient
+        let ingredientData = IngredientData(type: ingredientType, processed: processingType)
+        return ingredientData
     }
 
     func initializeOrders(withData data: [RecipeData]) {
         for datum in data {
-            var compulsoryIngredients: [Ingredient] = []
-            var optionalIngredients: [(item: Ingredient, probability: Double)] = []
-            for ingredientData in datum["compulsoryIngredients"] ?? [] {
-                guard let ingredient = getIngredient(fromDictionaryData: ingredientData) else {
+            var compulsoryIngredients: [IngredientData] = []
+            var optionalIngredients: [(item: IngredientData, probability: Double)] = []
+            for ingredientRequirement in datum["compulsoryIngredients"] ?? [] {
+                guard let ingredientData = getIngredientData(fromDictionaryData: ingredientRequirement) else {
                     continue
                 }
-                compulsoryIngredients.append(ingredient)
+                compulsoryIngredients.append(ingredientData)
             }
 
-            for ingredientData in datum["optionalIngredients"] ?? [] {
-                guard let ingredient = getIngredient(fromDictionaryData: ingredientData) else {
+            for ingredientRequirement in datum["optionalIngredients"] ?? [] {
+                guard let ingredientData = getIngredientData(fromDictionaryData: ingredientRequirement) else {
                     continue
                 }
 
-                guard let probabilityString = ingredientData["probability"] else {
+                guard let probabilityString = ingredientRequirement["probability"] else {
                     continue
                 }
 
@@ -131,7 +129,7 @@ class Stage: SKScene {
                     continue
                 }
 
-                optionalIngredients.append((item: ingredient, probability: probability))
+                optionalIngredients.append((item: ingredientData, probability: probability))
             }
             let recipe = Recipe(withCompulsoryIngredients: compulsoryIngredients,
                                 withOptionalIngredients: optionalIngredients)

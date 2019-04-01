@@ -103,7 +103,7 @@
 					<key>type</key>
 					<string>1</string>
 					<key>processing</key>
-					<string>1</string>
+					<string>2</string>
 				</dict>
 			</array>
 			<key>optionalIngredients</key>
