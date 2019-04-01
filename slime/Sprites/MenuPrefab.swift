@@ -38,16 +38,7 @@ class MenuPrefab : SKSpriteNode {
         dish.zPosition = 5
         dish.size = CGSize(width: 50, height: 50)
 
-        let blackCircle = SKSpriteNode(imageNamed: "Black Base Circle")
-        blackCircle.position = CGPoint(x: 0, y: -40)
-        blackCircle.size = CGSize(width: 30, height: 30)
-        dish.addChild(blackCircle)
-
-        //Add the ingredients
-        let ingredient = SKSpriteNode(imageNamed: "Apple")
-        ingredient.position = CGPoint(x: 0, y: 0)
-        ingredient.size = CGSize(width: 20, height: 20)
-        blackCircle.addChild(ingredient)
+        self.addChild(addIngredient(inString: "Apple"))
 
         //Adding the countdown bar
         blackBar.position = CGPoint(x: 35, y: -25)
@@ -62,6 +53,19 @@ class MenuPrefab : SKSpriteNode {
         self.addChild(dish)
 
         timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(countdown), userInfo: nil, repeats: true)
+    }
+
+    func addIngredient(inString: String) -> SKSpriteNode {
+        let blackCircle = SKSpriteNode(imageNamed: "Black Base Circle")
+        blackCircle.position = CGPoint(x: 0, y: -20)
+        blackCircle.size = CGSize(width: 25, height: 25)
+
+        //Add the ingredients
+        let ingredient = SKSpriteNode(imageNamed: inString)
+        ingredient.size = CGSize(width: 15, height: 15)
+        blackCircle.addChild(ingredient)
+
+        return blackCircle
     }
 
     @objc func countdown() {
