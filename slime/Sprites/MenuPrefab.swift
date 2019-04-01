@@ -61,10 +61,10 @@ class MenuPrefab : SKSpriteNode {
 
         self.addChild(dish)
 
-        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(temp), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(countdown), userInfo: nil, repeats: true)
     }
 
-    @objc func temp() {
+    @objc func countdown() {
         if (time > 0) {
             time -= CGFloat(1.0/duration)
             self.greenBar.size =  CGSize(width: greenBar.size.width, height: self.greenBar.size.height * time / duration)
