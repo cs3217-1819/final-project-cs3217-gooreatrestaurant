@@ -12,12 +12,10 @@ import SpriteKit
 class MenuPrefab : SKSpriteNode {
     var blackBar: SKSpriteNode
     var greenBar: SKSpriteNode
-
-    var time: CGFloat = 10
     var timer: Timer =  Timer()
-    var progressIncrement:Float = 0
 
-    let duration:Float = 10.0
+    var time: CGFloat = 10.0
+    let duration: CGFloat = 10.0
 
     override init(texture: SKTexture?, color: UIColor, size: CGSize) {
         self.blackBar = SKSpriteNode(imageNamed: "Black bar")
@@ -63,21 +61,10 @@ class MenuPrefab : SKSpriteNode {
 
     @objc func temp() {
         if (time > 0) {
-            print("A")
-//            var value = lerp(min: 0, max: 1, value: self.greenBar.size.height * time)
-//            print(value)
-            var temp = CGFloat(TimeInterval(time))
-            temp = CGFloat(1.0/duration)
-            time -= temp
-            print(time)
-            print(time/10.0)
-            self.greenBar.size =  CGSize(width: greenBar.size.width, height: self.greenBar.size.height * time/10.0)
+            time -= CGFloat(1.0/duration)
+            self.greenBar.size =  CGSize(width: greenBar.size.width, height: self.greenBar.size.height * time / duration)
         } else {
             timer.invalidate()
         }
-    }
-
-    func lerp(min: CGFloat, max: CGFloat, value: CGFloat) -> CGFloat {
-        return min + (value * (max - min))
     }
 }

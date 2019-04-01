@@ -264,7 +264,6 @@ class Stage: SKScene {
     }
 
     func generateMenu() {
-        print("generateMenu")
         let ingredients = [IngredientType.apple, IngredientType.dough]
         //let applePieRecipe = Recipe(withIngredients: ingredients)
 
