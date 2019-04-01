@@ -259,13 +259,12 @@ class Stage: SKScene {
             return
         }
         self.addOrder(ofRecipe: randomRecipe)
+        generateMenu()
     }
 
     func generateMenu() {
+        print("generateMenu")
         let spaceshipBody = SKTexture(imageNamed: "Menu-Slimes_01")
-        for (key,value) in (generateRandomRecipe()?.ingredientsNeeded)! {
-            print(key.type)
-        }
         spaceshipBody.filteringMode = .nearest
         let temp = MenuPrefab.init(texture: spaceshipBody, color: .clear, size: CGSize(width: 100, height: 100))
         temp.addRecipe(inString: "ApplePie")
