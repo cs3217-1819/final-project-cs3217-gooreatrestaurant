@@ -9,12 +9,12 @@
 import UIKit
 
 class Recipe: NSObject {
-    private(set) var ingredientsNeeded: [Ingredient:Int] = [:]
-    private let originalCompulsoryIngredients: [Ingredient]
-    private let originalOptionalIngredients: [(item: Ingredient, probability: Double)]
+    private(set) var ingredientsNeeded: [IngredientData:Int] = [:]
+    private let originalCompulsoryIngredients: [IngredientData]
+    private let originalOptionalIngredients: [(item: IngredientData, probability: Double)]
 
-    init(withCompulsoryIngredients compulsoryIngredients: [Ingredient],
-         withOptionalIngredients optionalIngredients: [(item: Ingredient, probability: Double)]) {
+    init(withCompulsoryIngredients compulsoryIngredients: [IngredientData],
+         withOptionalIngredients optionalIngredients: [(item: IngredientData, probability: Double)]) {
 
         self.originalCompulsoryIngredients = compulsoryIngredients
         self.originalOptionalIngredients = optionalIngredients
@@ -41,9 +41,9 @@ class Recipe: NSObject {
         }
     }
 
-    convenience init(withCompulsoryIngredients compulsoryIngredients: [Ingredient],
-                     withOptionalIngredients optionalIngredients: [Ingredient]) {
-        var optionalIngredientTuples: [(item: Ingredient, probability: Double)] = []
+    convenience init(withCompulsoryIngredients compulsoryIngredients: [IngredientData],
+                     withOptionalIngredients optionalIngredients: [IngredientData]) {
+        var optionalIngredientTuples: [(item: IngredientData, probability: Double)] = []
 
         for ingredient in optionalIngredients {
             let optionalIngredientTuple = (item: ingredient,
@@ -54,8 +54,8 @@ class Recipe: NSObject {
         self.init(withCompulsoryIngredients: compulsoryIngredients, withOptionalIngredients: optionalIngredientTuples)
     }
 
-    convenience init(withIngredients ingredients: [Ingredient]) {
-        let optionalIngredients: [(item: Ingredient, probability: Double)] = []
+    convenience init(withIngredients ingredients: [IngredientData]) {
+        let optionalIngredients: [(item: IngredientData, probability: Double)] = []
 
         self.init(withCompulsoryIngredients: ingredients, withOptionalIngredients: optionalIngredients)
     }

@@ -11,7 +11,7 @@ import SpriteKit
 
 class Ingredient: SKSpriteNode {
     var type: IngredientType
-    var processed: CookingType?
+    var processed: CookingType = .notProcessed
 
     init(type: IngredientType,
          size: CGSize = StageConstants.ingredientSize,
@@ -27,7 +27,7 @@ class Ingredient: SKSpriteNode {
     }
 
     func cook(by method: CookingType) {
-        if self.processed != nil && self.processed != method {
+        if self.processed != .notProcessed && self.processed != method {
             self.ruin()
             return
         }
