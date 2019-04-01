@@ -264,8 +264,9 @@ class Stage: SKScene {
     }
 
     func generateMenu() {
+        print("generateMenu")
         let ingredients = [IngredientType.apple, IngredientType.dough]
-        let applePieRecipe = Recipe(withIngredients: ingredients)
+        //let applePieRecipe = Recipe(withIngredients: ingredients)
 
         let spaceshipBody = SKTexture(imageNamed: "Menu-Slimes_01")
         spaceshipBody.filteringMode = .nearest

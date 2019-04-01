@@ -10,7 +10,19 @@ import Foundation
 import SpriteKit
 
 class MenuPrefab : SKSpriteNode {
+    var blackBar: SKSpriteNode
+    var greenBar: SKSpriteNode
+
+    var time: CGFloat = 10
+    var timer: Timer =  Timer()
+    var progressIncrement:Float = 0
+
+    let duration:Float = 10.0
+
     override init(texture: SKTexture?, color: UIColor, size: CGSize) {
+        self.blackBar = SKSpriteNode(imageNamed: "Black bar")
+        self.greenBar = SKSpriteNode(imageNamed: "Green bar")
+
         super.init(texture: texture, color: color, size: size)
         self.position = CGPoint(x: ScreenSize.width * 0.5 - 60,
                                 y: ScreenSize.height * 0.5 - 60)
@@ -35,12 +47,10 @@ class MenuPrefab : SKSpriteNode {
         dish.addChild(ingredient)
 
         //Adding the countdown bar
-        let blackBar = SKSpriteNode(imageNamed: "Black bar")
         blackBar.position = CGPoint(x: 35, y: -25)
         blackBar.size = CGSize(width: 45, height: 40)
         dish.addChild(blackBar)
 
-        let greenBar = SKSpriteNode(imageNamed: "Green bar")
         greenBar.anchorPoint = CGPoint(x: 0, y: 0)
         greenBar.position = CGPoint(x: -20, y: -20)
         greenBar.size = CGSize(width: 40, height: 40)
@@ -48,17 +58,26 @@ class MenuPrefab : SKSpriteNode {
 
         self.addChild(dish)
 
-        countdown(inBar: greenBar)
+        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(temp), userInfo: nil, repeats: true)
     }
 
-    func countdown(inBar: SKSpriteNode) {
+    @objc func temp() {
+        if (time > 0) {
+            print("A")
+//            var value = lerp(min: 0, max: 1, value: self.greenBar.size.height * time)
+//            print(value)
+            var temp = CGFloat(TimeInterval(time))
+            temp = CGFloat(1.0/duration)
+            time -= temp
+            print(time)
+            print(time/10.0)
+            self.greenBar.size =  CGSize(width: greenBar.size.width, height: self.greenBar.size.height * time/10.0)
+        } else {
+            timer.invalidate()
+        }
+    }
 
-        var height = inBar.size.height
-//        for i in 1...10 {
-//            print(i)
-//            height = height * CGFloat(i)
-//            inBar.size = CGSize(width: inBar.size.width, height: height)
-//        }
-         inBar.size = CGSize(width: inBar.size.width, height: height * 0.2)
+    func lerp(min: CGFloat, max: CGFloat, value: CGFloat) -> CGFloat {
+        return min + (value * (max - min))
     }
 }

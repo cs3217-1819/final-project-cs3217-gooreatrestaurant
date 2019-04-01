@@ -9,4 +9,6 @@
 enum IngredientType: Int {
     case junk = 0
     case potato
+    case apple
+    case dough
 }
