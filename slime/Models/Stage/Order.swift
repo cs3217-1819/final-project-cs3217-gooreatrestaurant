@@ -8,6 +8,12 @@
 
 import UIKit
 
-class Order: NSObject {
+class Order {
+    var timeLimit: Int
+    let recipeWanted: Recipe
 
+    init(_ recipe: Recipe, withinTime time: Int) {
+        self.timeLimit = time
+        self.recipeWanted = recipe
+    }
 }

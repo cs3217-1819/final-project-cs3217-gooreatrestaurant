@@ -36,12 +36,12 @@ class Slime: SKSpriteNode {
         self.physicsBody?.categoryBitMask = StageConstants.slimeCategory
         self.physicsBody?.contactTestBitMask = 0
 
-        self.physicsBody?.contactTestBitMask |= StageConstants.cookerCategory
         self.physicsBody?.contactTestBitMask |= StageConstants.plateCategory
         self.physicsBody?.contactTestBitMask |= StageConstants.ingredientCategory
         self.physicsBody?.contactTestBitMask |= StageConstants.tableCategory
         self.physicsBody?.contactTestBitMask |= StageConstants.slimeCategory
         self.physicsBody?.contactTestBitMask |= StageConstants.ladderCategory
+        self.physicsBody?.contactTestBitMask |= StageConstants.stationCategory
 
         // animate slime
         self.run(SKAction.repeatForever(
@@ -110,22 +110,27 @@ class Slime: SKSpriteNode {
     }
 
     func interact() {
-        spaceship?.enumerateChildNodes(withName: StageConstants.stationName) {
-            (node, stop) in
+
+        guard let contactedBodies = self.physicsBody?.allContactedBodies() else {
+            return
+        }
+
+        for body in contactedBodies {
+            guard let node = body.node else {
+                continue
+            }
 
             guard let station = node as? Station else {
-                return
+                continue
             }
 
             if station.ableToProcess(self.itemCarried) {
-
                 let itemToProcess = self.itemCarried
                 itemToProcess?.removeFromParent()
 
                 let itemProcessed = station.process(itemToProcess)
                 self.takeItem(itemProcessed)
-
-                stop.initialize(to: true)
+                break
             }
         }
     }

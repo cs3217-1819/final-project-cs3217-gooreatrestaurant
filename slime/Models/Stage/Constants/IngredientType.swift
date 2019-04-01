@@ -6,9 +6,7 @@
 //  Copyright © 2019 nus.cs3217.a0166733y. All rights reserved.
 //
 
-enum IngredientType {
-    case apple
-    case dough
+enum IngredientType: Int {
+    case junk = 0
     case potato
-    case junk
 }

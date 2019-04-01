@@ -10,8 +10,12 @@ import UIKit
 import SpriteKit
 
 class Stage: SKScene {
+    typealias DictString = [String: String]
+    typealias RecipeData = [String: [DictString]]
+
     var spaceship: Spaceship
     var orders: [Order] = []
+    var possibleRecipes: Set<Recipe> = []
 
     // RI: the players are unique
     var players: [Player] = []
@@ -32,6 +36,115 @@ class Stage: SKScene {
         self.addChild(background)
         self.addChild(spaceship)
         setupControl()
+    }
+
+    func generateLevel(inLevel levelName: String) {
+        if let levelDesignURL = Bundle.main.url(forResource: levelName, withExtension: "plist") {
+            do {
+                let data = try? Data(contentsOf: levelDesignURL)
+                let decoder = PropertyListDecoder()
+                let value = try decoder.decode(SerializableGameData.self, from: data!)
+                spaceship.addRoom()
+                spaceship.addSlime(inPosition: value.slimeInitPos)
+                spaceship.addWall(inCoord: value.border)
+                spaceship.addWall(inCoord: value.blockedArea)
+                spaceship.addLadder(inPositions: value.ladder)
+                spaceship.addChoppingEquipment(inPositions: value.choppingEquipment)
+                spaceship.addFryingEquipment(inPositions: value.fryingEquipment)
+                spaceship.addOven(inPositions: value.oven)
+                spaceship.addPlateStorage(inPositions: value.plateStorage)
+                spaceship.addStoreFront(inPosition: value.storefront)
+                spaceship.addTable(inPositions: value.table)
+                spaceship.addTrashBin(inPositions: value.trashBin)
+
+                var ingredientStorageData: [(type: String, position: String)] = []
+                for data in value.ingredientStorage {
+                    guard let type = data["type"] else {
+                        continue
+                    }
+                    guard let pos = data["position"] else {
+                        continue
+                    }
+                    ingredientStorageData.append((type: type, position: pos))
+                }
+                spaceship.addIngredientStorage(withDetails: ingredientStorageData)
+
+                self.initializeOrders(withData: value.possibleRecipes)
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+    }
+
+    private func getIngredient(fromDictionaryData data: [String: String]) -> Ingredient? {
+        guard let type = data["type"] else {
+            return nil
+        }
+
+        guard let ingredientEnum = Int(type) else {
+            return nil
+        }
+
+        guard let ingredientType = IngredientType(rawValue: ingredientEnum) else {
+            return nil
+        }
+
+        let ingredient = Ingredient(type: ingredientType)
+
+        guard let processing = data["processing"] else {
+            return nil
+        }
+
+        guard let processingEnum = Int(processing) else {
+            return nil
+        }
+
+        guard let processingType = CookingType(rawValue: processingEnum) else {
+            return nil
+        }
+
+        ingredient.processed = processingType
+        return ingredient
+    }
+
+    func initializeOrders(withData data: [RecipeData]) {
+        for datum in data {
+            var compulsoryIngredients: [Ingredient] = []
+            var optionalIngredients: [(item: Ingredient, probability: Double)] = []
+            for ingredientData in datum["compulsoryIngredients"] ?? [] {
+                guard let ingredient = getIngredient(fromDictionaryData: ingredientData) else {
+                    continue
+                }
+                compulsoryIngredients.append(ingredient)
+            }
+
+            for ingredientData in datum["optionalIngredients"] ?? [] {
+                guard let ingredient = getIngredient(fromDictionaryData: ingredientData) else {
+                    continue
+                }
+
+                guard let probabilityString = ingredientData["probability"] else {
+                    continue
+                }
+
+                guard let probability = Double(probabilityString) else {
+                    continue
+                }
+
+                optionalIngredients.append((item: ingredient, probability: probability))
+            }
+            let recipe = Recipe(withCompulsoryIngredients: compulsoryIngredients,
+                                withOptionalIngredients: optionalIngredients)
+            _ = possibleRecipes.insert(recipe)
+        }
+
+        guard !possibleRecipes.isEmpty else {
+            return
+        }
+
+        while orders.count < StageConstants.numbersOfOrdersShown {
+            self.addRandomOrder()
+        }
     }
 
     lazy var analogJoystick: AnalogJoystick = {
@@ -90,6 +203,11 @@ class Stage: SKScene {
         }
     }
 
+    func addOrder(ofRecipe recipe: Recipe, withinTime time: Int = StageConstants.defaultTimeLimitOrder) {
+        let order = Order(recipe, withinTime: time)
+        orders.append(order)
+    }
+
     // if the player is already in the list, will do nothing
     func addPlayer(_ player: Player) {
         if !players.contains(player) && players.count < StageConstants.maxPlayer {
@@ -124,7 +242,25 @@ class Stage: SKScene {
     }
 
     func serve(_ plate: Plate) {
-        
+        let foodToServe = plate.food
+        let ingredientsPrepared = foodToServe.ingredientsList
+        guard let matchedOrder = orders.firstIndex(
+                                        where:{ $0.recipeWanted.ingredientsNeeded == ingredientsPrepared }) else {
+            return
+        }
+        orders.remove(at: matchedOrder)
+        self.addRandomOrder()
+    }
+
+    func generateRandomRecipe() -> Recipe? {
+        return self.possibleRecipes.randomElement()?.regenerateRecipe()
+    }
+
+    func addRandomOrder() {
+        guard let randomRecipe = self.generateRandomRecipe() else {
+            return
+        }
+        self.addOrder(ofRecipe: randomRecipe)
     }
 
     func generateMenu() {

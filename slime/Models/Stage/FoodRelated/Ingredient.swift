@@ -27,11 +27,11 @@ class Ingredient: SKSpriteNode {
     }
 
     func cook(by method: CookingType) {
-        if self.processed == nil {
-            self.processed = method
-        } else {
+        if self.processed != nil && self.processed != method {
             self.ruin()
+            return
         }
+        self.processed = method
     }
 
     func ruin() {
@@ -40,11 +40,5 @@ class Ingredient: SKSpriteNode {
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-}
-
-extension Ingredient {
-    static func == (lhs: Ingredient, rhs: Ingredient) -> Bool {
-        return lhs.type == rhs.type && lhs.processed == rhs.processed
     }
 }
