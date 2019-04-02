@@ -107,12 +107,12 @@ class Stage: SKScene {
 
     func initializeOrders(withData data: [RecipeData]) {
         for datum in data {
-            var recipeName: String
+            var recipeName: String = ""
             var compulsoryIngredients: [IngredientData] = []
             var optionalIngredients: [(item: IngredientData, probability: Double)] = []
 
             for name in datum["recipeName"] ?? [] {
-                recipeName = name.values.description
+                recipeName = (name.first?.value)!
             }
 
             for ingredientRequirement in datum["compulsoryIngredients"] ?? [] {
@@ -137,7 +137,7 @@ class Stage: SKScene {
 
                 optionalIngredients.append((item: ingredientData, probability: probability))
             }
-            let recipe = Recipe(withCompulsoryIngredients: compulsoryIngredients,
+            let recipe = Recipe(inRecipeName: recipeName, withCompulsoryIngredients: compulsoryIngredients,
                                 withOptionalIngredients: optionalIngredients)
             _ = possibleRecipes.insert(recipe)
         }
@@ -265,15 +265,15 @@ class Stage: SKScene {
             return
         }
         self.addOrder(ofRecipe: randomRecipe)
-        generateMenu()
+        generateMenu(inRecipe: randomRecipe.recipeName)
     }
 
-    func generateMenu() {
+    func generateMenu(inRecipe recipeName: String) {
         print("generateMenu")
         let spaceshipBody = SKTexture(imageNamed: "Menu-Slimes_01")
         spaceshipBody.filteringMode = .nearest
         let temp = MenuPrefab.init(texture: spaceshipBody, color: .clear, size: CGSize(width: 100, height: 100))
-        temp.addRecipe(inString: "ApplePie")
+        temp.addRecipe(inString: recipeName)
         self.addChild(temp)
     }
 

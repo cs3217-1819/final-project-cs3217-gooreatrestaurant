@@ -9,13 +9,15 @@
 import UIKit
 
 class Recipe: NSObject {
+    private(set) var recipeName: String
     private(set) var ingredientsNeeded: [IngredientData:Int] = [:]
     private let originalCompulsoryIngredients: [IngredientData]
     private let originalOptionalIngredients: [(item: IngredientData, probability: Double)]
 
-    init(withCompulsoryIngredients compulsoryIngredients: [IngredientData],
+    init(inRecipeName nameOfRecipe: String, withCompulsoryIngredients compulsoryIngredients: [IngredientData],
          withOptionalIngredients optionalIngredients: [(item: IngredientData, probability: Double)]) {
 
+        self.recipeName = nameOfRecipe
         self.originalCompulsoryIngredients = compulsoryIngredients
         self.originalOptionalIngredients = optionalIngredients
 
@@ -41,7 +43,7 @@ class Recipe: NSObject {
         }
     }
 
-    convenience init(withCompulsoryIngredients compulsoryIngredients: [IngredientData],
+    convenience init(inRecipeName nameOfRecipe: String, withCompulsoryIngredients compulsoryIngredients: [IngredientData],
                      withOptionalIngredients optionalIngredients: [IngredientData]) {
         var optionalIngredientTuples: [(item: IngredientData, probability: Double)] = []
 
@@ -51,17 +53,17 @@ class Recipe: NSObject {
             optionalIngredientTuples.append(optionalIngredientTuple)
         }
 
-        self.init(withCompulsoryIngredients: compulsoryIngredients, withOptionalIngredients: optionalIngredientTuples)
+        self.init(inRecipeName: nameOfRecipe, withCompulsoryIngredients: compulsoryIngredients, withOptionalIngredients: optionalIngredientTuples)
     }
 
-    convenience init(withIngredients ingredients: [IngredientData]) {
+    convenience init(inRecipeName nameOfRecipe: String, withIngredients ingredients: [IngredientData]) {
         let optionalIngredients: [(item: IngredientData, probability: Double)] = []
 
-        self.init(withCompulsoryIngredients: ingredients, withOptionalIngredients: optionalIngredients)
+        self.init(inRecipeName: nameOfRecipe, withCompulsoryIngredients: ingredients, withOptionalIngredients: optionalIngredients)
     }
 
     func regenerateRecipe() -> Recipe {
-        return Recipe(withCompulsoryIngredients: originalCompulsoryIngredients,
+        return Recipe(inRecipeName: recipeName, withCompulsoryIngredients: originalCompulsoryIngredients,
                       withOptionalIngredients: originalOptionalIngredients)
     }
 }

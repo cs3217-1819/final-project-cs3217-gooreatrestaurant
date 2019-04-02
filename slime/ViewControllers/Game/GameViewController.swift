@@ -34,11 +34,11 @@ class GameViewController: UIViewController {
 
         stage.generateLevel(inLevel: "Level1")
 
-        newCollection.delegate = self
-        newCollection.dataSource = self
-        newCollection.register(IngredientsCell.self, forCellWithReuseIdentifier: "MyCell")
-        view.addSubview(newCollection)
-        setupCollection()
+//        newCollection.delegate = self
+//        newCollection.dataSource = self
+//        newCollection.register(IngredientsCell.self, forCellWithReuseIdentifier: "MyCell")
+//        view.addSubview(newCollection)
+//        setupCollection()
     }
 
     lazy var skView: SKView = {
