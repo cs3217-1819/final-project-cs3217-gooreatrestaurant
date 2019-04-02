@@ -31,9 +31,9 @@ class MenuPrefab : SKSpriteNode {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func addRecipe(inString: String) {
+    func addRecipe(inRecipe: Recipe) {
         //Adding image of the main recipe
-        let dish = SKSpriteNode(imageNamed: inString)
+        let dish = SKSpriteNode(imageNamed: inRecipe.recipeName)
         dish.position = CGPoint(x: 0, y: 20)
         dish.zPosition = 5
         dish.size = CGSize(width: 50, height: 50)

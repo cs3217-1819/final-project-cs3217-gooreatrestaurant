@@ -265,15 +265,15 @@ class Stage: SKScene {
             return
         }
         self.addOrder(ofRecipe: randomRecipe)
-        generateMenu(inRecipe: randomRecipe.recipeName)
+        generateMenu(inRecipe: randomRecipe)
     }
 
-    func generateMenu(inRecipe recipeName: String) {
+    func generateMenu(inRecipe recipe: Recipe) {
         print("generateMenu")
         let spaceshipBody = SKTexture(imageNamed: "Menu-Slimes_01")
         spaceshipBody.filteringMode = .nearest
         let temp = MenuPrefab.init(texture: spaceshipBody, color: .clear, size: CGSize(width: 100, height: 100))
-        temp.addRecipe(inString: recipeName)
+        temp.addRecipe(inRecipe: recipe)
         self.addChild(temp)
     }
 
