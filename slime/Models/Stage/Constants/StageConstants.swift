@@ -36,7 +36,7 @@ class StageConstants {
     static let ingredientSize = CGSize(width: 40, height: 10)
     static let cookerSize = CGSize(width: 40, height: 30)
     static let ladderSize = CGSize(width: 50, height: 50)
-    static let stationSize = CGSize(width: 40, height: 30)
+    static let stationSize = CGSize(width: 40, height: 40)
 
     // controller size and position
     static let joystickSize = CGFloat(100)

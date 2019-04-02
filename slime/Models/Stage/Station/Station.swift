@@ -12,7 +12,7 @@ import SpriteKit
 class Station: SKSpriteNode {
 
     init(inPosition position: CGPoint, withSize size: CGSize) {
-        super.init(texture: nil, color: .yellow, size: size)
+        super.init(texture: nil, color: .clear, size: size)
         self.name = StageConstants.stationName
         self.position = position
         self.zPosition = StageConstants.stationZPos
