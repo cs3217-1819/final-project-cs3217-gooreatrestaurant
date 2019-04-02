@@ -18,10 +18,13 @@ class MenuPrefab : SKSpriteNode {
     let duration: CGFloat = 10.0
 
     override init(texture: SKTexture?, color: UIColor, size: CGSize) {
+        let spaceshipBody = SKTexture(imageNamed: "Menu-Slimes_01")
+        spaceshipBody.filteringMode = .nearest
+
         self.blackBar = SKSpriteNode(imageNamed: "Black bar")
         self.greenBar = SKSpriteNode(imageNamed: "Green bar")
 
-        super.init(texture: texture, color: color, size: size)
+        super.init(texture: spaceshipBody, color: color, size: size)
         self.position = CGPoint(x: ScreenSize.width * 0.5 - 60,
                                 y: ScreenSize.height * 0.5 - 60)
         self.zPosition = 5

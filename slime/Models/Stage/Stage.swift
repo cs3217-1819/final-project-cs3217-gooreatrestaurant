@@ -269,10 +269,7 @@ class Stage: SKScene {
     }
 
     func generateMenu(inRecipe recipe: Recipe) {
-        print("generateMenu")
-        let spaceshipBody = SKTexture(imageNamed: "Menu-Slimes_01")
-        spaceshipBody.filteringMode = .nearest
-        let temp = MenuPrefab.init(texture: spaceshipBody, color: .clear, size: CGSize(width: 100, height: 100))
+        let temp = MenuPrefab(color: .clear, size: CGSize(width: 100, height: 100))
         temp.addRecipe(inRecipe: recipe)
         self.addChild(temp)
     }
