@@ -39,6 +39,7 @@
 		8BEDCD392247F10100E24A20 /* Level1.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8BEDCD382247F10100E24A20 /* Level1.plist */; };
 		8BEDCD43224E089A00E24A20 /* SerializableGameData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEDCD42224E089A00E24A20 /* SerializableGameData.swift */; };
 		8BEDCD45224F3EC900E24A20 /* MenuPrefab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEDCD44224F3EC900E24A20 /* MenuPrefab.swift */; };
+		8BEDCD4B22531CDF00E24A20 /* IngredientsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEDCD4A22531CDF00E24A20 /* IngredientsCell.swift */; };
 		BA7CC9239365F389C9C1FA05 /* Pods_slime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7F0D50F4B0E911D0C328800 /* Pods_slime.framework */; };
 		EC21B40022420CA700827121 /* LevelPlayButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC21B3FF22420CA700827121 /* LevelPlayButton.xib */; };
 		EC21B40222420D4100827121 /* DesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC21B40122420D4100827121 /* DesignableView.swift */; };
@@ -208,6 +209,7 @@
 		8BEDCD382247F10100E24A20 /* Level1.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Level1.plist; sourceTree = "<group>"; };
 		8BEDCD42224E089A00E24A20 /* SerializableGameData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerializableGameData.swift; sourceTree = "<group>"; };
 		8BEDCD44224F3EC900E24A20 /* MenuPrefab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuPrefab.swift; sourceTree = "<group>"; };
+		8BEDCD4A22531CDF00E24A20 /* IngredientsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsCell.swift; sourceTree = "<group>"; };
 		E7F0D50F4B0E911D0C328800 /* Pods_slime.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_slime.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC21B3FF22420CA700827121 /* LevelPlayButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LevelPlayButton.xib; sourceTree = "<group>"; };
 		EC21B40122420D4100827121 /* DesignableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableView.swift; sourceTree = "<group>"; };
@@ -443,6 +445,7 @@
 			children = (
 				8B81EFBB224344AD007BFDB0 /* Slime.atlas */,
 				8BEDCD44224F3EC900E24A20 /* MenuPrefab.swift */,
+				8BEDCD4A22531CDF00E24A20 /* IngredientsCell.swift */,
 			);
 			path = Sprites;
 			sourceTree = "<group>";
@@ -1216,6 +1219,7 @@
 				ECD2442A224B0C9E00767A56 /* SlimeNumberPadView.swift in Sources */,
 				EC3824562239116D000D7148 /* CGRectExtension.swift in Sources */,
 				ECD45546223FAFBE006AF78D /* ContextController.swift in Sources */,
+				8BEDCD4B22531CDF00E24A20 /* IngredientsCell.swift in Sources */,
 				ECD455632240F4A8006AF78D /* MultiplayerLobbyView.swift in Sources */,
 				EC40E4B4223F98EF0073D755 /* RouteTransitionHandler.swift in Sources */,
 				1DE6FC67224D1E3C00B36F48 /* FryingEquipment.swift in Sources */,

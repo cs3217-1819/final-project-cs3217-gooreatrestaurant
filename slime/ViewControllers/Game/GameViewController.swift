@@ -11,19 +11,27 @@ import SpriteKit
 
 class GameViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 2
+        return 10
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let myCell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyCell", for: indexPath as IndexPath)
-        myCell.backgroundColor = UIColor.blue
-        return myCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyCell", for: indexPath) as! IngredientsCell
+//        cell.backgroundColor  = .white
+//        cell.layer.cornerRadius = 5
+//        cell.layer.shadowOpacity = 3
+        cell.imageView.image = UIImage(named: "Menu-Slimes_01")
+        return cell
     }
 
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: IndexPath)
-    {
-        print("User tapped on item \(indexPath.row)")
-    }
+    let newCollection: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        let collection = UICollectionView(frame: CGRect(x: 0, y: 0, width: 500, height: 500), collectionViewLayout: layout)
+//        layout.scrollDirection = .horizontal
+        collection.backgroundColor = UIColor.clear
+//        collection.translatesAutoresizingMaskIntoConstraints = false
+//        collection.isScrollEnabled = true
+        return collection
+    }()
 
    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -41,16 +49,11 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
 
         stage.generateLevel(inLevel: "Level1")
 
-        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: 20, left: 10, bottom: 10, right: 10)
-        layout.itemSize = CGSize(width: 60, height: 60)
-
-        let myCollectionView:UICollectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
-        myCollectionView.dataSource = self
-        myCollectionView.delegate = self
-        myCollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "MyCell")
-        myCollectionView.backgroundColor = UIColor.clear
-        self.view.addSubview(myCollectionView)
+        newCollection.delegate = self
+        newCollection.dataSource = self
+        newCollection.register(IngredientsCell.self, forCellWithReuseIdentifier: "MyCell")
+        view.addSubview(newCollection)
+        setupCollection()
     }
 
     lazy var skView: SKView = {
@@ -63,6 +66,13 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+    }
+
+    func setupCollection(){
+        newCollection.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        newCollection.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        newCollection.heightAnchor.constraint(equalToConstant: 200  ).isActive = true
+        newCollection.widthAnchor.constraint(equalToConstant: view.frame.width).isActive = true
     }
 
     override func didReceiveMemoryWarning() {
