@@ -107,8 +107,14 @@ class Stage: SKScene {
 
     func initializeOrders(withData data: [RecipeData]) {
         for datum in data {
+            var recipeName: String
             var compulsoryIngredients: [IngredientData] = []
             var optionalIngredients: [(item: IngredientData, probability: Double)] = []
+
+            for name in datum["recipeName"] ?? [] {
+                recipeName = name.values.description
+            }
+
             for ingredientRequirement in datum["compulsoryIngredients"] ?? [] {
                 guard let ingredientData = getIngredientData(fromDictionaryData: ingredientRequirement) else {
                     continue

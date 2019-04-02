@@ -93,6 +93,13 @@
 	<key>possibleRecipes</key>
 	<array>
 		<dict>
+			<key>recipeName</key>
+			<array>
+				<dict>
+					<key>recipeName</key>
+					<string>ApplePie</string>
+				</dict>
+			</array>
 			<key>compulsoryIngredients</key>
 			<array>
 				<dict>
