@@ -9,27 +9,12 @@
 import UIKit
 import SpriteKit
 
-class GameViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
-    }
-
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyCell", for: indexPath) as! IngredientsCell
-//        cell.backgroundColor  = .white
-//        cell.layer.cornerRadius = 5
-//        cell.layer.shadowOpacity = 3
-        cell.imageView.image = UIImage(named: "Menu-Slimes_01")
-        return cell
-    }
-
+class GameViewController: UIViewController {
     let newCollection: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        let collection = UICollectionView(frame: CGRect(x: 0, y: 0, width: 500, height: 500), collectionViewLayout: layout)
-//        layout.scrollDirection = .horizontal
+        let collection = UICollectionView(frame: CGRect(x: 0, y: 0, width: 0, height: 0), collectionViewLayout: layout)
         collection.backgroundColor = UIColor.clear
-//        collection.translatesAutoresizingMaskIntoConstraints = false
-//        collection.isScrollEnabled = true
+        collection.translatesAutoresizingMaskIntoConstraints = false
         return collection
     }()
 
@@ -71,12 +56,33 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
     func setupCollection(){
         newCollection.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         newCollection.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        newCollection.heightAnchor.constraint(equalToConstant: 200  ).isActive = true
-        newCollection.widthAnchor.constraint(equalToConstant: view.frame.width).isActive = true
+        newCollection.heightAnchor.constraint(equalToConstant: 400).isActive = true
+        newCollection.widthAnchor.constraint(equalToConstant: 225).isActive = true
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+}
+
+extension GameViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return StageConstants.numbersOfOrdersShown
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyCell", for: indexPath) as! IngredientsCell
+        cell.imageView.image = UIImage(named: "Menu-Slimes_01")
+        return cell
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 100, height: 100)
+    }
+
+
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+//        return UIEdgeInsets(top: 3, left: 3, bottom: 3, right: 3)
+//    }
 }
