@@ -38,7 +38,6 @@ class Recipe: NSObject {
             if ingredientsNeeded[ingredient] == nil {
                 ingredientsNeeded[ingredient] = 0
             }
-
             ingredientsNeeded[ingredient]? += 1
         }
     }
