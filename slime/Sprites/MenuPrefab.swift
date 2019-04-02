@@ -9,36 +9,13 @@
 import Foundation
 import SpriteKit
 
-class MenuPrefab : SKSpriteNode, UICollectionViewDelegate {
+class MenuPrefab : SKSpriteNode {
     var blackBar: SKSpriteNode
     var greenBar: SKSpriteNode
     var timer: Timer =  Timer()
 
     var time: CGFloat = 10.0
     let duration: CGFloat = 10.0
-
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return 2
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        let myCell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyCell", for: indexPath as IndexPath)
-//        myCell.backgroundColor = UIColor.blue
-//        return myCell
-//    }
-//
-//    func temp() -> UICollectionView {
-//        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-//        layout.sectionInset = UIEdgeInsets(top: 20, left: 10, bottom: 10, right: 10)
-//        layout.itemSize = CGSize(width: 60, height: 60)
-//
-//        let myCollectionView:UICollectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: 30, height: 30), collectionViewLayout: layout)
-////        myCollectionView.dataSource = self
-//        myCollectionView.delegate = self
-//        myCollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "MyCell")
-//        myCollectionView.backgroundColor = UIColor.clear
-//        return myCollectionView
-//    }
 
     override init(texture: SKTexture?, color: UIColor, size: CGSize) {
         self.blackBar = SKSpriteNode(imageNamed: "Black bar")
