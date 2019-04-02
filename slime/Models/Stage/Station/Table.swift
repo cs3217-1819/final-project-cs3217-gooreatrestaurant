@@ -12,11 +12,7 @@ import SpriteKit
 class Table: Station {
 
     override init(inPosition position: CGPoint, withSize size: CGSize = StageConstants.stationSize) {
-        let table = SKSpriteNode(imageNamed: "table")
         super.init(inPosition: position, withSize: size)
-        table.size = size
-        self.physicsBody = SKPhysicsBody(texture: table.texture!, size: table.size)
-        self.addChild(table)
     }
     
     required init?(coder aDecoder: NSCoder) {

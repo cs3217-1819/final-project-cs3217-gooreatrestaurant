@@ -12,12 +12,14 @@ import SpriteKit
 class Station: SKSpriteNode {
 
     init(inPosition position: CGPoint, withSize size: CGSize) {
-        super.init(texture: nil, color: .clear, size: size)
+        let table = SKSpriteNode(imageNamed: "table")
+        table.size = size
+        super.init(texture: table.texture, color: .clear, size: size)
         self.name = StageConstants.stationName
         self.position = position
         self.zPosition = StageConstants.stationZPos
 
-        self.physicsBody = SKPhysicsBody(rectangleOf: size)
+        self.physicsBody = SKPhysicsBody(texture: table.texture!, size: table.size)
         self.physicsBody?.isDynamic = false
         self.physicsBody?.categoryBitMask = StageConstants.stationCategory
         self.physicsBody?.collisionBitMask = StageConstants.wallCategoryCollision
