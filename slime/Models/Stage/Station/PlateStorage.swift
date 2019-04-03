@@ -10,15 +10,6 @@ import UIKit
 import SpriteKit
 
 class PlateStorage: Station {
-
-    override init(inPosition position: CGPoint, withSize size: CGSize = StageConstants.stationSize) {
-        super.init(inPosition: position, withSize: size)
-        self.color = .red
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     
     override func ableToProcess(_ item: SKSpriteNode?) -> Bool {
         if item == nil {

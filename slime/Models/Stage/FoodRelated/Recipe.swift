@@ -10,12 +10,12 @@ import UIKit
 
 class Recipe: NSObject {
     private(set) var recipeName: String
-    private(set) var ingredientsNeeded: [IngredientData:Int] = [:]
-    private let originalCompulsoryIngredients: [IngredientData]
-    private let originalOptionalIngredients: [(item: IngredientData, probability: Double)]
+    private(set) var ingredientsNeeded: [Ingredient:Int] = [:]
+    private let originalCompulsoryIngredients: [Ingredient]
+    private let originalOptionalIngredients: [(item: Ingredient, probability: Double)]
 
-    init(inRecipeName nameOfRecipe: String, withCompulsoryIngredients compulsoryIngredients: [IngredientData],
-         withOptionalIngredients optionalIngredients: [(item: IngredientData, probability: Double)]) {
+    init(inRecipeName nameOfRecipe: String, withCompulsoryIngredients compulsoryIngredients: [Ingredient],
+         withOptionalIngredients optionalIngredients: [(item: Ingredient, probability: Double)]) {
 
         self.recipeName = nameOfRecipe
         self.originalCompulsoryIngredients = compulsoryIngredients
@@ -23,15 +23,15 @@ class Recipe: NSObject {
 
         var ingredientsRequirement = compulsoryIngredients
 
-        for ingredientData in optionalIngredients {
-            let ingredient = ingredientData.item
-            let probability = ingredientData.probability
+        for ingredient in optionalIngredients {
+            let item = ingredient.item
+            let probability = ingredient.probability
 
             guard drand48() < probability else {
                 continue
             }
 
-            ingredientsRequirement.append(ingredient)
+            ingredientsRequirement.append(item)
         }
 
         for ingredient in ingredientsRequirement {
@@ -42,9 +42,9 @@ class Recipe: NSObject {
         }
     }
 
-    convenience init(inRecipeName nameOfRecipe: String, withCompulsoryIngredients compulsoryIngredients: [IngredientData],
-                     withOptionalIngredients optionalIngredients: [IngredientData]) {
-        var optionalIngredientTuples: [(item: IngredientData, probability: Double)] = []
+    convenience init(inRecipeName nameOfRecipe: String, withCompulsoryIngredients compulsoryIngredients: [Ingredient],
+                     withOptionalIngredients optionalIngredients: [Ingredient]) {
+        var optionalIngredientTuples: [(item: Ingredient, probability: Double)] = []
 
         for ingredient in optionalIngredients {
             let optionalIngredientTuple = (item: ingredient,
@@ -55,12 +55,13 @@ class Recipe: NSObject {
         self.init(inRecipeName: nameOfRecipe, withCompulsoryIngredients: compulsoryIngredients, withOptionalIngredients: optionalIngredientTuples)
     }
 
-    convenience init(inRecipeName nameOfRecipe: String, withIngredients ingredients: [IngredientData]) {
-        let optionalIngredients: [(item: IngredientData, probability: Double)] = []
+    convenience init(inRecipeName nameOfRecipe: String, withIngredients ingredients: [Ingredient]) {
+        let optionalIngredients: [(item: Ingredient, probability: Double)] = []
 
         self.init(inRecipeName: nameOfRecipe, withCompulsoryIngredients: ingredients, withOptionalIngredients: optionalIngredients)
     }
 
+    // To generate the same recipe but with the optional ingredients probability re-rolled again
     func regenerateRecipe() -> Recipe {
         return Recipe(inRecipeName: recipeName, withCompulsoryIngredients: originalCompulsoryIngredients,
                       withOptionalIngredients: originalOptionalIngredients)
