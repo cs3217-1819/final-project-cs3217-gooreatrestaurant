@@ -54,6 +54,22 @@ class ModalController: Controller {
         })
     }
     
+    func open(with parent: UIView, frame: CGRect, closeOnOutsideTap: Bool) {
+        let background = createBackground(for: parent, closeOnOutsideTap: closeOnOutsideTap)
+        view.alpha = 0
+        parent.addSubview(view)
+        print(frame)
+        view.snp.remakeConstraints { make in
+            make.left.equalTo(frame.minX)
+            make.top.equalTo(frame.maxY)
+        }
+        view.layoutIfNeeded()
+        UIView.animate(withDuration: 0.5, animations: {
+            self.view.alpha = 1
+            background.alpha = 1
+        })
+    }
+    
     func close() {
         view.alpha = 1
         UIView.animate(withDuration: 0.3, animations: {

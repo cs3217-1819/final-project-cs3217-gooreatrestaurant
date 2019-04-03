@@ -64,23 +64,14 @@ class ProgressBarController: Controller {
             guard let value = event.element else {
                 return
             }
-            self.view.trackLayer.strokeColor = value.withAlphaComponent(0.2).cgColor
+            self.view.trackLayer.strokeColor = value.withAlphaComponent(0.4).cgColor
             self.view.progressLayer.strokeColor = value.cgColor
         }.disposed(by: disposeBag)
-        
-        // TODO: remove this
-        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { _ in
-            let limit = try! self.maxValue.value()
-            var currValue = try! self.currentValue.value() + limit / 10.0
-            if currValue > limit {
-                currValue -= limit
-            }
-            self.setCurrentValue(currValue)
-        })
     }
     
     private func createCircularPath() {
         let radius = view.frame.size.width / 2
+        let lineWidth = view.frame.size.width / 10
         view.layer.cornerRadius = radius
         let circlePath = UIBezierPath(arcCenter: CGPoint(x: radius, y: radius),
                                       radius: (view.frame.size.width - 1.5) / 2,
@@ -90,14 +81,14 @@ class ProgressBarController: Controller {
         let trackLayer = view.trackLayer
         trackLayer.path = circlePath.cgPath
         trackLayer.fillColor = UIColor.clear.cgColor
-        trackLayer.lineWidth = 10.0
+        trackLayer.lineWidth = lineWidth
         trackLayer.strokeEnd = 1.0
         view.layer.addSublayer(trackLayer)
         
         let progressLayer = view.progressLayer
         progressLayer.path = circlePath.cgPath
         progressLayer.fillColor = UIColor.clear.cgColor
-        progressLayer.lineWidth = 10.0
+        progressLayer.lineWidth = lineWidth
         progressLayer.strokeEnd = 0.0
         view.layer.addSublayer(progressLayer)
     }
@@ -107,7 +98,6 @@ class ProgressBarController: Controller {
             return
         }
         let newValue = rawNewValue.clamp(from: 0.0, to: maxBound)
-         
         let animation = CABasicAnimation(keyPath: "strokeEnd")
         animation.duration = 0.2
         

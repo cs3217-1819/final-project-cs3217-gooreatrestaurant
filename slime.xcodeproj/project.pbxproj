@@ -41,6 +41,12 @@
 		8BEDCD4B22531CDF00E24A20 /* IngredientsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEDCD4A22531CDF00E24A20 /* IngredientsCell.swift */; };
 		8BEDCD4F22538ED500E24A20 /* Ingredients.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 8BEDCD4E2253758500E24A20 /* Ingredients.atlas */; };
 		BA7CC9239365F389C9C1FA05 /* Pods_slime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7F0D50F4B0E911D0C328800 /* Pods_slime.framework */; };
+		EC0E3163224F610300AF1254 /* CharacterCreationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC0E3162224F610300AF1254 /* CharacterCreationView.xib */; };
+		EC0E3165224F611200AF1254 /* CharacterCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0E3164224F611200AF1254 /* CharacterCreationView.swift */; };
+		EC0E3168224F618B00AF1254 /* TextInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC0E3167224F618B00AF1254 /* TextInputView.xib */; };
+		EC0E316A224F61C500AF1254 /* TextInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0E3169224F61C500AF1254 /* TextInputView.swift */; };
+		EC0E316C224F641C00AF1254 /* TextInputController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0E316B224F641C00AF1254 /* TextInputController.swift */; };
+		EC0E316E224F69A400AF1254 /* CharacterCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0E316D224F69A400AF1254 /* CharacterCreationViewController.swift */; };
 		EC21B40022420CA700827121 /* LevelPlayButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC21B3FF22420CA700827121 /* LevelPlayButton.xib */; };
 		EC21B40222420D4100827121 /* DesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC21B40122420D4100827121 /* DesignableView.swift */; };
 		EC21B4052242155600827121 /* LoadingScreenView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC21B4042242155600827121 /* LoadingScreenView.xib */; };
@@ -61,7 +67,7 @@
 		EC3824512238FB3D000D7148 /* ButtonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3824502238FB3D000D7148 /* ButtonController.swift */; };
 		EC38245422390789000D7148 /* ScrollingBackgroundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC38245322390789000D7148 /* ScrollingBackgroundViewController.swift */; };
 		EC3824562239116D000D7148 /* CGRectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3824552239116D000D7148 /* CGRectExtension.swift */; };
-		EC38245A223A0F6F000D7148 /* TextLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC382459223A0F6F000D7148 /* TextLabel.swift */; };
+		EC38245A223A0F6F000D7148 /* UIText.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC382459223A0F6F000D7148 /* UIText.swift */; };
 		EC38245C223A100B000D7148 /* TextStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC38245B223A100B000D7148 /* TextStyles.swift */; };
 		EC38245F223A17F7000D7148 /* Squidgy Slimes.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EC38245E223A17F7000D7148 /* Squidgy Slimes.ttf */; };
 		EC38246A223A1803000D7148 /* Rubik-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EC382460223A1802000D7148 /* Rubik-Light.ttf */; };
@@ -221,6 +227,12 @@
 		8BEDCD4A22531CDF00E24A20 /* IngredientsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsCell.swift; sourceTree = "<group>"; };
 		8BEDCD4E2253758500E24A20 /* Ingredients.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Ingredients.atlas; sourceTree = "<group>"; };
 		E7F0D50F4B0E911D0C328800 /* Pods_slime.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_slime.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EC0E3162224F610300AF1254 /* CharacterCreationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharacterCreationView.xib; sourceTree = "<group>"; };
+		EC0E3164224F611200AF1254 /* CharacterCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCreationView.swift; sourceTree = "<group>"; };
+		EC0E3167224F618B00AF1254 /* TextInputView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextInputView.xib; sourceTree = "<group>"; };
+		EC0E3169224F61C500AF1254 /* TextInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputView.swift; sourceTree = "<group>"; };
+		EC0E316B224F641C00AF1254 /* TextInputController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputController.swift; sourceTree = "<group>"; };
+		EC0E316D224F69A400AF1254 /* CharacterCreationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCreationViewController.swift; sourceTree = "<group>"; };
 		EC21B3FF22420CA700827121 /* LevelPlayButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LevelPlayButton.xib; sourceTree = "<group>"; };
 		EC21B40122420D4100827121 /* DesignableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableView.swift; sourceTree = "<group>"; };
 		EC21B4042242155600827121 /* LoadingScreenView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingScreenView.xib; sourceTree = "<group>"; };
@@ -245,7 +257,7 @@
 		EC3824502238FB3D000D7148 /* ButtonController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonController.swift; sourceTree = "<group>"; };
 		EC38245322390789000D7148 /* ScrollingBackgroundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollingBackgroundViewController.swift; sourceTree = "<group>"; };
 		EC3824552239116D000D7148 /* CGRectExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGRectExtension.swift; sourceTree = "<group>"; };
-		EC382459223A0F6F000D7148 /* TextLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextLabel.swift; sourceTree = "<group>"; };
+		EC382459223A0F6F000D7148 /* UIText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIText.swift; sourceTree = "<group>"; };
 		EC38245B223A100B000D7148 /* TextStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextStyles.swift; sourceTree = "<group>"; };
 		EC38245E223A17F7000D7148 /* Squidgy Slimes.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Squidgy Slimes.ttf"; sourceTree = "<group>"; };
 		EC382460223A1802000D7148 /* Rubik-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Light.ttf"; sourceTree = "<group>"; };
@@ -479,6 +491,25 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		EC0E3161224F60E700AF1254 /* CharacterCreationView */ = {
+			isa = PBXGroup;
+			children = (
+				EC0E3162224F610300AF1254 /* CharacterCreationView.xib */,
+				EC0E3164224F611200AF1254 /* CharacterCreationView.swift */,
+			);
+			path = CharacterCreationView;
+			sourceTree = "<group>";
+		};
+		EC0E3166224F617D00AF1254 /* TextInput */ = {
+			isa = PBXGroup;
+			children = (
+				EC0E3167224F618B00AF1254 /* TextInputView.xib */,
+				EC0E3169224F61C500AF1254 /* TextInputView.swift */,
+				EC0E316B224F641C00AF1254 /* TextInputController.swift */,
+			);
+			path = TextInput;
+			sourceTree = "<group>";
+		};
 		EC21B4032242150A00827121 /* LoadingScreenView */ = {
 			isa = PBXGroup;
 			children = (
@@ -541,6 +572,7 @@
 		EC38243D223882AF000D7148 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				EC0E3166224F617D00AF1254 /* TextInput */,
 				EC6E99F3224F2D0C00A9554C /* ProgressBar */,
 				EC6E99F0224F2BED00A9554C /* UserInfo */,
 				ECD2441C224AFF9D00767A56 /* CodeInput */,
@@ -575,7 +607,7 @@
 				EC38244A22389649000D7148 /* ImageProvider.swift */,
 				EC38244C22389DAD000D7148 /* UIViewExtension.swift */,
 				EC3824552239116D000D7148 /* CGRectExtension.swift */,
-				EC382459223A0F6F000D7148 /* TextLabel.swift */,
+				EC382459223A0F6F000D7148 /* UIText.swift */,
 				EC38245B223A100B000D7148 /* TextStyles.swift */,
 				EC382474223A1AA4000D7148 /* ColorStyles.swift */,
 				EC38247C223A2344000D7148 /* UIColorExtension.swift */,
@@ -677,6 +709,7 @@
 				ECD455662240F974006AF78D /* ViewControllerProtocol.swift */,
 				ECD455682240FB23006AF78D /* MultiplayerLobbyViewController.swift */,
 				EC21B408224217E200827121 /* LoadingScreenViewController.swift */,
+				EC0E316D224F69A400AF1254 /* CharacterCreationViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -684,6 +717,7 @@
 		EC449B73223B7E4A00A8EA35 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				EC0E3161224F60E700AF1254 /* CharacterCreationView */,
 				ECD2442F224B113400767A56 /* JoinRoomView */,
 				EC21B4032242150A00827121 /* LoadingScreenView */,
 				ECD4555F2240F48D006AF78D /* MultiplayerLobbyView */,
@@ -1035,6 +1069,7 @@
 				EC4924EB22461FEC007B9797 /* OrderBlob.xib in Resources */,
 				EC38246C223A1803000D7148 /* Rubik-BoldItalic.ttf in Resources */,
 				EC449B87223BA49D00A8EA35 /* LevelSelectView.xib in Resources */,
+				EC0E3163224F610300AF1254 /* CharacterCreationView.xib in Resources */,
 				EC38246F223A1803000D7148 /* Rubik-LightItalic.ttf in Resources */,
 				F92ECADF224BADEC0040A4E2 /* GoogleService-Info.plist in Resources */,
 				EC449B90223BADBB00A8EA35 /* LevelDetailsBox.xib in Resources */,
@@ -1060,6 +1095,7 @@
 				EC38246E223A1803000D7148 /* Rubik-Italic.ttf in Resources */,
 				EC449B9B223BB9EA00A8EA35 /* levels.json in Resources */,
 				EC382480223A2999000D7148 /* PlayMenuButton.xib in Resources */,
+				EC0E3168224F618B00AF1254 /* TextInputView.xib in Resources */,
 				8B81EFBC224344AD007BFDB0 /* Slime.atlas in Resources */,
 				EC382471223A1803000D7148 /* Rubik-MediumItalic.ttf in Resources */,
 				ECD4557622411340006AF78D /* UpButton.xib in Resources */,
@@ -1234,8 +1270,10 @@
 				1D2202A3224AB5850080CF7D /* StageConstants.swift in Sources */,
 				EC382479223A1BE7000D7148 /* PrimaryButtonColor.swift in Sources */,
 				ECA66DC4223D5F4000D1D0BC /* CreditsScreenView.swift in Sources */,
+				EC0E316C224F641C00AF1254 /* TextInputController.swift in Sources */,
 				EC449B96223BB1D400A8EA35 /* StoryModeLevelSelectView.swift in Sources */,
 				8BD816B922426D1400586180 /* BDButton.swift in Sources */,
+				EC0E316A224F61C500AF1254 /* TextInputView.swift in Sources */,
 				ECD24424224B018800767A56 /* Controller.swift in Sources */,
 				ECD4556E2240FBFA006AF78D /* PlayerBox.swift in Sources */,
 				ECD455672240F974006AF78D /* ViewControllerProtocol.swift in Sources */,
@@ -1252,7 +1290,7 @@
 				EC382482223A2AF5000D7148 /* PlayMenuButton.swift in Sources */,
 				EC449B92223BB01C00A8EA35 /* LevelDetailsBox.swift in Sources */,
 				EC3824512238FB3D000D7148 /* ButtonController.swift in Sources */,
-				EC38245A223A0F6F000D7148 /* TextLabel.swift in Sources */,
+				EC38245A223A0F6F000D7148 /* UIText.swift in Sources */,
 				ECD455702240FEDE006AF78D /* PlayerBoxController.swift in Sources */,
 				EC449B81223B8C0C00A8EA35 /* PlayScreenView.swift in Sources */,
 				EC40E4AC223D61320073D755 /* CreditsSceneViewController.swift in Sources */,
@@ -1268,6 +1306,7 @@
 				F92ECAE8224BAEEF0040A4E2 /* Game.swift in Sources */,
 				1DE6FC5C224CA46700B36F48 /* Table.swift in Sources */,
 				1DE6FC65224D1D3900B36F48 /* Oven.swift in Sources */,
+				EC0E3165224F611200AF1254 /* CharacterCreationView.swift in Sources */,
 				EC38244B22389649000D7148 /* ImageProvider.swift in Sources */,
 				EC38244322388389000D7148 /* XibView.swift in Sources */,
 				ECD455692240FB23006AF78D /* MultiplayerLobbyViewController.swift in Sources */,
@@ -1294,6 +1333,7 @@
 				1D22029B224AB5850080CF7D /* Food.swift in Sources */,
 				EC38244D22389DAD000D7148 /* UIViewExtension.swift in Sources */,
 				EC4924F12246220A007B9797 /* OrderBlobRecipe.swift in Sources */,
+				EC0E316E224F69A400AF1254 /* CharacterCreationViewController.swift in Sources */,
 				EC38241E2238803A000D7148 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
