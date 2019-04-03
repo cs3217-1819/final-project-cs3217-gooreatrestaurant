@@ -78,6 +78,66 @@ class Stage: SKScene {
         }
     }
 
+    // Setupping Joystick and Buttons
+
+    lazy var analogJoystick: AnalogJoystick = {
+        let js = AnalogJoystick(diameter: StageConstants.joystickSize,
+                                colors: nil,
+                                images: (substrate: #imageLiteral(resourceName: "jSubstrate"),
+                                stick: #imageLiteral(resourceName: "jStick")))
+        js.position = StageConstants.joystickPosition
+        js.zPosition = StageConstants.joystickZPos
+        return js
+    }()
+
+    lazy var jumpButton: BDButton = {
+        var button = BDButton(imageNamed: "Up", buttonAction: {
+            self.slimeToControl?.jump()
+            })
+        button.setScale(0.1)
+        button.isEnabled = true
+        button.position = StageConstants.jumpButtonPosition
+        button.zPosition = StageConstants.buttonZPos
+        return button
+    }()
+
+    lazy var interactButton: BDButton = {
+        var button = BDButton(imageNamed: "Interact", buttonAction: {
+            self.slimeToControl?.interact()
+            })
+        button.setScale(0.1)
+        button.isEnabled = true
+        button.position = StageConstants.interactButtonPosition
+        button.zPosition = StageConstants.buttonZPos
+        return button
+    }()
+
+    func setupControl() {
+        self.addChild(jumpButton)
+        self.addChild(interactButton )
+        self.addChild(analogJoystick)
+
+        analogJoystick.trackingHandler = { [unowned self] data in
+            if data.velocity.x > 0.0 {
+                self.slimeToControl?.moveRight(withSpeed: data.velocity.x)
+            } else if data.velocity.x < 0.0 {
+                self.slimeToControl?.moveLeft(withSpeed: -data.velocity.x)
+            }
+
+            if data.velocity.y > abs(data.velocity.x) {
+                self.slimeToControl?.jump()
+            }
+
+            if data.velocity.y > 0.0 {
+                self.slimeToControl?.moveUp(withSpeed: data.velocity.y)
+            } else if data.velocity.y < 0.0 {
+                self.slimeToControl?.moveDown(withSpeed: -data.velocity.y)
+            }
+        }
+    }
+
+    // Starting Orders Initialization
+
     private func getIngredient(fromDictionaryData data: [String: String]) -> Ingredient? {
         guard let type = data["type"] else {
             return nil
@@ -155,67 +215,12 @@ class Stage: SKScene {
         }
     }
 
-    lazy var analogJoystick: AnalogJoystick = {
-        let js = AnalogJoystick(diameter: StageConstants.joystickSize,
-                                colors: nil,
-                                images: (substrate: #imageLiteral(resourceName: "jSubstrate"),
-                                stick: #imageLiteral(resourceName: "jStick")))
-        js.position = StageConstants.joystickPosition
-        js.zPosition = StageConstants.joystickZPos
-        return js
-    }()
-
-    lazy var jumpButton: BDButton = {
-        var button = BDButton(imageNamed: "Up", buttonAction: {
-            self.slimeToControl?.jump()
-            })
-        button.setScale(0.1)
-        button.isEnabled = true
-        button.position = StageConstants.jumpButtonPosition
-        button.zPosition = StageConstants.buttonZPos
-        return button
-    }()
-
-    lazy var interactButton: BDButton = {
-        var button = BDButton(imageNamed: "Interact", buttonAction: {
-            self.slimeToControl?.interact()
-            })
-        button.setScale(0.1)
-        button.isEnabled = true
-        button.position = StageConstants.interactButtonPosition
-        button.zPosition = StageConstants.buttonZPos
-        return button
-    }()
-
-    func setupControl() {
-        self.addChild(jumpButton)
-        self.addChild(interactButton )
-        self.addChild(analogJoystick)
-
-        analogJoystick.trackingHandler = { [unowned self] data in
-            if data.velocity.x > 0.0 {
-                self.slimeToControl?.moveRight(withSpeed: data.velocity.x)
-            } else if data.velocity.x < 0.0 {
-                self.slimeToControl?.moveLeft(withSpeed: -data.velocity.x)
-            }
-
-            if data.velocity.y > abs(data.velocity.x) {
-                self.slimeToControl?.jump()
-            }
-
-            if data.velocity.y > 0.0 {
-                self.slimeToControl?.moveUp(withSpeed: data.velocity.y)
-            } else if data.velocity.y < 0.0 {
-                self.slimeToControl?.moveDown(withSpeed: -data.velocity.y)
-            }
-        }
-    }
-
     func addOrder(ofRecipe recipe: Recipe, withinTime time: Int = StageConstants.defaultTimeLimitOrder) {
         let order = Order(recipe, withinTime: time)
         orders.append(order)
     }
 
+    // For multiplayer (future use)
     // if the player is already in the list, will do nothing
     func addPlayer(_ player: Player) {
         if !players.contains(player) && players.count < StageConstants.maxPlayer {
@@ -233,6 +238,7 @@ class Stage: SKScene {
         super.didSimulatePhysics()
     }
 
+    // which slime to control
     var slimeToControl: Slime? {
         var playerSlime: Slime?
 
@@ -248,6 +254,8 @@ class Stage: SKScene {
         }
         return playerSlime
     }
+
+    // Game serving and adding orders logic
 
     func serve(_ plate: Plate) {
         let foodToServe = plate.food
