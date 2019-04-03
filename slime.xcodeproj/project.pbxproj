@@ -1539,11 +1539,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-<<<<<<< HEAD
 				DEVELOPMENT_TEAM = CZ7H96C646;
-=======
-				DEVELOPMENT_TEAM = H8MD8RH9XR;
->>>>>>> 6d8b9a8e4e83797825cb42f967d7410c5ba7d4a7
 				INFOPLIST_FILE = slime/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1564,11 +1560,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-<<<<<<< HEAD
-				DEVELOPMENT_TEAM = CZ7H96C646;
-=======
 				DEVELOPMENT_TEAM = H8MD8RH9XR;
->>>>>>> 6d8b9a8e4e83797825cb42f967d7410c5ba7d4a7
 				INFOPLIST_FILE = slime/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
