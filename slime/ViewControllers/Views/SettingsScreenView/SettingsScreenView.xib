@@ -18,14 +18,23 @@
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A64-4L-JyT">
                     <rect key="frame" x="36" y="36" width="36" height="36"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="back-button" translatesAutoresizingMaskIntoConstraints="NO" id="X31-ff-Hai">
+                            <rect key="frame" x="0.0" y="0.0" width="36" height="36"/>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
+                        <constraint firstAttribute="trailing" secondItem="X31-ff-Hai" secondAttribute="trailing" id="4Mx-1a-5X3"/>
                         <constraint firstAttribute="width" constant="36" id="SAO-oa-ZsS"/>
+                        <constraint firstItem="X31-ff-Hai" firstAttribute="leading" secondItem="A64-4L-JyT" secondAttribute="leading" id="ajc-4B-3OP"/>
+                        <constraint firstItem="X31-ff-Hai" firstAttribute="top" secondItem="A64-4L-JyT" secondAttribute="top" id="bOk-Tr-a5L"/>
+                        <constraint firstAttribute="bottom" secondItem="X31-ff-Hai" secondAttribute="bottom" id="klp-wt-1Ub"/>
                         <constraint firstAttribute="height" constant="36" id="rdc-xJ-DbT"/>
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CeN-92-XA5" customClass="TextLabel" customModule="slime" customModuleProvider="target">
-                    <rect key="frame" x="108" y="36" width="115" height="39.5"/>
+                    <rect key="frame" x="108" y="36" width="98" height="33.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -34,28 +43,49 @@
                         <userDefinedRuntimeAttribute type="string" keyPath="color" value="white8"/>
                     </userDefinedRuntimeAttributes>
                 </label>
-                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="ASW-E1-ho3">
-                    <rect key="frame" x="36" y="91.5" width="740" height="247.5"/>
-                </stackView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nyH-4q-C3N">
+                    <rect key="frame" x="36" y="88" width="740" height="251"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="czQ-S7-gPp" customClass="XibView" customModule="slime" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="740" height="64"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="64" id="qtL-uR-bRj"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="nibName" value="PrimaryButton"/>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="czQ-S7-gPp" firstAttribute="top" secondItem="nyH-4q-C3N" secondAttribute="top" id="Q79-am-ZIr"/>
+                        <constraint firstItem="czQ-S7-gPp" firstAttribute="leading" secondItem="nyH-4q-C3N" secondAttribute="leading" id="ZvL-cs-Qqe"/>
+                        <constraint firstAttribute="trailing" secondItem="czQ-S7-gPp" secondAttribute="trailing" id="s7d-8a-Ato"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="A64-4L-JyT" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="36" id="NWe-Gv-60N"/>
-                <constraint firstItem="ASW-E1-ho3" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="36" id="Q0J-F7-Ef1"/>
                 <constraint firstItem="CeN-92-XA5" firstAttribute="leading" secondItem="A64-4L-JyT" secondAttribute="trailing" constant="36" id="Vza-oa-aFf"/>
                 <constraint firstItem="CeN-92-XA5" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="36" id="Ykn-FV-gWD"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="nyH-4q-C3N" secondAttribute="bottom" constant="36" id="alX-jZ-PZI"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="nyH-4q-C3N" secondAttribute="trailing" constant="36" id="d5g-aO-ngX"/>
                 <constraint firstItem="A64-4L-JyT" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="36" id="eRg-e1-P7F"/>
-                <constraint firstItem="ASW-E1-ho3" firstAttribute="top" secondItem="CeN-92-XA5" secondAttribute="bottom" constant="16" id="vlA-4v-RBp"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="ASW-E1-ho3" secondAttribute="bottom" constant="36" id="x5E-hW-Y8d"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="ASW-E1-ho3" secondAttribute="trailing" constant="36" id="yU8-tq-4j4"/>
+                <constraint firstItem="nyH-4q-C3N" firstAttribute="top" secondItem="A64-4L-JyT" secondAttribute="bottom" constant="16" id="eua-Dy-lhb"/>
+                <constraint firstItem="nyH-4q-C3N" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="36" id="xHe-jv-3lI"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
                 <outlet property="backButton" destination="A64-4L-JyT" id="PJf-of-GFW"/>
-                <outlet property="recipeBlobs" destination="ASW-E1-ho3" id="fnz-br-etJ"/>
+                <outlet property="resetButton" destination="czQ-S7-gPp" id="lSc-Pm-0At"/>
             </connections>
-            <point key="canvasLocation" x="106" y="133"/>
+            <point key="canvasLocation" x="105.59999999999999" y="132.68365817091455"/>
         </view>
     </objects>
+    <resources>
+        <image name="back-button" width="384" height="384"/>
+    </resources>
 </document>

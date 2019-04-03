@@ -38,6 +38,19 @@ class ModalController: Controller {
         }
     }
     
+    func openWithoutBase(with parent: UIView) {
+        guard let actualView = innerView else {
+            return
+        }
+        let background = createBackground(for: parent, closeOnOutsideTap: true)
+        actualView.alpha = 0
+        parent.addSubview(actualView)
+        UIView.animate(withDuration: TransitionConstants.inTime, animations: {
+            actualView.alpha = 1
+            background.alpha = 1
+        })
+    }
+    
     func open(with parent: UIView) {
         open(with: parent, closeOnOutsideTap: true)
     }
@@ -71,14 +84,15 @@ class ModalController: Controller {
         backgroundView = background
         background.backgroundColor = UIColor.black.withAlphaComponent(0.5)
         background.alpha = 0
-        parent.addSubview(background)
         background.rx.gesture(.tap())
             .when(.recognized)
             .subscribe { _ in
                 if closeOnOutsideTap {
+                    print("should close")
                     self.close()
                 }
             }.disposed(by: disposeBag)
+        parent.addSubview(background)
         return background
     }
 }

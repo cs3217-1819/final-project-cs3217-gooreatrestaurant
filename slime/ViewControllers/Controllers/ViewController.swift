@@ -70,4 +70,13 @@ class ViewController<View: UIView>: ViewControllerProtocol {
     func getView() -> UIView {
         return view
     }
+    
+    func onDisappear() {
+        view.removeFromSuperview()
+        controllers = []
+    }
+    
+    deinit {
+        print("VC Deinit")
+    }
 }

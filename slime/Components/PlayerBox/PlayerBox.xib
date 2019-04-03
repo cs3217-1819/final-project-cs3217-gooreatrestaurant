@@ -33,7 +33,7 @@
                     <rect key="frame" x="100.5" y="16" width="225.5" height="86"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lIc-sN-h9H" customClass="TextLabel" customModule="slime" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="29" width="225.5" height="28"/>
+                            <rect key="frame" x="0.0" y="33" width="225.5" height="20.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -43,7 +43,7 @@
                             </userDefinedRuntimeAttributes>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Level 10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K0F-xT-TVi" customClass="TextLabel" customModule="slime" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="57" width="225.5" height="22"/>
+                            <rect key="frame" x="0.0" y="53.5" width="225.5" height="20.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -64,7 +64,7 @@
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="GmH-Zf-MK1" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Cga-Zi-6oQ"/>
                 <constraint firstItem="zIg-jK-GzC" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="-30" id="KZe-na-IYh"/>

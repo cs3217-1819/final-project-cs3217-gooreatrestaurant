@@ -12,4 +12,5 @@ class TitleScreenView: UIView {
     @IBOutlet var playButton: XibView!
     @IBOutlet var settingsButton: XibView!
     @IBOutlet var creditsButton: XibView!
+    @IBOutlet var userInfoView: XibView!
 }

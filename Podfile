@@ -10,6 +10,7 @@ target 'slime' do
   pod 'RxCocoa', '~> 4.0'
   pod 'RxGesture'
   pod 'SnapKit', '~> 4.0.0'
+  pod 'RealmSwift'
   pod 'Firebase/Auth'
   pod 'Firebase/Core'
   pod 'Firebase/Database'

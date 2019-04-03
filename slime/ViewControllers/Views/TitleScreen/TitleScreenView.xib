@@ -22,7 +22,7 @@
                         <constraint firstAttribute="height" constant="200" id="rMU-Ne-sUc"/>
                     </constraints>
                 </imageView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Jp-Li-nZF" customClass="XibView" customModule="slime" customModuleProvider="target">
+                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Jp-Li-nZF" customClass="XibView" customModule="slime" customModuleProvider="target">
                     <rect key="frame" x="316" y="250" width="180" height="89"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
@@ -32,7 +32,7 @@
                         <userDefinedRuntimeAttribute type="string" keyPath="nibName" value="PrimaryButton"/>
                     </userDefinedRuntimeAttributes>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qug-F1-4pr" customClass="XibView" customModule="slime" customModuleProvider="target">
+                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qug-F1-4pr" customClass="XibView" customModule="slime" customModuleProvider="target">
                     <rect key="frame" x="528" y="254" width="180" height="89"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
@@ -42,7 +42,7 @@
                         <userDefinedRuntimeAttribute type="string" keyPath="nibName" value="PrimaryButton"/>
                     </userDefinedRuntimeAttributes>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wMS-We-Vto" customClass="XibView" customModule="slime" customModuleProvider="target">
+                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wMS-We-Vto" customClass="XibView" customModule="slime" customModuleProvider="target">
                     <rect key="frame" x="104" y="254" width="180" height="89"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
@@ -52,10 +52,23 @@
                         <userDefinedRuntimeAttribute type="string" keyPath="nibName" value="PrimaryButton"/>
                     </userDefinedRuntimeAttributes>
                 </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6yy-ix-2TB" customClass="XibView" customModule="slime" customModuleProvider="target">
+                    <rect key="frame" x="286" y="0.0" width="240" height="64"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="240" id="2jJ-Ca-AFh"/>
+                        <constraint firstAttribute="height" constant="64" id="f2d-IH-TKM"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="nibName" value="UserInfoView"/>
+                    </userDefinedRuntimeAttributes>
+                </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstItem="6yy-ix-2TB" firstAttribute="top" secondItem="cI2-Re-6Om" secondAttribute="top" id="358-5T-Gju"/>
                 <constraint firstItem="z5i-hl-RFm" firstAttribute="centerX" secondItem="qZj-mx-hPM" secondAttribute="centerX" id="7cD-ua-bRm"/>
+                <constraint firstItem="6yy-ix-2TB" firstAttribute="centerX" secondItem="qZj-mx-hPM" secondAttribute="centerX" id="EsP-z9-Qrk"/>
                 <constraint firstAttribute="bottom" secondItem="3Jp-Li-nZF" secondAttribute="bottom" constant="36" id="I9r-jE-CJv"/>
                 <constraint firstAttribute="bottom" secondItem="Qug-F1-4pr" secondAttribute="bottom" constant="32" id="L4X-KK-YJj"/>
                 <constraint firstItem="z5i-hl-RFm" firstAttribute="top" secondItem="cI2-Re-6Om" secondAttribute="top" constant="36" id="Pdh-Xq-olf"/>
@@ -72,6 +85,7 @@
                 <outlet property="creditsButton" destination="wMS-We-Vto" id="8mm-FL-os7"/>
                 <outlet property="playButton" destination="3Jp-Li-nZF" id="8gP-ag-I8a"/>
                 <outlet property="settingsButton" destination="Qug-F1-4pr" id="TaB-nm-KGq"/>
+                <outlet property="userInfoView" destination="6yy-ix-2TB" id="yvw-he-m1I"/>
             </connections>
             <point key="canvasLocation" x="1161.5999999999999" y="-104.34782608695653"/>
         </view>

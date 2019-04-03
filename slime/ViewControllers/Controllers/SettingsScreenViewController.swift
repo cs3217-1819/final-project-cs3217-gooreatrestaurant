@@ -10,25 +10,26 @@ import UIKit
 
 class SettingsScreenViewController: ViewController<SettingsScreenView> {
     override func configureSubviews() {
-        let control = ButtonController(using: view.backButton)
-        control.onTap {
-            // TODO: Change back to title screen
-            // self.router.routeTo(.TitleScreen)
-            self.attachNewRecipe()
-        }
-        remember(control)
-        
-        
+        configureBackButton()
+        configureResetButton()
     }
     
-    private func attachNewRecipe() {
-        let recipe = OrderBlobRecipe(goalImageName: "recipe-knife", instructionsImageNames: [
-            "recipe-knife",
-            "recipe-knife",
-            "recipe-knife"
-            ])
-        let recipeController = OrderBlobController(parent: view.recipeBlobs, recipe: recipe)
-        recipeController.configure()
-        remember(recipeController)
+    private func configureBackButton() {
+        let control = ButtonController(using: view.backButton)
+        control.onTap {
+            self.context.routeTo(.TitleScreen)
+        }
+        remember(control)
+    }
+    
+    private func configureResetButton() {
+        let control = PrimaryButtonController(using: view.resetButton)
+            .set(label: "Reset Data")
+            .set(color: .purple)
+        control.configure()
+        control.onTap {
+            self.context.data.resetData()
+        }
+        remember(control)
     }
 }
