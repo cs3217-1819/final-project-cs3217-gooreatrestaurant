@@ -13,12 +13,21 @@ class TextInputController: Controller {
     private let disposeBag = DisposeBag()
     // Used when shifting the view back to its original space
     private var modalController: TextInputController?
+    private var isRoot = true
     let label = BehaviorSubject(value: "")
     let view: TextInputView
     let context: Context
     var value: String? {
-        return view.inputField.text
+        get {
+            return view.inputField.text
+        }
+        set {
+            view.inputField.text = newValue
+        }
     }
+    private var floatingView: UIView?
+    
+    
     init(usingXib xibView: XibView, context: Context) {
         guard let trueView = xibView.contentView as? TextInputView else {
             Logger.it.error("Nib class is wrong")
@@ -36,11 +45,14 @@ class TextInputController: Controller {
         view = trueView
         self.context = context
         parent.addSubview(view)
+        view.constraintToParent()
     }
     
     func configure() {
         setupReactive()
-        setupKeyboardListeners()
+        if isRoot {
+            setupKeyboardListeners()
+        }
     }
     
     private func set(label: String) {
@@ -60,19 +72,37 @@ class TextInputController: Controller {
             return
         }
         let keyboardFrame = keyboardSize.cgRectValue
-        let inputFrame = CGRect(x: keyboardFrame.minX, y: keyboardFrame.maxY + view.frame.height, width: view.frame.width, height: view.frame.height)
-        modalController = TextInputController(parent: UIView(frame: inputFrame), context: context)
+        let inputFrame = CGRect.zero
+        floatingView = UIView(frame: inputFrame)
+        guard let parent = floatingView else {
+            return
+        }
+        modalController = TextInputController(parent: parent, context: context)
+        modalController?.isRoot = false
         modalController?.configure()
+        modalController?.value = value
         
-        context.showModal(view: modalController!.view, closeOnOutsideTap: false)
+        context.showView(view: parent)
+        parent.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.width.equalTo(self.view.frame.width)
+            make.height.equalTo(self.view.frame.height)
+            make.bottom.equalToSuperview().offset(-keyboardFrame.height)
+            make.top.lessThanOrEqualToSuperview()
+        }
+        parent.layoutIfNeeded()
         modalController?.view.inputField.becomeFirstResponder()
     }
     
-    @objc private func stopAvoidingKeyboard() {
-        context.closeModal()
+    @objc private func stopAvoidingKeyboard(notification: NSNotification) {
+        guard let parent = floatingView else {
+            return
+        }
+        parent.removeFromSuperview()
+        modalController?.view.removeFromSuperview()
         view.inputField.text = modalController?.value
         modalController = nil
-        print("stop avoiding")
+        floatingView = nil
     }
     
     private func setupReactive() {
@@ -82,5 +112,9 @@ class TextInputController: Controller {
             }
             self.set(label: value)
         }.disposed(by: disposeBag)
+    }
+    
+    deinit {
+        Logger.it.info("TextInputController deinit")
     }
 }

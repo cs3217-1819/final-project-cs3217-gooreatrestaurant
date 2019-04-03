@@ -58,6 +58,10 @@ class Context {
         userCharacter?.onNext(char)
     }
     
+    func showView(view: UIView) {
+        self.baseView.addSubview(view)
+    }
+    
     func showModal(view: UIView, frame: CGRect) {
         modal.setContent(view)
         modal.configure()
