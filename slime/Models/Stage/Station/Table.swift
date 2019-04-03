@@ -11,14 +11,6 @@ import SpriteKit
 
 class Table: Station {
 
-    override init(inPosition position: CGPoint, withSize size: CGSize = StageConstants.stationSize) {
-        super.init(inPosition: position, withSize: size)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
     var item: SKNode? {
         return children.first
     }

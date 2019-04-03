@@ -11,7 +11,7 @@ import SpriteKit
 
 class Station: SKSpriteNode {
 
-    init(inPosition position: CGPoint, withSize size: CGSize) {
+    init(inPosition position: CGPoint, withSize size: CGSize = StageConstants.stationSize) {
         let table = SKSpriteNode(imageNamed: "table")
         table.size = size
         super.init(texture: table.texture, color: .clear, size: size)

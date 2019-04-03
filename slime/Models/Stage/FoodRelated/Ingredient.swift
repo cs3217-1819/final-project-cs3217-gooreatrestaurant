@@ -38,6 +38,21 @@ class Ingredient: SKSpriteNode {
         self.type = .junk
     }
 
+    override var hash: Int {
+        var hasher = Hasher()
+        hasher.combine(self.type)
+        hasher.combine(self.processed)
+        return hasher.finalize()
+    }
+
+    override func isEqual(_ object: Any?) -> Bool {
+        guard let other = object as? Ingredient else {
+            return false
+        }
+
+        return self.type == other.type && self.processed == other.processed
+    }
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

@@ -19,7 +19,6 @@ class IngredientStorage: Station {
 
         self.type = type
         super.init(inPosition: position, withSize: size)
-        self.color = .purple
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -37,11 +36,6 @@ class IngredientStorage: Station {
         guard ableToProcess(item) == true else {
             return nil
         }
-        return Ingredient(type: self.type, inPosition: self.position)
-    }
-
-    // TO DO remove this
-    func takeIngredient() -> Ingredient {
         return Ingredient(type: self.type, inPosition: self.position)
     }
 }

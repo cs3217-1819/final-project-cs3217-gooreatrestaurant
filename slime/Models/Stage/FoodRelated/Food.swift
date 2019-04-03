@@ -10,15 +10,13 @@ import UIKit
 import SpriteKit
 
 class Food {
-    private(set) var ingredientsList: [IngredientData:Int] = [:]
+    private(set) var ingredientsList: [Ingredient:Int] = [:]
 
     func addIngredients(_ ingredient: Ingredient) {
 
-        let ingredientData = IngredientData(type: ingredient.type, processed: ingredient.processed)
-
-        if ingredientsList[ingredientData] == nil {
-            ingredientsList[ingredientData] = 0
+        if ingredientsList[ingredient] == nil {
+            ingredientsList[ingredient] = 0
         }
-        ingredientsList[ingredientData]? += 1
+        ingredientsList[ingredient]? += 1
     }
 }
