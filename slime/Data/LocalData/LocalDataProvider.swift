@@ -32,4 +32,10 @@ class LocalDataProvider {
             self.realm.add(user.asLocalDataType(), update: true)
         }
     }
+    
+    func reset() {
+        try! realm.write {
+            realm.deleteAll()
+        }
+    }
 }

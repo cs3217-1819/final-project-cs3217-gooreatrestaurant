@@ -42,11 +42,11 @@ class PlayScreenViewController: ViewController<PlayScreenView> {
             .set(title: "Level Editor")
             .set(description: "Edit some levels!")
         levelEditorButtonController.onTap {
-            let alert = self.context.createAlert()
+            let alert = self.context.modal.createAlert()
                 .setTitle("Uh-oh!")
                 .setDescription("This feature is coming soon(TM).")
                 .addAction(AlertAction(with: "OK"))
-            self.context.presentUnimportantAlert(alert)
+            self.context.modal.presentUnimportantAlert(alert)
         }
         
         remember(singlePlayerButtonController)

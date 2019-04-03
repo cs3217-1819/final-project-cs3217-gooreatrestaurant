@@ -47,6 +47,8 @@
 		EC0E316A224F61C500AF1254 /* TextInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0E3169224F61C500AF1254 /* TextInputView.swift */; };
 		EC0E316C224F641C00AF1254 /* TextInputController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0E316B224F641C00AF1254 /* TextInputController.swift */; };
 		EC0E316E224F69A400AF1254 /* CharacterCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0E316D224F69A400AF1254 /* CharacterCreationViewController.swift */; };
+		EC0E31712252075300AF1254 /* ItemSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0E31702252075300AF1254 /* ItemSelectorView.swift */; };
+		EC0E31732252076600AF1254 /* ItemSelectorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC0E31722252076600AF1254 /* ItemSelectorView.xib */; };
 		EC21B40022420CA700827121 /* LevelPlayButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC21B3FF22420CA700827121 /* LevelPlayButton.xib */; };
 		EC21B40222420D4100827121 /* DesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC21B40122420D4100827121 /* DesignableView.swift */; };
 		EC21B4052242155600827121 /* LoadingScreenView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC21B4042242155600827121 /* LoadingScreenView.xib */; };
@@ -121,6 +123,10 @@
 		EC4924F42248D616007B9797 /* RatingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC4924F32248D616007B9797 /* RatingView.xib */; };
 		EC4924F62248D638007B9797 /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4924F52248D638007B9797 /* RatingView.swift */; };
 		EC4924F82248D877007B9797 /* RatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4924F72248D877007B9797 /* RatingViewController.swift */; };
+		EC6AC1D222520BEC00D95C90 /* ItemSelectorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6AC1D122520BEC00D95C90 /* ItemSelectorController.swift */; };
+		EC6AC1D4225216EF00D95C90 /* SlimeColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6AC1D3225216EF00D95C90 /* SlimeColors.swift */; };
+		EC6AC1D62254882900D95C90 /* ContextModalHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6AC1D52254882900D95C90 /* ContextModalHandler.swift */; };
+		EC6AC1D82254884000D95C90 /* ContextDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6AC1D72254884000D95C90 /* ContextDataHandler.swift */; };
 		EC6E99E8224F1BB400A9554C /* LocalDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6E99E7224F1BB400A9554C /* LocalDataProvider.swift */; };
 		EC6E99ED224F22C000A9554C /* LocalUserCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6E99EC224F22C000A9554C /* LocalUserCharacter.swift */; };
 		EC6E99EF224F256500A9554C /* LocalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6E99EE224F256500A9554C /* LocalData.swift */; };
@@ -132,6 +138,8 @@
 		EC6E99FD224F49FB00A9554C /* UserInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6E99FC224F49FB00A9554C /* UserInfoController.swift */; };
 		EC6E99FF224F4F0900A9554C /* DoubleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6E99FE224F4F0900A9554C /* DoubleExtension.swift */; };
 		EC79FFEE2242238C002E8FE7 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC79FFED2242238C002E8FE7 /* GameViewController.swift */; };
+		EC81B7872254A09900B6F7EE /* TransitionConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC81B7862254A09900B6F7EE /* TransitionConstants.swift */; };
+		EC81B7892254A3A600B6F7EE /* KeyboardService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC81B7882254A3A600B6F7EE /* KeyboardService.swift */; };
 		ECA66DBE223D2A1B00D1D0BC /* LevelPlaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA66DBD223D2A1B00D1D0BC /* LevelPlaceController.swift */; };
 		ECA66DC2223D5DD100D1D0BC /* CreditsScreenView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECA66DC1223D5DD100D1D0BC /* CreditsScreenView.xib */; };
 		ECA66DC4223D5F4000D1D0BC /* CreditsScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA66DC3223D5F4000D1D0BC /* CreditsScreenView.swift */; };
@@ -233,6 +241,8 @@
 		EC0E3169224F61C500AF1254 /* TextInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputView.swift; sourceTree = "<group>"; };
 		EC0E316B224F641C00AF1254 /* TextInputController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputController.swift; sourceTree = "<group>"; };
 		EC0E316D224F69A400AF1254 /* CharacterCreationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCreationViewController.swift; sourceTree = "<group>"; };
+		EC0E31702252075300AF1254 /* ItemSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemSelectorView.swift; sourceTree = "<group>"; };
+		EC0E31722252076600AF1254 /* ItemSelectorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemSelectorView.xib; sourceTree = "<group>"; };
 		EC21B3FF22420CA700827121 /* LevelPlayButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LevelPlayButton.xib; sourceTree = "<group>"; };
 		EC21B40122420D4100827121 /* DesignableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableView.swift; sourceTree = "<group>"; };
 		EC21B4042242155600827121 /* LoadingScreenView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingScreenView.xib; sourceTree = "<group>"; };
@@ -311,6 +321,10 @@
 		EC4924F32248D616007B9797 /* RatingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RatingView.xib; sourceTree = "<group>"; };
 		EC4924F52248D638007B9797 /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
 		EC4924F72248D877007B9797 /* RatingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingViewController.swift; sourceTree = "<group>"; };
+		EC6AC1D122520BEC00D95C90 /* ItemSelectorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemSelectorController.swift; sourceTree = "<group>"; };
+		EC6AC1D3225216EF00D95C90 /* SlimeColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlimeColors.swift; sourceTree = "<group>"; };
+		EC6AC1D52254882900D95C90 /* ContextModalHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextModalHandler.swift; sourceTree = "<group>"; };
+		EC6AC1D72254884000D95C90 /* ContextDataHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextDataHandler.swift; sourceTree = "<group>"; };
 		EC6E99E7224F1BB400A9554C /* LocalDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataProvider.swift; sourceTree = "<group>"; };
 		EC6E99EC224F22C000A9554C /* LocalUserCharacter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalUserCharacter.swift; sourceTree = "<group>"; };
 		EC6E99EE224F256500A9554C /* LocalData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalData.swift; sourceTree = "<group>"; };
@@ -322,6 +336,8 @@
 		EC6E99FC224F49FB00A9554C /* UserInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoController.swift; sourceTree = "<group>"; };
 		EC6E99FE224F4F0900A9554C /* DoubleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleExtension.swift; sourceTree = "<group>"; };
 		EC79FFED2242238C002E8FE7 /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		EC81B7862254A09900B6F7EE /* TransitionConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionConstants.swift; sourceTree = "<group>"; };
+		EC81B7882254A3A600B6F7EE /* KeyboardService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardService.swift; sourceTree = "<group>"; };
 		ECA66DBD223D2A1B00D1D0BC /* LevelPlaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelPlaceController.swift; sourceTree = "<group>"; };
 		ECA66DC1223D5DD100D1D0BC /* CreditsScreenView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreditsScreenView.xib; sourceTree = "<group>"; };
 		ECA66DC3223D5F4000D1D0BC /* CreditsScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsScreenView.swift; sourceTree = "<group>"; };
@@ -510,6 +526,16 @@
 			path = TextInput;
 			sourceTree = "<group>";
 		};
+		EC0E316F2252073500AF1254 /* ItemSelector */ = {
+			isa = PBXGroup;
+			children = (
+				EC0E31702252075300AF1254 /* ItemSelectorView.swift */,
+				EC0E31722252076600AF1254 /* ItemSelectorView.xib */,
+				EC6AC1D122520BEC00D95C90 /* ItemSelectorController.swift */,
+			);
+			path = ItemSelector;
+			sourceTree = "<group>";
+		};
 		EC21B4032242150A00827121 /* LoadingScreenView */ = {
 			isa = PBXGroup;
 			children = (
@@ -572,6 +598,7 @@
 		EC38243D223882AF000D7148 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				EC0E316F2252073500AF1254 /* ItemSelector */,
 				EC0E3166224F617D00AF1254 /* TextInput */,
 				EC6E99F3224F2D0C00A9554C /* ProgressBar */,
 				EC6E99F0224F2BED00A9554C /* UserInfo */,
@@ -620,6 +647,8 @@
 				F92ECAE9224D1B490040A4E2 /* FadeInOutSegue.swift */,
 				8BEDCD42224E089A00E24A20 /* SerializableGameData.swift */,
 				EC6E99FE224F4F0900A9554C /* DoubleExtension.swift */,
+				EC81B7862254A09900B6F7EE /* TransitionConstants.swift */,
+				EC81B7882254A3A600B6F7EE /* KeyboardService.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -753,6 +782,7 @@
 				EC6E99E9224F21F900A9554C /* LocalData */,
 				8BEDCD382247F10100E24A20 /* Level1.plist */,
 				EC449B9A223BB9E900A8EA35 /* levels.json */,
+				EC6AC1D3225216EF00D95C90 /* SlimeColors.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -866,6 +896,8 @@
 			children = (
 				ECD45545223FAFBE006AF78D /* ContextController.swift */,
 				ECD45547223FAFFF006AF78D /* Context.swift */,
+				EC6AC1D52254882900D95C90 /* ContextModalHandler.swift */,
+				EC6AC1D72254884000D95C90 /* ContextDataHandler.swift */,
 			);
 			path = Context;
 			sourceTree = "<group>";
@@ -1076,6 +1108,7 @@
 				ECD24420224AFFEB00767A56 /* SlimeNumberInputView.xib in Resources */,
 				EC449B77223B81FE00A8EA35 /* PlayScreenView.xib in Resources */,
 				8BEDCD392247F10100E24A20 /* Level1.plist in Resources */,
+				EC0E31732252076600AF1254 /* ItemSelectorView.xib in Resources */,
 				EC21B4052242155600827121 /* LoadingScreenView.xib in Resources */,
 				ECD4555C2240F1FB006AF78D /* MultiplayerScreenView.xib in Resources */,
 				ECD4554D2240B0AF006AF78D /* Alert.xib in Resources */,
@@ -1222,6 +1255,7 @@
 				ECD45543223FACC4006AF78D /* ModalController.swift in Sources */,
 				EC382475223A1AA4000D7148 /* ColorStyles.swift in Sources */,
 				EC449B83223B917C00A8EA35 /* CGPointExtension.swift in Sources */,
+				EC81B7892254A3A600B6F7EE /* KeyboardService.swift in Sources */,
 				EC6E99E8224F1BB400A9554C /* LocalDataProvider.swift in Sources */,
 				F92ECAE4224BAEBD0040A4E2 /* Authentication.swift in Sources */,
 				ECD455652240F5B6006AF78D /* MultiplayerScreenViewController.swift in Sources */,
@@ -1279,6 +1313,7 @@
 				ECD455672240F974006AF78D /* ViewControllerProtocol.swift in Sources */,
 				EC21B40222420D4100827121 /* DesignableView.swift in Sources */,
 				1D2202AD224AB68F0080CF7D /* PlateStorage.swift in Sources */,
+				EC6AC1D4225216EF00D95C90 /* SlimeColors.swift in Sources */,
 				EC79FFEE2242238C002E8FE7 /* GameViewController.swift in Sources */,
 				1DE6FC63224D12F600B36F48 /* IngredientStorage.swift in Sources */,
 				8BD816AF22422C6700586180 /* Extensions.swift in Sources */,
@@ -1286,6 +1321,7 @@
 				1DE6FC6B224D26A200B36F48 /* Trash.swift in Sources */,
 				EC21B409224217E200827121 /* LoadingScreenViewController.swift in Sources */,
 				EC6E99EF224F256500A9554C /* LocalData.swift in Sources */,
+				EC6AC1D62254882900D95C90 /* ContextModalHandler.swift in Sources */,
 				1D2202A0224AB5850080CF7D /* Slime+Movements.swift in Sources */,
 				EC382482223A2AF5000D7148 /* PlayMenuButton.swift in Sources */,
 				EC449B92223BB01C00A8EA35 /* LevelDetailsBox.swift in Sources */,
@@ -1302,6 +1338,7 @@
 				ECD2441E224AFFDD00767A56 /* SlimeNumberInputView.swift in Sources */,
 				EC449B7F223B889400A8EA35 /* TitleScreenView.swift in Sources */,
 				EC3824202238803A000D7148 /* TitleScreenViewController.swift in Sources */,
+				EC81B7872254A09900B6F7EE /* TransitionConstants.swift in Sources */,
 				1D2202A5224AB5850080CF7D /* Spaceship.swift in Sources */,
 				F92ECAE8224BAEEF0040A4E2 /* Game.swift in Sources */,
 				1DE6FC5C224CA46700B36F48 /* Table.swift in Sources */,
@@ -1313,12 +1350,15 @@
 				EC21B407224216C500827121 /* LoadingScreenView.swift in Sources */,
 				EC38244F2238F023000D7148 /* PrimaryButton.swift in Sources */,
 				ECD24426224B02C900767A56 /* Logger.swift in Sources */,
+				EC0E31712252075300AF1254 /* ItemSelectorView.swift in Sources */,
 				EC449B85223BA48100A8EA35 /* LevelSelectView.swift in Sources */,
+				EC6AC1D82254884000D95C90 /* ContextDataHandler.swift in Sources */,
 				ECA66DBE223D2A1B00D1D0BC /* LevelPlaceController.swift in Sources */,
 				EC6E99F9224F2DDB00A9554C /* ProgressBarController.swift in Sources */,
 				EC6E99F7224F2DA200A9554C /* ProgressBarView.swift in Sources */,
 				EC449B9E223BBA0300A8EA35 /* Level.swift in Sources */,
 				1D22029E224AB5850080CF7D /* CookingEquipment.swift in Sources */,
+				EC6AC1D222520BEC00D95C90 /* ItemSelectorController.swift in Sources */,
 				ECD455722240FFC7006AF78D /* Player.swift in Sources */,
 				EC449B7D223B873600A8EA35 /* RouterViewController.swift in Sources */,
 				EC4924F82248D877007B9797 /* RatingViewController.swift in Sources */,
@@ -1499,13 +1539,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = CZ7H96C646;
+				DEVELOPMENT_TEAM = H8MD8RH9XR;
 				INFOPLIST_FILE = slime/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = nus.cs3217.a0143378y.slime;
+				PRODUCT_BUNDLE_IDENTIFIER = nus.cs3217.a0166733y.slime;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
@@ -1520,13 +1560,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = CZ7H96C646;
+				DEVELOPMENT_TEAM = H8MD8RH9XR;
 				INFOPLIST_FILE = slime/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = nus.cs3217.a0143378y.slime;
+				PRODUCT_BUNDLE_IDENTIFIER = nus.cs3217.a0166733y.slime;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;

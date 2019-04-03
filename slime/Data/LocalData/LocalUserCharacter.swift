@@ -13,6 +13,7 @@ class LocalUserCharacter: Object {
     @objc dynamic var name: String = ""
     @objc dynamic var level: Int = 1
     @objc dynamic var exp: Int = 0
+    @objc dynamic var color: SlimeColor = .yellow
     
     override static func primaryKey() -> String? {
         return "id"
@@ -20,6 +21,7 @@ class LocalUserCharacter: Object {
 }
 
 class UserCharacter {
+    private(set) var color: SlimeColor
     private(set) var name: String
     private(set) var level: Int
     private(set) var exp: Int
@@ -27,12 +29,14 @@ class UserCharacter {
         name = char.name
         level = char.level
         exp = char.exp
+        color = char.color
     }
     
     init(named name: String) {
         self.name = name
         level = 1
         exp = 0
+        color = .yellow
     }
     
     func gainExp(_ gainedExp: Int) {
@@ -44,11 +48,16 @@ class UserCharacter {
         }
     }
     
+    func set(color: SlimeColor) {
+        self.color = color
+    }
+    
     func asLocalDataType() -> LocalUserCharacter {
         let char = LocalUserCharacter()
         char.name = name
         char.level = level
         char.exp = exp
+        char.color = color
         return char
     }
 }

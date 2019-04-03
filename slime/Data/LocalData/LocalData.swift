@@ -31,4 +31,8 @@ class LocalData {
     func saveCharacter(_ characterToSave: UserCharacter) {
         LocalDataProvider.it.save(user: characterToSave)
     }
+    
+    func resetData() {
+        LocalDataProvider.it.reset()
+    }
 }

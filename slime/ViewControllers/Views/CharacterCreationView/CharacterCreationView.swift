@@ -10,4 +10,6 @@ import UIKit
 
 class CharacterCreationView: UIView {
     @IBOutlet var nameInputView: XibView!
+    @IBOutlet var colorSelectionView: XibView!
+    @IBOutlet var submitButton: XibView!
 }
