@@ -63,7 +63,7 @@
 	</array>
 	<key>choppingEquipment</key>
 	<array>
-		<string>{-60,0}</string>
+		<string>{95,-149}</string>
 	</array>
 	<key>fryingEquipment</key>
 	<array/>
@@ -83,7 +83,7 @@
 		<string>{-15,-60}</string>
 	</array>
 	<key>storefront</key>
-	<string>{60,-50}</string>
+	<string>{-140,15}</string>
 	<key>table</key>
 	<array/>
 	<key>trashBin</key>
