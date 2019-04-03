@@ -4,7 +4,6 @@ extension Slime {
     func resetMovement() {
         self.checkLadderInteraction()
         self.physicsBody?.affectedByGravity = !self.isContactingWithLadder
-        
         if self.isContactingWithLadder {
             self.physicsBody?.velocity = CGVector(dx: 0.0, dy: 0.0)
         }
