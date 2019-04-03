@@ -80,10 +80,10 @@
 	</array>
 	<key>plateStorage</key>
 	<array>
-		<string>{-60,-135}</string>
+		<string>{-15,-60}</string>
 	</array>
 	<key>storefront</key>
-	<string>{0,-50}</string>
+	<string>{60,-50}</string>
 	<key>table</key>
 	<array>
 		<string>{0, -135}</string>
