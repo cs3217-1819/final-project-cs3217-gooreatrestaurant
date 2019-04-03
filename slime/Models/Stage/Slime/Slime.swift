@@ -10,7 +10,6 @@ import UIKit
 import SpriteKit
 
 class Slime: SKSpriteNode {
-
     var isContactingWithLadder = false
     
     init(inPosition position: CGPoint, withSize size: CGSize = StageConstants.slimeSize) {
@@ -110,7 +109,7 @@ class Slime: SKSpriteNode {
     }
 
     func interact() {
-
+        print("interact")
         guard let contactedBodies = self.physicsBody?.allContactedBodies() else {
             return
         }

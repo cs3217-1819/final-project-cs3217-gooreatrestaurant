@@ -272,6 +272,7 @@ class Stage: SKScene {
         return self.possibleRecipes.randomElement()?.regenerateRecipe()
     }
 
+    
     func addRandomOrder() {
         guard let randomRecipe = self.generateRandomRecipe() else {
             return

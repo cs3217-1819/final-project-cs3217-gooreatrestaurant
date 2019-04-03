@@ -21,7 +21,8 @@ class Station: SKSpriteNode {
 
         self.physicsBody = SKPhysicsBody(texture: table.texture!, size: table.size)
         self.physicsBody?.isDynamic = false
-        self.physicsBody?.categoryBitMask = StageConstants.stationCategory
+        self.physicsBody?.categoryBitMask = StageConstants.tableCategory
+        self.physicsBody?.contactTestBitMask = StageConstants.slimeCategory
         self.physicsBody?.collisionBitMask = StageConstants.wallCategoryCollision
     }
 
