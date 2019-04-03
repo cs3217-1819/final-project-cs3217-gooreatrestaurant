@@ -67,6 +67,11 @@ PODS:
     - nanopb/encode (= 0.3.901)
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
+  - Realm (3.14.0):
+    - Realm/Headers (= 3.14.0)
+  - Realm/Headers (3.14.0)
+  - RealmSwift (3.14.0):
+    - Realm (= 3.14.0)
   - RxAtomic (4.4.0)
   - RxCocoa (4.4.0):
     - RxSwift (~> 4.0)
@@ -81,6 +86,7 @@ DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Database
+  - RealmSwift
   - RxCocoa (~> 4.0)
   - RxGesture
   - RxSwift (~> 4.0)
@@ -100,6 +106,8 @@ SPEC REPOS:
     - GTMSessionFetcher
     - leveldb-library
     - nanopb
+    - Realm
+    - RealmSwift
     - RxAtomic
     - RxCocoa
     - RxGesture
@@ -119,12 +127,14 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 32aeca0aa144acea523e1c8e053089dec2cb98ca
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
+  Realm: 221b25919bb5a010a3c597d707f8df3492dcd93a
+  RealmSwift: 28f22dfa6a27b9a778cfb09471558b6afcf1022c
   RxAtomic: eacf60db868c96bfd63320e28619fe29c179656f
   RxCocoa: df63ebf7b9a70d6b4eeea407ed5dd4efc8979749
   RxGesture: 7f6dfb45dbde06e618c24442d38493e3144f2c95
   RxSwift: 5976ecd04fc2fefd648827c23de5e11157faa973
   SnapKit: 0de968a9fec17499afa29683b05d0c775b6d1c29
 
-PODFILE CHECKSUM: f8bd8d7b3c3733246e773b7373cfd92bbdd15dcf
+PODFILE CHECKSUM: 75d3146d71f9a05f5222d7b4ea65e88003e4dddf
 
 COCOAPODS: 1.5.3

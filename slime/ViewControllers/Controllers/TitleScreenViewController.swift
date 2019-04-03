@@ -8,8 +8,19 @@
 
 class TitleScreenViewController: ViewController<TitleScreenView> {
     override func configureSubviews() {
+        setupUserInfo()
         setupButtons()
         setupAnonymousAuth()
+    }
+    
+    private func setupUserInfo() {
+        guard let character = LocalData.it.user else {
+            return
+        }
+        let userInfoController = UserInfoController(usingXib: view.userInfoView)
+        userInfoController.set(character: character)
+        userInfoController.configure()
+        remember(userInfoController)
     }
     
     private func setupButtons() {
@@ -19,7 +30,12 @@ class TitleScreenViewController: ViewController<TitleScreenView> {
             .set(color: .green)
             .set(label: "Play")
         playButtonController.onTap {
-            self.context.routeTo(.PlayScreen)
+            if LocalData.it.user != nil {
+                // user exists
+                self.context.routeTo(.PlayScreen)
+            }
+            // User does not exist, create it now
+            self.startCreateUserProcedure()
         }
         let settingsButtonController = PrimaryButtonController(using: view.settingsButton)
         settingsButtonController.configure()
@@ -41,6 +57,11 @@ class TitleScreenViewController: ViewController<TitleScreenView> {
         remember(playButtonController)
         remember(settingsButtonController)
         remember(creditsButtonController)
+    }
+    
+    private func startCreateUserProcedure() {
+        // TODO: Do real character creation
+        LocalData.it.createCharacter(named: "TestCharacter")
     }
 
     private func setupAnonymousAuth() {
