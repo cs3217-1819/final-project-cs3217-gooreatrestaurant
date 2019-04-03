@@ -16,9 +16,3 @@ protocol RouterViewController {
     func onDisappear()
     func getView() -> UIView
 }
-
-extension RouterViewController {
-    func onDisappear() {
-        getView().removeFromSuperview()
-    }
-}

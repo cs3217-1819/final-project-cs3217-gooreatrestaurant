@@ -27,4 +27,21 @@ class DesignableView: UIView {
             }
         }
     }
+    
+    @IBInspectable var rotation: String = "" {
+        didSet {
+            if rotation == "left" {
+                transform = CGAffineTransform(rotationAngle: CGFloat.pi * 1.5)
+            }
+            if rotation == "down" {
+                transform = CGAffineTransform(rotationAngle: CGFloat.pi)
+            }
+            if rotation == "right" {
+                transform = CGAffineTransform(rotationAngle: CGFloat.pi * 0.5)
+            }
+            if let n = NumberFormatter().number(from: rotation) {
+                transform = CGAffineTransform(rotationAngle: CGFloat(truncating: n))
+            }
+        }
+    }
 }

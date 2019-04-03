@@ -14,7 +14,8 @@ class TitleScreenViewController: ViewController<TitleScreenView> {
     }
     
     private func setupUserInfo() {
-        guard let charSubject = context.userCharacter else {
+        guard let charSubject = context.data.userCharacter else {
+            view.userInfoView.removeFromSuperview()
             return
         }
         let userInfoController = UserInfoController(usingXib: view.userInfoView, boundTo: charSubject)
@@ -28,42 +29,37 @@ class TitleScreenViewController: ViewController<TitleScreenView> {
             .set(label: "Play")
         playButtonController.configure()
         playButtonController.onTap {
-            if self.context.userCharacter != nil {
+            if self.context.data.userCharacter != nil {
                 // user exists
                 self.context.routeTo(.PlayScreen)
+            } else {
+                // User does not exist, create it now
+                self.context.routeTo(.CharacterCreationScreen)
             }
-            // User does not exist, create it now
-            self.startCreateUserProcedure()
         }
         let settingsButtonController = PrimaryButtonController(using: view.settingsButton)
             .set(color: .blue)
             .set(label: "Settings")
         settingsButtonController.configure()
         settingsButtonController.onTap {
-            self.context.gainCharacterExp(10)
-            // self.context.routeTo(.SettingsScreen)
+            self.context.routeTo(.SettingsScreen)
         }
         let creditsButtonController = PrimaryButtonController(using: view.creditsButton)
             .set(color: .purple)
             .set(label: "Credits")
         creditsButtonController.configure()
         creditsButtonController.onTap {
-            self.context.routeTo(.CharacterCreationScreen)
+            self.context.routeTo(.CreditsScreen)
         }
         
         remember(playButtonController)
         remember(settingsButtonController)
         remember(creditsButtonController)
     }
-    
-    private func startCreateUserProcedure() {
-        // TODO: Do real character creation
-        LocalData.it.createCharacter(named: "TestCharacter")
-    }
 
     private func setupAnonymousAuth() {
         GameAuth.signInAnonymously { (err) in
-            print(err)
+            Logger.it.error("\(err)")
         }
     }
 }

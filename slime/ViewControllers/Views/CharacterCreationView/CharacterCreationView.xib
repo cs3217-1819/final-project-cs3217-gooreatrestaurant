@@ -16,28 +16,66 @@
             <rect key="frame" x="0.0" y="0.0" width="812" height="375"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DHx-VL-goB" customClass="XibView" customModule="slime" customModuleProvider="target">
-                    <rect key="frame" x="256" y="87.5" width="300" height="200"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u5G-kF-jD9" customClass="XibView" customModule="slime" customModuleProvider="target">
+                    <rect key="frame" x="36" y="36" width="240" height="303"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="300" id="ObY-ta-2bF"/>
-                        <constraint firstAttribute="height" constant="200" id="iph-4s-40t"/>
+                        <constraint firstAttribute="width" constant="240" id="H2t-AD-iyV"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="nibName" value="TextInputView"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="nibName" value="ItemSelectorView"/>
                     </userDefinedRuntimeAttributes>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BFq-iQ-shw">
+                    <rect key="frame" x="312" y="87.5" width="464" height="200"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DHx-VL-goB" customClass="XibView" customModule="slime" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="464" height="68"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="68" id="a7s-Ov-0lI"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="nibName" value="TextInputView"/>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KFF-u9-LCC" customClass="XibView" customModule="slime" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="84" width="464" height="89"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="nibName" value="PrimaryButton"/>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="DHx-VL-goB" firstAttribute="leading" secondItem="BFq-iQ-shw" secondAttribute="leading" id="LoF-c1-Xng"/>
+                        <constraint firstAttribute="trailing" secondItem="KFF-u9-LCC" secondAttribute="trailing" id="PaQ-Rd-PPg"/>
+                        <constraint firstItem="KFF-u9-LCC" firstAttribute="top" secondItem="DHx-VL-goB" secondAttribute="bottom" constant="16" id="RKO-uy-712"/>
+                        <constraint firstItem="KFF-u9-LCC" firstAttribute="leading" secondItem="BFq-iQ-shw" secondAttribute="leading" id="jGe-ny-7WD"/>
+                        <constraint firstItem="DHx-VL-goB" firstAttribute="top" secondItem="BFq-iQ-shw" secondAttribute="top" id="uNJ-2e-hD2"/>
+                        <constraint firstAttribute="height" constant="200" id="xjb-BF-Mbl"/>
+                        <constraint firstAttribute="trailing" secondItem="DHx-VL-goB" secondAttribute="trailing" id="zXW-vQ-Jpe"/>
+                    </constraints>
                 </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="DHx-VL-goB" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Tsq-MU-xFE"/>
-                <constraint firstItem="DHx-VL-goB" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="wfQ-Uj-mf9"/>
+                <constraint firstItem="u5G-kF-jD9" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="36" id="79c-wn-70b"/>
+                <constraint firstItem="BFq-iQ-shw" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="DmB-Rq-ebv"/>
+                <constraint firstItem="BFq-iQ-shw" firstAttribute="leading" secondItem="u5G-kF-jD9" secondAttribute="trailing" constant="36" id="KJa-Cc-zQ2"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="u5G-kF-jD9" secondAttribute="bottom" constant="36" id="LVO-sy-aiL"/>
+                <constraint firstItem="u5G-kF-jD9" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="36" id="cLZ-BC-zRH"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="BFq-iQ-shw" secondAttribute="trailing" constant="36" id="h0z-5I-bH4"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
+                <outlet property="colorSelectionView" destination="u5G-kF-jD9" id="VWM-kb-6hy"/>
                 <outlet property="nameInputView" destination="DHx-VL-goB" id="nRo-hn-DvG"/>
+                <outlet property="submitButton" destination="KFF-u9-LCC" id="OFH-cE-dxh"/>
             </connections>
+            <point key="canvasLocation" x="52.799999999999997" y="48.125937031484263"/>
         </view>
     </objects>
 </document>

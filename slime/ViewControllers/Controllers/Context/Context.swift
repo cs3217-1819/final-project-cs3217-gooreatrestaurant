@@ -10,96 +10,19 @@ import UIKit
 import RxSwift
 
 class Context {
-    private let disposeBag = DisposeBag()
     let router = Router(with: .TitleScreen)
     let db: GameDatabase = GameDB()
     private var baseView: UIView {
         return mainController.view
     }
-    private(set) var userCharacter: BehaviorSubject<UserCharacter>?
     private let mainController: MainController
-    private let modal = ModalController()
+    let modal: ContextModalHandler
+    let data = ContextDataHandler()
     
     init(using viewController: MainController) {
         self.mainController = viewController
-        loadUserData()
-    }
-    
-    private func saveCharacter() {
-        guard let optCharacter = try? userCharacter?.value() else {
-            return
-        }
-        guard let character = optCharacter else {
-            return
-        }
-        LocalData.it.saveCharacter(character)
-    }
-    
-    func loadUserData() {
-        guard let character = LocalData.it.getUserCharacter() else {
-            return
-        }
-        guard let trueCharacter = userCharacter else {
-            userCharacter = BehaviorSubject(value: character)
-            setupAutosaveCharacter()
-            return
-        }
-        trueCharacter.onNext(character)
-    }
-    
-    func gainCharacterExp(_ exp: Int) {
-        guard let optChar = try? userCharacter?.value() else {
-            return
-        }
-        guard let char = optChar else {
-            return
-        }
-        char.gainExp(exp)
-        userCharacter?.onNext(char)
-    }
-    
-    func showView(view: UIView) {
-        self.baseView.addSubview(view)
-    }
-    
-    func showModal(view: UIView, frame: CGRect) {
-        modal.setContent(view)
-        modal.configure()
-        modal.open(with: baseView, frame: frame, closeOnOutsideTap: true)
-    }
-    
-    func showModal(view: UIView, closeOnOutsideTap: Bool) {
-        modal.setContent(view)
-        modal.configure()
-        modal.open(with: baseView, closeOnOutsideTap: closeOnOutsideTap)
-    }
-    
-    func showModal(view: UIView) {
-        showModal(view: view, closeOnOutsideTap: true)
-    }
-    
-    func closeModal() {
-        modal.close()
-    }
-    
-    func createAlert() -> AlertController {
-        return AlertController(using: modal)
-    }
-    
-    func presentAlert(_ alert: AlertController) {
-        alert.configure()
-        modal.configure()
-        modal.open(with: baseView, closeOnOutsideTap: false)
-    }
-    
-    func presentUnimportantAlert(_ alert: AlertController) {
-        alert.configure()
-        modal.configure()
-        modal.open(with: baseView, closeOnOutsideTap: true)
-    }
-    
-    func closeAlert() {
-        modal.close()
+        modal = ContextModalHandler(baseView: viewController.view)
+        data.loadUserData()
     }
     
     func routeTo(_ route: Route) {
@@ -119,14 +42,6 @@ class Context {
     func segueToGame() {
         mainController.performSegue(withIdentifier: "toGame", sender: nil)
     }
-    
-    private func setupAutosaveCharacter() {
-        userCharacter?.subscribe { event in
-            guard let player = event.element else {
-                return
-            }
-            
-            LocalData.it.saveCharacter(player)
-        }.disposed(by: disposeBag)
-    }
 }
+
+

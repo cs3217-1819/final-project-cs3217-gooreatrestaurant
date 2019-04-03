@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="XibView" customModule="slime" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ItemSelectorView" customModule="slime" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="156" height="641"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="slime1.png" translatesAutoresizingMaskIntoConstraints="NO" id="COU-3Y-iuW">
+                    <rect key="frame" x="31.5" y="274" width="93" height="93"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="COU-3Y-iuW" secondAttribute="height" multiplier="1:1" id="SOD-7k-Ofb"/>
+                    </constraints>
+                </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="usT-i9-LNE" customClass="DesignableView" customModule="slime" customModuleProvider="target">
+                    <rect key="frame" x="-302.75" y="322.74999999999994" width="621" height="15.500000000000114"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="caret-arrow-up" translatesAutoresizingMaskIntoConstraints="NO" id="4rq-Bv-et3">
+                            <rect key="frame" x="0.0" y="0.0" width="15.5" height="621"/>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="4rq-Bv-et3" firstAttribute="top" secondItem="usT-i9-LNE" secondAttribute="top" id="8TW-ul-YHE"/>
+                        <constraint firstAttribute="bottom" secondItem="4rq-Bv-et3" secondAttribute="bottom" id="A1h-i8-aOV"/>
+                        <constraint firstAttribute="trailing" secondItem="4rq-Bv-et3" secondAttribute="trailing" id="Yx2-Yz-lgm"/>
+                        <constraint firstItem="4rq-Bv-et3" firstAttribute="leading" secondItem="usT-i9-LNE" secondAttribute="leading" id="zWh-0h-ZXb"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="rotation" value="left"/>
+                    </userDefinedRuntimeAttributes>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0cs-fc-yD9" customClass="DesignableView" customModule="slime" customModuleProvider="target">
+                    <rect key="frame" x="-162.25" y="322.75" width="621" height="15.500000000000057"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="caret-arrow-up" translatesAutoresizingMaskIntoConstraints="NO" id="gRn-s2-2xg">
+                            <rect key="frame" x="0.0" y="0.0" width="15.5" height="621"/>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="gRn-s2-2xg" firstAttribute="top" secondItem="0cs-fc-yD9" secondAttribute="top" id="H3G-ra-Xi4"/>
+                        <constraint firstAttribute="bottom" secondItem="gRn-s2-2xg" secondAttribute="bottom" id="JWM-RP-vXd"/>
+                        <constraint firstItem="gRn-s2-2xg" firstAttribute="leading" secondItem="0cs-fc-yD9" secondAttribute="leading" id="P7x-d3-8DM"/>
+                        <constraint firstAttribute="trailing" secondItem="gRn-s2-2xg" secondAttribute="trailing" id="nkl-6T-C83"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="rotation" value="right"/>
+                    </userDefinedRuntimeAttributes>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="0cs-fc-yD9" firstAttribute="width" relation="greaterThanOrEqual" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.1" id="1MM-FV-2fX"/>
+                <constraint firstItem="0cs-fc-yD9" firstAttribute="leading" secondItem="COU-3Y-iuW" secondAttribute="trailing" constant="16" id="BEr-MW-pgG"/>
+                <constraint firstItem="usT-i9-LNE" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="KKg-G8-7WF"/>
+                <constraint firstItem="usT-i9-LNE" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Rn8-0l-12s"/>
+                <constraint firstItem="COU-3Y-iuW" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="SOA-nj-78P"/>
+                <constraint firstItem="COU-3Y-iuW" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="cc0-pQ-7H3"/>
+                <constraint firstItem="0cs-fc-yD9" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="fyo-VM-7Dv"/>
+                <constraint firstItem="usT-i9-LNE" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="mwE-gN-qGa"/>
+                <constraint firstItem="COU-3Y-iuW" firstAttribute="leading" secondItem="usT-i9-LNE" secondAttribute="trailing" constant="16" id="qeN-1L-61C"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="0cs-fc-yD9" secondAttribute="trailing" id="qtf-Jd-cuC"/>
+                <constraint firstItem="0cs-fc-yD9" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="rA3-AU-Zne"/>
+                <constraint firstItem="COU-3Y-iuW" firstAttribute="height" relation="lessThanOrEqual" secondItem="iN0-l3-epB" secondAttribute="height" id="zCS-Ri-RCI"/>
+                <constraint firstItem="usT-i9-LNE" firstAttribute="width" relation="greaterThanOrEqual" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.1" id="zr3-nQ-cSS"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="itemImageView" destination="COU-3Y-iuW" id="DEW-wz-box"/>
+                <outlet property="leftArrow" destination="usT-i9-LNE" id="uaW-MW-mHh"/>
+                <outlet property="rightArrow" destination="0cs-fc-yD9" id="mpa-XR-6GE"/>
+            </connections>
+            <point key="canvasLocation" x="-126.40000000000001" y="-170.46476761619192"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="caret-arrow-up" width="384" height="384"/>
+        <image name="slime1.png" width="512" height="512"/>
+    </resources>
+</document>

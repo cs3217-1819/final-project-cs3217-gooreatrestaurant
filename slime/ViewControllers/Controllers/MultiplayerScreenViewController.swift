@@ -23,7 +23,7 @@ class MultiplayerScreenViewController: ViewController<MultiplayerScreenView> {
             self.presentActiveAlert(dismissible: false)
             
             self.context.db.createRoom(withRoomName: "Pros only", withMap: "Chaos", { id in
-                self.context.closeAlert()
+                self.context.modal.closeAlert()
                 
                 let vc: MultiplayerLobbyViewController = self.context.routeToAndPrepareFor(.MultiplayerLobby)
                 vc.setupRoom(withId: id)
@@ -47,21 +47,21 @@ class MultiplayerScreenViewController: ViewController<MultiplayerScreenView> {
         }
         
         if dismissible {
-            self.context.presentUnimportantAlert(alert)
+            self.context.modal.presentUnimportantAlert(alert)
             return
         }
         
-        self.context.presentAlert(alert)
+        self.context.modal.presentAlert(alert)
     }
     
     private func setLoadingAlert(withDescription description: String) {
-        self.activeAlert = self.context.createAlert()
+        self.activeAlert = self.context.modal.createAlert()
             .setTitle("Loading...")
             .setDescription(description)
     }
     
     private func setErrorAlert(withDescription description: String) {
-        self.activeAlert = self.context.createAlert()
+        self.activeAlert = self.context.modal.createAlert()
             .setTitle("Error!")
             .setDescription(description)
             .addAction(AlertAction(with: "OK"))

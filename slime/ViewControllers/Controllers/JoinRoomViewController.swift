@@ -24,7 +24,7 @@ class JoinRoomViewController: ViewController<JoinRoomView> {
             self.context.db.joinRoom(forRoomId: roomJoinId, {
                 let lobbyController: MultiplayerLobbyViewController = self.context.routeToAndPrepareFor(.MultiplayerLobby)
                 lobbyController.setupRoom(withId: roomJoinId)
-                self.context.closeAlert()
+                self.context.modal.closeAlert()
             }, {
                 // room contains 4 players already
                 self.showErrorAlert(withDescription: "Room if full!")
@@ -42,17 +42,17 @@ class JoinRoomViewController: ViewController<JoinRoomView> {
     }
     
     private func showLoadingAlert(withDescription description: String) {
-        let alert = context.createAlert()
+        let alert = context.modal.createAlert()
             .setTitle("Loading...")
             .setDescription(description)
-        context.presentUnimportantAlert(alert)
+        context.modal.presentUnimportantAlert(alert)
     }
     
     private func showErrorAlert(withDescription description: String) {
-        let alert = context.createAlert()
+        let alert = context.modal.createAlert()
             .setTitle("Error!")
             .setDescription(description)
             .addAction(AlertAction(with: "OK"))
-        context.presentAlert(alert)
+        context.modal.presentAlert(alert)
     }
 }
