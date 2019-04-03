@@ -49,13 +49,13 @@ class ScrollingBackgroundViewController: Controller {
         newBackgroundImageView.alpha = 0
         newBackgroundImageView.image = newImage
         background.addSubview(newBackgroundImageView)
+        self.imageName = imageNamed
         UIView.animate(withDuration: 1.0, animations: {
             self.backgroundImageView.alpha = 0
             newBackgroundImageView.alpha = 1
         }, completion: { _ in
             self.backgroundImageView.removeFromSuperview()
             self.backgroundImageView = newBackgroundImageView
-            self.imageName = imageNamed
         })
     }
     

@@ -41,6 +41,14 @@
 		8BEDCD4B22531CDF00E24A20 /* IngredientsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEDCD4A22531CDF00E24A20 /* IngredientsCell.swift */; };
 		8BEDCD4F22538ED500E24A20 /* Ingredients.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 8BEDCD4E2253758500E24A20 /* Ingredients.atlas */; };
 		BA7CC9239365F389C9C1FA05 /* Pods_slime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7F0D50F4B0E911D0C328800 /* Pods_slime.framework */; };
+		EC0E3163224F610300AF1254 /* CharacterCreationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC0E3162224F610300AF1254 /* CharacterCreationView.xib */; };
+		EC0E3165224F611200AF1254 /* CharacterCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0E3164224F611200AF1254 /* CharacterCreationView.swift */; };
+		EC0E3168224F618B00AF1254 /* TextInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC0E3167224F618B00AF1254 /* TextInputView.xib */; };
+		EC0E316A224F61C500AF1254 /* TextInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0E3169224F61C500AF1254 /* TextInputView.swift */; };
+		EC0E316C224F641C00AF1254 /* TextInputController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0E316B224F641C00AF1254 /* TextInputController.swift */; };
+		EC0E316E224F69A400AF1254 /* CharacterCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0E316D224F69A400AF1254 /* CharacterCreationViewController.swift */; };
+		EC0E31712252075300AF1254 /* ItemSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0E31702252075300AF1254 /* ItemSelectorView.swift */; };
+		EC0E31732252076600AF1254 /* ItemSelectorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC0E31722252076600AF1254 /* ItemSelectorView.xib */; };
 		EC21B40022420CA700827121 /* LevelPlayButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC21B3FF22420CA700827121 /* LevelPlayButton.xib */; };
 		EC21B40222420D4100827121 /* DesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC21B40122420D4100827121 /* DesignableView.swift */; };
 		EC21B4052242155600827121 /* LoadingScreenView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC21B4042242155600827121 /* LoadingScreenView.xib */; };
@@ -61,7 +69,7 @@
 		EC3824512238FB3D000D7148 /* ButtonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3824502238FB3D000D7148 /* ButtonController.swift */; };
 		EC38245422390789000D7148 /* ScrollingBackgroundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC38245322390789000D7148 /* ScrollingBackgroundViewController.swift */; };
 		EC3824562239116D000D7148 /* CGRectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3824552239116D000D7148 /* CGRectExtension.swift */; };
-		EC38245A223A0F6F000D7148 /* TextLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC382459223A0F6F000D7148 /* TextLabel.swift */; };
+		EC38245A223A0F6F000D7148 /* UIText.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC382459223A0F6F000D7148 /* UIText.swift */; };
 		EC38245C223A100B000D7148 /* TextStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC38245B223A100B000D7148 /* TextStyles.swift */; };
 		EC38245F223A17F7000D7148 /* Squidgy Slimes.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EC38245E223A17F7000D7148 /* Squidgy Slimes.ttf */; };
 		EC38246A223A1803000D7148 /* Rubik-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EC382460223A1802000D7148 /* Rubik-Light.ttf */; };
@@ -115,7 +123,23 @@
 		EC4924F42248D616007B9797 /* RatingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC4924F32248D616007B9797 /* RatingView.xib */; };
 		EC4924F62248D638007B9797 /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4924F52248D638007B9797 /* RatingView.swift */; };
 		EC4924F82248D877007B9797 /* RatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4924F72248D877007B9797 /* RatingViewController.swift */; };
+		EC6AC1D222520BEC00D95C90 /* ItemSelectorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6AC1D122520BEC00D95C90 /* ItemSelectorController.swift */; };
+		EC6AC1D4225216EF00D95C90 /* SlimeColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6AC1D3225216EF00D95C90 /* SlimeColors.swift */; };
+		EC6AC1D62254882900D95C90 /* ContextModalHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6AC1D52254882900D95C90 /* ContextModalHandler.swift */; };
+		EC6AC1D82254884000D95C90 /* ContextDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6AC1D72254884000D95C90 /* ContextDataHandler.swift */; };
+		EC6E99E8224F1BB400A9554C /* LocalDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6E99E7224F1BB400A9554C /* LocalDataProvider.swift */; };
+		EC6E99ED224F22C000A9554C /* LocalUserCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6E99EC224F22C000A9554C /* LocalUserCharacter.swift */; };
+		EC6E99EF224F256500A9554C /* LocalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6E99EE224F256500A9554C /* LocalData.swift */; };
+		EC6E99F2224F2BFE00A9554C /* UserInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC6E99F1224F2BFE00A9554C /* UserInfoView.xib */; };
+		EC6E99F5224F2D1600A9554C /* ProgressBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC6E99F4224F2D1600A9554C /* ProgressBarView.xib */; };
+		EC6E99F7224F2DA200A9554C /* ProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6E99F6224F2DA200A9554C /* ProgressBarView.swift */; };
+		EC6E99F9224F2DDB00A9554C /* ProgressBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6E99F8224F2DDB00A9554C /* ProgressBarController.swift */; };
+		EC6E99FB224F499400A9554C /* UserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6E99FA224F499400A9554C /* UserInfoView.swift */; };
+		EC6E99FD224F49FB00A9554C /* UserInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6E99FC224F49FB00A9554C /* UserInfoController.swift */; };
+		EC6E99FF224F4F0900A9554C /* DoubleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6E99FE224F4F0900A9554C /* DoubleExtension.swift */; };
 		EC79FFEE2242238C002E8FE7 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC79FFED2242238C002E8FE7 /* GameViewController.swift */; };
+		EC81B7872254A09900B6F7EE /* TransitionConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC81B7862254A09900B6F7EE /* TransitionConstants.swift */; };
+		EC81B7892254A3A600B6F7EE /* KeyboardService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC81B7882254A3A600B6F7EE /* KeyboardService.swift */; };
 		ECA66DBE223D2A1B00D1D0BC /* LevelPlaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA66DBD223D2A1B00D1D0BC /* LevelPlaceController.swift */; };
 		ECA66DC2223D5DD100D1D0BC /* CreditsScreenView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECA66DC1223D5DD100D1D0BC /* CreditsScreenView.xib */; };
 		ECA66DC4223D5F4000D1D0BC /* CreditsScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA66DC3223D5F4000D1D0BC /* CreditsScreenView.swift */; };
@@ -211,6 +235,14 @@
 		8BEDCD4A22531CDF00E24A20 /* IngredientsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsCell.swift; sourceTree = "<group>"; };
 		8BEDCD4E2253758500E24A20 /* Ingredients.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Ingredients.atlas; sourceTree = "<group>"; };
 		E7F0D50F4B0E911D0C328800 /* Pods_slime.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_slime.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EC0E3162224F610300AF1254 /* CharacterCreationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharacterCreationView.xib; sourceTree = "<group>"; };
+		EC0E3164224F611200AF1254 /* CharacterCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCreationView.swift; sourceTree = "<group>"; };
+		EC0E3167224F618B00AF1254 /* TextInputView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextInputView.xib; sourceTree = "<group>"; };
+		EC0E3169224F61C500AF1254 /* TextInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputView.swift; sourceTree = "<group>"; };
+		EC0E316B224F641C00AF1254 /* TextInputController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputController.swift; sourceTree = "<group>"; };
+		EC0E316D224F69A400AF1254 /* CharacterCreationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCreationViewController.swift; sourceTree = "<group>"; };
+		EC0E31702252075300AF1254 /* ItemSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemSelectorView.swift; sourceTree = "<group>"; };
+		EC0E31722252076600AF1254 /* ItemSelectorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemSelectorView.xib; sourceTree = "<group>"; };
 		EC21B3FF22420CA700827121 /* LevelPlayButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LevelPlayButton.xib; sourceTree = "<group>"; };
 		EC21B40122420D4100827121 /* DesignableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableView.swift; sourceTree = "<group>"; };
 		EC21B4042242155600827121 /* LoadingScreenView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingScreenView.xib; sourceTree = "<group>"; };
@@ -235,7 +267,7 @@
 		EC3824502238FB3D000D7148 /* ButtonController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonController.swift; sourceTree = "<group>"; };
 		EC38245322390789000D7148 /* ScrollingBackgroundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollingBackgroundViewController.swift; sourceTree = "<group>"; };
 		EC3824552239116D000D7148 /* CGRectExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGRectExtension.swift; sourceTree = "<group>"; };
-		EC382459223A0F6F000D7148 /* TextLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextLabel.swift; sourceTree = "<group>"; };
+		EC382459223A0F6F000D7148 /* UIText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIText.swift; sourceTree = "<group>"; };
 		EC38245B223A100B000D7148 /* TextStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextStyles.swift; sourceTree = "<group>"; };
 		EC38245E223A17F7000D7148 /* Squidgy Slimes.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Squidgy Slimes.ttf"; sourceTree = "<group>"; };
 		EC382460223A1802000D7148 /* Rubik-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Light.ttf"; sourceTree = "<group>"; };
@@ -289,7 +321,23 @@
 		EC4924F32248D616007B9797 /* RatingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RatingView.xib; sourceTree = "<group>"; };
 		EC4924F52248D638007B9797 /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
 		EC4924F72248D877007B9797 /* RatingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingViewController.swift; sourceTree = "<group>"; };
+		EC6AC1D122520BEC00D95C90 /* ItemSelectorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemSelectorController.swift; sourceTree = "<group>"; };
+		EC6AC1D3225216EF00D95C90 /* SlimeColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlimeColors.swift; sourceTree = "<group>"; };
+		EC6AC1D52254882900D95C90 /* ContextModalHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextModalHandler.swift; sourceTree = "<group>"; };
+		EC6AC1D72254884000D95C90 /* ContextDataHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextDataHandler.swift; sourceTree = "<group>"; };
+		EC6E99E7224F1BB400A9554C /* LocalDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataProvider.swift; sourceTree = "<group>"; };
+		EC6E99EC224F22C000A9554C /* LocalUserCharacter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalUserCharacter.swift; sourceTree = "<group>"; };
+		EC6E99EE224F256500A9554C /* LocalData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalData.swift; sourceTree = "<group>"; };
+		EC6E99F1224F2BFE00A9554C /* UserInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserInfoView.xib; sourceTree = "<group>"; };
+		EC6E99F4224F2D1600A9554C /* ProgressBarView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProgressBarView.xib; sourceTree = "<group>"; };
+		EC6E99F6224F2DA200A9554C /* ProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarView.swift; sourceTree = "<group>"; };
+		EC6E99F8224F2DDB00A9554C /* ProgressBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarController.swift; sourceTree = "<group>"; };
+		EC6E99FA224F499400A9554C /* UserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoView.swift; sourceTree = "<group>"; };
+		EC6E99FC224F49FB00A9554C /* UserInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoController.swift; sourceTree = "<group>"; };
+		EC6E99FE224F4F0900A9554C /* DoubleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleExtension.swift; sourceTree = "<group>"; };
 		EC79FFED2242238C002E8FE7 /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		EC81B7862254A09900B6F7EE /* TransitionConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionConstants.swift; sourceTree = "<group>"; };
+		EC81B7882254A3A600B6F7EE /* KeyboardService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardService.swift; sourceTree = "<group>"; };
 		ECA66DBD223D2A1B00D1D0BC /* LevelPlaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelPlaceController.swift; sourceTree = "<group>"; };
 		ECA66DC1223D5DD100D1D0BC /* CreditsScreenView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreditsScreenView.xib; sourceTree = "<group>"; };
 		ECA66DC3223D5F4000D1D0BC /* CreditsScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsScreenView.swift; sourceTree = "<group>"; };
@@ -459,6 +507,35 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		EC0E3161224F60E700AF1254 /* CharacterCreationView */ = {
+			isa = PBXGroup;
+			children = (
+				EC0E3162224F610300AF1254 /* CharacterCreationView.xib */,
+				EC0E3164224F611200AF1254 /* CharacterCreationView.swift */,
+			);
+			path = CharacterCreationView;
+			sourceTree = "<group>";
+		};
+		EC0E3166224F617D00AF1254 /* TextInput */ = {
+			isa = PBXGroup;
+			children = (
+				EC0E3167224F618B00AF1254 /* TextInputView.xib */,
+				EC0E3169224F61C500AF1254 /* TextInputView.swift */,
+				EC0E316B224F641C00AF1254 /* TextInputController.swift */,
+			);
+			path = TextInput;
+			sourceTree = "<group>";
+		};
+		EC0E316F2252073500AF1254 /* ItemSelector */ = {
+			isa = PBXGroup;
+			children = (
+				EC0E31702252075300AF1254 /* ItemSelectorView.swift */,
+				EC0E31722252076600AF1254 /* ItemSelectorView.xib */,
+				EC6AC1D122520BEC00D95C90 /* ItemSelectorController.swift */,
+			);
+			path = ItemSelector;
+			sourceTree = "<group>";
+		};
 		EC21B4032242150A00827121 /* LoadingScreenView */ = {
 			isa = PBXGroup;
 			children = (
@@ -521,6 +598,10 @@
 		EC38243D223882AF000D7148 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				EC0E316F2252073500AF1254 /* ItemSelector */,
+				EC0E3166224F617D00AF1254 /* TextInput */,
+				EC6E99F3224F2D0C00A9554C /* ProgressBar */,
+				EC6E99F0224F2BED00A9554C /* UserInfo */,
 				ECD2441C224AFF9D00767A56 /* CodeInput */,
 				EC4924F22248D601007B9797 /* Rating */,
 				EC4924E922461FD1007B9797 /* OrderBlob */,
@@ -553,7 +634,7 @@
 				EC38244A22389649000D7148 /* ImageProvider.swift */,
 				EC38244C22389DAD000D7148 /* UIViewExtension.swift */,
 				EC3824552239116D000D7148 /* CGRectExtension.swift */,
-				EC382459223A0F6F000D7148 /* TextLabel.swift */,
+				EC382459223A0F6F000D7148 /* UIText.swift */,
 				EC38245B223A100B000D7148 /* TextStyles.swift */,
 				EC382474223A1AA4000D7148 /* ColorStyles.swift */,
 				EC38247C223A2344000D7148 /* UIColorExtension.swift */,
@@ -565,6 +646,9 @@
 				ECD24425224B02C900767A56 /* Logger.swift */,
 				F92ECAE9224D1B490040A4E2 /* FadeInOutSegue.swift */,
 				8BEDCD42224E089A00E24A20 /* SerializableGameData.swift */,
+				EC6E99FE224F4F0900A9554C /* DoubleExtension.swift */,
+				EC81B7862254A09900B6F7EE /* TransitionConstants.swift */,
+				EC81B7882254A3A600B6F7EE /* KeyboardService.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -654,6 +738,7 @@
 				ECD455662240F974006AF78D /* ViewControllerProtocol.swift */,
 				ECD455682240FB23006AF78D /* MultiplayerLobbyViewController.swift */,
 				EC21B408224217E200827121 /* LoadingScreenViewController.swift */,
+				EC0E316D224F69A400AF1254 /* CharacterCreationViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -661,6 +746,7 @@
 		EC449B73223B7E4A00A8EA35 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				EC0E3161224F60E700AF1254 /* CharacterCreationView */,
 				ECD2442F224B113400767A56 /* JoinRoomView */,
 				EC21B4032242150A00827121 /* LoadingScreenView */,
 				ECD4555F2240F48D006AF78D /* MultiplayerLobbyView */,
@@ -693,8 +779,10 @@
 		EC449B99223BB7D700A8EA35 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				EC6E99E9224F21F900A9554C /* LocalData */,
 				8BEDCD382247F10100E24A20 /* Level1.plist */,
 				EC449B9A223BB9E900A8EA35 /* levels.json */,
+				EC6AC1D3225216EF00D95C90 /* SlimeColors.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -728,6 +816,36 @@
 				EC4924F72248D877007B9797 /* RatingViewController.swift */,
 			);
 			path = Rating;
+			sourceTree = "<group>";
+		};
+		EC6E99E9224F21F900A9554C /* LocalData */ = {
+			isa = PBXGroup;
+			children = (
+				EC6E99E7224F1BB400A9554C /* LocalDataProvider.swift */,
+				EC6E99EC224F22C000A9554C /* LocalUserCharacter.swift */,
+				EC6E99EE224F256500A9554C /* LocalData.swift */,
+			);
+			path = LocalData;
+			sourceTree = "<group>";
+		};
+		EC6E99F0224F2BED00A9554C /* UserInfo */ = {
+			isa = PBXGroup;
+			children = (
+				EC6E99F1224F2BFE00A9554C /* UserInfoView.xib */,
+				EC6E99FA224F499400A9554C /* UserInfoView.swift */,
+				EC6E99FC224F49FB00A9554C /* UserInfoController.swift */,
+			);
+			path = UserInfo;
+			sourceTree = "<group>";
+		};
+		EC6E99F3224F2D0C00A9554C /* ProgressBar */ = {
+			isa = PBXGroup;
+			children = (
+				EC6E99F4224F2D1600A9554C /* ProgressBarView.xib */,
+				EC6E99F6224F2DA200A9554C /* ProgressBarView.swift */,
+				EC6E99F8224F2DDB00A9554C /* ProgressBarController.swift */,
+			);
+			path = ProgressBar;
 			sourceTree = "<group>";
 		};
 		EC79FFEC2242238C002E8FE7 /* Game */ = {
@@ -778,6 +896,8 @@
 			children = (
 				ECD45545223FAFBE006AF78D /* ContextController.swift */,
 				ECD45547223FAFFF006AF78D /* Context.swift */,
+				EC6AC1D52254882900D95C90 /* ContextModalHandler.swift */,
+				EC6AC1D72254884000D95C90 /* ContextDataHandler.swift */,
 			);
 			path = Context;
 			sourceTree = "<group>";
@@ -981,12 +1101,14 @@
 				EC4924EB22461FEC007B9797 /* OrderBlob.xib in Resources */,
 				EC38246C223A1803000D7148 /* Rubik-BoldItalic.ttf in Resources */,
 				EC449B87223BA49D00A8EA35 /* LevelSelectView.xib in Resources */,
+				EC0E3163224F610300AF1254 /* CharacterCreationView.xib in Resources */,
 				EC38246F223A1803000D7148 /* Rubik-LightItalic.ttf in Resources */,
 				F92ECADF224BADEC0040A4E2 /* GoogleService-Info.plist in Resources */,
 				EC449B90223BADBB00A8EA35 /* LevelDetailsBox.xib in Resources */,
 				ECD24420224AFFEB00767A56 /* SlimeNumberInputView.xib in Resources */,
 				EC449B77223B81FE00A8EA35 /* PlayScreenView.xib in Resources */,
 				8BEDCD392247F10100E24A20 /* Level1.plist in Resources */,
+				EC0E31732252076600AF1254 /* ItemSelectorView.xib in Resources */,
 				EC21B4052242155600827121 /* LoadingScreenView.xib in Resources */,
 				ECD4555C2240F1FB006AF78D /* MultiplayerScreenView.xib in Resources */,
 				ECD4554D2240B0AF006AF78D /* Alert.xib in Resources */,
@@ -1006,11 +1128,14 @@
 				EC38246E223A1803000D7148 /* Rubik-Italic.ttf in Resources */,
 				EC449B9B223BB9EA00A8EA35 /* levels.json in Resources */,
 				EC382480223A2999000D7148 /* PlayMenuButton.xib in Resources */,
+				EC0E3168224F618B00AF1254 /* TextInputView.xib in Resources */,
 				8B81EFBC224344AD007BFDB0 /* Slime.atlas in Resources */,
 				EC382471223A1803000D7148 /* Rubik-MediumItalic.ttf in Resources */,
 				ECD4557622411340006AF78D /* UpButton.xib in Resources */,
 				EC38243F223882C5000D7148 /* PrimaryButton.xib in Resources */,
+				EC6E99F5224F2D1600A9554C /* ProgressBarView.xib in Resources */,
 				EC3824232238803A000D7148 /* Main.storyboard in Resources */,
+				EC6E99F2224F2BFE00A9554C /* UserInfoView.xib in Resources */,
 				EC38245F223A17F7000D7148 /* Squidgy Slimes.ttf in Resources */,
 				EC40E4AE223F97E50073D755 /* SettingsScreenView.xib in Resources */,
 				ECD24433224B11F800767A56 /* CodeInputView.xib in Resources */,
@@ -1070,6 +1195,8 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-slime/Pods-slime-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxGesture/RxGesture.framework",
@@ -1082,6 +1209,8 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxGesture.framework",
@@ -1126,6 +1255,8 @@
 				ECD45543223FACC4006AF78D /* ModalController.swift in Sources */,
 				EC382475223A1AA4000D7148 /* ColorStyles.swift in Sources */,
 				EC449B83223B917C00A8EA35 /* CGPointExtension.swift in Sources */,
+				EC81B7892254A3A600B6F7EE /* KeyboardService.swift in Sources */,
+				EC6E99E8224F1BB400A9554C /* LocalDataProvider.swift in Sources */,
 				F92ECAE4224BAEBD0040A4E2 /* Authentication.swift in Sources */,
 				ECD455652240F5B6006AF78D /* MultiplayerScreenViewController.swift in Sources */,
 				F92ECAEA224D1B490040A4E2 /* FadeInOutSegue.swift in Sources */,
@@ -1137,6 +1268,7 @@
 				1D2202A1224AB5850080CF7D /* Stage.swift in Sources */,
 				1D22029C224AB5850080CF7D /* Ladder.swift in Sources */,
 				ECD4554F2240B3B3006AF78D /* Alert.swift in Sources */,
+				EC6E99FD224F49FB00A9554C /* UserInfoController.swift in Sources */,
 				ECD4555E2240F44A006AF78D /* MultiplayerScreenView.swift in Sources */,
 				EC40E4B2223F986D0073D755 /* SettingsScreenViewController.swift in Sources */,
 				EC40E4B0223F983E0073D755 /* SettingsScreenView.swift in Sources */,
@@ -1148,6 +1280,7 @@
 				EC38244722388CB1000D7148 /* PrimaryButtonController.swift in Sources */,
 				1DE6FC61224CA9A200B36F48 /* Recipe.swift in Sources */,
 				EC449B89223BAA8100A8EA35 /* LevelSelectViewController.swift in Sources */,
+				EC6E99FF224F4F0900A9554C /* DoubleExtension.swift in Sources */,
 				EC449B79223B82A600A8EA35 /* MainController.swift in Sources */,
 				F92ECAE2224BAE8F0040A4E2 /* Database.swift in Sources */,
 				EC449B94223BB08700A8EA35 /* LevelDetailsBoxController.swift in Sources */,
@@ -1162,6 +1295,7 @@
 				ECF75EFE224B12C100537237 /* CodeInputView.swift in Sources */,
 				1D2202A2224AB5850080CF7D /* Ingredient.swift in Sources */,
 				ECD2442E224B108200767A56 /* NumberPadResponder.swift in Sources */,
+				EC6E99FB224F499400A9554C /* UserInfoView.swift in Sources */,
 				ECD2442C224B0D0800767A56 /* SlimeNumberPadController.swift in Sources */,
 				1D22029A224AB5850080CF7D /* Plate.swift in Sources */,
 				1DD6EBE1224E368C006FF6CD /* ChoppingEquipment.swift in Sources */,
@@ -1170,24 +1304,29 @@
 				1D2202A3224AB5850080CF7D /* StageConstants.swift in Sources */,
 				EC382479223A1BE7000D7148 /* PrimaryButtonColor.swift in Sources */,
 				ECA66DC4223D5F4000D1D0BC /* CreditsScreenView.swift in Sources */,
+				EC0E316C224F641C00AF1254 /* TextInputController.swift in Sources */,
 				EC449B96223BB1D400A8EA35 /* StoryModeLevelSelectView.swift in Sources */,
 				8BD816B922426D1400586180 /* BDButton.swift in Sources */,
+				EC0E316A224F61C500AF1254 /* TextInputView.swift in Sources */,
 				ECD24424224B018800767A56 /* Controller.swift in Sources */,
 				ECD4556E2240FBFA006AF78D /* PlayerBox.swift in Sources */,
 				ECD455672240F974006AF78D /* ViewControllerProtocol.swift in Sources */,
 				EC21B40222420D4100827121 /* DesignableView.swift in Sources */,
 				1D2202AD224AB68F0080CF7D /* PlateStorage.swift in Sources */,
+				EC6AC1D4225216EF00D95C90 /* SlimeColors.swift in Sources */,
 				EC79FFEE2242238C002E8FE7 /* GameViewController.swift in Sources */,
 				1DE6FC63224D12F600B36F48 /* IngredientStorage.swift in Sources */,
 				8BD816AF22422C6700586180 /* Extensions.swift in Sources */,
 				EC4924EF22462174007B9797 /* OrderBlobController.swift in Sources */,
 				1DE6FC6B224D26A200B36F48 /* Trash.swift in Sources */,
 				EC21B409224217E200827121 /* LoadingScreenViewController.swift in Sources */,
+				EC6E99EF224F256500A9554C /* LocalData.swift in Sources */,
+				EC6AC1D62254882900D95C90 /* ContextModalHandler.swift in Sources */,
 				1D2202A0224AB5850080CF7D /* Slime+Movements.swift in Sources */,
 				EC382482223A2AF5000D7148 /* PlayMenuButton.swift in Sources */,
 				EC449B92223BB01C00A8EA35 /* LevelDetailsBox.swift in Sources */,
 				EC3824512238FB3D000D7148 /* ButtonController.swift in Sources */,
-				EC38245A223A0F6F000D7148 /* TextLabel.swift in Sources */,
+				EC38245A223A0F6F000D7148 /* UIText.swift in Sources */,
 				ECD455702240FEDE006AF78D /* PlayerBoxController.swift in Sources */,
 				EC449B81223B8C0C00A8EA35 /* PlayScreenView.swift in Sources */,
 				EC40E4AC223D61320073D755 /* CreditsSceneViewController.swift in Sources */,
@@ -1199,20 +1338,27 @@
 				ECD2441E224AFFDD00767A56 /* SlimeNumberInputView.swift in Sources */,
 				EC449B7F223B889400A8EA35 /* TitleScreenView.swift in Sources */,
 				EC3824202238803A000D7148 /* TitleScreenViewController.swift in Sources */,
+				EC81B7872254A09900B6F7EE /* TransitionConstants.swift in Sources */,
 				1D2202A5224AB5850080CF7D /* Spaceship.swift in Sources */,
 				F92ECAE8224BAEEF0040A4E2 /* Game.swift in Sources */,
 				1DE6FC5C224CA46700B36F48 /* Table.swift in Sources */,
 				1DE6FC65224D1D3900B36F48 /* Oven.swift in Sources */,
+				EC0E3165224F611200AF1254 /* CharacterCreationView.swift in Sources */,
 				EC38244B22389649000D7148 /* ImageProvider.swift in Sources */,
 				EC38244322388389000D7148 /* XibView.swift in Sources */,
 				ECD455692240FB23006AF78D /* MultiplayerLobbyViewController.swift in Sources */,
 				EC21B407224216C500827121 /* LoadingScreenView.swift in Sources */,
 				EC38244F2238F023000D7148 /* PrimaryButton.swift in Sources */,
 				ECD24426224B02C900767A56 /* Logger.swift in Sources */,
+				EC0E31712252075300AF1254 /* ItemSelectorView.swift in Sources */,
 				EC449B85223BA48100A8EA35 /* LevelSelectView.swift in Sources */,
+				EC6AC1D82254884000D95C90 /* ContextDataHandler.swift in Sources */,
 				ECA66DBE223D2A1B00D1D0BC /* LevelPlaceController.swift in Sources */,
+				EC6E99F9224F2DDB00A9554C /* ProgressBarController.swift in Sources */,
+				EC6E99F7224F2DA200A9554C /* ProgressBarView.swift in Sources */,
 				EC449B9E223BBA0300A8EA35 /* Level.swift in Sources */,
 				1D22029E224AB5850080CF7D /* CookingEquipment.swift in Sources */,
+				EC6AC1D222520BEC00D95C90 /* ItemSelectorController.swift in Sources */,
 				ECD455722240FFC7006AF78D /* Player.swift in Sources */,
 				EC449B7D223B873600A8EA35 /* RouterViewController.swift in Sources */,
 				EC4924F82248D877007B9797 /* RatingViewController.swift in Sources */,
@@ -1221,11 +1367,13 @@
 				ECD45546223FAFBE006AF78D /* ContextController.swift in Sources */,
 				8BEDCD4B22531CDF00E24A20 /* IngredientsCell.swift in Sources */,
 				ECD455632240F4A8006AF78D /* MultiplayerLobbyView.swift in Sources */,
+				EC6E99ED224F22C000A9554C /* LocalUserCharacter.swift in Sources */,
 				EC40E4B4223F98EF0073D755 /* RouteTransitionHandler.swift in Sources */,
 				1DE6FC67224D1E3C00B36F48 /* FryingEquipment.swift in Sources */,
 				1D22029B224AB5850080CF7D /* Food.swift in Sources */,
 				EC38244D22389DAD000D7148 /* UIViewExtension.swift in Sources */,
 				EC4924F12246220A007B9797 /* OrderBlobRecipe.swift in Sources */,
+				EC0E316E224F69A400AF1254 /* CharacterCreationViewController.swift in Sources */,
 				EC38241E2238803A000D7148 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1391,13 +1539,17 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+<<<<<<< HEAD
 				DEVELOPMENT_TEAM = CZ7H96C646;
+=======
+				DEVELOPMENT_TEAM = H8MD8RH9XR;
+>>>>>>> 6d8b9a8e4e83797825cb42f967d7410c5ba7d4a7
 				INFOPLIST_FILE = slime/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = nus.cs3217.a0143378y.slime;
+				PRODUCT_BUNDLE_IDENTIFIER = nus.cs3217.a0166733y.slime;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
@@ -1412,13 +1564,17 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+<<<<<<< HEAD
 				DEVELOPMENT_TEAM = CZ7H96C646;
+=======
+				DEVELOPMENT_TEAM = H8MD8RH9XR;
+>>>>>>> 6d8b9a8e4e83797825cb42f967d7410c5ba7d4a7
 				INFOPLIST_FILE = slime/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = nus.cs3217.a0143378y.slime;
+				PRODUCT_BUNDLE_IDENTIFIER = nus.cs3217.a0166733y.slime;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;

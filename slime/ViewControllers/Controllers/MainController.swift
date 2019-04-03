@@ -36,7 +36,19 @@ class MainController: UIViewController {
         super.viewDidLoad()
         
         context = Context(using: self)
-        
+        setupHideKeyboardOnTap()
+    }
+    
+    func setupHideKeyboardOnTap() {
+        self.view.addGestureRecognizer(self.endEditingRecognizer())
+        self.navigationController?.navigationBar.addGestureRecognizer(self.endEditingRecognizer())
+    }
+    
+    /// Dismisses the keyboard from self.view
+    private func endEditingRecognizer() -> UIGestureRecognizer {
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(self.view.endEditing(_:)))
+        tap.cancelsTouchesInView = false
+        return tap
     }
     
     // Perform segue called from context
@@ -56,10 +68,13 @@ class MainController: UIViewController {
         
         underlyingView.addSubview(toView)
         let fromVCFrame = fromVC.getView().frame
-        UIView.animate(withDuration: 1.0, animations: {
+        UIView.animate(withDuration: 0.210, animations: {
             fromVC.getView().frame = fromVCFrame.offsetBy(dx: -diff.x, dy: -diff.y)
             toView.frame = toView.frame.offsetBy(dx: -diff.x, dy: -diff.y)
-        }, completion: { finished in
+        })
+        
+        Timer.scheduledTimer(withTimeInterval: 0.210, repeats: false, block: { _ in
+            print("finished")
             fromVC.onDisappear()
         })
     }

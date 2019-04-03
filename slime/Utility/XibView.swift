@@ -30,6 +30,14 @@ class XibView: UIView {
         contentView?.prepareForInterfaceBuilder()
     }
     
+    func getView<ConformedView: UIView>() -> ConformedView {
+        guard let trueView = contentView else {
+            Logger.it.error("Xib content view is empty")
+            fatalError("Xib content view is empty")
+        }
+        return trueView as! ConformedView
+    }
+    
     private func xibSetup() {
         guard let view = loadViewFromNib() else {
             return

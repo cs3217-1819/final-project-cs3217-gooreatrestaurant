@@ -90,21 +90,21 @@ class MultiplayerLobbyViewController: ViewController<MultiplayerLobbyView> {
         }
         
         if dismissible {
-            self.context.presentUnimportantAlert(alert)
+            self.context.modal.presentUnimportantAlert(alert)
             return
         }
         
-        self.context.presentAlert(alert)
+        self.context.modal.presentAlert(alert)
     }
     
     private func setLoadingAlert(withDescription description: String) {
-        self.activeAlert = self.context.createAlert()
+        self.activeAlert = self.context.modal.createAlert()
             .setTitle("Loading...")
             .setDescription(description)
     }
     
     private func setWarningAlert(to description: String, withOkCallback: @escaping () -> Void) {
-        self.activeAlert = self.context.createAlert()
+        self.activeAlert = self.context.modal.createAlert()
             .setTitle("Warning!!")
             .setDescription(description)
             .addAction(AlertAction(with: "CANCEL"))
@@ -112,7 +112,7 @@ class MultiplayerLobbyViewController: ViewController<MultiplayerLobbyView> {
     }
     
     private func setErrorAlert(withDescription description: String) {
-        self.activeAlert = self.context.createAlert()
+        self.activeAlert = self.context.modal.createAlert()
             .setTitle("Error!")
             .setDescription(description)
             .addAction(AlertAction(with: "OK"))

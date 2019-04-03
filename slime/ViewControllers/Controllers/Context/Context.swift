@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RxSwift
 
 class Context {
     let router = Router(with: .TitleScreen)
@@ -15,40 +16,13 @@ class Context {
         return mainController.view
     }
     private let mainController: MainController
-    private let modal = ModalController()
+    let modal: ContextModalHandler
+    let data = ContextDataHandler()
     
     init(using viewController: MainController) {
         self.mainController = viewController
-    }
-    
-    func showModal(view: UIView) {
-        modal.setContent(view)
-        modal.configure()
-        modal.open(with: baseView)
-    }
-    
-    func closeModal() {
-        modal.close()
-    }
-    
-    func createAlert() -> AlertController {
-        return AlertController(using: modal)
-    }
-    
-    func presentAlert(_ alert: AlertController) {
-        alert.configure()
-        modal.configure()
-        modal.open(with: baseView, closeOnOutsideTap: false)
-    }
-    
-    func presentUnimportantAlert(_ alert: AlertController) {
-        alert.configure()
-        modal.configure()
-        modal.open(with: baseView, closeOnOutsideTap: true)
-    }
-    
-    func closeAlert() {
-        modal.close()
+        modal = ContextModalHandler(baseView: viewController.view)
+        data.loadUserData()
     }
     
     func routeTo(_ route: Route) {
@@ -69,3 +43,5 @@ class Context {
         mainController.performSegue(withIdentifier: "toGame", sender: nil)
     }
 }
+
+

@@ -33,11 +33,11 @@ class LevelSelectViewController: ViewController<LevelSelectView> {
         }
         let customButtonController = ButtonController(using: view.customButton)
         customButtonController.onTap {
-            let alert = self.context.createAlert()
+            let alert = self.context.modal.createAlert()
                 .setTitle("Uh-oh!")
                 .setDescription("We will implement this soon(TM)")
                 .addAction(AlertAction(with: "OK"))
-            self.context.presentUnimportantAlert(alert)
+            self.context.modal.presentUnimportantAlert(alert)
         }
         rememberAll([
             storyButtonController,

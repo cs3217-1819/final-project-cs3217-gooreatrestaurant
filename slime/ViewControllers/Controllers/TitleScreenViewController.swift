@@ -8,32 +8,46 @@
 
 class TitleScreenViewController: ViewController<TitleScreenView> {
     override func configureSubviews() {
+        setupUserInfo()
         setupButtons()
         setupAnonymousAuth()
     }
     
+    private func setupUserInfo() {
+        guard let charSubject = context.data.userCharacter else {
+            view.userInfoView.removeFromSuperview()
+            return
+        }
+        let userInfoController = UserInfoController(usingXib: view.userInfoView, boundTo: charSubject)
+        userInfoController.configure()
+        remember(userInfoController)
+    }
+    
     private func setupButtons() {
         let playButtonController = PrimaryButtonController(using: view.playButton)
-        playButtonController.configure()
-        _ = playButtonController
             .set(color: .green)
             .set(label: "Play")
+        playButtonController.configure()
         playButtonController.onTap {
-            self.context.routeTo(.PlayScreen)
+            if self.context.data.userCharacter != nil {
+                // user exists
+                self.context.routeTo(.PlayScreen)
+            } else {
+                // User does not exist, create it now
+                self.context.routeTo(.CharacterCreationScreen)
+            }
         }
         let settingsButtonController = PrimaryButtonController(using: view.settingsButton)
-        settingsButtonController.configure()
-        _ = settingsButtonController
             .set(color: .blue)
             .set(label: "Settings")
+        settingsButtonController.configure()
         settingsButtonController.onTap {
             self.context.routeTo(.SettingsScreen)
         }
         let creditsButtonController = PrimaryButtonController(using: view.creditsButton)
-        creditsButtonController.configure()
-        _ = creditsButtonController
             .set(color: .purple)
             .set(label: "Credits")
+        creditsButtonController.configure()
         creditsButtonController.onTap {
             self.context.routeTo(.CreditsScreen)
         }
@@ -45,7 +59,7 @@ class TitleScreenViewController: ViewController<TitleScreenView> {
 
     private func setupAnonymousAuth() {
         GameAuth.signInAnonymously { (err) in
-            print(err)
+            Logger.it.error("\(err)")
         }
     }
 }
