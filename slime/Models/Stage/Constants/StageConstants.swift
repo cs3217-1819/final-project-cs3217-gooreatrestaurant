@@ -63,7 +63,7 @@ class StageConstants {
     static let backgroundZPos = CGFloat(-1)
     static let spaceshipZPos = CGFloat(0)
     static let ladderZPos = CGFloat(1)
-    static let slimeZPos = CGFloat(2)
+    static let slimeZPos = CGFloat(5)
     static let stationZPos = CGFloat(3)
     static let joystickZPos = CGFloat(4)
     static let buttonZPos = CGFloat(4)
