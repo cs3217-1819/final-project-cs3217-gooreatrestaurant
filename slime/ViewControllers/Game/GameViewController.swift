@@ -20,25 +20,6 @@ class GameViewController: UIViewController {
 
    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-
-        // for user testing
-        // TO DO: remove this
-        let stage = Stage()
-        let skview = SKView(frame: view.safeAreaLayoutGuide.layoutFrame)
-        skview.frame = CGRect(x: 0.0, y: 0.0, width: ScreenSize.width, height: ScreenSize.height)
-        skview.presentScene(stage)
-        skView.ignoresSiblingOrder = true
-        skView.showsFPS = true
-        skView.showsNodeCount = true
-        view.addSubview(skview)
-
-        stage.generateLevel(inLevel: "Level1")
-
-//        newCollection.delegate = self
-//        newCollection.dataSource = self
-//        newCollection.register(IngredientsCell.self, forCellWithReuseIdentifier: "MyCell")
-//        view.addSubview(newCollection)
-//        setupCollection()
     }
 
     lazy var skView: SKView = {
@@ -51,6 +32,23 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        // TO DO: remove this
+        let stage = Stage()
+        let skview = SKView(frame: view.safeAreaLayoutGuide.layoutFrame)
+        skview.frame = CGRect(x: 0.0, y: 0.0, width: ScreenSize.width, height: ScreenSize.height)
+        skview.presentScene(stage)
+        skView.ignoresSiblingOrder = true
+        skView.showsFPS = true
+        skView.showsNodeCount = true
+        view.addSubview(skview)
+
+        stage.generateLevel(inLevel: "Level1")
+
+        //        newCollection.delegate = self
+        //        newCollection.dataSource = self
+        //        newCollection.register(IngredientsCell.self, forCellWithReuseIdentifier: "MyCell")
+        //        view.addSubview(newCollection)
+        //        setupCollection()
     }
 
     func setupCollection(){
