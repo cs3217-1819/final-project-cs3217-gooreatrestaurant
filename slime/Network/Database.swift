@@ -160,11 +160,22 @@ protocol GameDatabase {
     ///     - onError: fired when an error happens
     func observeGameState(forGameId id: String, _ onDataChange: @escaping (GameModel) -> Void, _ onError: @escaping (Error) -> Void)
     
+    func queueOrder(forGameId id: String, withOrder order: Order, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void)
+    
     // MARK: Other methods
     
-    func observeRejoinGame()
+    /// checks whether a game exists for rejoin
+    /// if a game exists, then it will return a closure
+    /// with the game id string passed through the
+    /// closure
+    /// - Parameters:
+    ///     - onGameExist: a closure fired when there
+    ///       exists a game for the user to rejoin
+    ///     - onError: a closure fired when an error
+    ///       occurs
+    func checkRejoinGame(_ onGameExist: @escaping (String) -> Void, _ onError: @escaping (Error) -> Void)
     
-    /// rejoins a game after disconnect
+    /// rejoins a game
     /// - Parameters:
     ///     - forGameId: the game id to reconnect to
     ///     - onSuccess: closure run after successful
@@ -212,6 +223,17 @@ struct FirebaseKeys {
     
     // game keys
     static let games = "games"
+    static let games_gameMap = "game_map"
+    static let games_hasEnded = "has_ended"
+    static let games_startTime = "start_time"
+    static let games_players = "players"
+    static let games_players_isConnected = "is_connected"
+    static let games_stations = "stations"
+    static let games_objects = "objects"
+    static let games_orders = "orders"
+    
+    // rejoin keys
+    static let rejoins = "rejoins"
     
     /// joins keys with the required separator
     /// - Parameters:
@@ -404,7 +426,6 @@ class GameDB: GameDatabase {
                 return
             }
         }
-        
     }
     
     func createRoom(withRoomName name: String, withMap map: String, _ onSuccess: @escaping (String) -> Void, _ onError: @escaping (Error) -> Void) {
@@ -599,6 +620,11 @@ class GameDB: GameDatabase {
         }
     }
     
+    func queueOrder(forGameId id: String, withOrder order: Order, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void) {
+        
+    }
+    
+    
     func changeRoomMap(fromRoomId id: String, toMapId mapId: String, _ onError: @escaping (Error) -> Void) {
         let ref = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.rooms, id, FirebaseKeys.rooms_mapName]))
         
@@ -630,8 +656,22 @@ class GameDB: GameDatabase {
         self.observers.append(Observer(withHandle: handle, withRef: ref))
     }
     
-    func observeRejoinGame() {
-        // TODO
+    func checkRejoinGame(_ onGameExist: @escaping (String) -> Void, _ onError: @escaping (Error) -> Void) {
+        guard let user = GameAuth.currentUser else {
+            return
+        }
+        
+        let ref = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.rejoins, user.uid]))
+        
+        ref.observeSingleEvent(of: .value, with: { (snap) in
+            guard let gameId = snap.value as? String else {
+                return
+            }
+            
+            onGameExist(gameId)
+        }, withCancel: { (err) in
+            onError(err)
+        })
     }
     
     func rejoinGame(forGameId id: String, _ onSuccess: @escaping () -> Void, _ onError: @escaping (Error) -> Void) {

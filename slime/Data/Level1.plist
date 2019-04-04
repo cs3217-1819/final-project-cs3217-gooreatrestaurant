@@ -68,7 +68,9 @@
 	<key>fryingEquipment</key>
 	<array/>
 	<key>oven</key>
-	<array/>
+	<array>
+		<string>{135,-35}</string>
+	</array>
 	<key>ingredientStorage</key>
 	<array>
 		<dict>
@@ -77,13 +79,19 @@
 			<key>position</key>
 			<string>{-25, -149}</string>
 		</dict>
+		<dict>
+			<key>type</key>
+			<string>2</string>
+			<key>position</key>
+			<string>{25, 66}</string>
+		</dict>
 	</array>
 	<key>plateStorage</key>
 	<array>
 		<string>{-15,-60}</string>
 	</array>
 	<key>storefront</key>
-	<string>{-140,15}</string>
+	<string>{-140,10}</string>
 	<key>table</key>
 	<array/>
 	<key>trashBin</key>

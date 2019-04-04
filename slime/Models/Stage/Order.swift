@@ -9,10 +9,10 @@
 import UIKit
 
 class Order {
-    var timeLimit: Int
+    var timeLimit: CGFloat
     let recipeWanted: Recipe
 
-    init(_ recipe: Recipe, withinTime time: Int) {
+    init(_ recipe: Recipe, withinTime time: CGFloat) {
         self.timeLimit = time
         self.recipeWanted = recipe
     }
