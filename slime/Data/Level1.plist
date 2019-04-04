@@ -127,7 +127,7 @@
 					<key>type</key>
 					<string>1</string>
 					<key>processing</key>
-					<string>1</string>
+					<string>1,2,3</string>
 					<key>probability</key>
 					<string>0.0</string>
 				</dict>
