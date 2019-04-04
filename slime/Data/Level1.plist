@@ -24,7 +24,9 @@
 		<string>{10,10}</string>
 		<string>{55,10}</string>
 		<string>{55,55}</string>
-		<string>{-20,55}</string>
+		<string>{-50,55}</string>
+		<string>{-50,50}</string>
+		<string>{-20,50}</string>
 		<string>{-20,-5}</string>
 		<string>{-40,-5}</string>
 	</array>
