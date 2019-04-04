@@ -170,19 +170,23 @@ class Stage: SKScene {
 
         let ingredient = Ingredient(type: ingredientType)
 
-        guard let processing = data["processing"] else {
+        guard let processingValue = data["processing"] else {
             return nil
         }
 
-        guard let processingEnum = Int(processing) else {
-            return nil
+        // multiple processing separated by comma in the plist
+        for processing in processingValue.split(separator: ",") {
+            guard let processingEnum = Int(processing) else {
+                return nil
+            }
+
+            guard let processingType = CookingType(rawValue: processingEnum) else {
+                return nil
+            }
+
+            ingredient.cook(by: processingType)
         }
 
-        guard let processingType = CookingType(rawValue: processingEnum) else {
-            return nil
-        }
-
-        ingredient.processed = processingType
         return ingredient
     }
 
