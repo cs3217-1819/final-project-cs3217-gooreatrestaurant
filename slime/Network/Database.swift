@@ -158,6 +158,50 @@ protocol GameDatabase {
     ///     - onError: fired when an error happens
     func observeGameState(forGameId id: String, _ onDataChange: @escaping (GameModel) -> Void, _ onError: @escaping (Error) -> Void)
     
+    /// updates a player position inside the game
+    /// id specified inside this method
+    /// - Parameters:
+    ///     - forGameId: the game id for which the
+    ///       position of the player is to updated
+    ///     - position: the position of the player
+    func updatePlayerPosition(forGameId id: String, position: Int, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void)
+    
+    /// adds an order to the end of the current list
+    /// of orders
+    /// - Parameters:
+    ///     - forGameId: the game id for which the order
+    ///       is to be queued
+    ///     - withOrder: the order to be queued
+    ///     - onComplete: a closure run after this
+    ///       method has completed
+    ///     - onError: a closure run when this method
+    ///       throws an error
+    func queueOrder(forGameId id: String, withOrder order: Order, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void)
+    
+    /// submits an order to be compared with the list of
+    /// available orders, returning the earliest possible
+    /// match.
+    /// - Parameters:
+    ///     - forGameId: the game id for which the order
+    ///       is to be submitted to
+    ///     - forOrder: the order to be submitted
+    ///     - onComplete: completion block with a string
+    ///       represting the order key, nil if there is no
+    ///       match
+    ///     - onError: an closure block run when an error
+    ///       occurs
+    func submitOrder(forGameId id: String, forOrder order: Order, _ onComplete: @escaping (String?) -> Void, _ onError: @escaping (Error) -> Void)
+    
+    /// removes an order from the current list of orders
+    /// wtih a specified key
+    /// - Parameters:
+    ///     - forGameId: the game id for which the order is
+    ///       to be removed
+    ///     - forOrderKey: the key for the order
+    ///     - onComplete: completion block after successful
+    ///       removal
+    ///     - onError: a closure run when an error occurs
+    func removeOrder(forGameId id: String, forOrderKey key: String, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void)
     
     // MARK: Other methods
     
