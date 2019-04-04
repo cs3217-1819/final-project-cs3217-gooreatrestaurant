@@ -112,10 +112,25 @@ class Stage: SKScene {
         return button
     }()
 
+    var counter = 0
+    lazy var countdownLabel: SKLabelNode =  {
+        print("label")
+        var label = SKLabelNode(fontNamed: "HelveticaNeue-UltraLight")
+        label.fontSize = CGFloat(100)
+        label.zPosition = 10
+        label.color = .red
+        label.horizontalAlignmentMode = .left
+        label.verticalAlignmentMode = .center
+        label.text = "\(counter)"
+        label.position = CGPoint(x: 0, y: 0)
+        return label
+    }()
+
     func setupControl() {
         self.addChild(jumpButton)
         self.addChild(interactButton )
         self.addChild(analogJoystick)
+        self.addChild(countdownLabel)
 
         analogJoystick.trackingHandler = { [unowned self] data in
             if data.velocity.x > 0.0 {
