@@ -160,6 +160,8 @@ protocol GameDatabase {
     ///     - onError: fired when an error happens
     func observeGameState(forGameId id: String, _ onDataChange: @escaping (GameModel) -> Void, _ onError: @escaping (Error) -> Void)
     
+    func queueOrder(forGameId id: String, withOrder order: Order, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void)
+    
     // MARK: Other methods
     
     /// checks whether a game exists for rejoin
@@ -617,6 +619,11 @@ class GameDB: GameDatabase {
             onComplete()
         }
     }
+    
+    func queueOrder(forGameId id: String, withOrder order: Order, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void) {
+        
+    }
+    
     
     func changeRoomMap(fromRoomId id: String, toMapId mapId: String, _ onError: @escaping (Error) -> Void) {
         let ref = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.rooms, id, FirebaseKeys.rooms_mapName]))
