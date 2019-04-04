@@ -145,15 +145,20 @@ class Stage: SKScene {
                 self.slimeToControl?.moveLeft(withSpeed: -data.velocity.x)
             }
 
-            if data.velocity.y > abs(data.velocity.x) {
-                self.slimeToControl?.jump()
-            }
-
             if data.velocity.y > 0.0 {
                 self.slimeToControl?.moveUp(withSpeed: data.velocity.y)
             } else if data.velocity.y < 0.0 {
                 self.slimeToControl?.moveDown(withSpeed: -data.velocity.y)
             }
+
+            // This part is for prevent accidental jumping when moving horizontally
+            // (since it is difficult for the players to walk horizontally without any angle in tilting the joystick)
+            let magicNumber = CGFloat(0.75)
+
+            if data.velocity.y > magicNumber * abs(data.velocity.x) {
+                self.slimeToControl?.jump()
+            }
+
         }
     }
 

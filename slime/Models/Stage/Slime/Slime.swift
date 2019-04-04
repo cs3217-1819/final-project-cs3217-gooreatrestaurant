@@ -109,7 +109,6 @@ class Slime: SKSpriteNode {
     }
 
     func interact() {
-        print("interact")
         guard let contactedBodies = self.physicsBody?.allContactedBodies() else {
             return
         }
