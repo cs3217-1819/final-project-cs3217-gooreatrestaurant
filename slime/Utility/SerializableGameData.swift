@@ -22,7 +22,7 @@ public class SerializableGameData: Codable {
     public var fryingEquipment: [String]
     public var choppingEquipment: [String]
     public var border: [String]
-    public var blockedArea: [String]
+    public var blockedArea: [[String]]
     public var ladder: [String]
     public var slimeInitPos: String
 
@@ -71,7 +71,7 @@ public class SerializableGameData: Codable {
         let fryingEquipment: [String] = try container.decode([String].self, forKey: .fryingEquipment)
         let choppingEquipment: [String] = try container.decode([String].self, forKey: .choppingEquipment)
         let border: [String] = try container.decode([String].self, forKey: .border)
-        let blockedArea: [String] = try container.decode([String].self, forKey: .blockedArea)
+        let blockedArea: [[String]] = try container.decode([[String]].self, forKey: .blockedArea)
         let ladder: [String] = try container.decode([String].self, forKey: .ladder)
         let slimeInitPos: String = try container.decode(String.self, forKey: .slimeInitPos)
 

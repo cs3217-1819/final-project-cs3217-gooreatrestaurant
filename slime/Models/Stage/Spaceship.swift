@@ -36,18 +36,22 @@ class Spaceship: SKSpriteNode {
         self.addChild(slime)
     }
 
-    func addWall(inCoord coordinates: [String]) {
+    func addWall(inCoord coordinates: [[String]]) {
         var gameAreaCoord: [CGPoint] = []
         for item in coordinates {
-            gameAreaCoord.append(NSCoder.cgPoint(for: item))
+            for point in item {
+                gameAreaCoord.append(NSCoder.cgPoint(for: point))
+            }
+            print(gameAreaCoord)
+            let wallBorder = SKNode()
+            wallBorder.position = CGPoint(x: self.frame.midX, y: self.frame.midY)
+            let ground = SKShapeNode(points: &gameAreaCoord, count: gameAreaCoord.count)
+            wallBorder.physicsBody = SKPhysicsBody(edgeLoopFrom: ground.path!)
+            //        wallBorder.physicsBody = SKPhysicsBody(edgeLoopFrom: ground.path!)
+            wallBorder.physicsBody?.categoryBitMask = StageConstants.wallCategoryCollision
+            wallBorder.physicsBody?.isDynamic = false
+            self.addChild(wallBorder)
         }
-        let wallBorder = SKNode()
-        wallBorder.position = CGPoint(x: self.frame.midX, y: self.frame.midY)
-        let ground = SKShapeNode(points: &gameAreaCoord, count: gameAreaCoord.count)
-        wallBorder.physicsBody = SKPhysicsBody(edgeLoopFrom: ground.path!)
-        wallBorder.physicsBody?.categoryBitMask = StageConstants.wallCategoryCollision
-        wallBorder.physicsBody?.isDynamic = false
-        self.addChild(wallBorder)
     }
 
     func addLadder(inPositions positions: [String]) {

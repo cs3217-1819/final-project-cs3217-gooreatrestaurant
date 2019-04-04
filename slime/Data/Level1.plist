@@ -19,16 +19,18 @@
 	</array>
 	<key>blockedArea</key>
 	<array>
-		<string>{-40,-10}</string>
-		<string>{10,-10}</string>
-		<string>{10,10}</string>
-		<string>{55,10}</string>
-		<string>{55,55}</string>
-		<string>{-50,55}</string>
-		<string>{-50,50}</string>
-		<string>{-20,50}</string>
-		<string>{-20,-5}</string>
-		<string>{-40,-5}</string>
+		<array>
+			<string>{-40,-5}</string>
+			<string>{-20,-5}</string>
+			<string>{-20,50}</string>
+			<string>{-50,50}</string>
+			<string>{-50,55}</string>
+			<string>{55,55}</string>
+			<string>{55,10}</string>
+			<string>{10,10}</string>
+			<string>{10,-10}</string>
+			<string>{-40,-10}</string>
+		</array>
 	</array>
 	<key>border</key>
 	<array>
