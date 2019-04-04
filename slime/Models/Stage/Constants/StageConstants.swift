@@ -48,6 +48,10 @@ class StageConstants {
     static let interactButtonPosition = CGPoint(x: ScreenSize.width * 0.5 - 45,
                                             y: ScreenSize.height * -0.5 + 90)
 
+    //timer position
+    static let timerPosition = CGPoint(x: ScreenSize.width * -0.5 + 100,
+                                       y: ScreenSize.height * 0.5 - 90)
+
     // collision bitmask
     static let wallCategoryCollision: UInt32 = 1 << 0
 

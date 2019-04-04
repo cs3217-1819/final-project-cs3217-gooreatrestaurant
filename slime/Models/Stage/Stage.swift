@@ -125,29 +125,9 @@ class Stage: SKScene {
         label.horizontalAlignmentMode = .left
         label.verticalAlignmentMode = .center
         label.text = "\(counterStartTime)"
-        label.position = CGPoint(x: 0, y: 0)
+        label.position = StageConstants.timerPosition
         return label
     }()
-
-    func startCounter() {
-        counterTime = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(decrementCounter), userInfo: nil, repeats: true)
-    }
-
-    @objc func decrementCounter() {
-        if !isGameOver {
-            if counter <= 1 {
-                isGameOver = true
-                gameOver(ifWon: false)
-            }
-            
-            counter -= 1
-            countdownLabel.text = "\(counter)"
-        }
-    }
-
-    func gameOver(ifWon: Bool) {
-        print("gameOver!")
-    }
 
     func setupControl() {
         self.addChild(jumpButton)
@@ -326,6 +306,26 @@ class Stage: SKScene {
         let temp = MenuPrefab(color: .clear, size: CGSize(width: 100, height: 100))
         temp.addRecipe(inRecipe: recipe)
         self.addChild(temp)
+    }
+
+    func startCounter() {
+        counterTime = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(decrementCounter), userInfo: nil, repeats: true)
+    }
+
+    @objc func decrementCounter() {
+        if !isGameOver {
+            if counter <= 1 {
+                isGameOver = true
+                gameOver(ifWon: false)
+            }
+
+            counter -= 1
+            countdownLabel.text = "\(counter)"
+        }
+    }
+
+    func gameOver(ifWon: Bool) {
+        print("gameOver!")
     }
 
     required init?(coder aDecoder: NSCoder) {
