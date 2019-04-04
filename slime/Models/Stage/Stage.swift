@@ -236,9 +236,10 @@ class Stage: SKScene {
         }
     }
 
-    func addOrder(ofRecipe recipe: Recipe, withinTime time: Int = StageConstants.defaultTimeLimitOrder) {
+    func addOrder(ofRecipe recipe: Recipe, withinTime time: CGFloat = StageConstants.defaultTimeLimitOrder) {
         let order = Order(recipe, withinTime: time)
         orders.append(order)
+        generateMenu(inOrder: order)
     }
 
     // For multiplayer (future use)
@@ -299,12 +300,11 @@ class Stage: SKScene {
             return
         }
         self.addOrder(ofRecipe: randomRecipe)
-        generateMenu(inRecipe: randomRecipe)
     }
 
-    func generateMenu(inRecipe recipe: Recipe) {
+    func generateMenu(inOrder order: Order) {
         let temp = MenuPrefab(color: .clear, size: CGSize(width: 100, height: 100))
-        temp.addRecipe(inRecipe: recipe)
+        temp.addRecipe(inOrder: order)
         self.addChild(temp)
     }
 
