@@ -377,8 +377,68 @@ class GameDB: GameDatabase {
         }
     }
     
-    func queueOrder(forGameId id: String, withOrder order: Order, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void) {
+    func updatePlayerPosition(forGameId id: String, position: Int, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void) {
+        guard let user = GameAuth.currentUser else {
+            return
+        }
         
+//        let ref = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, id, FirebaseKeys.games_players, user.uid, FirebaseKeys.position]))
+        // TODO
+    }
+    
+    func queueOrder(forGameId id: String, withOrder order: Order, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void) {
+        let ref = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, id, FirebaseKeys.games_orders]))
+        
+        guard let key = ref.childByAutoId().key else { return }
+        
+        // TODO
+        let dict = ["order": "order"]
+        
+        ref.child(key).setValue(dict) { (err, ref) in
+            if let error = err {
+                onError(error)
+            }
+            
+            onComplete()
+        }
+    }
+    
+    func submitOrder(forGameId id: String, forOrder order: Order, _ onComplete: @escaping (String?) -> Void, _ onError: @escaping (Error) -> Void) {
+        let ref = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, id, FirebaseKeys.games_orders])).queryLimited(toFirst: 1).queryEqual(toValue: order.recipeWanted, childKey: FirebaseKeys.games_orders_recipeName)
+        
+        ref.observeSingleEvent(of: .value, with: { (snap) in
+            guard var dict = snap.value as? [String : AnyObject] else {
+                // no recipe match
+                onComplete(nil)
+                return
+            }
+            
+            if dict.count > 1 {
+                onComplete(nil)
+                return
+            }
+            
+            guard let order = dict.popFirst() else {
+                onComplete(nil)
+                return
+            }
+            
+            onComplete(order.key)
+        }) { (err) in
+            onError(err)
+        }
+    }
+    
+    func removeOrder(forGameId id: String, forOrderKey key: String, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void) {
+        let ref = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, id, FirebaseKeys.games_orders, key]))
+        
+        ref.setValue(nil) { (err, ref) in
+            if let error = err {
+                onError(error)
+            }
+            
+            onComplete()
+        }
     }
     
     
