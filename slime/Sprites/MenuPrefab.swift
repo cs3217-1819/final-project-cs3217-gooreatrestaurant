@@ -14,8 +14,8 @@ class MenuPrefab : SKSpriteNode {
     var greenBar: SKSpriteNode
     var timer: Timer =  Timer()
 
-    var time: CGFloat = 10.0
-    let duration: CGFloat = 10.0
+    var time: CGFloat = StageConstants.defaultTimeLimitOrder
+    let duration: CGFloat = StageConstants.defaultTimeLimitOrder
 
     override init(texture: SKTexture?, color: UIColor, size: CGSize) {
         let spaceshipBody = SKTexture(imageNamed: "Menu-Slimes_01")
@@ -34,14 +34,14 @@ class MenuPrefab : SKSpriteNode {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func addRecipe(inRecipe: Recipe) {
+    func addRecipe(inOrder: Order) {
         //Adding image of the main recipe
-        let dish = SKSpriteNode(imageNamed: inRecipe.recipeName)
+        let dish = SKSpriteNode(imageNamed: inOrder.recipeWanted.recipeName)
         dish.position = CGPoint(x: 0, y: 20)
         dish.zPosition = 5
         dish.size = CGSize(width: 50, height: 50)
 
-        for (key, _) in inRecipe.ingredientsNeeded {
+        for (key, _) in inOrder.recipeWanted.ingredientsNeeded {
             self.addChild(addIngredient(inInt: key.type.rawValue))
         }
 

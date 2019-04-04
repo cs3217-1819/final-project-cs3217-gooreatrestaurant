@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SpriteKit
 
 class Oven: CookingEquipment {
 
@@ -15,6 +16,8 @@ class Oven: CookingEquipment {
                    inPosition: position,
                    withSize: size,
                    canProcessIngredients: [.apple])
+        self.texture = SKTexture(imageNamed: "Oven")
+        self.size = CGSize(width: 50, height: 50)
     }
 
     required init?(coder aDecoder: NSCoder) {
