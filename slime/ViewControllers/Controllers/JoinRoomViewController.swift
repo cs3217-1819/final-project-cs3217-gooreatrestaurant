@@ -27,7 +27,7 @@ class JoinRoomViewController: ViewController<JoinRoomView> {
                 self.context.modal.closeAlert()
             }, {
                 // room contains 4 players already
-                self.showErrorAlert(withDescription: "Room if full!")
+                self.showErrorAlert(withDescription: "Room is full!")
             }, {
                 // room does not exist
                 self.showErrorAlert(withDescription: "Room does not exist!!")
