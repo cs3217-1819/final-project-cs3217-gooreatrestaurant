@@ -25,7 +25,6 @@ class Stage: SKScene {
     }
 
     override init(size: CGSize = CGSize(width: StageConstants.maxXAxisUnits, height: StageConstants.maxYAxisUnits)) {
-        print("TEST")
         spaceship = Spaceship(inPosition: StageConstants.spaceshipPosition, withSize: StageConstants.spaceshipSize)
         super.init(size: size)
         let background = SKSpriteNode(imageNamed: "background-1")
@@ -119,7 +118,6 @@ class Stage: SKScene {
     var isGameOver = false
 
     lazy var countdownLabel: SKLabelNode =  {
-        print("label")
         var label = SKLabelNode(fontNamed: "HelveticaNeue-UltraLight")
         label.fontSize = CGFloat(100)
         label.zPosition = 10
@@ -137,13 +135,13 @@ class Stage: SKScene {
 
     @objc func decrementCounter() {
         if !isGameOver {
+            if counter <= 1 {
+                isGameOver = true
+                gameOver(ifWon: false)
+            }
+            
             counter -= 1
             countdownLabel.text = "\(counter)"
-        }
-
-        if counter <= 0 {
-            isGameOver = true
-            gameOver(ifWon: false)
         }
     }
 
