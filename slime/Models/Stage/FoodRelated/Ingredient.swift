@@ -13,6 +13,9 @@ class Ingredient: SKSpriteNode {
     var type: IngredientType
     var processed: [CookingType] = []
 
+    var currentProcessing: CookingType?
+    var processingProgress = 0
+
     init(type: IngredientType,
          size: CGSize = StageConstants.ingredientSize,
          inPosition position: CGPoint = CGPoint.zero) {
@@ -26,12 +29,25 @@ class Ingredient: SKSpriteNode {
         self.physicsBody?.collisionBitMask = StageConstants.wallCategoryCollision
     }
 
-    func cook(by method: CookingType) {
-        if self.processed != [] && self.processed.last != method {
-            self.ruin()
+    // Progress 100 denotes that cooking will be done
+    func cook(by method: CookingType, withProgress progress: Int = 100) {
+        guard currentProcessing == nil || currentProcessing == method else {
             return
         }
-        self.processed.append(method)
+
+        // to prevent overcook trauma because of misclick when tapping repeatedly
+        guard processed.last != method else {
+            return
+        }
+
+        currentProcessing = method
+        processingProgress += progress
+
+        if processingProgress >= 100 {
+            currentProcessing = nil
+            processingProgress = 0
+            processed.append(method)
+        }
     }
 
     func ruin() {
