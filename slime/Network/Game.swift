@@ -9,3 +9,7 @@
 class GameModel {
     
 }
+
+class GamePlayerModel {
+    
+}

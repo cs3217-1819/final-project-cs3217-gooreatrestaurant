@@ -185,6 +185,7 @@
 		F92ECAE6224BAEDB0040A4E2 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92ECAE5224BAEDB0040A4E2 /* Room.swift */; };
 		F92ECAE8224BAEEF0040A4E2 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92ECAE7224BAEEF0040A4E2 /* Game.swift */; };
 		F92ECAEA224D1B490040A4E2 /* FadeInOutSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92ECAE9224D1B490040A4E2 /* FadeInOutSegue.swift */; };
+		F9F26FEE22564873008BFD50 /* GameDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F26FED22564873008BFD50 /* GameDB.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -383,6 +384,7 @@
 		F92ECAE5224BAEDB0040A4E2 /* Room.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 		F92ECAE7224BAEEF0040A4E2 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		F92ECAE9224D1B490040A4E2 /* FadeInOutSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FadeInOutSegue.swift; sourceTree = "<group>"; };
+		F9F26FED22564873008BFD50 /* GameDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDB.swift; sourceTree = "<group>"; };
 		FC54AF03EC549BA6D820D01E /* Pods-slime.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-slime.release.xcconfig"; path = "Pods/Target Support Files/Pods-slime/Pods-slime.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1002,6 +1004,7 @@
 				F92ECAE3224BAEBD0040A4E2 /* Authentication.swift */,
 				F92ECAE5224BAEDB0040A4E2 /* Room.swift */,
 				F92ECAE7224BAEEF0040A4E2 /* Game.swift */,
+				F9F26FED22564873008BFD50 /* GameDB.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -1254,6 +1257,7 @@
 				1DD6EBE5224E76F0006FF6CD /* IngredientType.swift in Sources */,
 				ECD45543223FACC4006AF78D /* ModalController.swift in Sources */,
 				EC382475223A1AA4000D7148 /* ColorStyles.swift in Sources */,
+				F9F26FEE22564873008BFD50 /* GameDB.swift in Sources */,
 				EC449B83223B917C00A8EA35 /* CGPointExtension.swift in Sources */,
 				EC81B7892254A3A600B6F7EE /* KeyboardService.swift in Sources */,
 				EC6E99E8224F1BB400A9554C /* LocalDataProvider.swift in Sources */,
