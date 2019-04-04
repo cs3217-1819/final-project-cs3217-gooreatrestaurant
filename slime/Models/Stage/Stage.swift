@@ -25,6 +25,7 @@ class Stage: SKScene {
     }
 
     override init(size: CGSize = CGSize(width: StageConstants.maxXAxisUnits, height: StageConstants.maxYAxisUnits)) {
+        print("TEST")
         spaceship = Spaceship(inPosition: StageConstants.spaceshipPosition, withSize: StageConstants.spaceshipSize)
         super.init(size: size)
         let background = SKSpriteNode(imageNamed: "background-1")
@@ -113,6 +114,10 @@ class Stage: SKScene {
     }()
 
     var counter = 0
+    var counterTime = Timer()
+    var counterStartTime = 30
+    var isGameOver = false
+
     lazy var countdownLabel: SKLabelNode =  {
         print("label")
         var label = SKLabelNode(fontNamed: "HelveticaNeue-UltraLight")
@@ -121,16 +126,39 @@ class Stage: SKScene {
         label.color = .red
         label.horizontalAlignmentMode = .left
         label.verticalAlignmentMode = .center
-        label.text = "\(counter)"
+        label.text = "\(counterStartTime)"
         label.position = CGPoint(x: 0, y: 0)
         return label
     }()
+
+    func startCounter() {
+        counterTime = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(decrementCounter), userInfo: nil, repeats: true)
+    }
+
+    @objc func decrementCounter() {
+        if !isGameOver {
+            counter -= 1
+            countdownLabel.text = "\(counter)"
+        }
+
+        if counter <= 0 {
+            isGameOver = true
+            gameOver(ifWon: false)
+        }
+    }
+
+    func gameOver(ifWon: Bool) {
+        print("gameOver!")
+    }
 
     func setupControl() {
         self.addChild(jumpButton)
         self.addChild(interactButton )
         self.addChild(analogJoystick)
         self.addChild(countdownLabel)
+
+        counter = counterStartTime
+        startCounter()
 
         analogJoystick.trackingHandler = { [unowned self] data in
             if data.velocity.x > 0.0 {
