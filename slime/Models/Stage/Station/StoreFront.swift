@@ -30,7 +30,7 @@ class StoreFront: Station {
         guard let stage = self.scene as? Stage else {
             return item
         }
-
+        
         stage.serve(plate)
 
         return nil

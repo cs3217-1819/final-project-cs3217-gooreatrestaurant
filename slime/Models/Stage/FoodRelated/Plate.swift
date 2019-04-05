@@ -13,7 +13,9 @@ class Plate: SKSpriteNode {
     let food = Food()
 
     init(inPosition position: CGPoint, withSize size: CGSize = StageConstants.plateSize) {
-        super.init(texture: nil, color: .black, size: size)
+        let plate = SKTexture(imageNamed: "Plate")
+        plate.filteringMode = .nearest
+        super.init(texture: plate, color: .clear, size: size)
         self.name = StageConstants.plateName
         self.physicsBody = SKPhysicsBody(rectangleOf: size)
         self.physicsBody?.categoryBitMask = StageConstants.plateCategory
