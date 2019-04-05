@@ -14,6 +14,10 @@ class CookingEquipment: Station {
     let cookingType: CookingType
     var ingredientsAllowed: Set<IngredientType> = []
 
+    var ingredientInProcess: SKNode? {
+        return children.first
+    }
+
     init(type: CookingType,
          inPosition position: CGPoint,
          withSize size: CGSize,
@@ -30,10 +34,11 @@ class CookingEquipment: Station {
     }
 
     override func ableToProcess(_ item: SKSpriteNode?) -> Bool {
-        if item is Ingredient {
-            return true
-        }
-        return false
+
+        let willPut = (item is Ingredient && self.ingredientInProcess == nil)
+        let willProcess = (item == nil && self.ingredientInProcess != nil)
+
+        return willPut || willProcess
     }
 
     override func process(_ item: SKSpriteNode?) -> SKSpriteNode? {
@@ -41,18 +46,69 @@ class CookingEquipment: Station {
             return nil
         }
 
-        guard let ingredient = item as? Ingredient else {
+        let willPut = (item is Ingredient && self.ingredientInProcess == nil)
+        let willProcess = (item == nil && self.ingredientInProcess != nil)
+
+        if willPut {
+            guard let ingredientToPut = item as? Ingredient else {
+                return item
+            }
+            putIngredient(ingredientToPut)
             return nil
+
+        } else if willProcess {
+            guard let ingredient = self.ingredientInProcess as? Ingredient else {
+                return nil
+            }
+            if ingredient.type == .junk || ingredient.processed.last == self.cookingType {
+                guard let toTake = takeIngredientInProcess() else {
+                    return nil
+                }
+                return toTake
+            } else {
+                manualProcessing()
+                return nil
+            }
+        }
+        return nil
+    }
+
+    func continueProcessing(withProgress progress: Int) {
+        guard let ingredient = ingredientInProcess as? Ingredient else {
+            return
         }
 
         if ingredientsAllowed.contains(ingredient.type) {
-//            ingredient.cook(by: self.cookingType)
-            ingredient.cook(by: self.cookingType, withProgress: 20)
+            ingredient.cook(by: self.cookingType, withProgress: progress)
         } else {
             ingredient.ruin()
         }
+    }
 
-        return ingredient
+    func automaticProcessing() {
+        continueProcessing(withProgress: 0)
+    }
+
+    func manualProcessing() {
+        continueProcessing(withProgress: 100)
+    }
+
+    func putIngredient(_ ingredient: Ingredient) {
+        guard ingredientInProcess == nil else {
+            return
+        }
+
+        ingredient.removeFromParent()
+        ingredient.position = CGPoint(x: 0.0, y: 0.5 * (ingredient.size.height + self.size.height))
+        addChild(ingredient)
+    }
+
+    func takeIngredientInProcess() -> SKSpriteNode? {
+        guard let toTake = ingredientInProcess as? SKSpriteNode else {
+            return nil
+        }
+        toTake.removeFromParent()
+        return toTake
     }
 
     required init?(coder aDecoder: NSCoder) {

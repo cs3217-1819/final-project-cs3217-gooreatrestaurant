@@ -21,10 +21,7 @@ class Table: Station {
         let willPut = (item != nil && self.item == nil)
         let willAddIngredient = (item is Ingredient && self.item is Plate)
 
-        if willTake || willPut || willAddIngredient {
-            return true
-        }
-        return false
+        return willTake || willPut || willAddIngredient
     }
 
     override func process(_ item: SKSpriteNode?) -> SKSpriteNode? {

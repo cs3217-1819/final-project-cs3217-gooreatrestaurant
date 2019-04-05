@@ -63,6 +63,7 @@ class Ingredient: SKSpriteNode {
 
     func ruin() {
         self.type = .junk
+        self.processed = []
     }
 
     override var hash: Int {
