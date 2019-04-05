@@ -21,4 +21,11 @@ class ChoppingEquipment: CookingEquipment {
         fatalError("init(coder:) has not been implemented")
     }
 
+    override func automaticProcessing() {
+        continueProcessing(withProgress: 0.0)
+    }
+
+    override func manualProcessing() {
+        continueProcessing(withProgress: 20.0)
+    }
 }

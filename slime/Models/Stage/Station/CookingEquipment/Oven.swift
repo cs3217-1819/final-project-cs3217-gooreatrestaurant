@@ -23,4 +23,13 @@ class Oven: CookingEquipment {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+    // 60 fps, so 120 count is 2 seconds
+    override func automaticProcessing() {
+        continueProcessing(withProgress: 100.0 / 120.0)
+    }
+
+    override func manualProcessing() {
+        continueProcessing(withProgress: 0.0)
+    }
 }

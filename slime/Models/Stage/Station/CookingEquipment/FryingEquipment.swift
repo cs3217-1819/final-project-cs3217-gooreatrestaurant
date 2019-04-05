@@ -20,4 +20,12 @@ class FryingEquipment: CookingEquipment {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+    override func automaticProcessing() {
+        continueProcessing(withProgress: 10.0)
+    }
+
+    override func manualProcessing() {
+        continueProcessing(withProgress: 10.0)
+    }
 }

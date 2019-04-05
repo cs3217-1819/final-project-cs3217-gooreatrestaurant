@@ -78,6 +78,12 @@ class CookingEquipment: Station {
             return
         }
 
+        // If not, then all non allowed ingredients put (even not process) here will become junk
+        // because of automatic processing of 0.0
+        if progress == 0.0 {
+            return
+        }
+
         if ingredientsAllowed.contains(ingredient.type) {
             ingredient.cook(by: self.cookingType, withProgress: progress)
         } else {
