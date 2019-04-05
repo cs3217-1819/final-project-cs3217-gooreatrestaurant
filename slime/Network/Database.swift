@@ -171,12 +171,12 @@ protocol GameDatabase {
     /// - Parameters:
     ///     - forGameId: the game id for which the order
     ///       is to be queued
-    ///     - withOrder: the order to be queued
+    ///     - withRecipe: the recipe of the order to be queued
     ///     - onComplete: a closure run after this
     ///       method has completed
     ///     - onError: a closure run when this method
     ///       throws an error
-    func queueOrder(forGameId id: String, withOrder order: Order, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void)
+    func queueOrder(forGameId id: String, withRecipe recipe: Recipe, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void)
     
     /// submits an order to be compared with the list of
     /// available orders, returning the earliest possible
@@ -184,13 +184,13 @@ protocol GameDatabase {
     /// - Parameters:
     ///     - forGameId: the game id for which the order
     ///       is to be submitted to
-    ///     - forOrder: the order to be submitted
+    ///     - withRecipe: the recipe of the order to be submitted
     ///     - onComplete: completion block with a string
-    ///       represting the order key, nil if there is no
+    ///       representing the order key, nil if there is no
     ///       match
     ///     - onError: an closure block run when an error
     ///       occurs
-    func submitOrder(forGameId id: String, forOrder order: Order, _ onComplete: @escaping (String?) -> Void, _ onError: @escaping (Error) -> Void)
+    func submitOrder(forGameId id: String, withRecipe recipe: Recipe, _ onComplete: @escaping (String?) -> Void, _ onError: @escaping (Error) -> Void)
     
     /// removes an order from the current list of orders
     /// wtih a specified key
