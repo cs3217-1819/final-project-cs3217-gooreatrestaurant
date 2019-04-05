@@ -14,8 +14,6 @@ class Stage: SKScene {
     typealias RecipeData = [String: [DictString]]
 
     var spaceship: Spaceship
-    var orders: [Order] = []
-    var possibleRecipes: Set<Recipe> = []
 
     // RI: the players are unique
     var players: [Player] = []
@@ -30,6 +28,10 @@ class Stage: SKScene {
     override init(size: CGSize = CGSize(width: StageConstants.maxXAxisUnits, height: StageConstants.maxYAxisUnits)) {
         spaceship = Spaceship(inPosition: StageConstants.spaceshipPosition, withSize: StageConstants.spaceshipSize)
         super.init(size: size)
+
+        let order = OrderQueue(withNumberOfRecipeShown: StageConstants.numbersOfOrdersShown)
+        self.addChild(order)
+
         let background = SKSpriteNode(imageNamed: "background-1")
         background.position = StageConstants.spaceshipPosition
         anchorPoint = CGPoint(x: 0.5, y: 0.5)
@@ -219,6 +221,11 @@ class Stage: SKScene {
     }
 
     func initializeOrders(withData data: [RecipeData]) {
+
+        guard let orderQueue = self.childNode(withName: StageConstants.orderQueueName) as? OrderQueue else {
+            return
+        }
+
         for datum in data {
             var recipeName: String = ""
             var compulsoryIngredients: [Ingredient] = []
@@ -252,23 +259,9 @@ class Stage: SKScene {
             }
             let recipe = Recipe(inRecipeName: recipeName, withCompulsoryIngredients: compulsoryIngredients,
                                 withOptionalIngredients: optionalIngredients)
-            _ = possibleRecipes.insert(recipe)
+            orderQueue.addPossibleRecipe(recipe)
         }
-
-        guard !possibleRecipes.isEmpty else {
-            return
-        }
-
-        while orders.count < StageConstants.numbersOfOrdersShown {
-            self.addRandomOrder()
-        }
-    }
-
-    func addOrder(ofRecipe recipe: Recipe, withinTime time: CGFloat = StageConstants.defaultTimeLimitOrder) {
-        let order = Order(recipe, withinTime: time)
-        orders.append(order)
-        print(order.recipeWanted.ingredientsNeeded)
-        generateMenu(inOrder: order)
+        orderQueue.initialize()
     }
 
     // For multiplayer (future use)
@@ -306,39 +299,22 @@ class Stage: SKScene {
         return playerSlime
     }
 
-    // Game serving and adding orders logic
-
     func serve(_ plate: Plate) {
         let foodToServe = plate.food
-        let ingredientsPrepared = foodToServe.ingredientsList
-        print(foodToServe.ingredientsList)
-        guard let matchedOrder = orders.firstIndex(
-                                        where:{ $0.recipeWanted.ingredientsNeeded == ingredientsPrepared }) else {
+
+        guard let orderQueue = self.childNode(withName: StageConstants.orderQueueName) as? OrderQueue else {
+            print("error")
             return
         }
-        print("served!")
+
+        guard orderQueue.completeOrder(withFood: foodToServe) == true else {
+            print("failed")
+            return
+        }
+
+        print("served")
         levelScore += 20
         scoreLabel.text = "Score: \(levelScore)"
-        orders.remove(at: matchedOrder)
-        self.addRandomOrder()
-    }
-
-    func generateRandomRecipe() -> Recipe? {
-        return self.possibleRecipes.randomElement()?.regenerateRecipe()
-    }
-
-    
-    func addRandomOrder() {
-        guard let randomRecipe = self.generateRandomRecipe() else {
-            return
-        }
-        self.addOrder(ofRecipe: randomRecipe)
-    }
-
-    func generateMenu(inOrder order: Order) {
-        let temp = MenuPrefab(color: .clear, size: CGSize(width: 100, height: 100))
-        temp.addRecipe(inOrder: order)
-        self.addChild(temp)
     }
 
     func startCounter() {

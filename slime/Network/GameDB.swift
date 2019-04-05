@@ -385,8 +385,8 @@ class GameDB: GameDatabase {
 //        let ref = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, id, FirebaseKeys.games_players, user.uid, FirebaseKeys.position]))
         // TODO
     }
-    
-    func queueOrder(forGameId id: String, withOrder order: Order, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void) {
+
+    func queueOrder(forGameId id: String, withRecipe recipe: Recipe, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void) {
         let ref = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, id, FirebaseKeys.games_orders]))
         
         guard let key = ref.childByAutoId().key else { return }
@@ -402,9 +402,9 @@ class GameDB: GameDatabase {
             onComplete()
         }
     }
-    
-    func submitOrder(forGameId id: String, forOrder order: Order, _ onComplete: @escaping (String?) -> Void, _ onError: @escaping (Error) -> Void) {
-        let ref = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, id, FirebaseKeys.games_orders])).queryLimited(toFirst: 1).queryEqual(toValue: order.recipeWanted, childKey: FirebaseKeys.games_orders_recipeName)
+
+    func submitOrder(forGameId id: String, withRecipe recipe: Recipe, _ onComplete: @escaping (String?) -> Void, _ onError: @escaping (Error) -> Void) {
+        let ref = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, id, FirebaseKeys.games_orders])).queryLimited(toFirst: 1).queryEqual(toValue: recipe, childKey: FirebaseKeys.games_orders_recipeName)
         
         ref.observeSingleEvent(of: .value, with: { (snap) in
             guard var dict = snap.value as? [String : AnyObject] else {

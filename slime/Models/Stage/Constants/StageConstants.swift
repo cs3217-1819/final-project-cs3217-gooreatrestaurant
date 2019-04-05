@@ -25,6 +25,7 @@ class StageConstants {
     static let slimeName = "slime"
     static let ladderName = "ladder"
     static let stationName = "station"
+    static let orderQueueName = "orderQueue"
 
     // spaceship size and position
     static let spaceshipSize = CGSize(width: 400, height: 400)

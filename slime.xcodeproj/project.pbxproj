@@ -12,13 +12,13 @@
 		1D22029C224AB5850080CF7D /* Ladder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D220290224AB5850080CF7D /* Ladder.swift */; };
 		1D22029D224AB5850080CF7D /* Slime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D220291224AB5850080CF7D /* Slime.swift */; };
 		1D22029E224AB5850080CF7D /* CookingEquipment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D220292224AB5850080CF7D /* CookingEquipment.swift */; };
-		1D22029F224AB5850080CF7D /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D220293224AB5850080CF7D /* Order.swift */; };
 		1D2202A0224AB5850080CF7D /* Slime+Movements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D220294224AB5850080CF7D /* Slime+Movements.swift */; };
 		1D2202A1224AB5850080CF7D /* Stage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D220295224AB5850080CF7D /* Stage.swift */; };
 		1D2202A2224AB5850080CF7D /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D220296224AB5850080CF7D /* Ingredient.swift */; };
 		1D2202A3224AB5850080CF7D /* StageConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D220297224AB5850080CF7D /* StageConstants.swift */; };
 		1D2202A5224AB5850080CF7D /* Spaceship.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D220299224AB5850080CF7D /* Spaceship.swift */; };
 		1D2202AD224AB68F0080CF7D /* PlateStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2202AC224AB68F0080CF7D /* PlateStorage.swift */; };
+		1D3DAC0E2257930200491105 /* OrderQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3DAC0D2257930200491105 /* OrderQueue.swift */; };
 		1DD6EBE1224E368C006FF6CD /* ChoppingEquipment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD6EBE0224E368C006FF6CD /* ChoppingEquipment.swift */; };
 		1DD6EBE5224E76F0006FF6CD /* IngredientType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD6EBE4224E76F0006FF6CD /* IngredientType.swift */; };
 		1DD6EBE7224E76FC006FF6CD /* CookingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD6EBE6224E76FC006FF6CD /* CookingType.swift */; };
@@ -204,13 +204,13 @@
 		1D220290224AB5850080CF7D /* Ladder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Ladder.swift; path = slime/Models/Stage/Ladder.swift; sourceTree = SOURCE_ROOT; };
 		1D220291224AB5850080CF7D /* Slime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Slime.swift; path = slime/Models/Stage/Slime/Slime.swift; sourceTree = SOURCE_ROOT; };
 		1D220292224AB5850080CF7D /* CookingEquipment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CookingEquipment.swift; path = slime/Models/Stage/Station/CookingEquipment/CookingEquipment.swift; sourceTree = SOURCE_ROOT; };
-		1D220293224AB5850080CF7D /* Order.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Order.swift; path = slime/Models/Stage/Order.swift; sourceTree = SOURCE_ROOT; };
 		1D220294224AB5850080CF7D /* Slime+Movements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Slime+Movements.swift"; path = "slime/Models/Stage/Slime/Slime+Movements.swift"; sourceTree = SOURCE_ROOT; };
 		1D220295224AB5850080CF7D /* Stage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Stage.swift; path = slime/Models/Stage/Stage.swift; sourceTree = SOURCE_ROOT; };
 		1D220296224AB5850080CF7D /* Ingredient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Ingredient.swift; path = slime/Models/Stage/FoodRelated/Ingredient.swift; sourceTree = SOURCE_ROOT; };
 		1D220297224AB5850080CF7D /* StageConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StageConstants.swift; path = slime/Models/Stage/Constants/StageConstants.swift; sourceTree = SOURCE_ROOT; };
 		1D220299224AB5850080CF7D /* Spaceship.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Spaceship.swift; path = slime/Models/Stage/Spaceship.swift; sourceTree = SOURCE_ROOT; };
 		1D2202AC224AB68F0080CF7D /* PlateStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlateStorage.swift; sourceTree = "<group>"; };
+		1D3DAC0D2257930200491105 /* OrderQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderQueue.swift; sourceTree = "<group>"; };
 		1DD6EBE0224E368C006FF6CD /* ChoppingEquipment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoppingEquipment.swift; sourceTree = "<group>"; };
 		1DD6EBE4224E76F0006FF6CD /* IngredientType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientType.swift; sourceTree = "<group>"; };
 		1DD6EBE6224E76FC006FF6CD /* CookingType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookingType.swift; sourceTree = "<group>"; };
@@ -416,9 +416,9 @@
 				1D2202AB224AB6470080CF7D /* FoodRelated */,
 				1D2202AA224AB6400080CF7D /* Slime */,
 				1D220290224AB5850080CF7D /* Ladder.swift */,
-				1D220293224AB5850080CF7D /* Order.swift */,
 				1D220299224AB5850080CF7D /* Spaceship.swift */,
 				1D220295224AB5850080CF7D /* Stage.swift */,
+				1D3DAC0D2257930200491105 /* OrderQueue.swift */,
 			);
 			path = Stage;
 			sourceTree = "<group>";
@@ -1294,7 +1294,6 @@
 				EC449B98223BB20400A8EA35 /* StoryModeLevelSelectController.swift in Sources */,
 				8BEDCD43224E089A00E24A20 /* SerializableGameData.swift in Sources */,
 				1D22029D224AB5850080CF7D /* Slime.swift in Sources */,
-				1D22029F224AB5850080CF7D /* Order.swift in Sources */,
 				EC4924F62248D638007B9797 /* RatingView.swift in Sources */,
 				ECF75EFE224B12C100537237 /* CodeInputView.swift in Sources */,
 				1D2202A2224AB5850080CF7D /* Ingredient.swift in Sources */,
@@ -1336,6 +1335,7 @@
 				EC40E4AC223D61320073D755 /* CreditsSceneViewController.swift in Sources */,
 				F92ECAE6224BAEDB0040A4E2 /* Room.swift in Sources */,
 				EC449B7B223B83DA00A8EA35 /* Router.swift in Sources */,
+				1D3DAC0E2257930200491105 /* OrderQueue.swift in Sources */,
 				ECD455512240B510006AF78D /* AlertController.swift in Sources */,
 				ECF75F04224B182400537237 /* JoinRoomViewController.swift in Sources */,
 				ECD24422224B011B00767A56 /* SlimeNumberInputController.swift in Sources */,
@@ -1543,7 +1543,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = CZ7H96C646;
+				DEVELOPMENT_TEAM = W76H98A34A;
 				INFOPLIST_FILE = slime/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1564,7 +1564,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = CZ7H96C646;
+				DEVELOPMENT_TEAM = W76H98A34A;
 				INFOPLIST_FILE = slime/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
