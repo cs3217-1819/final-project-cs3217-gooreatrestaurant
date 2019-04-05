@@ -19,9 +19,16 @@ class Ingredient: SKSpriteNode {
     init(type: IngredientType,
          size: CGSize = StageConstants.ingredientSize,
          inPosition position: CGPoint = CGPoint.zero) {
-
         self.type = type
-        super.init(texture: nil, color: .red, size: size)
+        let ingredientsAtlas = SKTextureAtlas(named: "Ingredients")
+        var texture: SKTexture = SKTexture.init()
+        let numImages = ingredientsAtlas.textureNames.count
+        for i in 1...numImages {
+            if i == type.rawValue {
+                texture = ingredientsAtlas.textureNamed(String(type.rawValue))
+            }
+        }
+        super.init(texture: texture, color: .clear, size: size)
         self.name = StageConstants.ingredientName
         self.position = position
         self.physicsBody = SKPhysicsBody(rectangleOf: size)

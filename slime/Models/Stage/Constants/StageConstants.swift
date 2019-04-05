@@ -33,7 +33,7 @@ class StageConstants {
     // elements size
     static let slimeSize = CGSize(width: 25, height: 25)
     static let plateSize = CGSize(width: 30, height: 30)
-    static let ingredientSize = CGSize(width: 40, height: 10)
+    static let ingredientSize = CGSize(width: 25, height: 25)
     static let cookerSize = CGSize(width: 40, height: 30)
     static let ladderSize = CGSize(width: 50, height: 50)
     static let stationSize = CGSize(width: 40, height: 40)

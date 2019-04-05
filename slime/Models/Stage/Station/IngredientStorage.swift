@@ -16,7 +16,6 @@ class IngredientStorage: Station {
     init(ofType type: IngredientType,
          inPosition position: CGPoint,
          withSize size: CGSize = StageConstants.stationSize) {
-
         self.type = type
         super.init(inPosition: position, withSize: size)
     }
