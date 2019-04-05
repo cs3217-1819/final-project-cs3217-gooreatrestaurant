@@ -14,7 +14,7 @@ class StageConstants {
     static let maxXAxisUnits = ScreenSize.width
     static let maxYAxisUnits = ScreenSize.height
 
-    static let speedMultiplier = CGFloat(1.0)
+    static let speedMultiplier = CGFloat(1.5)
     static let jumpSpeed = 3.5
 
     // node naming
@@ -47,9 +47,13 @@ class StageConstants {
                                             y: ScreenSize.height * -0.5 + 45)
     static let interactButtonPosition = CGPoint(x: ScreenSize.width * 0.5 - 45,
                                             y: ScreenSize.height * -0.5 + 90)
+    static let backButtonPosition = CGPoint(x: ScreenSize.width * -0.5 + 90,
+                                                y: ScreenSize.height * 0.5 + -80)
 
-    //timer position
+    //Labelling position
     static let timerPosition = CGPoint(x: ScreenSize.width * -0.5 + 100,
+                                       y: ScreenSize.height * 0.5 - 90)
+    static let scorePosition = CGPoint(x: ScreenSize.width * -0.5 + 5,
                                        y: ScreenSize.height * 0.5 - 90)
 
     // collision bitmask

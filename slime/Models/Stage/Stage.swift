@@ -20,6 +20,9 @@ class Stage: SKScene {
     // RI: the players are unique
     var players: [Player] = []
 
+    //Level score
+    var levelScore: Int = 0
+
     override func didMove(to view: SKView) {
         view.showsPhysics = true
     }
@@ -112,6 +115,17 @@ class Stage: SKScene {
         return button
     }()
 
+    lazy var backButton: BDButton = {
+        var button = BDButton(imageNamed: "BackButton", buttonAction: {
+            print("AAAA")
+        })
+        button.setScale(0.05)
+        button.isEnabled = true
+        button.position = StageConstants.backButtonPosition
+        button.zPosition = StageConstants.buttonZPos
+        return button
+    }()
+
     var counter = 0
     var counterTime = Timer()
     var counterStartTime = 30
@@ -119,21 +133,35 @@ class Stage: SKScene {
 
     lazy var countdownLabel: SKLabelNode =  {
         var label = SKLabelNode(fontNamed: "HelveticaNeue-UltraLight")
-        label.fontSize = CGFloat(100)
+        label.fontSize = CGFloat(50)
         label.zPosition = 10
         label.color = .red
         label.horizontalAlignmentMode = .left
         label.verticalAlignmentMode = .center
-        label.text = "\(counterStartTime)"
+        label.text = "Time: \(counterStartTime)"
         label.position = StageConstants.timerPosition
+        return label
+    }()
+
+    lazy var scoreLabel: SKLabelNode =  {
+        var label = SKLabelNode(fontNamed: "HelveticaNeue-UltraLight")
+        label.fontSize = CGFloat(30)
+        label.zPosition = 10
+        label.color = .red
+        label.horizontalAlignmentMode = .left
+        label.verticalAlignmentMode = .center
+        label.text = "\(levelScore)"
+        label.position = StageConstants.scorePosition
         return label
     }()
 
     func setupControl() {
         self.addChild(jumpButton)
-        self.addChild(interactButton )
+        self.addChild(interactButton)
+        self.addChild(backButton)
         self.addChild(analogJoystick)
         self.addChild(countdownLabel)
+        self.addChild(scoreLabel)
 
         counter = counterStartTime
         startCounter()
@@ -239,6 +267,7 @@ class Stage: SKScene {
     func addOrder(ofRecipe recipe: Recipe, withinTime time: CGFloat = StageConstants.defaultTimeLimitOrder) {
         let order = Order(recipe, withinTime: time)
         orders.append(order)
+        print(order.recipeWanted.ingredientsNeeded)
         generateMenu(inOrder: order)
     }
 
@@ -282,10 +311,14 @@ class Stage: SKScene {
     func serve(_ plate: Plate) {
         let foodToServe = plate.food
         let ingredientsPrepared = foodToServe.ingredientsList
+        print(foodToServe.ingredientsList)
         guard let matchedOrder = orders.firstIndex(
                                         where:{ $0.recipeWanted.ingredientsNeeded == ingredientsPrepared }) else {
             return
         }
+        print("served!")
+        levelScore += 20
+        scoreLabel.text = "\(levelScore)"
         orders.remove(at: matchedOrder)
         self.addRandomOrder()
     }
@@ -320,7 +353,7 @@ class Stage: SKScene {
             }
 
             counter -= 1
-            countdownLabel.text = "\(counter)"
+            countdownLabel.text = "Time: \(counter)"
         }
     }
 
