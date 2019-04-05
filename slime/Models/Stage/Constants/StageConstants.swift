@@ -15,7 +15,7 @@ class StageConstants {
     static let maxYAxisUnits = ScreenSize.height
 
     static let speedMultiplier = CGFloat(1.0)
-    static let jumpSpeed = 3.0
+    static let jumpSpeed = 3.5
 
     // node naming
     static let ingredientName = "ingredient"

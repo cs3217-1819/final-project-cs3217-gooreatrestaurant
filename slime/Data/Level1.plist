@@ -47,7 +47,8 @@
 			<string>{-165,70}</string>
 			<string>{-165,0}</string>
 			<string>{-115,0}</string>
-			<string>{-115,-10}</string>
+		</array>
+		<array>
 			<string>{-145,-10}</string>
 			<string>{-145,-75}</string>
 			<string>{-85,-75}</string>
