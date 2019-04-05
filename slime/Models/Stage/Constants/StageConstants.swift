@@ -50,7 +50,7 @@ class StageConstants {
                                                 y: ScreenSize.height * 0.5 + -40)
 
     //Labelling position
-    static let timerPosition = CGPoint(x: ScreenSize.width * -0.5 + 8 0,
+    static let timerPosition = CGPoint(x: ScreenSize.width * -0.5 + 8),
                                        y: ScreenSize.height * 0.5 - 40)
     static let scorePosition = CGPoint(x: ScreenSize.width * -0.5 + 20,
                                        y: ScreenSize.height * -0.5 + 20)
