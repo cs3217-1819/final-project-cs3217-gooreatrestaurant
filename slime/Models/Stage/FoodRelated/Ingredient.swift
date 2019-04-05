@@ -51,9 +51,13 @@ class Ingredient: SKSpriteNode {
         processingProgress += progress
 
         if processingProgress >= 100 {
+            self.texture = SKTexture(imageNamed: "SlicedApple")
             currentProcessing = nil
             processingProgress = 0
             processed.append(method)
+        } else {
+            //temp removal of texture
+            self.texture = nil
         }
     }
 

@@ -46,7 +46,8 @@ class CookingEquipment: Station {
         }
 
         if ingredientsAllowed.contains(ingredient.type) {
-            ingredient.cook(by: self.cookingType)
+//            ingredient.cook(by: self.cookingType)
+            ingredient.cook(by: self.cookingType, withProgress: 20)
         } else {
             ingredient.ruin()
         }
