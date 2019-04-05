@@ -132,7 +132,7 @@ class Stage: SKScene {
     var isGameOver = false
 
     lazy var countdownLabel: SKLabelNode =  {
-        var label = SKLabelNode(fontNamed: "HelveticaNeue-UltraLight")
+        var label = SKLabelNode(fontNamed: "SquidgySlimes")
         label.fontSize = CGFloat(50)
         label.zPosition = 10
         label.color = .red
@@ -144,7 +144,7 @@ class Stage: SKScene {
     }()
 
     lazy var scoreLabel: SKLabelNode =  {
-        var label = SKLabelNode(fontNamed: "HelveticaNeue-UltraLight")
+        var label = SKLabelNode(fontNamed: "SquidgySlimes")
         label.fontSize = CGFloat(30)
         label.zPosition = 10
         label.color = .red
