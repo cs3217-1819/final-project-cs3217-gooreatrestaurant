@@ -111,7 +111,9 @@
 	<key>storefront</key>
 	<string>{-140,10}</string>
 	<key>table</key>
-	<array/>
+	<array>
+		<string>{60,-38}</string>
+	</array>
 	<key>trashBin</key>
 	<array/>
 	<key>possibleRecipes</key>
