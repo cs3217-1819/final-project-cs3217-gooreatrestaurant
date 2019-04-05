@@ -113,6 +113,7 @@
 	<key>table</key>
 	<array>
 		<string>{60,-38}</string>
+		<string>{-125, -63}</string>
 	</array>
 	<key>trashBin</key>
 	<array/>
