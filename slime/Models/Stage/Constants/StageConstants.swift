@@ -42,19 +42,18 @@ class StageConstants {
     static let joystickSize = CGFloat(100)
     static let joystickPosition = CGPoint(x: ScreenSize.width * -0.5 + joystickSize / 2 + 45,
                                           y: ScreenSize.height * -0.5 + joystickSize / 2 + 45)
-
     static let jumpButtonPosition = CGPoint(x: ScreenSize.width * 0.5 - 90,
                                             y: ScreenSize.height * -0.5 + 45)
     static let interactButtonPosition = CGPoint(x: ScreenSize.width * 0.5 - 45,
                                             y: ScreenSize.height * -0.5 + 90)
-    static let backButtonPosition = CGPoint(x: ScreenSize.width * -0.5 + 90,
-                                                y: ScreenSize.height * 0.5 + -80)
+    static let backButtonPosition = CGPoint(x: ScreenSize.width * -0.5 + 45,
+                                                y: ScreenSize.height * 0.5 + -40)
 
     //Labelling position
-    static let timerPosition = CGPoint(x: ScreenSize.width * -0.5 + 100,
-                                       y: ScreenSize.height * 0.5 - 90)
-    static let scorePosition = CGPoint(x: ScreenSize.width * -0.5 + 5,
-                                       y: ScreenSize.height * 0.5 - 90)
+    static let timerPosition = CGPoint(x: ScreenSize.width * -0.5 + 8 0,
+                                       y: ScreenSize.height * 0.5 - 40)
+    static let scorePosition = CGPoint(x: ScreenSize.width * -0.5 + 20,
+                                       y: ScreenSize.height * -0.5 + 20)
 
     // collision bitmask
     static let wallCategoryCollision: UInt32 = 1 << 0

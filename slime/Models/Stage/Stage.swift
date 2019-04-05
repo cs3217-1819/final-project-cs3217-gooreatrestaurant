@@ -133,7 +133,7 @@ class Stage: SKScene {
 
     lazy var countdownLabel: SKLabelNode =  {
         var label = SKLabelNode(fontNamed: "SquidgySlimes")
-        label.fontSize = CGFloat(50)
+        label.fontSize = CGFloat(40)
         label.zPosition = 10
         label.color = .red
         label.horizontalAlignmentMode = .left
@@ -150,7 +150,7 @@ class Stage: SKScene {
         label.color = .red
         label.horizontalAlignmentMode = .left
         label.verticalAlignmentMode = .center
-        label.text = "\(levelScore)"
+        label.text = "Score: \(levelScore)"
         label.position = StageConstants.scorePosition
         return label
     }()
@@ -318,7 +318,7 @@ class Stage: SKScene {
         }
         print("served!")
         levelScore += 20
-        scoreLabel.text = "\(levelScore)"
+        scoreLabel.text = "Score: \(levelScore)"
         orders.remove(at: matchedOrder)
         self.addRandomOrder()
     }
