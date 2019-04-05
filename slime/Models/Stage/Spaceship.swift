@@ -37,8 +37,8 @@ class Spaceship: SKSpriteNode {
     }
 
     func addWall(inCoord coordinates: [[String]]) {
-        var gameAreaCoord: [CGPoint] = []
         for item in coordinates {
+            var gameAreaCoord: [CGPoint] = []
             for point in item {
                 gameAreaCoord.append(NSCoder.cgPoint(for: point))
             }
