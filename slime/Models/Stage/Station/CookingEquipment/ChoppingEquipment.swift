@@ -14,7 +14,7 @@ class ChoppingEquipment: CookingEquipment {
         super.init(type: .chopping,
                    inPosition: position,
                    withSize: size,
-                   canProcessIngredients: [.apple, .dough])
+                   canProcessIngredients: [.apple])
     }
 
     required init?(coder aDecoder: NSCoder) {
