@@ -60,6 +60,7 @@ class CookingEquipment: Station {
             guard let ingredient = self.ingredientInProcess as? Ingredient else {
                 return nil
             }
+            // if ingredient is ruined or finished processing, can take
             if ingredient.type == .junk || ingredient.processed.last == self.cookingType {
                 guard let toTake = takeIngredientInProcess() else {
                     return nil
