@@ -73,7 +73,7 @@ class CookingEquipment: Station {
         return nil
     }
 
-    func continueProcessing(withProgress progress: Int) {
+    func continueProcessing(withProgress progress: Double) {
         guard let ingredient = ingredientInProcess as? Ingredient else {
             return
         }
@@ -86,11 +86,11 @@ class CookingEquipment: Station {
     }
 
     func automaticProcessing() {
-        continueProcessing(withProgress: 0)
+        continueProcessing(withProgress: 0.0)
     }
 
     func manualProcessing() {
-        continueProcessing(withProgress: 100)
+        continueProcessing(withProgress: 100.0)
     }
 
     func putIngredient(_ ingredient: Ingredient) {

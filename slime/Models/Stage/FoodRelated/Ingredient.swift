@@ -14,7 +14,7 @@ class Ingredient: SKSpriteNode {
     var processed: [CookingType] = []
 
     var currentProcessing: CookingType?
-    var processingProgress = 0
+    var processingProgress = 0.0
 
     init(type: IngredientType,
          size: CGSize = StageConstants.ingredientSize,
@@ -37,7 +37,7 @@ class Ingredient: SKSpriteNode {
     }
 
     // Progress 100 denotes that cooking will be done
-    func cook(by method: CookingType, withProgress progress: Int = 100) {
+    func cook(by method: CookingType, withProgress progress: Double = 100.0) {
         guard currentProcessing == nil || currentProcessing == method else {
             return
         }
@@ -50,10 +50,10 @@ class Ingredient: SKSpriteNode {
         currentProcessing = method
         processingProgress += progress
 
-        if processingProgress >= 100 {
+        if processingProgress >= 100.0 {
             self.texture = SKTexture(imageNamed: "SlicedApple")
             currentProcessing = nil
-            processingProgress = 0
+            processingProgress = 0.0
             processed.append(method)
         } else {
             //temp removal of texture
