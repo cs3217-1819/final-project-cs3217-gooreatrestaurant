@@ -17,11 +17,13 @@ class GameOverPrefab : SKSpriteNode {
 
         super.init(texture: base, color: color, size: size)
         self.position = CGPoint.zero
+        self.size = size
         self.zPosition = 10
 
         let slime = SKSpriteNode(imageNamed: "Shocked Slime")
         slime.texture?.filteringMode = .nearest
         slime.position = CGPoint.zero
+        slime.size = CGSize(width: 150, height: 150)
         slime.zPosition = 11
 
         baseNode.addChild(slime)
@@ -38,13 +40,13 @@ class GameOverPrefab : SKSpriteNode {
 
     lazy var titleLabel: SKLabelNode =  {
         var label = SKLabelNode(fontNamed: "SquidgySlimes")
-        label.fontSize = CGFloat(30)
+        label.fontSize = CGFloat(60)
         label.zPosition = 10
         label.color = .red
         label.horizontalAlignmentMode = .center
         label.verticalAlignmentMode = .top
         label.text = "GAME OVER"
-        label.position = CGPoint.zero
+        label.position = CGPoint(x: 0, y: 150)
         return label
     }()
 
@@ -64,7 +66,7 @@ class GameOverPrefab : SKSpriteNode {
         var button = BDButton(imageNamed: "ReplayButton", buttonAction: {
             print("REPLAY GAME")
         })
-        button.setScale(0.1)
+        button.setScale(0.5)
         button.isEnabled = true
         button.position = CGPoint(x: -50, y: -100)
         button.zPosition = StageConstants.buttonZPos
@@ -75,7 +77,7 @@ class GameOverPrefab : SKSpriteNode {
         var button = BDButton(imageNamed: "ExitButton", buttonAction: {
             print("EXIT GAME")
         })
-        button.setScale(0.1)
+        button.setScale(0.5)
         button.isEnabled = true
         button.position = CGPoint(x: 50, y: -100)
         button.zPosition = StageConstants.buttonZPos
