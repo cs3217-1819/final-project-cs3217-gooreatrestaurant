@@ -25,7 +25,7 @@ class Stage: SKScene {
         spaceship = Spaceship(inPosition: StageConstants.spaceshipPosition, withSize: StageConstants.spaceshipSize)
         super.init(size: size)
 
-        let order = OrderQueue(withNumberOfRecipeShown: StageConstants.numbersOfOrdersShown)
+        let order = OrderQueue()
         self.addChild(order)
 
         let background = SKSpriteNode(imageNamed: "background-1")

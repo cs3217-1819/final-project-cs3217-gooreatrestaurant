@@ -10,12 +10,11 @@ import UIKit
 import SpriteKit
 
 class OrderQueue: SKSpriteNode {
-    let amountOfRecipeShown: Int
     var possibleRecipes: Set<Recipe> = []
     var recipeOrdered: [Recipe] = []
+    var newOrderTimer: Timer = Timer()
 
-    init(withNumberOfRecipeShown amount: Int) {
-        self.amountOfRecipeShown = amount
+    init() {
         super.init(texture: nil, color: .clear, size: CGSize.zero)
         self.position = CGPoint.zero
         self.name = StageConstants.orderQueueName
@@ -32,6 +31,9 @@ class OrderQueue: SKSpriteNode {
     }
 
     func addOrder(ofRecipe recipe: Recipe) {
+        guard self.recipeOrdered.count < StageConstants.maxNumbersOfOrdersShown else {
+            return
+        }
         recipeOrdered.append(recipe)
         generateMenu(ofRecipe: recipe)
     }
@@ -40,6 +42,7 @@ class OrderQueue: SKSpriteNode {
         return self.possibleRecipes.randomElement()?.regenerateRecipe()
     }
 
+    @objc
     func addRandomOrder() {
         guard let randomRecipe = self.generateRandomRecipe() else {
             return
@@ -56,19 +59,31 @@ class OrderQueue: SKSpriteNode {
             return
         }
 
-        while recipeOrdered.count < amountOfRecipeShown {
+        while recipeOrdered.count < StageConstants.minNumbersOfOrdersShown {
             self.addRandomOrder()
         }
+
+        newOrderTimer = Timer.scheduledTimer(timeInterval: StageConstants.orderComingInterval,
+                                             target: self,
+                                             selector: #selector(addRandomOrder),
+                                             userInfo: nil,
+                                             repeats: true)
     }
 
     // True if success, false if failed (no corresponding orders)
     func completeOrder(withFood food: Food) -> Bool {
         let ingredientsPrepared = food.ingredientsList
+
         guard let matchedOrder = recipeOrdered.firstIndex(where:{ $0.ingredientsNeeded == ingredientsPrepared }) else {
             return false
         }
+
         recipeOrdered.remove(at: matchedOrder)
-        self.addRandomOrder()
+
+        if recipeOrdered.count < StageConstants.minNumbersOfOrdersShown {
+            self.addRandomOrder()
+        }
+
         return true
     }
 
@@ -77,7 +92,11 @@ class OrderQueue: SKSpriteNode {
         guard let matchedOrder = recipeOrdered.firstIndex(where:{ $0 == recipe }) else {
             return
         }
+
         recipeOrdered.remove(at: matchedOrder)
-        self.addRandomOrder()
+
+        if recipeOrdered.count < StageConstants.minNumbersOfOrdersShown {
+            self.addRandomOrder()
+        }
     }
 }
