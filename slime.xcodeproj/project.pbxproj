@@ -41,6 +41,7 @@
 		8BEDCD4B22531CDF00E24A20 /* IngredientsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEDCD4A22531CDF00E24A20 /* IngredientsCell.swift */; };
 		8BEDCD4F22538ED500E24A20 /* Ingredients.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 8BEDCD4E2253758500E24A20 /* Ingredients.atlas */; };
 		8BFA63E92257D7FE007645F9 /* GameOverPrefab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFA63E82257D7FE007645F9 /* GameOverPrefab.swift */; };
+		8BFA63EC22589DAF007645F9 /* AudioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFA63EB22589DAF007645F9 /* AudioController.swift */; };
 		BA7CC9239365F389C9C1FA05 /* Pods_slime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7F0D50F4B0E911D0C328800 /* Pods_slime.framework */; };
 		EC0E3163224F610300AF1254 /* CharacterCreationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC0E3162224F610300AF1254 /* CharacterCreationView.xib */; };
 		EC0E3165224F611200AF1254 /* CharacterCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0E3164224F611200AF1254 /* CharacterCreationView.swift */; };
@@ -237,6 +238,7 @@
 		8BEDCD4A22531CDF00E24A20 /* IngredientsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsCell.swift; sourceTree = "<group>"; };
 		8BEDCD4E2253758500E24A20 /* Ingredients.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Ingredients.atlas; sourceTree = "<group>"; };
 		8BFA63E82257D7FE007645F9 /* GameOverPrefab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverPrefab.swift; sourceTree = "<group>"; };
+		8BFA63EB22589DAF007645F9 /* AudioController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioController.swift; sourceTree = "<group>"; };
 		E7F0D50F4B0E911D0C328800 /* Pods_slime.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_slime.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC0E3162224F610300AF1254 /* CharacterCreationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharacterCreationView.xib; sourceTree = "<group>"; };
 		EC0E3164224F611200AF1254 /* CharacterCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCreationView.swift; sourceTree = "<group>"; };
@@ -503,6 +505,21 @@
 			path = Sprites;
 			sourceTree = "<group>";
 		};
+		8BFA63EA22589D9B007645F9 /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				8BFA63EB22589DAF007645F9 /* AudioController.swift */,
+			);
+			path = Audio;
+			sourceTree = "<group>";
+		};
+		8BFA63ED22589DD4007645F9 /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Audio;
+			sourceTree = "<group>";
+		};
 		8DF49F0605E30364F39D1785 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -573,6 +590,7 @@
 		EC38241C2238803A000D7148 /* slime */ = {
 			isa = PBXGroup;
 			children = (
+				8BFA63ED22589DD4007645F9 /* Audio */,
 				F92ECAE0224BAE800040A4E2 /* Network */,
 				8BD816B42242643C00586180 /* Sprites */,
 				EC449B9C223BB9F900A8EA35 /* Models */,
@@ -603,6 +621,7 @@
 		EC38243D223882AF000D7148 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				8BFA63EA22589D9B007645F9 /* Audio */,
 				EC0E316F2252073500AF1254 /* ItemSelector */,
 				EC0E3166224F617D00AF1254 /* TextInput */,
 				EC6E99F3224F2D0C00A9554C /* ProgressBar */,
@@ -1259,6 +1278,7 @@
 				8BD816B3224262F100586180 /* AnalogJoystick.swift in Sources */,
 				1DD6EBE5224E76F0006FF6CD /* IngredientType.swift in Sources */,
 				ECD45543223FACC4006AF78D /* ModalController.swift in Sources */,
+				8BFA63EC22589DAF007645F9 /* AudioController.swift in Sources */,
 				EC382475223A1AA4000D7148 /* ColorStyles.swift in Sources */,
 				F9F26FEE22564873008BFD50 /* GameDB.swift in Sources */,
 				EC449B83223B917C00A8EA35 /* CGPointExtension.swift in Sources */,
