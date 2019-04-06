@@ -70,5 +70,14 @@ class OrderQueue: SKSpriteNode {
         recipeOrdered.remove(at: matchedOrder)
         self.addRandomOrder()
         return true
-    } 
+    }
+
+    // The view will call this function if there is timeout of an order
+    func orderTimeOut(ofRecipe recipe: Recipe) {
+        guard let matchedOrder = recipeOrdered.firstIndex(where:{ $0 == recipe }) else {
+            return
+        }
+        recipeOrdered.remove(at: matchedOrder)
+        self.addRandomOrder()
+    }
 }
