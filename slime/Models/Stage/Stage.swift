@@ -95,7 +95,7 @@ class Stage: SKScene {
         var button = BDButton(imageNamed: "Up", buttonAction: {
             self.slimeToControl?.jump()
             })
-        button.setScale(0.1)
+        button.setScale(0.15)
         button.isEnabled = true
         button.position = StageConstants.jumpButtonPosition
         button.zPosition = StageConstants.buttonZPos
@@ -106,7 +106,7 @@ class Stage: SKScene {
         var button = BDButton(imageNamed: "Interact", buttonAction: {
             self.slimeToControl?.interact()
             })
-        button.setScale(0.1)
+        button.setScale(0.15)
         button.isEnabled = true
         button.position = StageConstants.interactButtonPosition
         button.zPosition = StageConstants.buttonZPos
@@ -117,7 +117,7 @@ class Stage: SKScene {
         var button = BDButton(imageNamed: "BackButton", buttonAction: {
             print("AAAA")
         })
-        button.setScale(0.05)
+        button.setScale(0.1)
         button.isEnabled = true
         button.position = StageConstants.backButtonPosition
         button.zPosition = StageConstants.buttonZPos

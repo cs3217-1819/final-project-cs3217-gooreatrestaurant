@@ -43,10 +43,10 @@ class StageConstants {
     static let joystickSize = CGFloat(100)
     static let joystickPosition = CGPoint(x: ScreenSize.width * -0.5 + joystickSize / 2 + 45,
                                           y: ScreenSize.height * -0.5 + joystickSize / 2 + 45)
-    static let jumpButtonPosition = CGPoint(x: ScreenSize.width * 0.5 - 90,
+    static let jumpButtonPosition = CGPoint(x: ScreenSize.width * 0.5 - 130,
                                             y: ScreenSize.height * -0.5 + 45)
-    static let interactButtonPosition = CGPoint(x: ScreenSize.width * 0.5 - 45,
-                                            y: ScreenSize.height * -0.5 + 90)
+    static let interactButtonPosition = CGPoint(x: ScreenSize.width * 0.5 - 75,
+                                            y: ScreenSize.height * -0.5 + 100)
     static let backButtonPosition = CGPoint(x: ScreenSize.width * -0.5 + 45,
                                                 y: ScreenSize.height * 0.5 + -40)
 
