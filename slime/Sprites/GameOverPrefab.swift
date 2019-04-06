@@ -11,16 +11,25 @@ import SpriteKit
 
 class GameOverPrefab : SKSpriteNode {
     override init(texture: SKTexture?, color: UIColor, size: CGSize) {
-        let base = SKTexture(imageNamed: "Border")
+        let base = SKTexture(imageNamed: "Base")
         base.filteringMode = .nearest
+        let baseNode = SKSpriteNode(texture: base)
 
         super.init(texture: base, color: color, size: size)
         self.position = CGPoint.zero
         self.zPosition = 10
 
-        self.addChild(titleLabel)
-        self.addChild(replayButton)
-        self.addChild(exitButton)
+        let slime = SKSpriteNode(imageNamed: "Shocked Slime")
+        slime.texture?.filteringMode = .nearest
+        slime.position = CGPoint.zero
+        slime.zPosition = 11
+
+        baseNode.addChild(slime)
+        baseNode.addChild(titleLabel)
+        baseNode.addChild(replayButton)
+        baseNode.addChild(exitButton)
+
+        self.addChild(baseNode)
     }
 
     required init?(coder aDecoder: NSCoder) {
