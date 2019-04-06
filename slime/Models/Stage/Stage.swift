@@ -20,11 +20,7 @@ class Stage: SKScene {
 
     //Level score
     var levelScore: Int = 0
-
-    override func didMove(to view: SKView) {
-        view.showsPhysics = true
-    }
-
+    
     override init(size: CGSize = CGSize(width: StageConstants.maxXAxisUnits, height: StageConstants.maxYAxisUnits)) {
         spaceship = Spaceship(inPosition: StageConstants.spaceshipPosition, withSize: StageConstants.spaceshipSize)
         super.init(size: size)
