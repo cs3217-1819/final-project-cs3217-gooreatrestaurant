@@ -40,6 +40,7 @@
 		8BEDCD45224F3EC900E24A20 /* MenuPrefab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEDCD44224F3EC900E24A20 /* MenuPrefab.swift */; };
 		8BEDCD4B22531CDF00E24A20 /* IngredientsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEDCD4A22531CDF00E24A20 /* IngredientsCell.swift */; };
 		8BEDCD4F22538ED500E24A20 /* Ingredients.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 8BEDCD4E2253758500E24A20 /* Ingredients.atlas */; };
+		8BFA63E92257D7FE007645F9 /* GameOverPrefab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFA63E82257D7FE007645F9 /* GameOverPrefab.swift */; };
 		BA7CC9239365F389C9C1FA05 /* Pods_slime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7F0D50F4B0E911D0C328800 /* Pods_slime.framework */; };
 		EC0E3163224F610300AF1254 /* CharacterCreationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC0E3162224F610300AF1254 /* CharacterCreationView.xib */; };
 		EC0E3165224F611200AF1254 /* CharacterCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0E3164224F611200AF1254 /* CharacterCreationView.swift */; };
@@ -235,6 +236,7 @@
 		8BEDCD44224F3EC900E24A20 /* MenuPrefab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuPrefab.swift; sourceTree = "<group>"; };
 		8BEDCD4A22531CDF00E24A20 /* IngredientsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsCell.swift; sourceTree = "<group>"; };
 		8BEDCD4E2253758500E24A20 /* Ingredients.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Ingredients.atlas; sourceTree = "<group>"; };
+		8BFA63E82257D7FE007645F9 /* GameOverPrefab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverPrefab.swift; sourceTree = "<group>"; };
 		E7F0D50F4B0E911D0C328800 /* Pods_slime.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_slime.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC0E3162224F610300AF1254 /* CharacterCreationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharacterCreationView.xib; sourceTree = "<group>"; };
 		EC0E3164224F611200AF1254 /* CharacterCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCreationView.swift; sourceTree = "<group>"; };
@@ -496,6 +498,7 @@
 				8B81EFBB224344AD007BFDB0 /* Slime.atlas */,
 				8BEDCD44224F3EC900E24A20 /* MenuPrefab.swift */,
 				8BEDCD4A22531CDF00E24A20 /* IngredientsCell.swift */,
+				8BFA63E82257D7FE007645F9 /* GameOverPrefab.swift */,
 			);
 			path = Sprites;
 			sourceTree = "<group>";
@@ -1337,6 +1340,7 @@
 				EC449B7B223B83DA00A8EA35 /* Router.swift in Sources */,
 				1D3DAC0E2257930200491105 /* OrderQueue.swift in Sources */,
 				ECD455512240B510006AF78D /* AlertController.swift in Sources */,
+				8BFA63E92257D7FE007645F9 /* GameOverPrefab.swift in Sources */,
 				ECF75F04224B182400537237 /* JoinRoomViewController.swift in Sources */,
 				ECD24422224B011B00767A56 /* SlimeNumberInputController.swift in Sources */,
 				ECD2441E224AFFDD00767A56 /* SlimeNumberInputView.swift in Sources */,
@@ -1543,7 +1547,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = W76H98A34A;
+				DEVELOPMENT_TEAM = CZ7H96C646;
 				INFOPLIST_FILE = slime/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1564,7 +1568,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = W76H98A34A;
+				DEVELOPMENT_TEAM = CZ7H96C646;
 				INFOPLIST_FILE = slime/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

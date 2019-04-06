@@ -50,11 +50,12 @@ class StageConstants {
     static let backButtonPosition = CGPoint(x: ScreenSize.width * -0.5 + 45,
                                                 y: ScreenSize.height * 0.5 + -40)
 
-    //Labelling position
+    //UI position
     static let timerPosition = CGPoint(x: ScreenSize.width * -0.5 + 80,
                                        y: ScreenSize.height * 0.5 - 40)
     static let scorePosition = CGPoint(x: ScreenSize.width * -0.5 + 20,
                                        y: ScreenSize.height * -0.5 + 20)
+    static let gameOverPrefabSize = CGSize(width: ScreenSize.width * 0.6, height: ScreenSize.height * 0.9)
 
     // collision bitmask
     static let wallCategoryCollision: UInt32 = 1 << 0

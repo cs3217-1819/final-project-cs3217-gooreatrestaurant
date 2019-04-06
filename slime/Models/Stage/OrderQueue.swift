@@ -26,9 +26,9 @@ class OrderQueue: SKSpriteNode {
     }
 
     func generateMenu(ofRecipe recipe: Recipe) {
-        let temp = MenuPrefab(color: .clear, size: CGSize(width: 100, height: 100))
-        temp.addRecipe(recipe)
-        self.addChild(temp)
+        let menuObj = MenuPrefab(color: .clear, size: CGSize(width: 100, height: 100))
+        menuObj.addRecipe(recipe)
+        self.addChild(menuObj)
     }
 
     func addOrder(ofRecipe recipe: Recipe) {
