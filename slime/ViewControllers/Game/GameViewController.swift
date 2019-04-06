@@ -44,6 +44,7 @@ class GameViewController: UIViewController {
         view.addSubview(skview)
 
         stage.generateLevel(inLevel: "Level1")
+        stage.temp()
 
         //        newCollection.delegate = self
         //        newCollection.dataSource = self
