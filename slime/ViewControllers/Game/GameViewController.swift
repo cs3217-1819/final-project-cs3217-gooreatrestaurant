@@ -8,6 +8,7 @@
 
 import UIKit
 import SpriteKit
+import AVFoundation
 
 class GameViewController: UIViewController {
     let newCollection: UICollectionView = {
@@ -44,6 +45,9 @@ class GameViewController: UIViewController {
         view.addSubview(skview)
 
         stage.generateLevel(inLevel: "Level1")
+
+        let bgm = AudioController()
+        bgm.playMusic("GameSong", true)
         //        newCollection.delegate = self
         //        newCollection.dataSource = self
         //        newCollection.register(IngredientsCell.self, forCellWithReuseIdentifier: "MyCell")

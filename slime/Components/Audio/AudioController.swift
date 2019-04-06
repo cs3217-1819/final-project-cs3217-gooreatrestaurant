@@ -18,6 +18,8 @@ class AudioController {
                 Bundle.main.path(forResource: audioName, ofType: "mp3")!))
             music.numberOfLoops = ifLoop ? -1 : 0
             music.play()
+            music.volume = 100
+            print("Playing music!")
         } catch {
             print("Error loading Music")
         }
