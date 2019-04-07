@@ -74,7 +74,6 @@ class MainController: UIViewController {
         })
         
         Timer.scheduledTimer(withTimeInterval: 0.210, repeats: false, block: { _ in
-            print("finished")
             fromVC.onDisappear()
         })
     }

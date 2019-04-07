@@ -133,6 +133,13 @@
 		EC6AC1D82254884000D95C90 /* ContextDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6AC1D72254884000D95C90 /* ContextDataHandler.swift */; };
 		EC6E75522255CB9000B9C7CF /* CustomizationMainView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC6E75512255CB9000B9C7CF /* CustomizationMainView.xib */; };
 		EC6E75552255CD1700B9C7CF /* GeneralRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6E75542255CD1700B9C7CF /* GeneralRouter.swift */; };
+		EC6E7558225A3A8000B9C7CF /* JokesSlimesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC6E7557225A3A8000B9C7CF /* JokesSlimesView.xib */; };
+		EC6E755A225A3A8D00B9C7CF /* JokesSlimesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6E7559225A3A8D00B9C7CF /* JokesSlimesView.swift */; };
+		EC6E755C225A3BDF00B9C7CF /* GeneralRouteTransitionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6E755B225A3BDF00B9C7CF /* GeneralRouteTransitionHandler.swift */; };
+		EC6E755E225A3EF000B9C7CF /* GeneralRouterContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6E755D225A3EF000B9C7CF /* GeneralRouterContext.swift */; };
+		EC6E7563225A426800B9C7CF /* CharacterCustomizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6E7562225A426800B9C7CF /* CharacterCustomizationViewController.swift */; };
+		EC6E7565225A437A00B9C7CF /* CharacterCustomizationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6E7564225A437A00B9C7CF /* CharacterCustomizationView.swift */; };
+		EC6E7567225A438A00B9C7CF /* CustomizationMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6E7566225A438A00B9C7CF /* CustomizationMainView.swift */; };
 		EC6E99E8224F1BB400A9554C /* LocalDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6E99E7224F1BB400A9554C /* LocalDataProvider.swift */; };
 		EC6E99ED224F22C000A9554C /* LocalUserCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6E99EC224F22C000A9554C /* LocalUserCharacter.swift */; };
 		EC6E99EF224F256500A9554C /* LocalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6E99EE224F256500A9554C /* LocalData.swift */; };
@@ -339,6 +346,13 @@
 		EC6AC1D72254884000D95C90 /* ContextDataHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextDataHandler.swift; sourceTree = "<group>"; };
 		EC6E75512255CB9000B9C7CF /* CustomizationMainView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomizationMainView.xib; sourceTree = "<group>"; };
 		EC6E75542255CD1700B9C7CF /* GeneralRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralRouter.swift; sourceTree = "<group>"; };
+		EC6E7557225A3A8000B9C7CF /* JokesSlimesView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JokesSlimesView.xib; sourceTree = "<group>"; };
+		EC6E7559225A3A8D00B9C7CF /* JokesSlimesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokesSlimesView.swift; sourceTree = "<group>"; };
+		EC6E755B225A3BDF00B9C7CF /* GeneralRouteTransitionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralRouteTransitionHandler.swift; sourceTree = "<group>"; };
+		EC6E755D225A3EF000B9C7CF /* GeneralRouterContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralRouterContext.swift; sourceTree = "<group>"; };
+		EC6E7562225A426800B9C7CF /* CharacterCustomizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCustomizationViewController.swift; sourceTree = "<group>"; };
+		EC6E7564225A437A00B9C7CF /* CharacterCustomizationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCustomizationView.swift; sourceTree = "<group>"; };
+		EC6E7566225A438A00B9C7CF /* CustomizationMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizationMainView.swift; sourceTree = "<group>"; };
 		EC6E99E7224F1BB400A9554C /* LocalDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataProvider.swift; sourceTree = "<group>"; };
 		EC6E99EC224F22C000A9554C /* LocalUserCharacter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalUserCharacter.swift; sourceTree = "<group>"; };
 		EC6E99EE224F256500A9554C /* LocalData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalData.swift; sourceTree = "<group>"; };
@@ -625,6 +639,7 @@
 		EC38243D223882AF000D7148 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				EC6E7556225A3A6300B9C7CF /* JokesSlimes */,
 				8BFA63EA22589D9B007645F9 /* Audio */,
 				EC0E316F2252073500AF1254 /* ItemSelector */,
 				EC0E3166224F617D00AF1254 /* TextInput */,
@@ -768,6 +783,7 @@
 				ECD455682240FB23006AF78D /* MultiplayerLobbyViewController.swift */,
 				EC21B408224217E200827121 /* LoadingScreenViewController.swift */,
 				EC0E316D224F69A400AF1254 /* CharacterCreationViewController.swift */,
+				EC6E7562225A426800B9C7CF /* CharacterCustomizationViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -852,8 +868,19 @@
 			isa = PBXGroup;
 			children = (
 				EC6E75542255CD1700B9C7CF /* GeneralRouter.swift */,
+				EC6E755B225A3BDF00B9C7CF /* GeneralRouteTransitionHandler.swift */,
+				EC6E755D225A3EF000B9C7CF /* GeneralRouterContext.swift */,
 			);
 			path = GeneralRouter;
+			sourceTree = "<group>";
+		};
+		EC6E7556225A3A6300B9C7CF /* JokesSlimes */ = {
+			isa = PBXGroup;
+			children = (
+				EC6E7557225A3A8000B9C7CF /* JokesSlimesView.xib */,
+				EC6E7559225A3A8D00B9C7CF /* JokesSlimesView.swift */,
+			);
+			path = JokesSlimes;
 			sourceTree = "<group>";
 		};
 		EC6E99E9224F21F900A9554C /* LocalData */ = {
@@ -899,6 +926,8 @@
 			children = (
 				ECF987692255C61700FE5577 /* CharacterCustomizationView.xib */,
 				EC6E75512255CB9000B9C7CF /* CustomizationMainView.xib */,
+				EC6E7564225A437A00B9C7CF /* CharacterCustomizationView.swift */,
+				EC6E7566225A438A00B9C7CF /* CustomizationMainView.swift */,
 			);
 			path = CharacterCustomizationView;
 			sourceTree = "<group>";
@@ -1171,6 +1200,7 @@
 				EC449B8E223BAD4400A8EA35 /* MapDot.xib in Resources */,
 				EC38246A223A1803000D7148 /* Rubik-Light.ttf in Resources */,
 				EC6E75522255CB9000B9C7CF /* CustomizationMainView.xib in Resources */,
+				EC6E7558225A3A8000B9C7CF /* JokesSlimesView.xib in Resources */,
 				ECD4556C2240FBED006AF78D /* PlayerBox.xib in Resources */,
 				EC3824252238803D000D7148 /* Assets.xcassets in Resources */,
 				EC4924E42246163C007B9797 /* LevelPlaceView.xib in Resources */,
@@ -1322,6 +1352,7 @@
 				EC6E75552255CD1700B9C7CF /* GeneralRouter.swift in Sources */,
 				1D2202A1224AB5850080CF7D /* Stage.swift in Sources */,
 				1D22029C224AB5850080CF7D /* Ladder.swift in Sources */,
+				EC6E7567225A438A00B9C7CF /* CustomizationMainView.swift in Sources */,
 				ECD4554F2240B3B3006AF78D /* Alert.swift in Sources */,
 				EC6E99FD224F49FB00A9554C /* UserInfoController.swift in Sources */,
 				ECD4555E2240F44A006AF78D /* MultiplayerScreenView.swift in Sources */,
@@ -1364,6 +1395,7 @@
 				EC0E316A224F61C500AF1254 /* TextInputView.swift in Sources */,
 				ECD24424224B018800767A56 /* Controller.swift in Sources */,
 				ECD4556E2240FBFA006AF78D /* PlayerBox.swift in Sources */,
+				EC6E755A225A3A8D00B9C7CF /* JokesSlimesView.swift in Sources */,
 				ECD455672240F974006AF78D /* ViewControllerProtocol.swift in Sources */,
 				EC21B40222420D4100827121 /* DesignableView.swift in Sources */,
 				1D2202AD224AB68F0080CF7D /* PlateStorage.swift in Sources */,
@@ -1380,14 +1412,17 @@
 				EC382482223A2AF5000D7148 /* PlayMenuButton.swift in Sources */,
 				EC449B92223BB01C00A8EA35 /* LevelDetailsBox.swift in Sources */,
 				EC3824512238FB3D000D7148 /* ButtonController.swift in Sources */,
+				EC6E755C225A3BDF00B9C7CF /* GeneralRouteTransitionHandler.swift in Sources */,
 				EC38245A223A0F6F000D7148 /* UIText.swift in Sources */,
 				ECD455702240FEDE006AF78D /* PlayerBoxController.swift in Sources */,
 				EC449B81223B8C0C00A8EA35 /* PlayScreenView.swift in Sources */,
 				EC40E4AC223D61320073D755 /* CreditsSceneViewController.swift in Sources */,
 				F92ECAE6224BAEDB0040A4E2 /* Room.swift in Sources */,
 				EC449B7B223B83DA00A8EA35 /* Router.swift in Sources */,
+				EC6E7565225A437A00B9C7CF /* CharacterCustomizationView.swift in Sources */,
 				1D3DAC0E2257930200491105 /* OrderQueue.swift in Sources */,
 				ECD455512240B510006AF78D /* AlertController.swift in Sources */,
+				EC6E7563225A426800B9C7CF /* CharacterCustomizationViewController.swift in Sources */,
 				8BFA63E92257D7FE007645F9 /* GameOverPrefab.swift in Sources */,
 				ECF75F04224B182400537237 /* JoinRoomViewController.swift in Sources */,
 				ECD24422224B011B00767A56 /* SlimeNumberInputController.swift in Sources */,
@@ -1418,6 +1453,7 @@
 				ECD455722240FFC7006AF78D /* Player.swift in Sources */,
 				EC449B7D223B873600A8EA35 /* RouterViewController.swift in Sources */,
 				EC4924F82248D877007B9797 /* RatingViewController.swift in Sources */,
+				EC6E755E225A3EF000B9C7CF /* GeneralRouterContext.swift in Sources */,
 				ECD2442A224B0C9E00767A56 /* SlimeNumberPadView.swift in Sources */,
 				EC3824562239116D000D7148 /* CGRectExtension.swift in Sources */,
 				ECD45546223FAFBE006AF78D /* ContextController.swift in Sources */,

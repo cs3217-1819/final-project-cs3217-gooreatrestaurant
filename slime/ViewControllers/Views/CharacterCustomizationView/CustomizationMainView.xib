@@ -12,7 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB">
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CustomizationMainView" customModule="slime" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="403" height="317"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -36,7 +36,7 @@
                             <rect key="frame" x="0.0" y="24" width="403" height="64"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To be implemented" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HZf-wb-23a" customClass="TextLabel" customModule="slime" customModuleProvider="target">
-                                    <rect key="frame" x="94" y="15.5" width="215.5" height="33.5"/>
+                                    <rect key="frame" x="128.5" y="22" width="146.5" height="20.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -241,10 +241,15 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="levelLabel" destination="viS-qx-PDx" id="JvO-Sn-uj2"/>
+                <outlet property="levelProgressView" destination="e1g-Hc-agg" id="mhs-dh-v32"/>
+                <outlet property="nameLabel" destination="1o0-XL-m0M" id="NLv-S8-IDZ"/>
+            </connections>
             <point key="canvasLocation" x="160.80000000000001" y="-6.746626686656672"/>
         </view>
     </objects>
     <resources>
-        <image name="Apple" width="300" height="321"/>
+        <image name="Apple" width="512" height="512"/>
     </resources>
 </document>

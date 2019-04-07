@@ -9,11 +9,45 @@
 import Foundation
 import UIKit
 
-class GeneralRouter<RouteType> {
-    init(routes: [String: RouteManager]) {
+class GeneralRouter {
+    private let routes: [String: RouteManager]
+    var previousRoute: String? {
+        return transitionHandler.previousRoute
+    }
+    var currentRoute: String {
+        return transitionHandler.currentRoute
+    }
+    private(set) var currentViewController: ViewControllerProtocol
+    private let transitionHandler: GeneralRouteTransitionHandler
+    
+    init(routes: [String: RouteManager], start: String) {
+        self.routes = routes
+        transitionHandler = GeneralRouteTransitionHandler(route: start)
         
+        guard let startManager = routes[start] else {
+            Logger.it.error("Route not found")
+            fatalError()
+        }
+        currentViewController = startManager.createController()
+        
+        transitionHandler.subscribe { route in
+            self.currentViewController = self.getRoute(named: route)
+        }
+    }
+    
+    func routeTo(_ route: String) {
+        transitionHandler.onNext(route)
+    }
+    
+    private func getRoute(named name: String) -> ViewControllerProtocol {
+        guard let manager = routes[name] else {
+            Logger.it.error("Route not found")
+            fatalError()
+        }
+        return manager.createController()
     }
 }
+
 
 class RouteManager {
     let nibName: String
@@ -21,7 +55,7 @@ class RouteManager {
         self.nibName = nibName
     }
     
-    func createController<Control: ViewControllerProtocol>() -> Control {
-        return UIView.initFromNib(nibName) as! Control
+    func createController() -> ViewControllerProtocol {
+        return UIView.initFromNib(nibName) as! ViewControllerProtocol
     }
 }
