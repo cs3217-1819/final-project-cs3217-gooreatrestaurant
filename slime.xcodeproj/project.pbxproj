@@ -131,6 +131,8 @@
 		EC6AC1D4225216EF00D95C90 /* SlimeColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6AC1D3225216EF00D95C90 /* SlimeColors.swift */; };
 		EC6AC1D62254882900D95C90 /* ContextModalHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6AC1D52254882900D95C90 /* ContextModalHandler.swift */; };
 		EC6AC1D82254884000D95C90 /* ContextDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6AC1D72254884000D95C90 /* ContextDataHandler.swift */; };
+		EC6E75522255CB9000B9C7CF /* CustomizationMainView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC6E75512255CB9000B9C7CF /* CustomizationMainView.xib */; };
+		EC6E75552255CD1700B9C7CF /* GeneralRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6E75542255CD1700B9C7CF /* GeneralRouter.swift */; };
 		EC6E99E8224F1BB400A9554C /* LocalDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6E99E7224F1BB400A9554C /* LocalDataProvider.swift */; };
 		EC6E99ED224F22C000A9554C /* LocalUserCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6E99EC224F22C000A9554C /* LocalUserCharacter.swift */; };
 		EC6E99EF224F256500A9554C /* LocalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6E99EE224F256500A9554C /* LocalData.swift */; };
@@ -183,6 +185,7 @@
 		ECF75F00224B131800537237 /* CodeInputController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF75EFF224B131800537237 /* CodeInputController.swift */; };
 		ECF75F02224B17CA00537237 /* JoinRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF75F01224B17CA00537237 /* JoinRoomView.swift */; };
 		ECF75F04224B182400537237 /* JoinRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF75F03224B182400537237 /* JoinRoomViewController.swift */; };
+		ECF9876A2255C61700FE5577 /* CharacterCustomizationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECF987692255C61700FE5577 /* CharacterCustomizationView.xib */; };
 		F92ECADF224BADEC0040A4E2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F92ECADE224BADEC0040A4E2 /* GoogleService-Info.plist */; };
 		F92ECAE2224BAE8F0040A4E2 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92ECAE1224BAE8F0040A4E2 /* Database.swift */; };
 		F92ECAE4224BAEBD0040A4E2 /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92ECAE3224BAEBD0040A4E2 /* Authentication.swift */; };
@@ -334,6 +337,8 @@
 		EC6AC1D3225216EF00D95C90 /* SlimeColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlimeColors.swift; sourceTree = "<group>"; };
 		EC6AC1D52254882900D95C90 /* ContextModalHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextModalHandler.swift; sourceTree = "<group>"; };
 		EC6AC1D72254884000D95C90 /* ContextDataHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextDataHandler.swift; sourceTree = "<group>"; };
+		EC6E75512255CB9000B9C7CF /* CustomizationMainView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomizationMainView.xib; sourceTree = "<group>"; };
+		EC6E75542255CD1700B9C7CF /* GeneralRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralRouter.swift; sourceTree = "<group>"; };
 		EC6E99E7224F1BB400A9554C /* LocalDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataProvider.swift; sourceTree = "<group>"; };
 		EC6E99EC224F22C000A9554C /* LocalUserCharacter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalUserCharacter.swift; sourceTree = "<group>"; };
 		EC6E99EE224F256500A9554C /* LocalData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalData.swift; sourceTree = "<group>"; };
@@ -386,6 +391,7 @@
 		ECF75EFF224B131800537237 /* CodeInputController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeInputController.swift; sourceTree = "<group>"; };
 		ECF75F01224B17CA00537237 /* JoinRoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinRoomView.swift; sourceTree = "<group>"; };
 		ECF75F03224B182400537237 /* JoinRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinRoomViewController.swift; sourceTree = "<group>"; };
+		ECF987692255C61700FE5577 /* CharacterCustomizationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CharacterCustomizationView.xib; sourceTree = "<group>"; };
 		F92ECADE224BADEC0040A4E2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F92ECAE1224BAE8F0040A4E2 /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		F92ECAE3224BAEBD0040A4E2 /* Authentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
@@ -745,6 +751,7 @@
 		EC449B72223B7E3F00A8EA35 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				EC6E75532255CD0A00B9C7CF /* GeneralRouter */,
 				ECD45544223FAFA5006AF78D /* Context */,
 				EC40E4B5223F9C890073D755 /* Router */,
 				EC38241F2238803A000D7148 /* TitleScreenViewController.swift */,
@@ -768,6 +775,7 @@
 		EC449B73223B7E4A00A8EA35 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				EC81B78A2255B8DA00B6F7EE /* CharacterCustomizationView */,
 				EC0E3161224F60E700AF1254 /* CharacterCreationView */,
 				ECD2442F224B113400767A56 /* JoinRoomView */,
 				EC21B4032242150A00827121 /* LoadingScreenView */,
@@ -840,6 +848,14 @@
 			path = Rating;
 			sourceTree = "<group>";
 		};
+		EC6E75532255CD0A00B9C7CF /* GeneralRouter */ = {
+			isa = PBXGroup;
+			children = (
+				EC6E75542255CD1700B9C7CF /* GeneralRouter.swift */,
+			);
+			path = GeneralRouter;
+			sourceTree = "<group>";
+		};
 		EC6E99E9224F21F900A9554C /* LocalData */ = {
 			isa = PBXGroup;
 			children = (
@@ -876,6 +892,15 @@
 				EC79FFED2242238C002E8FE7 /* GameViewController.swift */,
 			);
 			path = Game;
+			sourceTree = "<group>";
+		};
+		EC81B78A2255B8DA00B6F7EE /* CharacterCustomizationView */ = {
+			isa = PBXGroup;
+			children = (
+				ECF987692255C61700FE5577 /* CharacterCustomizationView.xib */,
+				EC6E75512255CB9000B9C7CF /* CustomizationMainView.xib */,
+			);
+			path = CharacterCustomizationView;
 			sourceTree = "<group>";
 		};
 		ECD2441C224AFF9D00767A56 /* CodeInput */ = {
@@ -1145,6 +1170,7 @@
 				ECD45541223FA21E006AF78D /* Modal.xib in Resources */,
 				EC449B8E223BAD4400A8EA35 /* MapDot.xib in Resources */,
 				EC38246A223A1803000D7148 /* Rubik-Light.ttf in Resources */,
+				EC6E75522255CB9000B9C7CF /* CustomizationMainView.xib in Resources */,
 				ECD4556C2240FBED006AF78D /* PlayerBox.xib in Resources */,
 				EC3824252238803D000D7148 /* Assets.xcassets in Resources */,
 				EC4924E42246163C007B9797 /* LevelPlaceView.xib in Resources */,
@@ -1153,6 +1179,7 @@
 				EC449B9B223BB9EA00A8EA35 /* levels.json in Resources */,
 				EC382480223A2999000D7148 /* PlayMenuButton.xib in Resources */,
 				EC0E3168224F618B00AF1254 /* TextInputView.xib in Resources */,
+				ECF9876A2255C61700FE5577 /* CharacterCustomizationView.xib in Resources */,
 				8B81EFBC224344AD007BFDB0 /* Slime.atlas in Resources */,
 				EC382471223A1803000D7148 /* Rubik-MediumItalic.ttf in Resources */,
 				ECD4557622411340006AF78D /* UpButton.xib in Resources */,
@@ -1292,6 +1319,7 @@
 				EC382484223A2B6C000D7148 /* PlayMenuButtonController.swift in Sources */,
 				ECD455532240B5D1006AF78D /* AlertAction.swift in Sources */,
 				1DE6FC5A224CA45700B36F48 /* Station.swift in Sources */,
+				EC6E75552255CD1700B9C7CF /* GeneralRouter.swift in Sources */,
 				1D2202A1224AB5850080CF7D /* Stage.swift in Sources */,
 				1D22029C224AB5850080CF7D /* Ladder.swift in Sources */,
 				ECD4554F2240B3B3006AF78D /* Alert.swift in Sources */,
