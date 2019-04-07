@@ -31,6 +31,9 @@ class JoinRoomViewController: ViewController<JoinRoomView> {
             }, {
                 // room does not exist
                 self.showErrorAlert(withDescription: "Room does not exist!!")
+            }, {
+                // room has started game
+                self.showErrorAlert(withDescription: "This room has started the game")
             }, { (err) in
                 self.showErrorAlert(withDescription: err as! String)
             })
