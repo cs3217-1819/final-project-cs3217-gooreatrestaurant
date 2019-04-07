@@ -140,7 +140,15 @@ protocol GameDatabase {
     ///     - onError: a block executed when an error happens
     func startGame(forRoom room: RoomModel, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void)
     
-    func joinGame(forId id: String, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void)
+    /// sets the player's state to ready inside the
+    /// game instance so that the host can start the
+    /// game proper
+    /// - Parameters:
+    ///     - forGameId: the game id
+    ///     - onComplete: a closure run after completion
+    ///       of this update
+    ///     - onError: a closure run when an error occurs
+    func joinGame(forGameId id: String, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void)
     
     /// creates a game database reference to the
     /// specified room.

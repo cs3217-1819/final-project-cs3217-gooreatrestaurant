@@ -402,7 +402,7 @@ class GameDB: GameDatabase {
         return newGamePlayerDict
     }
     
-    func joinGame(forId id: String, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void) {
+    func joinGame(forGameId id: String, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void) {
         guard let user = GameAuth.currentUser else {
             return
         }
