@@ -402,6 +402,24 @@ class GameDB: GameDatabase {
         return newGamePlayerDict
     }
     
+    func joinGame(forId id: String, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void) {
+        guard let user = GameAuth.currentUser else {
+            return
+        }
+        
+        let ref = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, id, FirebaseKeys.games_players, user.uid]))
+        
+        let dict = [FirebaseKeys.games_players_isConnected: true, FirebaseKeys.games_players_isReady: true]
+        
+        ref.setValue(dict) { (err, ref) in
+            if let error = err {
+                onError(error)
+            }
+            
+            onComplete()
+        }
+    }
+    
     func updatePlayerPosition(forGameId id: String, position: Int, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void) {
         guard let user = GameAuth.currentUser else {
             return

@@ -138,7 +138,9 @@ protocol GameDatabase {
     ///     - onComplete: a completion block run after a successful
     ///       game start
     ///     - onError: a block executed when an error happens
-    func startGame(forRoom room: RoomModel, _ onComplete: @escaping () -> Void,_ onError: @escaping (Error) -> Void)
+    func startGame(forRoom room: RoomModel, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void)
+    
+    func joinGame(forId id: String, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void)
     
     /// creates a game database reference to the
     /// specified room.
