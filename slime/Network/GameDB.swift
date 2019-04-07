@@ -61,7 +61,7 @@ class GameDB: GameDatabase {
         self.observers.append(Observer(withHandle: handle, withRef: ref))
     }
     
-    func joinRoom(forRoomId id: String, _ onSuccess: @escaping () -> Void, _ onRoomFull: @escaping () -> Void, _ onRoomNotExist: @escaping () -> (), _ onError: @escaping (Error) -> Void) {
+    func joinRoom(forRoomId id: String, _ onSuccess: @escaping () -> Void, _ onRoomFull: @escaping () -> Void, _ onRoomNotExist: @escaping () -> Void, _ onGameHasStarted: @escaping () -> Void, _ onError: @escaping (Error) -> Void) {
         let ref = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.rooms, id]))
         
         guard let user = GameAuth.currentUser else {
@@ -82,7 +82,7 @@ class GameDB: GameDatabase {
             
             if hasStarted {
                 // invalid room
-                onRoomFull()
+                onGameHasStarted()
                 return
             }
             

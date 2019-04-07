@@ -41,9 +41,11 @@ protocol GameDatabase {
     ///       join room is successful
     ///     - onRoomFull: a closure fired when the
     ///       room is already full
+    ///     - onGameHasStarted: a closure fired when
+    ///       the room has already started the game
     ///     - onError: a closure fired when an error
     ///       occurs
-    func joinRoom(forRoomId id: String, _ onSuccess: @escaping () -> Void, _ onRoomFull: @escaping () -> Void, _ onRoomNotExist: @escaping () -> Void, _ onError: @escaping (Error) -> Void)
+    func joinRoom(forRoomId id: String, _ onSuccess: @escaping () -> Void, _ onRoomFull: @escaping () -> Void, _ onRoomNotExist: @escaping () -> Void, _ onGameHasStarted: @escaping () -> Void, _ onError: @escaping (Error) -> Void)
     
     /// opens or closes a room so it can be shown to
     /// everyone. this method will flip the
