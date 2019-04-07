@@ -378,6 +378,7 @@ class GameDB: GameDatabase {
         gameDict.updateValue(false as AnyObject, forKey: FirebaseKeys.games_hasEnded)
         gameDict.updateValue(6000 as AnyObject, forKey: FirebaseKeys.games_timeLimit)
         gameDict.updateValue(NSTimeIntervalSince1970 as AnyObject, forKey: FirebaseKeys.games_startTime)
+        gameDict.updateValue(0 as AnyObject, forKey: FirebaseKeys.games_score)
         
         ref.setValue(gameDict) { (err, ref) in
             if let error = err {
@@ -507,8 +508,43 @@ class GameDB: GameDatabase {
         }
     }
     
-    func observeGameState(forGameId id: String, _ onDataChange: @escaping (GameModel) -> Void, _ onError: @escaping (Error) -> Void) {
-        let ref = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, id]))
+    func observeGameState(forRoom room: RoomModel, _ onDataChange: @escaping (GameModel) -> Void, _ onError: @escaping (Error) -> Void) {
+        guard let user = GameAuth.currentUser else {
+            return
+        }
+        
+        let ref = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, room.id]))
+        let playerRef = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, room.id, FirebaseKeys.games_players]))
+        let orderRef = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, room.id, FirebaseKeys.games_orders]))
+        let scoreRef = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, room.id, FirebaseKeys.games_score]))
+        
+        for player in room.players {
+            if player.uid == user.uid {
+                continue
+            }
+            
+            let indPlayerRef = playerRef.child(player.uid)
+            
+            let playerHandle = indPlayerRef.observe(.value, with: { (snap) in
+                print(snap)
+            }, withCancel: { (err) in
+                onError(err)
+            })
+            
+            self.observers.append(Observer(withHandle: playerHandle, withRef: indPlayerRef))
+        }
+        
+        let orderHandle = orderRef.observe(.value, with: { (snap) in
+            print(snap)
+        }) { (err) in
+            onError(err)
+        }
+        
+        let scoreHandle = scoreRef.observe(.value, with: { (snap) in
+            print(snap)
+        }) { (err) in
+            onError(err)
+        }
         
         let handle = ref.observe(.value, with: { (snap) in
             //            guard let roomDict = snap.value as? [String : AnyObject] else {
@@ -525,6 +561,8 @@ class GameDB: GameDatabase {
             onError(err)
         }
         
+        self.observers.append(Observer(withHandle: orderHandle, withRef: orderRef))
+        self.observers.append(Observer(withHandle: scoreHandle, withRef: scoreRef))
         self.observers.append(Observer(withHandle: handle, withRef: ref))
     }
     
@@ -613,6 +651,7 @@ struct FirebaseKeys {
     static let games_players_holdingItem = "holding_item"
     static let games_players_positionX = "position_x"
     static let games_players_positionY = "position_y"
+    static let games_score = "score"
     static let games_stations = "stations"
     //    static let games_objects = "objects"
     static let games_orders = "orders"
