@@ -349,7 +349,6 @@ class GameDB: GameDatabase {
                 // sets the room created flag to true
                 gameCreatedRef.setValue(true, withCompletionBlock: { (err, ref) in
                     if let error = err {
-                        // escapes function on error
                         onError(error)
                         return
                     }
@@ -384,7 +383,6 @@ class GameDB: GameDatabase {
         
         ref.setValue(gameDict) { (err, ref) in
             if let error = err {
-                // escapes function on error
                 onError(error)
                 return
             }
@@ -609,6 +607,24 @@ class GameDB: GameDatabase {
     
     func rejoinGame(forGameId id: String, _ onSuccess: @escaping () -> Void, _ onError: @escaping (Error) -> Void) {
         // TODO
+        guard let user = GameAuth.currentUser else { return }
+        
+        let rejoinRef = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.rejoins, user.uid]))
+        let connectedRef = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, id, FirebaseKeys.games_players, FirebaseKeys.games_players_isConnected]))
+        
+        rejoinRef.setValue(nil) { (err, ref) in
+            if let error = err {
+                onError(error)
+            }
+            
+            connectedRef.setValue(true, withCompletionBlock: { (err, ref) in
+                if let error = err {
+                    onError(error)
+                }
+                
+                onSuccess()
+            })
+        }
     }
     
     func removeAllObservers() {
