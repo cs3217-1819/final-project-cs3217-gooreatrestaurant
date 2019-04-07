@@ -525,6 +525,7 @@ class GameDB: GameDatabase {
         let orderRef = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, room.id, FirebaseKeys.games_orders]))
         let scoreRef = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, room.id, FirebaseKeys.games_score]))
         let endRef = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, room.id, FirebaseKeys.games_hasEnded]))
+        let stationRef = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, room.id, FirebaseKeys.games_stations]))
         
         for player in room.players {
             if player.uid == user.uid {
@@ -549,6 +550,12 @@ class GameDB: GameDatabase {
         }
         
         let scoreHandle = scoreRef.observe(.value, with: { (snap) in
+            print(snap)
+        }) { (err) in
+            onError(err)
+        }
+        
+        let stationHandle = stationRef.observe(.value, with: { (snap) in
             print(snap)
         }) { (err) in
             onError(err)
