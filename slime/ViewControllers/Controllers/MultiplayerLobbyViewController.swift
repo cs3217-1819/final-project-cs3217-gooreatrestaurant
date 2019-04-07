@@ -87,7 +87,7 @@ class MultiplayerLobbyViewController: ViewController<MultiplayerLobbyView> {
     }
     
     private func startGame() {
-        if !allPlayersReady() {
+        if !allPlayersReady() || !isHost() {
             return
         }
         

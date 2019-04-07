@@ -112,6 +112,7 @@ class GameDB: GameDatabase {
                 
                 // set disconnect flag, remove player from room
                 currentUserRef.onDisconnectRemoveValue()
+                // TODO: add disconnect ref to list of observers
                 
                 onSuccess()
             })
@@ -226,6 +227,7 @@ class GameDB: GameDatabase {
                 
                 // closes room on disconnect
                 ref.onDisconnectRemoveValue()
+                // TODO: add ref to disconnect list
                 
                 onSuccess(roomId)
             })
@@ -334,7 +336,7 @@ class GameDB: GameDatabase {
     func startGame(forRoom room: RoomModel, _ onComplete: @escaping () -> Void,_ onError: @escaping (Error) -> Void) {
         
         let hasStartedRef = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.rooms, room.id, FirebaseKeys.rooms_hasStarted]))
-        let roomCreatedRef = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.rooms, room.id, FirebaseKeys.rooms_isGameCreated]))
+        let gameCreatedRef = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.rooms, room.id, FirebaseKeys.rooms_isGameCreated]))
         
         hasStartedRef.setValue(true) { (err, ref) in
             if let error = err {
@@ -345,7 +347,7 @@ class GameDB: GameDatabase {
             
             self.createGame(forRoom: room, {
                 // sets the room created flag to true
-                roomCreatedRef.setValue(true, withCompletionBlock: { (err, ref) in
+                gameCreatedRef.setValue(true, withCompletionBlock: { (err, ref) in
                     if let error = err {
                         // escapes function on error
                         onError(error)
@@ -409,6 +411,9 @@ class GameDB: GameDatabase {
         }
         
         let ref = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, id, FirebaseKeys.games_players, user.uid]))
+
+        let disconnectRef = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, id, FirebaseKeys.games_players, user.uid, FirebaseKeys.games_players_isConnected]))
+        let rejoinRef = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.rejoins, user.uid]))
         
         let dict = [FirebaseKeys.games_players_isConnected: true, FirebaseKeys.games_players_isReady: true]
         
@@ -416,6 +421,10 @@ class GameDB: GameDatabase {
             if let error = err {
                 onError(error)
             }
+            
+            disconnectRef.onDisconnectSetValue(false)
+            rejoinRef.onDisconnectSetValue(id)
+            // TODO: add disconnect ref to list of ref
             
             onComplete()
         }
@@ -517,6 +526,7 @@ class GameDB: GameDatabase {
         let playerRef = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, room.id, FirebaseKeys.games_players]))
         let orderRef = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, room.id, FirebaseKeys.games_orders]))
         let scoreRef = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, room.id, FirebaseKeys.games_score]))
+        let endRef = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, room.id, FirebaseKeys.games_hasEnded]))
         
         for player in room.players {
             if player.uid == user.uid {
@@ -546,6 +556,18 @@ class GameDB: GameDatabase {
             onError(err)
         }
         
+        let endHandle = endRef.observe(.value, with: { (snap) in
+            guard let end = snap.value as? Bool else {
+                return
+            }
+            
+            if end {
+                // game has ended
+            }
+        }) { (err) in
+            onError(err)
+        }
+        
         let handle = ref.observe(.value, with: { (snap) in
             //            guard let roomDict = snap.value as? [String : AnyObject] else {
             //                return
@@ -563,6 +585,7 @@ class GameDB: GameDatabase {
         
         self.observers.append(Observer(withHandle: orderHandle, withRef: orderRef))
         self.observers.append(Observer(withHandle: scoreHandle, withRef: scoreRef))
+        self.observers.append(Observer(withHandle: endHandle, withRef: endRef))
         self.observers.append(Observer(withHandle: handle, withRef: ref))
     }
     
