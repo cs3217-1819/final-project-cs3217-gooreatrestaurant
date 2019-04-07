@@ -9,16 +9,28 @@
 import UIKit
 import RxSwift
 
-class ItemSelectorController<Item>: Controller {
+class ItemSelectorController<Item: Equatable>: Controller {
     let view: ItemSelectorView
     var value: Item? {
-        guard let index = try? currentIndex.value() else {
-            return nil
+        get {
+            guard let index = try? currentIndex.value() else {
+                return nil
+            }
+            if index < 0 || index >= items.count {
+                return nil
+            }
+            return items[index].0
         }
-        if index < 0 || index >= items.count {
-            return nil
+        set {
+            guard let nextValue = newValue else {
+                return
+            }
+            for (i, item) in items.enumerated() {
+                if item.0 == nextValue {
+                    currentIndex.onNext(i)
+                }
+            }
         }
-        return items[index].0
     }
     private var currentIndex = BehaviorSubject(value: 0)
     private var items: [(Item, UIImage)] = []

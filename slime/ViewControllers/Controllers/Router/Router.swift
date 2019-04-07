@@ -11,6 +11,7 @@ import UIKit
 enum Route {
     case TitleScreen
     case CharacterCreationScreen
+    case CharacterCustomizationScreen
     case PlayScreen
     case LevelSelect
     case CreditsScreen
@@ -26,6 +27,8 @@ enum Route {
             return CGPoint(x: 0, y: 0)
         case .CharacterCreationScreen:
             return CGPoint(x: 4, y: 4)
+        case .CharacterCustomizationScreen:
+            return CGPoint(x: 3, y: 3)
         case .PlayScreen:
             return CGPoint(x: 0, y: 1)
         case .LevelSelect:
@@ -71,6 +74,8 @@ class Router {
             return TitleScreenViewController(with: UIView.initFromNib("TitleScreenView"))
         case .CharacterCreationScreen:
             return CharacterCreationViewController(with: UIView.initFromNib("CharacterCreationView"))
+        case .CharacterCustomizationScreen:
+            return CharacterCustomizationViewController(with: UIView.initFromNib("CharacterCustomizationView"))
         case .PlayScreen:
             return PlayScreenViewController(with: UIView.initFromNib("PlayScreenView"))
         case .LevelSelect:

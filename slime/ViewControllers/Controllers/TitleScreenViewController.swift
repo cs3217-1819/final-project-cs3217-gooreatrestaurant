@@ -20,6 +20,12 @@ class TitleScreenViewController: ViewController<TitleScreenView> {
         }
         let userInfoController = UserInfoController(usingXib: view.userInfoView, boundTo: charSubject)
         userInfoController.configure()
+        
+        let buttonController = ButtonController(using: view.userInfoView)
+        buttonController.onTap {
+            self.context.routeTo(.CharacterCustomizationScreen)
+        }
+        remember(buttonController)
         remember(userInfoController)
     }
     

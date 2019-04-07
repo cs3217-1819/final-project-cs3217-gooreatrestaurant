@@ -38,7 +38,19 @@
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IO1-fS-WYA" customClass="DesignableView" customModule="slime">
                     <rect key="frame" x="352" y="36" width="424" height="303"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="imv-iR-Sv3">
+                            <rect key="frame" x="16" y="16" width="392" height="271"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                    </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="imv-iR-Sv3" firstAttribute="leading" secondItem="IO1-fS-WYA" secondAttribute="leading" constant="16" id="CLz-lN-sc3"/>
+                        <constraint firstAttribute="bottom" secondItem="imv-iR-Sv3" secondAttribute="bottom" constant="16" id="Vzp-O6-gca"/>
+                        <constraint firstItem="imv-iR-Sv3" firstAttribute="top" secondItem="IO1-fS-WYA" secondAttribute="top" constant="16" id="mU0-nj-iUB"/>
+                        <constraint firstAttribute="trailing" secondItem="imv-iR-Sv3" secondAttribute="trailing" constant="16" id="qC7-YQ-GQL"/>
+                    </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="string" keyPath="background" value="pink7"/>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="rounded" value="YES"/>
@@ -59,7 +71,7 @@
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
                 <outlet property="characterPreviewView" destination="KaI-7y-nHP" id="i2c-hl-wtq"/>
-                <outlet property="routerPanel" destination="IO1-fS-WYA" id="ge7-Hb-fPA"/>
+                <outlet property="routerPanel" destination="imv-iR-Sv3" id="nCW-9q-Mtm"/>
             </connections>
             <point key="canvasLocation" x="220.80000000000001" y="-1.3493253373313345"/>
         </view>

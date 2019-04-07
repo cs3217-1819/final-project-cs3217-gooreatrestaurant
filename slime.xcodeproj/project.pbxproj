@@ -132,11 +132,8 @@
 		EC6AC1D62254882900D95C90 /* ContextModalHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6AC1D52254882900D95C90 /* ContextModalHandler.swift */; };
 		EC6AC1D82254884000D95C90 /* ContextDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6AC1D72254884000D95C90 /* ContextDataHandler.swift */; };
 		EC6E75522255CB9000B9C7CF /* CustomizationMainView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC6E75512255CB9000B9C7CF /* CustomizationMainView.xib */; };
-		EC6E75552255CD1700B9C7CF /* GeneralRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6E75542255CD1700B9C7CF /* GeneralRouter.swift */; };
 		EC6E7558225A3A8000B9C7CF /* JokesSlimesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC6E7557225A3A8000B9C7CF /* JokesSlimesView.xib */; };
 		EC6E755A225A3A8D00B9C7CF /* JokesSlimesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6E7559225A3A8D00B9C7CF /* JokesSlimesView.swift */; };
-		EC6E755C225A3BDF00B9C7CF /* GeneralRouteTransitionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6E755B225A3BDF00B9C7CF /* GeneralRouteTransitionHandler.swift */; };
-		EC6E755E225A3EF000B9C7CF /* GeneralRouterContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6E755D225A3EF000B9C7CF /* GeneralRouterContext.swift */; };
 		EC6E7563225A426800B9C7CF /* CharacterCustomizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6E7562225A426800B9C7CF /* CharacterCustomizationViewController.swift */; };
 		EC6E7565225A437A00B9C7CF /* CharacterCustomizationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6E7564225A437A00B9C7CF /* CharacterCustomizationView.swift */; };
 		EC6E7567225A438A00B9C7CF /* CustomizationMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6E7566225A438A00B9C7CF /* CustomizationMainView.swift */; };
@@ -150,6 +147,8 @@
 		EC6E99FB224F499400A9554C /* UserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6E99FA224F499400A9554C /* UserInfoView.swift */; };
 		EC6E99FD224F49FB00A9554C /* UserInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6E99FC224F49FB00A9554C /* UserInfoController.swift */; };
 		EC6E99FF224F4F0900A9554C /* DoubleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6E99FE224F4F0900A9554C /* DoubleExtension.swift */; };
+		EC7676BA225A4A4B00F6A450 /* RouterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7676B9225A4A4B00F6A450 /* RouterController.swift */; };
+		EC7676BD225A543900F6A450 /* CustomizationMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7676BC225A543900F6A450 /* CustomizationMainViewController.swift */; };
 		EC79FFEE2242238C002E8FE7 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC79FFED2242238C002E8FE7 /* GameViewController.swift */; };
 		EC81B7872254A09900B6F7EE /* TransitionConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC81B7862254A09900B6F7EE /* TransitionConstants.swift */; };
 		EC81B7892254A3A600B6F7EE /* KeyboardService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC81B7882254A3A600B6F7EE /* KeyboardService.swift */; };
@@ -345,11 +344,8 @@
 		EC6AC1D52254882900D95C90 /* ContextModalHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextModalHandler.swift; sourceTree = "<group>"; };
 		EC6AC1D72254884000D95C90 /* ContextDataHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextDataHandler.swift; sourceTree = "<group>"; };
 		EC6E75512255CB9000B9C7CF /* CustomizationMainView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomizationMainView.xib; sourceTree = "<group>"; };
-		EC6E75542255CD1700B9C7CF /* GeneralRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralRouter.swift; sourceTree = "<group>"; };
 		EC6E7557225A3A8000B9C7CF /* JokesSlimesView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JokesSlimesView.xib; sourceTree = "<group>"; };
 		EC6E7559225A3A8D00B9C7CF /* JokesSlimesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokesSlimesView.swift; sourceTree = "<group>"; };
-		EC6E755B225A3BDF00B9C7CF /* GeneralRouteTransitionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralRouteTransitionHandler.swift; sourceTree = "<group>"; };
-		EC6E755D225A3EF000B9C7CF /* GeneralRouterContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralRouterContext.swift; sourceTree = "<group>"; };
 		EC6E7562225A426800B9C7CF /* CharacterCustomizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCustomizationViewController.swift; sourceTree = "<group>"; };
 		EC6E7564225A437A00B9C7CF /* CharacterCustomizationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCustomizationView.swift; sourceTree = "<group>"; };
 		EC6E7566225A438A00B9C7CF /* CustomizationMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizationMainView.swift; sourceTree = "<group>"; };
@@ -363,6 +359,8 @@
 		EC6E99FA224F499400A9554C /* UserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoView.swift; sourceTree = "<group>"; };
 		EC6E99FC224F49FB00A9554C /* UserInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoController.swift; sourceTree = "<group>"; };
 		EC6E99FE224F4F0900A9554C /* DoubleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleExtension.swift; sourceTree = "<group>"; };
+		EC7676B9225A4A4B00F6A450 /* RouterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterController.swift; sourceTree = "<group>"; };
+		EC7676BC225A543900F6A450 /* CustomizationMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizationMainViewController.swift; sourceTree = "<group>"; };
 		EC79FFED2242238C002E8FE7 /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		EC81B7862254A09900B6F7EE /* TransitionConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionConstants.swift; sourceTree = "<group>"; };
 		EC81B7882254A3A600B6F7EE /* KeyboardService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardService.swift; sourceTree = "<group>"; };
@@ -639,6 +637,7 @@
 		EC38243D223882AF000D7148 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				EC7676B8225A4A3700F6A450 /* RouterView */,
 				EC6E7556225A3A6300B9C7CF /* JokesSlimes */,
 				8BFA63EA22589D9B007645F9 /* Audio */,
 				EC0E316F2252073500AF1254 /* ItemSelector */,
@@ -766,7 +765,7 @@
 		EC449B72223B7E3F00A8EA35 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				EC6E75532255CD0A00B9C7CF /* GeneralRouter */,
+				EC7676BB225A541F00F6A450 /* Customization */,
 				ECD45544223FAFA5006AF78D /* Context */,
 				EC40E4B5223F9C890073D755 /* Router */,
 				EC38241F2238803A000D7148 /* TitleScreenViewController.swift */,
@@ -864,16 +863,6 @@
 			path = Rating;
 			sourceTree = "<group>";
 		};
-		EC6E75532255CD0A00B9C7CF /* GeneralRouter */ = {
-			isa = PBXGroup;
-			children = (
-				EC6E75542255CD1700B9C7CF /* GeneralRouter.swift */,
-				EC6E755B225A3BDF00B9C7CF /* GeneralRouteTransitionHandler.swift */,
-				EC6E755D225A3EF000B9C7CF /* GeneralRouterContext.swift */,
-			);
-			path = GeneralRouter;
-			sourceTree = "<group>";
-		};
 		EC6E7556225A3A6300B9C7CF /* JokesSlimes */ = {
 			isa = PBXGroup;
 			children = (
@@ -911,6 +900,22 @@
 				EC6E99F8224F2DDB00A9554C /* ProgressBarController.swift */,
 			);
 			path = ProgressBar;
+			sourceTree = "<group>";
+		};
+		EC7676B8225A4A3700F6A450 /* RouterView */ = {
+			isa = PBXGroup;
+			children = (
+				EC7676B9225A4A4B00F6A450 /* RouterController.swift */,
+			);
+			path = RouterView;
+			sourceTree = "<group>";
+		};
+		EC7676BB225A541F00F6A450 /* Customization */ = {
+			isa = PBXGroup;
+			children = (
+				EC7676BC225A543900F6A450 /* CustomizationMainViewController.swift */,
+			);
+			path = Customization;
 			sourceTree = "<group>";
 		};
 		EC79FFEC2242238C002E8FE7 /* Game */ = {
@@ -1335,6 +1340,7 @@
 				8BD816B3224262F100586180 /* AnalogJoystick.swift in Sources */,
 				1DD6EBE5224E76F0006FF6CD /* IngredientType.swift in Sources */,
 				ECD45543223FACC4006AF78D /* ModalController.swift in Sources */,
+				EC7676BA225A4A4B00F6A450 /* RouterController.swift in Sources */,
 				8BFA63EC22589DAF007645F9 /* AudioController.swift in Sources */,
 				EC382475223A1AA4000D7148 /* ColorStyles.swift in Sources */,
 				F9F26FEE22564873008BFD50 /* GameDB.swift in Sources */,
@@ -1349,7 +1355,6 @@
 				EC382484223A2B6C000D7148 /* PlayMenuButtonController.swift in Sources */,
 				ECD455532240B5D1006AF78D /* AlertAction.swift in Sources */,
 				1DE6FC5A224CA45700B36F48 /* Station.swift in Sources */,
-				EC6E75552255CD1700B9C7CF /* GeneralRouter.swift in Sources */,
 				1D2202A1224AB5850080CF7D /* Stage.swift in Sources */,
 				1D22029C224AB5850080CF7D /* Ladder.swift in Sources */,
 				EC6E7567225A438A00B9C7CF /* CustomizationMainView.swift in Sources */,
@@ -1398,6 +1403,7 @@
 				EC6E755A225A3A8D00B9C7CF /* JokesSlimesView.swift in Sources */,
 				ECD455672240F974006AF78D /* ViewControllerProtocol.swift in Sources */,
 				EC21B40222420D4100827121 /* DesignableView.swift in Sources */,
+				EC7676BD225A543900F6A450 /* CustomizationMainViewController.swift in Sources */,
 				1D2202AD224AB68F0080CF7D /* PlateStorage.swift in Sources */,
 				EC6AC1D4225216EF00D95C90 /* SlimeColors.swift in Sources */,
 				EC79FFEE2242238C002E8FE7 /* GameViewController.swift in Sources */,
@@ -1412,7 +1418,6 @@
 				EC382482223A2AF5000D7148 /* PlayMenuButton.swift in Sources */,
 				EC449B92223BB01C00A8EA35 /* LevelDetailsBox.swift in Sources */,
 				EC3824512238FB3D000D7148 /* ButtonController.swift in Sources */,
-				EC6E755C225A3BDF00B9C7CF /* GeneralRouteTransitionHandler.swift in Sources */,
 				EC38245A223A0F6F000D7148 /* UIText.swift in Sources */,
 				ECD455702240FEDE006AF78D /* PlayerBoxController.swift in Sources */,
 				EC449B81223B8C0C00A8EA35 /* PlayScreenView.swift in Sources */,
@@ -1453,7 +1458,6 @@
 				ECD455722240FFC7006AF78D /* Player.swift in Sources */,
 				EC449B7D223B873600A8EA35 /* RouterViewController.swift in Sources */,
 				EC4924F82248D877007B9797 /* RatingViewController.swift in Sources */,
-				EC6E755E225A3EF000B9C7CF /* GeneralRouterContext.swift in Sources */,
 				ECD2442A224B0C9E00767A56 /* SlimeNumberPadView.swift in Sources */,
 				EC3824562239116D000D7148 /* CGRectExtension.swift in Sources */,
 				ECD45546223FAFBE006AF78D /* ContextController.swift in Sources */,
