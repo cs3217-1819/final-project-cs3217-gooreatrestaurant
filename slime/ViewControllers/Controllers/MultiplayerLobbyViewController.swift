@@ -103,6 +103,24 @@ class MultiplayerLobbyViewController: ViewController<MultiplayerLobbyView> {
         }
     }
     
+    private func isHost() -> Bool {
+        guard let room = self.currentRoom else {
+            return false
+        }
+        
+        guard let user = GameAuth.currentUser else {
+            return false
+        }
+        
+        for player in room.players {
+            if player.uid == user.uid {
+                return player.isHost
+            }
+        }
+        
+        return false
+    }
+    
     private func allPlayersReady() -> Bool {
         guard let room = currentRoom else {
             return false

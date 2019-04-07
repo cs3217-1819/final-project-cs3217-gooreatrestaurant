@@ -129,7 +129,7 @@ class GameDB: GameDatabase {
     /// - Returns: a dictinoary ready to be inserted
     private func createRoomPlayerDict(isHost: Bool, uid: String) -> [String : AnyObject] {
         let newPlayerDescriptionDict: [String : AnyObject] = [FirebaseKeys.rooms_players_isHost: isHost as AnyObject,
-                                                              FirebaseKeys.rooms_players_isReady: isHost as AnyObject]
+            FirebaseKeys.rooms_players_isReady: isHost as AnyObject]
         
         return [uid : newPlayerDescriptionDict as AnyObject]
     }
@@ -364,7 +364,20 @@ class GameDB: GameDatabase {
         let ref = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, room.id]))
         
         // populates dictionary required for game
-        let gameDict: [String : AnyObject] = [:]
+        var gameDict: [String : AnyObject] = [:]
+        var players: [String : AnyObject] = [:]
+        
+        for player in room.players {
+            let playerDict = self.createGamePlayerDict(isHost: player.isHost) as AnyObject
+            
+            players.updateValue(playerDict, forKey: player.uid)
+        }
+        
+        // populates dictionary to fit the db
+        gameDict.updateValue(room.map as AnyObject, forKey: FirebaseKeys.games_gameMap)
+        gameDict.updateValue(false as AnyObject, forKey: FirebaseKeys.games_hasEnded)
+        gameDict.updateValue(6000 as AnyObject, forKey: FirebaseKeys.games_timeLimit)
+        gameDict.updateValue(NSTimeIntervalSince1970 as AnyObject, forKey: FirebaseKeys.games_startTime)
         
         ref.setValue(gameDict) { (err, ref) in
             if let error = err {
@@ -377,13 +390,37 @@ class GameDB: GameDatabase {
         }
     }
     
+    private func createGamePlayerDict(isHost: Bool) -> [String : AnyObject] {
+        let newGamePlayerDict: [String : AnyObject] =
+            [FirebaseKeys.games_players_isHost: isHost as AnyObject,
+            FirebaseKeys.games_players_isReady: false as AnyObject,
+            FirebaseKeys.games_players_isConnected: false as AnyObject,
+            FirebaseKeys.games_players_positionX: 0.0 as AnyObject,
+            FirebaseKeys.games_players_positionY: 0.0 as AnyObject,
+            FirebaseKeys.games_players_holdingItem: "apple" as AnyObject]
+        
+        return newGamePlayerDict
+    }
+    
     func updatePlayerPosition(forGameId id: String, position: Int, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void) {
         guard let user = GameAuth.currentUser else {
             return
         }
         
-//        let ref = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, id, FirebaseKeys.games_players, user.uid, FirebaseKeys.position]))
-        // TODO
+        let refX = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, id, FirebaseKeys.games_players, user.uid, FirebaseKeys.games_players_positionX]))
+        let refY = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, id, FirebaseKeys.games_players, user.uid, FirebaseKeys.games_players_positionY]))
+        
+        refX.setValue(position) { (err, ref) in
+            if let error = err {
+                onError(error)
+            }
+        }
+        
+        refY.setValue(position) { (err, ref) in
+            if let error = err {
+                onError(error)
+            }
+        }
     }
 
     func queueOrder(forGameId id: String, withRecipe recipe: Recipe, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void) {
@@ -552,8 +589,12 @@ struct FirebaseKeys {
     static let games_startTime = "start_time"
     static let games_timeLimit = "time_limit"
     static let games_players = "players"
+    static let games_players_isHost = "is_host"
     static let games_players_isConnected = "is_connected"
     static let games_players_isReady = "is_ready"
+    static let games_players_holdingItem = "holding_item"
+    static let games_players_positionX = "position_x"
+    static let games_players_positionY = "position_y"
     static let games_stations = "stations"
     //    static let games_objects = "objects"
     static let games_orders = "orders"
