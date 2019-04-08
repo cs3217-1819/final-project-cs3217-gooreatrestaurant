@@ -10,6 +10,7 @@ import UIKit
 class MultiplayerLobbyViewController: ViewController<MultiplayerLobbyView> {
     
     var activeAlert: AlertController?
+    var currentRoom: RoomModel?
     var roomId: String = ""
     
     private lazy var playerViews: [XibView] = [
@@ -46,16 +47,17 @@ class MultiplayerLobbyViewController: ViewController<MultiplayerLobbyView> {
         }
     }
     
-    private func setupRoomDetails(id: String) {
+    private func setupRoomDetails(forRoom room: RoomModel) {
         // TODO:
-        view.roomCodeLabel.text = id
+        view.roomCodeLabel.text = room.id
+        self.currentRoom = room
     }
     
     func setupRoom(withId id: String) {
         self.roomId = id
         self.context.db.observeRoomState(forRoomId: id, { (room) in
             self.setupPlayers(forPlayers: room.players)
-            self.setupRoomDetails(id: id)
+            self.setupRoomDetails(forRoom: room)
             
             if room.gameIsCreated {
                 self.setLoadingAlert(withDescription: "Pumping slimes into spaceship...")
@@ -82,6 +84,55 @@ class MultiplayerLobbyViewController: ViewController<MultiplayerLobbyView> {
             self.setErrorAlert(withDescription: err as! String)
             self.presentActiveAlert(dismissible: true)
         }
+    }
+    
+    private func startGame() {
+        if !allPlayersReady() || !isHost() {
+            return
+        }
+        
+        guard let room = self.currentRoom else {
+            return
+        }
+        
+        self.context.db.startGame(forRoom: room, {
+            // do something
+        }) { (err) in
+            self.setErrorAlert(withDescription: err as! String)
+            self.presentActiveAlert(dismissible: true)
+        }
+    }
+    
+    private func isHost() -> Bool {
+        guard let room = self.currentRoom else {
+            return false
+        }
+        
+        guard let user = GameAuth.currentUser else {
+            return false
+        }
+        
+        for player in room.players {
+            if player.uid == user.uid {
+                return player.isHost
+            }
+        }
+        
+        return false
+    }
+    
+    private func allPlayersReady() -> Bool {
+        guard let room = currentRoom else {
+            return false
+        }
+        
+        for player in room.players {
+            if !player.isHost && !player.isReady {
+                return false
+            }
+        }
+        
+        return true
     }
     
     private func presentActiveAlert(dismissible: Bool) {

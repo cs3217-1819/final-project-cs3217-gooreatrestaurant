@@ -41,9 +41,11 @@ protocol GameDatabase {
     ///       join room is successful
     ///     - onRoomFull: a closure fired when the
     ///       room is already full
+    ///     - onGameHasStarted: a closure fired when
+    ///       the room has already started the game
     ///     - onError: a closure fired when an error
     ///       occurs
-    func joinRoom(forRoomId id: String, _ onSuccess: @escaping () -> Void, _ onRoomFull: @escaping () -> Void, _ onRoomNotExist: @escaping () -> Void, _ onError: @escaping (Error) -> Void)
+    func joinRoom(forRoomId id: String, _ onSuccess: @escaping () -> Void, _ onRoomFull: @escaping () -> Void, _ onRoomNotExist: @escaping () -> Void, _ onGameHasStarted: @escaping () -> Void, _ onError: @escaping (Error) -> Void)
     
     /// opens or closes a room so it can be shown to
     /// everyone. this method will flip the
@@ -136,7 +138,17 @@ protocol GameDatabase {
     ///     - onComplete: a completion block run after a successful
     ///       game start
     ///     - onError: a block executed when an error happens
-    func startGame(forRoom room: RoomModel, _ onComplete: @escaping () -> Void,_ onError: @escaping (Error) -> Void)
+    func startGame(forRoom room: RoomModel, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void)
+    
+    /// sets the player's state to ready inside the
+    /// game instance so that the host can start the
+    /// game proper
+    /// - Parameters:
+    ///     - forGameId: the game id
+    ///     - onComplete: a closure run after completion
+    ///       of this update
+    ///     - onError: a closure run when an error occurs
+    func joinGame(forGameId id: String, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void)
     
     /// creates a game database reference to the
     /// specified room.
@@ -156,7 +168,7 @@ protocol GameDatabase {
     ///     - onDataChange: a closure which is fired
     ///       every time a data value changes
     ///     - onError: fired when an error happens
-    func observeGameState(forGameId id: String, _ onDataChange: @escaping (GameModel) -> Void, _ onError: @escaping (Error) -> Void)
+    func observeGameState(forRoom room: RoomModel, _ onDataChange: @escaping (GameModel) -> Void, _ onError: @escaping (Error) -> Void)
     
     /// updates a player position inside the game
     /// id specified inside this method
