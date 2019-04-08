@@ -10,7 +10,7 @@ struct Level: Codable {
     var id: String
     var name: String
     var bestScore: Int
-    
+
     init(id: String, name: String, bestScore: Int) {
         self.id = id
         self.name = name

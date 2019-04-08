@@ -22,7 +22,7 @@ class TextLabel: UILabel {
             font = TextStyles.getStyle(style)
         }
     }
-    
+
     @IBInspectable var color: String = "" {
         didSet {
             guard let colorToSet = ColorStyles.getColor(color) else {
@@ -44,7 +44,7 @@ class TextField: UITextField {
             font = TextStyles.getStyle(style)
         }
     }
-    
+
     @IBInspectable var color: String = "" {
         didSet {
             guard let colorToSet = ColorStyles.getColor(color) else {

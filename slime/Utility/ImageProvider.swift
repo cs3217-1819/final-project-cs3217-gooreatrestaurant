@@ -10,13 +10,13 @@ import UIKit
 
 class ImageProvider {
     private(set) static var instance: ImageProvider = ImageProvider()
-    
+
     private var cache: [String: UIImage] = [:]
-    
+
     private init() {
-        
+
     }
-    
+
     static func get(_ imageName: String) -> UIImage? {
         if let image = instance.cache[imageName] {
             return image
@@ -25,7 +25,7 @@ class ImageProvider {
             return nil
         }
         instance.cache[imageName] = image
-        
+
         return image
     }
 }

@@ -15,27 +15,27 @@ class AlertController: Controller {
     private var description: String?
     private var actions: [AlertAction] = []
     private var controllers: [AnyObject] = []
-    
+
     init(using modalController: ModalController) {
         view = UIView.initFromNib("Alert")
         self.modalController = modalController
     }
-    
+
     func setTitle(_ title: String) -> AlertController {
         self.title = title
         return self
     }
-    
+
     func setDescription(_ description: String) -> AlertController {
         self.description = description
         return self
     }
-    
+
     func addAction(_ action: AlertAction) -> AlertController {
         actions.append(action)
         return self
     }
-    
+
     func configure() {
         view.titleLabel.text = title
         view.descriptionLabel.text = description
@@ -57,10 +57,10 @@ class AlertController: Controller {
                 action.callback()
                 self.modalController.close()
             }
-            
+
             view.actionStackView.addArrangedSubview(actionView)
         }
-        
+
         view.snp.makeConstraints { make in
             make.width.lessThanOrEqualTo(450)
             make.height.lessThanOrEqualTo(300)
@@ -68,7 +68,7 @@ class AlertController: Controller {
         view.layoutIfNeeded()
         modalController.setContent(view)
     }
-    
+
     func remember(_ controller: AnyObject) {
         controllers.append(controller)
     }

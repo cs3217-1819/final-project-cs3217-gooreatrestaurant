@@ -13,7 +13,7 @@ import Firebase
  game authentication.
  */
 protocol GameAuthentication {
-    
+
     /// listens to changes in authentication
     /// states, the closure will be fired when
     /// user either successfully logs in or
@@ -23,11 +23,11 @@ protocol GameAuthentication {
     ///       the auth state for the current user
     ///       changes
     static func listenToAuthStateChange(_ onStateChange: @escaping (User) -> Void)
-    
+
     /// the current user tied to the anonymous authentication
     /// specific to the machine
     static var currentUser: User? { get }
-    
+
     /// signs in anonymously, the account
     /// is tied to the machine, but is refreshed
     /// after application is removed from the
@@ -40,27 +40,26 @@ protocol GameAuthentication {
 
 class GameAuth: GameAuthentication {
     public static func listenToAuthStateChange(_ onStateChange: @escaping (User) -> Void) {
-        Auth.auth().addStateDidChangeListener { (auth, user) in
+        Auth.auth().addStateDidChangeListener { (_, user) in
             if let user = user {
                 onStateChange(user)
             }
         }
     }
-    
+
     public static var currentUser: User? {
         guard let user = Auth.auth().currentUser else {
             return nil
         }
-        
+
         return user
     }
-    
+
     public static func signInAnonymously(_ onError: @escaping (Error) -> Void) {
-        Auth.auth().signInAnonymously { (authResult, err) in
+        Auth.auth().signInAnonymously { (_, err) in
             if let error = err {
                 onError(error)
             }
         }
     }
 }
-

@@ -24,7 +24,7 @@ class TextStyles {
         "p2": 16,
         "psmall": 14
     ]
-    
+
     static func getStyle(_ label: String) -> UIFont? {
         if let size = headerStyles[label] {
             return getTitleFont(size: size)
@@ -32,18 +32,18 @@ class TextStyles {
         if let size = textStyles[label] {
             return getReadingFont(size: size)
         }
-        
+
         return nil
     }
-    
+
     private static func getTitleFont(size: CGFloat) -> UIFont {
         return getFont(name: titleFontName, size: size)
     }
-    
+
     private static func getReadingFont(size: CGFloat) -> UIFont {
         return getFont(name: readingFontName, size: size)
     }
-    
+
     // Tries to get font, fatal error if cannot find font.
     private static func getFont(name: String, size: CGFloat) -> UIFont {
         guard let font = UIFont(name: name, size: size) else {

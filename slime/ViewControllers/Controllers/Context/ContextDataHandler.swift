@@ -12,21 +12,11 @@ import RxSwift
 class ContextDataHandler {
     private let disposeBag = DisposeBag()
     private(set) var userCharacter: BehaviorSubject<UserCharacter>?
-    
+
     init() {
         setupAutosaveCharacter()
     }
-    
-    private func saveCharacter() {
-        guard let optCharacter = try? userCharacter?.value() else {
-            return
-        }
-        guard let character = optCharacter else {
-            return
-        }
-        LocalData.it.saveCharacter(character)
-    }
-    
+
     func createCharacter(named name: String, color: SlimeColor) {
         let char = UserCharacter(named: name)
         char.set(color: color)
@@ -34,7 +24,7 @@ class ContextDataHandler {
         setupAutosaveCharacter()
         Logger.it.info("Created character")
     }
-    
+
     func loadUserData() {
         guard let character = LocalData.it.getUserCharacter() else {
             return
@@ -49,41 +39,69 @@ class ContextDataHandler {
             setupAutosaveCharacter()
         }
     }
-    
+
     func gainCharacterExp(_ exp: Int) {
-        guard let optChar = try? userCharacter?.value() else {
-            return
-        }
-        guard let char = optChar else {
+        guard let char = getChar() else {
             return
         }
         char.gainExp(exp)
         userCharacter?.onNext(char)
     }
-    
+
     func changeCharacterColor(_ color: SlimeColor) {
-        guard let optChar = try? userCharacter?.value() else {
-            return
-        }
-        guard let char = optChar else {
+        guard let char = getChar() else {
             return
         }
         char.set(color: color)
         userCharacter?.onNext(char)
     }
     
+    func changeHat(_ name: String) {
+        guard let char = getChar() else {
+            return
+        }
+        char.setHat(name)
+        userCharacter?.onNext(char)
+    }
+    
+    func changeAccessory(_ name: String) {
+        guard let char = getChar() else {
+            return
+        }
+        char.setAccessory(name)
+        userCharacter?.onNext(char)
+    }
+
     func resetData() {
         LocalData.it.resetData()
         userCharacter = nil
         Logger.it.info("Reset data")
     }
     
+    private func saveCharacter() {
+        guard let character = getChar() else {
+            return
+        }
+        LocalData.it.saveCharacter(character)
+    }
+    
+    private func getChar() -> UserCharacter? {
+        guard let optChar = try? userCharacter?.value() else {
+            return nil
+        }
+        guard let char = optChar else {
+            return nil
+        }
+        
+        return char
+    }
+
     private func setupAutosaveCharacter() {
         userCharacter?.subscribe { event in
             guard let player = event.element else {
                 return
             }
-            
+
             LocalData.it.saveCharacter(player)
             Logger.it.info("Saved character")
         }.disposed(by: disposeBag)

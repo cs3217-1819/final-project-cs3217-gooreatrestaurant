@@ -15,11 +15,11 @@ class ViewController<View: UIView>: ViewControllerProtocol {
         return context.router
     }
     private var controllers: [AnyObject] = []
-    
+
     func use(context: Context) {
         self.context = context
     }
-    
+
     required init(with view: UIView) {
         guard let trueView = view as? View else {
             fatalError("Nib class is wrong")
@@ -27,18 +27,18 @@ class ViewController<View: UIView>: ViewControllerProtocol {
         self.view = trueView
         super.init()
     }
-    
+
     func configureSubviews() {
-        
+
     }
-    
+
     internal func configureUpButton(to route: Route) {
         let upButton = UIView.initFromNib("UpButton")
         let control = ButtonController(using: upButton)
         control.onTap {
             self.context.routeTo(route)
         }
-        
+
         view.addSubview(upButton)
         upButton.snp.makeConstraints { make in
             make.top.equalToSuperview()
@@ -46,36 +46,36 @@ class ViewController<View: UIView>: ViewControllerProtocol {
             make.width.equalTo(30)
             make.height.equalTo(30)
         }
-        
+
         remember(control)
         view.layoutIfNeeded()
     }
-    
+
     internal func configureUpButtonAsPrevious() {
         guard let previousRoute = router.previousRoute else {
             return
         }
         configureUpButton(to: previousRoute)
     }
-    
+
     internal func rememberAll<ControllerType: Controller>(_ controllers: [ControllerType]) {
         self.controllers.append(contentsOf: controllers)
     }
-    
+
     // Used for storing references to controllers
     internal func remember<ControllerType: Controller>(_ controller: ControllerType) {
         controllers.append(controller)
     }
-    
+
     func getView() -> UIView {
         return view
     }
-    
+
     func onDisappear() {
         view.removeFromSuperview()
         controllers = []
     }
-    
+
     deinit {
         print("VC Deinit")
     }

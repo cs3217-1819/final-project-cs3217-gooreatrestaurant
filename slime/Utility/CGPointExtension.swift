@@ -15,12 +15,12 @@ extension CGPoint {
     static func .* (left: CGPoint, right: CGPoint) -> CGPoint {
         return CGPoint(x: left.x * right.x, y: left.y * right.y)
     }
-    
+
     // element-wise subtraction
     static func - (left: CGPoint, right: CGPoint) -> CGPoint {
         return CGPoint(x: left.x - right.x, y: left.y - right.y)
     }
-    
+
     // element-wise addition
     static func + (left: CGPoint, right: CGPoint) -> CGPoint {
         return CGPoint(x: left.x + right.x, y: left.y + right.y)

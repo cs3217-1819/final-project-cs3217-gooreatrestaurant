@@ -12,7 +12,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let velocityMultiplier: CGFloat = 0.03
 
     private var slime = SKSpriteNode()
-    private var spaceship:SKNode!
+    private var spaceship: SKNode!
     private var slimeWalkingFrames: [SKTexture] = []
 
     let slimeCategory: UInt32 = 1 << 0
@@ -146,7 +146,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                              timePerFrame: 0.2,
                              resize: false,
                              restore: true)),
-                  withKey:"walkingInPlaceSlime")
+                  withKey: "walkingInPlaceSlime")
         slime.scaleTo(screenWidthPercentage: 0.03)
     }
 

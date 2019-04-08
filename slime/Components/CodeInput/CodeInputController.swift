@@ -21,7 +21,7 @@ class CodeInputController: Controller, NumberPadResponder {
         view.inputFive,
         view.inputSix
     ]
-    
+
     init(with view: UIView?) {
         guard let trueView = view as? CodeInputView else {
             Logger.it.error("Nib class is wrong")
@@ -29,20 +29,20 @@ class CodeInputController: Controller, NumberPadResponder {
         }
         self.view = trueView
     }
-    
+
     convenience init(withXib xibView: XibView) {
         self.init(with: xibView.contentView)
     }
-    
+
     func configure() {
         setupReactive()
     }
-    
+
     func bindTo(numberPad: SlimeNumberPadController) {
         numberPad.bindTo(self)
     }
-    
-    func onComplete(_ callback: @escaping (String) -> ()) {
+
+    func onComplete(_ callback: @escaping (String) -> Void) {
         inputCode.distinctUntilChanged()
             .filter { element in
                 return element.count == 6
@@ -59,11 +59,11 @@ class CodeInputController: Controller, NumberPadResponder {
                 callback(code.joined())
             }.disposed(by: disposeBag)
     }
-    
+
     func respondTo(_ input: Int) {
         try? inputCode.onNext(inputCode.value() + [input])
     }
-    
+
     func respondToBackspace() {
         guard var nextInput = try? inputCode.value() else {
             return
@@ -74,11 +74,11 @@ class CodeInputController: Controller, NumberPadResponder {
         nextInput.removeLast()
         inputCode.onNext(nextInput)
     }
-    
+
     func respondToClear() {
         inputCode.onNext([])
     }
-    
+
     private func setupReactive() {
         inputCode.distinctUntilChanged()
             .filter { element in
@@ -91,7 +91,7 @@ class CodeInputController: Controller, NumberPadResponder {
             self.showCode(code)
         }.disposed(by: disposeBag)
     }
-    
+
     private func showCode(_ code: [Int]) {
         let codeLength = code.count
         for i in 0..<codeViews.count {

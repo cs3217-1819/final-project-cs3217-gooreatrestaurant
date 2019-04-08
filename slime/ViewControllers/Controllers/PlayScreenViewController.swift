@@ -12,12 +12,12 @@ class PlayScreenViewController: ViewController<PlayScreenView> {
     required init(with view: UIView) {
         super.init(with: view)
     }
-    
+
     override func configureSubviews() {
         configureButtons()
         configureUpButton(to: .TitleScreen)
     }
-    
+
     private func configureButtons() {
         let singlePlayerButtonController = PlayMenuButtonController(using: view.singlePlayerButton)
         singlePlayerButtonController.configure()
@@ -48,7 +48,7 @@ class PlayScreenViewController: ViewController<PlayScreenView> {
                 .addAction(AlertAction(with: "OK"))
             self.context.modal.presentUnimportantAlert(alert)
         }
-        
+
         remember(singlePlayerButtonController)
         remember(multiplayerButtonController)
         remember(levelEditorButtonController)

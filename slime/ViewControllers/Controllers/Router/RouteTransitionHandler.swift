@@ -18,12 +18,12 @@ class RouteTransitionHandler {
         }
         return value
     }
-    
+
     init(route: Route) {
         self.route = BehaviorSubject(value: route)
     }
-    
-    func subscribe(_ callback: @escaping (Route) -> ()) {
+
+    func subscribe(_ callback: @escaping (Route) -> Void) {
         route.distinctUntilChanged().subscribe { event in
             guard let element = event.element else {
                 return
@@ -31,7 +31,7 @@ class RouteTransitionHandler {
             callback(element)
         }.disposed(by: disposeBag)
     }
-    
+
     func onNext(_ route: Route) {
         previousRoute = currentRoute
         self.route.onNext(route)

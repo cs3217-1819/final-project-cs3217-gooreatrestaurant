@@ -9,7 +9,7 @@
 import Foundation
 import SpriteKit
 
-class GameOverPrefab : SKSpriteNode {
+class GameOverPrefab: SKSpriteNode {
     override init(texture: SKTexture?, color: UIColor, size: CGSize) {
         let base = SKTexture(imageNamed: "Base")
         base.filteringMode = .nearest
@@ -45,7 +45,7 @@ class GameOverPrefab : SKSpriteNode {
         fatalError("init(coder:) has not been implemented")
     }
 
-    lazy var titleLabel: SKLabelNode =  {
+    lazy var titleLabel: SKLabelNode = {
         var label = SKLabelNode(fontNamed: "SquidgySlimes")
         label.fontSize = CGFloat(60)
         label.zPosition = 10
@@ -57,7 +57,7 @@ class GameOverPrefab : SKSpriteNode {
         return label
     }()
 
-    lazy var scoreLabel: SKLabelNode =  {
+    lazy var scoreLabel: SKLabelNode = {
         var label = SKLabelNode(fontNamed: "SquidgySlimes")
         label.fontSize = CGFloat(50)
         label.zPosition = 10

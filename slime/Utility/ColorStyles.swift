@@ -17,9 +17,9 @@ class ColorStyles {
         "white4": UIColor.white(intensity: .five),
         "white5": UIColor.white(intensity: .six),
         "white6": UIColor.white(intensity: .seven),
-        "white7": UIColor.white(intensity: .eight),
+        "white7": UIColor.white(intensity: .eight)
     ]
-    
+
     static let pinks: [String: UIColor] = [
         "pink0": UIColor(rgb: 0x995C7A),
         "pink1": UIColor(rgb: 0xB26B8F),
@@ -30,7 +30,7 @@ class ColorStyles {
         "pink6": UIColor(rgb: 0xFFCAE2),
         "pink7": UIColor(rgb: 0xFFF5FA)
     ]
-    
+
     static let greens: [String: UIColor] = [
         "green0": UIColor(rgb: 0x4D8060),
         "green1": UIColor(rgb: 0x74A687),
@@ -41,7 +41,7 @@ class ColorStyles {
         "green6": UIColor(rgb: 0xE5FBF6),
         "green7": UIColor(rgb: 0xF7FFFD)
     ]
-    
+
     static let yellows: [String: UIColor] = [
         "yellow0": UIColor(rgb: 0xB27D47),
         "yellow1": UIColor(rgb: 0xD9B162),
@@ -52,21 +52,21 @@ class ColorStyles {
         "yellow6": UIColor(rgb: 0xFFFFDE),
         "yellow7": UIColor(rgb: 0xFFFFEF)
     ]
-    
+
     static let colorDicts = [
         whites,
         pinks,
         greens,
         yellows
     ]
-    
+
     static func getColor(_ colorCode: String) -> UIColor? {
         for dict in colorDicts {
             if let color = dict[colorCode] {
                 return color
             }
         }
-        
+
         return nil
     }
 }

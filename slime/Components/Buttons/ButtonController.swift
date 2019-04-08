@@ -17,12 +17,12 @@ class ButtonController: Controller {
     init(using view: UIView) {
         self.view = view
     }
-    
+
     func configure() {
-        
+
     }
-    
-    func onTap(_ callback: @escaping () -> ()) {
+
+    func onTap(_ callback: @escaping () -> Void) {
         view.rx.gesture(.tap())
             .when(.recognized)
             .subscribe { _ in

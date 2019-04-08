@@ -14,7 +14,7 @@ class RoomModel {
     var hasStarted: Bool = false
     var gameIsCreated: Bool = false
     var isOpen: Bool = false
-    
+
     init(name: String, map: String, id: String, hasStarted: Bool, gameIsCreated: Bool, isOpen: Bool) {
         self.name = name
         self.map = map
@@ -23,24 +23,24 @@ class RoomModel {
         self.gameIsCreated = gameIsCreated
         self.isOpen = isOpen
     }
-    
+
     func isValidRoom() -> Bool {
         if self.name.count <= 0 || self.map.count <= 0 {
             return false
         }
-        
+
         // do additional checks here
         return true
     }
-    
+
     func addPlayer(_ player: RoomPlayerModel) {
         players.append(player)
     }
-    
+
     func startGame() {
         self.hasStarted = true
     }
-    
+
     func toString() -> String {
         return "name: \(self.name)\nmap: \(self.map)\nid: \(self.id)\nplayers: \(self.players)\nhasStarted: \(self.hasStarted)\ngameIsCreated: \(self.gameIsCreated)"
     }
@@ -54,11 +54,10 @@ class RoomPlayerModel {
     var name: String {
         return uid
     }
-    
+
     init(uid: String, isHost: Bool, isReady: Bool) {
         self.uid = uid
         self.isHost = isHost
         self.isReady = isReady
     }
 }
-

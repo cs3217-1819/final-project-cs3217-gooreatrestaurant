@@ -9,7 +9,7 @@
 struct OrderBlobRecipe {
     let goalImageName: String
     let instructionsImageNames: [String]
-    
+
     init(goalImageName: String, instructionsImageNames: [String]) {
         self.goalImageName = goalImageName
         self.instructionsImageNames = instructionsImageNames

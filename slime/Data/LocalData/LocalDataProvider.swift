@@ -19,20 +19,20 @@ class LocalDataProvider {
     private init() {
         realm = try! Realm()
     }
-    
+
     func getUser() -> UserCharacter? {
         guard let user = realm.object(ofType: LocalUserCharacter.self, forPrimaryKey: 1) else {
             return nil
         }
         return UserCharacter(from: user)
     }
-    
+
     func save(user: UserCharacter) {
         try! realm.write {
             self.realm.add(user.asLocalDataType(), update: true)
         }
     }
-    
+
     func reset() {
         try! realm.write {
             realm.deleteAll()

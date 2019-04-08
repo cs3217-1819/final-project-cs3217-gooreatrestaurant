@@ -19,7 +19,7 @@ class DesignableView: UIView {
             }
         }
     }
-    
+
     @IBInspectable var background: String = "" {
         didSet {
             if let color = ColorStyles.getColor(background) {
@@ -27,7 +27,7 @@ class DesignableView: UIView {
             }
         }
     }
-    
+
     @IBInspectable var rotation: String = "" {
         didSet {
             if rotation == "left" {

@@ -12,7 +12,7 @@ enum PrimaryButtonColor {
     case purple
     case green
     case blue
-    
+
     static func from(string: String) -> PrimaryButtonColor? {
         switch(string) {
         case "purple":
@@ -25,7 +25,7 @@ enum PrimaryButtonColor {
             return nil
         }
     }
-    
+
     var image: UIImage? {
         switch (self) {
         case .purple:

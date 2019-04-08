@@ -12,7 +12,7 @@ import RxSwift
 class LevelPlaceController: Controller {
     let view: LevelPlaceView
     private(set) var offsetValue: CGPoint?
-    
+
     private let disposeBag = DisposeBag()
     private let isActive = BehaviorSubject(value: false)
     private let parent: UIScrollView
@@ -21,7 +21,7 @@ class LevelPlaceController: Controller {
     private let level: Level
     private let index: Int
     private let context: Context
-    
+
     // Creates the nib for you
     init(with parent: UIScrollView, using level: Level, index: Int, context: Context) {
         guard let trueView = UIView.initFromNib("LevelPlaceView") as? LevelPlaceView else {
@@ -32,11 +32,11 @@ class LevelPlaceController: Controller {
         self.level = level
         self.index = index
         self.context = context
-        
+
         boxController = LevelDetailsBoxController(using: view.detailsBox)
         boxController.configure()
     }
-    
+
     func configure() {
         let frameSize = view.frame.size
         let start = CGPoint(x: parent.frame.midX - frameSize.width / 2,
@@ -44,19 +44,19 @@ class LevelPlaceController: Controller {
         let offset = CGPoint(x: 0.0, y: CGFloat(index) * view.frame.height)
         offsetValue = offset
         let center = start + offset
-        
+
         view.frame = view.frame.offsetBy(dx: center.x, dy: center.y)
-        
+
         _ = boxController
             .set(id: level.id)
             .set(name: level.name)
             .set(bestScore: level.bestScore)
-        
+
         playButtonController = ButtonController(using: view.playButton)
         playButtonController?.onTap {
             self.context.routeTo(.LoadingScreen)
         }
-        
+
         isActive.asObservable().distinctUntilChanged().subscribe { event in
             guard let isActive = event.element else {
                 return
@@ -69,10 +69,10 @@ class LevelPlaceController: Controller {
                 self.hidePlayButton()
             }
         }.disposed(by: disposeBag)
-        
+
         view.layoutIfNeeded()
     }
-    
+
     // Moves the x-coordinates randomly
     private func moveRandom() {
         let range = parent.bounds.width - view.frame.size.width
@@ -81,33 +81,33 @@ class LevelPlaceController: Controller {
             self.view.frame = self.view.frame.withX(x: randomX)
         })
     }
-    
+
     private func moveToCenter() {
         UIView.animate(withDuration: 0.5, animations: {
             self.view.frame = self.view.frame.withX(x: self.parent.frame.midX - self.view.frame.size.width / 2)
         })
     }
-    
+
     private func showPlayButton() {
         UIView.animate(withDuration: 0.5, animations: {
             self.view.playButton.contentView?.alpha = 1
         })
     }
-    
+
     private func hidePlayButton() {
         UIView.animate(withDuration: 0.5, animations: {
             self.view.playButton.contentView?.alpha = 0
         })
     }
-    
+
     func focus() {
         isActive.onNext(true)
     }
-    
+
     func unfocus() {
         isActive.onNext(false)
     }
-    
+
     func getScrollOffsetDiff(contentOffsetY: CGFloat) -> CGFloat? {
         guard let offsetY = offsetValue?.y else {
             return nil

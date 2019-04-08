@@ -12,7 +12,7 @@ class TitleScreenViewController: ViewController<TitleScreenView> {
         setupButtons()
         setupAnonymousAuth()
     }
-    
+
     private func setupUserInfo() {
         guard let charSubject = context.data.userCharacter else {
             view.userInfoView.removeFromSuperview()
@@ -20,9 +20,15 @@ class TitleScreenViewController: ViewController<TitleScreenView> {
         }
         let userInfoController = UserInfoController(usingXib: view.userInfoView, boundTo: charSubject)
         userInfoController.configure()
+
+        let buttonController = ButtonController(using: view.userInfoView)
+        buttonController.onTap {
+            self.context.routeTo(.CharacterCustomizationScreen)
+        }
+        remember(buttonController)
         remember(userInfoController)
     }
-    
+
     private func setupButtons() {
         let playButtonController = PrimaryButtonController(using: view.playButton)
             .set(color: .green)
@@ -51,7 +57,7 @@ class TitleScreenViewController: ViewController<TitleScreenView> {
         creditsButtonController.onTap {
             self.context.routeTo(.CreditsScreen)
         }
-        
+
         remember(playButtonController)
         remember(settingsButtonController)
         remember(creditsButtonController)
@@ -63,4 +69,3 @@ class TitleScreenViewController: ViewController<TitleScreenView> {
         }
     }
 }
-

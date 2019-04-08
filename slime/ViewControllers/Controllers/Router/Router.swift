@@ -11,6 +11,7 @@ import UIKit
 enum Route {
     case TitleScreen
     case CharacterCreationScreen
+    case CharacterCustomizationScreen
     case PlayScreen
     case LevelSelect
     case CreditsScreen
@@ -19,13 +20,15 @@ enum Route {
     case MultiplayerJoinRoomScreen
     case MultiplayerLobby
     case LoadingScreen
-    
+
     var coordinates: CGPoint {
         switch(self) {
         case .TitleScreen:
             return CGPoint(x: 0, y: 0)
         case .CharacterCreationScreen:
             return CGPoint(x: 4, y: 4)
+        case .CharacterCustomizationScreen:
+            return CGPoint(x: 3, y: 3)
         case .PlayScreen:
             return CGPoint(x: 0, y: 1)
         case .LevelSelect:
@@ -55,22 +58,24 @@ class Router {
     }
     let transitionHandler: RouteTransitionHandler
     private(set) var currentViewController: ViewControllerProtocol
-    
+
     init(with route: Route) {
         transitionHandler = RouteTransitionHandler(route: route)
         currentViewController = Router.getControllerFor(route: route)
-        
+
         transitionHandler.subscribe { route in
             self.currentViewController = Router.getControllerFor(route: route)
         }
     }
-    
+
     static func getControllerFor(route: Route) -> ViewControllerProtocol {
         switch(route) {
         case .TitleScreen:
             return TitleScreenViewController(with: UIView.initFromNib("TitleScreenView"))
         case .CharacterCreationScreen:
             return CharacterCreationViewController(with: UIView.initFromNib("CharacterCreationView"))
+        case .CharacterCustomizationScreen:
+            return CharacterCustomizationViewController(with: UIView.initFromNib("CharacterCustomizationView"))
         case .PlayScreen:
             return PlayScreenViewController(with: UIView.initFromNib("PlayScreenView"))
         case .LevelSelect:
@@ -89,8 +94,8 @@ class Router {
             return LoadingScreenViewController(with: UIView.initFromNib("LoadingScreenView"))
         }
     }
-    
-    func routeTo(_ route: Route)  {
+
+    func routeTo(_ route: Route) {
         transitionHandler.onNext(route)
     }
 }

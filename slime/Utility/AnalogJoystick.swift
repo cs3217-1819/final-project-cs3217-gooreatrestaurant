@@ -8,7 +8,7 @@
 
 import SpriteKit
 
-//MARK: AnalogJoystickData
+// MARK: AnalogJoystickData
 public struct AnalogJoystickData: CustomStringConvertible {
     var velocity = CGPoint.zero,
     angular = CGFloat(0)
@@ -23,7 +23,7 @@ public struct AnalogJoystickData: CustomStringConvertible {
     }
 }
 
-//MARK: - AnalogJoystickComponent
+// MARK: - AnalogJoystickComponent
 open class AnalogJoystickComponent: SKSpriteNode {
     private var kvoContext = UInt8(1)
     var borderWidth = CGFloat(0) {
@@ -64,7 +64,7 @@ open class AnalogJoystickComponent: SKSpriteNode {
         }
     }
 
-    //MARK: - DESIGNATED
+    // MARK: - DESIGNATED
     init(diameter: CGFloat, color: UIColor? = nil, image: UIImage? = nil) {
         super.init(texture: nil, color: color ?? UIColor.black, size: CGSize(width: diameter, height: diameter))
         addObserver(self, forKeyPath: "color", options: NSKeyValueObservingOptions.old, context: &kvoContext)
@@ -81,7 +81,7 @@ open class AnalogJoystickComponent: SKSpriteNode {
         removeObserver(self, forKeyPath: "color")
     }
 
-    open override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+    open override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
         redrawTexture()
     }
 
@@ -112,19 +112,19 @@ open class AnalogJoystickComponent: SKSpriteNode {
     }
 }
 
-//MARK: - AnalogJoystickSubstrate
+// MARK: - AnalogJoystickSubstrate
 open class AnalogJoystickSubstrate: AnalogJoystickComponent {
     // coming soon...
 }
 
-//MARK: - AnalogJoystickStick
+// MARK: - AnalogJoystickStick
 open class AnalogJoystickStick: AnalogJoystickComponent {
     // coming soon...
 }
 
-//MARK: - AnalogJoystick
+// MARK: - AnalogJoystick
 open class AnalogJoystick: SKNode {
-    var trackingHandler: ((AnalogJoystickData) -> ())?
+    var trackingHandler: ((AnalogJoystickData) -> Void)?
     var beginHandler: (() -> Void)?
     var stopHandler: (() -> Void)?
     var substrate: AnalogJoystickSubstrate!
@@ -204,7 +204,7 @@ open class AnalogJoystick: SKNode {
         }
     }
 
-    //MARK: - Overrides
+    // MARK: - Overrides
     open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let touch = touches.first, stick == atPoint(touch.location(in: self)) {
             tracking = true
@@ -246,9 +246,8 @@ open class AnalogJoystick: SKNode {
         moveToBack.timingMode = .easeOut
         stick.run(moveToBack)
         data.reset()
-        stopHandler?();
+        stopHandler?()
     }
 }
 
 typealias 🕹 = AnalogJoystick
-

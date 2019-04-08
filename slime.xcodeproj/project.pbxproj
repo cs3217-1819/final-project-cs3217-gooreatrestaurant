@@ -30,7 +30,8 @@
 		1DE6FC65224D1D3900B36F48 /* Oven.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE6FC64224D1D3900B36F48 /* Oven.swift */; };
 		1DE6FC67224D1E3C00B36F48 /* FryingEquipment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE6FC66224D1E3C00B36F48 /* FryingEquipment.swift */; };
 		1DE6FC6B224D26A200B36F48 /* Trash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE6FC6A224D26A200B36F48 /* Trash.swift */; };
-		37DD4A30AF224607DB45BEA8 /* Pods_slimeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AEF608125BA354580F060C8 /* Pods_slimeTests.framework */; };
+		3F1EE6CE45AA94FFF3DA1410 /* Pods_slimeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD598D8D4712AAF7695D5C8 /* Pods_slimeTests.framework */; };
+		84A297CC3884A9F329049AA5 /* Pods_slime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80487C6681A5E05D3D2137F7 /* Pods_slime.framework */; };
 		8B81EFBC224344AD007BFDB0 /* Slime.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 8B81EFBB224344AD007BFDB0 /* Slime.atlas */; };
 		8BD816AF22422C6700586180 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD816AE22422C6700586180 /* Extensions.swift */; };
 		8BD816B3224262F100586180 /* AnalogJoystick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD816B2224262F100586180 /* AnalogJoystick.swift */; };
@@ -44,7 +45,6 @@
 		8BFA63EC22589DAF007645F9 /* AudioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFA63EB22589DAF007645F9 /* AudioController.swift */; };
 		8BFA63F02258B020007645F9 /* GameSong.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8BFA63EE2258B020007645F9 /* GameSong.mp3 */; };
 		8BFA63F12258B020007645F9 /* MainScreen.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8BFA63EF2258B020007645F9 /* MainScreen.wav */; };
-		BA7CC9239365F389C9C1FA05 /* Pods_slime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7F0D50F4B0E911D0C328800 /* Pods_slime.framework */; };
 		EC0E3163224F610300AF1254 /* CharacterCreationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC0E3162224F610300AF1254 /* CharacterCreationView.xib */; };
 		EC0E3165224F611200AF1254 /* CharacterCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0E3164224F611200AF1254 /* CharacterCreationView.swift */; };
 		EC0E3168224F618B00AF1254 /* TextInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC0E3167224F618B00AF1254 /* TextInputView.xib */; };
@@ -131,6 +131,12 @@
 		EC6AC1D4225216EF00D95C90 /* SlimeColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6AC1D3225216EF00D95C90 /* SlimeColors.swift */; };
 		EC6AC1D62254882900D95C90 /* ContextModalHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6AC1D52254882900D95C90 /* ContextModalHandler.swift */; };
 		EC6AC1D82254884000D95C90 /* ContextDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6AC1D72254884000D95C90 /* ContextDataHandler.swift */; };
+		EC6E75522255CB9000B9C7CF /* CustomizationMainView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC6E75512255CB9000B9C7CF /* CustomizationMainView.xib */; };
+		EC6E7558225A3A8000B9C7CF /* JokesSlimesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC6E7557225A3A8000B9C7CF /* JokesSlimesView.xib */; };
+		EC6E755A225A3A8D00B9C7CF /* JokesSlimesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6E7559225A3A8D00B9C7CF /* JokesSlimesView.swift */; };
+		EC6E7563225A426800B9C7CF /* CharacterCustomizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6E7562225A426800B9C7CF /* CharacterCustomizationViewController.swift */; };
+		EC6E7565225A437A00B9C7CF /* CharacterCustomizationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6E7564225A437A00B9C7CF /* CharacterCustomizationView.swift */; };
+		EC6E7567225A438A00B9C7CF /* CustomizationMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6E7566225A438A00B9C7CF /* CustomizationMainView.swift */; };
 		EC6E99E8224F1BB400A9554C /* LocalDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6E99E7224F1BB400A9554C /* LocalDataProvider.swift */; };
 		EC6E99ED224F22C000A9554C /* LocalUserCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6E99EC224F22C000A9554C /* LocalUserCharacter.swift */; };
 		EC6E99EF224F256500A9554C /* LocalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6E99EE224F256500A9554C /* LocalData.swift */; };
@@ -141,6 +147,15 @@
 		EC6E99FB224F499400A9554C /* UserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6E99FA224F499400A9554C /* UserInfoView.swift */; };
 		EC6E99FD224F49FB00A9554C /* UserInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6E99FC224F49FB00A9554C /* UserInfoController.swift */; };
 		EC6E99FF224F4F0900A9554C /* DoubleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6E99FE224F4F0900A9554C /* DoubleExtension.swift */; };
+		EC7676BA225A4A4B00F6A450 /* RouterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7676B9225A4A4B00F6A450 /* RouterController.swift */; };
+		EC7676BD225A543900F6A450 /* CustomizationMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7676BC225A543900F6A450 /* CustomizationMainViewController.swift */; };
+		EC7676BF225B52CE00F6A450 /* CustomizationCosmeticView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC7676BE225B52CE00F6A450 /* CustomizationCosmeticView.xib */; };
+		EC7676C2225B542700F6A450 /* ItemBoxView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC7676C1225B542700F6A450 /* ItemBoxView.xib */; };
+		EC7676C4225B553C00F6A450 /* ItemBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7676C3225B553C00F6A450 /* ItemBoxView.swift */; };
+		EC7676C6225B55A400F6A450 /* ItemBoxController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7676C5225B55A400F6A450 /* ItemBoxController.swift */; };
+		EC7676C8225B57F400F6A450 /* CustomizationCosmeticView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7676C7225B57F400F6A450 /* CustomizationCosmeticView.swift */; };
+		EC7676CA225B58B300F6A450 /* CustomizationCosmeticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7676C9225B58B300F6A450 /* CustomizationCosmeticViewController.swift */; };
+		EC7676CC225B5AC100F6A450 /* Cosmetics.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7676CB225B5AC100F6A450 /* Cosmetics.swift */; };
 		EC79FFEE2242238C002E8FE7 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC79FFED2242238C002E8FE7 /* GameViewController.swift */; };
 		EC81B7872254A09900B6F7EE /* TransitionConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC81B7862254A09900B6F7EE /* TransitionConstants.swift */; };
 		EC81B7892254A3A600B6F7EE /* KeyboardService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC81B7882254A3A600B6F7EE /* KeyboardService.swift */; };
@@ -183,6 +198,7 @@
 		ECF75F00224B131800537237 /* CodeInputController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF75EFF224B131800537237 /* CodeInputController.swift */; };
 		ECF75F02224B17CA00537237 /* JoinRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF75F01224B17CA00537237 /* JoinRoomView.swift */; };
 		ECF75F04224B182400537237 /* JoinRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF75F03224B182400537237 /* JoinRoomViewController.swift */; };
+		ECF9876A2255C61700FE5577 /* CharacterCustomizationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECF987692255C61700FE5577 /* CharacterCustomizationView.xib */; };
 		F92ECADF224BADEC0040A4E2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F92ECADE224BADEC0040A4E2 /* GoogleService-Info.plist */; };
 		F92ECAE2224BAE8F0040A4E2 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92ECAE1224BAE8F0040A4E2 /* Database.swift */; };
 		F92ECAE4224BAEBD0040A4E2 /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92ECAE3224BAEBD0040A4E2 /* Authentication.swift */; };
@@ -226,10 +242,11 @@
 		1DE6FC64224D1D3900B36F48 /* Oven.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Oven.swift; sourceTree = "<group>"; };
 		1DE6FC66224D1E3C00B36F48 /* FryingEquipment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FryingEquipment.swift; sourceTree = "<group>"; };
 		1DE6FC6A224D26A200B36F48 /* Trash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trash.swift; sourceTree = "<group>"; };
-		2A2746E58E1E2C60194FCE38 /* Pods-slimeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-slimeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-slimeTests/Pods-slimeTests.release.xcconfig"; sourceTree = "<group>"; };
-		5C1D406302B065DC29582229 /* Pods-slime.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-slime.debug.xcconfig"; path = "Pods/Target Support Files/Pods-slime/Pods-slime.debug.xcconfig"; sourceTree = "<group>"; };
-		6735932F665D31728CAAB2F4 /* Pods-slimeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-slimeTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-slimeTests/Pods-slimeTests.debug.xcconfig"; sourceTree = "<group>"; };
-		7AEF608125BA354580F060C8 /* Pods_slimeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_slimeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		27C55F5E048F3C41A00644D4 /* Pods-slime.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-slime.debug.xcconfig"; path = "Pods/Target Support Files/Pods-slime/Pods-slime.debug.xcconfig"; sourceTree = "<group>"; };
+		5796C4DA33A739F68A11DCC5 /* Pods-slime.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-slime.release.xcconfig"; path = "Pods/Target Support Files/Pods-slime/Pods-slime.release.xcconfig"; sourceTree = "<group>"; };
+		773A5B5FFC68C9B4D85E485C /* Pods-slimeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-slimeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-slimeTests/Pods-slimeTests.release.xcconfig"; sourceTree = "<group>"; };
+		7AD598D8D4712AAF7695D5C8 /* Pods_slimeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_slimeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		80487C6681A5E05D3D2137F7 /* Pods_slime.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_slime.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B81EFBB224344AD007BFDB0 /* Slime.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Slime.atlas; sourceTree = "<group>"; };
 		8BD816AE22422C6700586180 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		8BD816B2224262F100586180 /* AnalogJoystick.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalogJoystick.swift; sourceTree = "<group>"; };
@@ -243,7 +260,7 @@
 		8BFA63EB22589DAF007645F9 /* AudioController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioController.swift; sourceTree = "<group>"; };
 		8BFA63EE2258B020007645F9 /* GameSong.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = GameSong.mp3; sourceTree = "<group>"; };
 		8BFA63EF2258B020007645F9 /* MainScreen.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = MainScreen.wav; sourceTree = "<group>"; };
-		E7F0D50F4B0E911D0C328800 /* Pods_slime.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_slime.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E57ABF11D0AB607CF6EFB250 /* Pods-slimeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-slimeTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-slimeTests/Pods-slimeTests.debug.xcconfig"; sourceTree = "<group>"; };
 		EC0E3162224F610300AF1254 /* CharacterCreationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharacterCreationView.xib; sourceTree = "<group>"; };
 		EC0E3164224F611200AF1254 /* CharacterCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCreationView.swift; sourceTree = "<group>"; };
 		EC0E3167224F618B00AF1254 /* TextInputView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextInputView.xib; sourceTree = "<group>"; };
@@ -334,6 +351,12 @@
 		EC6AC1D3225216EF00D95C90 /* SlimeColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlimeColors.swift; sourceTree = "<group>"; };
 		EC6AC1D52254882900D95C90 /* ContextModalHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextModalHandler.swift; sourceTree = "<group>"; };
 		EC6AC1D72254884000D95C90 /* ContextDataHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextDataHandler.swift; sourceTree = "<group>"; };
+		EC6E75512255CB9000B9C7CF /* CustomizationMainView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomizationMainView.xib; sourceTree = "<group>"; };
+		EC6E7557225A3A8000B9C7CF /* JokesSlimesView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JokesSlimesView.xib; sourceTree = "<group>"; };
+		EC6E7559225A3A8D00B9C7CF /* JokesSlimesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokesSlimesView.swift; sourceTree = "<group>"; };
+		EC6E7562225A426800B9C7CF /* CharacterCustomizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCustomizationViewController.swift; sourceTree = "<group>"; };
+		EC6E7564225A437A00B9C7CF /* CharacterCustomizationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCustomizationView.swift; sourceTree = "<group>"; };
+		EC6E7566225A438A00B9C7CF /* CustomizationMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizationMainView.swift; sourceTree = "<group>"; };
 		EC6E99E7224F1BB400A9554C /* LocalDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataProvider.swift; sourceTree = "<group>"; };
 		EC6E99EC224F22C000A9554C /* LocalUserCharacter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalUserCharacter.swift; sourceTree = "<group>"; };
 		EC6E99EE224F256500A9554C /* LocalData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalData.swift; sourceTree = "<group>"; };
@@ -344,6 +367,15 @@
 		EC6E99FA224F499400A9554C /* UserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoView.swift; sourceTree = "<group>"; };
 		EC6E99FC224F49FB00A9554C /* UserInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoController.swift; sourceTree = "<group>"; };
 		EC6E99FE224F4F0900A9554C /* DoubleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleExtension.swift; sourceTree = "<group>"; };
+		EC7676B9225A4A4B00F6A450 /* RouterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterController.swift; sourceTree = "<group>"; };
+		EC7676BC225A543900F6A450 /* CustomizationMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizationMainViewController.swift; sourceTree = "<group>"; };
+		EC7676BE225B52CE00F6A450 /* CustomizationCosmeticView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomizationCosmeticView.xib; sourceTree = "<group>"; };
+		EC7676C1225B542700F6A450 /* ItemBoxView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemBoxView.xib; sourceTree = "<group>"; };
+		EC7676C3225B553C00F6A450 /* ItemBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemBoxView.swift; sourceTree = "<group>"; };
+		EC7676C5225B55A400F6A450 /* ItemBoxController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemBoxController.swift; sourceTree = "<group>"; };
+		EC7676C7225B57F400F6A450 /* CustomizationCosmeticView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizationCosmeticView.swift; sourceTree = "<group>"; };
+		EC7676C9225B58B300F6A450 /* CustomizationCosmeticViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizationCosmeticViewController.swift; sourceTree = "<group>"; };
+		EC7676CB225B5AC100F6A450 /* Cosmetics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cosmetics.swift; sourceTree = "<group>"; };
 		EC79FFED2242238C002E8FE7 /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		EC81B7862254A09900B6F7EE /* TransitionConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionConstants.swift; sourceTree = "<group>"; };
 		EC81B7882254A3A600B6F7EE /* KeyboardService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardService.swift; sourceTree = "<group>"; };
@@ -386,6 +418,7 @@
 		ECF75EFF224B131800537237 /* CodeInputController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeInputController.swift; sourceTree = "<group>"; };
 		ECF75F01224B17CA00537237 /* JoinRoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinRoomView.swift; sourceTree = "<group>"; };
 		ECF75F03224B182400537237 /* JoinRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinRoomViewController.swift; sourceTree = "<group>"; };
+		ECF987692255C61700FE5577 /* CharacterCustomizationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CharacterCustomizationView.xib; sourceTree = "<group>"; };
 		F92ECADE224BADEC0040A4E2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F92ECAE1224BAE8F0040A4E2 /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		F92ECAE3224BAEBD0040A4E2 /* Authentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
@@ -393,7 +426,6 @@
 		F92ECAE7224BAEEF0040A4E2 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		F92ECAE9224D1B490040A4E2 /* FadeInOutSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FadeInOutSegue.swift; sourceTree = "<group>"; };
 		F9F26FED22564873008BFD50 /* GameDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDB.swift; sourceTree = "<group>"; };
-		FC54AF03EC549BA6D820D01E /* Pods-slime.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-slime.release.xcconfig"; path = "Pods/Target Support Files/Pods-slime/Pods-slime.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -401,7 +433,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BA7CC9239365F389C9C1FA05 /* Pods_slime.framework in Frameworks */,
+				84A297CC3884A9F329049AA5 /* Pods_slime.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -409,7 +441,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				37DD4A30AF224607DB45BEA8 /* Pods_slimeTests.framework in Frameworks */,
+				3F1EE6CE45AA94FFF3DA1410 /* Pods_slimeTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -486,17 +518,6 @@
 			path = CookingEquipment;
 			sourceTree = "<group>";
 		};
-		2C56C6A98CE3F70C0052C8F2 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				5C1D406302B065DC29582229 /* Pods-slime.debug.xcconfig */,
-				FC54AF03EC549BA6D820D01E /* Pods-slime.release.xcconfig */,
-				6735932F665D31728CAAB2F4 /* Pods-slimeTests.debug.xcconfig */,
-				2A2746E58E1E2C60194FCE38 /* Pods-slimeTests.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		8BD816B42242643C00586180 /* Sprites */ = {
 			isa = PBXGroup;
 			children = (
@@ -519,13 +540,24 @@
 			path = Audio;
 			sourceTree = "<group>";
 		};
-		8DF49F0605E30364F39D1785 /* Frameworks */ = {
+		9D97D2CF411721F4E3DFD156 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				E7F0D50F4B0E911D0C328800 /* Pods_slime.framework */,
-				7AEF608125BA354580F060C8 /* Pods_slimeTests.framework */,
+				80487C6681A5E05D3D2137F7 /* Pods_slime.framework */,
+				7AD598D8D4712AAF7695D5C8 /* Pods_slimeTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DFD31857F33078A18C886318 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				27C55F5E048F3C41A00644D4 /* Pods-slime.debug.xcconfig */,
+				5796C4DA33A739F68A11DCC5 /* Pods-slime.release.xcconfig */,
+				E57ABF11D0AB607CF6EFB250 /* Pods-slimeTests.debug.xcconfig */,
+				773A5B5FFC68C9B4D85E485C /* Pods-slimeTests.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		EC0E3161224F60E700AF1254 /* CharacterCreationView */ = {
@@ -572,8 +604,8 @@
 				EC38241C2238803A000D7148 /* slime */,
 				EC3824312238803D000D7148 /* slimeTests */,
 				EC38241B2238803A000D7148 /* Products */,
-				2C56C6A98CE3F70C0052C8F2 /* Pods */,
-				8DF49F0605E30364F39D1785 /* Frameworks */,
+				DFD31857F33078A18C886318 /* Pods */,
+				9D97D2CF411721F4E3DFD156 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -619,6 +651,9 @@
 		EC38243D223882AF000D7148 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				EC7676C0225B541E00F6A450 /* ItemBox */,
+				EC7676B8225A4A3700F6A450 /* RouterView */,
+				EC6E7556225A3A6300B9C7CF /* JokesSlimes */,
 				8BFA63EA22589D9B007645F9 /* Audio */,
 				EC0E316F2252073500AF1254 /* ItemSelector */,
 				EC0E3166224F617D00AF1254 /* TextInput */,
@@ -745,6 +780,7 @@
 		EC449B72223B7E3F00A8EA35 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				EC7676BB225A541F00F6A450 /* Customization */,
 				ECD45544223FAFA5006AF78D /* Context */,
 				EC40E4B5223F9C890073D755 /* Router */,
 				EC38241F2238803A000D7148 /* TitleScreenViewController.swift */,
@@ -761,6 +797,7 @@
 				ECD455682240FB23006AF78D /* MultiplayerLobbyViewController.swift */,
 				EC21B408224217E200827121 /* LoadingScreenViewController.swift */,
 				EC0E316D224F69A400AF1254 /* CharacterCreationViewController.swift */,
+				EC6E7562225A426800B9C7CF /* CharacterCustomizationViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -768,6 +805,7 @@
 		EC449B73223B7E4A00A8EA35 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				EC81B78A2255B8DA00B6F7EE /* CharacterCustomizationView */,
 				EC0E3161224F60E700AF1254 /* CharacterCreationView */,
 				ECD2442F224B113400767A56 /* JoinRoomView */,
 				EC21B4032242150A00827121 /* LoadingScreenView */,
@@ -840,6 +878,15 @@
 			path = Rating;
 			sourceTree = "<group>";
 		};
+		EC6E7556225A3A6300B9C7CF /* JokesSlimes */ = {
+			isa = PBXGroup;
+			children = (
+				EC6E7557225A3A8000B9C7CF /* JokesSlimesView.xib */,
+				EC6E7559225A3A8D00B9C7CF /* JokesSlimesView.swift */,
+			);
+			path = JokesSlimes;
+			sourceTree = "<group>";
+		};
 		EC6E99E9224F21F900A9554C /* LocalData */ = {
 			isa = PBXGroup;
 			children = (
@@ -870,12 +917,53 @@
 			path = ProgressBar;
 			sourceTree = "<group>";
 		};
+		EC7676B8225A4A3700F6A450 /* RouterView */ = {
+			isa = PBXGroup;
+			children = (
+				EC7676B9225A4A4B00F6A450 /* RouterController.swift */,
+			);
+			path = RouterView;
+			sourceTree = "<group>";
+		};
+		EC7676BB225A541F00F6A450 /* Customization */ = {
+			isa = PBXGroup;
+			children = (
+				EC7676BC225A543900F6A450 /* CustomizationMainViewController.swift */,
+				EC7676C9225B58B300F6A450 /* CustomizationCosmeticViewController.swift */,
+				EC7676CB225B5AC100F6A450 /* Cosmetics.swift */,
+			);
+			path = Customization;
+			sourceTree = "<group>";
+		};
+		EC7676C0225B541E00F6A450 /* ItemBox */ = {
+			isa = PBXGroup;
+			children = (
+				EC7676C1225B542700F6A450 /* ItemBoxView.xib */,
+				EC7676C3225B553C00F6A450 /* ItemBoxView.swift */,
+				EC7676C5225B55A400F6A450 /* ItemBoxController.swift */,
+			);
+			path = ItemBox;
+			sourceTree = "<group>";
+		};
 		EC79FFEC2242238C002E8FE7 /* Game */ = {
 			isa = PBXGroup;
 			children = (
 				EC79FFED2242238C002E8FE7 /* GameViewController.swift */,
 			);
 			path = Game;
+			sourceTree = "<group>";
+		};
+		EC81B78A2255B8DA00B6F7EE /* CharacterCustomizationView */ = {
+			isa = PBXGroup;
+			children = (
+				ECF987692255C61700FE5577 /* CharacterCustomizationView.xib */,
+				EC6E75512255CB9000B9C7CF /* CustomizationMainView.xib */,
+				EC6E7564225A437A00B9C7CF /* CharacterCustomizationView.swift */,
+				EC6E7566225A438A00B9C7CF /* CustomizationMainView.swift */,
+				EC7676BE225B52CE00F6A450 /* CustomizationCosmeticView.xib */,
+				EC7676C7225B57F400F6A450 /* CustomizationCosmeticView.swift */,
+			);
+			path = CharacterCustomizationView;
 			sourceTree = "<group>";
 		};
 		ECD2441C224AFF9D00767A56 /* CodeInput */ = {
@@ -1036,12 +1124,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EC3824372238803D000D7148 /* Build configuration list for PBXNativeTarget "slime" */;
 			buildPhases = (
-				D5650B879D686D5D14466C12 /* [CP] Check Pods Manifest.lock */,
+				E073ECD430641DE8593E1BCF /* [CP] Check Pods Manifest.lock */,
 				EC3824162238803A000D7148 /* Sources */,
 				EC3824172238803A000D7148 /* Frameworks */,
 				EC3824182238803A000D7148 /* Resources */,
-				951CADF22146F6016F102A11 /* [CP] Embed Pods Frameworks */,
 				1DE97EE322438E22007CBD89 /* Run Script */,
+				2A5932CA0016719BAF9DD1EF /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1056,7 +1144,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EC38243A2238803D000D7148 /* Build configuration list for PBXNativeTarget "slimeTests" */;
 			buildPhases = (
-				603C85CE3C13985DFB535341 /* [CP] Check Pods Manifest.lock */,
+				5BE1941A1942561DB8F3CCA0 /* [CP] Check Pods Manifest.lock */,
 				EC38242A2238803D000D7148 /* Sources */,
 				EC38242B2238803D000D7148 /* Frameworks */,
 				EC38242C2238803D000D7148 /* Resources */,
@@ -1145,14 +1233,19 @@
 				ECD45541223FA21E006AF78D /* Modal.xib in Resources */,
 				EC449B8E223BAD4400A8EA35 /* MapDot.xib in Resources */,
 				EC38246A223A1803000D7148 /* Rubik-Light.ttf in Resources */,
+				EC6E75522255CB9000B9C7CF /* CustomizationMainView.xib in Resources */,
+				EC6E7558225A3A8000B9C7CF /* JokesSlimesView.xib in Resources */,
 				ECD4556C2240FBED006AF78D /* PlayerBox.xib in Resources */,
 				EC3824252238803D000D7148 /* Assets.xcassets in Resources */,
 				EC4924E42246163C007B9797 /* LevelPlaceView.xib in Resources */,
 				ECA66DC2223D5DD100D1D0BC /* CreditsScreenView.xib in Resources */,
 				EC38246E223A1803000D7148 /* Rubik-Italic.ttf in Resources */,
+				EC7676BF225B52CE00F6A450 /* CustomizationCosmeticView.xib in Resources */,
 				EC449B9B223BB9EA00A8EA35 /* levels.json in Resources */,
 				EC382480223A2999000D7148 /* PlayMenuButton.xib in Resources */,
 				EC0E3168224F618B00AF1254 /* TextInputView.xib in Resources */,
+				ECF9876A2255C61700FE5577 /* CharacterCustomizationView.xib in Resources */,
+				EC7676C2225B542700F6A450 /* ItemBoxView.xib in Resources */,
 				8B81EFBC224344AD007BFDB0 /* Slime.atlas in Resources */,
 				EC382471223A1803000D7148 /* Rubik-MediumItalic.ttf in Resources */,
 				ECD4557622411340006AF78D /* UpButton.xib in Resources */,
@@ -1190,31 +1283,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "
-";
+			shellScript = "\n";
 		};
-		603C85CE3C13985DFB535341 /* [CP] Check Pods Manifest.lock */ = {
+		2A5932CA0016719BAF9DD1EF /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-slimeTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		951CADF22146F6016F102A11 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+			inputFileListPaths = (
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-slime/Pods-slime-frameworks.sh",
@@ -1222,7 +1298,6 @@
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxGesture/RxGesture.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
@@ -1231,12 +1306,13 @@
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxGesture.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
@@ -1249,16 +1325,42 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-slime/Pods-slime-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D5650B879D686D5D14466C12 /* [CP] Check Pods Manifest.lock */ = {
+		5BE1941A1942561DB8F3CCA0 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			inputFileListPaths = (
 			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-slimeTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E073ECD430641DE8593E1BCF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-slime-checkManifestLockResult.txt",
 			);
@@ -1278,6 +1380,9 @@
 				8BD816B3224262F100586180 /* AnalogJoystick.swift in Sources */,
 				1DD6EBE5224E76F0006FF6CD /* IngredientType.swift in Sources */,
 				ECD45543223FACC4006AF78D /* ModalController.swift in Sources */,
+				EC7676CC225B5AC100F6A450 /* Cosmetics.swift in Sources */,
+				EC7676C6225B55A400F6A450 /* ItemBoxController.swift in Sources */,
+				EC7676BA225A4A4B00F6A450 /* RouterController.swift in Sources */,
 				8BFA63EC22589DAF007645F9 /* AudioController.swift in Sources */,
 				EC382475223A1AA4000D7148 /* ColorStyles.swift in Sources */,
 				F9F26FEE22564873008BFD50 /* GameDB.swift in Sources */,
@@ -1294,6 +1399,7 @@
 				1DE6FC5A224CA45700B36F48 /* Station.swift in Sources */,
 				1D2202A1224AB5850080CF7D /* Stage.swift in Sources */,
 				1D22029C224AB5850080CF7D /* Ladder.swift in Sources */,
+				EC6E7567225A438A00B9C7CF /* CustomizationMainView.swift in Sources */,
 				ECD4554F2240B3B3006AF78D /* Alert.swift in Sources */,
 				EC6E99FD224F49FB00A9554C /* UserInfoController.swift in Sources */,
 				ECD4555E2240F44A006AF78D /* MultiplayerScreenView.swift in Sources */,
@@ -1310,6 +1416,7 @@
 				EC6E99FF224F4F0900A9554C /* DoubleExtension.swift in Sources */,
 				EC449B79223B82A600A8EA35 /* MainController.swift in Sources */,
 				F92ECAE2224BAE8F0040A4E2 /* Database.swift in Sources */,
+				EC7676CA225B58B300F6A450 /* CustomizationCosmeticViewController.swift in Sources */,
 				EC449B94223BB08700A8EA35 /* LevelDetailsBoxController.swift in Sources */,
 				ECF75F00224B131800537237 /* CodeInputController.swift in Sources */,
 				ECD45548223FAFFF006AF78D /* Context.swift in Sources */,
@@ -1319,6 +1426,7 @@
 				1D22029D224AB5850080CF7D /* Slime.swift in Sources */,
 				EC4924F62248D638007B9797 /* RatingView.swift in Sources */,
 				ECF75EFE224B12C100537237 /* CodeInputView.swift in Sources */,
+				EC7676C4225B553C00F6A450 /* ItemBoxView.swift in Sources */,
 				1D2202A2224AB5850080CF7D /* Ingredient.swift in Sources */,
 				ECD2442E224B108200767A56 /* NumberPadResponder.swift in Sources */,
 				EC6E99FB224F499400A9554C /* UserInfoView.swift in Sources */,
@@ -1336,8 +1444,10 @@
 				EC0E316A224F61C500AF1254 /* TextInputView.swift in Sources */,
 				ECD24424224B018800767A56 /* Controller.swift in Sources */,
 				ECD4556E2240FBFA006AF78D /* PlayerBox.swift in Sources */,
+				EC6E755A225A3A8D00B9C7CF /* JokesSlimesView.swift in Sources */,
 				ECD455672240F974006AF78D /* ViewControllerProtocol.swift in Sources */,
 				EC21B40222420D4100827121 /* DesignableView.swift in Sources */,
+				EC7676BD225A543900F6A450 /* CustomizationMainViewController.swift in Sources */,
 				1D2202AD224AB68F0080CF7D /* PlateStorage.swift in Sources */,
 				EC6AC1D4225216EF00D95C90 /* SlimeColors.swift in Sources */,
 				EC79FFEE2242238C002E8FE7 /* GameViewController.swift in Sources */,
@@ -1358,8 +1468,10 @@
 				EC40E4AC223D61320073D755 /* CreditsSceneViewController.swift in Sources */,
 				F92ECAE6224BAEDB0040A4E2 /* Room.swift in Sources */,
 				EC449B7B223B83DA00A8EA35 /* Router.swift in Sources */,
+				EC6E7565225A437A00B9C7CF /* CharacterCustomizationView.swift in Sources */,
 				1D3DAC0E2257930200491105 /* OrderQueue.swift in Sources */,
 				ECD455512240B510006AF78D /* AlertController.swift in Sources */,
+				EC6E7563225A426800B9C7CF /* CharacterCustomizationViewController.swift in Sources */,
 				8BFA63E92257D7FE007645F9 /* GameOverPrefab.swift in Sources */,
 				ECF75F04224B182400537237 /* JoinRoomViewController.swift in Sources */,
 				ECD24422224B011B00767A56 /* SlimeNumberInputController.swift in Sources */,
@@ -1389,6 +1501,7 @@
 				EC6AC1D222520BEC00D95C90 /* ItemSelectorController.swift in Sources */,
 				ECD455722240FFC7006AF78D /* Player.swift in Sources */,
 				EC449B7D223B873600A8EA35 /* RouterViewController.swift in Sources */,
+				EC7676C8225B57F400F6A450 /* CustomizationCosmeticView.swift in Sources */,
 				EC4924F82248D877007B9797 /* RatingViewController.swift in Sources */,
 				ECD2442A224B0C9E00767A56 /* SlimeNumberPadView.swift in Sources */,
 				EC3824562239116D000D7148 /* CGRectExtension.swift in Sources */,
@@ -1562,7 +1675,7 @@
 		};
 		EC3824382238803D000D7148 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5C1D406302B065DC29582229 /* Pods-slime.debug.xcconfig */;
+			baseConfigurationReference = 27C55F5E048F3C41A00644D4 /* Pods-slime.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1583,7 +1696,7 @@
 		};
 		EC3824392238803D000D7148 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FC54AF03EC549BA6D820D01E /* Pods-slime.release.xcconfig */;
+			baseConfigurationReference = 5796C4DA33A739F68A11DCC5 /* Pods-slime.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1604,7 +1717,7 @@
 		};
 		EC38243B2238803D000D7148 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6735932F665D31728CAAB2F4 /* Pods-slimeTests.debug.xcconfig */;
+			baseConfigurationReference = E57ABF11D0AB607CF6EFB250 /* Pods-slimeTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1626,7 +1739,7 @@
 		};
 		EC38243C2238803D000D7148 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2A2746E58E1E2C60194FCE38 /* Pods-slimeTests.release.xcconfig */;
+			baseConfigurationReference = 773A5B5FFC68C9B4D85E485C /* Pods-slimeTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";

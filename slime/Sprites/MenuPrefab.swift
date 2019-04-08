@@ -9,7 +9,7 @@
 import Foundation
 import SpriteKit
 
-class MenuPrefab : SKSpriteNode {
+class MenuPrefab: SKSpriteNode {
     var blackBar: SKSpriteNode
     var greenBar: SKSpriteNode
     var timer: Timer =  Timer()

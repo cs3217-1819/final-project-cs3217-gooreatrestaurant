@@ -10,13 +10,13 @@ import UIKit
 
 class LevelSelectViewController: ViewController<LevelSelectView> {
     private var storyModeController: StoryModeLevelSelectController?
-    
+
     override func configureSubviews() {
         setupButtons()
         setupStoryModeView()
         configureUpButtonAsPrevious()
     }
-    
+
     func setupStoryModeView() {
         view.storyButton.color = "white1"
         let storyModeView = UIView.initFromNib("StoryModeLevelSelectView")
@@ -25,7 +25,7 @@ class LevelSelectViewController: ViewController<LevelSelectView> {
         view.childView.addSubview(storyModeView)
         storyModeController?.configureSubviews()
     }
-    
+
     func setupButtons() {
         let storyButtonController = ButtonController(using: view.storyButton)
         storyButtonController.onTap {
