@@ -17,6 +17,9 @@ class MenuPrefab : SKSpriteNode {
     var time: CGFloat = StageConstants.defaultTimeLimitOrder
     let duration: CGFloat = StageConstants.defaultTimeLimitOrder
 
+    let positionings = [CGPoint(x: -15, y: -20),
+                        CGPoint(x: 15, y: -20)]
+
     override init(texture: SKTexture?, color: UIColor, size: CGSize) {
         let spaceshipBody = SKTexture(imageNamed: "Menu-Slimes_01")
         spaceshipBody.filteringMode = .nearest
@@ -42,8 +45,12 @@ class MenuPrefab : SKSpriteNode {
         dish.zPosition = 5
         dish.size = CGSize(width: 50, height: 50)
 
+        var i = 0
         for (key, _) in recipe.ingredientsNeeded {
-            self.addChild(addIngredient(inInt: key.type.rawValue))
+            let child = addIngredient(inInt: key.type.rawValue)
+            child.position = positionings[i]
+            i += 1
+            self.addChild(child)
         }
 
         //Adding the countdown bar
