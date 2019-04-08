@@ -16,13 +16,13 @@ class TextInputController: Controller {
     var value: String? {
         return inputController.value
     }
-    
+
     private let disposeBag = DisposeBag()
     private var modalController: InputController?
     private let inputController: InputController
     private let context: Context
     private var floatingView: UIView?
-    
+
     private class InputController: Controller {
         let view: TextInputView
         private let context: Context
@@ -36,12 +36,12 @@ class TextInputController: Controller {
                 view.inputField.text = newValue
             }
         }
-        
+
         init(usingXib xibView: XibView, context: Context) {
             view = xibView.getView()
             self.context = context
         }
-        
+
         init(parent: UIView, context: Context) {
             guard let trueView = UIView.initFromNib("TextInputView") as? TextInputView else {
                 Logger.it.error("Nib class is wrong")
@@ -52,15 +52,15 @@ class TextInputController: Controller {
             parent.addSubview(view)
             view.constraintToParent()
         }
-        
+
         func configure() {
             setupReactive()
         }
-        
+
         private func set(label: String) {
             view.labelLabel.text = label
         }
-        
+
         private func setupReactive() {
             label.distinctUntilChanged().subscribe { event in
                 guard let value = event.element else {
@@ -70,22 +70,22 @@ class TextInputController: Controller {
             }.disposed(by: disposeBag)
         }
     }
-    
+
     init(usingXib xibView: XibView, context: Context) {
         inputController = InputController(usingXib: xibView, context: context)
         self.context = context
     }
-    
+
     init(parent: UIView, context: Context) {
         inputController = InputController(parent: parent, context: context)
         self.context = context
     }
-    
+
     func configure() {
         setupKeyboardListeners()
         inputController.configure()
     }
-    
+
     private func setupKeyboardListeners() {
         view.rx.gesture(.tap())
             .when(.ended)
@@ -103,7 +103,7 @@ class TextInputController: Controller {
         }.disposed(by: disposeBag)
         NotificationCenter.default.addObserver(self, selector: #selector(stopAvoidingKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
-    
+
     private func openKeyboardModal() {
         floatingView = UIView(frame: CGRect.zero)
         guard let parent = floatingView else {
@@ -112,7 +112,7 @@ class TextInputController: Controller {
         let childInputController = InputController(parent: parent, context: context)
         childInputController.configure()
         childInputController.value = value
-        
+
         modalController = childInputController
         context.modal.showView(view: parent)
         let keyboardHeight = KeyboardService.keyboardHeight()
@@ -127,9 +127,9 @@ class TextInputController: Controller {
             parent.layoutIfNeeded()
             childInputController.view.inputField.becomeFirstResponder()
         }
-        
+
     }
-    
+
     private func removeFloatingView() {
         guard let parent = floatingView else {
             return
@@ -140,7 +140,7 @@ class TextInputController: Controller {
         modalController = nil
         floatingView = nil
     }
-    
+
     @objc private func stopAvoidingKeyboard(notification: NSNotification) {
         print("stop avoiding")
         guard let parent = floatingView else {

@@ -14,7 +14,7 @@ import UIKit
     case red = 2
     case green = 3
     case orange = 4
-    
+
     func getImage() -> UIImage? {
         switch(self) {
         case .yellow:

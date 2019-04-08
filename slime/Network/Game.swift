@@ -9,7 +9,7 @@
 import UIKit
 
 class GameModel {
-    
+
 }
 
 struct GamePlayerModel {
@@ -20,7 +20,7 @@ struct GamePlayerModel {
     var isConnected: Bool = false
     var holdingItem: String = ""
     var isReady: Bool = false
-    
+
     init(uid: String, posX: CGFloat, posY: CGFloat, holdingItem: String, isHost: Bool, isConnected: Bool, isReady: Bool) {
         self.positionX = posX
         self.positionY = posY
@@ -35,7 +35,7 @@ struct GameStationModel {
     var tag: String = ""
     var item: String? = ""
     var isOccupied: Bool = false
-    
+
     init(tag: String, item: String, isOccupied: Bool) {
         self.tag = tag
         self.item = item
@@ -48,7 +48,7 @@ struct GameOrderModel {
     var name: String = ""
     var issueTime: Double = 0.0
     var timeLimit: Double = 0.0
-    
+
     init(id: String, name: String, issueTime: Double, timeLimit: Double) {
         self.id = id
         self.name = name

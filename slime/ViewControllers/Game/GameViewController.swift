@@ -127,7 +127,7 @@ class GameViewController: UIViewController {
         }
     }
 
-    func setupCollection(){
+    func setupCollection() {
         newCollection.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         newCollection.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         newCollection.heightAnchor.constraint(equalToConstant: 400).isActive = true
@@ -155,7 +155,6 @@ extension GameViewController: UICollectionViewDataSource, UICollectionViewDelega
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 100, height: 100)
     }
-
 
 //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
 //        return UIEdgeInsets(top: 3, left: 3, bottom: 3, right: 3)

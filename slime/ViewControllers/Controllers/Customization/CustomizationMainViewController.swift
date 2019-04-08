@@ -12,35 +12,42 @@ class CustomizationMainViewController: ViewController<CustomizationMainView>, Cu
     private let disposeBag = DisposeBag()
     private var levelProgressController: ProgressBarController?
     private var routeSubject: BehaviorSubject<CharacterCustomizationViewController.CustomizationRoute>!
-    
+
     override func configureSubviews() {
         levelProgressController = ProgressBarController(usingXib: view.levelProgressView, maxValue: 100)
         levelProgressController?.configure()
         setupReactive()
+        setupButtons()
     }
-    
+
     func use(routeSubject: BehaviorSubject<CharacterCustomizationViewController.CustomizationRoute>) {
         self.routeSubject = routeSubject
     }
     
-    private func setupReactive() {
-        view.rx.gesture(.tap())
+    private func setupButtons() {
+        view.hatButton.rx.gesture(.tap())
             .when(.recognized)
             .subscribe { _ in
-                print("routing inner")
-                self.routeSubject.onNext(.Main)
+                self.routeSubject.onNext(.Hats)
             }.disposed(by: disposeBag)
+        view.accessoryButton.rx.gesture(.tap())
+            .when(.recognized)
+            .subscribe { _ in
+                self.routeSubject.onNext(.Accessories)
+            }.disposed(by: disposeBag)
+    }
+
+    private func setupReactive() {
         context.data.userCharacter?.subscribe { event in
             guard let character = event.element else {
                 return
             }
-            
+
             self.refreshView(character)
         }.disposed(by: disposeBag)
-        
-        
+
     }
-    
+
     private func refreshView(_ character: UserCharacter) {
         levelProgressController?.setCurrentValue(Double(character.exp))
         view.levelLabel.text = "\(character.level)"

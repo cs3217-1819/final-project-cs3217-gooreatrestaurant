@@ -11,13 +11,13 @@ import UIKit
 class CharacterCreationViewController: ViewController<CharacterCreationView> {
     private var itemSelectController: ItemSelectorController<SlimeColor>?
     private var nameInputController: TextInputController?
-    
+
     override func configureSubviews() {
         setupSelector()
         setupNameInput()
         setupButton()
     }
-    
+
     private func setupSelector() {
         let control = ItemSelectorController<SlimeColor>(withXib: view.colorSelectionView)
         let items: [(SlimeColor, UIImage)] = SlimeColor.allCases
@@ -31,13 +31,13 @@ class CharacterCreationViewController: ViewController<CharacterCreationView> {
         control.configure()
         itemSelectController = control
     }
-    
+
     private func setupNameInput() {
         let control = TextInputController(usingXib: view.nameInputView, context: context)
         control.configure()
         nameInputController = control
     }
-    
+
     private func setupButton() {
         let control = PrimaryButtonController(using: view.submitButton)
             .set(label: "OK")

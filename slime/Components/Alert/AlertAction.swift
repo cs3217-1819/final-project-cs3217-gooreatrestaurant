@@ -12,21 +12,21 @@ class AlertAction {
         case Success
         case Danger
     }
-    
+
     let label: String
-    let callback: () -> ()
+    let callback: () -> Void
     let type: ActionType
-    
-    init(with label: String, callback: @escaping () -> (), of type: ActionType) {
+
+    init(with label: String, callback: @escaping () -> Void, of type: ActionType) {
         self.label = label
         self.callback = callback
         self.type = type
     }
-    
-    convenience init(with label: String, callback: @escaping () -> ()) {
+
+    convenience init(with label: String, callback: @escaping () -> Void) {
         self.init(with: label, callback: callback, of: .Normal)
     }
-    
+
     convenience init(with label: String) {
         self.init(with: label, callback: {})
     }

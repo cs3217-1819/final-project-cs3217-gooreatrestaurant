@@ -10,7 +10,7 @@ import UIKit
 
 class Recipe: NSObject {
     private(set) var recipeName: String
-    private(set) var ingredientsNeeded: [Ingredient:Int] = [:]
+    private(set) var ingredientsNeeded: [Ingredient: Int] = [:]
     private let originalCompulsoryIngredients: [Ingredient]
     private let originalOptionalIngredients: [(item: Ingredient, probability: Double)]
 

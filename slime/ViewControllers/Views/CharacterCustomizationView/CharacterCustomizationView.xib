@@ -21,7 +21,29 @@
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KaI-7y-nHP" customClass="XibView" customModule="slime">
                             <rect key="frame" x="0.0" y="0.0" width="300" height="303"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bNn-4K-zgi">
+                                    <rect key="frame" x="118" y="36" width="64" height="64"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="64" id="DvX-Yt-ktG"/>
+                                        <constraint firstAttribute="width" constant="64" id="Sbr-rT-fcf"/>
+                                    </constraints>
+                                </imageView>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KMv-zX-Ywf">
+                                    <rect key="frame" x="36" y="136" width="64" height="64"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="64" id="0R4-eK-Nyj"/>
+                                        <constraint firstAttribute="width" constant="64" id="5Fs-OK-cxm"/>
+                                    </constraints>
+                                </imageView>
+                            </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="KMv-zX-Ywf" firstAttribute="top" secondItem="bNn-4K-zgi" secondAttribute="bottom" constant="36" id="Azg-Ty-Jip"/>
+                                <constraint firstItem="bNn-4K-zgi" firstAttribute="centerX" secondItem="KaI-7y-nHP" secondAttribute="centerX" id="E9X-we-Uyt"/>
+                                <constraint firstItem="bNn-4K-zgi" firstAttribute="top" secondItem="KaI-7y-nHP" secondAttribute="top" constant="36" id="LEj-1c-mfY"/>
+                                <constraint firstItem="KMv-zX-Ywf" firstAttribute="leading" secondItem="KaI-7y-nHP" secondAttribute="leading" constant="36" id="xK1-an-FlH"/>
+                            </constraints>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="string" keyPath="nibName" value="ItemSelectorView"/>
                             </userDefinedRuntimeAttributes>
@@ -70,7 +92,9 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
+                <outlet property="accesoryImageView" destination="KMv-zX-Ywf" id="Fff-RN-3gg"/>
                 <outlet property="characterPreviewView" destination="KaI-7y-nHP" id="i2c-hl-wtq"/>
+                <outlet property="hatImageView" destination="bNn-4K-zgi" id="9pZ-jo-9Dg"/>
                 <outlet property="routerPanel" destination="imv-iR-Sv3" id="nCW-9q-Mtm"/>
             </connections>
             <point key="canvasLocation" x="220.80000000000001" y="-1.3493253373313345"/>

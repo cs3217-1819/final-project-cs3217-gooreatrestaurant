@@ -11,7 +11,7 @@ import SpriteKit
 
 class Slime: SKSpriteNode {
     var isContactingWithLadder = false
-    
+
     init(inPosition position: CGPoint, withSize size: CGSize = StageConstants.slimeSize) {
         let slimeAnimatedAtlas = SKTextureAtlas(named: "Slime")
         var walkFrames: [SKTexture] = []
@@ -55,7 +55,6 @@ class Slime: SKSpriteNode {
         fatalError("initiation using storyboard is not implemented yet.")
     }
 
-
     var plateCarried: Plate? {
         guard let node = childNode(withName: "plate") else {
             return nil
@@ -75,7 +74,7 @@ class Slime: SKSpriteNode {
     var itemCarried: SKSpriteNode? {
         if let plate = plateCarried {
             return plate
-        } 
+        }
 
         if let ingredient = ingredientsCarried {
             return ingredient

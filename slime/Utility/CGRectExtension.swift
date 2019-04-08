@@ -12,11 +12,11 @@ extension CGRect {
     func scale(by factor: CGFloat) -> CGRect {
         return CGRect(x: minX, y: minY, width: width * factor, height: height * factor)
     }
-    
+
     func withX(x: CGFloat) -> CGRect {
         return CGRect(x: x, y: minY, width: width, height: height)
     }
-    
+
     func withY(y: CGFloat) -> CGRect {
         return CGRect(x: minX, y: y, width: width, height: height)
     }

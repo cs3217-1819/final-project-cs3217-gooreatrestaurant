@@ -21,7 +21,7 @@ class ProgressBarController: Controller {
         .map { (curr, max) in
             return curr / max
         }
-    
+
     init(usingXib xibView: XibView, currentValue: Double, maxValue: Double) {
         guard let trueView = xibView.contentView as? ProgressBarView else {
             Logger.it.error("Nib class is not correct")
@@ -31,27 +31,27 @@ class ProgressBarController: Controller {
         self.currentValue = BehaviorSubject(value: currentValue)
         self.maxValue = BehaviorSubject(value: maxValue)
     }
-    
+
     convenience init(usingXib xibView: XibView) {
         self.init(usingXib: xibView, currentValue: 0, maxValue: 1)
     }
-    
+
     convenience init(usingXib xibView: XibView, maxValue: Double) {
         self.init(usingXib: xibView, currentValue: 0, maxValue: maxValue)
     }
-    
+
     func setColor(_ value: UIColor) {
-        
+
     }
-    
+
     func setCurrentValue(_ value: Double) {
         currentValue.onNext(value)
     }
-    
+
     func setMaxValue(_ value: Double) {
         maxValue.onNext(value)
     }
-    
+
     func configure() {
         createCircularPath()
         progressValuePair.subscribe { event in
@@ -68,7 +68,7 @@ class ProgressBarController: Controller {
             self.view.progressLayer.strokeColor = value.cgColor
         }.disposed(by: disposeBag)
     }
-    
+
     private func createCircularPath() {
         let radius = view.frame.size.width / 2
         let lineWidth = view.frame.size.width / 10
@@ -84,7 +84,7 @@ class ProgressBarController: Controller {
         trackLayer.lineWidth = lineWidth
         trackLayer.strokeEnd = 1.0
         view.layer.addSublayer(trackLayer)
-        
+
         let progressLayer = view.progressLayer
         progressLayer.path = circlePath.cgPath
         progressLayer.fillColor = UIColor.clear.cgColor
@@ -92,7 +92,7 @@ class ProgressBarController: Controller {
         progressLayer.strokeEnd = 0.0
         view.layer.addSublayer(progressLayer)
     }
-    
+
     private func setProgressValue(from oldValue: Double, to rawNewValue: Double) {
         guard let maxBound = try? maxValue.value() else {
             return
@@ -100,7 +100,7 @@ class ProgressBarController: Controller {
         let newValue = rawNewValue.clamp(from: 0.0, to: maxBound)
         let animation = CABasicAnimation(keyPath: "strokeEnd")
         animation.duration = 0.2
-        
+
         animation.fromValue = oldValue
         animation.toValue = newValue
         animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName(rawValue: "linear"))

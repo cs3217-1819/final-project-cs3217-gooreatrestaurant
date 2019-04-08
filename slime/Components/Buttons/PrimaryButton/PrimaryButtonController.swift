@@ -14,22 +14,22 @@ class PrimaryButtonController: Controller {
         return button
     }
     private let disposeBag = DisposeBag()
-    
+
     private let buttonController: ButtonController
     private let button: PrimaryButton
     private var color = BehaviorSubject(value: PrimaryButtonColor.purple)
     private var label = BehaviorSubject(value: "")
-    
+
     init(using view: UIView) {
         guard let trueView = view as? PrimaryButton else {
             fatalError("Nib class is wrong")
         }
         button = trueView
         buttonController = ButtonController(using: button)
-        
+
         setupReactive()
     }
-    
+
     init(using view: XibView) {
         guard let button = view.contentView as? PrimaryButton else {
             fatalError("Content view is unavailable")
@@ -37,25 +37,25 @@ class PrimaryButtonController: Controller {
         self.button = button
         buttonController = ButtonController(using: button)
     }
-    
+
     func configure() {
         setupReactive()
     }
-    
+
     func set(color: PrimaryButtonColor) -> PrimaryButtonController {
         self.color.onNext(color)
         return self
     }
-    
+
     func set(label: String) -> PrimaryButtonController {
         self.label.onNext(label)
         return self
     }
-    
-    func onTap(_ callback: @escaping () -> ()) {
+
+    func onTap(_ callback: @escaping () -> Void) {
         buttonController.onTap(callback)
     }
-    
+
     private func setupReactive() {
         color.asObservable()
             .subscribe { event in

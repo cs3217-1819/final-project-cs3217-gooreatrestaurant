@@ -26,25 +26,25 @@ class SlimeNumberPadController: Controller {
     ]
     private lazy var backspaceButton: XibView = view.buttonBackspace
     private lazy var clearButton: XibView = view.buttonClear
-    
+
     init(with view: UIView?) {
         guard let trueView = view as? SlimeNumberPadView else {
             Logger.it.log("Nib class is wrong")
             fatalError()
         }
-        
+
         self.view = trueView
     }
-    
+
     convenience init(withXib xibView: XibView) {
         self.init(with: xibView.contentView)
     }
-    
+
     // The bound responder will receive inputs from this number pad
     func bindTo(_ responder: NumberPadResponder) {
         self.responder = responder
     }
-    
+
     func configure() {
         for (idx, padView) in padViews.enumerated() {
             let num = idx
@@ -57,7 +57,7 @@ class SlimeNumberPadController: Controller {
             controller.configure()
             padControllers.append(controller)
         }
-        
+
         let backspaceController = SlimeNumberInputController(withXib: backspaceButton)
             .set(text: "←")
             .set(color: .green)
@@ -66,7 +66,7 @@ class SlimeNumberPadController: Controller {
             }
         backspaceController.configure()
         padControllers.append(backspaceController)
-        
+
         let clearController = SlimeNumberInputController(withXib: clearButton)
             .set(text: "Clear")
             .set(color: .purple)

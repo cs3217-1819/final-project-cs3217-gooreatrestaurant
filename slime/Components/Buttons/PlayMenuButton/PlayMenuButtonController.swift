@@ -18,15 +18,15 @@ class PlayMenuButtonController: Controller {
     private let button: PlayMenuButton
     private var title = BehaviorSubject(value: "")
     private var description = BehaviorSubject(value: "")
-    
+
     init(using view: UIView) {
         button = UIView.initFromNib("PlayMenuButton")
         view.addSubview(button)
         buttonController = ButtonController(using: button)
-        
+
         setupReactive()
     }
-    
+
     init(using view: XibView) {
         guard let button = view.contentView as? PlayMenuButton else {
             fatalError("Content view is unavailable")
@@ -34,30 +34,30 @@ class PlayMenuButtonController: Controller {
         self.button = button
         buttonController = ButtonController(using: button)
     }
-    
+
     func configure() {
         setupReactive()
     }
-    
+
     func set(title: String) -> PlayMenuButtonController {
         self.title.onNext(title)
         return self
     }
-    
+
     func set(description: String) -> PlayMenuButtonController {
         self.description.onNext(description)
         return self
     }
-    
+
     func set(imageName: String) -> PlayMenuButtonController {
         button.imageView.image = UIImage(named: imageName)
         return self
     }
-    
-    func onTap(_ callback: @escaping () -> ()) {
+
+    func onTap(_ callback: @escaping () -> Void) {
         buttonController.onTap(callback)
     }
-    
+
     private func setupReactive() {
         title.asObservable()
             .subscribe { event in

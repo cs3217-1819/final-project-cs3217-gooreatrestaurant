@@ -26,10 +26,10 @@ extension UIColor {
         assert(red >= 0 && red <= 255, "Invalid red component")
         assert(green >= 0 && green <= 255, "Invalid green component")
         assert(blue >= 0 && blue <= 255, "Invalid blue component")
-        
+
         self.init(red: CGFloat(red) / 255.0, green: CGFloat(green) / 255.0, blue: CGFloat(blue) / 255.0, alpha: 1.0)
     }
-    
+
     // Convenient initialization from hex string
     // Example: UIColor(rgb: 0xFFAABB)
     convenience init(rgb: Int) {
@@ -39,7 +39,7 @@ extension UIColor {
             blue: rgb & 0xFF
         )
     }
-    
+
     static func white(intensity: ColorIntensity) -> UIColor {
         switch(intensity) {
         case .one:

@@ -24,7 +24,6 @@ class IngredientsCell: UICollectionViewCell {
         return image
     }()
 
-
 //    let textLabel: UILabel = {
 //        let label = UILabel()
 //        label.translatesAutoresizingMaskIntoConstraints = false
@@ -34,8 +33,7 @@ class IngredientsCell: UICollectionViewCell {
 //        return label
 //    }()
 
-
-    func  setupView(){
+    func  setupView() {
         addSubview(imageView)
 //        addSubview(textLabel)
 

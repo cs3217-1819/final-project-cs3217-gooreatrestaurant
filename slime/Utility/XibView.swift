@@ -18,18 +18,18 @@ import UIKit
 class XibView: UIView {
     var contentView: UIView?
     @IBInspectable var nibName: String?
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         xibSetup()
     }
-    
+
     override func prepareForInterfaceBuilder() {
         super.prepareForInterfaceBuilder()
         xibSetup()
         contentView?.prepareForInterfaceBuilder()
     }
-    
+
     func getView<ConformedView: UIView>() -> ConformedView {
         guard let trueView = contentView else {
             Logger.it.error("Xib content view is empty")
@@ -37,7 +37,7 @@ class XibView: UIView {
         }
         return trueView as! ConformedView
     }
-    
+
     private func xibSetup() {
         guard let view = loadViewFromNib() else {
             return
@@ -47,7 +47,7 @@ class XibView: UIView {
         addSubview(view)
         contentView = view
     }
-    
+
     private func loadViewFromNib() -> UIView? {
         guard let nibName = nibName else {
             return nil

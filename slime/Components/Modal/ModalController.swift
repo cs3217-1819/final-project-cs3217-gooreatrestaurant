@@ -15,19 +15,19 @@ class ModalController: Controller {
     let view: UIView
     var innerView: UIView?
     var backgroundView: UIView?
-    
+
     // Wraps a modal around the given view
     init() {
         view = UIView.initFromNib("Modal")
     }
-    
+
     func setContent(_ view: UIView) {
         if let contentView = innerView {
             contentView.removeFromSuperview()
         }
         innerView = view
     }
-    
+
     func configure() {
         guard let trueInnerView = innerView else {
             return
@@ -37,7 +37,7 @@ class ModalController: Controller {
             make.size.equalTo(trueInnerView)
         }
     }
-    
+
     func openWithoutBase(with parent: UIView) {
         guard let actualView = innerView else {
             return
@@ -50,11 +50,11 @@ class ModalController: Controller {
             background.alpha = 1
         })
     }
-    
+
     func open(with parent: UIView) {
         open(with: parent, closeOnOutsideTap: true)
     }
-    
+
     func open(with parent: UIView, closeOnOutsideTap: Bool) {
         let background = createBackground(for: parent, closeOnOutsideTap: closeOnOutsideTap)
         view.alpha = 0
@@ -66,7 +66,7 @@ class ModalController: Controller {
             background.alpha = 1
         })
     }
-    
+
     func close() {
         view.alpha = 1
         UIView.animate(withDuration: 0.3, animations: {
@@ -78,7 +78,7 @@ class ModalController: Controller {
             self.backgroundView = nil
         })
     }
-    
+
     private func createBackground(for parent: UIView, closeOnOutsideTap: Bool) -> UIView {
         let background = UIView(frame: parent.frame)
         backgroundView = background

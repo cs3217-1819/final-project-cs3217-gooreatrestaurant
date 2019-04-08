@@ -13,7 +13,7 @@ class SettingsScreenViewController: ViewController<SettingsScreenView> {
         configureBackButton()
         configureResetButton()
     }
-    
+
     private func configureBackButton() {
         let control = ButtonController(using: view.backButton)
         control.onTap {
@@ -21,7 +21,7 @@ class SettingsScreenViewController: ViewController<SettingsScreenView> {
         }
         remember(control)
     }
-    
+
     private func configureResetButton() {
         let control = PrimaryButtonController(using: view.resetButton)
             .set(label: "Reset Data")

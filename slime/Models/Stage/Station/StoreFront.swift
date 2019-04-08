@@ -10,7 +10,7 @@ import UIKit
 import SpriteKit
 
 class StoreFront: Station {
-    
+
     override func ableToProcess(_ item: SKSpriteNode?) -> Bool {
         guard item is Plate else {
             return false
@@ -22,7 +22,7 @@ class StoreFront: Station {
         guard ableToProcess(item) == true else {
             return item
         }
-        
+
         guard let plate = item as? Plate else {
             return item
         }
@@ -30,7 +30,7 @@ class StoreFront: Station {
         guard let stage = self.scene as? Stage else {
             return item
         }
-        
+
         stage.serve(plate)
 
         return nil

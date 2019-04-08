@@ -20,7 +20,7 @@ enum Route {
     case MultiplayerJoinRoomScreen
     case MultiplayerLobby
     case LoadingScreen
-    
+
     var coordinates: CGPoint {
         switch(self) {
         case .TitleScreen:
@@ -58,16 +58,16 @@ class Router {
     }
     let transitionHandler: RouteTransitionHandler
     private(set) var currentViewController: ViewControllerProtocol
-    
+
     init(with route: Route) {
         transitionHandler = RouteTransitionHandler(route: route)
         currentViewController = Router.getControllerFor(route: route)
-        
+
         transitionHandler.subscribe { route in
             self.currentViewController = Router.getControllerFor(route: route)
         }
     }
-    
+
     static func getControllerFor(route: Route) -> ViewControllerProtocol {
         switch(route) {
         case .TitleScreen:
@@ -94,8 +94,8 @@ class Router {
             return LoadingScreenViewController(with: UIView.initFromNib("LoadingScreenView"))
         }
     }
-    
-    func routeTo(_ route: Route)  {
+
+    func routeTo(_ route: Route) {
         transitionHandler.onNext(route)
     }
 }

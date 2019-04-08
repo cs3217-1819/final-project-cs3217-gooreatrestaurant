@@ -88,7 +88,7 @@ class OrderQueue: SKSpriteNode {
     func completeOrder(withFood food: Food) -> Bool {
         let ingredientsPrepared = food.ingredientsList
 
-        guard let matchedOrder = recipeOrdered.firstIndex(where:{ $0.ingredientsNeeded == ingredientsPrepared }) else {
+        guard let matchedOrder = recipeOrdered.firstIndex(where: { $0.ingredientsNeeded == ingredientsPrepared }) else {
             return false
         }
 
@@ -103,7 +103,7 @@ class OrderQueue: SKSpriteNode {
 
     // The view will call this function if there is timeout of an order
     func orderTimeOut(ofRecipe recipe: Recipe) {
-        guard let matchedOrder = recipeOrdered.firstIndex(where:{ $0 == recipe }) else {
+        guard let matchedOrder = recipeOrdered.firstIndex(where: { $0 == recipe }) else {
             return
         }
 

@@ -12,5 +12,7 @@ class CustomizationMainView: UIView {
     @IBOutlet var levelProgressView: XibView!
     @IBOutlet var levelLabel: TextLabel!
     @IBOutlet var nameLabel: TextLabel!
+    @IBOutlet var hatButton: UIView!
+    @IBOutlet var accessoryButton: UIView!
     
 }

@@ -16,7 +16,7 @@ extension UIView {
         }
         return nib
     }
-    
+
     func constraintToParent() {
         self.snp.makeConstraints { make in
             make.top.equalToSuperview()
@@ -25,7 +25,7 @@ extension UIView {
             make.right.equalToSuperview()
         }
     }
-    
+
     func constraintToParent(offset: CGFloat) {
         self.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(offset)
@@ -34,19 +34,19 @@ extension UIView {
             make.right.equalToSuperview().offset(-offset)
         }
     }
-    
+
     func centerInParent() {
         self.snp.makeConstraints { make in
             make.center.equalToSuperview()
         }
     }
-    
+
     // debugging purposes
     func debug() {
         layer.borderColor = UIColor.blue.cgColor
         layer.borderWidth = 2.0
     }
-    
+
     func debug2() {
         layer.borderColor = UIColor.green.cgColor
         layer.borderWidth = 2.0

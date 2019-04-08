@@ -10,7 +10,7 @@ import UIKit
 import SpriteKit
 
 class Trash: Station {
-    
+
     override func ableToProcess(_ item: SKSpriteNode?) -> Bool {
         if item == nil {
             return false

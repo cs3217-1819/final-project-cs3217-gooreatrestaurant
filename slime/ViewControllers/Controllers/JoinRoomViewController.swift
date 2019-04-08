@@ -12,15 +12,15 @@ class JoinRoomViewController: ViewController<JoinRoomView> {
     override func configureSubviews() {
         let codeInputController = CodeInputController(withXib: view.codeInputView)
         let numberPadController = SlimeNumberPadController(withXib: view.numPadView)
-        
+
         codeInputController.bindTo(numberPad: numberPadController)
         codeInputController.configure()
-        codeInputController.onComplete { code in
+        codeInputController.onComplete { _ in
             // TODO: replace with true code
             let roomJoinId = "28280"
-            
+
             self.showLoadingAlert(withDescription: "Teleporting slime agent...")
-            
+
             self.context.db.joinRoom(forRoomId: roomJoinId, {
                 let lobbyController: MultiplayerLobbyViewController = self.context.routeToAndPrepareFor(.MultiplayerLobby)
                 lobbyController.setupRoom(withId: roomJoinId)
@@ -39,18 +39,18 @@ class JoinRoomViewController: ViewController<JoinRoomView> {
             })
         }
         numberPadController.configure()
-        
+
         remember(codeInputController)
         remember(numberPadController)
     }
-    
+
     private func showLoadingAlert(withDescription description: String) {
         let alert = context.modal.createAlert()
             .setTitle("Loading...")
             .setDescription(description)
         context.modal.presentUnimportantAlert(alert)
     }
-    
+
     private func showErrorAlert(withDescription description: String) {
         let alert = context.modal.createAlert()
             .setTitle("Error!")

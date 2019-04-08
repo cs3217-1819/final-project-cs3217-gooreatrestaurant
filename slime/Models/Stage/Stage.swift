@@ -20,7 +20,7 @@ class Stage: SKScene {
 
     //Level score
     var levelScore: Int = 0
-    
+
     override init(size: CGSize = CGSize(width: StageConstants.maxXAxisUnits, height: StageConstants.maxYAxisUnits)) {
         spaceship = Spaceship(inPosition: StageConstants.spaceshipPosition, withSize: StageConstants.spaceshipSize)
         super.init(size: size)
@@ -129,7 +129,7 @@ class Stage: SKScene {
     var counterStartTime = 30
     var isGameOver = false
 
-    lazy var countdownLabel: SKLabelNode =  {
+    lazy var countdownLabel: SKLabelNode = {
         var label = SKLabelNode(fontNamed: "SquidgySlimes")
         label.fontSize = CGFloat(40)
         label.zPosition = 10
@@ -141,7 +141,7 @@ class Stage: SKScene {
         return label
     }()
 
-    lazy var scoreLabel: SKLabelNode =  {
+    lazy var scoreLabel: SKLabelNode = {
         var label = SKLabelNode(fontNamed: "SquidgySlimes")
         label.fontSize = CGFloat(30)
         label.zPosition = 10

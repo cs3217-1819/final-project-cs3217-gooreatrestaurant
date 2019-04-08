@@ -11,4 +11,6 @@ import UIKit
 class CharacterCustomizationView: UIView {
     @IBOutlet var characterPreviewView: XibView!
     @IBOutlet var routerPanel: UIView!
+    @IBOutlet var hatImageView: UIImageView!
+    @IBOutlet var accesoryImageView: UIImageView!
 }

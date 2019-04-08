@@ -16,7 +16,7 @@ class ScrollingBackgroundViewController: Controller {
     private let background: UIView
     private var backgroundImageView: UIImageView
     private var imageName: String
-    
+
     init(with view: UIView) {
         parent = view
         imageName = "background"
@@ -25,17 +25,17 @@ class ScrollingBackgroundViewController: Controller {
         backgroundImageView.frame = background.bounds
         background.addSubview(backgroundImageView)
     }
-    
+
     func configure() {
         setupView(parent: parent)
     }
-    
+
     func toAlpha(_ alpha: CGFloat) {
         UIView.animate(withDuration: 0.5, animations: {
             self.background.alpha = alpha
         })
     }
-    
+
     func transitionTo(_ imageNamed: String) {
         if imageName == imageNamed {
             // currently has same background
@@ -58,19 +58,19 @@ class ScrollingBackgroundViewController: Controller {
             self.backgroundImageView = newBackgroundImageView
         })
     }
-    
+
     private func setupView(parent: UIView) {
         background.contentMode = .scaleAspectFill
         background.frame = background.frame.offsetBy(dx: -parent.frame.width, dy: -parent.frame.height)
         backgroundImageView.image = ImageProvider.get(imageName)
-        
+
         UIView.animate(withDuration: 10.0, delay: 0.0, options: [.repeat, .autoreverse], animations: {
             self.background.frame = self.background.frame.offsetBy(dx: parent.frame.width, dy: parent.frame.height)
         }, completion: nil)
         parent.addSubview(background)
         parent.sendSubviewToBack(background)
     }
-    
+
     deinit {
         background.removeFromSuperview()
     }
