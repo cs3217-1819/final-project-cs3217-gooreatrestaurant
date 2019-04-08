@@ -126,7 +126,7 @@ class Stage: SKScene {
 
     var counter = 0
     var counterTime = Timer()
-    var counterStartTime = 1
+    var counterStartTime = 30
     var isGameOver = false
 
     lazy var countdownLabel: SKLabelNode =  {
