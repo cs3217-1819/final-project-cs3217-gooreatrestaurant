@@ -55,7 +55,7 @@ class StageConstants {
                                        y: ScreenSize.height * 0.5 - 40)
     static let scorePosition = CGPoint(x: ScreenSize.width * -0.5 + 20,
                                        y: ScreenSize.height * -0.5 + 20)
-    static let gameOverPrefabSize = CGSize(width: ScreenSize.width * 0.05, height: ScreenSize.height * 0.05)
+    static let gameOverPrefabSize = CGSize(width: 400, height: 400)
 
     // collision bitmask
     static let wallCategoryCollision: UInt32 = 1 << 0
