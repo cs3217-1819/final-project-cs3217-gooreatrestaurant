@@ -428,7 +428,7 @@ class GameDB: GameDatabase {
         }
     }
     
-    func updatePlayerPosition(forGameId id: String, position: Int, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void) {
+    func updatePlayerPosition(forGameId id: String, position: CGPoint, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void) {
         guard let user = GameAuth.currentUser else {
             return
         }
@@ -436,13 +436,13 @@ class GameDB: GameDatabase {
         let refX = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, id, FirebaseKeys.games_players, user.uid, FirebaseKeys.games_players_positionX]))
         let refY = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, id, FirebaseKeys.games_players, user.uid, FirebaseKeys.games_players_positionY]))
         
-        refX.setValue(position) { (err, ref) in
+        refX.setValue(position.x) { (err, ref) in
             if let error = err {
                 onError(error)
             }
         }
         
-        refY.setValue(position) { (err, ref) in
+        refY.setValue(position.y) { (err, ref) in
             if let error = err {
                 onError(error)
             }
@@ -515,7 +515,7 @@ class GameDB: GameDatabase {
         }
     }
     
-    func observeGameState(forRoom room: RoomModel, _ onDataChange: @escaping (GameModel) -> Void, _ onError: @escaping (Error) -> Void) {
+    func observeGameState(forRoom room: RoomModel, onPlayerUpdate: @escaping (GamePlayerModel) -> Void, onStationUpdate: @escaping () -> Void, onGameEnd: @escaping () -> Void, onOrderChange: @escaping ([GameOrderModel]) -> Void, onScoreChange: @escaping (Int) -> Void, onError: @escaping (Error) -> Void) {
         guard let user = GameAuth.currentUser else {
             return
         }
@@ -535,7 +535,18 @@ class GameDB: GameDatabase {
             let indPlayerRef = playerRef.child(player.uid)
             
             let playerHandle = indPlayerRef.observe(.value, with: { (snap) in
-                print(snap)
+                guard let playerDict = snap.value as? [String : AnyObject] else {
+                    return
+                }
+                
+                let positionX = playerDict[FirebaseKeys.games_players_positionX] as? CGFloat ?? 0.0
+                let positionY = playerDict[FirebaseKeys.games_players_positionY] as? CGFloat ?? 0.0
+                let holdItem = playerDict[FirebaseKeys.games_players_holdingItem] as? String ?? ""
+                let isConnected = playerDict[FirebaseKeys.games_players_isConnected] as? Bool ?? false
+                let isHost = playerDict[FirebaseKeys.games_players_isHost] as? Bool ?? false
+                let isReady = playerDict[FirebaseKeys.games_players_isReady] as? Bool ?? false
+                
+                onPlayerUpdate(GamePlayerModel(uid: player.uid, posX: positionX, posY: positionY, holdingItem: holdItem, isHost: isHost, isConnected: isConnected, isReady: isReady))
             }, withCancel: { (err) in
                 onError(err)
             })
@@ -544,19 +555,39 @@ class GameDB: GameDatabase {
         }
         
         let orderHandle = orderRef.observe(.value, with: { (snap) in
-            print(snap)
+            guard let orders = snap.value as? [String : AnyObject] else {
+                return
+            }
+            
+            var listOfOrders: [GameOrderModel] = []
+            
+            for order in orders {
+                guard let orderObject = self.convertOrderDictToOrder(dict: order) else {
+                    return
+                }
+                
+                listOfOrders.append(orderObject)
+            }
+            
+            onOrderChange(listOfOrders)
         }) { (err) in
             onError(err)
         }
         
         let scoreHandle = scoreRef.observe(.value, with: { (snap) in
-            print(snap)
+            guard let score = snap.value as? Int else {
+                return
+            }
+            
+            onScoreChange(score)
         }) { (err) in
             onError(err)
         }
         
         let stationHandle = stationRef.observe(.value, with: { (snap) in
             print(snap)
+            
+            onStationUpdate()
         }) { (err) in
             onError(err)
         }
@@ -566,9 +597,7 @@ class GameDB: GameDatabase {
                 return
             }
             
-            if end {
-                // game has ended
-            }
+            if end { onGameEnd() }
         }) { (err) in
             onError(err)
         }
@@ -580,10 +609,6 @@ class GameDB: GameDatabase {
             
             // populate room object
             // TODO
-            
-            let gameRes = GameModel()
-            
-            onDataChange(gameRes)
         }) { (err) in
             onError(err)
         }
@@ -591,7 +616,20 @@ class GameDB: GameDatabase {
         self.observers.append(Observer(withHandle: orderHandle, withRef: orderRef))
         self.observers.append(Observer(withHandle: scoreHandle, withRef: scoreRef))
         self.observers.append(Observer(withHandle: endHandle, withRef: endRef))
+        self.observers.append(Observer(withHandle: stationHandle, withRef: stationRef))
         self.observers.append(Observer(withHandle: handle, withRef: ref))
+    }
+    
+    private func convertOrderDictToOrder(dict: (key: String, value: AnyObject)) -> GameOrderModel? {
+        guard let orderInfo = dict.value as? [String : AnyObject] else {
+            return nil
+        }
+        
+        let issueTime = orderInfo[FirebaseKeys.games_orders_issueTime] as? Double ?? 0.0
+        let timeLimit = orderInfo[FirebaseKeys.games_orders_timeLimit] as? Double ?? 0.0
+        let name = orderInfo[FirebaseKeys.games_orders_recipeName] as? String ?? ""
+        
+        return GameOrderModel(id: dict.key, name: name, issueTime: issueTime, timeLimit: timeLimit)
     }
     
     func checkRejoinGame(_ onGameExist: @escaping (String) -> Void, _ onError: @escaping (Error) -> Void) {

@@ -6,6 +6,8 @@
 //  Copyright © 2019 nus.cs3217.a0166733y. All rights reserved.
 //
 
+import UIKit
+
 /**
  Abstraction class for the game database. Contains
  methods to create listeners or return information
@@ -168,7 +170,7 @@ protocol GameDatabase {
     ///     - onDataChange: a closure which is fired
     ///       every time a data value changes
     ///     - onError: fired when an error happens
-    func observeGameState(forRoom room: RoomModel, _ onDataChange: @escaping (GameModel) -> Void, _ onError: @escaping (Error) -> Void)
+    func observeGameState(forRoom room: RoomModel, onPlayerUpdate: @escaping (GamePlayerModel) -> Void, onStationUpdate: @escaping () -> Void, onGameEnd: @escaping () -> Void, onOrderChange: @escaping ([GameOrderModel]) -> Void, onScoreChange: @escaping (Int) -> Void, onError: @escaping (Error) -> Void)
     
     /// updates a player position inside the game
     /// id specified inside this method
@@ -176,7 +178,7 @@ protocol GameDatabase {
     ///     - forGameId: the game id for which the
     ///       position of the player is to updated
     ///     - position: the position of the player
-    func updatePlayerPosition(forGameId id: String, position: Int, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void)
+    func updatePlayerPosition(forGameId id: String, position: CGPoint, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void)
     
     /// adds an order to the end of the current list
     /// of orders
