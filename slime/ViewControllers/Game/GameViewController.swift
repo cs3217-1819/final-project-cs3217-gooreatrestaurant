@@ -12,8 +12,11 @@ import AVFoundation
 
 class GameViewController: UIViewController {
     
+    var db: GameDatabase = GameDB()
+    
     var isMultiplayer: Bool?
     var multiplayerGameId: String?
+    var previousRoom: RoomModel?
     var players: [RoomPlayerModel]?
     var currentMap: String?
     
@@ -59,6 +62,69 @@ class GameViewController: UIViewController {
         //        newCollection.register(IngredientsCell.self, forCellWithReuseIdentifier: "MyCell")
         //        view.addSubview(newCollection)
         //        setupCollection()
+        
+        // TODO: multiplayer stuff
+        if isMultiplayer ?? false {
+            joinGame()
+            setupMultiplayer()
+        }
+    }
+    
+    private func joinGame() {
+        guard let id = self.multiplayerGameId else {
+            return
+        }
+        
+        db.joinGame(forGameId: id, {
+            // do something after join game
+            if !self.isUserHost() { return }
+            // TODO: observe all user's ready state
+        }) { (err) in
+            print(err)
+        }
+    }
+    
+    private func isUserHost() -> Bool {
+        guard let user = GameAuth.currentUser else {
+            return false
+        }
+        
+        for player in self.players ?? [] {
+            if player.uid != user.uid { continue }
+            return player.isHost
+        }
+        
+        return false
+    }
+    
+    private func setupMultiplayer() {
+        guard let room = previousRoom else {
+            return
+        }
+        
+        db.observeGameState(forRoom: room, onPlayerUpdate: { (player) in
+            // this occurs when a player's
+            // state in the database changes
+            print(player.positionX)
+            print(player.positionY)
+        }, onStationUpdate: {
+            // not yet implemented
+            // this updates whenever one station
+            // experiences a change
+        }, onGameEnd: {
+            print("Game has ended")
+        }, onOrderChange: { (orders) in
+            // the function here occurs everytime the
+            // order in the db changes
+            for order in orders {
+                print(order.name)
+            }
+        }, onScoreChange: { (score) in
+            // self-explanatory
+            print(score)
+        }) { (err) in
+            print(err)
+        }
     }
 
     func setupCollection(){
