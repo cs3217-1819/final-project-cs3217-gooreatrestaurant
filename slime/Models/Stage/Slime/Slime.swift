@@ -12,6 +12,8 @@ import SpriteKit
 class Slime: SKSpriteNode {
     var isContactingWithLadder = false
 
+    var player: Player?
+
     init(inPosition position: CGPoint, withSize size: CGSize = StageConstants.slimeSize) {
         let slimeAnimatedAtlas = SKTextureAtlas(named: "Slime")
         var walkFrames: [SKTexture] = []
@@ -130,5 +132,9 @@ class Slime: SKSpriteNode {
                 break
             }
         }
+    }
+
+    func addUser(_ user: Player) {
+        self.player = user
     }
 }

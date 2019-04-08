@@ -9,7 +9,9 @@
 import Foundation
 import SpriteKit
 
-class MenuPrefab: SKSpriteNode {
+class MenuPrefab : SKSpriteNode {
+    var recipe: Recipe?
+
     var blackBar: SKSpriteNode
     var greenBar: SKSpriteNode
     var timer: Timer =  Timer()
@@ -39,6 +41,7 @@ class MenuPrefab: SKSpriteNode {
 
     func addRecipe(_ recipe: Recipe, inPosition: CGPoint) {
         self.position = inPosition
+        self.recipe = recipe
         //Adding image of the main recipe
         let dish = SKSpriteNode(imageNamed: recipe.recipeName)
         dish.position = CGPoint(x: 0, y: 20)
@@ -88,11 +91,22 @@ class MenuPrefab: SKSpriteNode {
     }
 
     @objc func countdown() {
-        if (time > 0) {
+        if (time > 0.0) {
             time -= CGFloat(1.0/duration)
             self.greenBar.size =  CGSize(width: greenBar.size.width, height: self.greenBar.size.height * time / duration)
         } else {
             timer.invalidate()
+            guard let parent = self.parent else {
+                return
+            }
+            guard let orderQueue = parent as? OrderQueue else {
+                return
+            }
+
+            guard let thisRecipe = recipe else {
+                return
+            }
+            orderQueue.orderTimeOut(ofRecipe: thisRecipe)
         }
     }
 }
