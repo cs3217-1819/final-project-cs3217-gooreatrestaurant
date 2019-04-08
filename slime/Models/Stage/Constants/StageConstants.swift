@@ -81,6 +81,6 @@ class StageConstants {
     static let defaultOptionalProbability = 0.5
     static let defaultTimeLimitOrder = CGFloat(10)
     static let minNumbersOfOrdersShown = 4
-    static let maxNumbersOfOrdersShown = 8
+    static let maxNumbersOfOrdersShown = 6
     static let orderComingInterval = 5.0
 }

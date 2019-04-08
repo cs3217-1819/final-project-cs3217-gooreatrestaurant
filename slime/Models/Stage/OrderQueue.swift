@@ -14,6 +14,19 @@ class OrderQueue: SKSpriteNode {
     var recipeOrdered: [Recipe] = []
     var newOrderTimer: Timer = Timer()
 
+    var positionings = [CGPoint(x: ScreenSize.width * 0.5 - 90,
+                                y: ScreenSize.height * 0.5 - 60),
+                        CGPoint(x: ScreenSize.width * 0.5 - 180,
+                                y: ScreenSize.height * 0.5 - 60),
+                        CGPoint(x: ScreenSize.width * 0.5 - 90,
+                                y: ScreenSize.height * 0.5 - 150),
+                        CGPoint(x: ScreenSize.width * 0.5 - 180,
+                                y: ScreenSize.height * 0.5 - 150),
+                        CGPoint(x: ScreenSize.width * 0.5 - 90,
+                                y: ScreenSize.height * 0.5 - 240),
+                        CGPoint(x: ScreenSize.width * 0.5 - 180,
+                                y: ScreenSize.height * 0.5 - 240)]
+
     init() {
         super.init(texture: nil, color: .clear, size: CGSize.zero)
         self.position = CGPoint.zero
@@ -26,7 +39,8 @@ class OrderQueue: SKSpriteNode {
 
     func generateMenu(ofRecipe recipe: Recipe) {
         let menuObj = MenuPrefab(color: .clear, size: CGSize(width: 100, height: 100))
-        menuObj.addRecipe(recipe)
+        print(recipeOrdered.count)
+        menuObj.addRecipe(recipe, inPosition: positionings[recipeOrdered.count - 1])
         self.addChild(menuObj)
     }
 
