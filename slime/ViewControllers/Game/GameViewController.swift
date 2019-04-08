@@ -14,7 +14,7 @@ class GameViewController: UIViewController {
     
     var db: GameDatabase = GameDB()
     
-    var isMultiplayer: Bool?
+    var isMultiplayer: Bool = false
     var multiplayerGameId: String?
     var previousRoom: RoomModel?
     var players: [RoomPlayerModel]?
@@ -31,13 +31,6 @@ class GameViewController: UIViewController {
    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     }
-
-    lazy var skView: SKView = {
-        let view = SKView()
-        //        view.translatesAutoresizingMaskIntoConstraints = false
-        view.isMultipleTouchEnabled = true
-        return view
-    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,11 +56,19 @@ class GameViewController: UIViewController {
         //        view.addSubview(newCollection)
         //        setupCollection()
         
-        // TODO: multiplayer stuff
-        if isMultiplayer ?? false {
+        // TODO: multiplayer stuff, add all the players to stage, then the setupPlayers() will map the slime to player
+        if isMultiplayer {
             joinGame()
             setupMultiplayer()
+        } else {
+            guard let onlyUser = GameAuth.currentUser else {
+                return
+            }
+            // Level 1 here only placeholder TO DO
+            let onlyPlayer = Player(name: onlyUser.uid, level: 1)
+            stage.addPlayer(onlyPlayer)
         }
+        stage.setupPlayers()
     }
     
     private func joinGame() {

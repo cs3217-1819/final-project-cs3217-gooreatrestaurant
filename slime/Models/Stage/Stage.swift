@@ -273,6 +273,27 @@ class Stage: SKScene {
         players.removeAll { $0 == player }
     }
 
+    // when all the players is put into the game
+    func setupPlayers() {
+        var currentPlayerIndex = 0
+        spaceship.enumerateChildNodes(withName: "slime") {
+            node, stop in
+
+            guard let slime = node as? Slime else {
+                return
+            }
+
+            guard currentPlayerIndex < self.players.count else {
+                stop.initialize(to: true)
+                return
+            }
+
+            let player = self.players[currentPlayerIndex]
+            slime.addUser(player)
+            currentPlayerIndex += 1
+        }
+    }
+
     override func didSimulatePhysics() {
         self.spaceship.setAutomaticCooking()
         self.slimeToControl?.resetMovement()
@@ -290,8 +311,14 @@ class Stage: SKScene {
                 return
             }
 
-            playerSlime = slime
-            stop.initialize(to: true)
+            guard let user = GameAuth.currentUser else {
+                return
+            }
+
+            if slime.player?.name == user.uid {
+                playerSlime = slime
+                stop.initialize(to: true)
+            }
         }
         return playerSlime
     }
