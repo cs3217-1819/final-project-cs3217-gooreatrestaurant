@@ -67,6 +67,7 @@ class MultiplayerLobbyViewController: ViewController<MultiplayerLobbyView> {
                 
                 // TODO: route to game room
                 
+                
                 return
             }
             

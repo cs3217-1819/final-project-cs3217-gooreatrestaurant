@@ -11,6 +11,12 @@ import SpriteKit
 import AVFoundation
 
 class GameViewController: UIViewController {
+    
+    var isMultiplayer: Bool?
+    var multiplayerGameId: String?
+    var players: [RoomPlayerModel]?
+    var currentMap: String?
+    
     let newCollection: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let collection = UICollectionView(frame: CGRect(x: 0, y: 0, width: 0, height: 0), collectionViewLayout: layout)
@@ -33,7 +39,7 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-
+        
         let stage = Stage()
         let skview = SKView(frame: view.safeAreaLayoutGuide.layoutFrame)
         skview.frame = CGRect(x: 0.0, y: 0.0, width: ScreenSize.width, height: ScreenSize.height)

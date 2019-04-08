@@ -42,6 +42,10 @@ class Context {
     func segueToGame() {
         mainController.performSegue(withIdentifier: "toGame", sender: nil)
     }
+    
+    func segueToMultiplayerGame() {
+        mainController.performSegue(withIdentifier: "toMultiplayerGame", sender: nil)
+    }
 }
 
 

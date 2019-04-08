@@ -98,4 +98,27 @@ class MainController: UIViewController {
             bgControl?.transitionTo("background-1")
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toMultiplayerGame" {
+            let destination = segue.destination as! GameViewController
+            let currentRoute = self.router.currentViewController as! MultiplayerLobbyViewController
+
+            guard let room = currentRoute.currentRoom else {
+                print("pew pew")
+                return
+            }
+            
+            destination.isMultiplayer = true
+            destination.currentMap = room.map
+            destination.multiplayerGameId = room.id
+        }
+        
+        if segue.identifier == "toMultiplayerGame" {
+            // let destination = segue.destination as! GameViewController
+            // let currentRoute = self.router.currentViewController as! LevelSelectViewController
+            
+            
+        }
+    }
 }
