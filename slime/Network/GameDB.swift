@@ -380,7 +380,9 @@ class GameDB: GameDatabase {
         gameDict.updateValue(false as AnyObject, forKey: FirebaseKeys.games_hasEnded)
         gameDict.updateValue(6000 as AnyObject, forKey: FirebaseKeys.games_timeLimit)
         gameDict.updateValue(NSTimeIntervalSince1970 as AnyObject, forKey: FirebaseKeys.games_startTime)
+        gameDict.updateValue(false as AnyObject, forKey: FirebaseKeys.games_hasStarted)
         gameDict.updateValue(0 as AnyObject, forKey: FirebaseKeys.games_score)
+        gameDict.updateValue(players as AnyObject, forKey: FirebaseKeys.games_players)
         gameDict.updateValue(stationsDict as AnyObject, forKey: FirebaseKeys.games_stations)
 
         ref.setValue(gameDict) { (err, ref) in
@@ -466,7 +468,7 @@ class GameDB: GameDatabase {
     
     private func stringToPointKey(position: String) -> String {
         let position = NSCoder.cgPoint(for: position)
-        return "\(position.x)+\(position.y)"
+        return "\(position.x)+\(position.y)".replacingOccurrences(of: ".", with: ",")
     }
 
     private func createGamePlayerDict(isHost: Bool) -> [String : AnyObject] {
@@ -851,6 +853,7 @@ struct FirebaseKeys {
     static let games = "games"
     static let games_gameMap = "game_map"
     static let games_hasEnded = "has_ended"
+    static let games_hasStarted = "has_started"
     static let games_startTime = "start_time"
     static let games_timeLimit = "time_limit"
     static let games_players = "players"
