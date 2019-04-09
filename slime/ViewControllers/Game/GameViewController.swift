@@ -82,19 +82,6 @@ class GameViewController: UIViewController {
         }
     }
     
-    private func isUserHost() -> Bool {
-        guard let user = GameAuth.currentUser else {
-            return false
-        }
-        
-        for player in self.players ?? [] {
-            if player.uid != user.uid { continue }
-            return player.isHost
-        }
-        
-        return false
-    }
-    
     private func setupMultiplayer() {
         guard let room = previousRoom else {
             return

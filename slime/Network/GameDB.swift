@@ -372,6 +372,8 @@ class GameDB: GameDatabase {
 
             players.updateValue(playerDict, forKey: player.uid)
         }
+        
+        let stationsDict = generateStationsDict(forMap: room.map)
 
         // populates dictionary to fit the db
         gameDict.updateValue(room.map as AnyObject, forKey: FirebaseKeys.games_gameMap)
@@ -379,6 +381,7 @@ class GameDB: GameDatabase {
         gameDict.updateValue(6000 as AnyObject, forKey: FirebaseKeys.games_timeLimit)
         gameDict.updateValue(NSTimeIntervalSince1970 as AnyObject, forKey: FirebaseKeys.games_startTime)
         gameDict.updateValue(0 as AnyObject, forKey: FirebaseKeys.games_score)
+        gameDict.updateValue(stationsDict as AnyObject, forKey: FirebaseKeys.games_stations)
 
         ref.setValue(gameDict) { (err, ref) in
             if let error = err {
@@ -388,6 +391,82 @@ class GameDB: GameDatabase {
 
             onComplete()
         }
+    }
+    
+    private func generateStationsDict(forMap map: String) -> [String : AnyObject] {
+        guard let levelDesignURL = Bundle.main.url(forResource: map, withExtension: "plist") else {
+            return [:]
+        }
+        
+        do {
+            let data = try? Data(contentsOf: levelDesignURL)
+            let decoder = PropertyListDecoder()
+            let value = try decoder.decode(SerializableGameData.self, from: data!)
+            
+            let res = parseStationsForDecodedData(data: value)
+            
+            return res
+        } catch {
+            print(error.localizedDescription)
+            return [:]
+        }
+    }
+    
+    private func parseStationsForDecodedData(data: SerializableGameData) -> [String : AnyObject] {
+        var res: [String : AnyObject] = [:]
+        
+        // table
+        for tablePosition in data.table {
+            let key = stringToPointKey(position: tablePosition)
+            
+            let valueDict =
+                [FirebaseKeys.games_stations_type : FirebaseSystemValues.games_stations_table,
+                 FirebaseKeys.games_stations_isOccupied : false,
+                 FirebaseKeys.games_stations_itemInside : ""] as [String : AnyObject]
+            
+            res.updateValue(valueDict as AnyObject, forKey: key)
+        }
+        
+        // frying equipment
+        for fryingPosition in data.fryingEquipment {
+            let key = stringToPointKey(position: fryingPosition)
+            
+            let valueDict =
+                [FirebaseKeys.games_stations_type : FirebaseSystemValues.games_stations_fryingEquipment,
+                 FirebaseKeys.games_stations_isOccupied : false,
+                 FirebaseKeys.games_stations_itemInside : ""] as [String : AnyObject]
+            
+            res.updateValue(valueDict as AnyObject, forKey: key)
+        }
+        
+        for ovenPosition in data.oven {
+            let key = stringToPointKey(position: ovenPosition)
+            
+            let valueDict =
+                [FirebaseKeys.games_stations_type : FirebaseSystemValues.games_stations_oven,
+                 FirebaseKeys.games_stations_isOccupied : false,
+                 FirebaseKeys.games_stations_itemInside : ""] as [String : AnyObject]
+            
+            res.updateValue(valueDict as AnyObject, forKey: key)
+        }
+        
+        for choppingPosition in data.choppingEquipment {
+            let key = stringToPointKey(position: choppingPosition)
+            
+            let valueDict =
+                [FirebaseKeys.games_stations_type : FirebaseSystemValues.games_stations_choppingEquipment,
+                 FirebaseKeys.games_stations_isOccupied : false,
+                 FirebaseKeys.games_stations_itemInside : ""] as [String : AnyObject]
+            
+            res.updateValue(valueDict as AnyObject, forKey: key)
+        }
+        
+        return res
+    }
+    
+    private func stringToPointKey(position: String) -> String {
+        let position = NSCoder.cgPoint(for: position)
+        return "\(position.x)+\(position.y)"
     }
 
     private func createGamePlayerDict(isHost: Bool) -> [String : AnyObject] {
@@ -738,6 +817,17 @@ struct Observer {
     }
 }
 
+struct FirebaseSystemValues {
+    // game values
+    static let games_stations_fryingEquipment = "frying_equipment"
+    static let games_stations_oven = "oven"
+    static let games_stations_table = "table"
+    static let games_stations_storeFront = "store_front"
+    static let games_stations_choppingEquipment = "chopping_equipment"
+    static let games_stations_plateStorage = "plate_storage"
+    static let games_stations_trashBin = "trash_bin"
+}
+
 /**
  a list of constants representing all the
  Firebase keys currently available. The naming
@@ -772,6 +862,9 @@ struct FirebaseKeys {
     static let games_players_positionY = "position_y"
     static let games_score = "score"
     static let games_stations = "stations"
+    static let games_stations_itemInside = "item_inside"
+    static let games_stations_isOccupied = "is_occupied"
+    static let games_stations_type = "type"
     //    static let games_objects = "objects"
     static let games_orders = "orders"
     static let games_orders_recipeName = "recipe_name"
