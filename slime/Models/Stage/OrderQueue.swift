@@ -39,7 +39,6 @@ class OrderQueue: SKSpriteNode {
 
     func generateMenu(ofRecipe recipe: Recipe) {
         let menuObj = MenuPrefab(color: .clear, size: CGSize(width: 80, height: 80))
-        print(recipeOrdered.count)
         menuObj.addRecipe(recipe, inPosition: positionings[recipeOrdered.count - 1])
         self.addChild(menuObj)
     }
@@ -61,6 +60,7 @@ class OrderQueue: SKSpriteNode {
         guard let randomRecipe = self.generateRandomRecipe() else {
             return
         }
+        print(randomRecipe.ingredientsNeeded)
         self.addOrder(ofRecipe: randomRecipe)
     }
 

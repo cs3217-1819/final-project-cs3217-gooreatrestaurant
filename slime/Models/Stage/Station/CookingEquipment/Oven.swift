@@ -15,7 +15,7 @@ class Oven: CookingEquipment {
         super.init(type: .baking,
                    inPosition: position,
                    withSize: size,
-                   canProcessIngredients: [.apple])
+                   canProcessIngredients: [.apple, .dough])
         self.texture = SKTexture(imageNamed: "Oven")
         self.size = CGSize(width: 50, height: 50)
     }
