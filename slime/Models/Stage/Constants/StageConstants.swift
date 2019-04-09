@@ -14,7 +14,7 @@ class StageConstants {
     static let maxXAxisUnits = ScreenSize.width
     static let maxYAxisUnits = ScreenSize.height
 
-    static let speedMultiplier = CGFloat(1.5)
+    static let speedMultiplier = CGFloat(2.0)
     static let jumpSpeed = 3.5
 
     // node naming
@@ -79,7 +79,7 @@ class StageConstants {
 
     // gameplay related
     static let defaultOptionalProbability = 0.5
-    static let defaultTimeLimitOrder = CGFloat(10)
+    static let defaultTimeLimitOrder = CGFloat(60)
     static let minNumbersOfOrdersShown = 4
     static let maxNumbersOfOrdersShown = 6
     static let orderComingInterval = 5.0
