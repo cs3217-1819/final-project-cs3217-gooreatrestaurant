@@ -395,6 +395,13 @@ class GameDB: GameDatabase {
         }
     }
     
+    /// generated a Firebase-ready dictionary
+    /// for the stations reference inside a game
+    /// - Parameters:
+    ///     - forMap: the map for which the dict
+    ///       is to be generated
+    /// - Returns:
+    ///     - a dictionary representing the stations
     private func generateStationsDict(forMap map: String) -> [String : AnyObject] {
         guard let levelDesignURL = Bundle.main.url(forResource: map, withExtension: "plist") else {
             return [:]
@@ -414,6 +421,14 @@ class GameDB: GameDatabase {
         }
     }
     
+    /// a function that parses a decoded plist
+    /// data into a Firebase-ready dictionary
+    /// - Parameters:
+    ///     - data: an already decoded data
+    ///       of type SerializedGameData
+    /// - Returns:
+    ///     - a Firebase-ready dictionary for
+    ///       the stations inside the game
     private func parseStationsForDecodedData(data: SerializableGameData) -> [String : AnyObject] {
         var res: [String : AnyObject] = [:]
         
@@ -466,11 +481,27 @@ class GameDB: GameDatabase {
         return res
     }
     
+    /// returns a key representing a coordinate
+    ///  where the . is replaced with , to conform
+    /// to the Firebase key nomenclature
+    /// - Parameters:
+    ///     - position: the position of the object
+    /// - Returns:
+    ///     - a string representation of the position
+    ///       as a Firebase-ready key
     private func stringToPointKey(position: String) -> String {
         let position = NSCoder.cgPoint(for: position)
         return "\(position.x)+\(position.y)".replacingOccurrences(of: ".", with: ",")
     }
 
+    /// creates a Firebase-ready dictionary
+    /// for players inside a game
+    /// - Parameters:
+    ///     - isHost: whether the player
+    ///       to be generated is the host
+    /// - Returns:
+    ///     - a Firebase ready dictionary
+    ///       to be inserted into another dict
     private func createGamePlayerDict(isHost: Bool) -> [String : AnyObject] {
         let newGamePlayerDict: [String : AnyObject] =
             [FirebaseKeys.games_players_isHost: isHost as AnyObject,
@@ -728,6 +759,12 @@ class GameDB: GameDatabase {
         self.observers.append(Observer(withHandle: handle, withRef: ref))
     }
     
+    /// a utility function to find the uid of
+    /// the host inside a room instance
+    /// - Parameters:
+    ///     - the room to be inspected
+    /// - Returns:
+    ///     - the uid of the host
     private func hostInRoom(_ room: RoomModel) -> String {
         for player in room.players {
             if player.isHost { return player.uid }
@@ -736,6 +773,14 @@ class GameDB: GameDatabase {
         return ""
     }
 
+    /// converts dictionary of order in Firebase
+    /// to a GameOrderModel type, can return nil
+    /// if result is invalid
+    /// - Parameters:
+    ///     - dict: a single instance of key value
+    ///       pair to be transformed
+    /// - Returns:
+    ///     - a GameOrderModel object, nil if invalid
     private func convertOrderDictToOrder(dict: (key: String, value: AnyObject)) -> GameOrderModel? {
         guard let orderInfo = dict.value as? [String : AnyObject] else {
             return nil
