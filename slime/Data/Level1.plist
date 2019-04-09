@@ -133,7 +133,7 @@
 					<key>type</key>
 					<string>1</string>
 					<key>processing</key>
-					<string>2</string>
+					<string>2,1</string>
 				</dict>
 				<dict>
 					<key>type</key>
