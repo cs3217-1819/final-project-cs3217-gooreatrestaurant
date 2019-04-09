@@ -513,7 +513,7 @@ class GameDB: GameDatabase {
         }
     }
 
-    func observeGameState(forRoom room: RoomModel, onPlayerUpdate: @escaping (GamePlayerModel) -> Void, onStationUpdate: @escaping () -> Void, onGameEnd: @escaping () -> Void, onOrderChange: @escaping ([GameOrderModel]) -> Void, onScoreChange: @escaping (Int) -> Void, onError: @escaping (Error) -> Void) {
+    func observeGameState(forRoom room: RoomModel, onPlayerUpdate: @escaping (GamePlayerModel) -> Void, onStationUpdate: @escaping () -> Void, onGameEnd: @escaping () -> Void, onOrderChange: @escaping ([GameOrderModel]) -> Void, onScoreChange: @escaping (Int) -> Void, onAllPlayersReady: @escaping () -> Void, onError: @escaping (Error) -> Void) {
         guard let user = GameAuth.currentUser else {
             return
         }
@@ -524,6 +524,35 @@ class GameDB: GameDatabase {
         let scoreRef = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, room.id, FirebaseKeys.games_score]))
         let endRef = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, room.id, FirebaseKeys.games_hasEnded]))
         let stationRef = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, room.id, FirebaseKeys.games_stations]))
+        
+        if hostInRoom(room) == user.uid {
+            let playerReadyRef = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, room.id, FirebaseKeys.games_players]))
+            
+            playerReadyRef.observe(.value, with: { (snap) in
+                guard let playerDict = snap.value as? [String : AnyObject] else {
+                    return
+                }
+                
+                var allPlayersReady = true
+                
+                for player in playerDict {
+                    let playerState = player.value as? [String : AnyObject] ?? [:]
+                    
+                    let isReady = playerState[FirebaseKeys.games_players_isReady] as? Bool ?? false
+                    
+                    if !isReady { allPlayersReady = false }
+                }
+                
+                if allPlayersReady {
+                    // removes observer related to player ready state
+                    // when everyone is ready
+                    playerReadyRef.removeAllObservers()
+                    onAllPlayersReady()
+                }
+            }) { (err) in
+                onError(err)
+            }
+        }
 
         for player in room.players {
             if player.uid == user.uid {
@@ -616,6 +645,14 @@ class GameDB: GameDatabase {
         self.observers.append(Observer(withHandle: endHandle, withRef: endRef))
         self.observers.append(Observer(withHandle: stationHandle, withRef: stationRef))
         self.observers.append(Observer(withHandle: handle, withRef: ref))
+    }
+    
+    private func hostInRoom(_ room: RoomModel) -> String {
+        for player in room.players {
+            if player.isHost { return player.uid }
+        }
+        
+        return ""
     }
 
     private func convertOrderDictToOrder(dict: (key: String, value: AnyObject)) -> GameOrderModel? {

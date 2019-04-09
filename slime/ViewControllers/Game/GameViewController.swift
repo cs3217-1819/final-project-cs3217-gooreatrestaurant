@@ -108,6 +108,8 @@ class GameViewController: UIViewController {
             // state in the database changes
             print(player.positionX)
             print(player.positionY)
+            print(player.uid)
+            // it handles all of the players individually
         }, onStationUpdate: {
             // not yet implemented
             // this updates whenever one station
@@ -123,6 +125,8 @@ class GameViewController: UIViewController {
         }, onScoreChange: { (score) in
             // self-explanatory
             print(score)
+        }, onAllPlayersReady: {
+            // only for host
         }) { (err) in
             print(err)
         }
