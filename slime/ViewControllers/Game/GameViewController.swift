@@ -59,7 +59,6 @@ class GameViewController: UIViewController {
         // TODO: multiplayer stuff, add all the players to stage, then the setupPlayers() will map the slime to player
         if isMultiplayer {
             joinGame()
-            setupMultiplayer()
         } else {
             guard let onlyUser = GameAuth.currentUser else {
                 return
@@ -76,10 +75,8 @@ class GameViewController: UIViewController {
             return
         }
         
-        db.joinGame(forGameId: id, {
-            // do something after join game
-            if !self.isUserHost() { return }
-            // TODO: observe all user's ready state
+        self.db.joinGame(forGameId: id, {
+            self.setupMultiplayer()
         }) { (err) in
             print(err)
         }
@@ -126,7 +123,13 @@ class GameViewController: UIViewController {
             // self-explanatory
             print(score)
         }, onAllPlayersReady: {
-            // only for host
+            // only for host, start game
+            guard let room = self.previousRoom else { return }
+            
+            self.db.startGame(forRoom: room, {
+            }, { (err) in
+                print(err)
+            })
         }) { (err) in
             print(err)
         }
