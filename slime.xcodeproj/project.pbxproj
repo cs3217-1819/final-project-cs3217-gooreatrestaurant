@@ -127,6 +127,9 @@
 		EC4924F42248D616007B9797 /* RatingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC4924F32248D616007B9797 /* RatingView.xib */; };
 		EC4924F62248D638007B9797 /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4924F52248D638007B9797 /* RatingView.swift */; };
 		EC4924F82248D877007B9797 /* RatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4924F72248D877007B9797 /* RatingViewController.swift */; };
+		EC57D2DC225C8B7400F26808 /* SlimeCharacterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC57D2DB225C8B7400F26808 /* SlimeCharacterView.swift */; };
+		EC57D2DE225C8B7B00F26808 /* SlimeCharacterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC57D2DD225C8B7B00F26808 /* SlimeCharacterView.xib */; };
+		EC57D2E0225C8E5300F26808 /* SlimeCharacterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC57D2DF225C8E5300F26808 /* SlimeCharacterController.swift */; };
 		EC6AC1D222520BEC00D95C90 /* ItemSelectorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6AC1D122520BEC00D95C90 /* ItemSelectorController.swift */; };
 		EC6AC1D4225216EF00D95C90 /* SlimeColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6AC1D3225216EF00D95C90 /* SlimeColors.swift */; };
 		EC6AC1D62254882900D95C90 /* ContextModalHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6AC1D52254882900D95C90 /* ContextModalHandler.swift */; };
@@ -347,6 +350,9 @@
 		EC4924F32248D616007B9797 /* RatingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RatingView.xib; sourceTree = "<group>"; };
 		EC4924F52248D638007B9797 /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
 		EC4924F72248D877007B9797 /* RatingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingViewController.swift; sourceTree = "<group>"; };
+		EC57D2DB225C8B7400F26808 /* SlimeCharacterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlimeCharacterView.swift; sourceTree = "<group>"; };
+		EC57D2DD225C8B7B00F26808 /* SlimeCharacterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SlimeCharacterView.xib; sourceTree = "<group>"; };
+		EC57D2DF225C8E5300F26808 /* SlimeCharacterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlimeCharacterController.swift; sourceTree = "<group>"; };
 		EC6AC1D122520BEC00D95C90 /* ItemSelectorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemSelectorController.swift; sourceTree = "<group>"; };
 		EC6AC1D3225216EF00D95C90 /* SlimeColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlimeColors.swift; sourceTree = "<group>"; };
 		EC6AC1D52254882900D95C90 /* ContextModalHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextModalHandler.swift; sourceTree = "<group>"; };
@@ -651,6 +657,7 @@
 		EC38243D223882AF000D7148 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				EC57D2DA225C8B5800F26808 /* SlimeCharacter */,
 				EC7676C0225B541E00F6A450 /* ItemBox */,
 				EC7676B8225A4A3700F6A450 /* RouterView */,
 				EC6E7556225A3A6300B9C7CF /* JokesSlimes */,
@@ -876,6 +883,16 @@
 				EC4924F72248D877007B9797 /* RatingViewController.swift */,
 			);
 			path = Rating;
+			sourceTree = "<group>";
+		};
+		EC57D2DA225C8B5800F26808 /* SlimeCharacter */ = {
+			isa = PBXGroup;
+			children = (
+				EC57D2DB225C8B7400F26808 /* SlimeCharacterView.swift */,
+				EC57D2DD225C8B7B00F26808 /* SlimeCharacterView.xib */,
+				EC57D2DF225C8E5300F26808 /* SlimeCharacterController.swift */,
+			);
+			path = SlimeCharacter;
 			sourceTree = "<group>";
 		};
 		EC6E7556225A3A6300B9C7CF /* JokesSlimes */ = {
@@ -1234,6 +1251,7 @@
 				EC449B8E223BAD4400A8EA35 /* MapDot.xib in Resources */,
 				EC38246A223A1803000D7148 /* Rubik-Light.ttf in Resources */,
 				EC6E75522255CB9000B9C7CF /* CustomizationMainView.xib in Resources */,
+				EC57D2DE225C8B7B00F26808 /* SlimeCharacterView.xib in Resources */,
 				EC6E7558225A3A8000B9C7CF /* JokesSlimesView.xib in Resources */,
 				ECD4556C2240FBED006AF78D /* PlayerBox.xib in Resources */,
 				EC3824252238803D000D7148 /* Assets.xcassets in Resources */,
@@ -1283,7 +1301,8 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\n";
+			shellScript = "
+";
 		};
 		2A5932CA0016719BAF9DD1EF /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1379,6 +1398,7 @@
 				EC38245C223A100B000D7148 /* TextStyles.swift in Sources */,
 				8BD816B3224262F100586180 /* AnalogJoystick.swift in Sources */,
 				1DD6EBE5224E76F0006FF6CD /* IngredientType.swift in Sources */,
+				EC57D2DC225C8B7400F26808 /* SlimeCharacterView.swift in Sources */,
 				ECD45543223FACC4006AF78D /* ModalController.swift in Sources */,
 				EC7676CC225B5AC100F6A450 /* Cosmetics.swift in Sources */,
 				EC7676C6225B55A400F6A450 /* ItemBoxController.swift in Sources */,
@@ -1497,6 +1517,7 @@
 				EC6E99F9224F2DDB00A9554C /* ProgressBarController.swift in Sources */,
 				EC6E99F7224F2DA200A9554C /* ProgressBarView.swift in Sources */,
 				EC449B9E223BBA0300A8EA35 /* Level.swift in Sources */,
+				EC57D2E0225C8E5300F26808 /* SlimeCharacterController.swift in Sources */,
 				1D22029E224AB5850080CF7D /* CookingEquipment.swift in Sources */,
 				EC6AC1D222520BEC00D95C90 /* ItemSelectorController.swift in Sources */,
 				ECD455722240FFC7006AF78D /* Player.swift in Sources */,

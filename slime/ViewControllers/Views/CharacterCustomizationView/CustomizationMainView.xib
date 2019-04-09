@@ -70,10 +70,10 @@
                             <rect key="frame" x="0.0" y="120" width="403" height="133"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K2l-5w-Who">
-                                    <rect key="frame" x="0.0" y="0.0" width="123.5" height="133"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="193.5" height="133"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hat" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lh5-K6-BgU" customClass="TextLabel" customModule="slime" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="113" width="123.5" height="20"/>
+                                            <rect key="frame" x="0.0" y="113" width="193.5" height="20"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="20" id="OjA-De-U97"/>
                                             </constraints>
@@ -86,7 +86,7 @@
                                             </userDefinedRuntimeAttributes>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Apple" translatesAutoresizingMaskIntoConstraints="NO" id="AGf-J2-drH">
-                                            <rect key="frame" x="0.0" y="0.0" width="123.5" height="105"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="193.5" height="105"/>
                                         </imageView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -101,10 +101,10 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e5s-9E-ECh">
-                                    <rect key="frame" x="139.5" y="0.0" width="124" height="133"/>
+                                    <rect key="frame" x="209.5" y="0.0" width="193.5" height="133"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Accessory" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h7u-C1-W8x" customClass="TextLabel" customModule="slime" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="113" width="124" height="20"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Acc." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h7u-C1-W8x" customClass="TextLabel" customModule="slime" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="113" width="193.5" height="20"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="20" id="Kjd-QY-ruG"/>
                                             </constraints>
@@ -117,7 +117,7 @@
                                             </userDefinedRuntimeAttributes>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Apple" translatesAutoresizingMaskIntoConstraints="NO" id="tMu-Tu-3qq">
-                                            <rect key="frame" x="0.0" y="0.0" width="124" height="105"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="193.5" height="105"/>
                                         </imageView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -129,37 +129,6 @@
                                         <constraint firstItem="h7u-C1-W8x" firstAttribute="top" secondItem="tMu-Tu-3qq" secondAttribute="bottom" constant="8" id="Lif-eW-hDT"/>
                                         <constraint firstAttribute="trailing" secondItem="h7u-C1-W8x" secondAttribute="trailing" id="Uhu-PB-PpB"/>
                                         <constraint firstItem="h7u-C1-W8x" firstAttribute="leading" secondItem="e5s-9E-ECh" secondAttribute="leading" id="Vy5-5K-T8b"/>
-                                    </constraints>
-                                </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7pz-nY-LAD">
-                                    <rect key="frame" x="279.5" y="0.0" width="123.5" height="133"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Effect" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5dU-jf-m8Z" customClass="TextLabel" customModule="slime" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="113" width="123.5" height="20"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="20" id="yNI-M5-qaI"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="string" keyPath="style" value="h2"/>
-                                                <userDefinedRuntimeAttribute type="string" keyPath="color" value="pink2"/>
-                                            </userDefinedRuntimeAttributes>
-                                        </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Apple" translatesAutoresizingMaskIntoConstraints="NO" id="CFw-1A-g5O">
-                                            <rect key="frame" x="0.0" y="0.0" width="123.5" height="105"/>
-                                        </imageView>
-                                    </subviews>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="5dU-jf-m8Z" secondAttribute="trailing" id="09M-5K-nXo"/>
-                                        <constraint firstItem="5dU-jf-m8Z" firstAttribute="leading" secondItem="7pz-nY-LAD" secondAttribute="leading" id="3Pe-85-RC9"/>
-                                        <constraint firstAttribute="trailing" secondItem="CFw-1A-g5O" secondAttribute="trailing" id="EGA-sq-Gbh"/>
-                                        <constraint firstItem="CFw-1A-g5O" firstAttribute="leading" secondItem="7pz-nY-LAD" secondAttribute="leading" id="OKW-uo-4BQ"/>
-                                        <constraint firstItem="CFw-1A-g5O" firstAttribute="top" secondItem="7pz-nY-LAD" secondAttribute="top" id="R4T-9i-I0d"/>
-                                        <constraint firstAttribute="bottom" secondItem="5dU-jf-m8Z" secondAttribute="bottom" id="fQC-SA-ocd"/>
-                                        <constraint firstItem="5dU-jf-m8Z" firstAttribute="top" secondItem="CFw-1A-g5O" secondAttribute="bottom" constant="8" id="sfn-YI-WdO"/>
                                     </constraints>
                                 </view>
                             </subviews>
@@ -242,8 +211,10 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
-                <outlet property="accessoryButton" destination="e5s-9E-ECh" id="yXW-GP-vSz"/>
+                <outlet property="accessoryButton" destination="e5s-9E-ECh" id="7CR-jw-3Lh"/>
+                <outlet property="accessoryImageView" destination="tMu-Tu-3qq" id="lgV-35-kKi"/>
                 <outlet property="hatButton" destination="K2l-5w-Who" id="F5P-OQ-W39"/>
+                <outlet property="hatImageView" destination="AGf-J2-drH" id="iv6-TE-IxR"/>
                 <outlet property="levelLabel" destination="viS-qx-PDx" id="JvO-Sn-uj2"/>
                 <outlet property="levelProgressView" destination="e1g-Hc-agg" id="mhs-dh-v32"/>
                 <outlet property="nameLabel" destination="1o0-XL-m0M" id="NLv-S8-IDZ"/>

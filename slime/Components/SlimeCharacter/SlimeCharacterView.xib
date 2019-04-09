@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="SlimeCharacterView" customModule="slime" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="400" height="400"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="slime-blue" translatesAutoresizingMaskIntoConstraints="NO" id="XrK-ef-odd">
+                    <rect key="frame" x="0.0" y="0.0" width="400" height="400"/>
+                </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8gN-BB-9Et" customClass="DesignableView" customModule="slime" customModuleProvider="target">
+                    <rect key="frame" x="210" y="40" width="120" height="120"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="crown" translatesAutoresizingMaskIntoConstraints="NO" id="AW4-tw-ZnK">
+                            <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="AW4-tw-ZnK" secondAttribute="bottom" id="4W0-eJ-8WI"/>
+                        <constraint firstItem="AW4-tw-ZnK" firstAttribute="top" secondItem="8gN-BB-9Et" secondAttribute="top" id="FXb-CN-y12"/>
+                        <constraint firstItem="AW4-tw-ZnK" firstAttribute="leading" secondItem="8gN-BB-9Et" secondAttribute="leading" id="i1t-PJ-Zlp"/>
+                        <constraint firstAttribute="trailing" secondItem="AW4-tw-ZnK" secondAttribute="trailing" id="sP6-er-8lJ"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="rotation" value="0.35"/>
+                    </userDefinedRuntimeAttributes>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SMy-YL-xoX">
+                    <rect key="frame" x="260" y="190" width="80" height="80"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SlicedApple" translatesAutoresizingMaskIntoConstraints="NO" id="jon-sh-bd5">
+                            <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="jon-sh-bd5" secondAttribute="bottom" id="8lJ-zW-vgY"/>
+                        <constraint firstAttribute="trailing" secondItem="jon-sh-bd5" secondAttribute="trailing" id="KEr-B9-Kht"/>
+                        <constraint firstItem="jon-sh-bd5" firstAttribute="top" secondItem="SMy-YL-xoX" secondAttribute="top" id="MZs-ZL-s7B"/>
+                        <constraint firstItem="jon-sh-bd5" firstAttribute="leading" secondItem="SMy-YL-xoX" secondAttribute="leading" id="bkn-zd-QLI"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="8gN-BB-9Et" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.3" id="0pQ-vS-fd6"/>
+                <constraint firstItem="SMy-YL-xoX" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.2" id="4KD-h1-zfP"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="XrK-ef-odd" secondAttribute="bottom" id="6ze-zY-9BW"/>
+                <constraint firstItem="SMy-YL-xoX" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" multiplier="1.15" id="7Lv-qJ-fwZ"/>
+                <constraint firstItem="SMy-YL-xoX" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.2" id="Equ-XS-bd7"/>
+                <constraint firstItem="SMy-YL-xoX" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" multiplier="1.5" id="NqE-kO-bFv"/>
+                <constraint firstItem="XrK-ef-odd" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="Omj-wa-JQe"/>
+                <constraint firstItem="8gN-BB-9Et" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" multiplier="1.35" id="Qde-6h-lxM"/>
+                <constraint firstItem="8gN-BB-9Et" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.3" id="XjA-jV-CRs"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="XrK-ef-odd" secondAttribute="trailing" id="YhA-a6-Lc5"/>
+                <constraint firstItem="XrK-ef-odd" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="db6-bE-Kb7"/>
+                <constraint firstItem="8gN-BB-9Et" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" multiplier="0.5" id="jgs-BX-ikP"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="accessoryImageView" destination="jon-sh-bd5" id="Ocr-WL-vpA"/>
+                <outlet property="hatImageView" destination="AW4-tw-ZnK" id="U4t-9C-QoI"/>
+                <outlet property="slimeImageView" destination="XrK-ef-odd" id="AR4-lr-DJZ"/>
+            </connections>
+            <point key="canvasLocation" x="99.200000000000003" y="-12.593703148425789"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="SlicedApple" width="1280" height="720"/>
+        <image name="crown" width="409.60000610351562" height="409.60000610351562"/>
+        <image name="slime-blue" width="1024" height="1024"/>
+    </resources>
+</document>

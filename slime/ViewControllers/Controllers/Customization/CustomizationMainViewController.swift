@@ -52,5 +52,11 @@ class CustomizationMainViewController: ViewController<CustomizationMainView>, Cu
         levelProgressController?.setCurrentValue(Double(character.exp))
         view.levelLabel.text = "\(character.level)"
         view.nameLabel.text = "\(character.name)"
+        if let hat = CosmeticConstants.hatsDict[character.hat] {
+            view.hatImageView.image = hat.image
+        }
+        if let accessory = CosmeticConstants.accessoriesDict[character.accessory] {
+            view.accessoryImageView.image = accessory.image
+        }
     }
 }
