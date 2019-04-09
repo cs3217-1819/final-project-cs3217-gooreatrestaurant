@@ -372,13 +372,18 @@ class GameDB: GameDatabase {
 
             players.updateValue(playerDict, forKey: player.uid)
         }
+        
+        let stationsDict = generateStationsDict(forMap: room.map)
 
         // populates dictionary to fit the db
         gameDict.updateValue(room.map as AnyObject, forKey: FirebaseKeys.games_gameMap)
         gameDict.updateValue(false as AnyObject, forKey: FirebaseKeys.games_hasEnded)
         gameDict.updateValue(6000 as AnyObject, forKey: FirebaseKeys.games_timeLimit)
         gameDict.updateValue(NSTimeIntervalSince1970 as AnyObject, forKey: FirebaseKeys.games_startTime)
+        gameDict.updateValue(false as AnyObject, forKey: FirebaseKeys.games_hasStarted)
         gameDict.updateValue(0 as AnyObject, forKey: FirebaseKeys.games_score)
+        gameDict.updateValue(players as AnyObject, forKey: FirebaseKeys.games_players)
+        gameDict.updateValue(stationsDict as AnyObject, forKey: FirebaseKeys.games_stations)
 
         ref.setValue(gameDict) { (err, ref) in
             if let error = err {
@@ -389,7 +394,114 @@ class GameDB: GameDatabase {
             onComplete()
         }
     }
+    
+    /// generated a Firebase-ready dictionary
+    /// for the stations reference inside a game
+    /// - Parameters:
+    ///     - forMap: the map for which the dict
+    ///       is to be generated
+    /// - Returns:
+    ///     - a dictionary representing the stations
+    private func generateStationsDict(forMap map: String) -> [String : AnyObject] {
+        guard let levelDesignURL = Bundle.main.url(forResource: map, withExtension: "plist") else {
+            return [:]
+        }
+        
+        do {
+            let data = try? Data(contentsOf: levelDesignURL)
+            let decoder = PropertyListDecoder()
+            let value = try decoder.decode(SerializableGameData.self, from: data!)
+            
+            let res = parseStationsForDecodedData(data: value)
+            
+            return res
+        } catch {
+            print(error.localizedDescription)
+            return [:]
+        }
+    }
+    
+    /// a function that parses a decoded plist
+    /// data into a Firebase-ready dictionary
+    /// - Parameters:
+    ///     - data: an already decoded data
+    ///       of type SerializedGameData
+    /// - Returns:
+    ///     - a Firebase-ready dictionary for
+    ///       the stations inside the game
+    private func parseStationsForDecodedData(data: SerializableGameData) -> [String : AnyObject] {
+        var res: [String : AnyObject] = [:]
+        
+        // table
+        for tablePosition in data.table {
+            let key = stringToPointKey(position: tablePosition)
+            
+            let valueDict =
+                [FirebaseKeys.games_stations_type : FirebaseSystemValues.games_stations_table,
+                 FirebaseKeys.games_stations_isOccupied : false,
+                 FirebaseKeys.games_stations_itemInside : ""] as [String : AnyObject]
+            
+            res.updateValue(valueDict as AnyObject, forKey: key)
+        }
+        
+        // frying equipment
+        for fryingPosition in data.fryingEquipment {
+            let key = stringToPointKey(position: fryingPosition)
+            
+            let valueDict =
+                [FirebaseKeys.games_stations_type : FirebaseSystemValues.games_stations_fryingEquipment,
+                 FirebaseKeys.games_stations_isOccupied : false,
+                 FirebaseKeys.games_stations_itemInside : ""] as [String : AnyObject]
+            
+            res.updateValue(valueDict as AnyObject, forKey: key)
+        }
+        
+        for ovenPosition in data.oven {
+            let key = stringToPointKey(position: ovenPosition)
+            
+            let valueDict =
+                [FirebaseKeys.games_stations_type : FirebaseSystemValues.games_stations_oven,
+                 FirebaseKeys.games_stations_isOccupied : false,
+                 FirebaseKeys.games_stations_itemInside : ""] as [String : AnyObject]
+            
+            res.updateValue(valueDict as AnyObject, forKey: key)
+        }
+        
+        for choppingPosition in data.choppingEquipment {
+            let key = stringToPointKey(position: choppingPosition)
+            
+            let valueDict =
+                [FirebaseKeys.games_stations_type : FirebaseSystemValues.games_stations_choppingEquipment,
+                 FirebaseKeys.games_stations_isOccupied : false,
+                 FirebaseKeys.games_stations_itemInside : ""] as [String : AnyObject]
+            
+            res.updateValue(valueDict as AnyObject, forKey: key)
+        }
+        
+        return res
+    }
+    
+    /// returns a key representing a coordinate
+    ///  where the . is replaced with , to conform
+    /// to the Firebase key nomenclature
+    /// - Parameters:
+    ///     - position: the position of the object
+    /// - Returns:
+    ///     - a string representation of the position
+    ///       as a Firebase-ready key
+    private func stringToPointKey(position: String) -> String {
+        let position = NSCoder.cgPoint(for: position)
+        return "\(position.x)+\(position.y)".replacingOccurrences(of: ".", with: ",")
+    }
 
+    /// creates a Firebase-ready dictionary
+    /// for players inside a game
+    /// - Parameters:
+    ///     - isHost: whether the player
+    ///       to be generated is the host
+    /// - Returns:
+    ///     - a Firebase ready dictionary
+    ///       to be inserted into another dict
     private func createGamePlayerDict(isHost: Bool) -> [String : AnyObject] {
         let newGamePlayerDict: [String : AnyObject] =
             [FirebaseKeys.games_players_isHost: isHost as AnyObject,
@@ -647,6 +759,12 @@ class GameDB: GameDatabase {
         self.observers.append(Observer(withHandle: handle, withRef: ref))
     }
     
+    /// a utility function to find the uid of
+    /// the host inside a room instance
+    /// - Parameters:
+    ///     - the room to be inspected
+    /// - Returns:
+    ///     - the uid of the host
     private func hostInRoom(_ room: RoomModel) -> String {
         for player in room.players {
             if player.isHost { return player.uid }
@@ -655,6 +773,14 @@ class GameDB: GameDatabase {
         return ""
     }
 
+    /// converts dictionary of order in Firebase
+    /// to a GameOrderModel type, can return nil
+    /// if result is invalid
+    /// - Parameters:
+    ///     - dict: a single instance of key value
+    ///       pair to be transformed
+    /// - Returns:
+    ///     - a GameOrderModel object, nil if invalid
     private func convertOrderDictToOrder(dict: (key: String, value: AnyObject)) -> GameOrderModel? {
         guard let orderInfo = dict.value as? [String : AnyObject] else {
             return nil
@@ -738,6 +864,17 @@ struct Observer {
     }
 }
 
+struct FirebaseSystemValues {
+    // game values
+    static let games_stations_fryingEquipment = "frying_equipment"
+    static let games_stations_oven = "oven"
+    static let games_stations_table = "table"
+    static let games_stations_storeFront = "store_front"
+    static let games_stations_choppingEquipment = "chopping_equipment"
+    static let games_stations_plateStorage = "plate_storage"
+    static let games_stations_trashBin = "trash_bin"
+}
+
 /**
  a list of constants representing all the
  Firebase keys currently available. The naming
@@ -761,6 +898,7 @@ struct FirebaseKeys {
     static let games = "games"
     static let games_gameMap = "game_map"
     static let games_hasEnded = "has_ended"
+    static let games_hasStarted = "has_started"
     static let games_startTime = "start_time"
     static let games_timeLimit = "time_limit"
     static let games_players = "players"
@@ -772,6 +910,9 @@ struct FirebaseKeys {
     static let games_players_positionY = "position_y"
     static let games_score = "score"
     static let games_stations = "stations"
+    static let games_stations_itemInside = "item_inside"
+    static let games_stations_isOccupied = "is_occupied"
+    static let games_stations_type = "type"
     //    static let games_objects = "objects"
     static let games_orders = "orders"
     static let games_orders_recipeName = "recipe_name"
