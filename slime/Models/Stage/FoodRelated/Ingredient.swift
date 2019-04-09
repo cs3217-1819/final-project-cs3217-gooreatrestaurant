@@ -16,6 +16,9 @@ class Ingredient: SKSpriteNode {
     var currentProcessing: CookingType?
     var processingProgress = 0.0
 
+    var blackBar = SKSpriteNode(imageNamed: "Black bar")
+    var greenBar = SKSpriteNode(imageNamed: "Green bar")
+
     init(type: IngredientType,
          size: CGSize = StageConstants.ingredientSize,
          inPosition position: CGPoint = CGPoint.zero) {
@@ -34,6 +37,13 @@ class Ingredient: SKSpriteNode {
         self.physicsBody = SKPhysicsBody(rectangleOf: size)
         self.physicsBody?.categoryBitMask = StageConstants.ingredientCategory
         self.physicsBody?.collisionBitMask = StageConstants.wallCategoryCollision
+
+        blackBar.setScale(0)
+        greenBar.anchorPoint = CGPoint(x: 0, y: 0)
+        greenBar.position = CGPoint(x: -250, y: -250)
+        greenBar.setScale(0)
+        blackBar.addChild(greenBar)
+        self.addChild(blackBar)
     }
 
     // Progress 100 denotes that cooking will be done
@@ -50,7 +60,13 @@ class Ingredient: SKSpriteNode {
         currentProcessing = method
         processingProgress += progress
 
+        blackBar.zRotation = -1.5708
+        blackBar.setScale(0.1)
+
         if processingProgress >= 100.0 {
+            print("A")
+            blackBar.removeFromParent()
+//            greenBar.removeFromParent()
             let ingredientsAtlas = SKTextureAtlas(named: "ProcessedIngredients")
             var texture: SKTexture = SKTexture.init()
             let numImages = ingredientsAtlas.textureNames.count
@@ -64,6 +80,10 @@ class Ingredient: SKSpriteNode {
             processingProgress = 0.0
             processed.append(method)
         } else {
+            print("B")
+            greenBar.setScale(1)
+            print(processingProgress)
+            greenBar.yScale = CGFloat(processingProgress / 100.0) * greenBar.yScale
             //temp removal of texture
             self.texture = nil
         }
