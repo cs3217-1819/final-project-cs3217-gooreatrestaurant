@@ -23,7 +23,8 @@ class MenuPrefab : SKSpriteNode {
                         CGPoint(x: 10, y: -15)]
 
     override init(texture: SKTexture?, color: UIColor, size: CGSize) {
-        let spaceshipBody = SKTexture(imageNamed: "Menu-Slimes_01")
+        let randNum = Int.random(in: 1...4)
+        let spaceshipBody = SKTexture(imageNamed: "Menu-Slimes_" + String(randNum))
         spaceshipBody.filteringMode = .nearest
 
         self.blackBar = SKSpriteNode(imageNamed: "Black bar")
