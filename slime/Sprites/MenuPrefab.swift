@@ -19,8 +19,8 @@ class MenuPrefab : SKSpriteNode {
     var time: CGFloat = StageConstants.defaultTimeLimitOrder
     let duration: CGFloat = StageConstants.defaultTimeLimitOrder
 
-    let positionings = [CGPoint(x: -15, y: -20),
-                        CGPoint(x: 15, y: -20)]
+    let positionings = [CGPoint(x: -10, y: -15),
+                        CGPoint(x: 10, y: -15)]
 
     override init(texture: SKTexture?, color: UIColor, size: CGSize) {
         let spaceshipBody = SKTexture(imageNamed: "Menu-Slimes_01")
@@ -46,7 +46,7 @@ class MenuPrefab : SKSpriteNode {
         let dish = SKSpriteNode(imageNamed: recipe.recipeName)
         dish.position = CGPoint(x: 0, y: 20)
         dish.zPosition = 5
-        dish.size = CGSize(width: 50, height: 50)
+        dish.size = CGSize(width: 45, height: 45)
 
         var i = 0
         for (key, _) in recipe.ingredientsNeeded {
@@ -57,13 +57,13 @@ class MenuPrefab : SKSpriteNode {
         }
 
         //Adding the countdown bar
-        blackBar.position = CGPoint(x: 35, y: -25)
-        blackBar.size = CGSize(width: 45, height: 40)
+        blackBar.position = CGPoint(x: 25, y: -25)
+        blackBar.size = CGSize(width: 35, height: 30)
         dish.addChild(blackBar)
 
         greenBar.anchorPoint = CGPoint(x: 0, y: 0)
-        greenBar.position = CGPoint(x: -20, y: -20)
-        greenBar.size = CGSize(width: 40, height: 40)
+        greenBar.position = CGPoint(x: -15, y: -15)
+        greenBar.size = CGSize(width: 30, height: 30)
         blackBar.addChild(greenBar)
 
         self.addChild(dish)
@@ -74,7 +74,7 @@ class MenuPrefab : SKSpriteNode {
     func addIngredient(inInt: Int) -> SKSpriteNode {
         let blackCircle = SKSpriteNode(imageNamed: "Black Base Circle")
         blackCircle.position = CGPoint(x: 0, y: -20)
-        blackCircle.size = CGSize(width: 25, height: 25)
+        blackCircle.size = CGSize(width: 20, height: 20)
 
         let ingredientsAtlas = SKTextureAtlas(named: "Ingredients")
         let numImages = ingredientsAtlas.textureNames.count
@@ -82,7 +82,7 @@ class MenuPrefab : SKSpriteNode {
             if (i == inInt) {
                 //Add the ingredients
                 let ingredient = SKSpriteNode(imageNamed: String(inInt))
-                ingredient.size = CGSize(width: 20, height: 20)
+                ingredient.size = CGSize(width: 15, height: 15)
                 blackCircle.addChild(ingredient)
             }
         }
