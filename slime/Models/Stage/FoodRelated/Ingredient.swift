@@ -51,7 +51,15 @@ class Ingredient: SKSpriteNode {
         processingProgress += progress
 
         if processingProgress >= 100.0 {
-            self.texture = SKTexture(imageNamed: "SlicedApple")
+            let ingredientsAtlas = SKTextureAtlas(named: "ProcessedIngredients")
+            var texture: SKTexture = SKTexture.init()
+            let numImages = ingredientsAtlas.textureNames.count
+            for i in 1...numImages {
+                if i == self.type.rawValue {
+                    texture = ingredientsAtlas.textureNamed(String(self.type.rawValue))
+                }
+            }
+            self.texture = texture
             currentProcessing = nil
             processingProgress = 0.0
             processed.append(method)

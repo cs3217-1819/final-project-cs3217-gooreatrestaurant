@@ -45,6 +45,7 @@
 		8BFA63EC22589DAF007645F9 /* AudioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFA63EB22589DAF007645F9 /* AudioController.swift */; };
 		8BFA63F02258B020007645F9 /* GameSong.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8BFA63EE2258B020007645F9 /* GameSong.mp3 */; };
 		8BFA63F12258B020007645F9 /* MainScreen.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8BFA63EF2258B020007645F9 /* MainScreen.wav */; };
+		8BFA63F3225C84A7007645F9 /* ProcessedIngredients.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 8BFA63F2225C84A7007645F9 /* ProcessedIngredients.atlas */; };
 		EC0E3163224F610300AF1254 /* CharacterCreationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC0E3162224F610300AF1254 /* CharacterCreationView.xib */; };
 		EC0E3165224F611200AF1254 /* CharacterCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0E3164224F611200AF1254 /* CharacterCreationView.swift */; };
 		EC0E3168224F618B00AF1254 /* TextInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC0E3167224F618B00AF1254 /* TextInputView.xib */; };
@@ -260,6 +261,7 @@
 		8BFA63EB22589DAF007645F9 /* AudioController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioController.swift; sourceTree = "<group>"; };
 		8BFA63EE2258B020007645F9 /* GameSong.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = GameSong.mp3; sourceTree = "<group>"; };
 		8BFA63EF2258B020007645F9 /* MainScreen.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = MainScreen.wav; sourceTree = "<group>"; };
+		8BFA63F2225C84A7007645F9 /* ProcessedIngredients.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = ProcessedIngredients.atlas; sourceTree = "<group>"; };
 		E57ABF11D0AB607CF6EFB250 /* Pods-slimeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-slimeTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-slimeTests/Pods-slimeTests.debug.xcconfig"; sourceTree = "<group>"; };
 		EC0E3162224F610300AF1254 /* CharacterCreationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharacterCreationView.xib; sourceTree = "<group>"; };
 		EC0E3164224F611200AF1254 /* CharacterCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCreationView.swift; sourceTree = "<group>"; };
@@ -521,6 +523,7 @@
 		8BD816B42242643C00586180 /* Sprites */ = {
 			isa = PBXGroup;
 			children = (
+				8BFA63F2225C84A7007645F9 /* ProcessedIngredients.atlas */,
 				8BEDCD4E2253758500E24A20 /* Ingredients.atlas */,
 				8B81EFBB224344AD007BFDB0 /* Slime.atlas */,
 				8BEDCD44224F3EC900E24A20 /* MenuPrefab.swift */,
@@ -1231,6 +1234,7 @@
 				EC21B40022420CA700827121 /* LevelPlayButton.xib in Resources */,
 				EC449B8B223BACD500A8EA35 /* StoryModeLevelSelectView.xib in Resources */,
 				ECD45541223FA21E006AF78D /* Modal.xib in Resources */,
+				8BFA63F3225C84A7007645F9 /* ProcessedIngredients.atlas in Resources */,
 				EC449B8E223BAD4400A8EA35 /* MapDot.xib in Resources */,
 				EC38246A223A1803000D7148 /* Rubik-Light.ttf in Resources */,
 				EC6E75522255CB9000B9C7CF /* CustomizationMainView.xib in Resources */,
