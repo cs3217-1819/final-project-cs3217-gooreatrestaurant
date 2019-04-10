@@ -103,7 +103,7 @@ enum CosmeticConstants {
             dict[entry.name] = entry
         })
     static let hatsList = [
-        Cosmetic("none", "cosmetic-none"),
+        Cosmetic("none", nil),
         Cosmetic("christmas", "hat-christmas"),
         Cosmetic("pirate", "hat-pirate"),
         Cosmetic("ricecake", "hat-ricecake"),
@@ -111,7 +111,7 @@ enum CosmeticConstants {
     ]
     
     static let accessoriesList = [
-        Cosmetic("none", "cosmetic-none"),
+        Cosmetic("none", nil),
         Cosmetic("christmas", "hat-christmas")
     ]
     

@@ -15,7 +15,14 @@ class PlayScreenViewController: ViewController<PlayScreenView> {
 
     override func configureSubviews() {
         configureButtons()
+        configureJokes()
         configureUpButton(to: .TitleScreen)
+    }
+    
+    private func configureJokes() {
+        let controller = JokesSlimesController(withXib: view.jokesSlimeView)
+        controller.useJokeSet(jokes: JokeConstants.setOne)
+        controller.configure()
     }
 
     private func configureButtons() {

@@ -12,4 +12,5 @@ class PlayScreenView: UIView {
     @IBOutlet var singlePlayerButton: XibView!
     @IBOutlet var multiplayerButton: XibView!
     @IBOutlet var levelEditorButton: XibView!
+    @IBOutlet var jokesSlimeView: XibView!
 }

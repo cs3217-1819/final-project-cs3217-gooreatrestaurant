@@ -44,4 +44,12 @@ class DesignableView: UIView {
             }
         }
     }
+    
+    @IBInspectable var flipX: Bool = false {
+        didSet {
+            if flipX {
+                transform = CGAffineTransform(scaleX: -transform.a, y: transform.d)
+            }
+        }
+    }
 }

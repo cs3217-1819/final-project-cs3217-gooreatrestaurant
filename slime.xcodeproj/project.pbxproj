@@ -53,6 +53,10 @@
 		EC0E316E224F69A400AF1254 /* CharacterCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0E316D224F69A400AF1254 /* CharacterCreationViewController.swift */; };
 		EC0E31712252075300AF1254 /* ItemSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0E31702252075300AF1254 /* ItemSelectorView.swift */; };
 		EC0E31732252076600AF1254 /* ItemSelectorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC0E31722252076600AF1254 /* ItemSelectorView.xib */; };
+		EC1B44A6225D71B800CBE688 /* DialogBoxController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1B44A5225D71B800CBE688 /* DialogBoxController.swift */; };
+		EC1B44A8225D75B200CBE688 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1B44A7225D75B200CBE688 /* StringExtension.swift */; };
+		EC1B44AA225D764D00CBE688 /* JokesSlimesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1B44A9225D764D00CBE688 /* JokesSlimesController.swift */; };
+		EC1B44AC225D83E800CBE688 /* Jokes.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1B44AB225D83E800CBE688 /* Jokes.swift */; };
 		EC21B40022420CA700827121 /* LevelPlayButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC21B3FF22420CA700827121 /* LevelPlayButton.xib */; };
 		EC21B40222420D4100827121 /* DesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC21B40122420D4100827121 /* DesignableView.swift */; };
 		EC21B4052242155600827121 /* LoadingScreenView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC21B4042242155600827121 /* LoadingScreenView.xib */; };
@@ -165,6 +169,8 @@
 		ECA66DBE223D2A1B00D1D0BC /* LevelPlaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA66DBD223D2A1B00D1D0BC /* LevelPlaceController.swift */; };
 		ECA66DC2223D5DD100D1D0BC /* CreditsScreenView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECA66DC1223D5DD100D1D0BC /* CreditsScreenView.xib */; };
 		ECA66DC4223D5F4000D1D0BC /* CreditsScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA66DC3223D5F4000D1D0BC /* CreditsScreenView.swift */; };
+		ECB57119225D702B0083E945 /* DialogBoxView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECB57118225D702B0083E945 /* DialogBoxView.xib */; };
+		ECB5711B225D71470083E945 /* DialogBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB5711A225D71470083E945 /* DialogBoxView.swift */; };
 		ECD2441E224AFFDD00767A56 /* SlimeNumberInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD2441D224AFFDD00767A56 /* SlimeNumberInputView.swift */; };
 		ECD24420224AFFEB00767A56 /* SlimeNumberInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECD2441F224AFFEB00767A56 /* SlimeNumberInputView.xib */; };
 		ECD24422224B011B00767A56 /* SlimeNumberInputController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD24421224B011B00767A56 /* SlimeNumberInputController.swift */; };
@@ -272,6 +278,10 @@
 		EC0E316D224F69A400AF1254 /* CharacterCreationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCreationViewController.swift; sourceTree = "<group>"; };
 		EC0E31702252075300AF1254 /* ItemSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemSelectorView.swift; sourceTree = "<group>"; };
 		EC0E31722252076600AF1254 /* ItemSelectorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemSelectorView.xib; sourceTree = "<group>"; };
+		EC1B44A5225D71B800CBE688 /* DialogBoxController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogBoxController.swift; sourceTree = "<group>"; };
+		EC1B44A7225D75B200CBE688 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		EC1B44A9225D764D00CBE688 /* JokesSlimesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokesSlimesController.swift; sourceTree = "<group>"; };
+		EC1B44AB225D83E800CBE688 /* Jokes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Jokes.swift; sourceTree = "<group>"; };
 		EC21B3FF22420CA700827121 /* LevelPlayButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LevelPlayButton.xib; sourceTree = "<group>"; };
 		EC21B40122420D4100827121 /* DesignableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableView.swift; sourceTree = "<group>"; };
 		EC21B4042242155600827121 /* LoadingScreenView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingScreenView.xib; sourceTree = "<group>"; };
@@ -388,6 +398,8 @@
 		ECA66DBD223D2A1B00D1D0BC /* LevelPlaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelPlaceController.swift; sourceTree = "<group>"; };
 		ECA66DC1223D5DD100D1D0BC /* CreditsScreenView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreditsScreenView.xib; sourceTree = "<group>"; };
 		ECA66DC3223D5F4000D1D0BC /* CreditsScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsScreenView.swift; sourceTree = "<group>"; };
+		ECB57118225D702B0083E945 /* DialogBoxView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DialogBoxView.xib; sourceTree = "<group>"; };
+		ECB5711A225D71470083E945 /* DialogBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogBoxView.swift; sourceTree = "<group>"; };
 		ECD2441D224AFFDD00767A56 /* SlimeNumberInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlimeNumberInputView.swift; sourceTree = "<group>"; };
 		ECD2441F224AFFEB00767A56 /* SlimeNumberInputView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SlimeNumberInputView.xib; sourceTree = "<group>"; };
 		ECD24421224B011B00767A56 /* SlimeNumberInputController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlimeNumberInputController.swift; sourceTree = "<group>"; };
@@ -657,6 +669,7 @@
 		EC38243D223882AF000D7148 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				ECB57117225D6FFA0083E945 /* DialogBox */,
 				EC57D2DA225C8B5800F26808 /* SlimeCharacter */,
 				EC7676C0225B541E00F6A450 /* ItemBox */,
 				EC7676B8225A4A3700F6A450 /* RouterView */,
@@ -713,6 +726,7 @@
 				EC6E99FE224F4F0900A9554C /* DoubleExtension.swift */,
 				EC81B7862254A09900B6F7EE /* TransitionConstants.swift */,
 				EC81B7882254A3A600B6F7EE /* KeyboardService.swift */,
+				EC1B44A7225D75B200CBE688 /* StringExtension.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -900,6 +914,8 @@
 			children = (
 				EC6E7557225A3A8000B9C7CF /* JokesSlimesView.xib */,
 				EC6E7559225A3A8D00B9C7CF /* JokesSlimesView.swift */,
+				EC1B44A9225D764D00CBE688 /* JokesSlimesController.swift */,
+				EC1B44AB225D83E800CBE688 /* Jokes.swift */,
 			);
 			path = JokesSlimes;
 			sourceTree = "<group>";
@@ -981,6 +997,16 @@
 				EC7676C7225B57F400F6A450 /* CustomizationCosmeticView.swift */,
 			);
 			path = CharacterCustomizationView;
+			sourceTree = "<group>";
+		};
+		ECB57117225D6FFA0083E945 /* DialogBox */ = {
+			isa = PBXGroup;
+			children = (
+				ECB57118225D702B0083E945 /* DialogBoxView.xib */,
+				ECB5711A225D71470083E945 /* DialogBoxView.swift */,
+				EC1B44A5225D71B800CBE688 /* DialogBoxController.swift */,
+			);
+			path = DialogBox;
 			sourceTree = "<group>";
 		};
 		ECD2441C224AFF9D00767A56 /* CodeInput */ = {
@@ -1225,6 +1251,7 @@
 				EC382470223A1803000D7148 /* Rubik-BlackItalic.ttf in Resources */,
 				EC382473223A1803000D7148 /* Rubik-Black.ttf in Resources */,
 				ECD455612240F499006AF78D /* MultiplayerLobbyView.xib in Resources */,
+				ECB57119225D702B0083E945 /* DialogBoxView.xib in Resources */,
 				ECD24431224B114400767A56 /* JoinRoomView.xib in Resources */,
 				EC4924EB22461FEC007B9797 /* OrderBlob.xib in Resources */,
 				EC38246C223A1803000D7148 /* Rubik-BoldItalic.ttf in Resources */,
@@ -1407,6 +1434,7 @@
 				EC382475223A1AA4000D7148 /* ColorStyles.swift in Sources */,
 				F9F26FEE22564873008BFD50 /* GameDB.swift in Sources */,
 				EC449B83223B917C00A8EA35 /* CGPointExtension.swift in Sources */,
+				EC1B44A8225D75B200CBE688 /* StringExtension.swift in Sources */,
 				EC81B7892254A3A600B6F7EE /* KeyboardService.swift in Sources */,
 				EC6E99E8224F1BB400A9554C /* LocalDataProvider.swift in Sources */,
 				F92ECAE4224BAEBD0040A4E2 /* Authentication.swift in Sources */,
@@ -1421,12 +1449,14 @@
 				1D22029C224AB5850080CF7D /* Ladder.swift in Sources */,
 				EC6E7567225A438A00B9C7CF /* CustomizationMainView.swift in Sources */,
 				ECD4554F2240B3B3006AF78D /* Alert.swift in Sources */,
+				ECB5711B225D71470083E945 /* DialogBoxView.swift in Sources */,
 				EC6E99FD224F49FB00A9554C /* UserInfoController.swift in Sources */,
 				ECD4555E2240F44A006AF78D /* MultiplayerScreenView.swift in Sources */,
 				EC40E4B2223F986D0073D755 /* SettingsScreenViewController.swift in Sources */,
 				EC40E4B0223F983E0073D755 /* SettingsScreenView.swift in Sources */,
 				ECD4554A223FB133006AF78D /* ViewController.swift in Sources */,
 				1DE6FC5E224CA4AD00B36F48 /* StoreFront.swift in Sources */,
+				EC1B44A6225D71B800CBE688 /* DialogBoxController.swift in Sources */,
 				8BEDCD45224F3EC900E24A20 /* MenuPrefab.swift in Sources */,
 				ECF75F02224B17CA00537237 /* JoinRoomView.swift in Sources */,
 				EC38245422390789000D7148 /* ScrollingBackgroundViewController.swift in Sources */,
@@ -1491,6 +1521,7 @@
 				EC6E7565225A437A00B9C7CF /* CharacterCustomizationView.swift in Sources */,
 				1D3DAC0E2257930200491105 /* OrderQueue.swift in Sources */,
 				ECD455512240B510006AF78D /* AlertController.swift in Sources */,
+				EC1B44AA225D764D00CBE688 /* JokesSlimesController.swift in Sources */,
 				EC6E7563225A426800B9C7CF /* CharacterCustomizationViewController.swift in Sources */,
 				8BFA63E92257D7FE007645F9 /* GameOverPrefab.swift in Sources */,
 				ECF75F04224B182400537237 /* JoinRoomViewController.swift in Sources */,
@@ -1506,6 +1537,7 @@
 				EC0E3165224F611200AF1254 /* CharacterCreationView.swift in Sources */,
 				EC38244B22389649000D7148 /* ImageProvider.swift in Sources */,
 				EC38244322388389000D7148 /* XibView.swift in Sources */,
+				EC1B44AC225D83E800CBE688 /* Jokes.swift in Sources */,
 				ECD455692240FB23006AF78D /* MultiplayerLobbyViewController.swift in Sources */,
 				EC21B407224216C500827121 /* LoadingScreenView.swift in Sources */,
 				EC38244F2238F023000D7148 /* PrimaryButton.swift in Sources */,
