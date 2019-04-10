@@ -93,13 +93,13 @@
 	<array>
 		<dict>
 			<key>type</key>
-			<string>1</string>
+			<string>apple</string>
 			<key>position</key>
 			<string>{-25, -149}</string>
 		</dict>
 		<dict>
 			<key>type</key>
-			<string>2</string>
+			<string>dough</string>
 			<key>position</key>
 			<string>{25, 66}</string>
 		</dict>
@@ -131,15 +131,15 @@
 			<array>
 				<dict>
 					<key>type</key>
-					<string>1</string>
+					<string>apple</string>
 					<key>processing</key>
-					<string>2,1</string>
+					<string>chopping,baking</string>
 				</dict>
 				<dict>
 					<key>type</key>
-					<string>2</string>
+					<string>dough</string>
 					<key>processing</key>
-					<string>1</string>
+					<string>baking</string>
 				</dict>
 			</array>
 		</dict>
