@@ -50,14 +50,26 @@ class RoomPlayerModel {
     var uid: String = ""
     var isHost: Bool = false
     var isReady: Bool = false
-    // TODO: replace with name of player, generated or otherwise
-    var name: String {
-        return uid
-    }
+    var name: String = "Generic Slime"
+    var color: String = "green"
+    var hat: String = "none"
+    var accessory: String = "none"
+    var level: Int = 1
 
     init(uid: String, isHost: Bool, isReady: Bool) {
         self.uid = uid
         self.isHost = isHost
         self.isReady = isReady
+    }
+    
+    init(uid: String, isHost: Bool, isReady: Bool, name: String, color: String, hat: String, accessory: String, level: Int) {
+        self.uid = uid
+        self.isHost = isHost
+        self.isReady = isReady
+        self.level = level
+        self.hat = hat
+        self.accessory = accessory
+        self.name = name
+        self.color = color
     }
 }
