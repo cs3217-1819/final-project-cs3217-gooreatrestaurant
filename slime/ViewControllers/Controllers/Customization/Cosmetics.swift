@@ -17,6 +17,11 @@ struct Cosmetic {
         self.name = name
         self.image = image
     }
+    
+    init(_ name: String, _ imageName: String) {
+        self.name = name
+        self.image = ImageProvider.get(imageName)
+    }
 }
 
 class Wardrobe {
@@ -98,14 +103,16 @@ enum CosmeticConstants {
             dict[entry.name] = entry
         })
     static let hatsList = [
-        Cosmetic("none", ImageProvider.get("level-dot")),
-        Cosmetic("Hat 1", ImageProvider.get("crown")),
-        Cosmetic("Hat 2", ImageProvider.get("table"))
+        Cosmetic("none", nil),
+        Cosmetic("christmas", "hat-christmas"),
+        Cosmetic("pirate", "hat-pirate"),
+        Cosmetic("ricecake", "hat-ricecake"),
+        Cosmetic("witch", "hat-witch")
     ]
     
     static let accessoriesList = [
-        Cosmetic("none", ImageProvider.get("level-dot")),
-        Cosmetic("Apple", ImageProvider.get("SlicedApple"))
+        Cosmetic("none", nil),
+        Cosmetic("christmas", "hat-christmas")
     ]
     
     static func getHats() -> Wardrobe {

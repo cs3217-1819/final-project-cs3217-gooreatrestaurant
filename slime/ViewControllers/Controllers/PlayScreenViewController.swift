@@ -9,13 +9,23 @@
 import UIKit
 
 class PlayScreenViewController: ViewController<PlayScreenView> {
+    private var jokesController: JokesSlimesController?
     required init(with view: UIView) {
         super.init(with: view)
     }
 
     override func configureSubviews() {
         configureButtons()
+        configureJokes()
         configureUpButton(to: .TitleScreen)
+    }
+    
+    private func configureJokes() {
+        let controller = JokesSlimesController(withXib: view.jokesSlimeView)
+        controller.useJokeSet(jokes: JokeConstants.setOne)
+        controller.configure()
+        
+        jokesController = controller
     }
 
     private func configureButtons() {
@@ -36,21 +46,14 @@ class PlayScreenViewController: ViewController<PlayScreenView> {
         multiplayerButtonController.onTap {
             self.context.routeTo(.MultiplayerScreen)
         }
-        let levelEditorButtonController = PlayMenuButtonController(using: view.levelEditorButton)
-        levelEditorButtonController.configure()
-        _ = levelEditorButtonController
-            .set(title: "Level Editor")
-            .set(description: "Edit some levels!")
-        levelEditorButtonController.onTap {
-            let alert = self.context.modal.createAlert()
-                .setTitle("Uh-oh!")
-                .setDescription("This feature is coming soon(TM).")
-                .addAction(AlertAction(with: "OK"))
-            self.context.modal.presentUnimportantAlert(alert)
-        }
 
         remember(singlePlayerButtonController)
         remember(multiplayerButtonController)
-        remember(levelEditorButtonController)
+    }
+    
+    override func onDisappear() {
+        super.onDisappear()
+        jokesController?.invalidate()
+        jokesController = nil
     }
 }

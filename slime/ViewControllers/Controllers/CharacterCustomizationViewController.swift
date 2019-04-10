@@ -22,7 +22,6 @@ class CharacterCustomizationViewController: ViewController<CharacterCustomizatio
         case Accessories
     }
 
-    private var itemSelectController: ItemSelectorController<SlimeColor>?
     private var innerRouter: RouterController!
     private var currentChildController: HybridController!
     private let route: BehaviorSubject<CustomizationRoute> = BehaviorSubject(value: .Main)
@@ -35,38 +34,20 @@ class CharacterCustomizationViewController: ViewController<CharacterCustomizatio
                                        childView: currentChildController.getView())
         innerRouter.configure()
         
-        setupSelector()
+        setupPreview()
         setupReactive()
     }
-
-    override func onDisappear() {
-        super.onDisappear()
-        guard let newColor = itemSelectController?.value else {
+    
+    private func setupPreview() {
+        guard let character = context.data.userCharacter else {
             return
         }
-        context.data.changeCharacterColor(newColor)
-    }
-
-    private func setupSelector() {
-        let control = ItemSelectorController<SlimeColor>(withXib: view.characterPreviewView)
-        let items: [(SlimeColor, UIImage)] = SlimeColor.allCases
-            .map { color in
-                guard let image = color.getImage() else {
-                    fatalError("Image not found for slime color")
-                }
-                return (color, image)
-        }
-        control.set(items: items)
+        let control = SlimeCharacterController(withXib: view.characterPreviewView)
+        control.bindTo(character)
         control.configure()
-        context.data.userCharacter?.subscribe { event in
-            guard let player = event.element else {
-                return
-            }
-
-            control.value = player.color
-        }.disposed(by: disposeBag)
-        itemSelectController = control
+        remember(control)
     }
+
 
     private func setupReactive() {
         route.distinctUntilChanged().subscribe { event in
@@ -83,18 +64,6 @@ class CharacterCustomizationViewController: ViewController<CharacterCustomizatio
                                         memory?.onDisappear()
                                         memory = nil
                                      })
-        }.disposed(by: disposeBag)
-        
-        context.data.userCharacter?.subscribe { event in
-            guard let char = event.element else {
-                return
-            }
-            
-            let accessory = CosmeticConstants.accessoriesDict[char.accessory]?.image
-            self.view.accesoryImageView.image = accessory
-            
-            let hat = CosmeticConstants.hatsDict[char.hat]?.image
-            self.view.hatImageView.image = hat
         }.disposed(by: disposeBag)
     }
 

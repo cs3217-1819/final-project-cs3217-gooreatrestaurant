@@ -66,6 +66,7 @@ class SlimeNumberInputController: Controller {
                 return
             }
             self.view.numberLabel.text = element
+            self.view.numberLabel.strokeWidth = self.view.numberLabel.strokeWidth
         }.disposed(by: disposeBag)
 
         color.distinctUntilChanged().subscribe { event in

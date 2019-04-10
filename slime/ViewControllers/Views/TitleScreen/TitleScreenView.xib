@@ -22,31 +22,34 @@
                         <constraint firstAttribute="height" constant="200" id="rMU-Ne-sUc"/>
                     </constraints>
                 </imageView>
-                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Jp-Li-nZF" customClass="XibView" customModule="slime" customModuleProvider="target">
-                    <rect key="frame" x="316" y="250" width="180" height="89"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Jp-Li-nZF" customClass="XibView" customModule="slime" customModuleProvider="target">
+                    <rect key="frame" x="316" y="251" width="180" height="88"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
+                        <constraint firstAttribute="height" constant="88" id="MAo-2w-U4w"/>
                         <constraint firstAttribute="width" constant="180" id="RCh-sh-uvj"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="string" keyPath="nibName" value="PrimaryButton"/>
                     </userDefinedRuntimeAttributes>
                 </view>
-                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qug-F1-4pr" customClass="XibView" customModule="slime" customModuleProvider="target">
-                    <rect key="frame" x="528" y="254" width="180" height="89"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qug-F1-4pr" customClass="XibView" customModule="slime" customModuleProvider="target">
+                    <rect key="frame" x="528" y="255" width="180" height="88"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
+                        <constraint firstAttribute="height" constant="88" id="0tO-XE-WYQ"/>
                         <constraint firstAttribute="width" constant="180" id="Cdj-s0-i19"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="string" keyPath="nibName" value="PrimaryButton"/>
                     </userDefinedRuntimeAttributes>
                 </view>
-                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wMS-We-Vto" customClass="XibView" customModule="slime" customModuleProvider="target">
-                    <rect key="frame" x="104" y="254" width="180" height="89"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wMS-We-Vto" customClass="XibView" customModule="slime" customModuleProvider="target">
+                    <rect key="frame" x="104" y="255" width="180" height="88"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="180" id="Hkw-3B-mA7"/>
+                        <constraint firstAttribute="height" constant="88" id="IkX-pm-Sbk"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="string" keyPath="nibName" value="PrimaryButton"/>

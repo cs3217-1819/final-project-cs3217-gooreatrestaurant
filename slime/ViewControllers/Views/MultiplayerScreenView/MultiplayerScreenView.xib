@@ -16,7 +16,7 @@
             <rect key="frame" x="0.0" y="0.0" width="812" height="375"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hDv-Sz-h8K">
+                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hDv-Sz-h8K" customClass="DesignableView" customModule="slime" customModuleProvider="target">
                     <rect key="frame" x="72" y="36" width="250" height="303"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mc-slime-single" translatesAutoresizingMaskIntoConstraints="NO" id="ivA-aL-AGh">
@@ -47,15 +47,14 @@
                         <constraint firstAttribute="bottom" secondItem="Wou-GN-Kmo" secondAttribute="bottom" constant="16" id="wsT-SG-zhi"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                            <integer key="value" value="8"/>
-                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="rounded" value="YES"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="background" value="pink7"/>
                     </userDefinedRuntimeAttributes>
                 </view>
-                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IRH-9i-3FU">
+                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IRH-9i-3FU" customClass="DesignableView" customModule="slime" customModuleProvider="target">
                     <rect key="frame" x="490" y="36" width="250" height="303"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mc-slime-single" translatesAutoresizingMaskIntoConstraints="NO" id="OWx-CI-PCU">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Shocked Slime" translatesAutoresizingMaskIntoConstraints="NO" id="OWx-CI-PCU">
                             <rect key="frame" x="16" y="16" width="218" height="200"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="200" id="pK8-6F-4ca"/>
@@ -84,9 +83,8 @@
                         <constraint firstItem="03o-Qx-jCQ" firstAttribute="top" secondItem="OWx-CI-PCU" secondAttribute="bottom" constant="16" id="yl4-gj-rXS"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                            <integer key="value" value="8"/>
-                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="rounded" value="YES"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="background" value="green7"/>
                     </userDefinedRuntimeAttributes>
                 </view>
             </subviews>
@@ -108,6 +106,7 @@
         </view>
     </objects>
     <resources>
+        <image name="Shocked Slime" width="512" height="512"/>
         <image name="mc-slime-single" width="512" height="512"/>
     </resources>
 </document>

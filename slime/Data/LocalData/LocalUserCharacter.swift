@@ -38,6 +38,15 @@ class UserCharacter {
         hat = char.hat
         accessory = char.accessory
     }
+    
+    init(from char: Player) {
+        name = char.name
+        level = char.level
+        exp = 0
+        color = char.color
+        hat = char.hat
+        accessory = char.accessory
+    }
 
     init(named name: String) {
         self.name = name
