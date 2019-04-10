@@ -14,11 +14,10 @@ class GameViewController: UIViewController {
     
     var db: GameDatabase = GameDB()
     
+    // multiplayer stuff
     var isMultiplayer: Bool = false
     var multiplayerGameId: String?
     var previousRoom: RoomModel?
-    var players: [RoomPlayerModel]?
-    var currentMap: String?
     
     let newCollection: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -58,7 +57,9 @@ class GameViewController: UIViewController {
         
         // TODO: multiplayer stuff, add all the players to stage, then the setupPlayers() will map the slime to player
         if isMultiplayer {
-            joinGame()
+            if let room = self.previousRoom {
+                stage.setupMultiplayer(forRoom: room)
+            }
         } else {
             guard let onlyUser = GameAuth.currentUser else {
                 return
@@ -67,59 +68,8 @@ class GameViewController: UIViewController {
             let onlyPlayer = Player(name: onlyUser.uid, level: 1)
             stage.addPlayer(onlyPlayer)
         }
+        
         stage.setupPlayers()
-    }
-    
-    private func joinGame() {
-        guard let id = self.multiplayerGameId else {
-            return
-        }
-        
-        self.db.joinGame(forGameId: id, {
-            self.setupMultiplayer()
-        }) { (err) in
-            print(err)
-        }
-    }
-    
-    private func setupMultiplayer() {
-        guard let room = previousRoom else {
-            return
-        }
-        
-        db.observeGameState(forRoom: room, onPlayerUpdate: { (player) in
-            // this occurs when a player's
-            // state in the database changes
-            print(player.positionX)
-            print(player.positionY)
-            print(player.uid)
-            // it handles all of the players individually
-        }, onStationUpdate: {
-            // not yet implemented
-            // this updates whenever one station
-            // experiences a change
-        }, onGameEnd: {
-            print("Game has ended")
-        }, onOrderChange: { (orders) in
-            // the function here occurs everytime the
-            // order in the db changes
-            for order in orders {
-                print(order.name)
-            }
-        }, onScoreChange: { (score) in
-            // self-explanatory
-            print(score)
-        }, onAllPlayersReady: {
-            // only for host, start game
-            guard let room = self.previousRoom else { return }
-            
-            self.db.startGame(forRoom: room, {
-            }, { (err) in
-                print(err)
-            })
-        }) { (err) in
-            print(err)
-        }
     }
 
     func setupCollection() {

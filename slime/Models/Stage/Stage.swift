@@ -14,6 +14,10 @@ class Stage: SKScene {
     typealias RecipeData = [String: [DictString]]
 
     var spaceship: Spaceship
+    
+    // multiplayer stuff
+    var isMultiplayer: Bool?
+    var db: GameDatabase?
 
     // RI: the players are unique
     var players: [Player] = []
@@ -37,6 +41,53 @@ class Stage: SKScene {
         self.addChild(background)
         self.addChild(spaceship)
         setupControl()
+    }
+    
+    func joinGame(forGameId id: String) {
+        self.db?.joinGame(forGameId: id, {
+            print("game has been successfully joined")
+        }, { (err) in
+            print(err.localizedDescription)
+        })
+    }
+    
+    func setupMultiplayer(forRoom room: RoomModel) {
+        self.isMultiplayer = true
+        db = GameDB()
+        
+        db?.observeGameState(forRoom: room, onPlayerUpdate: { (player) in
+            // this occurs when a player's
+            // state in the database changes
+            print(player.positionX)
+            print(player.positionY)
+            print(player.uid)
+            // it handles all of the players individually
+        }, onStationUpdate: {
+            // not yet implemented
+            // this updates whenever one station
+            // experiences a change
+        }, onGameEnd: {
+            print("Game has ended")
+        }, onOrderChange: { (orders) in
+            // the function here occurs everytime the
+            // order in the db changes
+            for order in orders {
+                print(order.name)
+            }
+        }, onScoreChange: { (score) in
+            // self-explanatory
+            print(score)
+        }, onAllPlayersReady: {
+            // only for host, start game
+            self.db?.startGame(forRoom: room, {
+            }, { (err) in
+                print(err)
+            })
+        }, onComplete: {
+            self.joinGame(forGameId: room.id)
+        }) { (err) in
+            print(err)
+        }
     }
 
     func generateLevel(inLevel levelName: String) {

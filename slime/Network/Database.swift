@@ -170,7 +170,7 @@ protocol GameDatabase {
     ///     - onDataChange: a closure which is fired
     ///       every time a data value changes
     ///     - onError: fired when an error happens
-    func observeGameState(forRoom room: RoomModel, onPlayerUpdate: @escaping (GamePlayerModel) -> Void, onStationUpdate: @escaping () -> Void, onGameEnd: @escaping () -> Void, onOrderChange: @escaping ([GameOrderModel]) -> Void, onScoreChange: @escaping (Int) -> Void, onAllPlayersReady: @escaping () -> Void, onError: @escaping (Error) -> Void)
+    func observeGameState(forRoom room: RoomModel, onPlayerUpdate: @escaping (GamePlayerModel) -> Void, onStationUpdate: @escaping () -> Void, onGameEnd: @escaping () -> Void, onOrderChange: @escaping ([GameOrderModel]) -> Void, onScoreChange: @escaping (Int) -> Void, onAllPlayersReady: @escaping () -> Void, onComplete: @escaping () -> Void, onError: @escaping (Error) -> Void)
 
     /// updates a player position inside the game
     /// id specified inside this method
