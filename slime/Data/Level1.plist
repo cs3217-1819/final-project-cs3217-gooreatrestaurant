@@ -116,7 +116,9 @@
 		<string>{-125, -63}</string>
 	</array>
 	<key>trashBin</key>
-	<array/>
+	<array>
+		<string>{0,0}</string>
+	</array>
 	<key>possibleRecipes</key>
 	<array>
 		<dict>

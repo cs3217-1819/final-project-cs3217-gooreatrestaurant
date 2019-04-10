@@ -11,6 +11,18 @@ import SpriteKit
 
 class Trash: Station {
 
+    override init(inPosition position: CGPoint, withSize size: CGSize) {
+        let table = SKSpriteNode(imageNamed: "trashbin")
+        table.size = size
+        super.init(inPosition: position, withSize: size)
+        self.texture = table.texture
+
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     override func ableToProcess(_ item: SKSpriteNode?) -> Bool {
         if item == nil {
             return false
