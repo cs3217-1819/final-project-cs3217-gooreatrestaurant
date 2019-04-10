@@ -96,7 +96,7 @@ class OrderQueue: SKSpriteNode {
         }
 
         recipeOrdered.remove(at: matchedOrder)
-        nodeOrder[matchedOrder].removeFromParent()
+        removeMenuPrefab(inNum: matchedOrder)
 
         if recipeOrdered.count < StageConstants.maxNumbersOfOrdersShown {
             self.addRandomOrder()
@@ -115,6 +115,17 @@ class OrderQueue: SKSpriteNode {
 
         if recipeOrdered.count < StageConstants.minNumbersOfOrdersShown {
             self.addRandomOrder()
+        }
+    }
+
+    func removeMenuPrefab(inNum: Int) {
+        //remove the node image and the list
+        nodeOrder[inNum].removeFromParent()
+        nodeOrder.remove(at: inNum)
+
+        //update positionings
+        for i in 1...nodeOrder.count {
+            nodeOrder[i-1].position = positionings[i-1]
         }
     }
 }
