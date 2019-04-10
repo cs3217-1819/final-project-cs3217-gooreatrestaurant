@@ -10,5 +10,5 @@ import UIKit
 
 class PrimaryButton: UIView {
     @IBOutlet var buttonImage: UIImageView!
-    @IBOutlet var label: UILabel!
+    @IBOutlet var label: TextLabel!
 }

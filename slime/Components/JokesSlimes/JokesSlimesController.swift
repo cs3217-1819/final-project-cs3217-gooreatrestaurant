@@ -15,6 +15,7 @@ class JokesSlimesController: Controller {
     private var dialogBoxes: [DialogBoxController] = []
     private var jokes: [Joke] = []
     private var jokeIndex = 0
+    private var timer: Timer?
     
     init(withXib xibView: XibView) {
         view = xibView.getView()
@@ -30,11 +31,10 @@ class JokesSlimesController: Controller {
         Timer.scheduledTimer(withTimeInterval: 1, repeats: false, block: { _ in
             self.performNextJoke()
             // Joke Interval
-            Timer.scheduledTimer(withTimeInterval: 7, repeats: true, block: { _ in
+            self.timer = Timer.scheduledTimer(withTimeInterval: 7, repeats: true, block: { _ in
                 self.performNextJoke()
             })
         })
-        
     }
     
     private func setupCharacters() {
@@ -87,15 +87,19 @@ class JokesSlimesController: Controller {
         let dialogView = UIView.initFromNib("DialogBoxView")
         let xOffset = isLeft ? 0 : width * 0.2
         dialogView.frame = CGRect(x: xOffset, y: height, width: width * 0.8, height: 64)
+        dialogView.alpha = 0
         let controller = DialogBoxController(with: dialogView)
         controller.text = text
         controller.configure()
         controller.setColor(isLeft ? "pink7" : "green7")
-        controller.startAnimation(duration: 0.3)
+        controller.startAnimation(duration: 0.6)
         dialogBoxes.append(controller)
         view.dialogsView.addSubview(dialogView)
-        UIView.animate(withDuration: 0.5, animations: {
-            for dialogBox in self.dialogBoxes {
+        UIView.animate(withDuration: 0.3, animations: {
+            for (i, dialogBox) in self.dialogBoxes.enumerated() {
+                let offsetFromBottom = self.dialogBoxes.count - i - 1
+                print(offsetFromBottom)
+                dialogBox.view.alpha = 1.0 - CGFloat(offsetFromBottom) * 0.15
                 dialogBox.view.frame = dialogBox.view.frame.offsetBy(dx: 0, dy: -dialogView.frame.height - 8)
             }
         })
@@ -104,5 +108,10 @@ class JokesSlimesController: Controller {
             let control = dialogBoxes.removeFirst()
             control.view.removeFromSuperview()
         }
+    }
+    
+    // Important to call this, so the timers don't run, causing deinit to not be called
+    func invalidateTimers() {
+        timer?.invalidate()
     }
 }

@@ -9,6 +9,7 @@
 import UIKit
 
 class PlayScreenViewController: ViewController<PlayScreenView> {
+    private var jokesController: JokesSlimesController?
     required init(with view: UIView) {
         super.init(with: view)
     }
@@ -23,6 +24,8 @@ class PlayScreenViewController: ViewController<PlayScreenView> {
         let controller = JokesSlimesController(withXib: view.jokesSlimeView)
         controller.useJokeSet(jokes: JokeConstants.setOne)
         controller.configure()
+        
+        jokesController = controller
     }
 
     private func configureButtons() {
@@ -59,5 +62,11 @@ class PlayScreenViewController: ViewController<PlayScreenView> {
         remember(singlePlayerButtonController)
         remember(multiplayerButtonController)
         remember(levelEditorButtonController)
+    }
+    
+    override func onDisappear() {
+        super.onDisappear()
+        jokesController?.invalidateTimers()
+        jokesController = nil
     }
 }

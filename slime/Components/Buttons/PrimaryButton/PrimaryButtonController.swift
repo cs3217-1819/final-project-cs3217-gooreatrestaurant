@@ -71,6 +71,7 @@ class PrimaryButtonController: Controller {
                     return
                 }
                 self.button.label.text = text
+                self.button.label.strokeWidth = self.button.label.strokeWidth
             }.disposed(by: disposeBag)
     }
 }
