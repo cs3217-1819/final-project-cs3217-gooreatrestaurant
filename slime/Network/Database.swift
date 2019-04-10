@@ -238,12 +238,41 @@ protocol GameDatabase {
     ///     - onError: closure run when an error occurs
     func rejoinGame(forGameId id: String, _ onSuccess: @escaping () -> Void, _ onError: @escaping (Error) -> Void)
     
+    /// updates own user's outfit for hats, color
+    /// and accessories
+    /// - Parameters:
+    ///     - withAccessory: the accessory to be changed to
+    ///     - withHat: the hat to be changed to
+    ///     - withColor: the color to be changed to
+    ///     - onComplete: a completion block run after the update
+    ///       is successful
+    ///     - onError: an error block run when an error occurs
     func updateUserOutfit(withAccessory accessory: String, withHat hat: String, withColor color: String, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void)
     
+    /// updates own user's name
+    /// - Parameters:
+    ///     - withName: the name to be changed to
+    ///     - onComplete: closure when this block completes
+    ///     - onError: closure run when an error occurs
     func updateUserNmae(withName name: String, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void)
     
+    /// updates own user's level
+    /// - Parameters:
+    ///     - withLevel: the level to be changed to
+    ///     - onComplete: closure when update is successful
+    ///     - onError: closure run when an error occurs
     func updateUserLevel(withLevel level: Int, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void)
     
+    /// gets current user's data in the db,
+    /// name defaults to "Generic Slime",
+    /// level 1, color "green", hat "none",
+    /// and accessory "none"
+    /// - Parameters:
+    ///     - onSuccess: a closure with the user
+    ///       model inside the params run when
+    ///       the query is a success
+    ///     - onError: a closure run when an error
+    ///       occurs
     func getUserData(_ onSuccess: @escaping (UserModel) -> Void, _ onError: @escaping (Error) -> Void)
 
     /// removes all observers inside the game
