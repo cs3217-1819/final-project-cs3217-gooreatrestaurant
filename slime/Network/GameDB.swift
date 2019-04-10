@@ -976,6 +976,13 @@ class GameDB: GameDatabase {
         }
     }
     
+    /// factory method to generate user model
+    /// from a firebase dictionary
+    /// - Parameters:
+    ///     - forDict: the dictionary pulled from
+    ///       firebase for a user object
+    /// - Returns:
+    ///     - a UserModel object representing the dictionary
     private func firebaseUserModelFactory(forDict dict: [String : AnyObject]) -> UserModel {
         let name = dict[FirebaseKeys.users_name] as? String ?? "Generic Slime"
         let hat = dict[FirebaseKeys.users_hat] as? String ?? "none"
