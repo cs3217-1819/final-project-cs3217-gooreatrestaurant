@@ -13,6 +13,9 @@ class OrderQueue: SKSpriteNode {
     var possibleRecipes: Set<Recipe> = []
     var recipeOrdered: [Recipe] = []
     var newOrderTimer: Timer = Timer()
+    var nodeOrder: [SKSpriteNode] = []
+
+    var tempNode: SKSpriteNode = SKSpriteNode.init()
 
     var positionings = [CGPoint(x: ScreenSize.width * 0.5 - 180,
                                 y: ScreenSize.height * 0.5 - 40),
@@ -40,6 +43,7 @@ class OrderQueue: SKSpriteNode {
     func generateMenu(ofRecipe recipe: Recipe) {
         let menuObj = MenuPrefab(color: .clear, size: CGSize(width: 80, height: 80))
         menuObj.addRecipe(recipe, inPosition: positionings[recipeOrdered.count - 1])
+        nodeOrder.append(menuObj)
         self.addChild(menuObj)
     }
 
@@ -60,7 +64,6 @@ class OrderQueue: SKSpriteNode {
         guard let randomRecipe = self.generateRandomRecipe() else {
             return
         }
-        print(randomRecipe.ingredientsNeeded)
         self.addOrder(ofRecipe: randomRecipe)
     }
 
@@ -93,8 +96,9 @@ class OrderQueue: SKSpriteNode {
         }
 
         recipeOrdered.remove(at: matchedOrder)
+        removeMenuPrefab(inNum: matchedOrder)
 
-        if recipeOrdered.count < StageConstants.minNumbersOfOrdersShown {
+        if recipeOrdered.count < StageConstants.maxNumbersOfOrdersShown {
             self.addRandomOrder()
         }
 
@@ -111,6 +115,17 @@ class OrderQueue: SKSpriteNode {
 
         if recipeOrdered.count < StageConstants.minNumbersOfOrdersShown {
             self.addRandomOrder()
+        }
+    }
+
+    func removeMenuPrefab(inNum: Int) {
+        //remove the node image and the list
+        nodeOrder[inNum].removeFromParent()
+        nodeOrder.remove(at: inNum)
+
+        //update positionings
+        for i in 1...nodeOrder.count {
+            nodeOrder[i-1].position = positionings[i-1]
         }
     }
 }

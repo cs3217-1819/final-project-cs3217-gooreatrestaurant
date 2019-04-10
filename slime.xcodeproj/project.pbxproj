@@ -226,6 +226,7 @@
 		F92ECAE8224BAEEF0040A4E2 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92ECAE7224BAEEF0040A4E2 /* Game.swift */; };
 		F92ECAEA224D1B490040A4E2 /* FadeInOutSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92ECAE9224D1B490040A4E2 /* FadeInOutSegue.swift */; };
 		F9F26FEE22564873008BFD50 /* GameDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F26FED22564873008BFD50 /* GameDB.swift */; };
+		F9F26FF2225DDA7A008BFD50 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F26FF1225DDA7A008BFD50 /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -466,6 +467,7 @@
 		F92ECAE7224BAEEF0040A4E2 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		F92ECAE9224D1B490040A4E2 /* FadeInOutSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FadeInOutSegue.swift; sourceTree = "<group>"; };
 		F9F26FED22564873008BFD50 /* GameDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDB.swift; sourceTree = "<group>"; };
+		F9F26FF1225DDA7A008BFD50 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1213,6 +1215,7 @@
 				F92ECAE5224BAEDB0040A4E2 /* Room.swift */,
 				F92ECAE7224BAEEF0040A4E2 /* Game.swift */,
 				F9F26FED22564873008BFD50 /* GameDB.swift */,
+				F9F26FF1225DDA7A008BFD50 /* User.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -1491,6 +1494,7 @@
 			files = (
 				EC38245C223A100B000D7148 /* TextStyles.swift in Sources */,
 				8BD816B3224262F100586180 /* AnalogJoystick.swift in Sources */,
+				F9F26FF2225DDA7A008BFD50 /* User.swift in Sources */,
 				1DD6EBE5224E76F0006FF6CD /* IngredientType.swift in Sources */,
 				EC57D2DC225C8B7400F26808 /* SlimeCharacterView.swift in Sources */,
 				ECD45543223FACC4006AF78D /* ModalController.swift in Sources */,

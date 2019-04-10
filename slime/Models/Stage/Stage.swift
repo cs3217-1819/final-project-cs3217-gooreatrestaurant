@@ -126,7 +126,7 @@ class Stage: SKScene {
 
     var counter = 0
     var counterTime = Timer()
-    var counterStartTime = 1000
+    var counterStartTime = 200
     var isGameOver = false
 
     lazy var countdownLabel: SKLabelNode = {
@@ -336,7 +336,6 @@ class Stage: SKScene {
             return
         }
 
-        print("served")
         levelScore += 20
         scoreLabel.text = "Score: \(levelScore)"
     }
