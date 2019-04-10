@@ -61,41 +61,56 @@ class Spaceship: SKSpriteNode {
     }
 
     func addChoppingEquipment(inPositions positions: [String]) {
+        var index = 0
         for position in positions {
             let equipment = ChoppingEquipment(inPosition: NSCoder.cgPoint(for: position))
+            equipment.id = index
             self.addChild(equipment)
+            index += 1
         }
     }
 
     func addFryingEquipment(inPositions positions: [String]) {
+        var index = 0
         for position in positions {
             let equipment = FryingEquipment(inPosition: NSCoder.cgPoint(for: position))
+            equipment.id = index
             self.addChild(equipment)
+            index += 1
         }
     }
 
     func addOven(inPositions positions: [String]) {
+        var index = 0
         for position in positions {
             let oven = Oven(inPosition: NSCoder.cgPoint(for: position))
+            oven.id = index
             self.addChild(oven)
+            index += 1
         }
     }
 
     func addIngredientStorage(withDetails details: [(type: String, position: String)]) {
+        var index = 0
         for ingredientData in details {
 
             guard let ingredientType = IngredientType(rawValue: ingredientData.type) else {
                 continue
             }
             let storage = IngredientStorage(ofType: ingredientType, inPosition: NSCoder.cgPoint(for: ingredientData.position))
+            storage.id = index
             self.addChild(storage)
+            index += 1
         }
     }
 
     func addPlateStorage(inPositions positions: [String]) {
+        var index = 0
         for position in positions {
             let storage = PlateStorage(inPosition: NSCoder.cgPoint(for: position))
+            storage.id = index
             self.addChild(storage)
+            index += 1
         }
     }
 
@@ -105,16 +120,22 @@ class Spaceship: SKSpriteNode {
     }
 
     func addTable(inPositions positions: [String]) {
+        var index = 0
         for position in positions {
             let table = Table(inPosition: NSCoder.cgPoint(for: position))
+            table.id = index
             self.addChild(table)
+            index += 1
         }
     }
 
     func addTrashBin(inPositions positions: [String]) {
+        var index = 0
         for position in positions {
             let trashBin = Trash(inPosition: NSCoder.cgPoint(for: position))
+            trashBin.id = index
             self.addChild(trashBin)
+            index += 1
         }
     }
 
