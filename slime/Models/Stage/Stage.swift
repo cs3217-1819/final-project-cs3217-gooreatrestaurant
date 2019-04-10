@@ -55,9 +55,24 @@ class Stage: SKScene {
         self.isMultiplayer = true
         db = GameDB()
         
+        guard let user = GameAuth.currentUser else {
+            return
+        }
+        
+        for player in room.players {
+            if player.uid == user.uid {
+                // current player, continue
+                continue
+            }
+            
+            // TODO: add all other players except the host
+            // into the scene, and tag them with the uid
+        }
+        
         db?.observeGameState(forRoom: room, onPlayerUpdate: { (player) in
             // this occurs when a player's
             // state in the database changes
+            // TODO: update player position depending on the uid
             print(player.positionX)
             print(player.positionY)
             print(player.uid)
@@ -67,15 +82,19 @@ class Stage: SKScene {
             // this updates whenever one station
             // experiences a change
         }, onGameEnd: {
+            // TODO: game end goes here
             print("Game has ended")
         }, onOrderChange: { (orders) in
             // the function here occurs everytime the
             // order in the db changes
+            // TODO: render this into the screen
+            // when order changes
             for order in orders {
                 print(order.name)
             }
         }, onScoreChange: { (score) in
             // self-explanatory
+            // TODO: update score
             print(score)
         }, onAllPlayersReady: {
             // only for host, start game
