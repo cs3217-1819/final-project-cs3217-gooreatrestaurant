@@ -16,65 +16,85 @@
             <rect key="frame" x="0.0" y="0.0" width="342" height="118"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mc-slime-single" translatesAutoresizingMaskIntoConstraints="NO" id="GmH-Zf-MK1">
-                    <rect key="frame" x="16" y="25" width="68.5" height="68"/>
-                    <constraints>
-                        <constraint firstAttribute="width" secondItem="GmH-Zf-MK1" secondAttribute="height" multiplier="1:1" id="qhs-yl-kZe"/>
-                    </constraints>
-                </imageView>
-                <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="crown" translatesAutoresizingMaskIntoConstraints="NO" id="zIg-jK-GzC">
-                    <rect key="frame" x="25" y="4" width="50" height="50"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="50" id="7Iq-Hw-916"/>
-                        <constraint firstAttribute="width" secondItem="zIg-jK-GzC" secondAttribute="height" multiplier="1:1" id="7RI-Rq-I6H"/>
-                    </constraints>
-                </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nok-pa-6Le">
-                    <rect key="frame" x="100.5" y="16" width="225.5" height="86"/>
+                    <rect key="frame" x="112" y="16" width="214" height="86"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lIc-sN-h9H" customClass="TextLabel" customModule="slime" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="33" width="225.5" height="20.5"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="string" keyPath="style" value="h1"/>
-                                <userDefinedRuntimeAttribute type="string" keyPath="color" value="white1"/>
-                            </userDefinedRuntimeAttributes>
-                        </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Level 10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K0F-xT-TVi" customClass="TextLabel" customModule="slime" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="53.5" width="225.5" height="20.5"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="string" keyPath="style" value="p1"/>
-                                <userDefinedRuntimeAttribute type="string" keyPath="color" value="white4"/>
-                            </userDefinedRuntimeAttributes>
-                        </label>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="lqn-U8-fCN">
+                            <rect key="frame" x="0.0" y="0.0" width="214" height="86"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Host" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CJN-uk-fL8" customClass="TextLabel" customModule="slime" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="214" height="20.5"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="style" value="psub"/>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="color" value="white0"/>
+                                    </userDefinedRuntimeAttributes>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lIc-sN-h9H" customClass="TextLabel" customModule="slime" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="28.5" width="214" height="28"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="style" value="h1"/>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="color" value="white1"/>
+                                    </userDefinedRuntimeAttributes>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Level 10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K0F-xT-TVi" customClass="TextLabel" customModule="slime" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="64.5" width="214" height="21.5"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="style" value="p1"/>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="color" value="white3"/>
+                                    </userDefinedRuntimeAttributes>
+                                </label>
+                            </subviews>
+                        </stackView>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstItem="K0F-xT-TVi" firstAttribute="top" secondItem="lIc-sN-h9H" secondAttribute="bottom" id="3Kg-yx-wFe"/>
-                        <constraint firstItem="K0F-xT-TVi" firstAttribute="leading" secondItem="Nok-pa-6Le" secondAttribute="leading" id="EOF-Oq-Pbq"/>
-                        <constraint firstAttribute="trailing" secondItem="lIc-sN-h9H" secondAttribute="trailing" id="G6a-0h-baU"/>
-                        <constraint firstItem="lIc-sN-h9H" firstAttribute="centerY" secondItem="Nok-pa-6Le" secondAttribute="centerY" id="UfH-Hk-7jN"/>
-                        <constraint firstItem="lIc-sN-h9H" firstAttribute="leading" secondItem="Nok-pa-6Le" secondAttribute="leading" id="oxU-iR-MrE"/>
-                        <constraint firstAttribute="trailing" secondItem="K0F-xT-TVi" secondAttribute="trailing" id="rCa-ac-uQV"/>
+                        <constraint firstAttribute="bottom" secondItem="lqn-U8-fCN" secondAttribute="bottom" id="CPn-lA-ly7"/>
+                        <constraint firstItem="lqn-U8-fCN" firstAttribute="leading" secondItem="Nok-pa-6Le" secondAttribute="leading" id="QGh-CD-cEJ"/>
+                        <constraint firstItem="lqn-U8-fCN" firstAttribute="top" secondItem="Nok-pa-6Le" secondAttribute="top" id="Xie-W5-gE3"/>
+                        <constraint firstAttribute="trailing" secondItem="lqn-U8-fCN" secondAttribute="trailing" id="fKc-zp-QiO"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lH6-Bk-toz">
+                    <rect key="frame" x="16" y="16" width="80" height="86"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="euc-ZT-Egn" customClass="XibView" customModule="slime" customModuleProvider="target">
+                            <rect key="frame" x="-3" y="0.0" width="86" height="86"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="euc-ZT-Egn" secondAttribute="height" multiplier="1:1" id="Et7-qn-hgk"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="nibName" value="SlimeCharacterView"/>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="euc-ZT-Egn" firstAttribute="height" secondItem="lH6-Bk-toz" secondAttribute="height" id="TFp-kl-BYT"/>
+                        <constraint firstItem="euc-ZT-Egn" firstAttribute="centerY" secondItem="lH6-Bk-toz" secondAttribute="centerY" id="WeS-Ii-s6d"/>
+                        <constraint firstItem="euc-ZT-Egn" firstAttribute="centerX" secondItem="lH6-Bk-toz" secondAttribute="centerX" id="qtd-1e-5gT"/>
+                        <constraint firstAttribute="width" constant="80" id="v7W-jf-yWu"/>
                     </constraints>
                 </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="GmH-Zf-MK1" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Cga-Zi-6oQ"/>
-                <constraint firstItem="zIg-jK-GzC" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="-30" id="KZe-na-IYh"/>
-                <constraint firstItem="Nok-pa-6Le" firstAttribute="leading" secondItem="GmH-Zf-MK1" secondAttribute="trailing" constant="16" id="N64-8W-bTE"/>
-                <constraint firstItem="zIg-jK-GzC" firstAttribute="centerX" secondItem="GmH-Zf-MK1" secondAttribute="centerX" id="V6A-S6-WQs"/>
+                <constraint firstItem="lH6-Bk-toz" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="16" id="2E4-l3-NaA"/>
+                <constraint firstItem="lH6-Bk-toz" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="DnU-OJ-tBS"/>
+                <constraint firstAttribute="bottom" secondItem="lH6-Bk-toz" secondAttribute="bottom" constant="16" id="bgo-KL-Xhf"/>
                 <constraint firstItem="Nok-pa-6Le" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="16" id="cqh-fV-UFA"/>
+                <constraint firstItem="Nok-pa-6Le" firstAttribute="leading" secondItem="lH6-Bk-toz" secondAttribute="trailing" constant="16" id="efE-oy-rtI"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="Nok-pa-6Le" secondAttribute="bottom" constant="16" id="fdo-Kd-AC0"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Nok-pa-6Le" secondAttribute="trailing" constant="16" id="rMz-fv-i1x"/>
-                <constraint firstItem="GmH-Zf-MK1" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.2" id="rh5-yI-b8z"/>
-                <constraint firstItem="GmH-Zf-MK1" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="twF-ZP-SWT"/>
                 <constraint firstItem="Nok-pa-6Le" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="ymS-cw-FYI"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -85,16 +105,12 @@
                 </userDefinedRuntimeAttribute>
             </userDefinedRuntimeAttributes>
             <connections>
-                <outlet property="avatarImageView" destination="GmH-Zf-MK1" id="YFC-Mh-13c"/>
-                <outlet property="hostCrownImageView" destination="zIg-jK-GzC" id="ktu-ql-hWY"/>
+                <outlet property="characterView" destination="euc-ZT-Egn" id="loZ-Em-txv"/>
+                <outlet property="hostView" destination="CJN-uk-fL8" id="G1S-at-yxR"/>
                 <outlet property="levelLabel" destination="K0F-xT-TVi" id="LF0-OY-0H3"/>
                 <outlet property="nameLabel" destination="lIc-sN-h9H" id="i0t-yN-f4h"/>
             </connections>
             <point key="canvasLocation" x="12.800000000000001" y="-200.59970014992504"/>
         </view>
     </objects>
-    <resources>
-        <image name="crown" width="409.60000610351562" height="409.60000610351562"/>
-        <image name="mc-slime-single" width="512" height="512"/>
-    </resources>
 </document>

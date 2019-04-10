@@ -28,8 +28,20 @@ class SettingsScreenViewController: ViewController<SettingsScreenView> {
             .set(color: .purple)
         control.configure()
         control.onTap {
-            self.context.data.resetData()
+            self.showConfirmResetDialog()
         }
         remember(control)
+    }
+    
+    private func showConfirmResetDialog() {
+        let alert = context.modal.createAlert()
+            .setTitle("Confirm Reset?")
+            .setDescription("Are you sure you want to reset all data? This cannot be undone.")
+            .addAction(AlertAction(with: "Reset", callback: {
+                self.context.data.resetData()
+                self.context.routeTo(.TitleScreen)
+            }, of: .Danger))
+            .addAction(AlertAction(with: "Cancel"))
+        context.modal.presentAlert(alert)
     }
 }

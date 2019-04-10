@@ -11,6 +11,7 @@ import RxSwift
 
 class ItemBoxController: Controller {
     private let disposeBag = DisposeBag()
+    private var cosmetic = BehaviorSubject<Cosmetic?>(value: nil)
     let view: ItemBoxView
     var active: Bool {
         get {
@@ -33,6 +34,7 @@ class ItemBoxController: Controller {
     }
     
     func setCosmetic(_ cosmetic: Cosmetic) {
+        self.cosmetic.onNext(cosmetic)
         view.itemImageView.image = cosmetic.image
     }
 
@@ -40,13 +42,27 @@ class ItemBoxController: Controller {
         activeSubject.distinctUntilChanged().subscribe { _ in
             self.setActiveState()
         }.disposed(by: disposeBag)
+        
+        cosmetic.subscribe { event in
+            guard let element = event.element else {
+                return
+            }
+            
+            self.setUnusedState(element)
+        }.disposed(by: disposeBag)
     }
 
     private func setActiveState() {
         if active {
-            view.itemContainerView.background = "pink2"
-        } else {
             view.itemContainerView.background = "pink3"
+        } else {
+            view.itemContainerView.background = "pink7"
+        }
+    }
+    
+    private func setUnusedState(_ cosmetic: Cosmetic?) {
+        if cosmetic == nil {
+            view.itemImageView.image = ImageProvider.get("cosmetic-none")
         }
     }
 }

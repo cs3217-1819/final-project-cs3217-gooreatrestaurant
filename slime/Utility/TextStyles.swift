@@ -22,7 +22,8 @@ class TextStyles {
         "p0": 22,
         "p1": 18,
         "p2": 16,
-        "psmall": 14
+        "psmall": 14,
+        "ptiny": 10
     ]
 
     static func getStyle(_ label: String) -> UIFont? {

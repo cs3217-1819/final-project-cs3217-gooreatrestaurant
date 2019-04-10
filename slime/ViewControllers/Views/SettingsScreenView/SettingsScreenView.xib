@@ -19,7 +19,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A64-4L-JyT">
                     <rect key="frame" x="36" y="36" width="36" height="36"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="back-button" translatesAutoresizingMaskIntoConstraints="NO" id="X31-ff-Hai">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BackButton" translatesAutoresizingMaskIntoConstraints="NO" id="X31-ff-Hai">
                             <rect key="frame" x="0.0" y="0.0" width="36" height="36"/>
                         </imageView>
                     </subviews>
@@ -40,7 +40,7 @@
                     <nil key="highlightedColor"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="string" keyPath="style" value="h0"/>
-                        <userDefinedRuntimeAttribute type="string" keyPath="color" value="white8"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="color" value="white2"/>
                     </userDefinedRuntimeAttributes>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nyH-4q-C3N">
@@ -86,6 +86,6 @@
         </view>
     </objects>
     <resources>
-        <image name="back-button" width="384" height="384"/>
+        <image name="BackButton" width="512" height="512"/>
     </resources>
 </document>

@@ -51,7 +51,7 @@ class AlertController: Controller {
             case .Success:
                 _ = controller.set(color: .green)
             case .Danger:
-                _ = controller.set(color: .purple)
+                _ = controller.set(color: .red)
             }
             controller.onTap {
                 action.callback()

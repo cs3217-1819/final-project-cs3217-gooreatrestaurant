@@ -22,6 +22,7 @@ class ScrollingBackgroundViewController: Controller {
         imageName = "background"
         background = UIView(frame: view.frame.scale(by: 2))
         backgroundImageView = UIImageView(frame: background.frame)
+        backgroundImageView.contentMode = .scaleAspectFill
         backgroundImageView.frame = background.bounds
         background.addSubview(backgroundImageView)
     }
@@ -45,6 +46,7 @@ class ScrollingBackgroundViewController: Controller {
             return
         }
         let newBackgroundImageView = UIImageView(frame: background.frame)
+        newBackgroundImageView.contentMode = .scaleAspectFill
         newBackgroundImageView.frame = background.bounds
         newBackgroundImageView.alpha = 0
         newBackgroundImageView.image = newImage

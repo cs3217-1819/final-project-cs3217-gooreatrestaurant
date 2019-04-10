@@ -23,13 +23,16 @@
                             <rect key="frame" x="0.0" y="0.0" width="290" height="196"/>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Button" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3pV-oU-x0X" customClass="TextLabel" customModule="slime" customModuleProvider="target">
-                            <rect key="frame" x="110.5" y="83.5" width="69" height="29.5"/>
+                            <rect key="frame" x="113" y="84.5" width="64" height="27.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="string" keyPath="style" value="h1"/>
                                 <userDefinedRuntimeAttribute type="string" keyPath="color" value="white7"/>
+                                <userDefinedRuntimeAttribute type="number" keyPath="strokeWidth">
+                                    <real key="value" value="4"/>
+                                </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                         </label>
                     </subviews>
@@ -57,7 +60,7 @@
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
                 <outlet property="buttonImage" destination="dG1-24-dRe" id="1PV-oZ-L5m"/>
-                <outlet property="label" destination="3pV-oU-x0X" id="PeN-UF-ekK"/>
+                <outlet property="label" destination="3pV-oU-x0X" id="8mx-rH-9PA"/>
             </connections>
             <point key="canvasLocation" x="-160" y="-156.52173913043478"/>
         </view>

@@ -17,7 +17,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Credits" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fFS-hh-xwc" customClass="TextLabel" customModule="slime" customModuleProvider="target">
-                    <rect key="frame" x="36" y="36" width="90" height="35.5"/>
+                    <rect key="frame" x="36" y="36" width="55" height="20.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -27,10 +27,10 @@
                     </userDefinedRuntimeAttributes>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nVm-wz-Px7">
-                    <rect key="frame" x="36" y="107.5" width="740" height="231.5"/>
+                    <rect key="frame" x="36" y="92.5" width="740" height="246.5"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lim Hui Qi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WcV-rb-8KD" customClass="TextLabel" customModule="slime" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="0.0" width="79" height="23.5"/>
+                            <rect key="frame" x="0.0" y="0.0" width="78.5" height="20.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -40,7 +40,7 @@
                             </userDefinedRuntimeAttributes>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gabriel Tan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yh8-Kx-053" customClass="TextLabel" customModule="slime" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="39.5" width="93.5" height="23.5"/>
+                            <rect key="frame" x="0.0" y="36.5" width="86.5" height="20.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -50,7 +50,7 @@
                             </userDefinedRuntimeAttributes>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Anthony Tantra" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="geF-MT-8GR" customClass="TextLabel" customModule="slime" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="79" width="125.5" height="23.5"/>
+                            <rect key="frame" x="0.0" y="73" width="116.5" height="20.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -60,7 +60,7 @@
                             </userDefinedRuntimeAttributes>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="samuel henry kurniawan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OkJ-uc-BCZ" customClass="TextLabel" customModule="slime" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="118.5" width="200.5" height="23.5"/>
+                            <rect key="frame" x="0.0" y="109.5" width="185" height="20.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -82,13 +82,25 @@
                         <constraint firstItem="WcV-rb-8KD" firstAttribute="leading" secondItem="nVm-wz-Px7" secondAttribute="leading" id="wef-Pe-Yxl"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y7B-S8-gOS">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y7B-S8-gOS" customClass="DesignableView" customModule="slime" customModuleProvider="target">
                     <rect key="frame" x="744" y="36" width="32" height="32"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BackButton" translatesAutoresizingMaskIntoConstraints="NO" id="v4J-11-l2o">
+                            <rect key="frame" x="0.0" y="0.0" width="32" height="32"/>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
+                        <constraint firstItem="v4J-11-l2o" firstAttribute="leading" secondItem="Y7B-S8-gOS" secondAttribute="leading" id="7nK-rw-H3G"/>
                         <constraint firstAttribute="height" constant="32" id="EXC-c3-5OA"/>
+                        <constraint firstAttribute="trailing" secondItem="v4J-11-l2o" secondAttribute="trailing" id="F0M-zM-LtE"/>
+                        <constraint firstAttribute="bottom" secondItem="v4J-11-l2o" secondAttribute="bottom" id="mXv-3b-ixS"/>
                         <constraint firstAttribute="width" constant="32" id="mwc-44-TZe"/>
+                        <constraint firstItem="v4J-11-l2o" firstAttribute="top" secondItem="Y7B-S8-gOS" secondAttribute="top" id="n40-zV-WuG"/>
                     </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="flipX" value="YES"/>
+                    </userDefinedRuntimeAttributes>
                 </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -114,4 +126,7 @@
             <point key="canvasLocation" x="129.59999999999999" y="152.47376311844079"/>
         </view>
     </objects>
+    <resources>
+        <image name="BackButton" width="512" height="512"/>
+    </resources>
 </document>
