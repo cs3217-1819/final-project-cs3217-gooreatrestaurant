@@ -112,6 +112,7 @@ class OrderQueue: SKSpriteNode {
         }
 
         recipeOrdered.remove(at: matchedOrder)
+        removeMenuPrefab(inNum: matchedOrder)
 
         if recipeOrdered.count < StageConstants.minNumbersOfOrdersShown {
             self.addRandomOrder()
