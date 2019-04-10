@@ -64,7 +64,6 @@ class OrderQueue: SKSpriteNode {
         guard let randomRecipe = self.generateRandomRecipe() else {
             return
         }
-        print(randomRecipe.ingredientsNeeded)
         self.addOrder(ofRecipe: randomRecipe)
     }
 
@@ -99,7 +98,7 @@ class OrderQueue: SKSpriteNode {
         recipeOrdered.remove(at: matchedOrder)
         nodeOrder[matchedOrder].removeFromParent()
 
-        if recipeOrdered.count < StageConstants.minNumbersOfOrdersShown {
+        if recipeOrdered.count < StageConstants.maxNumbersOfOrdersShown {
             self.addRandomOrder()
         }
 
