@@ -36,7 +36,7 @@
                             <rect key="frame" x="0.0" y="24" width="403" height="64"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To be implemented" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HZf-wb-23a" customClass="TextLabel" customModule="slime" customModuleProvider="target">
-                                    <rect key="frame" x="128.5" y="22" width="146.5" height="20.5"/>
+                                    <rect key="frame" x="94" y="15.5" width="215.5" height="33.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -165,10 +165,10 @@
                             </userDefinedRuntimeAttributes>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e1g-Hc-agg" customClass="XibView" customModule="slime" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
+                            <rect key="frame" x="8" y="8" width="40" height="40"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="viS-qx-PDx" customClass="TextLabel" customModule="slime" customModuleProvider="target">
-                                    <rect key="frame" x="20" y="14" width="8" height="20.5"/>
+                                    <rect key="frame" x="16" y="10" width="8" height="20.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -192,9 +192,9 @@
                         <constraint firstAttribute="bottom" secondItem="e1g-Hc-agg" secondAttribute="bottom" id="6jx-TM-yoq"/>
                         <constraint firstAttribute="height" constant="48" id="Aar-Na-nqg"/>
                         <constraint firstItem="1o0-XL-m0M" firstAttribute="leading" secondItem="e1g-Hc-agg" secondAttribute="trailing" constant="16" id="BXo-ZY-Yxh"/>
-                        <constraint firstItem="e1g-Hc-agg" firstAttribute="leading" secondItem="nAq-Bu-5m4" secondAttribute="leading" id="Mao-Ld-ftB"/>
+                        <constraint firstItem="e1g-Hc-agg" firstAttribute="leading" secondItem="nAq-Bu-5m4" secondAttribute="leading" constant="8" id="Mao-Ld-ftB"/>
                         <constraint firstAttribute="bottom" secondItem="1o0-XL-m0M" secondAttribute="bottom" id="OoM-Hi-3FO"/>
-                        <constraint firstItem="e1g-Hc-agg" firstAttribute="top" secondItem="nAq-Bu-5m4" secondAttribute="top" id="U5y-xt-dc6"/>
+                        <constraint firstItem="e1g-Hc-agg" firstAttribute="top" secondItem="nAq-Bu-5m4" secondAttribute="top" constant="8" id="U5y-xt-dc6"/>
                     </constraints>
                 </view>
             </subviews>

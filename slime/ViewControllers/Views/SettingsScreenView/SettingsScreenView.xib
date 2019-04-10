@@ -40,7 +40,7 @@
                     <nil key="highlightedColor"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="string" keyPath="style" value="h0"/>
-                        <userDefinedRuntimeAttribute type="string" keyPath="color" value="white8"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="color" value="white2"/>
                     </userDefinedRuntimeAttributes>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nyH-4q-C3N">

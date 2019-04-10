@@ -86,7 +86,7 @@ class JokesSlimesController: Controller {
         let height = view.dialogsView.frame.height
         let dialogView = UIView.initFromNib("DialogBoxView")
         let xOffset = isLeft ? 0 : width * 0.2
-        dialogView.frame = CGRect(x: xOffset, y: height, width: width * 0.8, height: 64)
+        dialogView.frame = CGRect(x: xOffset, y: height, width: width * 0.8, height: 48)
         dialogView.alpha = 0
         let controller = DialogBoxController(with: dialogView)
         controller.text = text

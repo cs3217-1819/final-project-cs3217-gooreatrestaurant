@@ -13,15 +13,25 @@ class Player: NSObject {
     var isHost = false
     var name: String
     var level: Int
+    var hat: String
+    var accessory: String
+    var color: SlimeColor
 
     init(name: String, level: Int) {
         self.name = name
         self.level = level
+        hat = "none"
+        accessory = "none"
+        color = .yellow
     }
 
     init(from model: RoomPlayerModel) {
         name = model.name
         level = 1
         isHost = model.isHost
+        hat = "none"
+        accessory = "none"
+        color = .yellow
     }
+    
 }

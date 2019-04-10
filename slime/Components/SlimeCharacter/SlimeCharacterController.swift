@@ -12,13 +12,13 @@ import RxSwift
 class SlimeCharacterController: Controller {
     private let disposeBag = DisposeBag()
     let view: SlimeCharacterView
-    private var character: BehaviorSubject<UserCharacter>?
+    private var character: Observable<UserCharacter>?
     
     init(withXib xibView: XibView) {
         view = xibView.getView()
     }
     
-    func bindTo(_ character: BehaviorSubject<UserCharacter>) {
+    func bindTo(_ character: Observable<UserCharacter>) {
         self.character = character
     }
     

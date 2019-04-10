@@ -21,6 +21,7 @@ class PlayerBoxController: Controller {
         self.view = trueView
 
         setupReactive()
+        setupCharacterView()
     }
 
     init(using view: XibView) {
@@ -43,7 +44,8 @@ class PlayerBoxController: Controller {
     }
 
     private func setConnected() {
-        view.backgroundColor = ColorStyles.getColor("pink4")
+        view.characterView.alpha = 1
+        view.backgroundColor = ColorStyles.getColor("pink6")
     }
 
     private func setName(_ name: String) {
@@ -55,18 +57,32 @@ class PlayerBoxController: Controller {
     }
 
     private func setHost(_ isHost: Bool) {
+        // TODO: put host
         if isHost {
-            view.hostCrownImageView.alpha = 1
+            view.hostView.alpha = 1
         } else {
-            view.hostCrownImageView.alpha = 0
+            view.hostView.alpha = 0
         }
     }
 
     private func setNotConnected() {
-        view.backgroundColor = ColorStyles.getColor("white4")
-        view.avatarImageView.image = ImageProvider.get("mc-slime-single")
+        view.backgroundColor = ColorStyles.getColor("white6")
+        view.characterView.alpha = 0
+        setHost(false)
         setName("Disconnected")
         view.levelLabel.text = ""
+    }
+    
+    private func setupCharacterView() {
+        let characterStream = player.flatMap { player -> Observable<UserCharacter> in
+            guard let character = player else {
+                return Observable.empty()
+            }
+            let userCharacter = UserCharacter(from: character)
+            return Observable.just(userCharacter)
+        }
+        let characterController = SlimeCharacterController(withXib: view.characterView)
+        characterController.bindTo(characterStream)
     }
 
     private func setupReactive() {
@@ -84,5 +100,7 @@ class PlayerBoxController: Controller {
                 self.setLevel(player.level)
                 self.setHost(player.isHost)
             }.disposed(by: disposeBag)
+        
+        
     }
 }
