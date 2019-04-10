@@ -12,6 +12,7 @@ enum PrimaryButtonColor {
     case purple
     case green
     case blue
+    case red
 
     static func from(string: String) -> PrimaryButtonColor? {
         switch(string) {
@@ -21,6 +22,8 @@ enum PrimaryButtonColor {
             return .green
         case "blue":
             return .blue
+        case "red":
+            return .red
         default:
             return nil
         }
@@ -34,6 +37,8 @@ enum PrimaryButtonColor {
             return ImageProvider.get("button-blue")
         case .green:
             return ImageProvider.get("button-green")
+        case .red:
+            return ImageProvider.get("button-red")
         }
     }
 }

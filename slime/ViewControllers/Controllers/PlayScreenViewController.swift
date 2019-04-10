@@ -53,7 +53,7 @@ class PlayScreenViewController: ViewController<PlayScreenView> {
     
     override func onDisappear() {
         super.onDisappear()
-        jokesController?.invalidateTimers()
+        jokesController?.invalidate()
         jokesController = nil
     }
 }

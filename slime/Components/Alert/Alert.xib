@@ -17,7 +17,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorem ipsum generator Lorem ipsum generator Lorem ipsum generator " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="neV-Gn-819" customClass="TextLabel" customModule="slime" customModuleProvider="target">
-                    <rect key="frame" x="36" y="58" width="423" height="43"/>
+                    <rect key="frame" x="36" y="58" width="423" height="41"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -27,13 +27,16 @@
                     </userDefinedRuntimeAttributes>
                 </label>
                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="S4y-iu-MNe">
-                    <rect key="frame" x="36" y="137" width="423" height="57"/>
+                    <rect key="frame" x="16" y="126" width="463" height="88"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="88" id="myy-wU-8cw"/>
+                    </constraints>
                 </stackView>
                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mvS-6u-ogM" customClass="DesignableView" customModule="slime" customModuleProvider="target">
                     <rect key="frame" x="36" y="-24" width="423" height="64"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pcd-Fj-J7o" customClass="TextLabel" customModule="slime" customModuleProvider="target">
-                            <rect key="frame" x="16" y="12" width="391" height="40"/>
+                            <rect key="frame" x="16" y="21.5" width="391" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -59,16 +62,16 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="neV-Gn-819" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="36" id="4ph-4M-rnY"/>
-                <constraint firstItem="S4y-iu-MNe" firstAttribute="top" secondItem="neV-Gn-819" secondAttribute="bottom" constant="36" id="5oN-iI-3G2"/>
+                <constraint firstItem="S4y-iu-MNe" firstAttribute="top" relation="greaterThanOrEqual" secondItem="neV-Gn-819" secondAttribute="bottom" constant="16" id="5oN-iI-3G2"/>
                 <constraint firstItem="mvS-6u-ogM" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="36" id="Lw0-Po-Suk"/>
                 <constraint firstItem="mvS-6u-ogM" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="-24" id="RkF-Ps-4zM"/>
-                <constraint firstItem="S4y-iu-MNe" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="36" id="Ygr-VS-LJS"/>
+                <constraint firstItem="S4y-iu-MNe" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="Ygr-VS-LJS"/>
                 <constraint firstItem="S4y-iu-MNe" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="byX-7k-AnQ"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="neV-Gn-819" secondAttribute="trailing" constant="36" id="g8I-lG-nUL"/>
                 <constraint firstItem="neV-Gn-819" firstAttribute="top" secondItem="mvS-6u-ogM" secondAttribute="bottom" constant="18" id="rpO-D2-R7x"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="mvS-6u-ogM" secondAttribute="trailing" constant="36" id="uPI-92-WZd"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="S4y-iu-MNe" secondAttribute="trailing" constant="36" id="uoc-6p-tiz"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="S4y-iu-MNe" secondAttribute="bottom" constant="36" id="wie-Ic-t8a"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="S4y-iu-MNe" secondAttribute="trailing" constant="16" id="uoc-6p-tiz"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="S4y-iu-MNe" secondAttribute="bottom" constant="16" id="wie-Ic-t8a"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>

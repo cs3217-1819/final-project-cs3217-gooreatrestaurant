@@ -154,6 +154,16 @@
 		EC6E99FB224F499400A9554C /* UserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6E99FA224F499400A9554C /* UserInfoView.swift */; };
 		EC6E99FD224F49FB00A9554C /* UserInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6E99FC224F49FB00A9554C /* UserInfoController.swift */; };
 		EC6E99FF224F4F0900A9554C /* DoubleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6E99FE224F4F0900A9554C /* DoubleExtension.swift */; };
+		EC7168CF225DD083004EF2B0 /* AudioMaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7168CE225DD083004EF2B0 /* AudioMaster.swift */; };
+		EC7168D4225DD281004EF2B0 /* menu-bgm.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EC7168D3225DD281004EF2B0 /* menu-bgm.mp3 */; };
+		EC7168DD225DD2A8004EF2B0 /* menu-bgm-alt.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EC7168DC225DD2A8004EF2B0 /* menu-bgm-alt.mp3 */; };
+		EC7168E4225DD3CF004EF2B0 /* gameover.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EC7168DE225DD3CE004EF2B0 /* gameover.mp3 */; };
+		EC7168E5225DD3CF004EF2B0 /* error.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EC7168DF225DD3CE004EF2B0 /* error.mp3 */; };
+		EC7168E6225DD3CF004EF2B0 /* success.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EC7168E0225DD3CE004EF2B0 /* success.mp3 */; };
+		EC7168E7225DD3CF004EF2B0 /* joinroom.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EC7168E1225DD3CE004EF2B0 /* joinroom.mp3 */; };
+		EC7168E8225DD3CF004EF2B0 /* leftroom.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EC7168E2225DD3CF004EF2B0 /* leftroom.mp3 */; };
+		EC7168E9225DD3CF004EF2B0 /* open.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EC7168E3225DD3CF004EF2B0 /* open.mp3 */; };
+		EC7168EB225DD571004EF2B0 /* bloop.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EC7168EA225DD571004EF2B0 /* bloop.mp3 */; };
 		EC7676BA225A4A4B00F6A450 /* RouterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7676B9225A4A4B00F6A450 /* RouterController.swift */; };
 		EC7676BD225A543900F6A450 /* CustomizationMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7676BC225A543900F6A450 /* CustomizationMainViewController.swift */; };
 		EC7676BF225B52CE00F6A450 /* CustomizationCosmeticView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC7676BE225B52CE00F6A450 /* CustomizationCosmeticView.xib */; };
@@ -383,6 +393,16 @@
 		EC6E99FA224F499400A9554C /* UserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoView.swift; sourceTree = "<group>"; };
 		EC6E99FC224F49FB00A9554C /* UserInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoController.swift; sourceTree = "<group>"; };
 		EC6E99FE224F4F0900A9554C /* DoubleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleExtension.swift; sourceTree = "<group>"; };
+		EC7168CE225DD083004EF2B0 /* AudioMaster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioMaster.swift; sourceTree = "<group>"; };
+		EC7168D3225DD281004EF2B0 /* menu-bgm.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "menu-bgm.mp3"; sourceTree = "<group>"; };
+		EC7168DC225DD2A8004EF2B0 /* menu-bgm-alt.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "menu-bgm-alt.mp3"; sourceTree = "<group>"; };
+		EC7168DE225DD3CE004EF2B0 /* gameover.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gameover.mp3; sourceTree = "<group>"; };
+		EC7168DF225DD3CE004EF2B0 /* error.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = error.mp3; sourceTree = "<group>"; };
+		EC7168E0225DD3CE004EF2B0 /* success.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = success.mp3; sourceTree = "<group>"; };
+		EC7168E1225DD3CE004EF2B0 /* joinroom.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = joinroom.mp3; sourceTree = "<group>"; };
+		EC7168E2225DD3CF004EF2B0 /* leftroom.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = leftroom.mp3; sourceTree = "<group>"; };
+		EC7168E3225DD3CF004EF2B0 /* open.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = open.mp3; sourceTree = "<group>"; };
+		EC7168EA225DD571004EF2B0 /* bloop.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bloop.mp3; sourceTree = "<group>"; };
 		EC7676B9225A4A4B00F6A450 /* RouterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterController.swift; sourceTree = "<group>"; };
 		EC7676BC225A543900F6A450 /* CustomizationMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizationMainViewController.swift; sourceTree = "<group>"; };
 		EC7676BE225B52CE00F6A450 /* CustomizationCosmeticView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomizationCosmeticView.xib; sourceTree = "<group>"; };
@@ -639,6 +659,7 @@
 		EC38241C2238803A000D7148 /* slime */ = {
 			isa = PBXGroup;
 			children = (
+				EC7168D0225DD25E004EF2B0 /* Sounds */,
 				F92ECAE0224BAE800040A4E2 /* Network */,
 				8BD816B42242643C00586180 /* Sprites */,
 				EC449B9C223BB9F900A8EA35 /* Models */,
@@ -727,6 +748,7 @@
 				EC81B7862254A09900B6F7EE /* TransitionConstants.swift */,
 				EC81B7882254A3A600B6F7EE /* KeyboardService.swift */,
 				EC1B44A7225D75B200CBE688 /* StringExtension.swift */,
+				EC7168CE225DD083004EF2B0 /* AudioMaster.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -948,6 +970,38 @@
 				EC6E99F8224F2DDB00A9554C /* ProgressBarController.swift */,
 			);
 			path = ProgressBar;
+			sourceTree = "<group>";
+		};
+		EC7168D0225DD25E004EF2B0 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				EC7168D5225DD286004EF2B0 /* SFX */,
+				EC7168D2225DD277004EF2B0 /* BGM */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
+		EC7168D2225DD277004EF2B0 /* BGM */ = {
+			isa = PBXGroup;
+			children = (
+				EC7168D3225DD281004EF2B0 /* menu-bgm.mp3 */,
+				EC7168DC225DD2A8004EF2B0 /* menu-bgm-alt.mp3 */,
+			);
+			path = BGM;
+			sourceTree = "<group>";
+		};
+		EC7168D5225DD286004EF2B0 /* SFX */ = {
+			isa = PBXGroup;
+			children = (
+				EC7168DF225DD3CE004EF2B0 /* error.mp3 */,
+				EC7168DE225DD3CE004EF2B0 /* gameover.mp3 */,
+				EC7168E1225DD3CE004EF2B0 /* joinroom.mp3 */,
+				EC7168E2225DD3CF004EF2B0 /* leftroom.mp3 */,
+				EC7168EA225DD571004EF2B0 /* bloop.mp3 */,
+				EC7168E3225DD3CF004EF2B0 /* open.mp3 */,
+				EC7168E0225DD3CE004EF2B0 /* success.mp3 */,
+			);
+			path = SFX;
 			sourceTree = "<group>";
 		};
 		EC7676B8225A4A3700F6A450 /* RouterView */ = {
@@ -1271,6 +1325,7 @@
 				EC4924F42248D616007B9797 /* RatingView.xib in Resources */,
 				EC38246B223A1803000D7148 /* Rubik-Regular.ttf in Resources */,
 				ECD24428224B0A9300767A56 /* SlimeNumberPadView.xib in Resources */,
+				EC7168E9225DD3CF004EF2B0 /* open.mp3 in Resources */,
 				EC449B75223B7E6300A8EA35 /* TitleScreenView.xib in Resources */,
 				EC21B40022420CA700827121 /* LevelPlayButton.xib in Resources */,
 				EC449B8B223BACD500A8EA35 /* StoryModeLevelSelectView.xib in Resources */,
@@ -1281,6 +1336,7 @@
 				EC57D2DE225C8B7B00F26808 /* SlimeCharacterView.xib in Resources */,
 				EC6E7558225A3A8000B9C7CF /* JokesSlimesView.xib in Resources */,
 				ECD4556C2240FBED006AF78D /* PlayerBox.xib in Resources */,
+				EC7168E4225DD3CF004EF2B0 /* gameover.mp3 in Resources */,
 				EC3824252238803D000D7148 /* Assets.xcassets in Resources */,
 				EC4924E42246163C007B9797 /* LevelPlaceView.xib in Resources */,
 				ECA66DC2223D5DD100D1D0BC /* CreditsScreenView.xib in Resources */,
@@ -1289,14 +1345,21 @@
 				EC449B9B223BB9EA00A8EA35 /* levels.json in Resources */,
 				EC382480223A2999000D7148 /* PlayMenuButton.xib in Resources */,
 				EC0E3168224F618B00AF1254 /* TextInputView.xib in Resources */,
+				EC7168E5225DD3CF004EF2B0 /* error.mp3 in Resources */,
+				EC7168E6225DD3CF004EF2B0 /* success.mp3 in Resources */,
 				ECF9876A2255C61700FE5577 /* CharacterCustomizationView.xib in Resources */,
 				EC7676C2225B542700F6A450 /* ItemBoxView.xib in Resources */,
 				8B81EFBC224344AD007BFDB0 /* Slime.atlas in Resources */,
 				EC382471223A1803000D7148 /* Rubik-MediumItalic.ttf in Resources */,
+				EC7168D4225DD281004EF2B0 /* menu-bgm.mp3 in Resources */,
 				ECD4557622411340006AF78D /* UpButton.xib in Resources */,
+				EC7168DD225DD2A8004EF2B0 /* menu-bgm-alt.mp3 in Resources */,
 				EC38243F223882C5000D7148 /* PrimaryButton.xib in Resources */,
+				EC7168E8225DD3CF004EF2B0 /* leftroom.mp3 in Resources */,
+				EC7168E7225DD3CF004EF2B0 /* joinroom.mp3 in Resources */,
 				8BFA63F02258B020007645F9 /* GameSong.mp3 in Resources */,
 				EC6E99F5224F2D1600A9554C /* ProgressBarView.xib in Resources */,
+				EC7168EB225DD571004EF2B0 /* bloop.mp3 in Resources */,
 				EC3824232238803A000D7148 /* Main.storyboard in Resources */,
 				EC6E99F2224F2BFE00A9554C /* UserInfoView.xib in Resources */,
 				EC38245F223A17F7000D7148 /* Squidgy Slimes.ttf in Resources */,
@@ -1548,6 +1611,7 @@
 				ECA66DBE223D2A1B00D1D0BC /* LevelPlaceController.swift in Sources */,
 				EC6E99F9224F2DDB00A9554C /* ProgressBarController.swift in Sources */,
 				EC6E99F7224F2DA200A9554C /* ProgressBarView.swift in Sources */,
+				EC7168CF225DD083004EF2B0 /* AudioMaster.swift in Sources */,
 				EC449B9E223BBA0300A8EA35 /* Level.swift in Sources */,
 				EC57D2E0225C8E5300F26808 /* SlimeCharacterController.swift in Sources */,
 				1D22029E224AB5850080CF7D /* CookingEquipment.swift in Sources */,

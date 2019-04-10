@@ -15,7 +15,7 @@ class JokesSlimesController: Controller {
     private var dialogBoxes: [DialogBoxController] = []
     private var jokes: [Joke] = []
     private var jokeIndex = 0
-    private var timer: Timer?
+    private var timers: [Timer] = []
     
     init(withXib xibView: XibView) {
         view = xibView.getView()
@@ -28,13 +28,24 @@ class JokesSlimesController: Controller {
     
     func configure() {
         setupCharacters()
-        Timer.scheduledTimer(withTimeInterval: 1, repeats: false, block: { _ in
+        time(withTimeInterval: 1, repeats: false, block: {
             self.performNextJoke()
             // Joke Interval
-            self.timer = Timer.scheduledTimer(withTimeInterval: 7, repeats: true, block: { _ in
+            self.time(withTimeInterval: 7, repeats: true, block: {
                 self.performNextJoke()
             })
         })
+    }
+    
+    private func time(withTimeInterval: TimeInterval, repeats: Bool, block: @escaping () -> ()) {
+        let timer = Timer.scheduledTimer(withTimeInterval: withTimeInterval, repeats: repeats, block: { _ in
+            block()
+        })
+        
+        timers.append(timer)
+        if timers.count > 10 {
+            timers.removeFirst()
+        }
     }
     
     private func setupCharacters() {
@@ -71,11 +82,11 @@ class JokesSlimesController: Controller {
         pushDialog(text: joke.question, isLeft: true)
         
         // Then, wait for the reply
-        Timer.scheduledTimer(withTimeInterval: 2, repeats: false, block: { _ in
+        time(withTimeInterval: 2, repeats: false, block: {
             self.pushDialog(text: joke.reply, isLeft: false)
             
             // Then, say the punchline
-            Timer.scheduledTimer(withTimeInterval: 2, repeats: false, block: { _ in
+            self.time(withTimeInterval: 2, repeats: false, block: {
                 self.pushDialog(text: joke.punchline, isLeft: true)
             })
         })
@@ -93,6 +104,7 @@ class JokesSlimesController: Controller {
         controller.configure()
         controller.setColor(isLeft ? "pink7" : "green7")
         controller.startAnimation(durationPerCharacter: 0.02)
+        AudioMaster.instance.playSFX(name: "bloop")
         dialogBoxes.append(controller)
         view.dialogsView.addSubview(dialogView)
         UIView.animate(withDuration: 0.3, animations: {
@@ -110,7 +122,12 @@ class JokesSlimesController: Controller {
     }
     
     // Important to call this, so the timers don't run, causing deinit to not be called
-    func invalidateTimers() {
-        timer?.invalidate()
+    func invalidate() {
+        timers.forEach { timer in
+            timer.invalidate()
+        }
+        timers = []
+        jokes = []
+        dialogBoxes = []
     }
 }

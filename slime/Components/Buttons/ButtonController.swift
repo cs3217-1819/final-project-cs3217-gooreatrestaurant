@@ -26,6 +26,7 @@ class ButtonController: Controller {
         view.rx.gesture(.tap())
             .when(.recognized)
             .subscribe { _ in
+                AudioMaster.instance.playSFX(name: "open")
                 callback()
         }.disposed(by: disposeBag)
     }

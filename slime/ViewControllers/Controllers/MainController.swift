@@ -35,6 +35,7 @@ class MainController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setBGM()
         context = Context(using: self)
         setupHideKeyboardOnTap()
     }
@@ -98,6 +99,10 @@ class MainController: UIViewController {
         }
     }
     
+    private func setBGM() {
+        AudioMaster.instance.playBGM(name: "menu-bgm")
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toMultiplayerGame" {
             let destination = segue.destination as! GameViewController
@@ -116,8 +121,6 @@ class MainController: UIViewController {
         if segue.identifier == "toMultiplayerGame" {
             // let destination = segue.destination as! GameViewController
             // let currentRoute = self.router.currentViewController as! LevelSelectViewController
-            
-            
         }
     }
 }
