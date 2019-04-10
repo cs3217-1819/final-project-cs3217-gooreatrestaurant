@@ -33,32 +33,61 @@ class GameDB: GameDatabase {
                 return
             }
 
-            // populate room object
-            let roomName = roomDict[FirebaseKeys.rooms_roomName] as? String ?? ""
-            let mapName = roomDict[FirebaseKeys.rooms_mapName] as? String ?? ""
-            let roomId = roomDict[FirebaseKeys.rooms_roomId] as? String ?? ""
-            let hasStarted = roomDict[FirebaseKeys.rooms_hasStarted] as? Bool ?? false
-            let isOpen = roomDict[FirebaseKeys.rooms_isOpen] as? Bool ?? false
-            let isGameCreated = roomDict[FirebaseKeys.rooms_isGameCreated] as? Bool ?? false
-            let players = roomDict[FirebaseKeys.rooms_players] as? [String: AnyObject] ?? [:]
-
-            let roomRes = RoomModel(name: roomName, map: mapName, id: roomId, hasStarted: hasStarted, gameIsCreated: isGameCreated, isOpen: isOpen)
-
-            for (playerUid, playerDescription) in players {
-                let isHost = playerDescription[FirebaseKeys.rooms_players_isHost] as? Bool ?? false
-                let isReady = playerDescription[FirebaseKeys.rooms_players_isReady] as? Bool ?? false
-
-                let player = RoomPlayerModel(uid: playerUid, isHost: isHost, isReady: isReady)
-
-                roomRes.addPlayer(player)
-            }
-
-            onDataChange(roomRes)
+            onDataChange(self.firebaseRoomModelFactory(forDict: roomDict))
         }) { (err) in
             onError(err)
         }
 
         self.observers.append(Observer(withHandle: handle, withRef: ref))
+    }
+    
+    /// factory function to create
+    /// a RoomModel object from a firebase dictionary
+    /// - Parameters:
+    ///     - forDict: the dictionary fetched from
+    ///       Firebase
+    /// - Returns:
+    ///     - a RoomModel object
+    private func firebaseRoomModelFactory(forDict roomDict: [String : AnyObject]) -> RoomModel {
+        // populate room object
+        let roomName = roomDict[FirebaseKeys.rooms_roomName] as? String ?? ""
+        let mapName = roomDict[FirebaseKeys.rooms_mapName] as? String ?? ""
+        let roomId = roomDict[FirebaseKeys.rooms_roomId] as? String ?? ""
+        let hasStarted = roomDict[FirebaseKeys.rooms_hasStarted] as? Bool ?? false
+        let isOpen = roomDict[FirebaseKeys.rooms_isOpen] as? Bool ?? false
+        let isGameCreated = roomDict[FirebaseKeys.rooms_isGameCreated] as? Bool ?? false
+        let players = roomDict[FirebaseKeys.rooms_players] as? [String: AnyObject] ?? [:]
+        
+        let roomRes = RoomModel(name: roomName, map: mapName, id: roomId, hasStarted: hasStarted, gameIsCreated: isGameCreated, isOpen: isOpen)
+        
+        for (playerUid, playerDescription) in players {
+            roomRes.addPlayer(self.firebaseRoomPlayerModelFactory(forUid: playerUid, forDescription: playerDescription))
+        }
+        
+        return roomRes
+    }
+    
+    /// factory function for RoomPlayer
+    /// from a dictionary and player's uid
+    /// - Parameters:
+    ///     - forUid: the player's uid
+    ///     - forDescription: the player's details
+    /// - Returns:
+    ///     - a RoomPlayerModel object
+    private func firebaseRoomPlayerModelFactory(forUid uid: String, forDescription playerDescription: AnyObject) -> RoomPlayerModel {
+        guard let description = playerDescription as? [String : AnyObject] else {
+            return RoomPlayerModel(uid: uid, isHost: false, isReady: false)
+        }
+        
+        let isHost = description[FirebaseKeys.rooms_players_isHost] as? Bool ?? false
+        let isReady = description[FirebaseKeys.rooms_players_isReady] as? Bool ?? false
+        let level = description[FirebaseKeys.rooms_players_level] as? Int ?? 1
+        let name = description[FirebaseKeys.rooms_players_name] as? String ?? "Generic Slime"
+        let hat = description[FirebaseKeys.rooms_players_hat] as? String ?? "none"
+        let accessory = description[FirebaseKeys.rooms_players_accessory] as? String ?? "none"
+        let color = description[FirebaseKeys.rooms_players_color] as? String ?? "green"
+        
+        return RoomPlayerModel(uid: uid, isHost: isHost, isReady: isReady, name: name, color: color, hat: hat, accessory: accessory, level: level)
     }
 
     func joinRoom(forRoomId id: String, _ onSuccess: @escaping () -> Void, _ onRoomFull: @escaping () -> Void, _ onRoomNotExist: @escaping () -> Void, _ onGameHasStarted: @escaping () -> Void, _ onError: @escaping (Error) -> Void) {
@@ -101,20 +130,23 @@ class GameDB: GameDatabase {
                 return
             }
 
-            let newPlayerDict = self.createRoomPlayerDict(isHost: false, uid: user.uid)
-            let currentUserRef = ref.child(FirebaseKeys.joinKeys([FirebaseKeys.rooms_players, user.uid]))
-
-            currentUserRef.setValue(newPlayerDict[user.uid], withCompletionBlock: { (err, _) in
-                if let error = err {
-                    onError(error)
-                    return
-                }
-
-                // set disconnect flag, remove player from room
-                currentUserRef.onDisconnectRemoveValue()
-                // TODO: add disconnect ref to list of observers
-
-                onSuccess()
+            self.createRoomPlayerDict(isHost: false, uid: user.uid, { (dict) in
+                let currentUserRef = ref.child(FirebaseKeys.joinKeys([FirebaseKeys.rooms_players, user.uid]))
+                
+                currentUserRef.setValue(dict[user.uid], withCompletionBlock: { (err, _) in
+                    if let error = err {
+                        onError(error)
+                        return
+                    }
+                    
+                    // set disconnect flag, remove player from room
+                    currentUserRef.onDisconnectRemoveValue()
+                    // TODO: add disconnect ref to list of observers
+                    
+                    onSuccess()
+                })
+            }, { (err) in
+                onError(err)
             })
         }) { (err) in
             onError(err)
@@ -128,11 +160,20 @@ class GameDB: GameDatabase {
     ///     - isHost: whether user is host
     ///     - uid: the uid of the user
     /// - Returns: a dictinoary ready to be inserted
-    private func createRoomPlayerDict(isHost: Bool, uid: String) -> [String : AnyObject] {
-        let newPlayerDescriptionDict: [String : AnyObject] = [FirebaseKeys.rooms_players_isHost: isHost as AnyObject,
-            FirebaseKeys.rooms_players_isReady: isHost as AnyObject]
+    private func createRoomPlayerDict(isHost: Bool, uid: String, _ onComplete: @escaping ([String : AnyObject]) -> Void, _ onError: @escaping (Error) -> Void) {
+        self.getUserData({ (user) in
+            let newPlayerDescriptionDict: [String : AnyObject] = [FirebaseKeys.rooms_players_isHost: isHost as AnyObject,
+                FirebaseKeys.rooms_players_isReady: isHost as AnyObject,
+                FirebaseKeys.rooms_players_name: user.name as AnyObject,
+                FirebaseKeys.rooms_players_level: user.level as AnyObject,
+                FirebaseKeys.rooms_players_color: user.color as AnyObject,
+                FirebaseKeys.rooms_players_hat: user.hat as AnyObject,
+                FirebaseKeys.rooms_players_accessory: user.accessory as AnyObject]
 
-        return [uid : newPlayerDescriptionDict as AnyObject]
+            onComplete([uid : newPlayerDescriptionDict as AnyObject])
+        }) { (err) in
+            onError(err)
+        }
     }
 
     func changeRoomOpenState(forRoomId id: String, _ onError: @escaping (Error) -> Void) {
@@ -146,6 +187,7 @@ class GameDB: GameDatabase {
             ref.setValue(!isOpen, withCompletionBlock: { (err, _) in
                 if let error = err {
                     onError(error)
+                    return
                 }
             })
         }
@@ -166,6 +208,7 @@ class GameDB: GameDatabase {
             ref.setValue(!isReady, withCompletionBlock: { (err, _) in
                 if let error = err {
                     onError(error)
+                    return
                 }
             })
         }) { (err) in
@@ -188,10 +231,10 @@ class GameDB: GameDatabase {
     func createRoom(withRoomName name: String, withMap map: String, _ onSuccess: @escaping (String) -> Void, _ onError: @escaping (Error) -> Void) {
         let roomId = generateRandomId()
 
-        guard let user = Auth.auth().currentUser else {
+        guard let user = GameAuth.currentUser else {
             return
         }
-
+        
         let ref = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.rooms, roomId]))
 
         ref.observeSingleEvent(of: .value, with: { (snap) in
@@ -202,33 +245,34 @@ class GameDB: GameDatabase {
                 }, { (err) in
                     onError(err)
                 })
-
-                return
             }
-
-            var roomDict: [String: AnyObject] = [:]
-            let playerDict: [String: AnyObject] = self.createRoomPlayerDict(isHost: true, uid: user.uid)
-
-            // populates dictionary to fit the db
-            roomDict.updateValue(name as AnyObject, forKey: FirebaseKeys.rooms_roomName)
-            roomDict.updateValue(map as AnyObject, forKey: FirebaseKeys.rooms_mapName)
-            roomDict.updateValue(roomId as AnyObject, forKey: FirebaseKeys.rooms_roomId)
-            roomDict.updateValue(false as AnyObject, forKey: FirebaseKeys.rooms_hasStarted)
-            roomDict.updateValue(false as AnyObject, forKey: FirebaseKeys.rooms_isGameCreated)
-            roomDict.updateValue(false as AnyObject, forKey: FirebaseKeys.rooms_isOpen)
-            roomDict.updateValue(playerDict as AnyObject, forKey: FirebaseKeys.rooms_players)
-
-            ref.setValue(roomDict, withCompletionBlock: { (err, ref) in
-                if let error = err {
-                    onError(error)
-                    return
-                }
-
-                // closes room on disconnect
-                ref.onDisconnectRemoveValue()
-                // TODO: add ref to disconnect list
-
-                onSuccess(roomId)
+            
+            self.createRoomPlayerDict(isHost: true, uid: user.uid, { (dict) in
+                var roomDict: [String: AnyObject] = [:]
+                
+                // populates dictionary to fit the db
+                roomDict.updateValue(name as AnyObject, forKey: FirebaseKeys.rooms_roomName)
+                roomDict.updateValue(map as AnyObject, forKey: FirebaseKeys.rooms_mapName)
+                roomDict.updateValue(roomId as AnyObject, forKey: FirebaseKeys.rooms_roomId)
+                roomDict.updateValue(false as AnyObject, forKey: FirebaseKeys.rooms_hasStarted)
+                roomDict.updateValue(false as AnyObject, forKey: FirebaseKeys.rooms_isGameCreated)
+                roomDict.updateValue(false as AnyObject, forKey: FirebaseKeys.rooms_isOpen)
+                roomDict.updateValue(dict as AnyObject, forKey: FirebaseKeys.rooms_players)
+                
+                ref.setValue(roomDict, withCompletionBlock: { (err, ref) in
+                    if let error = err {
+                        onError(error)
+                        return
+                    }
+                    
+                    // closes room on disconnect
+                    ref.onDisconnectRemoveValue()
+                    // TODO: add ref to disconnect list
+                    
+                    onSuccess(roomId)
+                })
+            }, { (err) in
+                onError(err)
             })
         }) { (err) in
             onError(err)
@@ -529,6 +573,7 @@ class GameDB: GameDatabase {
         ref.setValue(dict) { (err, ref) in
             if let error = err {
                 onError(error)
+                return
             }
 
             disconnectRef.onDisconnectSetValue(false)
@@ -550,12 +595,14 @@ class GameDB: GameDatabase {
         refX.setValue(position.x) { (err, ref) in
             if let error = err {
                 onError(error)
+                return
             }
         }
 
         refY.setValue(position.y) { (err, ref) in
             if let error = err {
                 onError(error)
+                return
             }
         }
     }
@@ -571,6 +618,7 @@ class GameDB: GameDatabase {
         ref.child(key).setValue(dict) { (err, _) in
             if let error = err {
                 onError(error)
+                return
             }
 
             onComplete()
@@ -609,6 +657,7 @@ class GameDB: GameDatabase {
         ref.setValue(nil) { (err, _) in
             if let error = err {
                 onError(error)
+                return
             }
 
             onComplete()
@@ -621,6 +670,7 @@ class GameDB: GameDatabase {
         ref.setValue(mapId) { (err, _) in
             if let error = err {
                 onError(error)
+                return
             }
         }
     }
@@ -792,6 +842,23 @@ class GameDB: GameDatabase {
 
         return GameOrderModel(id: dict.key, name: name, issueTime: issueTime, timeLimit: timeLimit)
     }
+    
+    func addScoreToLeaderBoard(forType type: GameTypes, withName name: String, score: Int, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void) {
+        let ref = dbRef.child(FirebaseKeys.scores)
+        
+        guard let key = ref.childByAutoId().key else { return }
+        
+        let scoreDict = [FirebaseKeys.scores_name: name, FirebaseKeys.scores_score: score] as [String : AnyObject]
+        
+        ref.child(key).setValue(scoreDict) { (err, ref) in
+            if let error = err {
+                onError(error)
+                return
+            }
+            
+            onComplete()
+        }
+    }
 
     func checkRejoinGame(_ onGameExist: @escaping (String) -> Void, _ onError: @escaping (Error) -> Void) {
         guard let user = GameAuth.currentUser else {
@@ -821,16 +888,102 @@ class GameDB: GameDatabase {
         rejoinRef.setValue(nil) { (err, ref) in
             if let error = err {
                 onError(error)
+                return
             }
 
             connectedRef.setValue(true, withCompletionBlock: { (err, ref) in
                 if let error = err {
                     onError(error)
+                    return
                 }
 
                 onSuccess()
             })
         }
+    }
+    
+    func updateUserOutfit(withAccessory accessory: String, withHat hat: String, withColor color: String, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void) {
+        guard let user = GameAuth.currentUser else {
+            return
+        }
+        
+        let ref = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.users, user.uid]))
+        
+        let dict = [FirebaseKeys.users_accessory: accessory,
+                                          FirebaseKeys.users_hat: hat,
+        FirebaseKeys.users_color: color] as [String : AnyObject]
+        
+        ref.setValue(dict) { (err, ref) in
+            if let error = err {
+                onError(error)
+                return
+            }
+            
+            onComplete()
+        }
+    }
+    
+    func updateUserNmae(withName name: String, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void) {
+        guard let user = GameAuth.currentUser else {
+            return
+        }
+        
+        let ref = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.users, user.uid, FirebaseKeys.users_name]))
+        
+        ref.setValue(name) { (err, ref) in
+            if let error = err {
+                onError(error)
+                return
+            }
+            
+            onComplete()
+        }
+    }
+    
+    func updateUserLevel(withLevel level: Int, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void) {
+        guard let user = GameAuth.currentUser else {
+            return
+        }
+        
+        let ref = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.users, user.uid, FirebaseKeys.users_level]))
+        
+        ref.setValue(level) { (err, ref) in
+            if let error = err {
+                onError(error)
+                return
+            }
+            
+            onComplete()
+        }
+    }
+    
+    func getUserData(_ onSuccess: @escaping (UserModel) -> Void, _ onError: @escaping (Error) -> Void) {
+        guard let user = GameAuth.currentUser else {
+            return
+        }
+        
+        let ref = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.users, user.uid]))
+        
+        ref.observeSingleEvent(of: .value, with: { (snap) in
+            if let userDict = snap.value as? [String : AnyObject] {
+                onSuccess(self.firebaseUserModelFactory(forDict: userDict))
+                return
+            }
+            
+            onSuccess(self.firebaseUserModelFactory(forDict: [:]))
+        }) { (err) in
+            onError(err)
+        }
+    }
+    
+    private func firebaseUserModelFactory(forDict dict: [String : AnyObject]) -> UserModel {
+        let name = dict[FirebaseKeys.users_name] as? String ?? "Generic Slime"
+        let hat = dict[FirebaseKeys.users_hat] as? String ?? "none"
+        let accessory = dict[FirebaseKeys.users_accessory] as? String ?? "none"
+        let color = dict[FirebaseKeys.users_hat] as? String ?? "green"
+        let level = dict[FirebaseKeys.users_level] as? Int ?? 1
+        
+        return UserModel(name: name, level: level, hat: hat, accessory: accessory, color: color)
     }
 
     func removeAllObservers() {
@@ -864,6 +1017,11 @@ struct Observer {
     }
 }
 
+enum GameTypes {
+    case single
+    case multiplayer
+}
+
 struct FirebaseSystemValues {
     // game values
     static let games_stations_fryingEquipment = "frying_equipment"
@@ -882,6 +1040,14 @@ struct FirebaseSystemValues {
  the keys are in the JSON tree.
  */
 struct FirebaseKeys {
+    // user keys
+    static let users = "users"
+    static let users_name = "name"
+    static let users_color = "color"
+    static let users_hat = "hat"
+    static let users_accessory = "accessory"
+    static let users_level = "level"
+    
     // room keys
     static let rooms = "rooms"
     static let rooms_roomName = "room_name"
@@ -893,6 +1059,11 @@ struct FirebaseKeys {
     static let rooms_players = "players"
     static let rooms_players_isReady = "is_ready"
     static let rooms_players_isHost = "is_host"
+    static let rooms_players_name = "name"
+    static let rooms_players_level = "level"
+    static let rooms_players_hat = "hat"
+    static let rooms_players_color = "color"
+    static let rooms_players_accessory = "accessory"
 
     // game keys
     static let games = "games"
@@ -921,6 +1092,11 @@ struct FirebaseKeys {
     static let games_announcements = "announcements"
     static let games_announcements_issueTime = "issue_time"
     static let games_announcements_message = "message"
+    
+    // leaderboard stuff
+    static let scores = "scores"
+    static let scores_name = "scores_name"
+    static let scores_score = "scores_score"
 
     // rejoin keys
     static let rejoins = "rejoins"
