@@ -40,7 +40,7 @@ class TextLabel: UILabel {
             let strokeTextAttributes : [NSAttributedString.Key : Any] = [
                 NSAttributedString.Key.strokeColor : strokeColor,
                 NSAttributedString.Key.strokeWidth : -strokeWidth,
-                ] as [NSAttributedString.Key  : Any]
+            ] as [NSAttributedString.Key  : Any]
             
             guard let labelText = text else {
                 return

@@ -17,30 +17,26 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="QZ0-c8-Fjf">
-                    <rect key="frame" x="390" y="32" width="406" height="311"/>
+                    <rect key="frame" x="390" y="87.5" width="406" height="200"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iCg-n1-ekM" customClass="XibView" customModule="slime" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="0.0" width="406" height="93"/>
+                            <rect key="frame" x="0.0" y="0.0" width="406" height="92"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="string" keyPath="nibName" value="PlayMenuButton"/>
                             </userDefinedRuntimeAttributes>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SYn-WI-1xS" customClass="XibView" customModule="slime" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="109" width="406" height="93"/>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="string" keyPath="nibName" value="PlayMenuButton"/>
-                            </userDefinedRuntimeAttributes>
-                        </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hNF-75-3D6" customClass="XibView" customModule="slime" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="218" width="406" height="93"/>
+                            <rect key="frame" x="0.0" y="108" width="406" height="92"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="string" keyPath="nibName" value="PlayMenuButton"/>
                             </userDefinedRuntimeAttributes>
                         </view>
                     </subviews>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="200" id="iVK-i1-Brg"/>
+                    </constraints>
                 </stackView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Eov-Lr-sX1" customClass="XibView" customModule="slime" customModuleProvider="target">
                     <rect key="frame" x="32" y="0.0" width="326" height="343"/>
@@ -52,10 +48,9 @@
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="aJ2-WX-WML" firstAttribute="bottom" secondItem="QZ0-c8-Fjf" secondAttribute="bottom" constant="32" id="0l0-SC-ifO"/>
                 <constraint firstItem="aJ2-WX-WML" firstAttribute="trailing" secondItem="QZ0-c8-Fjf" secondAttribute="trailing" constant="16" id="BfK-9Z-BbN"/>
                 <constraint firstItem="Eov-Lr-sX1" firstAttribute="leading" secondItem="aJ2-WX-WML" secondAttribute="leading" constant="32" id="HsW-e4-BJD"/>
-                <constraint firstItem="QZ0-c8-Fjf" firstAttribute="top" secondItem="aJ2-WX-WML" secondAttribute="top" constant="32" id="bsy-nL-J7J"/>
+                <constraint firstItem="QZ0-c8-Fjf" firstAttribute="centerY" secondItem="bsa-T1-aM9" secondAttribute="centerY" id="WmY-Kx-iPo"/>
                 <constraint firstItem="Eov-Lr-sX1" firstAttribute="top" secondItem="aJ2-WX-WML" secondAttribute="top" id="fWt-l2-DU1"/>
                 <constraint firstItem="QZ0-c8-Fjf" firstAttribute="leading" secondItem="Eov-Lr-sX1" secondAttribute="trailing" constant="32" id="mOj-ib-yIZ"/>
                 <constraint firstItem="QZ0-c8-Fjf" firstAttribute="width" secondItem="bsa-T1-aM9" secondAttribute="width" multiplier="0.5" id="qoJ-lz-PqI"/>
@@ -65,7 +60,6 @@
             <viewLayoutGuide key="safeArea" id="aJ2-WX-WML"/>
             <connections>
                 <outlet property="jokesSlimeView" destination="Eov-Lr-sX1" id="rSY-C3-8Jb"/>
-                <outlet property="levelEditorButton" destination="hNF-75-3D6" id="1SF-UC-pHn"/>
                 <outlet property="multiplayerButton" destination="SYn-WI-1xS" id="56K-Fk-1BX"/>
                 <outlet property="singlePlayerButton" destination="iCg-n1-ekM" id="Noc-Ia-dIL"/>
             </connections>

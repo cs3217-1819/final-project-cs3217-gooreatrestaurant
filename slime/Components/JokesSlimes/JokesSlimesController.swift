@@ -92,13 +92,12 @@ class JokesSlimesController: Controller {
         controller.text = text
         controller.configure()
         controller.setColor(isLeft ? "pink7" : "green7")
-        controller.startAnimation(duration: 0.6)
+        controller.startAnimation(durationPerCharacter: 0.02)
         dialogBoxes.append(controller)
         view.dialogsView.addSubview(dialogView)
         UIView.animate(withDuration: 0.3, animations: {
             for (i, dialogBox) in self.dialogBoxes.enumerated() {
                 let offsetFromBottom = self.dialogBoxes.count - i - 1
-                print(offsetFromBottom)
                 dialogBox.view.alpha = 1.0 - CGFloat(offsetFromBottom) * 0.15
                 dialogBox.view.frame = dialogBox.view.frame.offsetBy(dx: 0, dy: -dialogView.frame.height - 8)
             }

@@ -30,6 +30,21 @@ class DialogBoxController: Controller {
         view.backgroundView.background = colorCode
     }
     
+    func startAnimation(durationPerCharacter: Double) {
+        // Find out how long each character should take
+        Observable<Int>
+            .interval(durationPerCharacter, scheduler: MainScheduler.instance)
+            .subscribe { event in
+                guard let index = event.element else {
+                    return
+                }
+                if index > self.text.count {
+                    return
+                }
+                self.dialogText.onNext(String(self.text[0..<index]))
+            }.disposed(by: disposeBag)
+    }
+    
     func startAnimation(duration: Double) {
         // Find out how long each character should take
         let charDuration = duration / Double(text.count)

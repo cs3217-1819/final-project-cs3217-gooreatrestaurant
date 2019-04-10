@@ -12,36 +12,15 @@ class LevelSelectViewController: ViewController<LevelSelectView> {
     private var storyModeController: StoryModeLevelSelectController?
 
     override func configureSubviews() {
-        setupButtons()
         setupStoryModeView()
         configureUpButtonAsPrevious()
     }
 
     func setupStoryModeView() {
-        view.storyButton.color = "white1"
         let storyModeView = UIView.initFromNib("StoryModeLevelSelectView")
         storyModeController = StoryModeLevelSelectController(with: storyModeView)
         storyModeController?.use(context: context)
         view.childView.addSubview(storyModeView)
         storyModeController?.configureSubviews()
-    }
-
-    func setupButtons() {
-        let storyButtonController = ButtonController(using: view.storyButton)
-        storyButtonController.onTap {
-            print("To story mode")
-        }
-        let customButtonController = ButtonController(using: view.customButton)
-        customButtonController.onTap {
-            let alert = self.context.modal.createAlert()
-                .setTitle("Uh-oh!")
-                .setDescription("We will implement this soon(TM)")
-                .addAction(AlertAction(with: "OK"))
-            self.context.modal.presentUnimportantAlert(alert)
-        }
-        rememberAll([
-            storyButtonController,
-            customButtonController
-        ])
     }
 }

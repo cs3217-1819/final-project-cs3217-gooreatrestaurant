@@ -10,6 +10,4 @@ import UIKit
 
 class LevelSelectView: UIView {
     @IBOutlet var childView: UIView!
-    @IBOutlet var storyButton: TextLabel!
-    @IBOutlet var customButton: TextLabel!
 }
