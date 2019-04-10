@@ -205,6 +205,8 @@ protocol GameDatabase {
     ///     - onError: an closure block run when an error
     ///       occurs
     func submitOrder(forGameId id: String, withRecipe recipe: Recipe, _ onComplete: @escaping (String?) -> Void, _ onError: @escaping (Error) -> Void)
+    
+    func addScore(by score: Int, forGameId id: String, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void)
 
     /// removes an order from the current list of orders
     /// wtih a specified key
