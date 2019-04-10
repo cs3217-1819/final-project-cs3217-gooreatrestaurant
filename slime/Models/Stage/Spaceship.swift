@@ -83,11 +83,8 @@ class Spaceship: SKSpriteNode {
 
     func addIngredientStorage(withDetails details: [(type: String, position: String)]) {
         for ingredientData in details {
-            guard let ingredientEnum = Int(ingredientData.type) else {
-                continue
-            }
 
-            guard let ingredientType = IngredientType(rawValue: ingredientEnum) else {
+            guard let ingredientType = IngredientType(rawValue: ingredientData.type) else {
                 continue
             }
             let storage = IngredientStorage(ofType: ingredientType, inPosition: NSCoder.cgPoint(for: ingredientData.position))

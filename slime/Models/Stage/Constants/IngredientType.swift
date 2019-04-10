@@ -6,8 +6,8 @@
 //  Copyright © 2019 nus.cs3217.a0166733y. All rights reserved.
 //
 
-enum IngredientType: Int {
-    case junk = 0
+enum IngredientType: String, Codable {
+    case junk
     case apple
     case dough
 }

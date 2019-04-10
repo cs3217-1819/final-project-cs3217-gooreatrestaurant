@@ -6,8 +6,8 @@
 //  Copyright © 2019 nus.cs3217.a0166733y. All rights reserved.
 //
 
-enum CookingType: Int {
-    case notProcessed = 0
+enum CookingType: String, Codable {
+    case notProcessed
     case baking
     case chopping
     case frying
