@@ -30,4 +30,8 @@ class AlertAction {
     convenience init(with label: String) {
         self.init(with: label, callback: {})
     }
+    
+    convenience init(with label: String, of type: ActionType) {
+        self.init(with: label, callback: {}, of: type)
+    }
 }

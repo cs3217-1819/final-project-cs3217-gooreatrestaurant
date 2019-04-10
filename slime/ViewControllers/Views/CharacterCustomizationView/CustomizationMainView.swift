@@ -14,5 +14,6 @@ class CustomizationMainView: UIView {
     @IBOutlet var nameLabel: TextLabel!
     @IBOutlet var hatButton: UIView!
     @IBOutlet var accessoryButton: UIView!
-    
+    @IBOutlet var hatImageView: UIImageView!
+    @IBOutlet var accessoryImageView: UIImageView!
 }

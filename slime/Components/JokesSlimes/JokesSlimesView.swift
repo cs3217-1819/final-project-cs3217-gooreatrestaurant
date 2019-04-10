@@ -9,5 +9,7 @@
 import UIKit
 
 class JokesSlimesView: UIView {
-
+    @IBOutlet var leftCharacterView: XibView!
+    @IBOutlet var rightCharacterView: XibView!
+    @IBOutlet var dialogsView: UIView!
 }

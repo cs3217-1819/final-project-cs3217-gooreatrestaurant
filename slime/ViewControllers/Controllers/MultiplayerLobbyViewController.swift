@@ -35,6 +35,7 @@ class MultiplayerLobbyViewController: ViewController<MultiplayerLobbyView> {
     }
 
     private func setupPlayers(forPlayers players: [RoomPlayerModel]) {
+        AudioMaster.instance.playSFX(name: "joinroom")
         let playerCount = players.count
         for i in 0..<playerViews.count {
             if i >= playerCount {
@@ -66,8 +67,6 @@ class MultiplayerLobbyViewController: ViewController<MultiplayerLobbyView> {
                 self.context.db.removeAllObservers()
 
                 // TODO: route to game room
-
-
                 return
             }
 
@@ -78,6 +77,7 @@ class MultiplayerLobbyViewController: ViewController<MultiplayerLobbyView> {
         }, {
             // room has been closed by host or
             // host left the room
+            AudioMaster.instance.playSFX(name: "error")
             self.setErrorAlert(withDescription: "The host has left the room...")
             self.presentActiveAlert(dismissible: true)
             self.context.routeTo(.MultiplayerScreen)
@@ -160,7 +160,7 @@ class MultiplayerLobbyViewController: ViewController<MultiplayerLobbyView> {
             .setTitle("Warning!!")
             .setDescription(description)
             .addAction(AlertAction(with: "CANCEL"))
-            .addAction(AlertAction(with: "OK", callback: withOkCallback))
+            .addAction(AlertAction(with: "OK", callback: withOkCallback, of: .Success))
     }
 
     private func setErrorAlert(withDescription description: String) {
