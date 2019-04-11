@@ -43,9 +43,6 @@
 		8BEDCD45224F3EC900E24A20 /* MenuPrefab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEDCD44224F3EC900E24A20 /* MenuPrefab.swift */; };
 		8BEDCD4B22531CDF00E24A20 /* IngredientsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEDCD4A22531CDF00E24A20 /* IngredientsCell.swift */; };
 		8BFA63E92257D7FE007645F9 /* GameOverPrefab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFA63E82257D7FE007645F9 /* GameOverPrefab.swift */; };
-		8BFA63EC22589DAF007645F9 /* AudioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFA63EB22589DAF007645F9 /* AudioController.swift */; };
-		8BFA63F02258B020007645F9 /* GameSong.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8BFA63EE2258B020007645F9 /* GameSong.mp3 */; };
-		8BFA63F12258B020007645F9 /* MainScreen.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8BFA63EF2258B020007645F9 /* MainScreen.wav */; };
 		EC0E3163224F610300AF1254 /* CharacterCreationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC0E3162224F610300AF1254 /* CharacterCreationView.xib */; };
 		EC0E3165224F611200AF1254 /* CharacterCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0E3164224F611200AF1254 /* CharacterCreationView.swift */; };
 		EC0E3168224F618B00AF1254 /* TextInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC0E3167224F618B00AF1254 /* TextInputView.xib */; };
@@ -279,9 +276,6 @@
 		8BEDCD44224F3EC900E24A20 /* MenuPrefab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuPrefab.swift; sourceTree = "<group>"; };
 		8BEDCD4A22531CDF00E24A20 /* IngredientsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsCell.swift; sourceTree = "<group>"; };
 		8BFA63E82257D7FE007645F9 /* GameOverPrefab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverPrefab.swift; sourceTree = "<group>"; };
-		8BFA63EB22589DAF007645F9 /* AudioController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioController.swift; sourceTree = "<group>"; };
-		8BFA63EE2258B020007645F9 /* GameSong.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = GameSong.mp3; sourceTree = "<group>"; };
-		8BFA63EF2258B020007645F9 /* MainScreen.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = MainScreen.wav; sourceTree = "<group>"; };
 		E57ABF11D0AB607CF6EFB250 /* Pods-slimeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-slimeTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-slimeTests/Pods-slimeTests.debug.xcconfig"; sourceTree = "<group>"; };
 		EC0E3162224F610300AF1254 /* CharacterCreationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharacterCreationView.xib; sourceTree = "<group>"; };
 		EC0E3164224F611200AF1254 /* CharacterCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCreationView.swift; sourceTree = "<group>"; };
@@ -573,16 +567,6 @@
 			path = Sprites;
 			sourceTree = "<group>";
 		};
-		8BFA63EA22589D9B007645F9 /* Audio */ = {
-			isa = PBXGroup;
-			children = (
-				8BFA63EF2258B020007645F9 /* MainScreen.wav */,
-				8BFA63EE2258B020007645F9 /* GameSong.mp3 */,
-				8BFA63EB22589DAF007645F9 /* AudioController.swift */,
-			);
-			path = Audio;
-			sourceTree = "<group>";
-		};
 		9D97D2CF411721F4E3DFD156 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -700,7 +684,6 @@
 				EC7676C0225B541E00F6A450 /* ItemBox */,
 				EC7676B8225A4A3700F6A450 /* RouterView */,
 				EC6E7556225A3A6300B9C7CF /* JokesSlimes */,
-				8BFA63EA22589D9B007645F9 /* Audio */,
 				EC0E316F2252073500AF1254 /* ItemSelector */,
 				EC0E3166224F617D00AF1254 /* TextInput */,
 				EC6E99F3224F2D0C00A9554C /* ProgressBar */,
@@ -1323,7 +1306,6 @@
 				EC449B77223B81FE00A8EA35 /* PlayScreenView.xib in Resources */,
 				8BEDCD392247F10100E24A20 /* Level1.plist in Resources */,
 				EC0E31732252076600AF1254 /* ItemSelectorView.xib in Resources */,
-				8BFA63F12258B020007645F9 /* MainScreen.wav in Resources */,
 				EC21B4052242155600827121 /* LoadingScreenView.xib in Resources */,
 				ECD4555C2240F1FB006AF78D /* MultiplayerScreenView.xib in Resources */,
 				ECD4554D2240B0AF006AF78D /* Alert.xib in Resources */,
@@ -1364,7 +1346,6 @@
 				EC7168E8225DD3CF004EF2B0 /* leftroom.mp3 in Resources */,
 				1D37DBC0225E6ED900E637C9 /* ProcessedIngredients.atlas in Resources */,
 				EC7168E7225DD3CF004EF2B0 /* joinroom.mp3 in Resources */,
-				8BFA63F02258B020007645F9 /* GameSong.mp3 in Resources */,
 				EC6E99F5224F2D1600A9554C /* ProgressBarView.xib in Resources */,
 				EC7168EB225DD571004EF2B0 /* bloop.mp3 in Resources */,
 				EC3824232238803A000D7148 /* Main.storyboard in Resources */,
@@ -1501,7 +1482,6 @@
 				EC7676CC225B5AC100F6A450 /* Cosmetics.swift in Sources */,
 				EC7676C6225B55A400F6A450 /* ItemBoxController.swift in Sources */,
 				EC7676BA225A4A4B00F6A450 /* RouterController.swift in Sources */,
-				8BFA63EC22589DAF007645F9 /* AudioController.swift in Sources */,
 				EC382475223A1AA4000D7148 /* ColorStyles.swift in Sources */,
 				F9F26FEE22564873008BFD50 /* GameDB.swift in Sources */,
 				EC449B83223B917C00A8EA35 /* CGPointExtension.swift in Sources */,
