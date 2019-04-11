@@ -39,6 +39,7 @@ protocol GameDatabase {
     /// itself
     /// - Parameters:
     ///     - forRoomId: the room id to be joined
+    ///     - withUser: the user character
     ///     - onSuccess: a closure performed after
     ///       join room is successful
     ///     - onRoomFull: a closure fired when the
@@ -47,7 +48,7 @@ protocol GameDatabase {
     ///       the room has already started the game
     ///     - onError: a closure fired when an error
     ///       occurs
-    func joinRoom(forRoomId id: String, _ onSuccess: @escaping () -> Void, _ onRoomFull: @escaping () -> Void, _ onRoomNotExist: @escaping () -> Void, _ onGameHasStarted: @escaping () -> Void, _ onError: @escaping (Error) -> Void)
+    func joinRoom(forRoomId id: String, withUser userChar: UserCharacter, _ onSuccess: @escaping () -> Void, _ onRoomFull: @escaping () -> Void, _ onRoomNotExist: @escaping () -> Void, _ onGameHasStarted: @escaping () -> Void, _ onError: @escaping (Error) -> Void)
 
     /// opens or closes a room so it can be shown to
     /// everyone. this method will flip the
@@ -98,11 +99,12 @@ protocol GameDatabase {
     ///     - withRoomName: the name of the room to be
     ///       be created
     ///     - withMap: the map name this room is set
+    ///     - withUser: the current user's character
     ///     - onSuccess: a closure run on success, passing
     ///       the room id as the parameter
     ///     - onError: completion block run when error happens
-    func createRoom(withRoomName name: String, withMap map: String, _ onSuccess: @escaping (String) -> Void, _ onError: @escaping (Error) -> Void)
-
+    func createRoom(withRoomName name: String, withMap map: String, withUser userChar: UserCharacter, _ onSuccess: @escaping (String) -> Void, _ onError: @escaping (Error) -> Void)
+    
     /// closes a particular room, removing its
     /// reference in the database
     /// - Parameters:

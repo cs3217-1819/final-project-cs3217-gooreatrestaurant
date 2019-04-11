@@ -22,7 +22,19 @@ class MultiplayerScreenViewController: ViewController<MultiplayerScreenView> {
             self.setLoadingAlert(withDescription: "Preparing the spaceship...")
             self.presentActiveAlert(dismissible: false)
 
-            self.context.db.createRoom(withRoomName: "Pros only", withMap: "Level1", { id in
+            guard let userCharacter = try? self.context.data.userCharacter?.value() else {
+                return
+            }
+            
+            guard let userChar = userCharacter else {
+                return
+            }
+            
+            print(userChar.accessory)
+            print(userChar.hat)
+            print(userChar.name)
+            print(userChar.color.toString())
+            self.context.db.createRoom(withRoomName: "Pros only", withMap: "Level1", withUser: userChar, { id in
                 self.context.modal.closeAlert()
 
                 let vc: MultiplayerLobbyViewController = self.context.routeToAndPrepareFor(.MultiplayerLobby)
