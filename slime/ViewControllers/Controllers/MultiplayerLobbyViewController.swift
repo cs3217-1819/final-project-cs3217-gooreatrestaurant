@@ -82,7 +82,7 @@ class MultiplayerLobbyViewController: ViewController<MultiplayerLobbyView> {
             self.presentActiveAlert(dismissible: true)
             self.context.routeTo(.MultiplayerScreen)
         }) { (err) in
-            self.setErrorAlert(withDescription: err as! String)
+            self.setErrorAlert(withDescription: err.localizedDescription)
             self.presentActiveAlert(dismissible: true)
         }
     }
@@ -99,7 +99,7 @@ class MultiplayerLobbyViewController: ViewController<MultiplayerLobbyView> {
         self.context.db.startGame(forRoom: room, {
             // do something
         }) { (err) in
-            self.setErrorAlert(withDescription: err as! String)
+            self.setErrorAlert(withDescription: err.localizedDescription)
             self.presentActiveAlert(dismissible: true)
         }
     }
@@ -175,12 +175,10 @@ class MultiplayerLobbyViewController: ViewController<MultiplayerLobbyView> {
         let control = ButtonController(using: upButton)
 
         control.onTap {
-//            self.setWarningAlert(to: "Leave the room?", withOkCallback: {
-//                self.leaveRoomAndRoute(to: route)
-//            })
-//            self.presentActiveAlert(dismissible: true)
-            
-            self.startGame()
+            self.setWarningAlert(to: "Leave the room?", withOkCallback: {
+                self.leaveRoomAndRoute(to: route)
+            })
+            self.presentActiveAlert(dismissible: true)
         }
 
         view.addSubview(upButton)
@@ -200,7 +198,7 @@ class MultiplayerLobbyViewController: ViewController<MultiplayerLobbyView> {
             self.context.routeTo(route)
             self.context.db.removeAllObservers()
         }, { (err) in
-            self.setErrorAlert(withDescription: err as! String)
+            self.setErrorAlert(withDescription: err.localizedDescription)
             self.presentActiveAlert(dismissible: true)
         })
     }

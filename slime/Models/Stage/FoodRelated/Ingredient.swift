@@ -22,21 +22,36 @@ class Ingredient: SKSpriteNode {
     init(type: IngredientType,
          size: CGSize = StageConstants.ingredientSize,
          inPosition position: CGPoint = CGPoint.zero) {
+
         self.type = type
+
         let ingredientsAtlas = SKTextureAtlas(named: "Ingredients")
         var texture: SKTexture = SKTexture.init()
         texture = ingredientsAtlas.textureNamed(type.rawValue)
         super.init(texture: texture, color: .clear, size: size)
+
         self.name = StageConstants.ingredientName
         self.position = position
+
         self.physicsBody = SKPhysicsBody(rectangleOf: size)
         self.physicsBody?.categoryBitMask = StageConstants.ingredientCategory
         self.physicsBody?.collisionBitMask = StageConstants.wallCategoryCollision
 
+        setupBars()
+    }
+
+    private func setupBars() {
+        blackBar.removeFromParent()
+        greenBar.removeFromParent()
+
+        blackBar = SKSpriteNode(imageNamed: "Black bar")
         blackBar.setScale(0)
+
+        greenBar = SKSpriteNode(imageNamed: "Green bar")
         greenBar.anchorPoint = CGPoint(x: 0, y: 0)
         greenBar.position = CGPoint(x: -250, y: -250)
         greenBar.setScale(0)
+
         blackBar.addChild(greenBar)
         self.addChild(blackBar)
     }
@@ -59,12 +74,13 @@ class Ingredient: SKSpriteNode {
         blackBar.setScale(0.1)
 
         if processingProgress >= 100.0 {
-            blackBar.removeFromParent()
-//            greenBar.removeFromParent()
+            setupBars()
+
             let ingredientsAtlas = SKTextureAtlas(named: "ProcessedIngredients")
             var texture: SKTexture = SKTexture.init()
             texture = ingredientsAtlas.textureNamed(self.type.rawValue)
             self.texture = texture
+
             currentProcessing = nil
             processingProgress = 0.0
             processed.append(method)

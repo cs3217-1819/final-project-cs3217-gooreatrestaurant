@@ -36,6 +36,8 @@ class GameViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         let stage = Stage()
+        stage.isMultiplayer = self.isMultiplayer
+        stage.setupControl()
         let skview = SKView(frame: view.safeAreaLayoutGuide.layoutFrame)
         skview.frame = CGRect(x: 0.0, y: 0.0, width: ScreenSize.width, height: ScreenSize.height)
         skview.presentScene(stage)
@@ -45,13 +47,6 @@ class GameViewController: UIViewController {
         skview.isMultipleTouchEnabled = true
         view.addSubview(skview)
 
-        stage.generateLevel(inLevel: "Level1")
-        //        newCollection.delegate = self
-        //        newCollection.dataSource = self
-        //        newCollection.register(IngredientsCell.self, forCellWithReuseIdentifier: "MyCell")
-        //        view.addSubview(newCollection)
-        //        setupCollection()
-        
         // TODO: multiplayer stuff, add all the players to stage, then the setupPlayers() will map the slime to player
         if isMultiplayer {
             if let room = self.previousRoom { stage.setupMultiplayer(forRoom: room) }
@@ -63,6 +58,16 @@ class GameViewController: UIViewController {
             let onlyPlayer = Player(name: onlyUser.uid, level: 1)
             stage.addPlayer(onlyPlayer)
         }
+        
+        stage.generateLevel(inLevel: "Level1")
+
+        let bgm = AudioController()
+        bgm.playMusic("GameSong", true)
+        //        newCollection.delegate = self
+        //        newCollection.dataSource = self
+        //        newCollection.register(IngredientsCell.self, forCellWithReuseIdentifier: "MyCell")
+        //        view.addSubview(newCollection)
+        //        setupCollection()
         
         stage.setupPlayers()
     }

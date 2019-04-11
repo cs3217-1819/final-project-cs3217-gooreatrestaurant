@@ -172,7 +172,18 @@ protocol GameDatabase {
     ///     - onDataChange: a closure which is fired
     ///       every time a data value changes
     ///     - onError: fired when an error happens
-    func observeGameState(forRoom room: RoomModel, onPlayerUpdate: @escaping (GamePlayerModel) -> Void, onStationUpdate: @escaping () -> Void, onGameEnd: @escaping () -> Void, onOrderChange: @escaping ([GameOrderModel]) -> Void, onScoreChange: @escaping (Int) -> Void, onAllPlayersReady: @escaping () -> Void, onComplete: @escaping () -> Void, onError: @escaping (Error) -> Void)
+    func observeGameState(forRoom room: RoomModel, onPlayerUpdate: @escaping (GamePlayerModel) -> Void, onStationUpdate: @escaping () -> Void, onGameEnd: @escaping () -> Void, onOrderChange: @escaping ([GameOrderModel]) -> Void, onScoreChange: @escaping (Int) -> Void, onAllPlayersReady: @escaping () -> Void, onGameStart: @escaping () -> Void, onSelfItemChange: @escaping (String) -> Void, onTimeLeftChange: @escaping (Int) -> Void, onComplete: @escaping () -> Void, onError: @escaping (Error) -> Void)
+    
+    /// updates the hasStarted flag inside the game
+    /// only used by host to indicate that the game
+    /// should start
+    /// - Parameters:
+    ///     - forGameId: the game id to be started
+    ///     - to: the hasStarted flag
+    ///     - onComplete: the closure run after the hasStarted
+    ///       has been updated
+    ///     - onError: a closure run when an error occurs
+    func updateGameHasStarted(forGameId id: String, to hasStarted: Bool, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void)
 
     /// updates a player position inside the game
     /// id specified inside this method
@@ -180,7 +191,49 @@ protocol GameDatabase {
     ///     - forGameId: the game id for which the
     ///       position of the player is to updated
     ///     - position: the position of the player
-    func updatePlayerPosition(forGameId id: String, position: CGPoint, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void)
+    func updatePlayerPosition(forGameId id: String, position: CGPoint, velocity: CGVector, xScale: CGFloat, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void)
+    
+    /// updates the item the player is holding
+    /// - Parameters:
+    ///     - forGameId: the game id concerned
+    ///     - toItem: the item to be put inside the
+    ///       current user
+    ///     - onComplete: a closure run when this
+    ///       process is successful
+    ///     - onError: a closure run when an error
+    ///       occurs
+    func updatePlayerHoldingItem(forGameId id: String, toItem: AnyObject, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void)
+    
+    /// updates the item inside a particular
+    /// station denoted by their station id in the game
+    /// - Parameters:
+    ///     - forGameId: the game id concerned
+    ///     - forStation: the station identifier/name
+    ///     - toItem: the item to be placed
+    ///     - onComplete: a closure run when this process
+    ///       is successful
+    ///     - onError: a closure run when an error occurs
+    func updateStationItemInside(forGameId id: String, forStation station: String, toItem item: AnyObject, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void)
+    
+    /// updates a game "has ended" state to the specified
+    /// boolean value
+    /// - Parameters:
+    ///     - forGameId: the game id concerned
+    ///     - to: the boolean value for "has ended" flag
+    ///     - onComplete: a closure run when this process
+    ///       completes
+    ///     - onError: a closure run when an error occurs
+    func updateGameHasEnded(forGameId id: String, to hasEnded: Bool, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void)
+    
+    /// decrements time left for the game itself
+    /// usually performed by host, this should prevent
+    /// race conditions
+    /// - Parameters:
+    ///     - forGameId: the game if to be decremmented
+    ///     - onComplete: completion block run after decrement
+    ///       is successful
+    ///     - onError: error block run when an error occurs
+    func decrementTimeLeft(forGameId id: String, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void)
 
     /// adds an order to the end of the current list
     /// of orders

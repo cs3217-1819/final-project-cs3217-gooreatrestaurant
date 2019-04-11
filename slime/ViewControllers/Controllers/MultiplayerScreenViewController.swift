@@ -36,7 +36,7 @@ class MultiplayerScreenViewController: ViewController<MultiplayerScreenView> {
                 let vc: MultiplayerLobbyViewController = self.context.routeToAndPrepareFor(.MultiplayerLobby)
                 vc.setupRoom(withId: id)
             }, { (err) in
-                self.setErrorAlert(withDescription: err as! String)
+                self.setErrorAlert(withDescription: err.localizedDescription)
                 self.presentActiveAlert(dismissible: true)
             })
         }

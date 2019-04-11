@@ -16,8 +16,14 @@ class Stage: SKScene {
     var spaceship: Spaceship
     
     // multiplayer stuff
-    var isMultiplayer: Bool?
+    var isMultiplayer: Bool = false
+    var previousRoom: RoomModel?
     var db: GameDatabase?
+    var hasStarted: Bool = false
+    var gameHasEnded: Bool = false
+    var streamingTimer: Timer?
+    var isUserHost: Bool = false
+    var otherSlimes: [String : Slime] = [:] // [uid: Slime]
 
     // RI: the players are unique
     var players: [Player] = []
@@ -40,7 +46,6 @@ class Stage: SKScene {
         background.zPosition = StageConstants.backgroundZPos
         self.addChild(background)
         self.addChild(spaceship)
-        setupControl()
     }
     
     func joinGame(forGameId id: String) {
@@ -52,7 +57,8 @@ class Stage: SKScene {
     }
     
     func setupMultiplayer(forRoom room: RoomModel) {
-        self.isMultiplayer = true
+        self.previousRoom = room
+        
         db = GameDB()
         
         guard let user = GameAuth.currentUser else {
@@ -60,30 +66,34 @@ class Stage: SKScene {
         }
         
         for player in room.players {
-            if player.uid == user.uid {
-                // current player, continue
-                continue
-            }
+            // sets isUserHost in current game instance
+            if user.uid == player.uid { self.isUserHost = player.isHost }
+        }
+        
+        for player in room.players {
+            if player.uid == user.uid { continue }
             
             // TODO: add all other players except the host
             // into the scene, and tag them with the uid
         }
         
         db?.observeGameState(forRoom: room, onPlayerUpdate: { (player) in
-            // this occurs when a player's
-            // state in the database changes
-            // TODO: update player position depending on the uid
-            print(player.positionX)
-            print(player.positionY)
-            print(player.uid)
-            // it handles all of the players individually
+            guard let currentSlime = self.otherSlimes[player.uid] else { return }
+            
+            currentSlime.position = CGPoint(x: player.positionX, y: player.positionY)
+            currentSlime.physicsBody?.velocity = CGVector(dx: player.velocityX, dy: player.velocityY)
+            currentSlime.xScale = player.xScale
+            // TODO: implement the filling of the dictionary of otherSlimes
         }, onStationUpdate: {
             // not yet implemented
             // this updates whenever one station
             // experiences a change
         }, onGameEnd: {
+            self.gameHasEnded = true
+            self.stopStreamingSelf()
+            self.db?.removeAllObservers()
+            self.gameOver(ifWon: false)
             // TODO: game end goes here
-            print("Game has ended")
         }, onOrderChange: { (orders) in
             // the function here occurs everytime the
             // order in the db changes
@@ -93,20 +103,49 @@ class Stage: SKScene {
                 print(order.name)
             }
         }, onScoreChange: { (score) in
-            // self-explanatory
-            // TODO: update score
-            print(score)
+            self.levelScore = score
+            self.scoreLabel.text = "Score: \(self.levelScore)"
         }, onAllPlayersReady: {
-            // only for host, start game
-            self.db?.startGame(forRoom: room, {
-            }, { (err) in
-                print(err)
-            })
+            // only for host, starts the game proper
+            self.multiplayerIndicateGameHasStarted()
+        }, onGameStart: {
+            self.hasStarted = true
+            self.startStreamingSelf()
+            if self.isUserHost { self.startCounter() }
+            // TODO: do setup when game has started
+        }, onSelfItemChange: { (newItem) in
+            // TODO: update item in slime
+        }, onTimeLeftChange: { (timeLeft) in
+            self.countdownLabel.text = "Time: \(timeLeft)"
+            if self.isUserHost && self.isGameOver { self.endMultiplayerGame() }
         }, onComplete: {
+            // joins game after attaching all
+            // relevant observers, this onComplete
+            // does not refer to the game state at all
             self.joinGame(forGameId: room.id)
         }) { (err) in
-            print(err)
+            print(err.localizedDescription)
         }
+    }
+    
+    private func startStreamingSelf() {
+        self.streamingTimer = Timer.init(timeInterval: StageConstants.streamingInterval, repeats: true, block: { (timer) in
+            guard let slime = self.slimeToControl else { return }
+            guard let room = self.previousRoom else { return }
+            guard let slimeVelocity = slime.physicsBody?.velocity else { return }
+            guard let database = self.db else { return }
+            let slimePos = slime.position
+            let slimeXScale = slime.xScale
+            
+            database.updatePlayerPosition(forGameId: room.id, position: slimePos, velocity: slimeVelocity, xScale: slimeXScale, { }, { (err) in
+                print(err.localizedDescription)
+            })
+        })
+    }
+    
+    private func stopStreamingSelf() {
+        guard let timer = self.streamingTimer else { return }
+        timer.invalidate()
     }
 
     func generateLevel(inLevel levelName: String) {
@@ -116,7 +155,19 @@ class Stage: SKScene {
                 let decoder = PropertyListDecoder()
                 let value = try decoder.decode(SerializableGameData.self, from: data!)
                 spaceship.addRoom()
-                spaceship.addSlime(inPosition: value.slimeInitPos)
+                
+                if !isMultiplayer {
+                    spaceship.addSlime(inPosition: value.slimeInitPos)
+                } else {
+                    if let room = self.previousRoom {
+                        for player in room.players {
+                            spaceship.addSlime(inPosition: value.slimeInitPos)
+                            print(player)
+                            //TODO
+                        }
+                    }
+                }
+                
                 spaceship.addWall(inCoord: value.border)
                 spaceship.addWall(inCoord: value.blockedArea)
                 spaceship.addLadder(inPositions: value.ladder)
@@ -231,10 +282,14 @@ class Stage: SKScene {
         self.addChild(countdownLabel)
         self.addChild(scoreLabel)
 
-        counter = counterStartTime
-        startCounter()
+        if !isMultiplayer {
+            counter = counterStartTime
+            startCounter()
+        }
 
         analogJoystick.trackingHandler = { [unowned self] data in
+            if self.isMultiplayer && !self.hasStarted { return }
+            
             if data.velocity.x > 0.0 {
                 self.slimeToControl?.moveRight(withSpeed: data.velocity.x)
             } else if data.velocity.x < 0.0 {
@@ -280,47 +335,50 @@ class Stage: SKScene {
     }
 
     func initializeOrders(withData data: [RecipeData]) {
-
-        guard let orderQueue = self.childNode(withName: StageConstants.orderQueueName) as? OrderQueue else {
-            return
+        if !isMultiplayer {
+            guard let orderQueue = self.childNode(withName: StageConstants.orderQueueName) as? OrderQueue else {
+                return
+            }
+            
+            for datum in data {
+                var recipeName: String = ""
+                var compulsoryIngredients: [Ingredient] = []
+                var optionalIngredients: [(item: Ingredient, probability: Double)] = []
+                
+                for name in datum["recipeName"] ?? [] {
+                    recipeName = (name.first?.value)!
+                }
+                
+                for ingredientRequirement in datum["compulsoryIngredients"] ?? [] {
+                    guard let ingredient = getIngredient(fromDictionaryData: ingredientRequirement) else {
+                        continue
+                    }
+                    compulsoryIngredients.append(ingredient)
+                }
+                
+                for ingredientRequirement in datum["optionalIngredients"] ?? [] {
+                    guard let ingredient = getIngredient(fromDictionaryData: ingredientRequirement) else {
+                        continue
+                    }
+                    
+                    guard let probabilityString = ingredientRequirement["probability"] else {
+                        continue
+                    }
+                    
+                    guard let probability = Double(probabilityString) else {
+                        continue
+                    }
+                    
+                    optionalIngredients.append((item: ingredient, probability: probability))
+                }
+                let recipe = Recipe(inRecipeName: recipeName, withCompulsoryIngredients: compulsoryIngredients,
+                                    withOptionalIngredients: optionalIngredients)
+                orderQueue.addPossibleRecipe(recipe)
+            }
+            orderQueue.initialize()
+        } else {
+            
         }
-
-        for datum in data {
-            var recipeName: String = ""
-            var compulsoryIngredients: [Ingredient] = []
-            var optionalIngredients: [(item: Ingredient, probability: Double)] = []
-
-            for name in datum["recipeName"] ?? [] {
-                recipeName = (name.first?.value)!
-            }
-
-            for ingredientRequirement in datum["compulsoryIngredients"] ?? [] {
-                guard let ingredient = getIngredient(fromDictionaryData: ingredientRequirement) else {
-                    continue
-                }
-                compulsoryIngredients.append(ingredient)
-            }
-
-            for ingredientRequirement in datum["optionalIngredients"] ?? [] {
-                guard let ingredient = getIngredient(fromDictionaryData: ingredientRequirement) else {
-                    continue
-                }
-
-                guard let probabilityString = ingredientRequirement["probability"] else {
-                    continue
-                }
-
-                guard let probability = Double(probabilityString) else {
-                    continue
-                }
-
-                optionalIngredients.append((item: ingredient, probability: probability))
-            }
-            let recipe = Recipe(inRecipeName: recipeName, withCompulsoryIngredients: compulsoryIngredients,
-                                withOptionalIngredients: optionalIngredients)
-            orderQueue.addPossibleRecipe(recipe)
-        }
-        orderQueue.initialize()
     }
 
     // For multiplayer (future use)
@@ -387,24 +445,40 @@ class Stage: SKScene {
     }
 
     func serve(_ plate: Plate) {
-        let foodToServe = plate.food
-
-        guard let orderQueue = self.childNode(withName: StageConstants.orderQueueName) as? OrderQueue else {
-            print("error")
-            return
+        if !isMultiplayer {
+            let foodToServe = plate.food
+            
+            guard let orderQueue = self.childNode(withName: StageConstants.orderQueueName) as? OrderQueue else {
+                print("error")
+                return
+            }
+            
+            guard orderQueue.completeOrder(withFood: foodToServe) == true else {
+                print("failed")
+                return
+            }
+            
+            levelScore += 20
+            scoreLabel.text = "Score: \(levelScore)"
+        } else {
+            // multiplayer serve food
         }
-
-        guard orderQueue.completeOrder(withFood: foodToServe) == true else {
-            print("failed")
-            return
-        }
-
-        levelScore += 20
-        scoreLabel.text = "Score: \(levelScore)"
+        
     }
 
     func startCounter() {
-        counterTime = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(decrementCounter), userInfo: nil, repeats: true)
+        if !isMultiplayer {
+            counterTime = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(decrementCounter), userInfo: nil, repeats: true)
+        } else {
+            counterTime = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { (timer) in
+                guard let database = self.db else { return }
+                guard let room = self.previousRoom else { return }
+                
+                database.decrementTimeLeft(forGameId: room.id, { }, { (err) in
+                    print(err.localizedDescription)
+                })
+            })
+        }
     }
 
     @objc func decrementCounter() {
@@ -416,6 +490,29 @@ class Stage: SKScene {
 
             counter -= 1
             countdownLabel.text = "Time: \(counter)"
+        }
+    }
+    
+    private func multiplayerIndicateGameHasStarted() {
+        guard let database = self.db else { return }
+        guard let room = self.previousRoom else { return }
+        
+        database.updateGameHasStarted(forGameId: room.id, to: true, { }, { (err) in
+            print(err.localizedDescription)
+        })
+    }
+    
+    private func isMultiplayerTimeUp(forTime time: Int) -> Bool {
+        if time <= 0 { return true }
+        return false
+    }
+    
+    private func endMultiplayerGame() {
+        guard let database = self.db else { return }
+        guard let room = self.previousRoom else { return }
+        
+        database.updateGameHasEnded(forGameId: room.id, to: true, { }) { (err) in
+            print(err.localizedDescription)
         }
     }
 

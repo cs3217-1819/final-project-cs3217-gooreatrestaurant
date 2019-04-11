@@ -7,7 +7,6 @@
 //
 
 enum CookingType: String, Codable {
-    case notProcessed
     case baking
     case chopping
     case frying

@@ -16,6 +16,9 @@ class StageConstants {
 
     static let speedMultiplier = CGFloat(2.0)
     static let jumpSpeed = 3.5
+    
+    // multiplayer stuff
+    static let streamingInterval = 100.0 // in ms
 
     // node naming
     static let ingredientName = "ingredient"
@@ -63,7 +66,6 @@ class StageConstants {
     // category bitmask
     static let plateCategory: UInt32 = 1 << 1
     static let ingredientCategory: UInt32 = 1 << 2
-    static let tableCategory: UInt32 = 1 << 3
     static let slimeCategory: UInt32 = 1 << 4
     static let ladderCategory: UInt32 = 1 << 5
     static let stationCategory: UInt32 = 1 << 6

@@ -16,6 +16,9 @@ struct GamePlayerModel {
     var uid: String = ""
     var positionX: CGFloat = 0.0
     var positionY: CGFloat = 0.0
+    var velocityX: CGFloat = 0.0
+    var velocityY: CGFloat = 0.0
+    var xScale: CGFloat = 0.0
     var isHost: Bool = false
     var isConnected: Bool = false
     var holdingItem: String = ""
@@ -26,9 +29,12 @@ struct GamePlayerModel {
     var color: String = "green"
     var level: Int = 1
 
-    init(uid: String, posX: CGFloat, posY: CGFloat, holdingItem: String, isHost: Bool, isConnected: Bool, isReady: Bool, name: String, hat: String, accessory: String, color: String, level: Int) {
+    init(uid: String, posX: CGFloat, posY: CGFloat, vx: CGFloat, vy: CGFloat, xScale: CGFloat, holdingItem: String, isHost: Bool, isConnected: Bool, isReady: Bool, name: String, hat: String, accessory: String, color: String, level: Int) {
         self.positionX = posX
         self.positionY = posY
+        self.velocityX = vx
+        self.velocityY = vy
+        self.xScale = xScale
         self.holdingItem = holdingItem
         self.isHost = isHost
         self.isConnected = isConnected
