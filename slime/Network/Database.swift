@@ -172,7 +172,18 @@ protocol GameDatabase {
     ///     - onDataChange: a closure which is fired
     ///       every time a data value changes
     ///     - onError: fired when an error happens
-    func observeGameState(forRoom room: RoomModel, onPlayerUpdate: @escaping (GamePlayerModel) -> Void, onStationUpdate: @escaping () -> Void, onGameEnd: @escaping () -> Void, onOrderChange: @escaping ([GameOrderModel]) -> Void, onScoreChange: @escaping (Int) -> Void, onAllPlayersReady: @escaping () -> Void, onComplete: @escaping () -> Void, onError: @escaping (Error) -> Void)
+    func observeGameState(forRoom room: RoomModel, onPlayerUpdate: @escaping (GamePlayerModel) -> Void, onStationUpdate: @escaping () -> Void, onGameEnd: @escaping () -> Void, onOrderChange: @escaping ([GameOrderModel]) -> Void, onScoreChange: @escaping (Int) -> Void, onAllPlayersReady: @escaping () -> Void, onGameStart: @escaping () -> Void, onComplete: @escaping () -> Void, onError: @escaping (Error) -> Void)
+    
+    /// updates the hasStarted flag inside the game
+    /// only used by host to indicate that the game
+    /// should start
+    /// - Parameters:
+    ///     - forGameId: the game id to be started
+    ///     - to: the hasStarted flag
+    ///     - onComplete: the closure run after the hasStarted
+    ///       has been updated
+    ///     - onError: a closure run when an error occurs
+    func updateGameHasStarted(forGameId id: String, to hasStarted: Bool, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void)
 
     /// updates a player position inside the game
     /// id specified inside this method

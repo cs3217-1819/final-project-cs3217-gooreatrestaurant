@@ -18,6 +18,7 @@ class Stage: SKScene {
     // multiplayer stuff
     var isMultiplayer: Bool?
     var db: GameDatabase?
+    var hasStarted: Bool = false
 
     // RI: the players are unique
     var players: [Player] = []
@@ -98,10 +99,12 @@ class Stage: SKScene {
             print(score)
         }, onAllPlayersReady: {
             // only for host, start game
-            self.db?.startGame(forRoom: room, {
-            }, { (err) in
-                print(err)
+            self.db?.updateGameHasStarted(forGameId: room.id, to: true, { }, { (err) in
+                print(err.localizedDescription)
             })
+        }, onGameStart: {
+            self.hasStarted = true
+            // TODO: do setup when game has started
         }, onComplete: {
             self.joinGame(forGameId: room.id)
         }) { (err) in

@@ -566,7 +566,19 @@ class GameDB: GameDatabase {
             print(error.localizedDescription)
             return [:]
         }
+    }
+    
+    func updateGameHasStarted(forGameId id: String, to hasStarted: Bool, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void) {
+        let hasStartedRef = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, id, FirebaseKeys.games_hasStarted]))
         
+        hasStartedRef.setValue(hasStarted) { (err, ref) in
+            if let error = err {
+                onError(error)
+                return
+            }
+            
+            onComplete()
+        }
     }
 
     func joinGame(forGameId id: String, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void) {
@@ -686,7 +698,7 @@ class GameDB: GameDatabase {
         }
     }
 
-    func observeGameState(forRoom room: RoomModel, onPlayerUpdate: @escaping (GamePlayerModel) -> Void, onStationUpdate: @escaping () -> Void, onGameEnd: @escaping () -> Void, onOrderChange: @escaping ([GameOrderModel]) -> Void, onScoreChange: @escaping (Int) -> Void, onAllPlayersReady: @escaping () -> Void, onComplete: @escaping () -> Void, onError: @escaping (Error) -> Void) {
+    func observeGameState(forRoom room: RoomModel, onPlayerUpdate: @escaping (GamePlayerModel) -> Void, onStationUpdate: @escaping () -> Void, onGameEnd: @escaping () -> Void, onOrderChange: @escaping ([GameOrderModel]) -> Void, onScoreChange: @escaping (Int) -> Void, onAllPlayersReady: @escaping () -> Void, onGameStart: @escaping () -> Void, onComplete: @escaping () -> Void, onError: @escaping (Error) -> Void) {
         guard let user = GameAuth.currentUser else {
             return
         }
@@ -696,6 +708,7 @@ class GameDB: GameDatabase {
         let scoreRef = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, room.id, FirebaseKeys.games_score]))
         let endRef = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, room.id, FirebaseKeys.games_hasEnded]))
         let stationRef = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, room.id, FirebaseKeys.games_stations]))
+        let hasStartedRef = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, room.id, FirebaseKeys.games_hasStarted]))
         
         if hostInRoom(room) == user.uid {
             let playerReadyRef = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, room.id, FirebaseKeys.games_players]))
@@ -725,11 +738,17 @@ class GameDB: GameDatabase {
                 onError(err)
             }
         }
+        
+        hasStartedRef.observe(.value, with: { (snap) in
+            guard let hasStarted = snap.value as? Bool else { return }
+            
+            if hasStarted { onGameStart() }
+        }) { (err) in
+            onError(err)
+        }
 
         for player in room.players {
-            if player.uid == user.uid {
-                continue
-            }
+            if player.uid == user.uid { continue }
 
             let indPlayerRef = playerRef.child(player.uid)
 
