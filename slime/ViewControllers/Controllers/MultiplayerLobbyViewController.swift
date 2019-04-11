@@ -175,10 +175,12 @@ class MultiplayerLobbyViewController: ViewController<MultiplayerLobbyView> {
         let control = ButtonController(using: upButton)
 
         control.onTap {
-            self.setWarningAlert(to: "Leave the room?", withOkCallback: {
-                self.leaveRoomAndRoute(to: route)
-            })
-            self.presentActiveAlert(dismissible: true)
+//            self.setWarningAlert(to: "Leave the room?", withOkCallback: {
+//                self.leaveRoomAndRoute(to: route)
+//            })
+//            self.presentActiveAlert(dismissible: true)
+            
+            self.startGame()
         }
 
         view.addSubview(upButton)
