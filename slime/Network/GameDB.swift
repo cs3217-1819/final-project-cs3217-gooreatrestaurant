@@ -409,7 +409,7 @@ class GameDB: GameDatabase {
         // populates dictionary to fit the db
         gameDict.updateValue(room.map as AnyObject, forKey: FirebaseKeys.games_gameMap)
         gameDict.updateValue(FirebaseSystemValues.defaultFalse as AnyObject, forKey: FirebaseKeys.games_hasEnded)
-        gameDict.updateValue(300 as AnyObject, forKey: FirebaseKeys.games_timeLimit)
+        gameDict.updateValue(200 as AnyObject, forKey: FirebaseKeys.games_timeLeft)
         gameDict.updateValue(NSTimeIntervalSince1970 as AnyObject, forKey: FirebaseKeys.games_startTime)
         gameDict.updateValue(FirebaseSystemValues.defaultFalse as AnyObject, forKey: FirebaseKeys.games_hasStarted)
         gameDict.updateValue(0 as AnyObject, forKey: FirebaseKeys.games_score)
@@ -607,27 +607,49 @@ class GameDB: GameDatabase {
         }
     }
 
-    func updatePlayerPosition(forGameId id: String, position: CGPoint, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void) {
+    func updatePlayerPosition(forGameId id: String, position: CGPoint, velocity: CGVector, xScale: CGFloat, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void) {
         guard let user = GameAuth.currentUser else {
             return
         }
 
-        let refX = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, id, FirebaseKeys.games_players, user.uid, FirebaseKeys.games_players_positionX]))
-        let refY = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, id, FirebaseKeys.games_players, user.uid, FirebaseKeys.games_players_positionY]))
-
-        refX.setValue(position.x) { (err, ref) in
+        let ref = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, id, FirebaseKeys.games_players, user.uid]))
+        
+        let resultDict = [FirebaseKeys.games_players_positionX: position.x,
+                          FirebaseKeys.games_players_positionY: position.y,
+                          FirebaseKeys.games_players_velocityX: velocity.dx,
+                          FirebaseKeys.games_players_velocityY: velocity.dy,
+                          FirebaseKeys.games_players_xScale: xScale]
+        
+        ref.setValue(resultDict) { (err, ref) in
             if let error = err {
                 onError(error)
                 return
             }
+            
+            onComplete()
         }
-
-        refY.setValue(position.y) { (err, ref) in
+    }
+    
+    func decrementTimeLeft(forGameId id: String, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void) {
+        let ref = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, id, FirebaseKeys.games_timeLeft]))
+        
+        ref.runTransactionBlock({ (current) -> TransactionResult in
+            guard var time = current.value as? Int else {
+                return TransactionResult.success(withValue: current)
+            }
+            
+            time -= 1
+            current.value = time
+            
+            return TransactionResult.success(withValue: current)
+        }, andCompletionBlock: { (err, committed, snap) in
             if let error = err {
                 onError(error)
                 return
             }
-        }
+            
+            onComplete()
+        })
     }
 
     func queueOrder(forGameId id: String, withRecipe recipe: Recipe, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void) {
@@ -698,7 +720,7 @@ class GameDB: GameDatabase {
         }
     }
 
-    func observeGameState(forRoom room: RoomModel, onPlayerUpdate: @escaping (GamePlayerModel) -> Void, onStationUpdate: @escaping () -> Void, onGameEnd: @escaping () -> Void, onOrderChange: @escaping ([GameOrderModel]) -> Void, onScoreChange: @escaping (Int) -> Void, onAllPlayersReady: @escaping () -> Void, onGameStart: @escaping () -> Void, onComplete: @escaping () -> Void, onError: @escaping (Error) -> Void) {
+    func observeGameState(forRoom room: RoomModel, onPlayerUpdate: @escaping (GamePlayerModel) -> Void, onStationUpdate: @escaping () -> Void, onGameEnd: @escaping () -> Void, onOrderChange: @escaping ([GameOrderModel]) -> Void, onScoreChange: @escaping (Int) -> Void, onAllPlayersReady: @escaping () -> Void, onGameStart: @escaping () -> Void, onSelfItemChange: @escaping (String) -> Void, onTimeLeftChange: @escaping (Int) -> Void, onComplete: @escaping () -> Void, onError: @escaping (Error) -> Void) {
         guard let user = GameAuth.currentUser else {
             return
         }
@@ -709,6 +731,28 @@ class GameDB: GameDatabase {
         let endRef = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, room.id, FirebaseKeys.games_hasEnded]))
         let stationRef = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, room.id, FirebaseKeys.games_stations]))
         let hasStartedRef = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, room.id, FirebaseKeys.games_hasStarted]))
+        let timeLeftRef = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, room.id, FirebaseKeys.games_timeLeft]))
+        let selfHoldingItemRef = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, room.id, FirebaseKeys.games_players, user.uid, FirebaseKeys.games_players_holdingItem]))
+        
+        let selfHandle = selfHoldingItemRef.observe(.value, with: { (snap) in
+            guard let item = snap.value as? String else {
+                return
+            }
+            
+            onSelfItemChange(item)
+        }) { (err) in
+            onError(err)
+        }
+        
+        let timeLeftHandle = timeLeftRef.observe(.value, with: { (snap) in
+            guard let timeLeft = snap.value as? Int else {
+                return
+            }
+            
+            onTimeLeftChange(timeLeft)
+        }) { (err) in
+            onError(err)
+        }
         
         if hostInRoom(room) == user.uid {
             let playerReadyRef = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, room.id, FirebaseKeys.games_players]))
@@ -817,6 +861,8 @@ class GameDB: GameDatabase {
         self.observers.append(Observer(withHandle: scoreHandle, withRef: scoreRef))
         self.observers.append(Observer(withHandle: endHandle, withRef: endRef))
         self.observers.append(Observer(withHandle: stationHandle, withRef: stationRef))
+        self.observers.append(Observer(withHandle: selfHandle, withRef: selfHoldingItemRef))
+        self.observers.append(Observer(withHandle: timeLeftHandle, withRef: timeLeftRef))
         
         onComplete()
     }
@@ -824,6 +870,9 @@ class GameDB: GameDatabase {
     private func firebaseGamePlayerModelFactory(withPlayerUid uid: String, forDict playerDict: [String : AnyObject]) -> GamePlayerModel {
         let positionX = playerDict[FirebaseKeys.games_players_positionX] as? CGFloat ?? FirebaseSystemValues.defaultCGFloat
         let positionY = playerDict[FirebaseKeys.games_players_positionY] as? CGFloat ?? FirebaseSystemValues.defaultCGFloat
+        let velocityX = playerDict[FirebaseKeys.games_players_velocityX] as? CGFloat ?? FirebaseSystemValues.defaultCGFloat
+        let velocityY = playerDict[FirebaseKeys.games_players_velocityY] as? CGFloat ?? FirebaseSystemValues.defaultCGFloat
+        let xScale = playerDict[FirebaseKeys.games_players_xScale] as? CGFloat ?? FirebaseSystemValues.defaultCGFloat
         let holdItem = playerDict[FirebaseKeys.games_players_holdingItem] as? String ?? FirebaseSystemValues.defaultBlankString
         let isConnected = playerDict[FirebaseKeys.games_players_isConnected] as? Bool ?? FirebaseSystemValues.defaultFalse
         let isHost = playerDict[FirebaseKeys.games_players_isHost] as? Bool ?? FirebaseSystemValues.defaultFalse
@@ -834,7 +883,7 @@ class GameDB: GameDatabase {
         let color = playerDict[FirebaseKeys.users_color] as? String ?? FirebaseSystemValues.users_defaultColor
         let level = playerDict[FirebaseKeys.users_level] as? Int ?? FirebaseSystemValues.users_defaultLevel
         
-        return GamePlayerModel(uid: uid, posX: positionX, posY: positionY, holdingItem: holdItem, isHost: isHost, isConnected: isConnected, isReady: isReady, name: name, hat: hat, accessory: accessory, color: color, level: level)
+        return GamePlayerModel(uid: uid, posX: positionX, posY: positionY, vx: velocityX, vy: velocityY, xScale: xScale, holdingItem: holdItem, isHost: isHost, isConnected: isConnected, isReady: isReady, name: name, hat: hat, accessory: accessory, color: color, level: level)
     }
     
     /// a utility function to find the uid of
@@ -1139,7 +1188,7 @@ struct FirebaseKeys {
     static let games_hasEnded = "has_ended"
     static let games_hasStarted = "has_started"
     static let games_startTime = "start_time"
-    static let games_timeLimit = "time_limit"
+    static let games_timeLeft = "time_left"
     static let games_players = "players"
     static let games_players_isHost = "is_host"
     static let games_players_isConnected = "is_connected"
@@ -1147,6 +1196,9 @@ struct FirebaseKeys {
     static let games_players_holdingItem = "holding_item"
     static let games_players_positionX = "position_x"
     static let games_players_positionY = "position_y"
+    static let games_players_velocityX = "velocity_x"
+    static let games_players_velocityY = "velocity_y"
+    static let games_players_xScale = "x_scale"
     static let games_score = "score"
     static let games_stations = "stations"
     static let games_stations_itemInside = "item_inside"

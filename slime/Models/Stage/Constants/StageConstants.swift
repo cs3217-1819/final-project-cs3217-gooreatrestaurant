@@ -16,6 +16,9 @@ class StageConstants {
 
     static let speedMultiplier = CGFloat(2.0)
     static let jumpSpeed = 3.5
+    
+    // multiplayer stuff
+    static let streamingInterval = 100.0 // in ms
 
     // node naming
     static let ingredientName = "ingredient"
