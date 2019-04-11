@@ -23,7 +23,7 @@ class Stage: SKScene {
     var gameHasEnded: Bool = false
     var streamingTimer: Timer?
     var isUserHost: Bool = false
-    var otherSlimes: [String : Slime] = [:]
+    var otherSlimes: [String : Slime] = [:] // [uid: Slime]
 
     // RI: the players are unique
     var players: [Player] = []
@@ -83,6 +83,7 @@ class Stage: SKScene {
             currentSlime.position = CGPoint(x: player.positionX, y: player.positionY)
             currentSlime.physicsBody?.velocity = CGVector(dx: player.velocityX, dy: player.velocityY)
             currentSlime.xScale = player.xScale
+            // TODO: implement the filling of the dictionary of otherSlimes
         }, onStationUpdate: {
             // not yet implemented
             // this updates whenever one station
@@ -106,9 +107,7 @@ class Stage: SKScene {
             self.scoreLabel.text = "Score: \(self.levelScore)"
         }, onAllPlayersReady: {
             // only for host, starts the game proper
-            self.db?.updateGameHasStarted(forGameId: room.id, to: true, { }, { (err) in
-                print(err.localizedDescription)
-            })
+            self.multiplayerIndicateGameHasStarted()
         }, onGameStart: {
             self.hasStarted = true
             self.startStreamingSelf()
@@ -487,13 +486,27 @@ class Stage: SKScene {
         }
     }
     
+    private func multiplayerIndicateGameHasStarted() {
+        guard let database = self.db else { return }
+        guard let room = self.previousRoom else { return }
+        
+        database.updateGameHasStarted(forGameId: room.id, to: true, { }, { (err) in
+            print(err.localizedDescription)
+        })
+    }
+    
     private func isMultiplayerTimeUp(forTime time: Int) -> Bool {
         if time <= 0 { return true }
         return false
     }
     
     private func endMultiplayerGame() {
+        guard let database = self.db else { return }
+        guard let room = self.previousRoom else { return }
         
+        database.updateGameHasEnded(forGameId: room.id, to: true, { }) { (err) in
+            print(err.localizedDescription)
+        }
     }
 
     func gameOver(ifWon: Bool) {

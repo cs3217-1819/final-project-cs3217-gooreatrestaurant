@@ -193,6 +193,38 @@ protocol GameDatabase {
     ///     - position: the position of the player
     func updatePlayerPosition(forGameId id: String, position: CGPoint, velocity: CGVector, xScale: CGFloat, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void)
     
+    /// updates the item the player is holding
+    /// - Parameters:
+    ///     - forGameId: the game id concerned
+    ///     - toItem: the item to be put inside the
+    ///       current user
+    ///     - onComplete: a closure run when this
+    ///       process is successful
+    ///     - onError: a closure run when an error
+    ///       occurs
+    func updatePlayerHoldingItem(forGameId id: String, toItem: AnyObject, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void)
+    
+    /// updates the item inside a particular
+    /// station denoted by their station id in the game
+    /// - Parameters:
+    ///     - forGameId: the game id concerned
+    ///     - forStation: the station identifier/name
+    ///     - toItem: the item to be placed
+    ///     - onComplete: a closure run when this process
+    ///       is successful
+    ///     - onError: a closure run when an error occurs
+    func updateStationItemInside(forGameId id: String, forStation station: String, toItem item: AnyObject, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void)
+    
+    /// updates a game "has ended" state to the specified
+    /// boolean value
+    /// - Parameters:
+    ///     - forGameId: the game id concerned
+    ///     - to: the boolean value for "has ended" flag
+    ///     - onComplete: a closure run when this process
+    ///       completes
+    ///     - onError: a closure run when an error occurs
+    func updateGameHasEnded(forGameId id: String, to hasEnded: Bool, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void)
+    
     /// decrements time left for the game itself
     /// usually performed by host, this should prevent
     /// race conditions

@@ -757,7 +757,7 @@ class GameDB: GameDatabase {
         if hostInRoom(room) == user.uid {
             let playerReadyRef = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, room.id, FirebaseKeys.games_players]))
             
-            playerReadyRef.observe(.value, with: { (snap) in
+            let playerReadyHandle = playerReadyRef.observe(.value, with: { (snap) in
                 guard let playerDict = snap.value as? [String : AnyObject] else {
                     return
                 }
@@ -781,6 +781,8 @@ class GameDB: GameDatabase {
             }) { (err) in
                 onError(err)
             }
+            
+            self.observers.append(Observer(withHandle: playerReadyHandle, withRef: playerReadyRef))
         }
         
         hasStartedRef.observe(.value, with: { (snap) in
@@ -795,11 +797,8 @@ class GameDB: GameDatabase {
             if player.uid == user.uid { continue }
 
             let indPlayerRef = playerRef.child(player.uid)
-
             let playerHandle = indPlayerRef.observe(.value, with: { (snap) in
-                guard let playerDict = snap.value as? [String : AnyObject] else {
-                    return
-                }
+                guard let playerDict = snap.value as? [String : AnyObject] else { return }
 
                 onPlayerUpdate(self.firebaseGamePlayerModelFactory(withPlayerUid: player.uid, forDict: playerDict))
             }, withCancel: { (err) in
@@ -817,9 +816,7 @@ class GameDB: GameDatabase {
             var listOfOrders: [GameOrderModel] = []
 
             for order in orders {
-                guard let orderObject = self.convertOrderDictToOrder(dict: order) else {
-                    return
-                }
+                guard let orderObject = self.convertOrderDictToOrder(dict: order) else { return }
 
                 listOfOrders.append(orderObject)
             }
@@ -830,10 +827,7 @@ class GameDB: GameDatabase {
         }
 
         let scoreHandle = scoreRef.observe(.value, with: { (snap) in
-            guard let score = snap.value as? Int else {
-                return
-            }
-
+            guard let score = snap.value as? Int else { return }
             onScoreChange(score)
         }) { (err) in
             onError(err)
@@ -848,10 +842,7 @@ class GameDB: GameDatabase {
         }
 
         let endHandle = endRef.observe(.value, with: { (snap) in
-            guard let end = snap.value as? Bool else {
-                return
-            }
-
+            guard let end = snap.value as? Bool else { return }
             if end { onGameEnd() }
         }) { (err) in
             onError(err)
@@ -918,6 +909,70 @@ class GameDB: GameDatabase {
         let name = orderInfo[FirebaseKeys.games_orders_recipeName] as? String ?? ""
 
         return GameOrderModel(id: dict.key, name: name, issueTime: issueTime, timeLimit: timeLimit)
+    }
+    
+    func updateGameHasEnded(forGameId id: String, to hasEnded: Bool, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void) {
+        let ref = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, id, FirebaseKeys.games_hasEnded]))
+        
+        ref.setValue(hasEnded) { (err, ref) in
+            if let error = err {
+                onError(error)
+                return
+            }
+            
+            onComplete()
+        }
+    }
+    
+    func updatePlayerHoldingItem(forGameId id: String, toItem item: AnyObject, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void) {
+        guard let user = GameAuth.currentUser else { return }
+        
+        let ref = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, id, FirebaseKeys.games_players, user.uid, FirebaseKeys.games_players_holdingItem]))
+        
+        ref.runTransactionBlock({ (current) -> TransactionResult in
+            guard var gameItem = current.value as? String else {
+                return TransactionResult.success(withValue: current)
+            }
+            
+            gameItem = self.convertGameItemToString(forGameItem: item)
+            current.value = gameItem
+            
+            return TransactionResult.success(withValue: current)
+        }, andCompletionBlock: { (err, committed, snap) in
+            if let error = err {
+                onError(error)
+                return
+            }
+            
+            onComplete()
+        })
+    }
+    
+    func updateStationItemInside(forGameId id: String, forStation station: String, toItem item: AnyObject, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void) {
+        let ref = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, id, FirebaseKeys.games_stations, station, FirebaseKeys.games_stations_itemInside]))
+        
+        ref.runTransactionBlock({ (current) -> TransactionResult in
+            guard var gameItem = current.value as? String else {
+                return TransactionResult.success(withValue: current)
+            }
+            
+            gameItem = self.convertGameItemToString(forGameItem: item)
+            current.value = gameItem
+            
+            return TransactionResult.success(withValue: current)
+        }, andCompletionBlock: { (err, committed, snap) in
+            if let error = err {
+                onError(error)
+                return
+            }
+            
+            onComplete()
+        })
+    }
+    
+    private func convertGameItemToString(forGameItem item: AnyObject) -> String {
+        
+        return "none"
     }
     
     func addScore(by addedScore: Int, forGameId id: String, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void) {
