@@ -18,6 +18,8 @@
 		1D2202A3224AB5850080CF7D /* StageConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D220297224AB5850080CF7D /* StageConstants.swift */; };
 		1D2202A5224AB5850080CF7D /* Spaceship.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D220299224AB5850080CF7D /* Spaceship.swift */; };
 		1D2202AD224AB68F0080CF7D /* PlateStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2202AC224AB68F0080CF7D /* PlateStorage.swift */; };
+		1D37DBC0225E6ED900E637C9 /* ProcessedIngredients.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 1D37DBBE225E6ED900E637C9 /* ProcessedIngredients.atlas */; };
+		1D37DBC1225E6ED900E637C9 /* Ingredients.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 1D37DBBF225E6ED900E637C9 /* Ingredients.atlas */; };
 		1D3DAC0E2257930200491105 /* OrderQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3DAC0D2257930200491105 /* OrderQueue.swift */; };
 		1DD6EBE1224E368C006FF6CD /* ChoppingEquipment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD6EBE0224E368C006FF6CD /* ChoppingEquipment.swift */; };
 		1DD6EBE5224E76F0006FF6CD /* IngredientType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD6EBE4224E76F0006FF6CD /* IngredientType.swift */; };
@@ -40,12 +42,10 @@
 		8BEDCD43224E089A00E24A20 /* SerializableGameData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEDCD42224E089A00E24A20 /* SerializableGameData.swift */; };
 		8BEDCD45224F3EC900E24A20 /* MenuPrefab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEDCD44224F3EC900E24A20 /* MenuPrefab.swift */; };
 		8BEDCD4B22531CDF00E24A20 /* IngredientsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEDCD4A22531CDF00E24A20 /* IngredientsCell.swift */; };
-		8BEDCD4F22538ED500E24A20 /* Ingredients.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 8BEDCD4E2253758500E24A20 /* Ingredients.atlas */; };
 		8BFA63E92257D7FE007645F9 /* GameOverPrefab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFA63E82257D7FE007645F9 /* GameOverPrefab.swift */; };
 		8BFA63EC22589DAF007645F9 /* AudioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFA63EB22589DAF007645F9 /* AudioController.swift */; };
 		8BFA63F02258B020007645F9 /* GameSong.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8BFA63EE2258B020007645F9 /* GameSong.mp3 */; };
 		8BFA63F12258B020007645F9 /* MainScreen.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8BFA63EF2258B020007645F9 /* MainScreen.wav */; };
-		8BFA63F3225C84A7007645F9 /* ProcessedIngredients.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 8BFA63F2225C84A7007645F9 /* ProcessedIngredients.atlas */; };
 		EC0E3163224F610300AF1254 /* CharacterCreationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC0E3162224F610300AF1254 /* CharacterCreationView.xib */; };
 		EC0E3165224F611200AF1254 /* CharacterCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0E3164224F611200AF1254 /* CharacterCreationView.swift */; };
 		EC0E3168224F618B00AF1254 /* TextInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC0E3167224F618B00AF1254 /* TextInputView.xib */; };
@@ -251,6 +251,8 @@
 		1D220297224AB5850080CF7D /* StageConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StageConstants.swift; path = slime/Models/Stage/Constants/StageConstants.swift; sourceTree = SOURCE_ROOT; };
 		1D220299224AB5850080CF7D /* Spaceship.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Spaceship.swift; path = slime/Models/Stage/Spaceship.swift; sourceTree = SOURCE_ROOT; };
 		1D2202AC224AB68F0080CF7D /* PlateStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlateStorage.swift; sourceTree = "<group>"; };
+		1D37DBBE225E6ED900E637C9 /* ProcessedIngredients.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = ProcessedIngredients.atlas; sourceTree = "<group>"; };
+		1D37DBBF225E6ED900E637C9 /* Ingredients.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Ingredients.atlas; sourceTree = "<group>"; };
 		1D3DAC0D2257930200491105 /* OrderQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderQueue.swift; sourceTree = "<group>"; };
 		1DD6EBE0224E368C006FF6CD /* ChoppingEquipment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoppingEquipment.swift; sourceTree = "<group>"; };
 		1DD6EBE4224E76F0006FF6CD /* IngredientType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientType.swift; sourceTree = "<group>"; };
@@ -276,12 +278,10 @@
 		8BEDCD42224E089A00E24A20 /* SerializableGameData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerializableGameData.swift; sourceTree = "<group>"; };
 		8BEDCD44224F3EC900E24A20 /* MenuPrefab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuPrefab.swift; sourceTree = "<group>"; };
 		8BEDCD4A22531CDF00E24A20 /* IngredientsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsCell.swift; sourceTree = "<group>"; };
-		8BEDCD4E2253758500E24A20 /* Ingredients.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Ingredients.atlas; sourceTree = "<group>"; };
 		8BFA63E82257D7FE007645F9 /* GameOverPrefab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverPrefab.swift; sourceTree = "<group>"; };
 		8BFA63EB22589DAF007645F9 /* AudioController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioController.swift; sourceTree = "<group>"; };
 		8BFA63EE2258B020007645F9 /* GameSong.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = GameSong.mp3; sourceTree = "<group>"; };
 		8BFA63EF2258B020007645F9 /* MainScreen.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = MainScreen.wav; sourceTree = "<group>"; };
-		8BFA63F2225C84A7007645F9 /* ProcessedIngredients.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = ProcessedIngredients.atlas; sourceTree = "<group>"; };
 		E57ABF11D0AB607CF6EFB250 /* Pods-slimeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-slimeTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-slimeTests/Pods-slimeTests.debug.xcconfig"; sourceTree = "<group>"; };
 		EC0E3162224F610300AF1254 /* CharacterCreationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharacterCreationView.xib; sourceTree = "<group>"; };
 		EC0E3164224F611200AF1254 /* CharacterCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCreationView.swift; sourceTree = "<group>"; };
@@ -563,8 +563,8 @@
 		8BD816B42242643C00586180 /* Sprites */ = {
 			isa = PBXGroup;
 			children = (
-				8BFA63F2225C84A7007645F9 /* ProcessedIngredients.atlas */,
-				8BEDCD4E2253758500E24A20 /* Ingredients.atlas */,
+				1D37DBBF225E6ED900E637C9 /* Ingredients.atlas */,
+				1D37DBBE225E6ED900E637C9 /* ProcessedIngredients.atlas */,
 				8B81EFBB224344AD007BFDB0 /* Slime.atlas */,
 				8BEDCD44224F3EC900E24A20 /* MenuPrefab.swift */,
 				8BEDCD4A22531CDF00E24A20 /* IngredientsCell.swift */,
@@ -1305,7 +1305,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8BEDCD4F22538ED500E24A20 /* Ingredients.atlas in Resources */,
 				EC3824282238803D000D7148 /* LaunchScreen.storyboard in Resources */,
 				EC38246D223A1803000D7148 /* Rubik-Bold.ttf in Resources */,
 				EC382470223A1803000D7148 /* Rubik-BlackItalic.ttf in Resources */,
@@ -1330,13 +1329,13 @@
 				ECD4554D2240B0AF006AF78D /* Alert.xib in Resources */,
 				EC4924F42248D616007B9797 /* RatingView.xib in Resources */,
 				EC38246B223A1803000D7148 /* Rubik-Regular.ttf in Resources */,
+				1D37DBC1225E6ED900E637C9 /* Ingredients.atlas in Resources */,
 				ECD24428224B0A9300767A56 /* SlimeNumberPadView.xib in Resources */,
 				EC7168E9225DD3CF004EF2B0 /* open.mp3 in Resources */,
 				EC449B75223B7E6300A8EA35 /* TitleScreenView.xib in Resources */,
 				EC21B40022420CA700827121 /* LevelPlayButton.xib in Resources */,
 				EC449B8B223BACD500A8EA35 /* StoryModeLevelSelectView.xib in Resources */,
 				ECD45541223FA21E006AF78D /* Modal.xib in Resources */,
-				8BFA63F3225C84A7007645F9 /* ProcessedIngredients.atlas in Resources */,
 				EC449B8E223BAD4400A8EA35 /* MapDot.xib in Resources */,
 				EC38246A223A1803000D7148 /* Rubik-Light.ttf in Resources */,
 				EC6E75522255CB9000B9C7CF /* CustomizationMainView.xib in Resources */,
@@ -1363,6 +1362,7 @@
 				EC7168DD225DD2A8004EF2B0 /* menu-bgm-alt.mp3 in Resources */,
 				EC38243F223882C5000D7148 /* PrimaryButton.xib in Resources */,
 				EC7168E8225DD3CF004EF2B0 /* leftroom.mp3 in Resources */,
+				1D37DBC0225E6ED900E637C9 /* ProcessedIngredients.atlas in Resources */,
 				EC7168E7225DD3CF004EF2B0 /* joinroom.mp3 in Resources */,
 				8BFA63F02258B020007645F9 /* GameSong.mp3 in Resources */,
 				EC6E99F5224F2D1600A9554C /* ProgressBarView.xib in Resources */,
@@ -1805,13 +1805,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = CZ7H96C646;
+				DEVELOPMENT_TEAM = W76H98A34A;
 				INFOPLIST_FILE = slime/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = nus.cs3217.a0143378y.slime;
+				PRODUCT_BUNDLE_IDENTIFIER = nus.cs3217.a0166733y.slime;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
@@ -1826,13 +1826,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = CZ7H96C646;
+				DEVELOPMENT_TEAM = W76H98A34A;
 				INFOPLIST_FILE = slime/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = nus.cs3217.a0143378y.slime;
+				PRODUCT_BUNDLE_IDENTIFIER = nus.cs3217.a0166733y.slime;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;

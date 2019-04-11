@@ -51,7 +51,7 @@ class MenuPrefab : SKSpriteNode {
 
         var i = 0
         for (key, _) in recipe.ingredientsNeeded {
-            let child = addIngredient(inInt: key.type.rawValue)
+            let child = addIngredient(withType: key.type.rawValue)
             child.position = positionings[i]
             i += 1
             self.addChild(child)
@@ -72,21 +72,15 @@ class MenuPrefab : SKSpriteNode {
         timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(countdown), userInfo: nil, repeats: true)
     }
 
-    func addIngredient(inInt: Int) -> SKSpriteNode {
+    func addIngredient(withType type: String) -> SKSpriteNode {
         let blackCircle = SKSpriteNode(imageNamed: "Black Base Circle")
         blackCircle.position = CGPoint(x: 0, y: -20)
         blackCircle.size = CGSize(width: 20, height: 20)
 
-        let ingredientsAtlas = SKTextureAtlas(named: "Ingredients")
-        let numImages = ingredientsAtlas.textureNames.count
-        for i in 1...numImages {
-            if (i == inInt) {
-                //Add the ingredients
-                let ingredient = SKSpriteNode(imageNamed: String(inInt))
-                ingredient.size = CGSize(width: 15, height: 15)
-                blackCircle.addChild(ingredient)
-            }
-        }
+        //Add the ingredients
+        let ingredient = SKSpriteNode(imageNamed: type)
+        ingredient.size = CGSize(width: 15, height: 15)
+        blackCircle.addChild(ingredient)
 
         return blackCircle
     }

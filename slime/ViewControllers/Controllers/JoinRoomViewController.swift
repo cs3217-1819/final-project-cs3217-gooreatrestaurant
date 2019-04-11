@@ -18,10 +18,17 @@ class JoinRoomViewController: ViewController<JoinRoomView> {
         codeInputController.onComplete { _ in
             // TODO: replace with true code
             let roomJoinId = "28280"
-
             self.showLoadingAlert(withDescription: "Teleporting slime agent...")
 
-            self.context.db.joinRoom(forRoomId: roomJoinId, {
+            guard let userCharacter = try? self.context.data.userCharacter?.value() else {
+                return
+            }
+            
+            guard let userChar = userCharacter else {
+                return
+            }
+            
+            self.context.db.joinRoom(forRoomId: roomJoinId, withUser: userChar, {
                 let lobbyController: MultiplayerLobbyViewController = self.context.routeToAndPrepareFor(.MultiplayerLobby)
                 lobbyController.setupRoom(withId: roomJoinId)
                 self.context.modal.closeAlert()

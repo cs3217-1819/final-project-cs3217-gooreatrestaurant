@@ -109,13 +109,12 @@ class MainController: UIViewController {
             let currentRoute = self.router.currentViewController as! MultiplayerLobbyViewController
 
             guard let room = currentRoute.currentRoom else {
-                print("pew pew")
+                print("pew pew no room pew")
                 return
             }
             
             destination.isMultiplayer = true
-            destination.currentMap = room.map
-            destination.multiplayerGameId = room.id
+            destination.previousRoom = room
         }
         
         if segue.identifier == "toMultiplayerGame" {

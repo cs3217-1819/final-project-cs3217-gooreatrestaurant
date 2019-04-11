@@ -20,14 +20,24 @@ struct GamePlayerModel {
     var isConnected: Bool = false
     var holdingItem: String = ""
     var isReady: Bool = false
+    var name: String = ""
+    var hat: String = "none"
+    var accessory: String = "none"
+    var color: String = "green"
+    var level: Int = 1
 
-    init(uid: String, posX: CGFloat, posY: CGFloat, holdingItem: String, isHost: Bool, isConnected: Bool, isReady: Bool) {
+    init(uid: String, posX: CGFloat, posY: CGFloat, holdingItem: String, isHost: Bool, isConnected: Bool, isReady: Bool, name: String, hat: String, accessory: String, color: String, level: Int) {
         self.positionX = posX
         self.positionY = posY
         self.holdingItem = holdingItem
         self.isHost = isHost
         self.isConnected = isConnected
         self.isReady = isReady
+        self.name = name
+        self.hat = hat
+        self.color = color
+        self.accessory = accessory
+        self.level = level
     }
 }
 

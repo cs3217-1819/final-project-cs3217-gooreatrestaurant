@@ -33,12 +33,27 @@ class CookingEquipment: Station {
         self.color = .green
     }
 
+    private var canTakeIngredient: Bool {
+        guard let ingredient = self.ingredientInProcess as? Ingredient else {
+            return false
+        }
+
+        // if ingredient is ruined or finished processing, can take
+        // RI: after finished processing, will put the this type as the last proccessed
+        if ingredient.type == .junk || ingredient.processed.last == self.cookingType {
+            return true
+        }
+
+        return false
+    }
+
     override func ableToProcess(_ item: SKSpriteNode?) -> Bool {
 
         let willPut = (item is Ingredient && self.ingredientInProcess == nil)
         let willProcess = (item == nil && self.ingredientInProcess != nil)
+        let willTakeIngredientToPlate = (item is Plate && self.ingredientInProcess is Ingredient)
 
-        return willPut || willProcess
+        return willPut || willProcess || willTakeIngredientToPlate
     }
 
     override func process(_ item: SKSpriteNode?) -> SKSpriteNode? {
@@ -48,6 +63,7 @@ class CookingEquipment: Station {
 
         let willPut = (item is Ingredient && self.ingredientInProcess == nil)
         let willProcess = (item == nil && self.ingredientInProcess != nil)
+        let willTakeIngredientToPlate = (item is Plate && self.ingredientInProcess is Ingredient)
 
         if willPut {
             guard let ingredientToPut = item as? Ingredient else {
@@ -57,19 +73,23 @@ class CookingEquipment: Station {
             return nil
 
         } else if willProcess {
-            guard let ingredient = self.ingredientInProcess as? Ingredient else {
-                return nil
-            }
-            // if ingredient is ruined or finished processing, can take
-            if ingredient.type == .junk || ingredient.processed.last == self.cookingType {
-                guard let toTake = takeIngredientInProcess() else {
-                    return nil
-                }
-                return toTake
-            } else {
+            guard let toTake = takeIngredientInProcess() else {
                 manualProcessing()
                 return nil
             }
+            return toTake
+
+        } else if willTakeIngredientToPlate {
+            guard let toAdd = takeIngredientInProcess() as? Ingredient else {
+                return nil
+            }
+
+            guard let plate = item as? Plate else {
+                return nil
+            }
+
+            plate.food.addIngredients(toAdd)
+            return plate
         }
         return nil
     }
@@ -111,6 +131,10 @@ class CookingEquipment: Station {
     }
 
     func takeIngredientInProcess() -> SKSpriteNode? {
+        guard canTakeIngredient == true else {
+            return nil
+        }
+
         guard let toTake = ingredientInProcess as? SKSpriteNode else {
             return nil
         }

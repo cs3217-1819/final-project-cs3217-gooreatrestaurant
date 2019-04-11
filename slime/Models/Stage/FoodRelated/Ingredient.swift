@@ -25,12 +25,7 @@ class Ingredient: SKSpriteNode {
         self.type = type
         let ingredientsAtlas = SKTextureAtlas(named: "Ingredients")
         var texture: SKTexture = SKTexture.init()
-        let numImages = ingredientsAtlas.textureNames.count
-        for i in 1...numImages {
-            if i == type.rawValue {
-                texture = ingredientsAtlas.textureNamed(String(type.rawValue))
-            }
-        }
+        texture = ingredientsAtlas.textureNamed(type.rawValue)
         super.init(texture: texture, color: .clear, size: size)
         self.name = StageConstants.ingredientName
         self.position = position
@@ -69,12 +64,7 @@ class Ingredient: SKSpriteNode {
 //            greenBar.removeFromParent()
             let ingredientsAtlas = SKTextureAtlas(named: "ProcessedIngredients")
             var texture: SKTexture = SKTexture.init()
-            let numImages = ingredientsAtlas.textureNames.count
-            for i in 1...numImages {
-                if i == self.type.rawValue {
-                    texture = ingredientsAtlas.textureNamed(String(self.type.rawValue))
-                }
-            }
+            texture = ingredientsAtlas.textureNamed(self.type.rawValue)
             self.texture = texture
             currentProcessing = nil
             processingProgress = 0.0

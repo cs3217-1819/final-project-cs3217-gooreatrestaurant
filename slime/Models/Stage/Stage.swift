@@ -14,6 +14,10 @@ class Stage: SKScene {
     typealias RecipeData = [String: [DictString]]
 
     var spaceship: Spaceship
+    
+    // multiplayer stuff
+    var isMultiplayer: Bool?
+    var db: GameDatabase?
 
     // RI: the players are unique
     var players: [Player] = []
@@ -37,6 +41,72 @@ class Stage: SKScene {
         self.addChild(background)
         self.addChild(spaceship)
         setupControl()
+    }
+    
+    func joinGame(forGameId id: String) {
+        self.db?.joinGame(forGameId: id, {
+            print("game has been successfully joined")
+        }, { (err) in
+            print(err.localizedDescription)
+        })
+    }
+    
+    func setupMultiplayer(forRoom room: RoomModel) {
+        self.isMultiplayer = true
+        db = GameDB()
+        
+        guard let user = GameAuth.currentUser else {
+            return
+        }
+        
+        for player in room.players {
+            if player.uid == user.uid {
+                // current player, continue
+                continue
+            }
+            
+            // TODO: add all other players except the host
+            // into the scene, and tag them with the uid
+        }
+        
+        db?.observeGameState(forRoom: room, onPlayerUpdate: { (player) in
+            // this occurs when a player's
+            // state in the database changes
+            // TODO: update player position depending on the uid
+            print(player.positionX)
+            print(player.positionY)
+            print(player.uid)
+            // it handles all of the players individually
+        }, onStationUpdate: {
+            // not yet implemented
+            // this updates whenever one station
+            // experiences a change
+        }, onGameEnd: {
+            // TODO: game end goes here
+            print("Game has ended")
+        }, onOrderChange: { (orders) in
+            // the function here occurs everytime the
+            // order in the db changes
+            // TODO: render this into the screen
+            // when order changes
+            for order in orders {
+                print(order.name)
+            }
+        }, onScoreChange: { (score) in
+            // self-explanatory
+            // TODO: update score
+            print(score)
+        }, onAllPlayersReady: {
+            // only for host, start game
+            self.db?.startGame(forRoom: room, {
+            }, { (err) in
+                print(err)
+            })
+        }, onComplete: {
+            self.joinGame(forGameId: room.id)
+        }) { (err) in
+            print(err)
+        }
     }
 
     func generateLevel(inLevel levelName: String) {
@@ -186,11 +256,7 @@ class Stage: SKScene {
             return nil
         }
 
-        guard let ingredientEnum = Int(type) else {
-            return nil
-        }
-
-        guard let ingredientType = IngredientType(rawValue: ingredientEnum) else {
+        guard let ingredientType = IngredientType(rawValue: type) else {
             return nil
         }
 
@@ -202,11 +268,8 @@ class Stage: SKScene {
 
         // multiple processing separated by comma in the plist
         for processing in processingValue.split(separator: ",") {
-            guard let processingEnum = Int(processing) else {
-                return nil
-            }
 
-            guard let processingType = CookingType(rawValue: processingEnum) else {
+            guard let processingType = CookingType(rawValue: String(processing)) else {
                 return nil
             }
 
