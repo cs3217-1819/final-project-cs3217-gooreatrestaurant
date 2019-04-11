@@ -78,7 +78,10 @@ class MenuPrefab : SKSpriteNode {
         blackCircle.size = CGSize(width: 20, height: 20)
 
         //Add the ingredients
-        let ingredient = SKSpriteNode(imageNamed: type)
+        let ingredientsAtlas = SKTextureAtlas(named: "Ingredients")
+        var texture: SKTexture = SKTexture.init()
+        texture = ingredientsAtlas.textureNamed(type)
+        let ingredient = SKSpriteNode(texture: texture)
         ingredient.size = CGSize(width: 15, height: 15)
         blackCircle.addChild(ingredient)
 

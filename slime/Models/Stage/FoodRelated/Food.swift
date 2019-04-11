@@ -13,7 +13,6 @@ class Food {
     private(set) var ingredientsList: [Ingredient: Int] = [:]
 
     func addIngredients(_ ingredient: Ingredient) {
-
         if ingredientsList[ingredient] == nil {
             ingredientsList[ingredient] = 0
         }

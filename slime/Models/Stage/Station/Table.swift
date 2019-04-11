@@ -16,7 +16,6 @@ class Table: Station {
     }
 
     override func ableToProcess(_ item: SKSpriteNode?) -> Bool {
-
         let willTake = (item == nil && self.item != nil)
         let willPut = (item != nil && self.item == nil)
         let willAddIngredient = (item is Ingredient && self.item is Plate)
@@ -66,6 +65,7 @@ class Table: Station {
             }
 
             plate.food.addIngredients(ingredient)
+            plate.addIngredientImage(inIngredient: ingredient)
             return nil
 
         } else if willTakeIngredientToPlate {
@@ -77,14 +77,10 @@ class Table: Station {
             guard let ingredient = self.item as? Ingredient else {
                 return item
             }
-
             ingredient.removeFromParent()
             plate.food.addIngredients(ingredient)
             return plate
         }
-
         return item
-
     }
-
 }
