@@ -462,11 +462,11 @@ class GameDB: GameDatabase {
         var res: [String : AnyObject] = [:]
         
         // table
-        for tablePosition in data.table {
-            let key = stringToPointKey(position: tablePosition)
+        for (index, _) in data.table.enumerated() {
+            let key = "\(FirebaseSystemValues.games_stations_table)-\(index)"
             
             let valueDict =
-                [FirebaseKeys.games_stations_type : FirebaseSystemValues.games_stations_table,
+                [FirebaseKeys.games_stations_type: FirebaseSystemValues.games_stations_table,
                  FirebaseKeys.games_stations_isOccupied: FirebaseSystemValues.defaultFalse,
                  FirebaseKeys.games_stations_itemInside: FirebaseSystemValues.defaultBlankString] as [String : AnyObject]
             
@@ -474,8 +474,8 @@ class GameDB: GameDatabase {
         }
         
         // frying equipment
-        for fryingPosition in data.fryingEquipment {
-            let key = stringToPointKey(position: fryingPosition)
+        for (index, _) in data.fryingEquipment.enumerated() {
+            let key = "\(FirebaseSystemValues.games_stations_fryingEquipment)-\(index)"
             
             let valueDict =
                 [FirebaseKeys.games_stations_type: FirebaseSystemValues.games_stations_fryingEquipment,
@@ -485,8 +485,8 @@ class GameDB: GameDatabase {
             res.updateValue(valueDict as AnyObject, forKey: key)
         }
         
-        for ovenPosition in data.oven {
-            let key = stringToPointKey(position: ovenPosition)
+        for (index, _) in data.oven.enumerated() {
+            let key = "\(FirebaseSystemValues.games_stations_oven)-\(index)"
             
             let valueDict =
                 [FirebaseKeys.games_stations_type: FirebaseSystemValues.games_stations_oven,
@@ -496,8 +496,8 @@ class GameDB: GameDatabase {
             res.updateValue(valueDict as AnyObject, forKey: key)
         }
         
-        for choppingPosition in data.choppingEquipment {
-            let key = stringToPointKey(position: choppingPosition)
+        for (index, _) in data.choppingEquipment.enumerated() {
+            let key = "\(FirebaseSystemValues.games_stations_choppingEquipment)-\(index)"
             
             let valueDict =
                 [FirebaseKeys.games_stations_type: FirebaseSystemValues.games_stations_choppingEquipment,
@@ -1044,13 +1044,13 @@ enum GameTypes {
 
 struct FirebaseSystemValues {
     // game values
-    static let games_stations_fryingEquipment = "frying_equipment"
+    static let games_stations_fryingEquipment = "fryingEquipment"
     static let games_stations_oven = "oven"
     static let games_stations_table = "table"
-    static let games_stations_storeFront = "store_front"
-    static let games_stations_choppingEquipment = "chopping_equipment"
-    static let games_stations_plateStorage = "plate_storage"
-    static let games_stations_trashBin = "trash_bin"
+    static let games_stations_storeFront = "storeFront"
+    static let games_stations_choppingEquipment = "choppingEquipment"
+    static let games_stations_plateStorage = "plateStorage"
+    static let games_stations_trashBin = "trashBin"
     
     static let users_defaultOutfit = "none"
     static let users_defaultName = "Generic Slime"
