@@ -30,10 +30,6 @@ class MultiplayerScreenViewController: ViewController<MultiplayerScreenView> {
                 return
             }
             
-            print(userChar.accessory)
-            print(userChar.hat)
-            print(userChar.name)
-            print(userChar.color.toString())
             self.context.db.createRoom(withRoomName: "Pros only", withMap: "Level1", withUser: userChar, { id in
                 self.context.modal.closeAlert()
 

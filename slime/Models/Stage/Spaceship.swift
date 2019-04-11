@@ -61,56 +61,45 @@ class Spaceship: SKSpriteNode {
     }
 
     func addChoppingEquipment(inPositions positions: [String]) {
-        var index = 0
-        for position in positions {
+        for (index, position) in positions.enumerated() {
             let equipment = ChoppingEquipment(inPosition: NSCoder.cgPoint(for: position))
-            equipment.id = index
+            equipment.id = "choppingEquipment-\(index)"
             self.addChild(equipment)
-            index += 1
         }
     }
 
     func addFryingEquipment(inPositions positions: [String]) {
-        var index = 0
-        for position in positions {
+        for (index, position) in positions.enumerated() {
             let equipment = FryingEquipment(inPosition: NSCoder.cgPoint(for: position))
-            equipment.id = index
+            equipment.id = "fryingEquipment-\(index)"
             self.addChild(equipment)
-            index += 1
         }
     }
 
     func addOven(inPositions positions: [String]) {
-        var index = 0
         for position in positions {
             let oven = Oven(inPosition: NSCoder.cgPoint(for: position))
-            oven.id = index
+            oven.id = "oven-\(index)"
             self.addChild(oven)
-            index += 1
         }
     }
 
     func addIngredientStorage(withDetails details: [(type: String, position: String)]) {
-        var index = 0
-        for ingredientData in details {
-
+        for (index, ingredientData) in details.enumerated() {
             guard let ingredientType = IngredientType(rawValue: ingredientData.type) else {
                 continue
             }
             let storage = IngredientStorage(ofType: ingredientType, inPosition: NSCoder.cgPoint(for: ingredientData.position))
-            storage.id = index
+            storage.id = "ingredientStorage-\(index)"
             self.addChild(storage)
-            index += 1
         }
     }
 
     func addPlateStorage(inPositions positions: [String]) {
-        var index = 0
-        for position in positions {
+        for (index, position) in positions.enumerated() {
             let storage = PlateStorage(inPosition: NSCoder.cgPoint(for: position))
-            storage.id = index
+            storage.id = "plateStorage-\(index)"
             self.addChild(storage)
-            index += 1
         }
     }
 
@@ -120,22 +109,18 @@ class Spaceship: SKSpriteNode {
     }
 
     func addTable(inPositions positions: [String]) {
-        var index = 0
-        for position in positions {
+        for (index, position) in positions.enumerated() {
             let table = Table(inPosition: NSCoder.cgPoint(for: position))
-            table.id = index
+            table.id = "table-\(index)"
             self.addChild(table)
-            index += 1
         }
     }
 
     func addTrashBin(inPositions positions: [String]) {
-        var index = 0
         for position in positions {
             let trashBin = Trash(inPosition: NSCoder.cgPoint(for: position))
-            trashBin.id = index
+            trashBin.id = "trashBin-\(index)"
             self.addChild(trashBin)
-            index += 1
         }
     }
 

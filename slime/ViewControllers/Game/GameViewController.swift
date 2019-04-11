@@ -57,9 +57,7 @@ class GameViewController: UIViewController {
         
         // TODO: multiplayer stuff, add all the players to stage, then the setupPlayers() will map the slime to player
         if isMultiplayer {
-            if let room = self.previousRoom {
-                stage.setupMultiplayer(forRoom: room)
-            }
+            if let room = self.previousRoom { stage.setupMultiplayer(forRoom: room) }
         } else {
             guard let onlyUser = GameAuth.currentUser else {
                 return

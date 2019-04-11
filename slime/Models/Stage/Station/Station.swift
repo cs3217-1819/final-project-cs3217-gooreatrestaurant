@@ -11,7 +11,7 @@ import SpriteKit
 
 class Station: SKSpriteNode {
 
-    var id: Int?
+    var id: String?
 
     init(inPosition position: CGPoint, withSize size: CGSize = StageConstants.stationSize) {
         let table = SKSpriteNode(imageNamed: "table")
