@@ -42,7 +42,7 @@ class Table: Station {
             }
 
             itemToPut.removeFromParent()
-            itemToPut.position = CGPoint(x: 0.0, y: 0.5 * (itemToPut.size.height + self.size.height))
+            itemToPut.position = CGPoint(x: 0.0, y: 0.4 * (itemToPut.size.height + self.size.height))
             addChild(itemToPut)
             return nil
 
