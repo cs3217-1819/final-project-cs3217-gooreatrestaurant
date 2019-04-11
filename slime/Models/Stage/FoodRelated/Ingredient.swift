@@ -59,7 +59,6 @@ class Ingredient: SKSpriteNode {
         blackBar.setScale(0.1)
 
         if processingProgress >= 100.0 {
-            print("A")
             blackBar.removeFromParent()
 //            greenBar.removeFromParent()
             let ingredientsAtlas = SKTextureAtlas(named: "ProcessedIngredients")
@@ -70,9 +69,7 @@ class Ingredient: SKSpriteNode {
             processingProgress = 0.0
             processed.append(method)
         } else {
-            print("B")
             greenBar.setScale(1)
-            print(processingProgress)
             greenBar.yScale = CGFloat(processingProgress / 100.0) * greenBar.yScale
             //temp removal of texture
             self.texture = nil
