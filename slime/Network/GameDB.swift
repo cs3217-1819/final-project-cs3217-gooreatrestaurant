@@ -468,7 +468,7 @@ class GameDB: GameDatabase {
             let valueDict =
                 [FirebaseKeys.games_stations_type: FirebaseSystemValues.games_stations_table,
                  FirebaseKeys.games_stations_isOccupied: FirebaseSystemValues.defaultFalse,
-                 FirebaseKeys.games_stations_itemInside: FirebaseSystemValues.defaultBlankString] as [String : AnyObject]
+                 FirebaseKeys.games_stations_itemInside: FirebaseSystemValues.defaultNoItem] as [String : AnyObject]
             
             res.updateValue(valueDict as AnyObject, forKey: key)
         }
@@ -480,7 +480,7 @@ class GameDB: GameDatabase {
             let valueDict =
                 [FirebaseKeys.games_stations_type: FirebaseSystemValues.games_stations_fryingEquipment,
                  FirebaseKeys.games_stations_isOccupied: FirebaseSystemValues.defaultFalse,
-                 FirebaseKeys.games_stations_itemInside: FirebaseSystemValues.defaultBlankString] as [String : AnyObject]
+                 FirebaseKeys.games_stations_itemInside: FirebaseSystemValues.defaultNoItem] as [String : AnyObject]
             
             res.updateValue(valueDict as AnyObject, forKey: key)
         }
@@ -491,7 +491,7 @@ class GameDB: GameDatabase {
             let valueDict =
                 [FirebaseKeys.games_stations_type: FirebaseSystemValues.games_stations_oven,
                  FirebaseKeys.games_stations_isOccupied: FirebaseSystemValues.defaultFalse,
-                 FirebaseKeys.games_stations_itemInside: FirebaseSystemValues.defaultBlankString] as [String : AnyObject]
+                 FirebaseKeys.games_stations_itemInside: FirebaseSystemValues.defaultNoItem] as [String : AnyObject]
             
             res.updateValue(valueDict as AnyObject, forKey: key)
         }
@@ -502,7 +502,7 @@ class GameDB: GameDatabase {
             let valueDict =
                 [FirebaseKeys.games_stations_type: FirebaseSystemValues.games_stations_choppingEquipment,
                  FirebaseKeys.games_stations_isOccupied: FirebaseSystemValues.defaultFalse,
-                 FirebaseKeys.games_stations_itemInside: FirebaseSystemValues.defaultBlankString] as [String : AnyObject]
+                 FirebaseKeys.games_stations_itemInside: FirebaseSystemValues.defaultNoItem] as [String : AnyObject]
             
             res.updateValue(valueDict as AnyObject, forKey: key)
         }
@@ -551,7 +551,7 @@ class GameDB: GameDatabase {
                      FirebaseKeys.games_players_isConnected: FirebaseSystemValues.defaultFalse as AnyObject,
                      FirebaseKeys.games_players_positionX: pos.x as AnyObject,
                      FirebaseKeys.games_players_positionY: pos.y as AnyObject,
-                     FirebaseKeys.games_players_holdingItem: FirebaseSystemValues.defaultBlankString as AnyObject,
+                     FirebaseKeys.games_players_holdingItem: FirebaseSystemValues.defaultNoItem as AnyObject,
                      FirebaseKeys.users_color: player.color as AnyObject,
                      FirebaseKeys.users_name: player.name as AnyObject,
                      FirebaseKeys.users_level: player.level as AnyObject,
@@ -864,7 +864,7 @@ class GameDB: GameDatabase {
         let velocityX = playerDict[FirebaseKeys.games_players_velocityX] as? CGFloat ?? FirebaseSystemValues.defaultCGFloat
         let velocityY = playerDict[FirebaseKeys.games_players_velocityY] as? CGFloat ?? FirebaseSystemValues.defaultCGFloat
         let xScale = playerDict[FirebaseKeys.games_players_xScale] as? CGFloat ?? FirebaseSystemValues.defaultCGFloat
-        let holdItem = playerDict[FirebaseKeys.games_players_holdingItem] as? String ?? FirebaseSystemValues.defaultBlankString
+        let holdItem = playerDict[FirebaseKeys.games_players_holdingItem] as? String ?? FirebaseSystemValues.defaultNoItem
         let isConnected = playerDict[FirebaseKeys.games_players_isConnected] as? Bool ?? FirebaseSystemValues.defaultFalse
         let isHost = playerDict[FirebaseKeys.games_players_isHost] as? Bool ?? FirebaseSystemValues.defaultFalse
         let isReady = playerDict[FirebaseKeys.games_players_isReady] as? Bool ?? FirebaseSystemValues.defaultFalse
@@ -1200,6 +1200,7 @@ struct FirebaseSystemValues {
     
     static let defaultFalse = false
     static let defaultBlankString = ""
+    static let defaultNoItem = "none"
     static let defaultDouble = 0.0
     static let defaultCGFloat = 0.0 as CGFloat
 }

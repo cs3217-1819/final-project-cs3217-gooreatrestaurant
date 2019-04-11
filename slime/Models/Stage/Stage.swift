@@ -376,6 +376,8 @@ class Stage: SKScene {
                 orderQueue.addPossibleRecipe(recipe)
             }
             orderQueue.initialize()
+        } else {
+            
         }
     }
 
@@ -443,20 +445,25 @@ class Stage: SKScene {
     }
 
     func serve(_ plate: Plate) {
-        let foodToServe = plate.food
-
-        guard let orderQueue = self.childNode(withName: StageConstants.orderQueueName) as? OrderQueue else {
-            print("error")
-            return
+        if !isMultiplayer {
+            let foodToServe = plate.food
+            
+            guard let orderQueue = self.childNode(withName: StageConstants.orderQueueName) as? OrderQueue else {
+                print("error")
+                return
+            }
+            
+            guard orderQueue.completeOrder(withFood: foodToServe) == true else {
+                print("failed")
+                return
+            }
+            
+            levelScore += 20
+            scoreLabel.text = "Score: \(levelScore)"
+        } else {
+            // multiplayer serve food
         }
-
-        guard orderQueue.completeOrder(withFood: foodToServe) == true else {
-            print("failed")
-            return
-        }
-
-        levelScore += 20
-        scoreLabel.text = "Score: \(levelScore)"
+        
     }
 
     func startCounter() {
