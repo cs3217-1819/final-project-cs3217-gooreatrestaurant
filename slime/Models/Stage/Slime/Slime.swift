@@ -39,7 +39,6 @@ class Slime: SKSpriteNode {
 
         self.physicsBody?.contactTestBitMask |= StageConstants.plateCategory
         self.physicsBody?.contactTestBitMask |= StageConstants.ingredientCategory
-        self.physicsBody?.contactTestBitMask |= StageConstants.tableCategory
         self.physicsBody?.contactTestBitMask |= StageConstants.slimeCategory
         self.physicsBody?.contactTestBitMask |= StageConstants.ladderCategory
         self.physicsBody?.contactTestBitMask |= StageConstants.stationCategory

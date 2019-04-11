@@ -18,7 +18,7 @@ class Trash: Station {
         self.texture = trashBin.texture
         self.physicsBody = SKPhysicsBody(texture: trashBin.texture!, size: self.size)
         self.physicsBody?.isDynamic = false
-        self.physicsBody?.categoryBitMask = StageConstants.tableCategory
+        self.physicsBody?.categoryBitMask = StageConstants.stationCategory
         self.physicsBody?.contactTestBitMask = StageConstants.slimeCategory
         self.physicsBody?.collisionBitMask = StageConstants.wallCategoryCollision
     }

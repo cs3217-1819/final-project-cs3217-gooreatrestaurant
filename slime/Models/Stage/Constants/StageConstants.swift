@@ -66,7 +66,6 @@ class StageConstants {
     // category bitmask
     static let plateCategory: UInt32 = 1 << 1
     static let ingredientCategory: UInt32 = 1 << 2
-    static let tableCategory: UInt32 = 1 << 3
     static let slimeCategory: UInt32 = 1 << 4
     static let ladderCategory: UInt32 = 1 << 5
     static let stationCategory: UInt32 = 1 << 6
