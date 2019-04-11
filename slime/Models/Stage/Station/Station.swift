@@ -40,6 +40,10 @@ class Station: SKSpriteNode {
         fatalError("init(coder:) has not been implemented")
     }
 
+    // How to make different stations:
+    // - Subclass this class
+    // - Override ableToProcess and process func with the subclass specifications, explained below
+
     // Check whether the item is able to be processed by this station
     // Parameters:
     //      - item: the item that is queried, can be nil, where there is no item passed to this station
