@@ -13,11 +13,14 @@ class Trash: Station {
 
     override init(inPosition position: CGPoint, withSize size: CGSize) {
         let trashBin = SKSpriteNode(imageNamed: "trashbin")
-        trashBin.size = size
-        super.init(inPosition: position, withSize: size)
+        trashBin.size = StageConstants.stationSize 
+        super.init(inPosition: position, withSize: trashBin.size)
         self.texture = trashBin.texture
-        self.physicsBody = SKPhysicsBody(texture: trashBin.texture!, size: size)
+        self.physicsBody = SKPhysicsBody(texture: trashBin.texture!, size: self.size)
         self.physicsBody?.isDynamic = false
+        self.physicsBody?.categoryBitMask = StageConstants.tableCategory
+        self.physicsBody?.contactTestBitMask = StageConstants.slimeCategory
+        self.physicsBody?.collisionBitMask = StageConstants.wallCategoryCollision
     }
 
     required init?(coder aDecoder: NSCoder) {

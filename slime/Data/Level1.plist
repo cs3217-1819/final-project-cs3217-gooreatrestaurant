@@ -81,7 +81,7 @@
 	</array>
 	<key>choppingEquipment</key>
 	<array>
-		<string>{95,-149}</string>
+		<string>{95,-145}</string>
 	</array>
 	<key>fryingEquipment</key>
 	<array/>
@@ -95,7 +95,7 @@
 			<key>type</key>
 			<string>apple</string>
 			<key>position</key>
-			<string>{-25, -149}</string>
+			<string>{-25, -148}</string>
 		</dict>
 		<dict>
 			<key>type</key>
@@ -112,12 +112,13 @@
 	<string>{-140,10}</string>
 	<key>table</key>
 	<array>
-		<string>{60,-38}</string>
-		<string>{-125, -63}</string>
+		<string>{60,-35}</string>
+		<string>{-125, -61}</string>
+		<string>{-15,66}</string>
 	</array>
 	<key>trashBin</key>
 	<array>
-		<string>{0,0}</string>
+		<string>{-95,68}</string>
 	</array>
 	<key>possibleRecipes</key>
 	<array>
