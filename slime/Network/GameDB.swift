@@ -871,8 +871,26 @@ class GameDB: GameDatabase {
         return GameOrderModel(id: dict.key, name: name, issueTime: issueTime, timeLimit: timeLimit)
     }
     
-    func addScore(by score: Int, forGameId id: String, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void) {
-        
+    func addScore(by addedScore: Int, forGameId id: String, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void) {
+        let scoreRef = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, id, FirebaseKeys.games_score]))
+
+        scoreRef.runTransactionBlock({ (current) -> TransactionResult in
+            guard var score = current.value as? Int else {
+                return TransactionResult.success(withValue: current)
+            }
+            
+            score += addedScore
+            current.value = score
+            
+            return TransactionResult.success(withValue: current)
+        }) { (err, committed, snap) in
+            if let error = err {
+                onError(error)
+                return
+            }
+            
+            onComplete()
+        }
     }
     
     func addScoreToLeaderBoard(forType type: GameTypes, withName name: String, score: Int, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void) {
