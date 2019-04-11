@@ -12,11 +12,12 @@ import SpriteKit
 class Trash: Station {
 
     override init(inPosition position: CGPoint, withSize size: CGSize) {
-        let table = SKSpriteNode(imageNamed: "trashbin")
-        table.size = size
+        let trashBin = SKSpriteNode(imageNamed: "trashbin")
+        trashBin.size = size
         super.init(inPosition: position, withSize: size)
-        self.texture = table.texture
-
+        self.texture = trashBin.texture
+        self.physicsBody = SKPhysicsBody(texture: trashBin.texture!, size: size)
+        self.physicsBody?.isDynamic = false
     }
 
     required init?(coder aDecoder: NSCoder) {
