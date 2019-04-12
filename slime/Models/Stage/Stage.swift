@@ -452,19 +452,19 @@ class Stage: SKScene {
             // multiplayer serve food
             guard let database = self.db else { return }
             guard let room = self.previousRoom else { return }
-            database.submitOrder(forGameId: room.id, withRecipe: <#T##Recipe#>, { (orderId) in
-                if let _ = orderId {
-                    // order is successful
-                    database.addScore(by: 20, forGameId: room.id, { }, { (err) in
-                        print(err.localizedDescription)
-                    })
-                    return
-                }
+            // database.submitOrder(forGameId: room.id, withRecipe: <#T##Recipe#>, { (orderId) in
+            //     if let _ = orderId {
+            //         // order is successful
+            //         database.addScore(by: 20, forGameId: room.id, { }, { (err) in
+            //             print(err.localizedDescription)
+            //         })
+            //         return
+            //     }
                 
-                // order unsuccessful if it falls through
-            }) { (err) in
-                print(err.localizedDescription)
-            }
+            //     // order unsuccessful if it falls through
+            // }) { (err) in
+            //     print(err.localizedDescription)
+            // }
         }
         
     }
