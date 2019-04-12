@@ -61,27 +61,33 @@ class Spaceship: SKSpriteNode {
         }
     }
 
-    func addChoppingEquipment(inPositions positions: [String]) {
+    func addChoppingEquipment(inPositions positions: [String], record dict: inout [String : Station]) {
         for (index, position) in positions.enumerated() {
             let equipment = ChoppingEquipment(inPosition: NSCoder.cgPoint(for: position))
             equipment.id = "choppingEquipment-\(index)"
             self.addChild(equipment)
+            guard let id = equipment.id else { continue }
+            dict.updateValue(equipment, forKey: id)
         }
     }
 
-    func addFryingEquipment(inPositions positions: [String]) {
+    func addFryingEquipment(inPositions positions: [String], record dict: inout [String : Station]) {
         for (index, position) in positions.enumerated() {
             let equipment = FryingEquipment(inPosition: NSCoder.cgPoint(for: position))
             equipment.id = "fryingEquipment-\(index)"
             self.addChild(equipment)
+            guard let id = equipment.id else { continue }
+            dict.updateValue(equipment, forKey: id)
         }
     }
 
-    func addOven(inPositions positions: [String]) {
+    func addOven(inPositions positions: [String], record dict: inout [String : Station]) {
         for position in positions {
             let oven = Oven(inPosition: NSCoder.cgPoint(for: position))
             oven.id = "oven-\(index)"
             self.addChild(oven)
+            guard let id = oven.id else { continue }
+            dict.updateValue(oven, forKey: id)
         }
     }
 
@@ -109,11 +115,13 @@ class Spaceship: SKSpriteNode {
         self.addChild(storefront)
     }
 
-    func addTable(inPositions positions: [String]) {
+    func addTable(inPositions positions: [String], record dict: inout [String : Station]) {
         for (index, position) in positions.enumerated() {
             let table = Table(inPosition: NSCoder.cgPoint(for: position))
             table.id = "table-\(index)"
             self.addChild(table)
+            guard let id = table.id else { continue }
+            dict.updateValue(table, forKey: id)
         }
     }
 

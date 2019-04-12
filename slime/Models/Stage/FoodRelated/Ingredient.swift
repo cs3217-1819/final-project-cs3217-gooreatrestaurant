@@ -122,16 +122,17 @@ class Ingredient: SKSpriteNode, Codable {
 
     required convenience init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-
         let type = try values.decode(IngredientType.self, forKey: .type)
         let processed = try values.decode([CookingType].self, forKey: .processed)
-        let currentProcessing = try values.decode(CookingType.self, forKey: .currentProcessing)
+        let currentProcessing = try values.decode(CookingType?.self, forKey: .currentProcessing)
         let processingProgress = try values.decode(Double.self, forKey: .processingProgress)
         let position = try values.decode(CGPoint.self, forKey: .position)
 
         self.init(type: type, inPosition: position)
         for processing in processed { self.cook(by: processing) }
-        self.cook(by: currentProcessing, withProgress: processingProgress)
+        
+        guard let processing = currentProcessing else { return }
+        self.cook(by: processing, withProgress: processingProgress)
     }
 
     func encode(to encoder: Encoder) throws {

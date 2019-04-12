@@ -66,6 +66,7 @@ class MultiplayerLobbyViewController: ViewController<MultiplayerLobbyView> {
                 self.presentActiveAlert(dismissible: false)
 
                 self.context.db.removeAllObservers()
+                self.context.db.removeAllDisconnectObservers()
 
                 // TODO: route to game room
                 self.context.segueToMultiplayerGame()
@@ -210,6 +211,7 @@ class MultiplayerLobbyViewController: ViewController<MultiplayerLobbyView> {
         self.context.db.leaveRoom(fromRoomId: self.roomId, {
             self.context.routeTo(route)
             self.context.db.removeAllObservers()
+            self.context.db.removeAllDisconnectObservers()
         }, { (err) in
             self.setErrorAlert(withDescription: err.localizedDescription)
             self.presentActiveAlert(dismissible: true)

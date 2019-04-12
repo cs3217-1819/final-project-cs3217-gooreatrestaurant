@@ -63,10 +63,9 @@ class Stage: SKScene {
         }
     }
     
-    func joinGame(forGameId id: String) {
-        self.db?.joinGame(forGameId: id, {
-            print("game has been successfully joined")
-        }, { (err) in
+    func joinGame(forRoom room: RoomModel) {
+        guard let database = self.db else { return }
+        database.joinGame(forRoom: room, { }, { (err) in
             print(err.localizedDescription)
         })
     }
@@ -83,11 +82,11 @@ class Stage: SKScene {
     func setupMultiplayer(forRoom room: RoomModel) {
         self.previousRoom = room
         
+        // don't initialize this on single player
         db = GameDB()
         
-        guard let user = GameAuth.currentUser else {
-            return
-        }
+        guard let user = GameAuth.currentUser else { return }
+        guard let database = self.db else { return }
         
         // add all players
         for player in room.players {
@@ -95,27 +94,29 @@ class Stage: SKScene {
             if user.uid == player.uid { self.isUserHost = player.isHost }
             let playerInGame = Player(name: player.uid, level: player.level)
             self.addPlayer(playerInGame)
-            // TODO: put into the slime dict
         }
         
-        db?.observeGameState(forRoom: room, onPlayerUpdate: { (player) in
+        database.observeGameState(forRoom: room, onPlayerUpdate: { (player) in
             guard let currentSlime = self.allSlimesDict[player.uid] else { return }
             
             currentSlime.position = CGPoint(x: player.positionX, y: player.positionY)
             currentSlime.physicsBody?.velocity = CGVector(dx: player.velocityX, dy: player.velocityY)
             currentSlime.xScale = player.xScale
-        }, onStationUpdate: {
-            // not yet implemented
-            // this updates whenever one station
-            // experiences a change
-            
+        }, onStationUpdate: { (id, station) in
+            self.handleStationChanged(forStationId: id, forStation: station)
         }, onGameEnd: {
             self.gameHasEnded = true
             self.stopStreamingSelf()
             self.gameOver(ifWon: false)
             guard let database = self.db else { return }
             database.removeAllObservers()
-            // TODO: game end goes here
+            database.removeAllDisconnectObservers()
+            if self.isUserHost {
+                guard let room = self.previousRoom else { return }
+                database.closeGame(forGameId: room.id, { }, { (err) in
+                    print(err.localizedDescription)
+                })
+            }
         }, onOrderChange: { (orders) in
             // the function here occurs everytime the
             // order in the db changes
@@ -134,19 +135,25 @@ class Stage: SKScene {
             self.hasStarted = true
             self.startStreamingSelf()
             if self.isUserHost { self.startCounter() }
-            // TODO: do setup when game has started
+            // TODO: do setup when game has started, add stuff whenever necessary
         }, onSelfItemChange: { (item) in
-            guard let slime = self.slimeToControl else { return }
-            slime.removeItem()
-            if let newItem = item { slime.takeItem(newItem) }
+            print("gawa")
+            self.handleSelfItemChange(forItem: item)
         }, onTimeLeftChange: { (timeLeft) in
             self.countdownLabel.text = "Time: \(timeLeft)"
             if self.isUserHost && self.isMultiplayerTimeUp(forTime: timeLeft) { self.endMultiplayerGame() }
+        }, onHostDisconnected: {
+            self.gameHasEnded = true
+            self.stopStreamingSelf()
+            self.gameOver(ifWon: false)
+            guard let database = self.db else { return }
+            database.removeAllObservers()
+            database.removeAllDisconnectObservers()
         }, onComplete: {
             // joins game after attaching all
             // relevant observers, this onComplete
             // does not refer to the game state at all
-            self.joinGame(forGameId: room.id)
+            self.joinGame(forRoom: room)
         }) { (err) in
             print(err.localizedDescription)
         }
@@ -171,6 +178,62 @@ class Stage: SKScene {
         guard let timer = self.streamingTimer else { return }
         timer.invalidate()
     }
+    
+    private func handleStationChanged(forStationId id: String, forStation station: GameStationModel) {
+        guard let stationChanged = self.allStationsDict[id] else { return }
+        
+        let itemType = station.item.type
+        
+        if itemType == FirebaseSystemValues.ItemTypes.none.rawValue {
+            stationChanged.removeItem()
+        } else if itemType == FirebaseSystemValues.ItemTypes.plate.rawValue {
+            guard let plate = self.decodePlateFromString(station.item.encodedData) else { return }
+            stationChanged.removeItem()
+            stationChanged.addItem(plate)
+        } else if itemType == FirebaseSystemValues.ItemTypes.ingredient.rawValue {
+            guard let ingredient = self.decodeIngredientFromString(station.item.encodedData) else { return }
+            stationChanged.removeItem()
+            stationChanged.addItem(ingredient)
+        }
+        
+        // TODO: handle other station changes
+    }
+    
+    private func decodeIngredientFromString(_ string: String) -> Ingredient? {
+        let decoder = JSONDecoder()
+        guard let data = string.data(using: .utf8) else { return nil }
+        
+        let ingredient = try? decoder.decode(Ingredient.self, from: data)
+        guard let item = ingredient else { return nil }
+        
+        return item
+    }
+    
+    private func decodePlateFromString(_ string: String) -> Plate? {
+        let decoder = JSONDecoder()
+        guard let data = string.data(using: .utf8) else { return nil }
+        
+        let plate = try? decoder.decode(Plate.self, from: data)
+        guard let item = plate else { return nil }
+        
+        return item
+    }
+    
+    private func handleSelfItemChange(forItem item: ItemModel) {
+        guard let slime = self.slimeToControl else { return }
+        
+        if item.type == FirebaseSystemValues.ItemTypes.none.rawValue {
+            slime.removeItem()
+        } else if item.type == FirebaseSystemValues.ItemTypes.plate.rawValue {
+            guard let plate = self.decodePlateFromString(item.encodedData) else { return }
+            slime.removeItem()
+            slime.takeItem(plate)
+        } else if item.type == FirebaseSystemValues.ItemTypes.ingredient.rawValue {
+            guard let ingredient = self.decodeIngredientFromString(item.encodedData) else { return }
+            slime.removeItem()
+            slime.takeItem(ingredient)
+        }
+    }
 
     func generateLevel(inLevel levelName: String) {
         if let levelDesignURL = Bundle.main.url(forResource: levelName, withExtension: "plist") {
@@ -192,12 +255,12 @@ class Stage: SKScene {
                 spaceship.addWall(inCoord: value.border)
                 spaceship.addWall(inCoord: value.blockedArea)
                 spaceship.addLadder(inPositions: value.ladder)
-                spaceship.addChoppingEquipment(inPositions: value.choppingEquipment)
-                spaceship.addFryingEquipment(inPositions: value.fryingEquipment)
-                spaceship.addOven(inPositions: value.oven)
+                spaceship.addChoppingEquipment(inPositions: value.choppingEquipment, record: &allStationsDict)
+                spaceship.addFryingEquipment(inPositions: value.fryingEquipment, record: &allStationsDict)
+                spaceship.addOven(inPositions: value.oven, record: &allStationsDict)
                 spaceship.addPlateStorage(inPositions: value.plateStorage)
                 spaceship.addStoreFront(inPosition: value.storefront)
-                spaceship.addTable(inPositions: value.table)
+                spaceship.addTable(inPositions: value.table, record: &allStationsDict)
                 spaceship.addTrashBin(inPositions: value.trashBin)
 
                 // add Ingredient Storages (station to take out ingredient) in the spaceship
@@ -246,8 +309,11 @@ class Stage: SKScene {
 
     lazy var interactButton: BDButton = {
         var button = BDButton(imageNamed: "Interact", buttonAction: {
-            self.slimeToControl?.interact()
-            
+            let interactedStation = self.slimeToControl?.interact()
+            if self.isMultiplayer {
+                guard let station = interactedStation else { return }
+                self.handleMultiplayerInteract(withStation: station)
+            }
             })
         button.setScale(0.15)
         button.isEnabled = true
@@ -255,6 +321,32 @@ class Stage: SKScene {
         button.zPosition = StageConstants.buttonZPos
         return button
     }()
+    
+    private func handleMultiplayerInteract(withStation station: Station) {
+        guard let database = self.db else { return }
+        guard let room = self.previousRoom else { return }
+        guard let id = station.id else { return }
+        
+        if let item = station.itemInside {
+            database.updateStationItemInside(forGameId: room.id, forStation: id, toItem: item, { }) { (err) in
+                print(err.localizedDescription)
+            }
+        } else {
+            database.updateStationItemInside(forGameId: room.id, forStation: id, toItem: "MAH MAH SLIME" as AnyObject, { }) { (err) in
+                print(err.localizedDescription)
+            }
+        }
+        
+        if let selfItem = self.slimeToControl?.itemCarried {
+            database.updatePlayerHoldingItem(forGameId: room.id, toItem: selfItem, { }) { (err) in
+                print(err.localizedDescription)
+            }
+        } else {
+            database.updatePlayerHoldingItem(forGameId: room.id, toItem: "AH AH SLIME" as AnyObject, { }) { (err) in
+                print(err.localizedDescription)
+            }
+        }
+    }
 
     lazy var backButton: BDButton = {
         var button = BDButton(imageNamed: "BackButton", buttonAction: {
