@@ -955,7 +955,7 @@ class GameDB: GameDatabase {
         let ref = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, id, FirebaseKeys.games_stations, station, FirebaseKeys.games_stations_itemInside]))
         
         ref.runTransactionBlock({ (current) -> TransactionResult in
-            guard var gameItem = current.value as? String else {
+            guard var gameItem = current.value as? [String : String] else {
                 return TransactionResult.success(withValue: current)
             }
             
