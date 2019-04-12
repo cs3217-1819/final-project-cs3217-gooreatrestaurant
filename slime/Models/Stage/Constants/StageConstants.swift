@@ -31,16 +31,17 @@ class StageConstants {
     static let orderQueueName = "orderQueue"
 
     // spaceship size and position
-    static let spaceshipSize = CGSize(width: 400, height: 400)
+    static let spaceshipSize = CGSize(width: 800, height: 800)
+    static let gameAreaSize = CGSize(width: 800, height: 800)
     static let spaceshipPosition = CGPoint.zero
 
     // elements size
-    static let slimeSize = CGSize(width: 25, height: 25)
-    static let plateSize = CGSize(width: 30, height: 30)
-    static let ingredientSize = CGSize(width: 25, height: 25)
-    static let cookerSize = CGSize(width: 40, height: 30)
-    static let ladderSize = CGSize(width: 50, height: 50)
-    static let stationSize = CGSize(width: 40, height: 40)
+    static let slimeSize = CGSize(width: 50, height: 50)
+    static let plateSize = CGSize(width: 60, height: 60)
+    static let ingredientSize = CGSize(width: 50, height: 50)
+    static let cookerSize = CGSize(width: 80, height: 80)
+    static let ladderSize = CGSize(width: 100, height: 100)
+    static let stationSize = CGSize(width: 80, height: 80)
 
     // controller size and position
     static let joystickSize = CGFloat(100)

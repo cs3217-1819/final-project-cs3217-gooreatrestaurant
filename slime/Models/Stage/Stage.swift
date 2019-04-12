@@ -47,7 +47,7 @@ class Stage: SKScene {
         background.position = StageConstants.spaceshipPosition
         anchorPoint = CGPoint(x: 0.5, y: 0.5)
         background.size = size
-        background.scaleTo(screenWidthPercentage: 1.0)
+//        background.scaleTo(screenWidthPercentage: 1.0)
         background.zPosition = StageConstants.backgroundZPos
         self.addChild(background)
         self.addChild(spaceship)
