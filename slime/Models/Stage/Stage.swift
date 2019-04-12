@@ -33,7 +33,7 @@ class Stage: SKScene {
     var levelScore: Int = 0
 
     //Camera
-    var cam: SKCameraNode?
+    var camera: SKCameraNode?
 
     override init(size: CGSize = CGSize(width: StageConstants.maxXAxisUnits, height: StageConstants.maxYAxisUnits)) {
         spaceship = Spaceship(inPosition: StageConstants.spaceshipPosition, withSize: StageConstants.spaceshipSize)
@@ -51,14 +51,14 @@ class Stage: SKScene {
         self.addChild(background)
         self.addChild(spaceship)
 
-        cam = SKCameraNode()
-        self.camera = cam
-        self.addChild(cam!)
+        camera = SKCameraNode()
+        self.camera = camera
+        self.addChild(camera!)
     }
 
     override func update(_ currentTime: TimeInterval) {
         super.update(currentTime)
-        if let camera = cam {
+        if let camera = camera {
             camera.position = (self.slimeToControl?.position)!
         }
     }
@@ -297,12 +297,12 @@ class Stage: SKScene {
     }()
 
     func setupControl() {
-        self.cam?.addChild(jumpButton)
-        self.cam?.addChild(interactButton)
-        self.cam?.addChild(backButton)
-        self.cam?.addChild(analogJoystick)
-        self.cam?.addChild(countdownLabel)
-        self.cam?.addChild(scoreLabel)
+        self.camera?.addChild(jumpButton)
+        self.camera?.addChild(interactButton)
+        self.camera?.addChild(backButton)
+        self.camera?.addChild(analogJoystick)
+        self.camera?.addChild(countdownLabel)
+        self.camera?.addChild(scoreLabel)
 
         if !isMultiplayer {
             counter = counterStartTime
