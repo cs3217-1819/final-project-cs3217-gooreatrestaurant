@@ -880,10 +880,6 @@ class GameDB: GameDatabase {
         return GamePlayerModel(uid: uid, posX: positionX, posY: positionY, vx: velocityX, vy: velocityY, xScale: xScale, holdingItem: holdItem, isHost: isHost, isConnected: isConnected, isReady: isReady, name: name, hat: hat, accessory: accessory, color: color, level: level)
     }
     
-    private func convertItemToSKNode() {
-        
-    }
-    
     /// a utility function to find the uid of
     /// the host inside a room instance
     /// - Parameters:
@@ -937,7 +933,7 @@ class GameDB: GameDatabase {
         let ref = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, id, FirebaseKeys.games_players, user.uid, FirebaseKeys.games_players_holdingItem]))
         
         ref.runTransactionBlock({ (current) -> TransactionResult in
-            guard var gameItem = current.value as? String else {
+            guard var gameItem = current.value as? [String : String] else {
                 return TransactionResult.success(withValue: current)
             }
             
@@ -959,7 +955,7 @@ class GameDB: GameDatabase {
         let ref = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, id, FirebaseKeys.games_stations, station, FirebaseKeys.games_stations_itemInside]))
         
         ref.runTransactionBlock({ (current) -> TransactionResult in
-            guard var gameItem = current.value as? String else {
+            guard var gameItem = current.value as? [String : String] else {
                 return TransactionResult.success(withValue: current)
             }
             
@@ -977,9 +973,9 @@ class GameDB: GameDatabase {
         })
     }
     
-    private func convertGameItemToEncodedData(forGameItem item: AnyObject) -> String {
-        
-        return "none"
+    private func convertGameItemToEncodedData(forGameItem item: AnyObject) -> [String : String] {
+        // TODO:
+        return ["none" : "none"]
     }
     
     func addScore(by addedScore: Int, forGameId id: String, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void) {
@@ -1182,6 +1178,26 @@ struct Observer {
     init(withHandle handle: DatabaseHandle, withRef reference: DatabaseReference) {
         self.handle = handle
         self.reference = reference
+    }
+}
+
+struct ItemSerializer {
+    static func serializeItem(forItem item: AnyObject, withType type: String) -> String {
+        switch (type) {
+        case FirebaseSystemValues.ItemTypes.plate.rawValue:
+            // serialize to plate
+            return ""
+        case FirebaseSystemValues.ItemTypes.ingredient.rawValue:
+            // serialize to ingredient
+            return ""
+        default:
+            // return none
+            return ""
+        }
+    }
+    
+    static func deserializeItem(forData data: String) -> (type: String, item: AnyObject) {
+        return (type: "", item: "hello" as AnyObject)
     }
 }
 
