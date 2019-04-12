@@ -32,6 +32,9 @@ class Stage: SKScene {
     //Level score
     var levelScore: Int = 0
 
+    //Camera
+    var cam: SKCameraNode?
+
     override init(size: CGSize = CGSize(width: StageConstants.maxXAxisUnits, height: StageConstants.maxYAxisUnits)) {
         spaceship = Spaceship(inPosition: StageConstants.spaceshipPosition, withSize: StageConstants.spaceshipSize)
         super.init(size: size)
@@ -47,6 +50,17 @@ class Stage: SKScene {
         background.zPosition = StageConstants.backgroundZPos
         self.addChild(background)
         self.addChild(spaceship)
+
+        cam = SKCameraNode()
+        self.camera = cam
+        self.addChild(cam!)
+    }
+
+    override func update(_ currentTime: TimeInterval) {
+        super.update(currentTime)
+        if let camera = cam {
+            camera.position = (self.slimeToControl?.position)!
+        }
     }
     
     func joinGame(forGameId id: String) {
