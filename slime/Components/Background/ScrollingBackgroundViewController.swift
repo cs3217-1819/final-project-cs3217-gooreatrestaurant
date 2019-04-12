@@ -29,6 +29,7 @@ class ScrollingBackgroundViewController: Controller {
 
     func configure() {
         setupView(parent: parent)
+        setupNotifier()
     }
 
     func toAlpha(_ alpha: CGFloat) {
@@ -60,6 +61,18 @@ class ScrollingBackgroundViewController: Controller {
             self.backgroundImageView = newBackgroundImageView
         })
     }
+    
+    private func setupNotifier() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(applicationDidBecomeActive(_:)),
+            name: UIApplication.didBecomeActiveNotification,
+            object: nil)
+    }
+    
+    @objc private func applicationDidBecomeActive(_ notification: NSNotification) {
+        setupView(parent: parent)
+    }
 
     private func setupView(parent: UIView) {
         background.contentMode = .scaleAspectFill
@@ -75,5 +88,6 @@ class ScrollingBackgroundViewController: Controller {
 
     deinit {
         background.removeFromSuperview()
+        NotificationCenter.default.removeObserver(self)
     }
 }

@@ -9,8 +9,17 @@ import Foundation
 
 class LoadingScreenViewController: ViewController<LoadingScreenView> {
     override func configureSubviews() {
-        Timer.scheduledTimer(withTimeInterval: 3, repeats: false, block: { _ in
+        configureTutorial()
+    }
+    
+    private func configureTutorial() {
+        let controller = TutorialScreenController(withXib: view.tutorialScreenView)
+        controller.use(tutorialSteps: TutorialConstants.cutApple)
+        controller.onDone {
             self.context.segueToGame()
-        })
+        }
+        controller.configure()
+        
+        remember(controller)
     }
 }

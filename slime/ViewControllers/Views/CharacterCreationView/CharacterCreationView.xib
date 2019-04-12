@@ -29,8 +29,18 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BFq-iQ-shw">
                     <rect key="frame" x="312" y="87.5" width="464" height="200"/>
                     <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create Your Character" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bY1-Cx-Z2K" customClass="TextLabel" customModule="slime" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="464" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="style" value="h0"/>
+                                <userDefinedRuntimeAttribute type="string" keyPath="color" value="white0"/>
+                            </userDefinedRuntimeAttributes>
+                        </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DHx-VL-goB" customClass="XibView" customModule="slime" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="0.0" width="464" height="68"/>
+                            <rect key="frame" x="0.0" y="37" width="464" height="68"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="68" id="a7s-Ov-0lI"/>
@@ -40,8 +50,11 @@
                             </userDefinedRuntimeAttributes>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KFF-u9-LCC" customClass="XibView" customModule="slime" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="84" width="464" height="89"/>
+                            <rect key="frame" x="0.0" y="121" width="464" height="88"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="88" id="jEn-BO-DEi"/>
+                            </constraints>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="string" keyPath="nibName" value="PrimaryButton"/>
                             </userDefinedRuntimeAttributes>
@@ -52,8 +65,11 @@
                         <constraint firstItem="DHx-VL-goB" firstAttribute="leading" secondItem="BFq-iQ-shw" secondAttribute="leading" id="LoF-c1-Xng"/>
                         <constraint firstAttribute="trailing" secondItem="KFF-u9-LCC" secondAttribute="trailing" id="PaQ-Rd-PPg"/>
                         <constraint firstItem="KFF-u9-LCC" firstAttribute="top" secondItem="DHx-VL-goB" secondAttribute="bottom" constant="16" id="RKO-uy-712"/>
+                        <constraint firstAttribute="trailing" secondItem="bY1-Cx-Z2K" secondAttribute="trailing" id="V9h-Ju-eFg"/>
+                        <constraint firstItem="bY1-Cx-Z2K" firstAttribute="top" secondItem="BFq-iQ-shw" secondAttribute="top" id="Y9i-3O-YeL"/>
+                        <constraint firstItem="bY1-Cx-Z2K" firstAttribute="leading" secondItem="BFq-iQ-shw" secondAttribute="leading" id="bIh-j7-wf1"/>
                         <constraint firstItem="KFF-u9-LCC" firstAttribute="leading" secondItem="BFq-iQ-shw" secondAttribute="leading" id="jGe-ny-7WD"/>
-                        <constraint firstItem="DHx-VL-goB" firstAttribute="top" secondItem="BFq-iQ-shw" secondAttribute="top" id="uNJ-2e-hD2"/>
+                        <constraint firstItem="DHx-VL-goB" firstAttribute="top" secondItem="bY1-Cx-Z2K" secondAttribute="bottom" constant="16" id="kqb-JS-78k"/>
                         <constraint firstAttribute="height" constant="200" id="xjb-BF-Mbl"/>
                         <constraint firstAttribute="trailing" secondItem="DHx-VL-goB" secondAttribute="trailing" id="zXW-vQ-Jpe"/>
                     </constraints>

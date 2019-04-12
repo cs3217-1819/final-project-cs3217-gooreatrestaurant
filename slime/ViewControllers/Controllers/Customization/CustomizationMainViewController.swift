@@ -35,6 +35,11 @@ class CustomizationMainViewController: ViewController<CustomizationMainView>, Cu
             .subscribe { _ in
                 self.routeSubject.onNext(.Accessories)
             }.disposed(by: disposeBag)
+        view.baseButton.rx.gesture(.tap())
+            .when(.recognized)
+            .subscribe { _ in
+                self.routeSubject.onNext(.Base)
+            }.disposed(by: disposeBag)
     }
 
     private func setupReactive() {
@@ -58,5 +63,6 @@ class CustomizationMainViewController: ViewController<CustomizationMainView>, Cu
         if let accessory = CosmeticConstants.accessoriesDict[character.accessory] {
             view.accessoryImageView.image = accessory.image
         }
+        view.baseImageView.image = character.color.getImage()
     }
 }

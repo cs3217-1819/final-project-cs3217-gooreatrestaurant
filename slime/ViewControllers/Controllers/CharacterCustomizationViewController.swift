@@ -20,6 +20,7 @@ class CharacterCustomizationViewController: ViewController<CharacterCustomizatio
         case Main
         case Hats
         case Accessories
+        case Base
     }
 
     private var innerRouter: RouterController!
@@ -82,7 +83,6 @@ class CharacterCustomizationViewController: ViewController<CharacterCustomizatio
             let wardrobe = CosmeticConstants.getHats()
             if let char = try? context.data.userCharacter?.value() {
                 if let hat = char?.hat {
-                    print("using hat: \(hat)")
                     wardrobe.setActiveCosmetic(hat)
                 }
             }
@@ -96,13 +96,25 @@ class CharacterCustomizationViewController: ViewController<CharacterCustomizatio
             let wardrobe = CosmeticConstants.getAccessories()
             if let char = try? context.data.userCharacter?.value() {
                 if let accessory = char?.accessory {
-                    print("using accessory: \(accessory)")
                     wardrobe.setActiveCosmetic(accessory)
                 }
             }
             controller.withWardrobe(wardrobe)
             controller.setSaveFunction { cosmetic in
                 self.context.data.changeAccessory(cosmetic.name)
+            }
+            return controller
+        case .Base:
+            guard let character = context.data.userCharacter else {
+                // Should not even be here
+                fatalError("No character in customization page")
+            }
+            let color = try! character.value().color
+            let controller = CustomizationCosmeticViewController(with: getViewFor(route: route))
+            let wardrobe = CosmeticConstants.getBases(initial: color)
+            controller.withWardrobe(wardrobe)
+            controller.setSaveFunction { cosmetic in
+                self.context.data.changeCharacterColor(SlimeColor(fromString: cosmetic.name))
             }
             return controller
         }
@@ -112,7 +124,7 @@ class CharacterCustomizationViewController: ViewController<CharacterCustomizatio
         switch(route) {
         case .Main:
             return UIView.initFromNib("CustomizationMainView")
-        case .Hats, .Accessories:
+        case .Hats, .Accessories, .Base:
             return UIView.initFromNib("CustomizationCosmeticView")
         }
     }
