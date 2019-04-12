@@ -33,7 +33,7 @@ class PlayScreenViewController: ViewController<PlayScreenView> {
         singlePlayerButtonController.configure()
         _ = singlePlayerButtonController
             .set(title: "Single Player Mode")
-            .set(description: "Play alone to cure your depression!")
+            .set(description: "Cook up spectacular dishes!")
         singlePlayerButtonController.onTap {
             self.context.routeTo(.LevelSelect)
         }

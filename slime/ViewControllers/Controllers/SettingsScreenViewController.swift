@@ -26,6 +26,7 @@ class SettingsScreenViewController: ViewController<SettingsScreenView> {
         let control = PrimaryButtonController(using: view.resetButton)
             .set(label: "Reset Data")
             .set(color: .purple)
+        control.sound = "back"
         control.configure()
         control.onTap {
             self.showConfirmResetDialog()

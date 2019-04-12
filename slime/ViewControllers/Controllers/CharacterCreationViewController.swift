@@ -34,6 +34,7 @@ class CharacterCreationViewController: ViewController<CharacterCreationView> {
 
     private func setupNameInput() {
         let control = TextInputController(usingXib: view.nameInputView, context: context)
+        control.label = "Name"
         control.configure()
         nameInputController = control
     }

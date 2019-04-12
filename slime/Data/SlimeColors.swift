@@ -14,6 +14,10 @@ import UIKit
     case red
     case green
     case orange
+    case angryRed
+    case lightGreen
+    case pastelPink
+    case pastelGreen
     
     init(fromString colorString: String) {
         switch(colorString) {
@@ -27,6 +31,14 @@ import UIKit
             self = .green
         case "orange":
             self = .orange
+        case "angryRed":
+            self = .angryRed
+        case "lightGreen":
+            self = .lightGreen
+        case "pastelPink":
+            self = .pastelPink
+        case "pastelGreen":
+            self = .pastelGreen
         default:
             self = .green
         }
@@ -35,7 +47,7 @@ import UIKit
     func toString() -> String {
         switch(self) {
         case .yellow:
-            return "yello"
+            return "yellow"
         case .blue:
             return "blue"
         case .red:
@@ -44,6 +56,14 @@ import UIKit
             return "green"
         case .orange:
             return "orange"
+        case .angryRed:
+            return "angryRed"
+        case .lightGreen:
+            return "lightGreen"
+        case .pastelPink:
+            return "pastelPink"
+        case .pastelGreen:
+            return "pastelGreen"
         }
     }
 
@@ -59,6 +79,14 @@ import UIKit
             return ImageProvider.get("slime-green")
         case .orange:
             return ImageProvider.get("slime-orange")
+        case .angryRed:
+            return ImageProvider.get("slime-red-angry")
+        case .lightGreen:
+            return ImageProvider.get("slime-light-green")
+        case .pastelPink:
+            return ImageProvider.get("slime-pastel-pink")
+        case .pastelGreen:
+            return ImageProvider.get("slime-pastel-green")
         }
     }
 }

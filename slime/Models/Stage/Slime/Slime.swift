@@ -107,7 +107,7 @@ class Slime: SKSpriteNode {
 
         itemToTake.removeFromParent()
         itemToTake.position.x = 0.0
-        itemToTake.position.y = 0.5 * (self.size.height + itemToTake.size.height)
+        itemToTake.position.y = 0.4 * (self.size.height + itemToTake.size.height)
         itemToTake.physicsBody = nil
         self.addChild(itemToTake)
     }

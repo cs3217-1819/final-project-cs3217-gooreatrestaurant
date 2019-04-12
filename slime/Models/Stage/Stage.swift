@@ -24,6 +24,7 @@ class Stage: SKScene {
     var streamingTimer: Timer?
     var isUserHost: Bool = false
     var allSlimesDict: [String : Slime] = [:] // [uid: Slime]
+    var allStationsDict: [String : Station] = [:]
 
     // RI: the players are unique
     var players: [Player] = []
@@ -89,16 +90,17 @@ class Stage: SKScene {
             currentSlime.position = CGPoint(x: player.positionX, y: player.positionY)
             currentSlime.physicsBody?.velocity = CGVector(dx: player.velocityX, dy: player.velocityY)
             currentSlime.xScale = player.xScale
-            // TODO: implement the filling of the dictionary of otherSlimes
         }, onStationUpdate: {
             // not yet implemented
             // this updates whenever one station
             // experiences a change
+            
         }, onGameEnd: {
             self.gameHasEnded = true
             self.stopStreamingSelf()
-            self.db?.removeAllObservers()
             self.gameOver(ifWon: false)
+            guard let database = self.db else { return }
+            database.removeAllObservers()
             // TODO: game end goes here
         }, onOrderChange: { (orders) in
             // the function here occurs everytime the
@@ -119,8 +121,10 @@ class Stage: SKScene {
             self.startStreamingSelf()
             if self.isUserHost { self.startCounter() }
             // TODO: do setup when game has started
-        }, onSelfItemChange: { (newItem) in
-            // TODO: update item in slime
+        }, onSelfItemChange: { (item) in
+            guard let slime = self.slimeToControl else { return }
+            slime.removeItem()
+            if let newItem = item { slime.takeItem(newItem) }
         }, onTimeLeftChange: { (timeLeft) in
             self.countdownLabel.text = "Time: \(timeLeft)"
             if self.isUserHost && self.isGameOver { self.endMultiplayerGame() }
@@ -404,9 +408,7 @@ class Stage: SKScene {
         spaceship.enumerateChildNodes(withName: "slime") {
             node, stop in
 
-            guard let slime = node as? Slime else {
-                return
-            }
+            guard let slime = node as? Slime else { return }
 
             guard currentPlayerIndex < self.players.count else {
                 stop.initialize(to: true)
@@ -452,19 +454,13 @@ class Stage: SKScene {
             // multiplayer serve food
             guard let database = self.db else { return }
             guard let room = self.previousRoom else { return }
-            // database.submitOrder(forGameId: room.id, withRecipe: <#T##Recipe#>, { (orderId) in
-            //     if let _ = orderId {
-            //         // order is successful
-            //         database.addScore(by: 20, forGameId: room.id, { }, { (err) in
-            //             print(err.localizedDescription)
-            //         })
-            //         return
-            //     }
-                
-            //     // order unsuccessful if it falls through
-            // }) { (err) in
-            //     print(err.localizedDescription)
-            // }
+
+            // TODO:
+            let recipe = Recipe(inRecipeName: "halo", withIngredients: [])
+            database.submitOrder(forGameId: room.id, withRecipe: recipe, {
+            }) { (err) in
+                print(err.localizedDescription)
+            }
         }
         
     }
@@ -528,5 +524,26 @@ class Stage: SKScene {
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("initiation using storyboard is not implemented yet.")
+    }
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let touch = touches.first!
+        let location = touch.location(in: self)
+        if (location.x < -150 && location.y < 80) {
+            analogJoystick.position = location
+            analogJoystick.touchesBegan(touches, with: event)
+        }
+    }
+
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        analogJoystick.touchesMoved(touches, with: event)
+    }
+
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        analogJoystick.touchesEnded(touches, with: event)
+    }
+
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        analogJoystick.touchesEnded(touches, with: event)
     }
 }

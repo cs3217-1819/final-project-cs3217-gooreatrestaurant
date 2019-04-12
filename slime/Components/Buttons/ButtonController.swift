@@ -13,6 +13,8 @@ import RxGesture
 
 class ButtonController: Controller {
     private let disposeBag = DisposeBag()
+    var sound: String = "selection"
+    
     let view: UIView
     init(using view: UIView) {
         self.view = view
@@ -26,7 +28,7 @@ class ButtonController: Controller {
         view.rx.gesture(.tap())
             .when(.recognized)
             .subscribe { _ in
-                AudioMaster.instance.playSFX(name: "open")
+                AudioMaster.instance.playSFX(name: self.sound)
                 callback()
         }.disposed(by: disposeBag)
     }

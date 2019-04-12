@@ -35,6 +35,7 @@ class ViewController<View: UIView>: ViewControllerProtocol {
     internal func configureUpButton(to route: Route) {
         let upButton = UIView.initFromNib("UpButton")
         let control = ButtonController(using: upButton)
+        control.sound = "back"
         control.onTap {
             self.context.routeTo(route)
         }

@@ -16,24 +16,26 @@
             <rect key="frame" x="0.0" y="0.0" width="812" height="375"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gUD-tk-4WC" customClass="TextLabel" customModule="slime" customModuleProvider="target">
-                    <rect key="frame" x="654.5" y="299.5" width="121.5" height="39.5"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tef-QE-PJl" customClass="XibView" customModule="slime" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="812" height="375"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="style" value="h0"/>
-                        <userDefinedRuntimeAttribute type="string" keyPath="color" value="white1"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="nibName" value="TutorialScreenView"/>
                     </userDefinedRuntimeAttributes>
-                </label>
+                </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="gUD-tk-4WC" secondAttribute="trailing" constant="36" id="Qew-kt-Xkq"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="gUD-tk-4WC" secondAttribute="bottom" constant="36" id="hPw-74-xPU"/>
+                <constraint firstItem="tef-QE-PJl" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="9Gt-nY-gFt"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="tef-QE-PJl" secondAttribute="bottom" id="P1p-5X-obo"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="tef-QE-PJl" secondAttribute="trailing" id="aYK-38-eDp"/>
+                <constraint firstItem="tef-QE-PJl" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="kX3-cz-XSl"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="tutorialScreenView" destination="tef-QE-PJl" id="JQu-yV-5eO"/>
+            </connections>
             <point key="canvasLocation" x="160" y="-39.130434782608695"/>
         </view>
     </objects>

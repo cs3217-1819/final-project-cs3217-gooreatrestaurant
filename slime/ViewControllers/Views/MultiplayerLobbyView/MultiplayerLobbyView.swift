@@ -10,9 +10,9 @@ import UIKit
 
 class MultiplayerLobbyView: UIView {
     @IBOutlet var roomCodeLabel: TextLabel!
-    @IBOutlet var playersView: UIView!
     @IBOutlet var playerOneView: XibView!
     @IBOutlet var playerTwoView: XibView!
     @IBOutlet var playerThreeView: XibView!
     @IBOutlet var playerFourView: XibView!
+    @IBOutlet var startButton: XibView!
 }

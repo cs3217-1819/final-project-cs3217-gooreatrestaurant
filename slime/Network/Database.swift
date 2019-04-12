@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SpriteKit
 
 /**
  Abstraction class for the game database. Contains
@@ -172,7 +173,7 @@ protocol GameDatabase {
     ///     - onDataChange: a closure which is fired
     ///       every time a data value changes
     ///     - onError: fired when an error happens
-    func observeGameState(forRoom room: RoomModel, onPlayerUpdate: @escaping (GamePlayerModel) -> Void, onStationUpdate: @escaping () -> Void, onGameEnd: @escaping () -> Void, onOrderChange: @escaping ([GameOrderModel]) -> Void, onScoreChange: @escaping (Int) -> Void, onAllPlayersReady: @escaping () -> Void, onGameStart: @escaping () -> Void, onSelfItemChange: @escaping (String) -> Void, onTimeLeftChange: @escaping (Int) -> Void, onComplete: @escaping () -> Void, onError: @escaping (Error) -> Void)
+    func observeGameState(forRoom room: RoomModel, onPlayerUpdate: @escaping (GamePlayerModel) -> Void, onStationUpdate: @escaping () -> Void, onGameEnd: @escaping () -> Void, onOrderChange: @escaping ([GameOrderModel]) -> Void, onScoreChange: @escaping (Int) -> Void, onAllPlayersReady: @escaping () -> Void, onGameStart: @escaping () -> Void, onSelfItemChange: @escaping (SKSpriteNode?) -> Void, onTimeLeftChange: @escaping (Int) -> Void, onComplete: @escaping () -> Void, onError: @escaping (Error) -> Void)
     
     /// updates the hasStarted flag inside the game
     /// only used by host to indicate that the game
@@ -259,7 +260,7 @@ protocol GameDatabase {
     ///       match
     ///     - onError: an closure block run when an error
     ///       occurs
-    func submitOrder(forGameId id: String, withRecipe recipe: Recipe, _ onComplete: @escaping (String?) -> Void, _ onError: @escaping (Error) -> Void)
+    func submitOrder(forGameId id: String, withRecipe recipe: Recipe, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void)
     
     func addScore(by score: Int, forGameId id: String, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void)
 

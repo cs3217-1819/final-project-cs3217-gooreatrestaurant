@@ -18,14 +18,14 @@ class MainController: UIViewController {
     }
     private var bgControl: ScrollingBackgroundViewController?
     fileprivate var isSetup: Bool = false
-
-    override func viewWillLayoutSubviews() {
-        if bgControl == nil {
-            // TODO: more robust checking
-            bgControl = ScrollingBackgroundViewController(with: underlyingView)
-            bgControl?.configure()
-        }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        bgControl = ScrollingBackgroundViewController(with: underlyingView)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        bgControl?.configure()
+        
         if !isSetup {
             setupView()
             isSetup = true

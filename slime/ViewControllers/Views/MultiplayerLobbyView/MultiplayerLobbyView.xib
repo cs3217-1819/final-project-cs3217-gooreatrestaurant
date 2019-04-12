@@ -16,122 +16,176 @@
             <rect key="frame" x="0.0" y="0.0" width="812" height="375"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Pe-gw-Td9" customClass="DesignableView" customModule="slime" customModuleProvider="target">
-                    <rect key="frame" x="36" y="36" width="740" height="67"/>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="hVZ-W2-5PE">
+                    <rect key="frame" x="36" y="36" width="740" height="303"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="abcdefg" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jdl-rx-HXi" customClass="TextLabel" customModule="slime" customModuleProvider="target">
-                            <rect key="frame" x="8" y="24" width="724" height="33.5"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="string" keyPath="style" value="h0"/>
-                                <userDefinedRuntimeAttribute type="string" keyPath="color" value="white1"/>
-                            </userDefinedRuntimeAttributes>
-                        </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Room Code" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BoP-eN-LF2" customClass="TextLabel" customModule="slime" customModuleProvider="target">
-                            <rect key="frame" x="8" y="8" width="724" height="16"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="string" keyPath="style" value="hsub"/>
-                                <userDefinedRuntimeAttribute type="string" keyPath="color" value="white0"/>
-                            </userDefinedRuntimeAttributes>
-                        </label>
-                    </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstItem="Jdl-rx-HXi" firstAttribute="leading" secondItem="2Pe-gw-Td9" secondAttribute="leading" constant="8" id="BGo-th-zo4"/>
-                        <constraint firstItem="BoP-eN-LF2" firstAttribute="leading" secondItem="2Pe-gw-Td9" secondAttribute="leading" constant="8" id="O6P-B1-biJ"/>
-                        <constraint firstAttribute="trailing" secondItem="Jdl-rx-HXi" secondAttribute="trailing" constant="8" id="SN5-6J-FkZ"/>
-                        <constraint firstItem="BoP-eN-LF2" firstAttribute="top" secondItem="2Pe-gw-Td9" secondAttribute="top" constant="8" id="ch8-J3-xE8"/>
-                        <constraint firstAttribute="trailing" secondItem="BoP-eN-LF2" secondAttribute="trailing" constant="8" id="nb6-Xg-dVt"/>
-                        <constraint firstItem="Jdl-rx-HXi" firstAttribute="top" secondItem="BoP-eN-LF2" secondAttribute="bottom" id="nj3-QG-zUZ"/>
-                        <constraint firstItem="Jdl-rx-HXi" firstAttribute="centerX" secondItem="2Pe-gw-Td9" secondAttribute="centerX" id="usJ-Fx-xf2"/>
-                    </constraints>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="boolean" keyPath="rounded" value="YES"/>
-                        <userDefinedRuntimeAttribute type="string" keyPath="background" value="pink7"/>
-                    </userDefinedRuntimeAttributes>
-                </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NJ8-JJ-hxN">
-                    <rect key="frame" x="36" y="119" width="740" height="220"/>
-                    <subviews>
-                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="kzS-hB-ReR">
-                            <rect key="frame" x="0.0" y="0.0" width="362.5" height="220"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qUN-O9-lg8">
+                            <rect key="frame" x="0.0" y="0.0" width="362" height="303"/>
                             <subviews>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l0i-6g-WDp" customClass="XibView" customModule="slime" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="362.5" height="106"/>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Pe-gw-Td9" customClass="DesignableView" customModule="slime" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="362" height="58"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="abcdefg" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jdl-rx-HXi" customClass="TextLabel" customModule="slime" customModuleProvider="target">
+                                            <rect key="frame" x="8" y="28.5" width="346" height="20.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="style" value="h0"/>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="color" value="pink2"/>
+                                            </userDefinedRuntimeAttributes>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Room Code" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BoP-eN-LF2" customClass="TextLabel" customModule="slime" customModuleProvider="target">
+                                            <rect key="frame" x="8" y="8" width="346" height="20.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="style" value="hsub"/>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="color" value="pink3"/>
+                                            </userDefinedRuntimeAttributes>
+                                        </label>
+                                    </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstItem="Jdl-rx-HXi" firstAttribute="leading" secondItem="2Pe-gw-Td9" secondAttribute="leading" constant="8" id="BGo-th-zo4"/>
+                                        <constraint firstItem="BoP-eN-LF2" firstAttribute="leading" secondItem="2Pe-gw-Td9" secondAttribute="leading" constant="8" id="O6P-B1-biJ"/>
+                                        <constraint firstAttribute="trailing" secondItem="Jdl-rx-HXi" secondAttribute="trailing" constant="8" id="SN5-6J-FkZ"/>
+                                        <constraint firstAttribute="height" constant="58" id="cO4-4j-8WZ"/>
+                                        <constraint firstItem="BoP-eN-LF2" firstAttribute="top" secondItem="2Pe-gw-Td9" secondAttribute="top" constant="8" id="ch8-J3-xE8"/>
+                                        <constraint firstAttribute="trailing" secondItem="BoP-eN-LF2" secondAttribute="trailing" constant="8" id="nb6-Xg-dVt"/>
+                                        <constraint firstItem="Jdl-rx-HXi" firstAttribute="top" secondItem="BoP-eN-LF2" secondAttribute="bottom" id="nj3-QG-zUZ"/>
+                                        <constraint firstItem="Jdl-rx-HXi" firstAttribute="centerX" secondItem="2Pe-gw-Td9" secondAttribute="centerX" id="usJ-Fx-xf2"/>
+                                    </constraints>
                                     <userDefinedRuntimeAttributes>
-                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                            <integer key="value" value="8"/>
-                                        </userDefinedRuntimeAttribute>
-                                        <userDefinedRuntimeAttribute type="string" keyPath="nibName" value="PlayerBox"/>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="rounded" value="YES"/>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="background" value="pink7"/>
                                     </userDefinedRuntimeAttributes>
                                 </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6AJ-yG-Ws5" customClass="XibView" customModule="slime" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="114" width="362.5" height="106"/>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6WS-DR-avb" customClass="DesignableView" customModule="slime" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="74" width="362" height="160"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stage Preview" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mxc-XY-71s" customClass="TextLabel" customModule="slime" customModuleProvider="target">
+                                            <rect key="frame" x="8" y="8" width="346" height="22"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="22" id="WXi-nn-9qJ"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="style" value="h2"/>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="color" value="pink2"/>
+                                            </userDefinedRuntimeAttributes>
+                                        </label>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="preview-level1" translatesAutoresizingMaskIntoConstraints="NO" id="MjC-Nc-oJa">
+                                            <rect key="frame" x="8" y="38" width="346" height="114"/>
+                                        </imageView>
+                                    </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstItem="mxc-XY-71s" firstAttribute="leading" secondItem="6WS-DR-avb" secondAttribute="leading" constant="8" id="7Ae-zL-rcL"/>
+                                        <constraint firstItem="MjC-Nc-oJa" firstAttribute="top" secondItem="mxc-XY-71s" secondAttribute="bottom" constant="8" id="8BN-Wg-P6M"/>
+                                        <constraint firstAttribute="trailing" secondItem="MjC-Nc-oJa" secondAttribute="trailing" constant="8" id="G0f-YK-KDd"/>
+                                        <constraint firstItem="mxc-XY-71s" firstAttribute="top" secondItem="6WS-DR-avb" secondAttribute="top" constant="8" id="HM8-O1-BCg"/>
+                                        <constraint firstAttribute="bottom" secondItem="MjC-Nc-oJa" secondAttribute="bottom" constant="8" id="VUU-IS-HxC"/>
+                                        <constraint firstItem="MjC-Nc-oJa" firstAttribute="leading" secondItem="6WS-DR-avb" secondAttribute="leading" constant="8" id="gNy-TE-khH"/>
+                                        <constraint firstAttribute="height" constant="160" id="oRg-C4-JTh"/>
+                                        <constraint firstAttribute="trailing" secondItem="mxc-XY-71s" secondAttribute="trailing" constant="8" id="pl3-NP-ZH2"/>
+                                    </constraints>
                                     <userDefinedRuntimeAttributes>
-                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                            <integer key="value" value="8"/>
-                                        </userDefinedRuntimeAttribute>
-                                        <userDefinedRuntimeAttribute type="string" keyPath="nibName" value="PlayerBox"/>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="rounded" value="YES"/>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="background" value="pink7"/>
+                                    </userDefinedRuntimeAttributes>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rJd-Lo-QoD" customClass="XibView" customModule="slime" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="250" width="362" height="53"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="nibName" value="PrimaryButton"/>
                                     </userDefinedRuntimeAttributes>
                                 </view>
                             </subviews>
-                        </stackView>
-                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ofZ-f3-fSc">
-                            <rect key="frame" x="377.5" y="0.0" width="362.5" height="220"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="rJd-Lo-QoD" secondAttribute="trailing" id="057-M5-NvR"/>
+                                <constraint firstAttribute="trailing" secondItem="6WS-DR-avb" secondAttribute="trailing" id="1wv-Bg-TEs"/>
+                                <constraint firstItem="2Pe-gw-Td9" firstAttribute="leading" secondItem="qUN-O9-lg8" secondAttribute="leading" id="2Jl-ax-K0S"/>
+                                <constraint firstAttribute="bottom" secondItem="rJd-Lo-QoD" secondAttribute="bottom" id="EhH-a7-Rwl"/>
+                                <constraint firstItem="rJd-Lo-QoD" firstAttribute="top" secondItem="6WS-DR-avb" secondAttribute="bottom" constant="16" id="FOa-jj-ebl"/>
+                                <constraint firstAttribute="trailing" secondItem="2Pe-gw-Td9" secondAttribute="trailing" id="Zcp-X6-wTs"/>
+                                <constraint firstItem="6WS-DR-avb" firstAttribute="top" secondItem="2Pe-gw-Td9" secondAttribute="bottom" constant="16" id="er3-Un-qAR"/>
+                                <constraint firstItem="6WS-DR-avb" firstAttribute="leading" secondItem="qUN-O9-lg8" secondAttribute="leading" id="fKD-no-dNA"/>
+                                <constraint firstItem="rJd-Lo-QoD" firstAttribute="leading" secondItem="qUN-O9-lg8" secondAttribute="leading" id="iec-Iy-9z3"/>
+                                <constraint firstItem="2Pe-gw-Td9" firstAttribute="top" secondItem="qUN-O9-lg8" secondAttribute="top" id="jJs-AP-btx"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8lW-wv-73A">
+                            <rect key="frame" x="378" y="0.0" width="362" height="303"/>
                             <subviews>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2bl-di-tcI" customClass="XibView" customModule="slime" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="362.5" height="106"/>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <userDefinedRuntimeAttributes>
-                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                            <integer key="value" value="8"/>
-                                        </userDefinedRuntimeAttribute>
-                                        <userDefinedRuntimeAttribute type="string" keyPath="nibName" value="PlayerBox"/>
-                                    </userDefinedRuntimeAttributes>
-                                </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vMC-9s-A8W" customClass="XibView" customModule="slime" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="114" width="362.5" height="106"/>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <userDefinedRuntimeAttributes>
-                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                            <integer key="value" value="8"/>
-                                        </userDefinedRuntimeAttribute>
-                                        <userDefinedRuntimeAttribute type="string" keyPath="nibName" value="PlayerBox"/>
-                                    </userDefinedRuntimeAttributes>
-                                </view>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="kzS-hB-ReR">
+                                    <rect key="frame" x="0.0" y="0.0" width="362" height="303"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l0i-6g-WDp" customClass="XibView" customModule="slime" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="362" height="70"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                    <integer key="value" value="8"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="nibName" value="PlayerBox"/>
+                                            </userDefinedRuntimeAttributes>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6AJ-yG-Ws5" customClass="XibView" customModule="slime" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="78" width="362" height="69.5"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                    <integer key="value" value="8"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="nibName" value="PlayerBox"/>
+                                            </userDefinedRuntimeAttributes>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2bl-di-tcI" customClass="XibView" customModule="slime" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="155.5" width="362" height="70"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                    <integer key="value" value="8"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="nibName" value="PlayerBox"/>
+                                            </userDefinedRuntimeAttributes>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vMC-9s-A8W" customClass="XibView" customModule="slime" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="233.5" width="362" height="69.5"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                    <integer key="value" value="8"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="nibName" value="PlayerBox"/>
+                                            </userDefinedRuntimeAttributes>
+                                        </view>
+                                    </subviews>
+                                </stackView>
                             </subviews>
-                        </stackView>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="kzS-hB-ReR" secondAttribute="bottom" id="4CW-AD-RPq"/>
+                                <constraint firstAttribute="trailing" secondItem="kzS-hB-ReR" secondAttribute="trailing" id="NTS-UE-NuL"/>
+                                <constraint firstItem="kzS-hB-ReR" firstAttribute="leading" secondItem="8lW-wv-73A" secondAttribute="leading" id="uzT-d9-5LK"/>
+                                <constraint firstItem="kzS-hB-ReR" firstAttribute="top" secondItem="8lW-wv-73A" secondAttribute="top" id="wzc-xY-X4O"/>
+                            </constraints>
+                        </view>
                     </subviews>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstItem="kzS-hB-ReR" firstAttribute="top" secondItem="NJ8-JJ-hxN" secondAttribute="top" id="5Od-5x-1eg"/>
-                        <constraint firstAttribute="bottom" secondItem="ofZ-f3-fSc" secondAttribute="bottom" id="End-NJ-Ogh"/>
-                        <constraint firstAttribute="trailing" secondItem="ofZ-f3-fSc" secondAttribute="trailing" id="HCq-DW-CMH"/>
-                        <constraint firstAttribute="height" constant="220" id="IT7-jv-UtM"/>
-                        <constraint firstAttribute="bottom" secondItem="kzS-hB-ReR" secondAttribute="bottom" id="Uh1-8r-CIx"/>
-                        <constraint firstItem="kzS-hB-ReR" firstAttribute="leading" secondItem="NJ8-JJ-hxN" secondAttribute="leading" id="Zfl-d2-SxH"/>
-                        <constraint firstItem="kzS-hB-ReR" firstAttribute="width" secondItem="NJ8-JJ-hxN" secondAttribute="width" multiplier="0.49" id="aab-Qg-ImC"/>
-                        <constraint firstItem="ofZ-f3-fSc" firstAttribute="top" secondItem="NJ8-JJ-hxN" secondAttribute="top" id="cIO-yw-Aav"/>
-                        <constraint firstItem="ofZ-f3-fSc" firstAttribute="width" secondItem="NJ8-JJ-hxN" secondAttribute="width" multiplier="0.49" id="zOO-aI-gZ0"/>
-                    </constraints>
-                </view>
+                </stackView>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="NJ8-JJ-hxN" firstAttribute="top" secondItem="2Pe-gw-Td9" secondAttribute="bottom" constant="16" id="37G-CI-PdT"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="2Pe-gw-Td9" secondAttribute="trailing" constant="36" id="IP9-hx-fK2"/>
-                <constraint firstItem="2Pe-gw-Td9" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="36" id="dWF-Jv-HWQ"/>
-                <constraint firstItem="2Pe-gw-Td9" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="36" id="qbH-Jq-mLX"/>
-                <constraint firstItem="NJ8-JJ-hxN" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="36" id="va5-pj-Uue"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="NJ8-JJ-hxN" secondAttribute="trailing" constant="36" id="wnp-L5-BTD"/>
-                <constraint firstAttribute="bottom" secondItem="NJ8-JJ-hxN" secondAttribute="bottom" constant="36" id="yKO-rw-HPz"/>
+                <constraint firstItem="hVZ-W2-5PE" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="36" id="98R-mi-gha"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="hVZ-W2-5PE" secondAttribute="bottom" constant="36" id="Eng-B3-ID0"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="hVZ-W2-5PE" secondAttribute="trailing" constant="36" id="X17-j9-OUa"/>
+                <constraint firstItem="hVZ-W2-5PE" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="36" id="Y7p-dh-P1X"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
@@ -140,10 +194,13 @@
                 <outlet property="playerOneView" destination="l0i-6g-WDp" id="LHs-RD-Z6u"/>
                 <outlet property="playerThreeView" destination="2bl-di-tcI" id="fS0-mP-YJ3"/>
                 <outlet property="playerTwoView" destination="6AJ-yG-Ws5" id="WQa-dT-8WO"/>
-                <outlet property="playersView" destination="NJ8-JJ-hxN" id="2VI-Tr-1hY"/>
                 <outlet property="roomCodeLabel" destination="Jdl-rx-HXi" id="4Ib-dD-fZs"/>
+                <outlet property="startButton" destination="rJd-Lo-QoD" id="yLI-Eb-OCV"/>
             </connections>
             <point key="canvasLocation" x="40" y="46.326836581709152"/>
         </view>
     </objects>
+    <resources>
+        <image name="preview-level1" width="245.75999450683594" height="245.75999450683594"/>
+    </resources>
 </document>

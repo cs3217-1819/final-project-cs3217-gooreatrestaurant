@@ -7,6 +7,7 @@
 //
 
 import Firebase
+import SpriteKit
 
 /**
  Implementation of GameDatabase using
@@ -657,8 +658,10 @@ class GameDB: GameDatabase {
 
         guard let key = ref.childByAutoId().key else { return }
 
-        // TODO
-        let dict = ["order": "order"]
+        // TODO: encode recipe
+        let dict = [FirebaseKeys.games_orders_issueTime: NSTimeIntervalSince1970,
+                    FirebaseKeys.games_orders_timeLimit: 30,
+        FirebaseKeys.games_orders_encodedRecipe: "TODO: encoded recipe"] as [String : AnyObject]
 
         ref.child(key).setValue(dict) { (err, _) in
             if let error = err {
@@ -670,27 +673,27 @@ class GameDB: GameDatabase {
         }
     }
 
-    func submitOrder(forGameId id: String, withRecipe recipe: Recipe, _ onComplete: @escaping (String?) -> Void, _ onError: @escaping (Error) -> Void) {
-        let ref = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, id, FirebaseKeys.games_orders])).queryLimited(toFirst: 1).queryEqual(toValue: recipe, childKey: FirebaseKeys.games_orders_recipeName)
+    func submitOrder(forGameId id: String, withRecipe recipe: Recipe, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void) {
+        // encode recipe first
+        let ref = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, id, FirebaseKeys.games_orders])).queryLimited(toFirst: 1).queryEqual(toValue: recipe, childKey: FirebaseKeys.games_orders_encodedRecipe)
 
         ref.observeSingleEvent(of: .value, with: { (snap) in
             guard var dict = snap.value as? [String: AnyObject] else {
                 // no recipe match
-                onComplete(nil)
                 return
             }
 
-            if dict.count > 1 {
-                onComplete(nil)
-                return
-            }
-
-            guard let order = dict.popFirst() else {
-                onComplete(nil)
-                return
-            }
-
-            onComplete(order.key)
+            guard let order = dict.popFirst() else { return }
+            
+            self.removeOrder(forGameId: id, forOrderKey: order.key, {
+                self.addScore(by: 20, forGameId: id, {
+                    onComplete()
+                }, { (err) in
+                    onError(err)
+                })
+            }, { (err) in
+                onError(err)
+            })
         }) { (err) in
             onError(err)
         }
@@ -720,7 +723,7 @@ class GameDB: GameDatabase {
         }
     }
 
-    func observeGameState(forRoom room: RoomModel, onPlayerUpdate: @escaping (GamePlayerModel) -> Void, onStationUpdate: @escaping () -> Void, onGameEnd: @escaping () -> Void, onOrderChange: @escaping ([GameOrderModel]) -> Void, onScoreChange: @escaping (Int) -> Void, onAllPlayersReady: @escaping () -> Void, onGameStart: @escaping () -> Void, onSelfItemChange: @escaping (String) -> Void, onTimeLeftChange: @escaping (Int) -> Void, onComplete: @escaping () -> Void, onError: @escaping (Error) -> Void) {
+    func observeGameState(forRoom room: RoomModel, onPlayerUpdate: @escaping (GamePlayerModel) -> Void, onStationUpdate: @escaping () -> Void, onGameEnd: @escaping () -> Void, onOrderChange: @escaping ([GameOrderModel]) -> Void, onScoreChange: @escaping (Int) -> Void, onAllPlayersReady: @escaping () -> Void, onGameStart: @escaping () -> Void, onSelfItemChange: @escaping (SKSpriteNode?) -> Void, onTimeLeftChange: @escaping (Int) -> Void, onComplete: @escaping () -> Void, onError: @escaping (Error) -> Void) {
         guard let user = GameAuth.currentUser else {
             return
         }
@@ -735,11 +738,13 @@ class GameDB: GameDatabase {
         let selfHoldingItemRef = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, room.id, FirebaseKeys.games_players, user.uid, FirebaseKeys.games_players_holdingItem]))
         
         let selfHandle = selfHoldingItemRef.observe(.value, with: { (snap) in
-            guard let item = snap.value as? String else {
-                return
-            }
+//            guard let itemInString = snap.value as? String else {
+//                return
+//            }
             
-            onSelfItemChange(item)
+            // TODO: change item from string to SKSpriteNode
+            
+//            onSelfItemChange(item)
         }) { (err) in
             onError(err)
         }
@@ -906,7 +911,7 @@ class GameDB: GameDatabase {
 
         let issueTime = orderInfo[FirebaseKeys.games_orders_issueTime] as? Double ?? 0.0
         let timeLimit = orderInfo[FirebaseKeys.games_orders_timeLimit] as? Double ?? 0.0
-        let name = orderInfo[FirebaseKeys.games_orders_recipeName] as? String ?? ""
+        let name = orderInfo[FirebaseKeys.games_orders_encodedRecipe] as? String ?? ""
 
         return GameOrderModel(id: dict.key, name: name, issueTime: issueTime, timeLimit: timeLimit)
     }
@@ -930,11 +935,11 @@ class GameDB: GameDatabase {
         let ref = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, id, FirebaseKeys.games_players, user.uid, FirebaseKeys.games_players_holdingItem]))
         
         ref.runTransactionBlock({ (current) -> TransactionResult in
-            guard var gameItem = current.value as? String else {
+            guard var gameItem = current.value as? [String : String] else {
                 return TransactionResult.success(withValue: current)
             }
             
-            gameItem = self.convertGameItemToString(forGameItem: item)
+            gameItem = self.convertGameItemToEncodedData(forGameItem: item)
             current.value = gameItem
             
             return TransactionResult.success(withValue: current)
@@ -952,11 +957,11 @@ class GameDB: GameDatabase {
         let ref = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, id, FirebaseKeys.games_stations, station, FirebaseKeys.games_stations_itemInside]))
         
         ref.runTransactionBlock({ (current) -> TransactionResult in
-            guard var gameItem = current.value as? String else {
+            guard var gameItem = current.value as? [String : String] else {
                 return TransactionResult.success(withValue: current)
             }
             
-            gameItem = self.convertGameItemToString(forGameItem: item)
+            gameItem = self.convertGameItemToEncodedData(forGameItem: item)
             current.value = gameItem
             
             return TransactionResult.success(withValue: current)
@@ -970,9 +975,9 @@ class GameDB: GameDatabase {
         })
     }
     
-    private func convertGameItemToString(forGameItem item: AnyObject) -> String {
-        
-        return "none"
+    private func convertGameItemToEncodedData(forGameItem item: AnyObject) -> [String : String] {
+        // TODO:
+        return ["none" : "none"]
     }
     
     func addScore(by addedScore: Int, forGameId id: String, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void) {
@@ -1178,6 +1183,26 @@ struct Observer {
     }
 }
 
+struct ItemSerializer {
+    static func serializeItem(forItem item: AnyObject, withType type: String) -> String {
+        switch (type) {
+        case FirebaseSystemValues.ItemTypes.plate.rawValue:
+            // serialize to plate
+            return ""
+        case FirebaseSystemValues.ItemTypes.ingredient.rawValue:
+            // serialize to ingredient
+            return ""
+        default:
+            // return none
+            return ""
+        }
+    }
+    
+    static func deserializeItem(forData data: String) -> (type: String, item: AnyObject) {
+        return (type: "", item: "hello" as AnyObject)
+    }
+}
+
 enum GameTypes {
     case single
     case multiplayer
@@ -1203,6 +1228,12 @@ struct FirebaseSystemValues {
     static let defaultNoItem = "none"
     static let defaultDouble = 0.0
     static let defaultCGFloat = 0.0 as CGFloat
+    
+    enum ItemTypes: String {
+        case none
+        case plate
+        case ingredient
+    }
 }
 
 /**
@@ -1260,9 +1291,11 @@ struct FirebaseKeys {
     static let games_stations_itemInside = "item_inside"
     static let games_stations_isOccupied = "is_occupied"
     static let games_stations_type = "type"
+    static let games_items_type = "type"
+    static let games_items_encodedData = "sncoded_data"
     //    static let games_objects = "objects"
     static let games_orders = "orders"
-    static let games_orders_recipeName = "recipe_name"
+    static let games_orders_encodedRecipe = "encoded_recipe"
     static let games_orders_issueTime = "issue_time"
     static let games_orders_timeLimit = "time_limit"
     static let games_announcements = "announcements"

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="landscape">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="XibView" customModule="slime" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="TutorialScreenView" customModule="slime" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="812" height="375"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gCy-yL-Fpa" customClass="DesignableView" customModule="slime" customModuleProvider="target">
+                    <rect key="frame" x="80" y="-16" width="652" height="247"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tut-cutapple-step-1" translatesAutoresizingMaskIntoConstraints="NO" id="8fv-b2-tTC">
+                            <rect key="frame" x="16" y="16" width="620" height="215"/>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="8fv-b2-tTC" secondAttribute="trailing" constant="16" id="Tro-w5-MNV"/>
+                        <constraint firstItem="8fv-b2-tTC" firstAttribute="leading" secondItem="gCy-yL-Fpa" secondAttribute="leading" constant="16" id="WvD-mt-ErP"/>
+                        <constraint firstItem="8fv-b2-tTC" firstAttribute="top" secondItem="gCy-yL-Fpa" secondAttribute="top" constant="16" id="hEN-4Z-NJV"/>
+                        <constraint firstAttribute="bottom" secondItem="8fv-b2-tTC" secondAttribute="bottom" constant="16" id="yMl-7T-03a"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="rounded" value="YES"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="background" value="pink7"/>
+                    </userDefinedRuntimeAttributes>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hgS-qn-3p3" customClass="DesignableView" customModule="slime" customModuleProvider="target">
+                    <rect key="frame" x="80" y="263" width="652" height="128"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Step 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zdq-th-hdz" customClass="TextLabel" customModule="slime" customModuleProvider="target">
+                            <rect key="frame" x="304.5" y="15" width="43.5" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="style" value="h2"/>
+                                <userDefinedRuntimeAttribute type="string" keyPath="color" value="pink4"/>
+                            </userDefinedRuntimeAttributes>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Jp-Cj-plZ" customClass="TextLabel" customModule="slime" customModuleProvider="target">
+                            <rect key="frame" x="16" y="52" width="620" height="21.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="style" value="p1"/>
+                                <userDefinedRuntimeAttribute type="string" keyPath="color" value="pink1"/>
+                            </userDefinedRuntimeAttributes>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="128" id="472-Cu-E2K"/>
+                        <constraint firstItem="1Jp-Cj-plZ" firstAttribute="top" secondItem="Zdq-th-hdz" secondAttribute="bottom" constant="16" id="AjC-xQ-eKt"/>
+                        <constraint firstAttribute="trailing" secondItem="1Jp-Cj-plZ" secondAttribute="trailing" constant="16" id="EJ6-Jc-b4d"/>
+                        <constraint firstItem="Zdq-th-hdz" firstAttribute="centerX" secondItem="hgS-qn-3p3" secondAttribute="centerX" id="Ojc-oy-4th"/>
+                        <constraint firstItem="Zdq-th-hdz" firstAttribute="top" secondItem="hgS-qn-3p3" secondAttribute="top" constant="15" id="Qmd-RO-qF1"/>
+                        <constraint firstItem="1Jp-Cj-plZ" firstAttribute="leading" secondItem="hgS-qn-3p3" secondAttribute="leading" constant="16" id="puP-wF-yrV"/>
+                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="1Jp-Cj-plZ" secondAttribute="bottom" constant="16" id="sFm-NQ-PE7"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="rounded" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="hgS-qn-3p3" firstAttribute="top" secondItem="gCy-yL-Fpa" secondAttribute="bottom" constant="32" id="1ol-mB-Mxs"/>
+                <constraint firstAttribute="bottom" secondItem="hgS-qn-3p3" secondAttribute="bottom" constant="-16" id="Bdc-hl-UdI"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="hgS-qn-3p3" secondAttribute="trailing" constant="36" id="C1N-Tq-BYZ"/>
+                <constraint firstItem="gCy-yL-Fpa" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="-16" id="Lri-fD-yvx"/>
+                <constraint firstItem="hgS-qn-3p3" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="36" id="NPI-oa-b2w"/>
+                <constraint firstItem="gCy-yL-Fpa" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="36" id="q00-Bf-xqc"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="gCy-yL-Fpa" secondAttribute="trailing" constant="36" id="rmf-Ln-7yp"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="descriptionLabel" destination="1Jp-Cj-plZ" id="dE8-7a-2QO"/>
+                <outlet property="titleLabel" destination="Zdq-th-hdz" id="H3j-mR-QyJ"/>
+                <outlet property="tutorialImageView" destination="8fv-b2-tTC" id="GhS-vq-KKD"/>
+            </connections>
+        </view>
+    </objects>
+    <resources>
+        <image name="tut-cutapple-step-1" width="2000" height="1000"/>
+    </resources>
+</document>
