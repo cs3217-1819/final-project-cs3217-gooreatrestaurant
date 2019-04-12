@@ -297,12 +297,12 @@ class Stage: SKScene {
     }()
 
     func setupControl() {
-        self.addChild(jumpButton)
-        self.addChild(interactButton)
-        self.addChild(backButton)
-        self.addChild(analogJoystick)
-        self.addChild(countdownLabel)
-        self.addChild(scoreLabel)
+        self.cam?.addChild(jumpButton)
+        self.cam?.addChild(interactButton)
+        self.cam?.addChild(backButton)
+        self.cam?.addChild(analogJoystick)
+        self.cam?.addChild(countdownLabel)
+        self.cam?.addChild(scoreLabel)
 
         if !isMultiplayer {
             counter = counterStartTime
