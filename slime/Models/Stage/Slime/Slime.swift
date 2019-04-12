@@ -112,9 +112,9 @@ class Slime: SKSpriteNode {
         self.addChild(itemToTake)
     }
 
-    func interact() {
+    func interact() -> Station? {
         guard let contactedBodies = self.physicsBody?.allContactedBodies() else {
-            return
+            return nil
         }
 
         for body in contactedBodies {
@@ -132,9 +132,11 @@ class Slime: SKSpriteNode {
 
                 let itemProcessed = station.process(itemToProcess)
                 self.takeItem(itemProcessed)
-                break
+                return station
             }
         }
+        
+        return nil
     }
 
     func addUser(_ user: Player) {

@@ -1059,7 +1059,8 @@ class GameDB: GameDatabase {
             resultingDict.updateValue(FirebaseSystemValues.ItemTypes.plate.rawValue, forKey: FirebaseKeys.games_items_type)
             resultingDict.updateValue(encodedItem, forKey: FirebaseKeys.games_items_encodedData)
         }
-        return ["none" : "none"]
+        
+        return resultingDict
     }
     
     func addScore(by addedScore: Int, forGameId id: String, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void) {

@@ -68,6 +68,7 @@ class Stage: SKScene {
     func setupMultiplayer(forRoom room: RoomModel) {
         self.previousRoom = room
         
+        // don't initialize this on single player
         db = GameDB()
         
         guard let user = GameAuth.currentUser else { return }
@@ -79,7 +80,6 @@ class Stage: SKScene {
             if user.uid == player.uid { self.isUserHost = player.isHost }
             let playerInGame = Player(name: player.uid, level: player.level)
             self.addPlayer(playerInGame)
-            // TODO: put into the slime dict
         }
         
         database.observeGameState(forRoom: room, onPlayerUpdate: { (player) in
@@ -91,6 +91,7 @@ class Stage: SKScene {
         }, onStationUpdate: { (id, station) in
             guard let station = self.allStationsDict[id] else { return }
             // TODO: update station object
+            print("hello")
             print(station)
         }, onGameEnd: {
             self.gameHasEnded = true
@@ -120,7 +121,7 @@ class Stage: SKScene {
             // TODO: do setup when game has started
         }, onSelfItemChange: { (item) in
             guard let slime = self.slimeToControl else { return }
-            slime.removeItem()
+//            slime.removeItem()
             // TODO: turn item into object
 //            if let newItem = item { slime.takeItem(newItem) }
         }, onTimeLeftChange: { (timeLeft) in
@@ -230,7 +231,11 @@ class Stage: SKScene {
 
     lazy var interactButton: BDButton = {
         var button = BDButton(imageNamed: "Interact", buttonAction: {
-            self.slimeToControl?.interact()
+            let interactedStation = self.slimeToControl?.interact()
+            if self.isMultiplayer {
+                guard let station = interactedStation else { return }
+                self.handleMultiplayerInteract(withStation: station)
+            }
             })
         button.setScale(0.15)
         button.isEnabled = true
@@ -238,6 +243,32 @@ class Stage: SKScene {
         button.zPosition = StageConstants.buttonZPos
         return button
     }()
+    
+    private func handleMultiplayerInteract(withStation station: Station) {
+        guard let database = self.db else { return }
+        guard let room = self.previousRoom else { return }
+        guard let id = station.id else { return }
+        
+        if let item = station.itemInside {
+            database.updateStationItemInside(forGameId: room.id, forStation: id, toItem: item, { }) { (err) in
+                print(err.localizedDescription)
+            }
+        } else {
+            database.updateStationItemInside(forGameId: room.id, forStation: id, toItem: "MAH MAH SLIME" as AnyObject, { }) { (err) in
+                print(err.localizedDescription)
+            }
+        }
+        
+        if let selfItem = self.slimeToControl?.itemCarried {
+            database.updatePlayerHoldingItem(forGameId: room.id, toItem: selfItem, { }) { (err) in
+                print(err.localizedDescription)
+            }
+        } else {
+            database.updatePlayerHoldingItem(forGameId: room.id, toItem: "AH AH SLIME" as AnyObject, { }) { (err) in
+                print(err.localizedDescription)
+            }
+        }
+    }
 
     lazy var backButton: BDButton = {
         var button = BDButton(imageNamed: "BackButton", buttonAction: {
