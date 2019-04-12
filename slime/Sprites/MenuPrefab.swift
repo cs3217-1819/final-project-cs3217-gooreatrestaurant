@@ -90,8 +90,8 @@ class MenuPrefab : SKSpriteNode {
 
     @objc func countdown() {
         if (time > 0.0) {
-            time -= CGFloat(1.0/duration)
-            self.greenBar.size =  CGSize(width: greenBar.size.width, height: self.greenBar.size.height * time / duration)
+            time -= CGFloat(1.0)
+            self.greenBar.size =  CGSize(width: greenBar.size.width, height: self.greenBar.size.height * time / (time + 1.0))
         } else {
             timer.invalidate()
             guard let parent = self.parent else {
