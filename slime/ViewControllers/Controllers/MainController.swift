@@ -117,7 +117,7 @@ class MainController: UIViewController {
             destination.previousRoom = room
         }
         
-        if segue.identifier == "toMultiplayerGame" {
+        if segue.identifier == "toGame" {
             // let destination = segue.destination as! GameViewController
             // let currentRoute = self.router.currentViewController as! LevelSelectViewController
         }

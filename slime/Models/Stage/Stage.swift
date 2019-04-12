@@ -141,7 +141,7 @@ class Stage: SKScene {
             if let newItem = item { slime.takeItem(newItem) }
         }, onTimeLeftChange: { (timeLeft) in
             self.countdownLabel.text = "Time: \(timeLeft)"
-            if self.isUserHost && self.isGameOver { self.endMultiplayerGame() }
+            if self.isUserHost && self.isMultiplayerTimeUp(forTime: timeLeft) { self.endMultiplayerGame() }
         }, onComplete: {
             // joins game after attaching all
             // relevant observers, this onComplete
@@ -153,7 +153,7 @@ class Stage: SKScene {
     }
     
     private func startStreamingSelf() {
-        self.streamingTimer = Timer.init(timeInterval: StageConstants.streamingInterval, repeats: true, block: { (timer) in
+        self.streamingTimer = Timer.scheduledTimer(withTimeInterval: StageConstants.streamingInterval, repeats: true, block: { (timer) in
             guard let slime = self.slimeToControl else { return }
             guard let room = self.previousRoom else { return }
             guard let slimeVelocity = slime.physicsBody?.velocity else { return }

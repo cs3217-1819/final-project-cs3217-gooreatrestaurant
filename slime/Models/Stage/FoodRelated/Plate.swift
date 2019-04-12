@@ -50,9 +50,7 @@ class Plate: SKSpriteNode, Codable {
         self.init(inPosition: position)
         self.food = food
 
-        for ingredient in listOfIngredients {
-            self.addIngredientImage(inIngredient: ingredient)
-        }
+        for ingredient in listOfIngredients { self.addIngredientImage(inIngredient: ingredient) }
     }
 
     func encode(to encoder: Encoder) throws {

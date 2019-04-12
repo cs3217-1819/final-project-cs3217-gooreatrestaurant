@@ -416,7 +416,7 @@ class GameDB: GameDatabase {
         gameDict.updateValue(0 as AnyObject, forKey: FirebaseKeys.games_score)
         gameDict.updateValue(players as AnyObject, forKey: FirebaseKeys.games_players)
         gameDict.updateValue(stationsDict as AnyObject, forKey: FirebaseKeys.games_stations)
-
+        
         ref.setValue(gameDict) { (err, ref) in
             if let error = err {
                 onError(error)
@@ -462,6 +462,9 @@ class GameDB: GameDatabase {
     private func parseStationsForDecodedData(data: SerializableGameData) -> [String : AnyObject] {
         var res: [String : AnyObject] = [:]
         
+        let itemInsideDict = [FirebaseKeys.games_items_type: FirebaseSystemValues.ItemTypes.none.rawValue,
+                              FirebaseKeys.games_items_encodedData: FirebaseSystemValues.defaultNoItem]
+        
         // table
         for (index, _) in data.table.enumerated() {
             let key = "\(FirebaseSystemValues.games_stations_table)-\(index)"
@@ -469,7 +472,7 @@ class GameDB: GameDatabase {
             let valueDict =
                 [FirebaseKeys.games_stations_type: FirebaseSystemValues.games_stations_table,
                  FirebaseKeys.games_stations_isOccupied: FirebaseSystemValues.defaultFalse,
-                 FirebaseKeys.games_stations_itemInside: FirebaseSystemValues.defaultNoItem] as [String : AnyObject]
+                 FirebaseKeys.games_stations_itemInside: itemInsideDict] as [String : AnyObject]
             
             res.updateValue(valueDict as AnyObject, forKey: key)
         }
@@ -481,7 +484,7 @@ class GameDB: GameDatabase {
             let valueDict =
                 [FirebaseKeys.games_stations_type: FirebaseSystemValues.games_stations_fryingEquipment,
                  FirebaseKeys.games_stations_isOccupied: FirebaseSystemValues.defaultFalse,
-                 FirebaseKeys.games_stations_itemInside: FirebaseSystemValues.defaultNoItem] as [String : AnyObject]
+                 FirebaseKeys.games_stations_itemInside: itemInsideDict] as [String : AnyObject]
             
             res.updateValue(valueDict as AnyObject, forKey: key)
         }
@@ -492,7 +495,7 @@ class GameDB: GameDatabase {
             let valueDict =
                 [FirebaseKeys.games_stations_type: FirebaseSystemValues.games_stations_oven,
                  FirebaseKeys.games_stations_isOccupied: FirebaseSystemValues.defaultFalse,
-                 FirebaseKeys.games_stations_itemInside: FirebaseSystemValues.defaultNoItem] as [String : AnyObject]
+                 FirebaseKeys.games_stations_itemInside: itemInsideDict] as [String : AnyObject]
             
             res.updateValue(valueDict as AnyObject, forKey: key)
         }
@@ -503,7 +506,7 @@ class GameDB: GameDatabase {
             let valueDict =
                 [FirebaseKeys.games_stations_type: FirebaseSystemValues.games_stations_choppingEquipment,
                  FirebaseKeys.games_stations_isOccupied: FirebaseSystemValues.defaultFalse,
-                 FirebaseKeys.games_stations_itemInside: FirebaseSystemValues.defaultNoItem] as [String : AnyObject]
+                 FirebaseKeys.games_stations_itemInside: itemInsideDict] as [String : AnyObject]
             
             res.updateValue(valueDict as AnyObject, forKey: key)
         }
@@ -546,18 +549,21 @@ class GameDB: GameDatabase {
             var playersDict: [String : AnyObject] = [:]
             
             for player in players {
-                let newGamePlayerDict: [String : AnyObject] =
-                    [FirebaseKeys.games_players_isHost: player.isHost as AnyObject,
-                     FirebaseKeys.games_players_isReady: FirebaseSystemValues.defaultFalse as AnyObject,
-                     FirebaseKeys.games_players_isConnected: FirebaseSystemValues.defaultFalse as AnyObject,
-                     FirebaseKeys.games_players_positionX: pos.x as AnyObject,
-                     FirebaseKeys.games_players_positionY: pos.y as AnyObject,
-                     FirebaseKeys.games_players_holdingItem: FirebaseSystemValues.defaultNoItem as AnyObject,
-                     FirebaseKeys.users_color: player.color as AnyObject,
-                     FirebaseKeys.users_name: player.name as AnyObject,
-                     FirebaseKeys.users_level: player.level as AnyObject,
-                     FirebaseKeys.users_hat: player.hat as AnyObject,
-                     FirebaseKeys.users_accessory: player.accessory as AnyObject]
+                let holdingItemDict = [FirebaseKeys.games_items_type: FirebaseSystemValues.ItemTypes.none.rawValue,
+                FirebaseKeys.games_items_encodedData: FirebaseSystemValues.defaultNoItem] as [String : AnyObject]
+                
+                let newGamePlayerDict =
+                    [FirebaseKeys.games_players_isHost: player.isHost,
+                     FirebaseKeys.games_players_isReady: FirebaseSystemValues.defaultFalse,
+                     FirebaseKeys.games_players_isConnected: FirebaseSystemValues.defaultFalse,
+                     FirebaseKeys.games_players_positionX: pos.x,
+                     FirebaseKeys.games_players_positionY: pos.y,
+                     FirebaseKeys.games_players_holdingItem: holdingItemDict,
+                     FirebaseKeys.users_color: player.color,
+                     FirebaseKeys.users_name: player.name,
+                     FirebaseKeys.users_level: player.level,
+                     FirebaseKeys.users_hat: player.hat,
+                FirebaseKeys.users_accessory: player.accessory] as [String : AnyObject]
                 
                 playersDict.updateValue(newGamePlayerDict as AnyObject, forKey: player.uid)
             }
@@ -592,18 +598,19 @@ class GameDB: GameDatabase {
         let disconnectRef = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, id, FirebaseKeys.games_players, user.uid, FirebaseKeys.games_players_isConnected]))
         let rejoinRef = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.rejoins, user.uid]))
 
-        let dict = [FirebaseKeys.games_players_isConnected: true, FirebaseKeys.games_players_isReady: true]
-
-        ref.setValue(dict) { (err, ref) in
+        let res = [FirebaseKeys.games_players_isConnected: true,
+                   FirebaseKeys.games_players_isReady: true]
+        
+        ref.updateChildValues(res) { (err, ref) in
             if let error = err {
                 onError(error)
                 return
             }
-
+            
             disconnectRef.onDisconnectSetValue(false)
             rejoinRef.onDisconnectSetValue(id)
             // TODO: add disconnect ref to list of ref
-
+            
             onComplete()
         }
     }
@@ -621,7 +628,7 @@ class GameDB: GameDatabase {
                           FirebaseKeys.games_players_velocityY: velocity.dy,
                           FirebaseKeys.games_players_xScale: xScale]
         
-        ref.setValue(resultDict) { (err, ref) in
+        ref.updateChildValues(resultDict) { (err, ref) in
             if let error = err {
                 onError(error)
                 return
@@ -792,7 +799,7 @@ class GameDB: GameDatabase {
         
         hasStartedRef.observe(.value, with: { (snap) in
             guard let hasStarted = snap.value as? Bool else { return }
-            
+            print("hasStarted: \(hasStarted)")
             if hasStarted { onGameStart() }
         }) { (err) in
             onError(err)
@@ -839,7 +846,6 @@ class GameDB: GameDatabase {
         }
 
         let stationHandle = stationRef.observe(.value, with: { (snap) in
-            print(snap)
 
             onStationUpdate()
         }) { (err) in
@@ -869,7 +875,6 @@ class GameDB: GameDatabase {
         let velocityX = playerDict[FirebaseKeys.games_players_velocityX] as? CGFloat ?? FirebaseSystemValues.defaultCGFloat
         let velocityY = playerDict[FirebaseKeys.games_players_velocityY] as? CGFloat ?? FirebaseSystemValues.defaultCGFloat
         let xScale = playerDict[FirebaseKeys.games_players_xScale] as? CGFloat ?? FirebaseSystemValues.defaultCGFloat
-        let holdItem = playerDict[FirebaseKeys.games_players_holdingItem] as? String ?? FirebaseSystemValues.defaultNoItem
         let isConnected = playerDict[FirebaseKeys.games_players_isConnected] as? Bool ?? FirebaseSystemValues.defaultFalse
         let isHost = playerDict[FirebaseKeys.games_players_isHost] as? Bool ?? FirebaseSystemValues.defaultFalse
         let isReady = playerDict[FirebaseKeys.games_players_isReady] as? Bool ?? FirebaseSystemValues.defaultFalse
@@ -879,7 +884,11 @@ class GameDB: GameDatabase {
         let color = playerDict[FirebaseKeys.users_color] as? String ?? FirebaseSystemValues.users_defaultColor
         let level = playerDict[FirebaseKeys.users_level] as? Int ?? FirebaseSystemValues.users_defaultLevel
         
-        return GamePlayerModel(uid: uid, posX: positionX, posY: positionY, vx: velocityX, vy: velocityY, xScale: xScale, holdingItem: holdItem, isHost: isHost, isConnected: isConnected, isReady: isReady, name: name, hat: hat, accessory: accessory, color: color, level: level)
+        let holdItem = playerDict[FirebaseKeys.games_players_holdingItem] as? [String : String] ?? [:]
+        let itemType = holdItem[FirebaseKeys.games_items_type] ?? FirebaseSystemValues.ItemTypes.none.rawValue
+        let encodedData = holdItem[FirebaseKeys.games_items_encodedData] ?? FirebaseSystemValues.defaultNoItem
+        
+        return GamePlayerModel(uid: uid, posX: positionX, posY: positionY, vx: velocityX, vy: velocityY, xScale: xScale, holdingItem: ItemModel(type: itemType, encodedData: encodedData), isHost: isHost, isConnected: isConnected, isReady: isReady, name: name, hat: hat, accessory: accessory, color: color, level: level)
     }
     
     /// a utility function to find the uid of
@@ -976,7 +985,28 @@ class GameDB: GameDatabase {
     }
     
     private func convertGameItemToEncodedData(forGameItem item: AnyObject) -> [String : String] {
-        // TODO:
+        var resultingDict = [FirebaseKeys.games_items_type: FirebaseSystemValues.ItemTypes.none.rawValue,
+                             FirebaseKeys.games_items_encodedData: FirebaseSystemValues.defaultNoItem]
+        
+        let encoder = JSONEncoder()
+        
+        if let ingredient = item as? Ingredient {
+            let data = try? encoder.encode(ingredient)
+            guard let result = data else { return resultingDict }
+            guard let encodedItem = String(data: result, encoding: .utf8) else { return resultingDict }
+            
+            resultingDict.updateValue(FirebaseSystemValues.ItemTypes.ingredient.rawValue, forKey: FirebaseKeys.games_items_type)
+            resultingDict.updateValue(encodedItem, forKey: FirebaseKeys.games_items_encodedData)
+        }
+        
+        if let plate = item as? Plate {
+            let data = try? encoder.encode(plate)
+            guard let result = data else { return resultingDict }
+            guard let encodedItem = String(data: result, encoding: .utf8) else { return resultingDict }
+            
+            resultingDict.updateValue(FirebaseSystemValues.ItemTypes.plate.rawValue, forKey: FirebaseKeys.games_items_type)
+            resultingDict.updateValue(encodedItem, forKey: FirebaseKeys.games_items_encodedData)
+        }
         return ["none" : "none"]
     }
     
@@ -1292,7 +1322,7 @@ struct FirebaseKeys {
     static let games_stations_isOccupied = "is_occupied"
     static let games_stations_type = "type"
     static let games_items_type = "type"
-    static let games_items_encodedData = "sncoded_data"
+    static let games_items_encodedData = "encoded_data"
     //    static let games_objects = "objects"
     static let games_orders = "orders"
     static let games_orders_encodedRecipe = "encoded_recipe"
