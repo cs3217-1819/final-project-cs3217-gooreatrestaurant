@@ -54,6 +54,10 @@
 		EC0E316E224F69A400AF1254 /* CharacterCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0E316D224F69A400AF1254 /* CharacterCreationViewController.swift */; };
 		EC0E31712252075300AF1254 /* ItemSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0E31702252075300AF1254 /* ItemSelectorView.swift */; };
 		EC0E31732252076600AF1254 /* ItemSelectorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC0E31722252076600AF1254 /* ItemSelectorView.xib */; };
+		EC1331A6226046B500EA382C /* TutorialScreenView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC1331A5226046B500EA382C /* TutorialScreenView.xib */; };
+		EC1331A8226046C600EA382C /* TutorialScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1331A7226046C600EA382C /* TutorialScreenView.swift */; };
+		EC1331AA22604CA500EA382C /* TutorialScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1331A922604CA500EA382C /* TutorialScreenController.swift */; };
+		EC1331AC22604CD400EA382C /* Tutorial.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1331AB22604CD400EA382C /* Tutorial.swift */; };
 		EC1B44A6225D71B800CBE688 /* DialogBoxController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1B44A5225D71B800CBE688 /* DialogBoxController.swift */; };
 		EC1B44A8225D75B200CBE688 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1B44A7225D75B200CBE688 /* StringExtension.swift */; };
 		EC1B44AA225D764D00CBE688 /* JokesSlimesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1B44A9225D764D00CBE688 /* JokesSlimesController.swift */; };
@@ -132,6 +136,7 @@
 		EC4924F42248D616007B9797 /* RatingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC4924F32248D616007B9797 /* RatingView.xib */; };
 		EC4924F62248D638007B9797 /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4924F52248D638007B9797 /* RatingView.swift */; };
 		EC4924F82248D877007B9797 /* RatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4924F72248D877007B9797 /* RatingViewController.swift */; };
+		EC5196F122605A7F0083BC26 /* FlashingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5196F022605A7F0083BC26 /* FlashingController.swift */; };
 		EC57D2DC225C8B7400F26808 /* SlimeCharacterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC57D2DB225C8B7400F26808 /* SlimeCharacterView.swift */; };
 		EC57D2DE225C8B7B00F26808 /* SlimeCharacterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC57D2DD225C8B7B00F26808 /* SlimeCharacterView.xib */; };
 		EC57D2E0225C8E5300F26808 /* SlimeCharacterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC57D2DF225C8E5300F26808 /* SlimeCharacterController.swift */; };
@@ -294,6 +299,10 @@
 		EC0E316D224F69A400AF1254 /* CharacterCreationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCreationViewController.swift; sourceTree = "<group>"; };
 		EC0E31702252075300AF1254 /* ItemSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemSelectorView.swift; sourceTree = "<group>"; };
 		EC0E31722252076600AF1254 /* ItemSelectorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemSelectorView.xib; sourceTree = "<group>"; };
+		EC1331A5226046B500EA382C /* TutorialScreenView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TutorialScreenView.xib; sourceTree = "<group>"; };
+		EC1331A7226046C600EA382C /* TutorialScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialScreenView.swift; sourceTree = "<group>"; };
+		EC1331A922604CA500EA382C /* TutorialScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialScreenController.swift; sourceTree = "<group>"; };
+		EC1331AB22604CD400EA382C /* Tutorial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tutorial.swift; sourceTree = "<group>"; };
 		EC1B44A5225D71B800CBE688 /* DialogBoxController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogBoxController.swift; sourceTree = "<group>"; };
 		EC1B44A7225D75B200CBE688 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		EC1B44A9225D764D00CBE688 /* JokesSlimesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokesSlimesController.swift; sourceTree = "<group>"; };
@@ -376,6 +385,7 @@
 		EC4924F32248D616007B9797 /* RatingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RatingView.xib; sourceTree = "<group>"; };
 		EC4924F52248D638007B9797 /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
 		EC4924F72248D877007B9797 /* RatingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingViewController.swift; sourceTree = "<group>"; };
+		EC5196F022605A7F0083BC26 /* FlashingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashingController.swift; sourceTree = "<group>"; };
 		EC57D2DB225C8B7400F26808 /* SlimeCharacterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlimeCharacterView.swift; sourceTree = "<group>"; };
 		EC57D2DD225C8B7B00F26808 /* SlimeCharacterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SlimeCharacterView.xib; sourceTree = "<group>"; };
 		EC57D2DF225C8E5300F26808 /* SlimeCharacterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlimeCharacterController.swift; sourceTree = "<group>"; };
@@ -638,6 +648,16 @@
 			path = ItemSelector;
 			sourceTree = "<group>";
 		};
+		EC1331A42260469200EA382C /* TutorialScreenView */ = {
+			isa = PBXGroup;
+			children = (
+				EC1331A922604CA500EA382C /* TutorialScreenController.swift */,
+				EC1331A5226046B500EA382C /* TutorialScreenView.xib */,
+				EC1331A7226046C600EA382C /* TutorialScreenView.swift */,
+			);
+			path = TutorialScreenView;
+			sourceTree = "<group>";
+		};
 		EC21B4032242150A00827121 /* LoadingScreenView */ = {
 			isa = PBXGroup;
 			children = (
@@ -701,6 +721,8 @@
 		EC38243D223882AF000D7148 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				EC5196EF22605A6A0083BC26 /* FlashingView */,
+				EC1331A42260469200EA382C /* TutorialScreenView */,
 				ECB57117225D6FFA0083E945 /* DialogBox */,
 				EC57D2DA225C8B5800F26808 /* SlimeCharacter */,
 				EC7676C0225B541E00F6A450 /* ItemBox */,
@@ -907,6 +929,7 @@
 				1D2202A9224AB6310080CF7D /* Stage */,
 				EC449B9D223BBA0300A8EA35 /* Level.swift */,
 				ECD455712240FFC7006AF78D /* Player.swift */,
+				EC1331AB22604CD400EA382C /* Tutorial.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -930,6 +953,14 @@
 				EC4924F72248D877007B9797 /* RatingViewController.swift */,
 			);
 			path = Rating;
+			sourceTree = "<group>";
+		};
+		EC5196EF22605A6A0083BC26 /* FlashingView */ = {
+			isa = PBXGroup;
+			children = (
+				EC5196F022605A7F0083BC26 /* FlashingController.swift */,
+			);
+			path = FlashingView;
 			sourceTree = "<group>";
 		};
 		EC57D2DA225C8B5800F26808 /* SlimeCharacter */ = {
@@ -1332,6 +1363,7 @@
 				ECD24420224AFFEB00767A56 /* SlimeNumberInputView.xib in Resources */,
 				EC449B77223B81FE00A8EA35 /* PlayScreenView.xib in Resources */,
 				8BEDCD392247F10100E24A20 /* Level1.plist in Resources */,
+				EC1331A6226046B500EA382C /* TutorialScreenView.xib in Resources */,
 				EC0E31732252076600AF1254 /* ItemSelectorView.xib in Resources */,
 				8BFA63F12258B020007645F9 /* MainScreen.wav in Resources */,
 				EC21B4052242155600827121 /* LoadingScreenView.xib in Resources */,
@@ -1522,6 +1554,7 @@
 				F92ECAE4224BAEBD0040A4E2 /* Authentication.swift in Sources */,
 				ECD455652240F5B6006AF78D /* MultiplayerScreenViewController.swift in Sources */,
 				F92ECAEA224D1B490040A4E2 /* FadeInOutSegue.swift in Sources */,
+				EC1331AC22604CD400EA382C /* Tutorial.swift in Sources */,
 				EC38247D223A2344000D7148 /* UIColorExtension.swift in Sources */,
 				1DD6EBE7224E76FC006FF6CD /* CookingType.swift in Sources */,
 				EC382484223A2B6C000D7148 /* PlayMenuButtonController.swift in Sources */,
@@ -1564,6 +1597,7 @@
 				ECD2442E224B108200767A56 /* NumberPadResponder.swift in Sources */,
 				EC6E99FB224F499400A9554C /* UserInfoView.swift in Sources */,
 				ECD2442C224B0D0800767A56 /* SlimeNumberPadController.swift in Sources */,
+				EC1331A8226046C600EA382C /* TutorialScreenView.swift in Sources */,
 				1D22029A224AB5850080CF7D /* Plate.swift in Sources */,
 				1DD6EBE1224E368C006FF6CD /* ChoppingEquipment.swift in Sources */,
 				EC4924ED2246210C007B9797 /* OrderBlob.swift in Sources */,
@@ -1589,6 +1623,7 @@
 				EC4924EF22462174007B9797 /* OrderBlobController.swift in Sources */,
 				1DE6FC6B224D26A200B36F48 /* Trash.swift in Sources */,
 				EC21B409224217E200827121 /* LoadingScreenViewController.swift in Sources */,
+				EC5196F122605A7F0083BC26 /* FlashingController.swift in Sources */,
 				EC6E99EF224F256500A9554C /* LocalData.swift in Sources */,
 				EC6AC1D62254882900D95C90 /* ContextModalHandler.swift in Sources */,
 				1D2202A0224AB5850080CF7D /* Slime+Movements.swift in Sources */,
@@ -1606,6 +1641,7 @@
 				ECD455512240B510006AF78D /* AlertController.swift in Sources */,
 				EC1B44AA225D764D00CBE688 /* JokesSlimesController.swift in Sources */,
 				EC6E7563225A426800B9C7CF /* CharacterCustomizationViewController.swift in Sources */,
+				EC1331AA22604CA500EA382C /* TutorialScreenController.swift in Sources */,
 				8BFA63E92257D7FE007645F9 /* GameOverPrefab.swift in Sources */,
 				ECF75F04224B182400537237 /* JoinRoomViewController.swift in Sources */,
 				ECD24422224B011B00767A56 /* SlimeNumberInputController.swift in Sources */,

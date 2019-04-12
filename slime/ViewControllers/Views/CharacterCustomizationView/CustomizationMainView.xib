@@ -36,7 +36,7 @@
                             <rect key="frame" x="0.0" y="24" width="403" height="64"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To be implemented" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HZf-wb-23a" customClass="TextLabel" customModule="slime" customModuleProvider="target">
-                                    <rect key="frame" x="94" y="15.5" width="215.5" height="33.5"/>
+                                    <rect key="frame" x="128.5" y="22" width="146.5" height="20.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -85,18 +85,34 @@
                                                 <userDefinedRuntimeAttribute type="string" keyPath="color" value="pink2"/>
                                             </userDefinedRuntimeAttributes>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Apple" translatesAutoresizingMaskIntoConstraints="NO" id="AGf-J2-drH">
-                                            <rect key="frame" x="0.0" y="0.0" width="193.5" height="105"/>
-                                        </imageView>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ARe-bT-mU2" customClass="DesignableView" customModule="slime" customModuleProvider="target">
+                                            <rect key="frame" x="44.5" y="0.0" width="105" height="105"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Apple" translatesAutoresizingMaskIntoConstraints="NO" id="AGf-J2-drH">
+                                                    <rect key="frame" x="4" y="4" width="97" height="97"/>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="AGf-J2-drH" secondAttribute="trailing" constant="4" id="Ab7-5g-P7G"/>
+                                                <constraint firstAttribute="width" secondItem="ARe-bT-mU2" secondAttribute="height" multiplier="1:1" id="HFr-u7-hws"/>
+                                                <constraint firstItem="AGf-J2-drH" firstAttribute="top" secondItem="ARe-bT-mU2" secondAttribute="top" constant="4" id="ZbI-Z6-qtr"/>
+                                                <constraint firstAttribute="bottom" secondItem="AGf-J2-drH" secondAttribute="bottom" constant="4" id="h9o-hI-TZa"/>
+                                                <constraint firstItem="AGf-J2-drH" firstAttribute="leading" secondItem="ARe-bT-mU2" secondAttribute="leading" constant="4" id="yMh-dn-PCh"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="rounded" value="YES"/>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="background" value="pink6"/>
+                                            </userDefinedRuntimeAttributes>
+                                        </view>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="AGf-J2-drH" secondAttribute="trailing" id="2gj-hc-dHP"/>
-                                        <constraint firstItem="lh5-K6-BgU" firstAttribute="top" secondItem="AGf-J2-drH" secondAttribute="bottom" constant="8" id="6tQ-cR-zUl"/>
-                                        <constraint firstItem="AGf-J2-drH" firstAttribute="leading" secondItem="K2l-5w-Who" secondAttribute="leading" id="8eH-uB-PCm"/>
                                         <constraint firstItem="lh5-K6-BgU" firstAttribute="leading" secondItem="K2l-5w-Who" secondAttribute="leading" id="HZ8-KA-9hp"/>
+                                        <constraint firstItem="ARe-bT-mU2" firstAttribute="centerX" secondItem="K2l-5w-Who" secondAttribute="centerX" id="JFw-WE-nUu"/>
                                         <constraint firstAttribute="bottom" secondItem="lh5-K6-BgU" secondAttribute="bottom" id="VwT-XQ-4QO"/>
-                                        <constraint firstItem="AGf-J2-drH" firstAttribute="top" secondItem="K2l-5w-Who" secondAttribute="top" id="ZKv-Uw-kH7"/>
+                                        <constraint firstItem="lh5-K6-BgU" firstAttribute="top" secondItem="ARe-bT-mU2" secondAttribute="bottom" constant="8" id="cRm-pP-Nun"/>
+                                        <constraint firstItem="ARe-bT-mU2" firstAttribute="top" secondItem="K2l-5w-Who" secondAttribute="top" id="iw6-2q-mGM"/>
                                         <constraint firstAttribute="trailing" secondItem="lh5-K6-BgU" secondAttribute="trailing" id="xPp-d0-Ii2"/>
                                     </constraints>
                                 </view>
@@ -116,19 +132,35 @@
                                                 <userDefinedRuntimeAttribute type="string" keyPath="color" value="pink2"/>
                                             </userDefinedRuntimeAttributes>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Apple" translatesAutoresizingMaskIntoConstraints="NO" id="tMu-Tu-3qq">
-                                            <rect key="frame" x="0.0" y="0.0" width="193.5" height="105"/>
-                                        </imageView>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uff-vE-yCQ" customClass="DesignableView" customModule="slime" customModuleProvider="target">
+                                            <rect key="frame" x="44.5" y="0.0" width="105" height="105"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Apple" translatesAutoresizingMaskIntoConstraints="NO" id="tMu-Tu-3qq">
+                                                    <rect key="frame" x="4" y="4" width="97" height="97"/>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="tMu-Tu-3qq" secondAttribute="trailing" constant="4" id="1EL-fg-zbP"/>
+                                                <constraint firstAttribute="width" secondItem="uff-vE-yCQ" secondAttribute="height" multiplier="1:1" id="8Uc-b1-nzb"/>
+                                                <constraint firstItem="tMu-Tu-3qq" firstAttribute="top" secondItem="uff-vE-yCQ" secondAttribute="top" constant="4" id="Fca-ES-uIb"/>
+                                                <constraint firstAttribute="bottom" secondItem="tMu-Tu-3qq" secondAttribute="bottom" constant="4" id="Fke-31-tVH"/>
+                                                <constraint firstItem="tMu-Tu-3qq" firstAttribute="leading" secondItem="uff-vE-yCQ" secondAttribute="leading" constant="4" id="xCi-IV-khV"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="rounded" value="YES"/>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="background" value="pink6"/>
+                                            </userDefinedRuntimeAttributes>
+                                        </view>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="tMu-Tu-3qq" secondAttribute="trailing" id="0VA-ex-Vt9"/>
-                                        <constraint firstItem="tMu-Tu-3qq" firstAttribute="leading" secondItem="e5s-9E-ECh" secondAttribute="leading" id="1QE-tz-R1K"/>
-                                        <constraint firstItem="tMu-Tu-3qq" firstAttribute="top" secondItem="e5s-9E-ECh" secondAttribute="top" id="AV9-5m-bpj"/>
+                                        <constraint firstItem="uff-vE-yCQ" firstAttribute="top" secondItem="e5s-9E-ECh" secondAttribute="top" id="0ns-CF-HHA"/>
+                                        <constraint firstItem="uff-vE-yCQ" firstAttribute="centerX" secondItem="e5s-9E-ECh" secondAttribute="centerX" id="7sq-AS-aIx"/>
                                         <constraint firstAttribute="bottom" secondItem="h7u-C1-W8x" secondAttribute="bottom" id="DYK-Lo-Lwg"/>
-                                        <constraint firstItem="h7u-C1-W8x" firstAttribute="top" secondItem="tMu-Tu-3qq" secondAttribute="bottom" constant="8" id="Lif-eW-hDT"/>
                                         <constraint firstAttribute="trailing" secondItem="h7u-C1-W8x" secondAttribute="trailing" id="Uhu-PB-PpB"/>
                                         <constraint firstItem="h7u-C1-W8x" firstAttribute="leading" secondItem="e5s-9E-ECh" secondAttribute="leading" id="Vy5-5K-T8b"/>
+                                        <constraint firstItem="h7u-C1-W8x" firstAttribute="top" secondItem="uff-vE-yCQ" secondAttribute="bottom" constant="8" id="xrI-EG-U60"/>
                                     </constraints>
                                 </view>
                             </subviews>
@@ -219,7 +251,7 @@
                 <outlet property="levelProgressView" destination="e1g-Hc-agg" id="mhs-dh-v32"/>
                 <outlet property="nameLabel" destination="1o0-XL-m0M" id="NLv-S8-IDZ"/>
             </connections>
-            <point key="canvasLocation" x="160.80000000000001" y="-6.746626686656672"/>
+            <point key="canvasLocation" x="61.600000000000001" y="44.527736131934034"/>
         </view>
     </objects>
     <resources>
