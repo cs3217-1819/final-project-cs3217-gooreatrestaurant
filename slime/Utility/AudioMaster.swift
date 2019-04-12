@@ -54,7 +54,6 @@ public class AudioMaster {
         }
         do {
             let player = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: sound))
-            player.volume = 60.0
             player.play()
             cache[name] = player
         } catch {

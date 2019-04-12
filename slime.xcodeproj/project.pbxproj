@@ -163,9 +163,11 @@
 		EC7168E6225DD3CF004EF2B0 /* success.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EC7168E0225DD3CE004EF2B0 /* success.mp3 */; };
 		EC7168E7225DD3CF004EF2B0 /* joinroom.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EC7168E1225DD3CE004EF2B0 /* joinroom.mp3 */; };
 		EC7168E8225DD3CF004EF2B0 /* leftroom.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EC7168E2225DD3CF004EF2B0 /* leftroom.mp3 */; };
-		EC7168E9225DD3CF004EF2B0 /* open.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EC7168E3225DD3CF004EF2B0 /* open.mp3 */; };
 		EC7168EB225DD571004EF2B0 /* bloop.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EC7168EA225DD571004EF2B0 /* bloop.mp3 */; };
 		EC7168ED22603775004EF2B0 /* CosmeticConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7168EC22603775004EF2B0 /* CosmeticConstants.swift */; };
+		EC7168EF22603AED004EF2B0 /* back.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EC7168EE22603AED004EF2B0 /* back.mp3 */; };
+		EC7168F122603AFE004EF2B0 /* done-loading.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EC7168F022603AFD004EF2B0 /* done-loading.mp3 */; };
+		EC7168F322603B08004EF2B0 /* selection.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EC7168F222603B08004EF2B0 /* selection.mp3 */; };
 		EC7676BA225A4A4B00F6A450 /* RouterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7676B9225A4A4B00F6A450 /* RouterController.swift */; };
 		EC7676BD225A543900F6A450 /* CustomizationMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7676BC225A543900F6A450 /* CustomizationMainViewController.swift */; };
 		EC7676BF225B52CE00F6A450 /* CustomizationCosmeticView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC7676BE225B52CE00F6A450 /* CustomizationCosmeticView.xib */; };
@@ -405,9 +407,11 @@
 		EC7168E0225DD3CE004EF2B0 /* success.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = success.mp3; sourceTree = "<group>"; };
 		EC7168E1225DD3CE004EF2B0 /* joinroom.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = joinroom.mp3; sourceTree = "<group>"; };
 		EC7168E2225DD3CF004EF2B0 /* leftroom.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = leftroom.mp3; sourceTree = "<group>"; };
-		EC7168E3225DD3CF004EF2B0 /* open.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = open.mp3; sourceTree = "<group>"; };
 		EC7168EA225DD571004EF2B0 /* bloop.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bloop.mp3; sourceTree = "<group>"; };
 		EC7168EC22603775004EF2B0 /* CosmeticConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmeticConstants.swift; sourceTree = "<group>"; };
+		EC7168EE22603AED004EF2B0 /* back.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = back.mp3; sourceTree = "<group>"; };
+		EC7168F022603AFD004EF2B0 /* done-loading.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "done-loading.mp3"; sourceTree = "<group>"; };
+		EC7168F222603B08004EF2B0 /* selection.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = selection.mp3; sourceTree = "<group>"; };
 		EC7676B9225A4A4B00F6A450 /* RouterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterController.swift; sourceTree = "<group>"; };
 		EC7676BC225A543900F6A450 /* CustomizationMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizationMainViewController.swift; sourceTree = "<group>"; };
 		EC7676BE225B52CE00F6A450 /* CustomizationCosmeticView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomizationCosmeticView.xib; sourceTree = "<group>"; };
@@ -1000,12 +1004,14 @@
 		EC7168D5225DD286004EF2B0 /* SFX */ = {
 			isa = PBXGroup;
 			children = (
+				EC7168EE22603AED004EF2B0 /* back.mp3 */,
+				EC7168F222603B08004EF2B0 /* selection.mp3 */,
+				EC7168F022603AFD004EF2B0 /* done-loading.mp3 */,
 				EC7168DF225DD3CE004EF2B0 /* error.mp3 */,
 				EC7168DE225DD3CE004EF2B0 /* gameover.mp3 */,
 				EC7168E1225DD3CE004EF2B0 /* joinroom.mp3 */,
 				EC7168E2225DD3CF004EF2B0 /* leftroom.mp3 */,
 				EC7168EA225DD571004EF2B0 /* bloop.mp3 */,
-				EC7168E3225DD3CF004EF2B0 /* open.mp3 */,
 				EC7168E0225DD3CE004EF2B0 /* success.mp3 */,
 			);
 			path = SFX;
@@ -1311,6 +1317,7 @@
 				EC3824282238803D000D7148 /* LaunchScreen.storyboard in Resources */,
 				EC38246D223A1803000D7148 /* Rubik-Bold.ttf in Resources */,
 				EC382470223A1803000D7148 /* Rubik-BlackItalic.ttf in Resources */,
+				EC7168F322603B08004EF2B0 /* selection.mp3 in Resources */,
 				EC382473223A1803000D7148 /* Rubik-Black.ttf in Resources */,
 				ECD455612240F499006AF78D /* MultiplayerLobbyView.xib in Resources */,
 				ECB57119225D702B0083E945 /* DialogBoxView.xib in Resources */,
@@ -1334,7 +1341,6 @@
 				EC38246B223A1803000D7148 /* Rubik-Regular.ttf in Resources */,
 				1D37DBC1225E6ED900E637C9 /* Ingredients.atlas in Resources */,
 				ECD24428224B0A9300767A56 /* SlimeNumberPadView.xib in Resources */,
-				EC7168E9225DD3CF004EF2B0 /* open.mp3 in Resources */,
 				EC449B75223B7E6300A8EA35 /* TitleScreenView.xib in Resources */,
 				EC21B40022420CA700827121 /* LevelPlayButton.xib in Resources */,
 				EC449B8B223BACD500A8EA35 /* StoryModeLevelSelectView.xib in Resources */,
@@ -1344,6 +1350,7 @@
 				EC6E75522255CB9000B9C7CF /* CustomizationMainView.xib in Resources */,
 				EC57D2DE225C8B7B00F26808 /* SlimeCharacterView.xib in Resources */,
 				EC6E7558225A3A8000B9C7CF /* JokesSlimesView.xib in Resources */,
+				EC7168EF22603AED004EF2B0 /* back.mp3 in Resources */,
 				ECD4556C2240FBED006AF78D /* PlayerBox.xib in Resources */,
 				EC7168E4225DD3CF004EF2B0 /* gameover.mp3 in Resources */,
 				EC3824252238803D000D7148 /* Assets.xcassets in Resources */,
@@ -1375,6 +1382,7 @@
 				EC38245F223A17F7000D7148 /* Squidgy Slimes.ttf in Resources */,
 				EC40E4AE223F97E50073D755 /* SettingsScreenView.xib in Resources */,
 				ECD24433224B11F800767A56 /* CodeInputView.xib in Resources */,
+				EC7168F122603AFE004EF2B0 /* done-loading.mp3 in Resources */,
 				EC382472223A1803000D7148 /* Rubik-Medium.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

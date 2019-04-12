@@ -22,6 +22,7 @@ class CreditsSceneViewController: ViewController<CreditsScreenView> {
         }, completion: nil)
 
         let controller = ButtonController(using: view.backButton)
+        controller.sound = "back"
         controller.onTap {
             self.context.routeTo(.TitleScreen)
         }

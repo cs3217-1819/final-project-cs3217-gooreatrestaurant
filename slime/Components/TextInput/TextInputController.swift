@@ -16,6 +16,14 @@ class TextInputController: Controller {
     var value: String? {
         return inputController.value
     }
+    var label: String {
+        get {
+            return try! inputController.label.value()
+        }
+        set {
+            inputController.label.onNext(newValue)
+        }
+    }
 
     private let disposeBag = DisposeBag()
     private var modalController: InputController?
@@ -56,7 +64,7 @@ class TextInputController: Controller {
         func configure() {
             setupReactive()
         }
-
+        
         private func set(label: String) {
             view.labelLabel.text = label
         }
@@ -112,6 +120,7 @@ class TextInputController: Controller {
         let childInputController = InputController(parent: parent, context: context)
         childInputController.configure()
         childInputController.value = value
+        childInputController.label.onNext(label)
 
         modalController = childInputController
         context.modal.showView(view: parent)
@@ -142,7 +151,6 @@ class TextInputController: Controller {
     }
 
     @objc private func stopAvoidingKeyboard(notification: NSNotification) {
-        print("stop avoiding")
         guard let parent = floatingView else {
             return
         }
