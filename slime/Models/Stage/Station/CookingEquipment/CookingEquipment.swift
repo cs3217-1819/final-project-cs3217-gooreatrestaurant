@@ -121,9 +121,7 @@ class CookingEquipment: Station {
             return
         }
 
-        ingredient.removeFromParent()
-        ingredient.position = CGPoint(x: 0.0, y: 0.5 * (ingredient.size.height + self.size.height))
-        addChild(ingredient)
+        self.addItem(ingredient)
     }
 
     func takeitemInside() -> SKSpriteNode? {
@@ -134,7 +132,7 @@ class CookingEquipment: Station {
         guard let toTake = itemInside as? SKSpriteNode else {
             return nil
         }
-        toTake.removeFromParent()
+        self.removeItem()
         return toTake
     }
 

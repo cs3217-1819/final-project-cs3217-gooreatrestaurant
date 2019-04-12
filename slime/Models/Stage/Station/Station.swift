@@ -66,4 +66,16 @@ class Station: SKSpriteNode {
     func process(_ item: SKSpriteNode?) -> SKSpriteNode? {
         return nil
     }
+
+    func addItem(_ item: SKSpriteNode) {
+        item.removeFromParent()
+        item.position.x = 0.0
+        item.position.y = 0.5 * (self.size.height + item.size.height)
+        item.physicsBody = nil
+        self.addChild(item)
+    }
+
+    func removeItem() {
+        self.removeAllChildren()
+    }
 }

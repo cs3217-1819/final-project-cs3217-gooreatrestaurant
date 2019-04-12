@@ -37,9 +37,7 @@ class Table: Station {
                 return item
             }
 
-            itemToPut.removeFromParent()
-            itemToPut.position = CGPoint(x: 0.0, y: 0.5 * (itemToPut.size.height + self.size.height))
-            addChild(itemToPut)
+            self.addItem(itemToPut)
             return nil
 
         } else if willTake {
@@ -48,7 +46,7 @@ class Table: Station {
                 return nil
             }
 
-            itemToTake.removeFromParent()
+            self.removeItem()
             return itemToTake
 
         } else if willAddIngredient {
