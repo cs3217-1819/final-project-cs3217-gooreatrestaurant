@@ -941,7 +941,7 @@ class GameDB: GameDatabase {
                 return TransactionResult.success(withValue: current)
             }
             
-            gameItem = self.convertGameItemToString(forGameItem: item)
+            gameItem = self.convertGameItemToEncodedData(forGameItem: item)
             current.value = gameItem
             
             return TransactionResult.success(withValue: current)
