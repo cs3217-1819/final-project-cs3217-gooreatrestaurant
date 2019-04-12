@@ -534,22 +534,24 @@ class Stage: SKScene {
         fatalError("initiation using storyboard is not implemented yet.")
     }
 
-//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        let touch = touches.first!
-//        let location = touch.location(in: self)
-//        analogJoystick.position = location
-//        analogJoystick.touchesBegan(touches, with: event)
-//    }
-//
-//    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        analogJoystick.touchesMoved(touches, with: event)
-//    }
-//
-//    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        analogJoystick.touchesEnded(touches, with: event)
-//    }
-//
-//    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        analogJoystick.touchesEnded(touches, with: event)
-//    }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let touch = touches.first!
+        let location = touch.location(in: self)
+        if (location.x < -150 && location.y < 80) {
+            analogJoystick.position = location
+            analogJoystick.touchesBegan(touches, with: event)
+        }
+    }
+
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        analogJoystick.touchesMoved(touches, with: event)
+    }
+
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        analogJoystick.touchesEnded(touches, with: event)
+    }
+
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        analogJoystick.touchesEnded(touches, with: event)
+    }
 }
