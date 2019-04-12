@@ -9,7 +9,7 @@
 import UIKit
 import SpriteKit
 
-class Food {
+class Food: Codable {
     private(set) var ingredientsList: [Ingredient: Int] = [:]
 
     func addIngredients(_ ingredient: Ingredient) {

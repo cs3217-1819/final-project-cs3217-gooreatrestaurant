@@ -468,6 +468,7 @@ class Stage: SKScene {
             // multiplayer serve food
             guard let database = self.db else { return }
             guard let room = self.previousRoom else { return }
+
             // TODO:
             let recipe = Recipe(inRecipeName: "halo", withIngredients: [])
             database.submitOrder(forGameId: room.id, withRecipe: recipe, {

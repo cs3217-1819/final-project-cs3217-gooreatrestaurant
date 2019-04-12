@@ -9,8 +9,8 @@
 import UIKit
 import SpriteKit
 
-class Plate: SKSpriteNode {
-    let food = Food()
+class Plate: SKSpriteNode, Codable {
+    var food = Food()
     var listOfIngredients: [Ingredient] = []
 
     let positionings = [CGPoint(x: -15, y: 10),
@@ -32,6 +32,34 @@ class Plate: SKSpriteNode {
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case food
+        case position
+        case listOfIngredients
+    }
+
+    required convenience init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+
+        let food = try values.decode(Food.self, forKey: .food)
+        let position = try values.decode(CGPoint.self, forKey: .position)
+        let listOfIngredients = try values.decode([Ingredient].self, forKey: .position) 
+
+        self.init(inPosition: position)
+        self.food = food
+
+        for ingredient in listOfIngredients {
+            self.addIngredientImage(inIngredient: ingredient)
+        }
+    }
+
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+
+        try container.encode(food, forKey: .food)
+        try container.encode(position, forKey: .position)
     }
 
     func addIngredientImage(inIngredient: Ingredient) {

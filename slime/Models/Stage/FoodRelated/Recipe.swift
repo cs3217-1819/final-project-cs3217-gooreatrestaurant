@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Recipe: NSObject {
+class Recipe: NSObject, Codable {
     private(set) var recipeName: String
     private(set) var ingredientsNeeded: [Ingredient: Int] = [:]
     private let originalCompulsoryIngredients: [Ingredient]
@@ -65,5 +65,49 @@ class Recipe: NSObject {
     func regenerateRecipe() -> Recipe {
         return Recipe(inRecipeName: recipeName, withCompulsoryIngredients: originalCompulsoryIngredients,
                       withOptionalIngredients: originalOptionalIngredients)
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case recipeName
+        case ingredientsNeeded
+        case compulsoryIngredients
+        case optionalIngredientsIngredient
+        case optionalIngredientsProbability
+    }
+
+    required convenience init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+
+        let recipeName = try values.decode(String.self, forKey: .recipeName)
+        let ingredientsNeeded = try values.decode([Ingredient:Int].self, forKey: .ingredientsNeeded)
+        let compulsoryIngredients = try values.decode([Ingredient].self, forKey: .compulsoryIngredients)
+        let optionalIngredientsIngredient = try values.decode([Ingredient].self, forKey: .optionalIngredientsIngredient)
+        let optionalIngredientsProbability = try values.decode([Double].self, forKey: .optionalIngredientsProbability)
+
+        var optionalIngredients: [(item: Ingredient, probability: Double)] = []
+        for index in 0...min(optionalIngredientsProbability.count, optionalIngredientsIngredient.count)-1 {
+            let ingredient = optionalIngredientsIngredient[index]
+            let probability = optionalIngredientsProbability[index]
+            optionalIngredients.append((item: ingredient, probability: probability))
+        }
+
+        self.init(inRecipeName: recipeName,
+                  withCompulsoryIngredients: compulsoryIngredients,
+                  withOptionalIngredients: optionalIngredients)
+        self.ingredientsNeeded = ingredientsNeeded
+    }
+
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+
+        try container.encode(recipeName, forKey: .recipeName)
+        try container.encode(ingredientsNeeded, forKey: .ingredientsNeeded)
+        try container.encode(originalCompulsoryIngredients, forKey: .compulsoryIngredients)
+
+        let optionalIngredientsIngredient = originalOptionalIngredients.map { $0.item }
+        let optionalIngredientsProbability = originalOptionalIngredients.map { $0.probability }
+
+        try container.encode(optionalIngredientsIngredient, forKey: .optionalIngredientsIngredient)
+        try container.encode(optionalIngredientsProbability, forKey: .optionalIngredientsProbability)
     }
 }

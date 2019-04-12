@@ -9,7 +9,7 @@
 import UIKit
 import SpriteKit
 
-class Ingredient: SKSpriteNode {
+class Ingredient: SKSpriteNode, Codable {
     var type: IngredientType
     var processed: [CookingType] = []
 
@@ -110,6 +110,40 @@ class Ingredient: SKSpriteNode {
         }
 
         return self.type == other.type && self.processed == other.processed
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case type
+        case processed
+        case currentProcessing
+        case processingProgress
+        case position
+    }
+
+    required convenience init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+
+        let type = try values.decode(IngredientType.self, forKey: .type)
+        let processed = try values.decode([CookingType].self, forKey: .processed)
+        let currentProcessing = try values.decode(CookingType.self, forKey: .currentProcessing)
+        let processingProgress = try values.decode(Double.self, forKey: .processingProgress)
+        let position = try values.decode(CGPoint.self, forKey: .position)
+
+        self.init(type: type, inPosition: position)
+        for processing in processed {
+            self.cook(by: processing)
+        }
+        self.cook(by: currentProcessing, withProgress: processingProgress)
+    }
+
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+
+        try container.encode(type, forKey: .type)
+        try container.encode(processed, forKey: .processed)
+        try container.encode(currentProcessing, forKey: .currentProcessing)
+        try container.encode(processingProgress, forKey: .processingProgress)
+        try container.encode(position, forKey: .position)
     }
 
     required init?(coder aDecoder: NSCoder) {
