@@ -58,6 +58,7 @@ class Plate: SKSpriteNode, Codable {
 
         try container.encode(food, forKey: .food)
         try container.encode(position, forKey: .position)
+        try container.encode(listOfIngredients, forKey: .listOfIngredients)
     }
 
     func addIngredientImage(inIngredient: Ingredient) {
