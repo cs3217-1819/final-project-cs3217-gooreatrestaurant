@@ -636,10 +636,10 @@ class Stage: SKScene {
         let touch = touches.first!
         let location = touch.location(in: self)
         print(location)
-        if (location.x < -150 && location.y < 80) {
+//        if (location.x < 0 && location.y < 80) {
             analogJoystick.position = location
             analogJoystick.touchesBegan(touches, with: event)
-        }
+//        }
     }
 
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {

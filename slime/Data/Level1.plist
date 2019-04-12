@@ -45,7 +45,7 @@
 		<array>
             <string>{-230,140}</string>
             <string>{-330,140}</string>
-            <string>{-3301,0}</string>
+            <string>{-330,0}</string>
             <string>{-230,0}</string>
 		</array>
 		<array>
@@ -81,13 +81,13 @@
 	</array>
 	<key>choppingEquipment</key>
 	<array>
-		<string>{95,-145}</string>
+		<string>{190,-290}</string>
 	</array>
 	<key>fryingEquipment</key>
 	<array/>
 	<key>oven</key>
 	<array>
-		<string>{135,-35}</string>
+		<string>{270,-70}</string>
 	</array>
 	<key>ingredientStorage</key>
 	<array>
@@ -95,30 +95,30 @@
 			<key>type</key>
 			<string>apple</string>
 			<key>position</key>
-			<string>{-25, -148}</string>
+			<string>{-50, -296}</string>
 		</dict>
 		<dict>
 			<key>type</key>
 			<string>dough</string>
 			<key>position</key>
-			<string>{25, 66}</string>
+			<string>{50, 132}</string>
 		</dict>
 	</array>
 	<key>plateStorage</key>
 	<array>
-		<string>{-15,-60}</string>
+		<string>{-30,-120}</string>
 	</array>
 	<key>storefront</key>
-	<string>{-140,10}</string>
+	<string>{-280,20}</string>
 	<key>table</key>
 	<array>
-		<string>{60,-35}</string>
-		<string>{-125, -61}</string>
-		<string>{-15,66}</string>
+		<string>{120,-70}</string>
+		<string>{-250, -122}</string>
+		<string>{-30,132}</string>
 	</array>
 	<key>trashBin</key>
 	<array>
-		<string>{-95,68}</string>
+		<string>{-190,136}</string>
 	</array>
 	<key>possibleRecipes</key>
 	<array>
