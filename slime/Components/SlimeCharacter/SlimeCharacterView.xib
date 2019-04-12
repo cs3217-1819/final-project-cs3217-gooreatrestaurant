@@ -37,7 +37,7 @@
                         <userDefinedRuntimeAttribute type="string" keyPath="rotation" value="0.35"/>
                     </userDefinedRuntimeAttributes>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SMy-YL-xoX">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SMy-YL-xoX" customClass="DesignableView" customModule="slime" customModuleProvider="target">
                     <rect key="frame" x="260" y="190" width="80" height="80"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SlicedApple" translatesAutoresizingMaskIntoConstraints="NO" id="jon-sh-bd5">
@@ -51,6 +51,9 @@
                         <constraint firstItem="jon-sh-bd5" firstAttribute="top" secondItem="SMy-YL-xoX" secondAttribute="top" id="MZs-ZL-s7B"/>
                         <constraint firstItem="jon-sh-bd5" firstAttribute="leading" secondItem="SMy-YL-xoX" secondAttribute="leading" id="bkn-zd-QLI"/>
                     </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="rotation" value="0.5"/>
+                    </userDefinedRuntimeAttributes>
                 </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

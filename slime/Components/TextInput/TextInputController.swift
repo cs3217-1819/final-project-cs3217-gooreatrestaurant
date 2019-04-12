@@ -16,6 +16,14 @@ class TextInputController: Controller {
     var value: String? {
         return inputController.value
     }
+    var label: String {
+        get {
+            return try! inputController.label.value()
+        }
+        set {
+            inputController.label.onNext(newValue)
+        }
+    }
 
     private let disposeBag = DisposeBag()
     private var modalController: InputController?
@@ -26,6 +34,7 @@ class TextInputController: Controller {
     private class InputController: Controller {
         let view: TextInputView
         private let context: Context
+        private var delegate: UITextFieldDelegate?
         private let disposeBag = DisposeBag()
         private(set) var label = BehaviorSubject(value: "")
         var value: String? {
@@ -54,9 +63,16 @@ class TextInputController: Controller {
         }
 
         func configure() {
+            view.inputField.returnKeyType = .done
+            let delegate = InputFieldDelegate(onReturn: {
+                self.view.inputField.resignFirstResponder()
+                self.context.modal.closeAlert()
+            })
+            self.delegate = delegate
+            view.inputField.delegate = delegate
             setupReactive()
         }
-
+        
         private func set(label: String) {
             view.labelLabel.text = label
         }
@@ -112,6 +128,7 @@ class TextInputController: Controller {
         let childInputController = InputController(parent: parent, context: context)
         childInputController.configure()
         childInputController.value = value
+        childInputController.label.onNext(label)
 
         modalController = childInputController
         context.modal.showView(view: parent)
@@ -142,7 +159,7 @@ class TextInputController: Controller {
     }
 
     @objc private func stopAvoidingKeyboard(notification: NSNotification) {
-        print("stop avoiding")
+        print("Hiding")
         guard let parent = floatingView else {
             return
         }
@@ -151,5 +168,17 @@ class TextInputController: Controller {
         view.inputField.text = modalController?.value
         modalController = nil
         floatingView = nil
+    }
+}
+
+class InputFieldDelegate: NSObject, UITextFieldDelegate {
+    private let onReturn: () -> ()
+    init(onReturn: @escaping () -> ()) {
+        self.onReturn = onReturn
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        onReturn()
+        return true
     }
 }

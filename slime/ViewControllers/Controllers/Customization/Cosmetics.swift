@@ -67,6 +67,7 @@ class Wardrobe {
         let count = cosmetics.count
         for (i, controller) in controllers.enumerated() {
             if i >= count {
+                controller.view.alpha = 0
                 continue
             }
             controller.setCosmetic(cosmetics[i])
@@ -93,35 +94,3 @@ class Wardrobe {
     }
 }
 
-enum CosmeticConstants {
-    static let hatsDict: [String: Cosmetic] = CosmeticConstants.hatsList
-        .reduce(into: [String: Cosmetic](), { dict, entry in
-            dict[entry.name] = entry
-        })
-    static let accessoriesDict: [String: Cosmetic] = CosmeticConstants.accessoriesList
-        .reduce(into: [String: Cosmetic](), { dict, entry in
-            dict[entry.name] = entry
-        })
-    static let hatsList = [
-        Cosmetic("none", nil),
-        Cosmetic("christmas", "hat-christmas"),
-        Cosmetic("pirate", "hat-pirate"),
-        Cosmetic("ricecake", "hat-ricecake"),
-        Cosmetic("witch", "hat-witch")
-    ]
-    
-    static let accessoriesList = [
-        Cosmetic("none", nil),
-        Cosmetic("christmas", "hat-christmas")
-    ]
-    
-    static func getHats() -> Wardrobe {
-        return Wardrobe(withActiveCosmetic: "none",
-                        cosmetics: CosmeticConstants.hatsList)
-    }
-    
-    static func getAccessories() -> Wardrobe {
-        return Wardrobe(withActiveCosmetic: "none",
-                        cosmetics: CosmeticConstants.accessoriesList)
-    }
-}

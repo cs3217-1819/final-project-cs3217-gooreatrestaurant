@@ -44,7 +44,7 @@ enum Route {
         case .MultiplayerLobby:
             return CGPoint(x: -1, y: 3)
         case .LoadingScreen:
-            return CGPoint(x: 0, y: 50)
+            return CGPoint(x: 0, y: 10)
         }
     }
 }

@@ -13,6 +13,14 @@ class PrimaryButtonController: Controller {
     var view: UIView {
         return button
     }
+    var sound: String {
+        get {
+            return buttonController.sound
+        }
+        set {
+            buttonController.sound = newValue
+        }
+    }
     private let disposeBag = DisposeBag()
 
     private let buttonController: ButtonController
