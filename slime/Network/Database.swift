@@ -152,7 +152,7 @@ protocol GameDatabase {
     ///     - onComplete: a closure run after completion
     ///       of this update
     ///     - onError: a closure run when an error occurs
-    func joinGame(forGameId id: String, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void)
+    func joinGame(forRoom room: RoomModel, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void)
 
     /// creates a game database reference to the
     /// specified room.
@@ -172,7 +172,7 @@ protocol GameDatabase {
     ///     - onDataChange: a closure which is fired
     ///       every time a data value changes
     ///     - onError: fired when an error happens
-    func observeGameState(forRoom room: RoomModel, onPlayerUpdate: @escaping (GamePlayerModel) -> Void, onStationUpdate: @escaping (String, GameStationModel) -> Void, onGameEnd: @escaping () -> Void, onOrderChange: @escaping ([GameOrderModel]) -> Void, onScoreChange: @escaping (Int) -> Void, onAllPlayersReady: @escaping () -> Void, onGameStart: @escaping () -> Void, onSelfItemChange: @escaping (ItemModel) -> Void, onTimeLeftChange: @escaping (Int) -> Void, onComplete: @escaping () -> Void, onError: @escaping (Error) -> Void)
+    func observeGameState(forRoom room: RoomModel, onPlayerUpdate: @escaping (GamePlayerModel) -> Void, onStationUpdate: @escaping (String, GameStationModel) -> Void, onGameEnd: @escaping () -> Void, onOrderChange: @escaping ([GameOrderModel]) -> Void, onScoreChange: @escaping (Int) -> Void, onAllPlayersReady: @escaping () -> Void, onGameStart: @escaping () -> Void, onSelfItemChange: @escaping (ItemModel) -> Void, onTimeLeftChange: @escaping (Int) -> Void, onHostDisconnected: @escaping () -> Void, onComplete: @escaping () -> Void, onError: @escaping (Error) -> Void)
     
     /// updates the hasStarted flag inside the game
     /// only used by host to indicate that the game
@@ -262,6 +262,8 @@ protocol GameDatabase {
     func submitOrder(forGameId id: String, withRecipe recipe: Recipe, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void)
     
     func addScore(by score: Int, forGameId id: String, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void)
+    
+    func closeGame(forGameId id: String, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void)
 
     /// removes an order from the current list of orders
     /// wtih a specified key
@@ -335,4 +337,8 @@ protocol GameDatabase {
     /// removes all observers inside the game
     /// database.
     func removeAllObservers()
+    
+    // removes all observers connected to disconnects
+    // inside the game database
+    func removeAllDisconnectObservers()
 }

@@ -49,9 +49,9 @@ class Stage: SKScene {
         self.addChild(spaceship)
     }
     
-    func joinGame(forGameId id: String) {
+    func joinGame(forRoom room: RoomModel) {
         guard let database = self.db else { return }
-        database.joinGame(forGameId: id, { }, { (err) in
+        database.joinGame(forRoom: room, { }, { (err) in
             print(err.localizedDescription)
         })
     }
@@ -89,16 +89,20 @@ class Stage: SKScene {
             currentSlime.physicsBody?.velocity = CGVector(dx: player.velocityX, dy: player.velocityY)
             currentSlime.xScale = player.xScale
         }, onStationUpdate: { (id, station) in
-            guard let station = self.allStationsDict[id] else { return }
-            // TODO: update station object
-            print(station)
+            self.handleStationChanged(forStationId: id, forStation: station)
         }, onGameEnd: {
             self.gameHasEnded = true
             self.stopStreamingSelf()
             self.gameOver(ifWon: false)
             guard let database = self.db else { return }
             database.removeAllObservers()
-            // TODO: game end goes here
+            database.removeAllDisconnectObservers()
+            if self.isUserHost {
+                guard let room = self.previousRoom else { return }
+                database.closeGame(forGameId: room.id, { }, { (err) in
+                    print(err.localizedDescription)
+                })
+            }
         }, onOrderChange: { (orders) in
             // the function here occurs everytime the
             // order in the db changes
@@ -117,18 +121,25 @@ class Stage: SKScene {
             self.hasStarted = true
             self.startStreamingSelf()
             if self.isUserHost { self.startCounter() }
-            // TODO: do setup when game has started
+            // TODO: do setup when game has started, add stuff whenever necessary
         }, onSelfItemChange: { (item) in
             print("gawa")
             self.handleSelfItemChange(forItem: item)
         }, onTimeLeftChange: { (timeLeft) in
             self.countdownLabel.text = "Time: \(timeLeft)"
             if self.isUserHost && self.isMultiplayerTimeUp(forTime: timeLeft) { self.endMultiplayerGame() }
+        }, onHostDisconnected: {
+            self.gameHasEnded = true
+            self.stopStreamingSelf()
+            self.gameOver(ifWon: false)
+            guard let database = self.db else { return }
+            database.removeAllObservers()
+            database.removeAllDisconnectObservers()
         }, onComplete: {
             // joins game after attaching all
             // relevant observers, this onComplete
             // does not refer to the game state at all
-            self.joinGame(forGameId: room.id)
+            self.joinGame(forRoom: room)
         }) { (err) in
             print(err.localizedDescription)
         }
@@ -154,29 +165,59 @@ class Stage: SKScene {
         timer.invalidate()
     }
     
+    private func handleStationChanged(forStationId id: String, forStation station: GameStationModel) {
+        guard let stationChanged = self.allStationsDict[id] else { return }
+        
+        let itemType = station.item.type
+        
+        if itemType == FirebaseSystemValues.ItemTypes.none.rawValue {
+            stationChanged.removeItem()
+        } else if itemType == FirebaseSystemValues.ItemTypes.plate.rawValue {
+            guard let plate = self.decodePlateFromString(station.item.encodedData) else { return }
+            stationChanged.removeItem()
+            stationChanged.addItem(plate)
+        } else if itemType == FirebaseSystemValues.ItemTypes.ingredient.rawValue {
+            guard let ingredient = self.decodeIngredientFromString(station.item.encodedData) else { return }
+            stationChanged.removeItem()
+            stationChanged.addItem(ingredient)
+        }
+        
+        // TODO: handle other station changes
+    }
+    
+    private func decodeIngredientFromString(_ string: String) -> Ingredient? {
+        let decoder = JSONDecoder()
+        guard let data = string.data(using: .utf8) else { return nil }
+        
+        let ingredient = try? decoder.decode(Ingredient.self, from: data)
+        guard let item = ingredient else { return nil }
+        
+        return item
+    }
+    
+    private func decodePlateFromString(_ string: String) -> Plate? {
+        let decoder = JSONDecoder()
+        guard let data = string.data(using: .utf8) else { return nil }
+        
+        let plate = try? decoder.decode(Plate.self, from: data)
+        guard let item = plate else { return nil }
+        
+        return item
+    }
+    
     private func handleSelfItemChange(forItem item: ItemModel) {
         guard let slime = self.slimeToControl else { return }
         
         if item.type == FirebaseSystemValues.ItemTypes.none.rawValue {
             slime.removeItem()
         } else if item.type == FirebaseSystemValues.ItemTypes.plate.rawValue {
-            let decoder = JSONDecoder()
-            guard let data = item.encodedData.data(using: .utf8) else { return }
-            
-            let plate = try? decoder.decode(Plate.self, from: data)
-            guard let takenItem = plate else { return }
-            
+            guard let plate = self.decodePlateFromString(item.encodedData) else { return }
             slime.removeItem()
-            slime.takeItem(takenItem)
+            slime.takeItem(plate)
         } else if item.type == FirebaseSystemValues.ItemTypes.ingredient.rawValue {
-            let decoder = JSONDecoder()
-            guard let data = item.encodedData.data(using: .utf8) else { return }
-            let ingredient = try? decoder.decode(Ingredient.self, from: data)
-            
-            guard let takenItem = ingredient else { return }
-            
+            guard let ingredient = self.decodeIngredientFromString(item.encodedData) else { return }
             slime.removeItem()
-            slime.takeItem(takenItem)
+            slime.takeItem(ingredient)
         }
     }
 
