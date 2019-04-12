@@ -96,7 +96,11 @@ class Slime: SKSpriteNode {
         return itemCarried != nil
     }
 
-    private func takeItem(_ item: SKSpriteNode?) {
+    func removeItem() {
+        self.removeAllChildren()
+    }
+
+    func takeItem(_ item: SKSpriteNode?) {
         guard let itemToTake = item else {
             return
         }

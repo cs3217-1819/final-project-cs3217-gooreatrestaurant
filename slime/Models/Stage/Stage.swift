@@ -23,7 +23,7 @@ class Stage: SKScene {
     var gameHasEnded: Bool = false
     var streamingTimer: Timer?
     var isUserHost: Bool = false
-    var otherSlimes: [String : Slime] = [:] // [uid: Slime]
+    var allSlimesDict: [String : Slime] = [:] // [uid: Slime]
 
     // RI: the players are unique
     var players: [Player] = []
@@ -56,6 +56,15 @@ class Stage: SKScene {
         })
     }
     
+    func setupSinglePlayer() {
+        guard let onlyUser = GameAuth.currentUser else {
+            return
+        }
+        // Level 1 here only placeholder TO DO
+        let onlyPlayer = Player(name: onlyUser.uid, level: 1)
+        self.addPlayer(onlyPlayer)
+    }
+    
     func setupMultiplayer(forRoom room: RoomModel) {
         self.previousRoom = room
         
@@ -65,20 +74,17 @@ class Stage: SKScene {
             return
         }
         
+        // add all players
         for player in room.players {
             // sets isUserHost in current game instance
             if user.uid == player.uid { self.isUserHost = player.isHost }
-        }
-        
-        for player in room.players {
-            if player.uid == user.uid { continue }
-            
-            // TODO: add all other players except the host
-            // into the scene, and tag them with the uid
+            let playerInGame = Player(name: player.uid, level: player.level)
+            self.addPlayer(playerInGame)
+            // TODO: put into the slime dict
         }
         
         db?.observeGameState(forRoom: room, onPlayerUpdate: { (player) in
-            guard let currentSlime = self.otherSlimes[player.uid] else { return }
+            guard let currentSlime = self.allSlimesDict[player.uid] else { return }
             
             currentSlime.position = CGPoint(x: player.positionX, y: player.positionY)
             currentSlime.physicsBody?.velocity = CGVector(dx: player.velocityX, dy: player.velocityY)
@@ -158,14 +164,11 @@ class Stage: SKScene {
                 
                 if !isMultiplayer {
                     spaceship.addSlime(inPosition: value.slimeInitPos)
-                } else {
-                    if let room = self.previousRoom {
-                        for player in room.players {
-                            spaceship.addSlime(inPosition: value.slimeInitPos)
-                            print(player)
-                            //TODO
-                        }
-                    }
+                }
+                
+                if isMultiplayer {
+                    guard let room = self.previousRoom else { return }
+                    for _ in room.players { spaceship.addSlime(inPosition: value.slimeInitPos) }
                 }
                 
                 spaceship.addWall(inCoord: value.border)
@@ -226,6 +229,7 @@ class Stage: SKScene {
     lazy var interactButton: BDButton = {
         var button = BDButton(imageNamed: "Interact", buttonAction: {
             self.slimeToControl?.interact()
+            
             })
         button.setScale(0.15)
         button.isEnabled = true
@@ -411,6 +415,7 @@ class Stage: SKScene {
 
             let player = self.players[currentPlayerIndex]
             slime.addUser(player)
+            self.allSlimesDict.updateValue(slime, forKey: player.name)
             currentPlayerIndex += 1
         }
     }
@@ -423,25 +428,8 @@ class Stage: SKScene {
 
     // which slime to control
     var slimeToControl: Slime? {
-        var playerSlime: Slime?
-
-        spaceship.enumerateChildNodes(withName: "slime") {
-            node, stop in
-
-            guard let slime = node as? Slime else {
-                return
-            }
-
-            guard let user = GameAuth.currentUser else {
-                return
-            }
-
-            if slime.player?.name == user.uid {
-                playerSlime = slime
-                stop.initialize(to: true)
-            }
-        }
-        return playerSlime
+        guard let user = GameAuth.currentUser else { return nil }
+        return self.allSlimesDict[user.uid]
     }
 
     func serve(_ plate: Plate) {
@@ -458,10 +446,25 @@ class Stage: SKScene {
                 return
             }
             
-            levelScore += 20
+            levelScore += 20 // TODO: put score in constants
             scoreLabel.text = "Score: \(levelScore)"
         } else {
             // multiplayer serve food
+            guard let database = self.db else { return }
+            guard let room = self.previousRoom else { return }
+            database.submitOrder(forGameId: room.id, withRecipe: <#T##Recipe#>, { (orderId) in
+                if let _ = orderId {
+                    // order is successful
+                    database.addScore(by: 20, forGameId: room.id, { }, { (err) in
+                        print(err.localizedDescription)
+                    })
+                    return
+                }
+                
+                // order unsuccessful if it falls through
+            }) { (err) in
+                print(err.localizedDescription)
+            }
         }
         
     }
