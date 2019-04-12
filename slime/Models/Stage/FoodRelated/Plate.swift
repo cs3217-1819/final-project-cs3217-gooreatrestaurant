@@ -13,8 +13,12 @@ class Plate: SKSpriteNode {
     let food = Food()
     var listOfIngredients: [Ingredient] = []
 
-    let positionings = [CGPoint(x: 0, y: 0),
-                        CGPoint(x: 100, y: 100)]
+    let positionings = [CGPoint(x: -15, y: 10),
+                        CGPoint(x: 0, y: 10),
+                        CGPoint(x: 15, y: 10),
+                        CGPoint(x: -15, y: 25),
+                        CGPoint(x: 0, y: 25),
+                        CGPoint(x: 15, y: 25)]
 
     init(inPosition position: CGPoint, withSize size: CGSize = StageConstants.plateSize) {
         let plate = SKTexture(imageNamed: "Plate")
@@ -46,6 +50,11 @@ class Plate: SKSpriteNode {
 
         let ingredient = SKSpriteNode(texture: texture)
         ingredient.size = CGSize(width: 15, height: 15)
+
+        //repositioning
+        if (listOfIngredients.count <= 6) {
+            ingredient.position = positionings[listOfIngredients.count - 1]
+        }
 
         self.addChild(ingredient)
     }
