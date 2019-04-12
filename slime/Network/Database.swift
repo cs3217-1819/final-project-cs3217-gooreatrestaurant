@@ -260,7 +260,7 @@ protocol GameDatabase {
     ///       match
     ///     - onError: an closure block run when an error
     ///       occurs
-    func submitOrder(forGameId id: String, withRecipe recipe: Recipe, _ onComplete: @escaping (String?) -> Void, _ onError: @escaping (Error) -> Void)
+    func submitOrder(forGameId id: String, withRecipe recipe: Recipe, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void)
     
     func addScore(by score: Int, forGameId id: String, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void)
 

@@ -456,7 +456,7 @@ class Stage: SKScene {
             guard let room = self.previousRoom else { return }
             // TODO:
             let recipe = Recipe(inRecipeName: "halo", withIngredients: [])
-            database.submitOrder(forGameId: room.id, withRecipe: recipe, { (orderId) in
+            database.submitOrder(forGameId: room.id, withRecipe: recipe, {
             }) { (err) in
                 print(err.localizedDescription)
             }
