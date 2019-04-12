@@ -68,6 +68,7 @@ class MultiplayerLobbyViewController: ViewController<MultiplayerLobbyView> {
                 self.context.db.removeAllObservers()
 
                 // TODO: route to game room
+                self.context.segueToMultiplayerGame()
                 return
             }
 
@@ -103,13 +104,10 @@ class MultiplayerLobbyViewController: ViewController<MultiplayerLobbyView> {
     }
 
     private func startGame() {
-        if !allPlayersReady() || !isHost() {
-            return
-        }
+//        if !allPlayersReady() { return }
+        if !isHost() { return }
 
-        guard let room = self.currentRoom else {
-            return
-        }
+        guard let room = self.currentRoom else { return }
 
         self.context.db.startGame(forRoom: room, {
             // do something

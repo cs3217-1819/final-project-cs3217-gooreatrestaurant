@@ -12,6 +12,16 @@ class GameModel {
 
 }
 
+struct ItemModel {
+    var type: String = "none"
+    var encodedData: String = "none"
+    
+    init(type: String, encodedData: String) {
+        self.type = type
+        self.encodedData = encodedData
+    }
+}
+
 struct GamePlayerModel {
     var uid: String = ""
     var positionX: CGFloat = 0.0
@@ -21,7 +31,7 @@ struct GamePlayerModel {
     var xScale: CGFloat = 0.0
     var isHost: Bool = false
     var isConnected: Bool = false
-    var holdingItem: String = ""
+    var holdingItem: ItemModel = ItemModel(type: "none", encodedData: "none")
     var isReady: Bool = false
     var name: String = ""
     var hat: String = "none"
@@ -29,7 +39,7 @@ struct GamePlayerModel {
     var color: String = "green"
     var level: Int = 1
 
-    init(uid: String, posX: CGFloat, posY: CGFloat, vx: CGFloat, vy: CGFloat, xScale: CGFloat, holdingItem: String, isHost: Bool, isConnected: Bool, isReady: Bool, name: String, hat: String, accessory: String, color: String, level: Int) {
+    init(uid: String, posX: CGFloat, posY: CGFloat, vx: CGFloat, vy: CGFloat, xScale: CGFloat, holdingItem: ItemModel, isHost: Bool, isConnected: Bool, isReady: Bool, name: String, hat: String, accessory: String, color: String, level: Int) {
         self.positionX = posX
         self.positionY = posY
         self.velocityX = vx

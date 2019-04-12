@@ -130,9 +130,7 @@ class Ingredient: SKSpriteNode, Codable {
         let position = try values.decode(CGPoint.self, forKey: .position)
 
         self.init(type: type, inPosition: position)
-        for processing in processed {
-            self.cook(by: processing)
-        }
+        for processing in processed { self.cook(by: processing) }
         self.cook(by: currentProcessing, withProgress: processingProgress)
     }
 
