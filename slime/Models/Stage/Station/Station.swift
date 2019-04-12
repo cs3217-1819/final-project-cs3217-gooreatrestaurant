@@ -14,6 +14,11 @@ class Station: SKSpriteNode {
     // ID of the station, to refer to it in the networking database
     var id: String?
 
+    // Item inside the station, if the station allow item storing
+    var itemInside: SKNode? {
+        return children.first
+    }
+
     // Construct a station
     // The station will be able to have contact with slime object, but not colliding with it
     // Parameters:
@@ -54,7 +59,7 @@ class Station: SKSpriteNode {
     }
 
     // Process an item
-    // Parameter:
+    // Parameters:
     //      - item: the item that will be processed, can be nil when there is no item passed to this station
     // Return value:
     //      Optional SKSpriteNode, the item that has been processed (or nil if the processing does not produce anything)

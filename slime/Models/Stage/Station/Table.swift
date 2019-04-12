@@ -11,16 +11,12 @@ import SpriteKit
 
 class Table: Station {
 
-    var item: SKNode? {
-        return children.first
-    }
-
     override func ableToProcess(_ item: SKSpriteNode?) -> Bool {
 
-        let willTake = (item == nil && self.item != nil)
-        let willPut = (item != nil && self.item == nil)
-        let willAddIngredient = (item is Ingredient && self.item is Plate)
-        let willTakeIngredientToPlate = (item is Plate && self.item is Ingredient)
+        let willTake = (item == nil && self.itemInside != nil)
+        let willPut = (item != nil && self.itemInside == nil)
+        let willAddIngredient = (item is Ingredient && self.itemInside is Plate)
+        let willTakeIngredientToPlate = (item is Plate && self.itemInside is Ingredient)
 
         return willTake || willPut || willAddIngredient || willTakeIngredientToPlate
     }
@@ -30,10 +26,10 @@ class Table: Station {
             return item
         }
 
-        let willTake = (item == nil && self.item != nil)
-        let willPut = (item != nil && self.item == nil)
-        let willAddIngredient = (item is Ingredient && self.item is Plate)
-        let willTakeIngredientToPlate = (item is Plate && self.item is Ingredient)
+        let willTake = (item == nil && self.itemInside != nil)
+        let willPut = (item != nil && self.itemInside == nil)
+        let willAddIngredient = (item is Ingredient && self.itemInside is Plate)
+        let willTakeIngredientToPlate = (item is Plate && self.itemInside is Ingredient)
 
         if willPut {
 
@@ -48,7 +44,7 @@ class Table: Station {
 
         } else if willTake {
 
-            guard let itemToTake = self.item as? SKSpriteNode else {
+            guard let itemToTake = self.itemInside as? SKSpriteNode else {
                 return nil
             }
 
@@ -57,7 +53,7 @@ class Table: Station {
 
         } else if willAddIngredient {
 
-            guard let plate = self.item as? Plate else {
+            guard let plate = self.itemInside as? Plate else {
                 return item
             }
 
@@ -74,7 +70,7 @@ class Table: Station {
                 return item
             }
 
-            guard let ingredient = self.item as? Ingredient else {
+            guard let ingredient = self.itemInside as? Ingredient else {
                 return item
             }
 

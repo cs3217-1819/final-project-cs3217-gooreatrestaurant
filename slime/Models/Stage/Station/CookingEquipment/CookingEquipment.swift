@@ -14,10 +14,6 @@ class CookingEquipment: Station {
     let cookingType: CookingType
     var ingredientsAllowed: Set<IngredientType> = []
 
-    var ingredientInProcess: SKNode? {
-        return children.first
-    }
-
     init(type: CookingType,
          inPosition position: CGPoint,
          withSize size: CGSize,
@@ -34,7 +30,7 @@ class CookingEquipment: Station {
     }
 
     private var canTakeIngredient: Bool {
-        guard let ingredient = self.ingredientInProcess as? Ingredient else {
+        guard let ingredient = self.itemInside as? Ingredient else {
             return false
         }
 
@@ -49,9 +45,9 @@ class CookingEquipment: Station {
 
     override func ableToProcess(_ item: SKSpriteNode?) -> Bool {
 
-        let willPut = (item is Ingredient && self.ingredientInProcess == nil)
-        let willProcess = (item == nil && self.ingredientInProcess != nil)
-        let willTakeIngredientToPlate = (item is Plate && self.ingredientInProcess is Ingredient)
+        let willPut = (item is Ingredient && self.itemInside == nil)
+        let willProcess = (item == nil && self.itemInside != nil)
+        let willTakeIngredientToPlate = (item is Plate && self.itemInside is Ingredient)
 
         return willPut || willProcess || willTakeIngredientToPlate
     }
@@ -61,9 +57,9 @@ class CookingEquipment: Station {
             return nil
         }
 
-        let willPut = (item is Ingredient && self.ingredientInProcess == nil)
-        let willProcess = (item == nil && self.ingredientInProcess != nil)
-        let willTakeIngredientToPlate = (item is Plate && self.ingredientInProcess is Ingredient)
+        let willPut = (item is Ingredient && self.itemInside == nil)
+        let willProcess = (item == nil && self.itemInside != nil)
+        let willTakeIngredientToPlate = (item is Plate && self.itemInside is Ingredient)
 
         if willPut {
             guard let ingredientToPut = item as? Ingredient else {
@@ -73,14 +69,14 @@ class CookingEquipment: Station {
             return nil
 
         } else if willProcess {
-            guard let toTake = takeIngredientInProcess() else {
+            guard let toTake = takeitemInside() else {
                 manualProcessing()
                 return nil
             }
             return toTake
 
         } else if willTakeIngredientToPlate {
-            guard let toAdd = takeIngredientInProcess() as? Ingredient else {
+            guard let toAdd = takeitemInside() as? Ingredient else {
                 return nil
             }
 
@@ -95,7 +91,7 @@ class CookingEquipment: Station {
     }
 
     func continueProcessing(withProgress progress: Double) {
-        guard let ingredient = ingredientInProcess as? Ingredient else {
+        guard let ingredient = itemInside as? Ingredient else {
             return
         }
 
@@ -121,7 +117,7 @@ class CookingEquipment: Station {
     }
 
     func putIngredient(_ ingredient: Ingredient) {
-        guard ingredientInProcess == nil else {
+        guard itemInside == nil else {
             return
         }
 
@@ -130,12 +126,12 @@ class CookingEquipment: Station {
         addChild(ingredient)
     }
 
-    func takeIngredientInProcess() -> SKSpriteNode? {
+    func takeitemInside() -> SKSpriteNode? {
         guard canTakeIngredient == true else {
             return nil
         }
 
-        guard let toTake = ingredientInProcess as? SKSpriteNode else {
+        guard let toTake = itemInside as? SKSpriteNode else {
             return nil
         }
         toTake.removeFromParent()
