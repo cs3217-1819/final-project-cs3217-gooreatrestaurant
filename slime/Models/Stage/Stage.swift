@@ -457,15 +457,6 @@ class Stage: SKScene {
             // TODO:
             let recipe = Recipe(inRecipeName: "halo", withIngredients: [])
             database.submitOrder(forGameId: room.id, withRecipe: recipe, { (orderId) in
-                if let _ = orderId {
-                    // order is successful
-                    database.addScore(by: 20, forGameId: room.id, { }, { (err) in
-                        print(err.localizedDescription)
-                    })
-                    return
-                }
-                
-                // order unsuccessful if it falls through
             }) { (err) in
                 print(err.localizedDescription)
             }
