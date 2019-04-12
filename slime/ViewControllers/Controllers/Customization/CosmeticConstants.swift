@@ -39,6 +39,14 @@ enum CosmeticConstants {
         Cosmetic("plus", "acc-plus")
     ]
     
+    static func getBases(initial: SlimeColor) -> Wardrobe {
+        let list = SlimeColor.allCases.map { color in
+            return Cosmetic(color.toString(), color.getImage())
+        }
+        return Wardrobe(withActiveCosmetic: initial.toString(),
+                        cosmetics: list)
+    }
+    
     static func getHats() -> Wardrobe {
         return Wardrobe(withActiveCosmetic: "none",
                         cosmetics: CosmeticConstants.hatsList)

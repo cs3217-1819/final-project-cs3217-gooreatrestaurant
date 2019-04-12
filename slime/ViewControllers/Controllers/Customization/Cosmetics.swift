@@ -67,6 +67,7 @@ class Wardrobe {
         let count = cosmetics.count
         for (i, controller) in controllers.enumerated() {
             if i >= count {
+                controller.view.alpha = 0
                 continue
             }
             controller.setCosmetic(cosmetics[i])

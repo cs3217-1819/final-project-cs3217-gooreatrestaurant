@@ -29,6 +29,7 @@ class MultiplayerLobbyViewController: ViewController<MultiplayerLobbyView> {
 
     override func configureSubviews() {
         configureUpButton(to: .MultiplayerScreen)
+        setupStartButton()
         for controller in playerControllers {
             controller.configure()
         }
@@ -85,6 +86,20 @@ class MultiplayerLobbyViewController: ViewController<MultiplayerLobbyView> {
             self.setErrorAlert(withDescription: err.localizedDescription)
             self.presentActiveAlert(dismissible: true)
         }
+    }
+    
+    private func setupStartButton() {
+        let controller = PrimaryButtonController(using: view.startButton)
+            .set(label: "Start")
+            .set(color: .green)
+        
+        controller.onTap {
+            self.startGame()
+        }
+        
+        controller.configure()
+        
+        remember(controller)
     }
 
     private func startGame() {
@@ -180,7 +195,7 @@ class MultiplayerLobbyViewController: ViewController<MultiplayerLobbyView> {
             })
             self.presentActiveAlert(dismissible: true)
         }
-
+        control.sound = "back"
         view.addSubview(upButton)
         upButton.snp.makeConstraints { make in
             make.top.equalToSuperview()

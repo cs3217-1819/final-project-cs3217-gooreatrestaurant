@@ -34,6 +34,7 @@ class TextInputController: Controller {
     private class InputController: Controller {
         let view: TextInputView
         private let context: Context
+        private var delegate: UITextFieldDelegate?
         private let disposeBag = DisposeBag()
         private(set) var label = BehaviorSubject(value: "")
         var value: String? {
@@ -62,6 +63,13 @@ class TextInputController: Controller {
         }
 
         func configure() {
+            view.inputField.returnKeyType = .done
+            let delegate = InputFieldDelegate(onReturn: {
+                self.view.inputField.resignFirstResponder()
+                self.context.modal.closeAlert()
+            })
+            self.delegate = delegate
+            view.inputField.delegate = delegate
             setupReactive()
         }
         
@@ -151,6 +159,7 @@ class TextInputController: Controller {
     }
 
     @objc private func stopAvoidingKeyboard(notification: NSNotification) {
+        print("Hiding")
         guard let parent = floatingView else {
             return
         }
@@ -159,5 +168,17 @@ class TextInputController: Controller {
         view.inputField.text = modalController?.value
         modalController = nil
         floatingView = nil
+    }
+}
+
+class InputFieldDelegate: NSObject, UITextFieldDelegate {
+    private let onReturn: () -> ()
+    init(onReturn: @escaping () -> ()) {
+        self.onReturn = onReturn
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        onReturn()
+        return true
     }
 }

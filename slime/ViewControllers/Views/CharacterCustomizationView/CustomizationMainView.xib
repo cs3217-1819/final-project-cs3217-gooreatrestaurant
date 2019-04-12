@@ -69,11 +69,58 @@
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="2IK-hh-Yd1">
                             <rect key="frame" x="0.0" y="120" width="403" height="133"/>
                             <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Tt-o5-wA1">
+                                    <rect key="frame" x="0.0" y="0.0" width="123.5" height="133"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Base" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="scJ-AR-LYv" customClass="TextLabel" customModule="slime" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="113" width="123.5" height="20"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="20" id="Kju-Yk-MMP"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="style" value="h2"/>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="color" value="pink2"/>
+                                            </userDefinedRuntimeAttributes>
+                                        </label>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rsk-jN-kFe" customClass="DesignableView" customModule="slime" customModuleProvider="target">
+                                            <rect key="frame" x="9.5" y="0.0" width="105" height="105"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Apple" translatesAutoresizingMaskIntoConstraints="NO" id="QwT-CG-oXe">
+                                                    <rect key="frame" x="4" y="4" width="97" height="97"/>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstItem="QwT-CG-oXe" firstAttribute="leading" secondItem="rsk-jN-kFe" secondAttribute="leading" constant="4" id="8f5-gz-Ob4"/>
+                                                <constraint firstAttribute="width" secondItem="rsk-jN-kFe" secondAttribute="height" multiplier="1:1" id="IFS-xH-wVl"/>
+                                                <constraint firstAttribute="trailing" secondItem="QwT-CG-oXe" secondAttribute="trailing" constant="4" id="bcm-R6-wZe"/>
+                                                <constraint firstItem="QwT-CG-oXe" firstAttribute="top" secondItem="rsk-jN-kFe" secondAttribute="top" constant="4" id="ocm-c0-jjS"/>
+                                                <constraint firstAttribute="bottom" secondItem="QwT-CG-oXe" secondAttribute="bottom" constant="4" id="qpf-JN-IKx"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="rounded" value="YES"/>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="background" value="pink6"/>
+                                            </userDefinedRuntimeAttributes>
+                                        </view>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="scJ-AR-LYv" secondAttribute="trailing" id="8DF-dK-h1R"/>
+                                        <constraint firstAttribute="bottom" secondItem="scJ-AR-LYv" secondAttribute="bottom" id="Nhr-XQ-oWq"/>
+                                        <constraint firstItem="rsk-jN-kFe" firstAttribute="centerX" secondItem="9Tt-o5-wA1" secondAttribute="centerX" id="WrW-nH-Gxr"/>
+                                        <constraint firstItem="scJ-AR-LYv" firstAttribute="top" secondItem="rsk-jN-kFe" secondAttribute="bottom" constant="8" id="aZB-tQ-AhX"/>
+                                        <constraint firstItem="scJ-AR-LYv" firstAttribute="leading" secondItem="9Tt-o5-wA1" secondAttribute="leading" id="cMl-Oq-zQq"/>
+                                        <constraint firstItem="rsk-jN-kFe" firstAttribute="top" secondItem="9Tt-o5-wA1" secondAttribute="top" id="jYe-Ib-bmL"/>
+                                    </constraints>
+                                </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K2l-5w-Who">
-                                    <rect key="frame" x="0.0" y="0.0" width="193.5" height="133"/>
+                                    <rect key="frame" x="139.5" y="0.0" width="124" height="133"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hat" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lh5-K6-BgU" customClass="TextLabel" customModule="slime" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="113" width="193.5" height="20"/>
+                                            <rect key="frame" x="0.0" y="113" width="124" height="20"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="20" id="OjA-De-U97"/>
                                             </constraints>
@@ -86,7 +133,7 @@
                                             </userDefinedRuntimeAttributes>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ARe-bT-mU2" customClass="DesignableView" customModule="slime" customModuleProvider="target">
-                                            <rect key="frame" x="44.5" y="0.0" width="105" height="105"/>
+                                            <rect key="frame" x="9.5" y="0.0" width="105" height="105"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Apple" translatesAutoresizingMaskIntoConstraints="NO" id="AGf-J2-drH">
                                                     <rect key="frame" x="4" y="4" width="97" height="97"/>
@@ -117,10 +164,10 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e5s-9E-ECh">
-                                    <rect key="frame" x="209.5" y="0.0" width="193.5" height="133"/>
+                                    <rect key="frame" x="279.5" y="0.0" width="123.5" height="133"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Acc." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h7u-C1-W8x" customClass="TextLabel" customModule="slime" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="113" width="193.5" height="20"/>
+                                            <rect key="frame" x="0.0" y="113" width="123.5" height="20"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="20" id="Kjd-QY-ruG"/>
                                             </constraints>
@@ -133,7 +180,7 @@
                                             </userDefinedRuntimeAttributes>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uff-vE-yCQ" customClass="DesignableView" customModule="slime" customModuleProvider="target">
-                                            <rect key="frame" x="44.5" y="0.0" width="105" height="105"/>
+                                            <rect key="frame" x="9" y="0.0" width="105" height="105"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Apple" translatesAutoresizingMaskIntoConstraints="NO" id="tMu-Tu-3qq">
                                                     <rect key="frame" x="4" y="4" width="97" height="97"/>
@@ -245,6 +292,8 @@
             <connections>
                 <outlet property="accessoryButton" destination="e5s-9E-ECh" id="7CR-jw-3Lh"/>
                 <outlet property="accessoryImageView" destination="tMu-Tu-3qq" id="lgV-35-kKi"/>
+                <outlet property="baseButton" destination="9Tt-o5-wA1" id="z5B-Oo-ImA"/>
+                <outlet property="baseImageView" destination="QwT-CG-oXe" id="sao-H2-rKd"/>
                 <outlet property="hatButton" destination="K2l-5w-Who" id="F5P-OQ-W39"/>
                 <outlet property="hatImageView" destination="AGf-J2-drH" id="iv6-TE-IxR"/>
                 <outlet property="levelLabel" destination="viS-qx-PDx" id="JvO-Sn-uj2"/>
