@@ -161,34 +161,19 @@ class Stage: SKScene {
             slime.removeItem()
         } else if item.type == FirebaseSystemValues.ItemTypes.plate.rawValue {
             let decoder = JSONDecoder()
-            print("hello2")
-            print(item.encodedData)
             guard let data = item.encodedData.data(using: .utf8) else { return }
-            print(data)
+            
             let plate = try? decoder.decode(Plate.self, from: data)
-            print("hello3")
-            print(plate?.food)
-            print(plate?.positionings)
             guard let takenItem = plate else { return }
-            print(takenItem)
+            
             slime.removeItem()
             slime.takeItem(takenItem)
         } else if item.type == FirebaseSystemValues.ItemTypes.ingredient.rawValue {
             let decoder = JSONDecoder()
-            print("hello4")
-            print(item.encodedData)
-//            guard let data = item.encodedData.data(using: .utf8) else { return }
-            let data = Data(item.encodedData.utf8)
-            print(data)
+            guard let data = item.encodedData.data(using: .utf8) else { return }
             let ingredient = try? decoder.decode(Ingredient.self, from: data)
-            print("hello5")
-            print(ingredient)
-            print(ingredient?.currentProcessing)
-            print(ingredient?.type)
-            print(ingredient?.processed)
+            
             guard let takenItem = ingredient else { return }
-            print("hello6")
-            print(takenItem)
             
             slime.removeItem()
             slime.takeItem(takenItem)
