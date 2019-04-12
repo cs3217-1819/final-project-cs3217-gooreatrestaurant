@@ -39,8 +39,9 @@ class Stage: SKScene {
         spaceship = Spaceship(inPosition: StageConstants.spaceshipPosition, withSize: StageConstants.spaceshipSize)
         super.init(size: size)
 
-        let order = OrderQueue()
-        self.addChild(order)
+        sceneCam = SKCameraNode()
+        self.camera = sceneCam
+        self.addChild(sceneCam!)
 
         let background = SKSpriteNode(imageNamed: "background-1")
         background.position = StageConstants.spaceshipPosition
@@ -51,9 +52,8 @@ class Stage: SKScene {
         self.addChild(background)
         self.addChild(spaceship)
 
-        sceneCam = SKCameraNode()
-        self.camera = sceneCam
-        self.addChild(sceneCam!)
+        let order = OrderQueue()
+        self.sceneCam?.addChild(order)
     }
 
     override func update(_ currentTime: TimeInterval) {
@@ -358,7 +358,7 @@ class Stage: SKScene {
 
     func initializeOrders(withData data: [RecipeData]) {
         if !isMultiplayer {
-            guard let orderQueue = self.childNode(withName: StageConstants.orderQueueName) as? OrderQueue else {
+            guard let orderQueue = self.sceneCam?.childNode(withName: StageConstants.orderQueueName) as? OrderQueue else {
                 return
             }
             
@@ -452,7 +452,7 @@ class Stage: SKScene {
         if !isMultiplayer {
             let foodToServe = plate.food
             
-            guard let orderQueue = self.childNode(withName: StageConstants.orderQueueName) as? OrderQueue else {
+            guard let orderQueue = self.sceneCam?.childNode(withName: StageConstants.orderQueueName) as? OrderQueue else {
                 print("error")
                 return
             }
