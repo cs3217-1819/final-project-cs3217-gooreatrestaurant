@@ -7,7 +7,6 @@
 //
 
 import Firebase
-import SpriteKit
 
 /**
  Implementation of GameDatabase using
@@ -730,7 +729,7 @@ class GameDB: GameDatabase {
         }
     }
 
-    func observeGameState(forRoom room: RoomModel, onPlayerUpdate: @escaping (GamePlayerModel) -> Void, onStationUpdate: @escaping () -> Void, onGameEnd: @escaping () -> Void, onOrderChange: @escaping ([GameOrderModel]) -> Void, onScoreChange: @escaping (Int) -> Void, onAllPlayersReady: @escaping () -> Void, onGameStart: @escaping () -> Void, onSelfItemChange: @escaping (SKSpriteNode?) -> Void, onTimeLeftChange: @escaping (Int) -> Void, onComplete: @escaping () -> Void, onError: @escaping (Error) -> Void) {
+    func observeGameState(forRoom room: RoomModel, onPlayerUpdate: @escaping (GamePlayerModel) -> Void, onStationUpdate: @escaping (String, GameStationModel) -> Void, onGameEnd: @escaping () -> Void, onOrderChange: @escaping ([GameOrderModel]) -> Void, onScoreChange: @escaping (Int) -> Void, onAllPlayersReady: @escaping () -> Void, onGameStart: @escaping () -> Void, onSelfItemChange: @escaping (ItemModel) -> Void, onTimeLeftChange: @escaping (Int) -> Void, onComplete: @escaping () -> Void, onError: @escaping (Error) -> Void) {
         guard let user = GameAuth.currentUser else {
             return
         }
@@ -739,19 +738,19 @@ class GameDB: GameDatabase {
         let orderRef = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, room.id, FirebaseKeys.games_orders]))
         let scoreRef = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, room.id, FirebaseKeys.games_score]))
         let endRef = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, room.id, FirebaseKeys.games_hasEnded]))
-        let stationRef = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, room.id, FirebaseKeys.games_stations]))
         let hasStartedRef = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, room.id, FirebaseKeys.games_hasStarted]))
         let timeLeftRef = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, room.id, FirebaseKeys.games_timeLeft]))
         let selfHoldingItemRef = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, room.id, FirebaseKeys.games_players, user.uid, FirebaseKeys.games_players_holdingItem]))
         
         let selfHandle = selfHoldingItemRef.observe(.value, with: { (snap) in
-//            guard let itemInString = snap.value as? String else {
-//                return
-//            }
+            guard let itemInsideDict = snap.value as? [String : String] else {
+                return
+            }
             
-            // TODO: change item from string to SKSpriteNode
+            let itemType = itemInsideDict[FirebaseKeys.games_items_type] ?? FirebaseSystemValues.ItemTypes.none.rawValue
+            let encodedData = itemInsideDict[FirebaseKeys.games_items_encodedData] ?? FirebaseSystemValues.defaultNoItem
             
-//            onSelfItemChange(item)
+            onSelfItemChange(ItemModel(type: itemType, encodedData: encodedData))
         }) { (err) in
             onError(err)
         }
@@ -799,7 +798,6 @@ class GameDB: GameDatabase {
         
         hasStartedRef.observe(.value, with: { (snap) in
             guard let hasStarted = snap.value as? Bool else { return }
-            print("hasStarted: \(hasStarted)")
             if hasStarted { onGameStart() }
         }) { (err) in
             onError(err)
@@ -845,11 +843,20 @@ class GameDB: GameDatabase {
             onError(err)
         }
 
-        let stationHandle = stationRef.observe(.value, with: { (snap) in
-
-            onStationUpdate()
-        }) { (err) in
-            onError(err)
+        let listOfStationIds = self.generateStationIdList(fromMap: room.map)
+        
+        for stationId in listOfStationIds {
+            let stationRef = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, room.id, FirebaseKeys.games_stations, stationId]))
+            
+            let stationHandle = stationRef.observe(.value, with: { (snap) in
+                guard let dict = snap.value as? [String : AnyObject] else { return }
+                
+                onStationUpdate(stationId, self.firebaseGameStationModelFactory(forDict: dict))
+            }) { (err) in
+                onError(err)
+            }
+            
+            observers.append(Observer(withHandle: stationHandle, withRef: stationRef))
         }
 
         let endHandle = endRef.observe(.value, with: { (snap) in
@@ -862,11 +869,56 @@ class GameDB: GameDatabase {
         self.observers.append(Observer(withHandle: orderHandle, withRef: orderRef))
         self.observers.append(Observer(withHandle: scoreHandle, withRef: scoreRef))
         self.observers.append(Observer(withHandle: endHandle, withRef: endRef))
-        self.observers.append(Observer(withHandle: stationHandle, withRef: stationRef))
         self.observers.append(Observer(withHandle: selfHandle, withRef: selfHoldingItemRef))
         self.observers.append(Observer(withHandle: timeLeftHandle, withRef: timeLeftRef))
         
         onComplete()
+    }
+    
+    private func generateStationIdList(fromMap map: String) -> [String] {
+        guard let levelDesignURL = Bundle.main.url(forResource: map, withExtension: "plist") else {
+            return []
+        }
+        
+        var list: [String] = []
+        
+        do {
+            let data = try? Data(contentsOf: levelDesignURL)
+            let decoder = PropertyListDecoder()
+            let value = try decoder.decode(SerializableGameData.self, from: data!)
+            
+            for (index, _) in value.choppingEquipment.enumerated() {
+                list.append("\(FirebaseSystemValues.games_stations_choppingEquipment)-\(index)")
+            }
+            
+            for (index, _) in value.fryingEquipment.enumerated() {
+                list.append("\(FirebaseSystemValues.games_stations_fryingEquipment)-\(index)")
+            }
+            
+            for (index, _) in value.table.enumerated() {
+                list.append("\(FirebaseSystemValues.games_stations_table)-\(index)")
+            }
+            
+            for (index, _) in value.oven.enumerated() {
+                list.append("\(FirebaseSystemValues.games_stations_oven)-\(index)")
+            }
+            
+            return list
+        } catch {
+            print(error.localizedDescription)
+            return []
+        }
+    }
+    
+    private func firebaseGameStationModelFactory(forDict stationDict: [String : AnyObject]) -> GameStationModel {
+        let stationType = stationDict[FirebaseKeys.games_stations_type] as? String ?? FirebaseSystemValues.defaultNoItem
+        let isOccupied = stationDict[FirebaseKeys.games_stations_isOccupied] as? Bool ?? FirebaseSystemValues.defaultFalse
+        let itemInsideDict = stationDict[FirebaseKeys.games_stations_itemInside] as? [String : AnyObject] ?? [:]
+        
+        let itemType = itemInsideDict[FirebaseKeys.games_items_type] as? String ?? FirebaseSystemValues.ItemTypes.none.rawValue
+        let encodedData = itemInsideDict[FirebaseKeys.games_items_encodedData] as? String ?? FirebaseSystemValues.defaultNoItem
+        
+        return GameStationModel(type: stationType, item: ItemModel(type: itemType, encodedData: encodedData), isOccupied: isOccupied)
     }
     
     private func firebaseGamePlayerModelFactory(withPlayerUid uid: String, forDict playerDict: [String : AnyObject]) -> GamePlayerModel {

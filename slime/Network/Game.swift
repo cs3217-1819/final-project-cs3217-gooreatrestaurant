@@ -58,12 +58,12 @@ struct GamePlayerModel {
 }
 
 struct GameStationModel {
-    var tag: String = ""
-    var item: String? = ""
+    var type: String = ""
+    var item: ItemModel = ItemModel(type: "none", encodedData: "none")
     var isOccupied: Bool = false
 
-    init(tag: String, item: String, isOccupied: Bool) {
-        self.tag = tag
+    init(type: String, item: ItemModel, isOccupied: Bool) {
+        self.type = type
         self.item = item
         self.isOccupied = isOccupied
     }

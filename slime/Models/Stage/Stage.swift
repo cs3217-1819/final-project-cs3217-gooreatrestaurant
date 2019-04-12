@@ -50,9 +50,8 @@ class Stage: SKScene {
     }
     
     func joinGame(forGameId id: String) {
-        self.db?.joinGame(forGameId: id, {
-            print("game has been successfully joined")
-        }, { (err) in
+        guard let database = self.db else { return }
+        database.joinGame(forGameId: id, { }, { (err) in
             print(err.localizedDescription)
         })
     }
@@ -71,9 +70,8 @@ class Stage: SKScene {
         
         db = GameDB()
         
-        guard let user = GameAuth.currentUser else {
-            return
-        }
+        guard let user = GameAuth.currentUser else { return }
+        guard let database = self.db else { return }
         
         // add all players
         for player in room.players {
@@ -84,17 +82,16 @@ class Stage: SKScene {
             // TODO: put into the slime dict
         }
         
-        db?.observeGameState(forRoom: room, onPlayerUpdate: { (player) in
+        database.observeGameState(forRoom: room, onPlayerUpdate: { (player) in
             guard let currentSlime = self.allSlimesDict[player.uid] else { return }
             
             currentSlime.position = CGPoint(x: player.positionX, y: player.positionY)
             currentSlime.physicsBody?.velocity = CGVector(dx: player.velocityX, dy: player.velocityY)
             currentSlime.xScale = player.xScale
-        }, onStationUpdate: {
-            // not yet implemented
-            // this updates whenever one station
-            // experiences a change
-            
+        }, onStationUpdate: { (id, station) in
+            guard let station = self.allStationsDict[id] else { return }
+            // TODO: update station object
+            print(station)
         }, onGameEnd: {
             self.gameHasEnded = true
             self.stopStreamingSelf()
@@ -124,7 +121,8 @@ class Stage: SKScene {
         }, onSelfItemChange: { (item) in
             guard let slime = self.slimeToControl else { return }
             slime.removeItem()
-            if let newItem = item { slime.takeItem(newItem) }
+            // TODO: turn item into object
+//            if let newItem = item { slime.takeItem(newItem) }
         }, onTimeLeftChange: { (timeLeft) in
             self.countdownLabel.text = "Time: \(timeLeft)"
             if self.isUserHost && self.isMultiplayerTimeUp(forTime: timeLeft) { self.endMultiplayerGame() }
@@ -178,12 +176,12 @@ class Stage: SKScene {
                 spaceship.addWall(inCoord: value.border)
                 spaceship.addWall(inCoord: value.blockedArea)
                 spaceship.addLadder(inPositions: value.ladder)
-                spaceship.addChoppingEquipment(inPositions: value.choppingEquipment)
-                spaceship.addFryingEquipment(inPositions: value.fryingEquipment)
-                spaceship.addOven(inPositions: value.oven)
+                spaceship.addChoppingEquipment(inPositions: value.choppingEquipment, record: &allStationsDict)
+                spaceship.addFryingEquipment(inPositions: value.fryingEquipment, record: &allStationsDict)
+                spaceship.addOven(inPositions: value.oven, record: &allStationsDict)
                 spaceship.addPlateStorage(inPositions: value.plateStorage)
                 spaceship.addStoreFront(inPosition: value.storefront)
-                spaceship.addTable(inPositions: value.table)
+                spaceship.addTable(inPositions: value.table, record: &allStationsDict)
                 spaceship.addTrashBin(inPositions: value.trashBin)
 
                 // add Ingredient Storages (station to take out ingredient) in the spaceship
@@ -233,7 +231,6 @@ class Stage: SKScene {
     lazy var interactButton: BDButton = {
         var button = BDButton(imageNamed: "Interact", buttonAction: {
             self.slimeToControl?.interact()
-            
             })
         button.setScale(0.15)
         button.isEnabled = true
