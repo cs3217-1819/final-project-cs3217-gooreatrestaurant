@@ -165,6 +165,7 @@
 		EC7168E8225DD3CF004EF2B0 /* leftroom.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EC7168E2225DD3CF004EF2B0 /* leftroom.mp3 */; };
 		EC7168E9225DD3CF004EF2B0 /* open.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EC7168E3225DD3CF004EF2B0 /* open.mp3 */; };
 		EC7168EB225DD571004EF2B0 /* bloop.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EC7168EA225DD571004EF2B0 /* bloop.mp3 */; };
+		EC7168ED22603775004EF2B0 /* CosmeticConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7168EC22603775004EF2B0 /* CosmeticConstants.swift */; };
 		EC7676BA225A4A4B00F6A450 /* RouterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7676B9225A4A4B00F6A450 /* RouterController.swift */; };
 		EC7676BD225A543900F6A450 /* CustomizationMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7676BC225A543900F6A450 /* CustomizationMainViewController.swift */; };
 		EC7676BF225B52CE00F6A450 /* CustomizationCosmeticView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC7676BE225B52CE00F6A450 /* CustomizationCosmeticView.xib */; };
@@ -406,6 +407,7 @@
 		EC7168E2225DD3CF004EF2B0 /* leftroom.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = leftroom.mp3; sourceTree = "<group>"; };
 		EC7168E3225DD3CF004EF2B0 /* open.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = open.mp3; sourceTree = "<group>"; };
 		EC7168EA225DD571004EF2B0 /* bloop.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bloop.mp3; sourceTree = "<group>"; };
+		EC7168EC22603775004EF2B0 /* CosmeticConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmeticConstants.swift; sourceTree = "<group>"; };
 		EC7676B9225A4A4B00F6A450 /* RouterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterController.swift; sourceTree = "<group>"; };
 		EC7676BC225A543900F6A450 /* CustomizationMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizationMainViewController.swift; sourceTree = "<group>"; };
 		EC7676BE225B52CE00F6A450 /* CustomizationCosmeticView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomizationCosmeticView.xib; sourceTree = "<group>"; };
@@ -1023,6 +1025,7 @@
 				EC7676BC225A543900F6A450 /* CustomizationMainViewController.swift */,
 				EC7676C9225B58B300F6A450 /* CustomizationCosmeticViewController.swift */,
 				EC7676CB225B5AC100F6A450 /* Cosmetics.swift */,
+				EC7168EC22603775004EF2B0 /* CosmeticConstants.swift */,
 			);
 			path = Customization;
 			sourceTree = "<group>";
@@ -1514,6 +1517,7 @@
 				EC38247D223A2344000D7148 /* UIColorExtension.swift in Sources */,
 				1DD6EBE7224E76FC006FF6CD /* CookingType.swift in Sources */,
 				EC382484223A2B6C000D7148 /* PlayMenuButtonController.swift in Sources */,
+				EC7168ED22603775004EF2B0 /* CosmeticConstants.swift in Sources */,
 				ECD455532240B5D1006AF78D /* AlertAction.swift in Sources */,
 				1DE6FC5A224CA45700B36F48 /* Station.swift in Sources */,
 				1D2202A1224AB5850080CF7D /* Stage.swift in Sources */,
