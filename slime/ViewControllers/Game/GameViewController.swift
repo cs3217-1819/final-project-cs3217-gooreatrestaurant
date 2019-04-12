@@ -16,7 +16,6 @@ class GameViewController: UIViewController {
     
     // multiplayer stuff
     var isMultiplayer: Bool = false
-    var multiplayerGameId: String?
     var previousRoom: RoomModel?
     
     let newCollection: UICollectionView = {
@@ -48,16 +47,8 @@ class GameViewController: UIViewController {
         view.addSubview(skview)
 
         // TODO: multiplayer stuff, add all the players to stage, then the setupPlayers() will map the slime to player
-        if isMultiplayer {
-            if let room = self.previousRoom { stage.setupMultiplayer(forRoom: room) }
-        } else {
-            guard let onlyUser = GameAuth.currentUser else {
-                return
-            }
-            // Level 1 here only placeholder TO DO
-            let onlyPlayer = Player(name: onlyUser.uid, level: 1)
-            stage.addPlayer(onlyPlayer)
-        }
+        if isMultiplayer { if let room = self.previousRoom { stage.setupMultiplayer(forRoom: room) }}
+        if !isMultiplayer { stage.setupSinglePlayer() }
         
         stage.generateLevel(inLevel: "Level1")
 
