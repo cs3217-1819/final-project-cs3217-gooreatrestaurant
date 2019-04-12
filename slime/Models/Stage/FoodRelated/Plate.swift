@@ -42,14 +42,13 @@ class Plate: SKSpriteNode, Codable {
 
     required convenience init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-
         let food = try values.decode(Food.self, forKey: .food)
         let position = try values.decode(CGPoint.self, forKey: .position)
-        let listOfIngredients = try values.decode([Ingredient].self, forKey: .position) 
-
+        let listOfIngredients = try values.decode([Ingredient].self, forKey: .listOfIngredients)
+        
         self.init(inPosition: position)
         self.food = food
-
+        
         for ingredient in listOfIngredients { self.addIngredientImage(inIngredient: ingredient) }
     }
 
@@ -58,6 +57,7 @@ class Plate: SKSpriteNode, Codable {
 
         try container.encode(food, forKey: .food)
         try container.encode(position, forKey: .position)
+        try container.encode(listOfIngredients, forKey: .listOfIngredients)
     }
 
     func addIngredientImage(inIngredient: Ingredient) {
