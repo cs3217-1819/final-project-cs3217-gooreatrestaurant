@@ -81,7 +81,7 @@ class Spaceship: SKSpriteNode {
     }
 
     func addOven(inPositions positions: [String], record dict: inout [String : Station]) {
-        for position in positions {
+        for (index, position) in positions.enumerated() {
             let oven = Oven(inPosition: NSCoder.cgPoint(for: position))
             oven.id = "oven-\(index)"
             self.addChild(oven)

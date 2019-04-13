@@ -9,11 +9,11 @@
 import UIKit
 import SpriteKit
 
-class OrderQueue: SKSpriteNode {
+class OrderQueue: SKSpriteNode, Codable {
     var possibleRecipes: Set<Recipe> = []
     var recipeOrdered: [Recipe] = []
     var newOrderTimer: Timer = Timer()
-    var nodeOrder: [SKSpriteNode] = []
+    var nodeOrder: [MenuPrefab] = []
 
     var tempNode: SKSpriteNode = SKSpriteNode.init()
 
@@ -30,6 +30,8 @@ class OrderQueue: SKSpriteNode {
                         CGPoint(x: ScreenSize.width * 0.5 - 90,
                                 y: ScreenSize.height * 0.5 - 200)]
 
+    var scoreToIncrease = 0
+
     init() {
         super.init(texture: nil, color: .clear, size: CGSize.zero)
         self.position = CGPoint.zero
@@ -40,8 +42,14 @@ class OrderQueue: SKSpriteNode {
         fatalError("init(coder:) has not been implemented")
     }
 
+    private func addOrderFronDecoder(ofRecipe recipe: Recipe, andPrefab prefab: MenuPrefab) {
+        recipeOrdered.append(recipe)
+        nodeOrder.append(prefab)
+        self.addChild(prefab)
+    }
+
     func generateMenu(ofRecipe recipe: Recipe) {
-        let menuObj = MenuPrefab(color: .clear, size: CGSize(width: 80, height: 80))
+        let menuObj = MenuPrefab(color: StageConstants.menuPrefabColor, size: StageConstants.menuPrefabSize)
         menuObj.addRecipe(recipe, inPosition: positionings[recipeOrdered.count - 1])
         nodeOrder.append(menuObj)
         self.addChild(menuObj)
@@ -123,10 +131,53 @@ class OrderQueue: SKSpriteNode {
         //remove the node image and the list
         nodeOrder[inNum].removeFromParent()
         nodeOrder.remove(at: inNum)
+        
+        self.scoreToIncrease = calculateScore(timeLeft: nodeOrder[inNum].time)
 
         //update positionings
         for i in 1...nodeOrder.count {
             nodeOrder[i-1].position = positionings[i-1]
         }
+    }
+
+    func calculateScore(timeLeft: CGFloat) -> Int {
+        let score = Int(timeLeft / StageConstants.defaultTimeLimitOrder * 100)
+        return score
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case possibleRecipes
+        case recipeOrdered
+        case nodeOrder
+        case nextTimer
+    }
+
+    required convenience init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+
+        let possibleRecipes = try values.decode(Set<Recipe>.self, forKey: .possibleRecipes)
+        let recipeOrdered = try values.decode([Recipe].self, forKey: .recipeOrdered)
+        let nodeOrder = try values.decode([MenuPrefab].self, forKey: .nodeOrder)
+        let nextTimer = try values.decode(Date.self, forKey: .nextTimer)
+
+        self.init()
+        self.possibleRecipes = possibleRecipes
+        self.recipeOrdered = recipeOrdered
+        self.nodeOrder = nodeOrder
+        self.newOrderTimer = Timer(fireAt: nextTimer,
+                                   interval: StageConstants.timerInterval,
+                                   target: self,
+                                   selector: #selector(addRandomOrder),
+                                   userInfo: nil,
+                                   repeats: true)
+    }
+
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+
+        try container.encode(possibleRecipes, forKey: .possibleRecipes)
+        try container.encode(recipeOrdered, forKey: .recipeOrdered)
+        try container.encode(nodeOrder, forKey: .nodeOrder)
+        try container.encode(newOrderTimer.fireDate, forKey: .nextTimer)
     }
 }

@@ -35,6 +35,8 @@ class Stage: SKScene {
     //Camera
     var sceneCam: SKCameraNode?
 
+    var controller = GameViewController()
+
     override init(size: CGSize = CGSize(width: StageConstants.maxXAxisUnits, height: StageConstants.maxYAxisUnits)) {
         spaceship = Spaceship(inPosition: StageConstants.spaceshipPosition, withSize: StageConstants.spaceshipSize)
         super.init(size: size)
@@ -133,11 +135,11 @@ class Stage: SKScene {
             self.multiplayerIndicateGameHasStarted()
         }, onGameStart: {
             self.hasStarted = true
+            self.showStartFlag()
             self.startStreamingSelf()
             if self.isUserHost { self.startCounter() }
             // TODO: do setup when game has started, add stuff whenever necessary
         }, onSelfItemChange: { (item) in
-            print("gawa")
             self.handleSelfItemChange(forItem: item)
         }, onTimeLeftChange: { (timeLeft) in
             self.countdownLabel.text = "Time: \(timeLeft)"
@@ -250,6 +252,7 @@ class Stage: SKScene {
                 if isMultiplayer {
                     guard let room = self.previousRoom else { return }
                     for _ in room.players { spaceship.addSlime(inPosition: value.slimeInitPos) }
+                    self.showReadyFlag()
                 }
                 
                 spaceship.addWall(inCoord: value.border)
@@ -350,7 +353,7 @@ class Stage: SKScene {
 
     lazy var backButton: BDButton = {
         var button = BDButton(imageNamed: "BackButton", buttonAction: {
-            print("AAAA")
+            self.controller.segueToMainScreen()
         })
         button.setScale(0.1)
         button.isEnabled = true
@@ -361,7 +364,7 @@ class Stage: SKScene {
 
     var counter = 0
     var counterTime = Timer()
-    var counterStartTime = 1
+    var counterStartTime = 200
     var isGameOver = false
 
     lazy var countdownLabel: SKLabelNode = {
@@ -554,7 +557,7 @@ class Stage: SKScene {
                 return
             }
             
-            levelScore += 20 // TODO: put score in constants
+            levelScore += orderQueue.scoreToIncrease 
             scoreLabel.text = "Score: \(levelScore)"
         } else {
             // multiplayer serve food
@@ -622,10 +625,18 @@ class Stage: SKScene {
     }
 
     func gameOver(ifWon: Bool) {
-        let temp = GameOverPrefab(color: .clear, size: StageConstants.gameOverPrefabSize)
-        temp.setScore(inScore: levelScore)
-        self.addChild(temp)
-        print("gameOver!")
+        let gameOverPrefab = GameOverPrefab(color: .clear, size: StageConstants.gameOverPrefabSize)
+        gameOverPrefab.setScore(inScore: levelScore)
+        gameOverPrefab.controller = self.controller
+        self.sceneCam?.addChild(gameOverPrefab)
+    }
+    
+    func showReadyFlag() {
+        
+    }
+    
+    func showStartFlag() {
+        
     }
 
     required init?(coder aDecoder: NSCoder) {

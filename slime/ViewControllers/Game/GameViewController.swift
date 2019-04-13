@@ -30,8 +30,8 @@ class GameViewController: ViewController<UIView> {
         let stage = Stage()
         stage.isMultiplayer = self.isMultiplayer
         stage.setupControl()
-        let skview = SKView(frame: view.safeAreaLayoutGuide.layoutFrame)
-        skview.frame = CGRect(x: 0.0, y: 0.0, width: ScreenSize.width, height: ScreenSize.height)
+        stage.controller = self
+        let skview = SKView(frame: CGRect(x: 0.0, y: 0.0, width: ScreenSize.width, height: ScreenSize.height))
         skview.presentScene(stage)
         skview.showsPhysics = true
         skview.showsFPS = true
@@ -42,7 +42,7 @@ class GameViewController: ViewController<UIView> {
         // TODO: multiplayer stuff, add all the players to stage, then the setupPlayers() will map the slime to player
         if isMultiplayer { if let room = self.previousRoom { stage.setupMultiplayer(forRoom: room) }}
         if !isMultiplayer { stage.setupSinglePlayer() }
-        
+
         stage.generateLevel(inLevel: "Level1")
 
         //        newCollection.delegate = self
@@ -50,7 +50,7 @@ class GameViewController: ViewController<UIView> {
         //        newCollection.register(IngredientsCell.self, forCellWithReuseIdentifier: "MyCell")
         //        view.addSubview(newCollection)
         //        setupCollection()
-        
+
         stage.setupPlayers()
     }
 
