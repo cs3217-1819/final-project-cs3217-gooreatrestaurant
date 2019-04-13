@@ -670,13 +670,13 @@ class GameDB: GameDatabase {
         })
     }
 
-    func submitOrder(forGameId id: String, withRecipe recipe: Recipe, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void) {
+    func submitOrder(forGameId id: String, withPlate plate: Plate, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void) {
         // encode recipe first
         let ref = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, id, FirebaseKeys.games_ordersSubmitted]))
         
         guard let key = ref.childByAutoId().key else { return }
         
-        guard let newOrder = self.convertRecipeToEncodedData(forRecipe: recipe) else { return }
+        guard let newOrder = self.convertPlateToEncodedData(forPlate: plate) else { return }
         
         ref.child(key).setValue(newOrder) { (err, ref) in
             if let error = err {
@@ -688,10 +688,10 @@ class GameDB: GameDatabase {
         }
     }
     
-    private func convertRecipeToEncodedData(forRecipe recipe: Recipe) -> String? {
+    private func convertPlateToEncodedData(forPlate plate: Plate) -> String? {
         let encoder = JSONEncoder()
         
-        let data = try? encoder.encode(recipe)
+        let data = try? encoder.encode(plate)
         
         guard let encodedData = data else { return nil }
         guard let res = String(data: encodedData, encoding: .utf8) else { return nil }
@@ -704,7 +704,15 @@ class GameDB: GameDatabase {
         
         guard let newOrderQueue = self.convertOrderQueueToEncodedData(forOrderQueue: oq) else { return }
         
-        ref.setValue(newOrderQueue) { (err, ref) in
+        ref.runTransactionBlock({ (current) -> TransactionResult in
+            guard var orderQueue = current.value as? String else {
+                return TransactionResult.success(withValue: current)
+            }
+            
+            orderQueue = newOrderQueue
+            current.value = orderQueue
+            return TransactionResult.success(withValue: current)
+        }) { (err, committed, snap) in
             if let error = err {
                 onError(error)
                 return
@@ -736,14 +744,13 @@ class GameDB: GameDatabase {
         }
     }
 
-    func observeGameState(forRoom room: RoomModel, onPlayerUpdate: @escaping (GamePlayerModel) -> Void, onStationUpdate: @escaping (String, GameStationModel) -> Void, onGameEnd: @escaping () -> Void, onOrderQueueChange: @escaping (OrderQueue) -> Void, onScoreChange: @escaping (Int) -> Void, onAllPlayersReady: @escaping () -> Void, onGameStart: @escaping () -> Void, onSelfItemChange: @escaping (ItemModel) -> Void, onTimeLeftChange: @escaping (Int) -> Void, onHostDisconnected: @escaping () -> Void, onComplete: @escaping () -> Void, onError: @escaping (Error) -> Void) {
+    func observeGameState(forRoom room: RoomModel, onPlayerUpdate: @escaping (GamePlayerModel) -> Void, onStationUpdate: @escaping (String, GameStationModel) -> Void, onGameEnd: @escaping () -> Void, onOrderQueueChange: @escaping (OrderQueue) -> Void, onScoreChange: @escaping (Int) -> Void, onAllPlayersReady: @escaping () -> Void, onGameStart: @escaping () -> Void, onSelfItemChange: @escaping (ItemModel) -> Void, onTimeLeftChange: @escaping (Int) -> Void, onHostDisconnected: @escaping () -> Void, onNewOrderSubmitted: @escaping (Plate) -> Void, onComplete: @escaping () -> Void, onError: @escaping (Error) -> Void) {
         guard let user = GameAuth.currentUser else {
             return
         }
         
         let roomRef = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, room.id]))
         let playerRef = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, room.id, FirebaseKeys.games_players]))
-        let orderQueueRef = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, room.id, FirebaseKeys.games_orderQueue]))
         let scoreRef = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, room.id, FirebaseKeys.games_score]))
         let endRef = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, room.id, FirebaseKeys.games_hasEnded]))
         let hasStartedRef = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, room.id, FirebaseKeys.games_hasStarted]))
@@ -813,6 +820,22 @@ class GameDB: GameDatabase {
             }
             
             self.observers.append(Observer(withHandle: playerReadyHandle, withRef: playerReadyRef))
+        } else {
+            let orderQueueRef = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, room.id, FirebaseKeys.games_orderQueue]))
+            
+            let orderQueueHandle = orderQueueRef.observe(.value, with: { (snap) in
+                guard let orderQueue = snap.value as? String else {
+                    return
+                }
+                
+                guard let oq = self.firebaseOrderQueueFactory(forEncodedString: orderQueue) else { return }
+                
+                onOrderQueueChange(oq)
+            }) { (err) in
+                onError(err)
+            }
+            
+            self.observers.append(Observer(withHandle: orderQueueHandle, withRef: orderQueueRef))
         }
         
         hasStartedRef.observe(.value, with: { (snap) in
@@ -835,18 +858,6 @@ class GameDB: GameDatabase {
             })
 
             self.observers.append(Observer(withHandle: playerHandle, withRef: indPlayerRef))
-        }
-
-        let orderQueueHandle = orderQueueRef.observe(.value, with: { (snap) in
-            guard let orderQueue = snap.value as? String else {
-                return
-            }
-            
-            guard let oq = self.firebaseOrderQueueFactory(forEncodedString: orderQueue) else { return }
-
-            onOrderQueueChange(oq)
-        }) { (err) in
-            onError(err)
         }
 
         let scoreHandle = scoreRef.observe(.value, with: { (snap) in
@@ -880,7 +891,6 @@ class GameDB: GameDatabase {
         }
 
         self.observers.append(Observer(withHandle: roomHandle, withRef: roomRef))
-        self.observers.append(Observer(withHandle: orderQueueHandle, withRef: orderQueueRef))
         self.observers.append(Observer(withHandle: scoreHandle, withRef: scoreRef))
         self.observers.append(Observer(withHandle: endHandle, withRef: endRef))
         self.observers.append(Observer(withHandle: selfHandle, withRef: selfHoldingItemRef))

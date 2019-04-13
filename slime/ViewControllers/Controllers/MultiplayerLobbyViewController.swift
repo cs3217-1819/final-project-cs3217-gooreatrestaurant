@@ -69,7 +69,7 @@ class MultiplayerLobbyViewController: ViewController<MultiplayerLobbyView> {
                 self.context.db.removeAllDisconnectObservers()
 
                 // TODO: route to game room
-                self.context.segueToMultiplayerGame()
+                self.context.segueToMultiplayerGame(rejoin: false)
                 return
             }
 

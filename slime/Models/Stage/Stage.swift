@@ -148,6 +148,9 @@ class Stage: SKScene {
             guard let database = self.db else { return }
             database.removeAllObservers()
             database.removeAllDisconnectObservers()
+        }, onNewOrderSubmitted: { (plate) in
+            // only for host, do not touch
+            // TODO:
         }, onComplete: {
             // joins game after attaching all
             // relevant observers, this onComplete
@@ -539,6 +542,10 @@ class Stage: SKScene {
         guard let user = GameAuth.currentUser else { return nil }
         return self.allSlimesDict[user.uid]
     }
+    
+    func handleMultiplayerServe() {
+        
+    }
 
     func serve(_ plate: Plate) {
         if !isMultiplayer {
@@ -561,12 +568,10 @@ class Stage: SKScene {
             guard let database = self.db else { return }
             guard let room = self.previousRoom else { return }
 
-            // TODO:
-            let recipe = Recipe(inRecipeName: "halo", withIngredients: [])
-            database.submitOrder(forGameId: room.id, withRecipe: recipe, {
-            }) { (err) in
+            database.submitOrder(forGameId: room.id, withPlate: plate, { }) { (err) in
                 print(err.localizedDescription)
             }
+            
         }
         
     }
@@ -636,7 +641,7 @@ class Stage: SKScene {
         
     }
 
-    func changeOrderQueue(into orderQueue: OrderQueue) {
+    func updateOrderQueue(into orderQueue: OrderQueue) {
         guard let oldOrderQueue = self.sceneCam?.childNode(withName: StageConstants.orderQueueName) else {
             return
         }

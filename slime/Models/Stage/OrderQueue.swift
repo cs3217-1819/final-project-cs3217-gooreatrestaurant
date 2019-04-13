@@ -98,8 +98,8 @@ class OrderQueue: SKSpriteNode, Codable {
                                              repeats: true)
     }
     
-    func sendEncodedSelfToDatabase() {
-        let db = GameDB()
+    func multiplayerUpdateSelf() {
+//        let db = GameDB()
     }
 
     // True if success, false if failed (no corresponding orders)
@@ -132,6 +132,8 @@ class OrderQueue: SKSpriteNode, Codable {
         if recipeOrdered.count < StageConstants.minNumbersOfOrdersShown {
             self.addRandomOrder()
         }
+        
+        if isMultiplayer { self.multiplayerUpdateSelf() }
     }
 
     func removeMenuPrefab(inNum: Int) {

@@ -51,11 +51,11 @@ class Context {
         return router.currentViewController as! Control
     }
     
-    func routeToAndPrepareFor<Control: ViewControllerProtocol>(_ route: Route, callback: (Control) -> ()) {
+    func routeToAndPrepareFor(_ route: Route, callback: (ViewControllerProtocol) -> ()) {
         let previousRoute = router.currentRoute
         let previousVC = router.currentViewController
         router.routeTo(route)
-        callback(router.currentViewController as! Control)
+        callback(router.currentViewController)
         mainController.performSegue(from: previousVC,
                                     to: router.currentViewController,
                                     coordsDiff: router.currentRoute.coordinates - previousRoute.coordinates)
@@ -66,7 +66,21 @@ class Context {
         routeToFade(.GameScreen)
     }
     
-    func segueToMultiplayerGame() {
-        mainController.performSegue(withIdentifier: "toMultiplayerGame", sender: nil)
+    func segueToMultiplayerGame(rejoin: Bool) {
+        let gameRoom: RoomModel?
+        
+        if rejoin {
+            gameRoom = nil
+        } else {
+            guard let multiplayerLobby = router.currentViewController as? MultiplayerLobbyViewController else { return }
+            gameRoom = multiplayerLobby.currentRoom
+        }
+        
+        routeToAndPrepareFor(.GameScreen) { (controller) in
+            guard let vc = controller as? GameViewController else { return }
+            vc.isMultiplayer = true
+            guard let room = gameRoom else { return }
+            vc.previousRoom = room
+        }
     }
 }
