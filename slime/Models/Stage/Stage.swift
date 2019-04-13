@@ -636,6 +636,15 @@ class Stage: SKScene {
         
     }
 
+    func changeOrderQueue(into orderQueue: OrderQueue) {
+        guard let oldOrderQueue = self.sceneCam?.childNode(withName: StageConstants.orderQueueName) else {
+            return
+        }
+
+        oldOrderQueue.removeFromParent()
+        self.sceneCam?.addChild(orderQueue)
+    }
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("initiation using storyboard is not implemented yet.")
     }
