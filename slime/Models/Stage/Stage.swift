@@ -622,9 +622,9 @@ class Stage: SKScene {
     }
 
     func gameOver(ifWon: Bool) {
-        let temp = GameOverPrefab(color: .clear, size: StageConstants.gameOverPrefabSize)
-        temp.setScore(inScore: levelScore)
-        self.addChild(temp)
+        let gameOverPrefab = GameOverPrefab(color: .clear, size: StageConstants.gameOverPrefabSize)
+        gameOverPrefab.setScore(inScore: levelScore)
+        self.sceneCam?.addChild(gameOverPrefab)
         print("gameOver!")
     }
 
