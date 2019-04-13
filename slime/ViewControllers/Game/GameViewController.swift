@@ -68,6 +68,10 @@ class GameViewController: UIViewController {
         newCollection.widthAnchor.constraint(equalToConstant: 225).isActive = true
     }
 
+    func segueToMainScreen() {
+        self.performSegue(withIdentifier: "toMainScreen", sender: nil)
+    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

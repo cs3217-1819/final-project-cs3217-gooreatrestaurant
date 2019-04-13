@@ -52,6 +52,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="2rh-ke-ZdO"/>
                     </view>
+                    <connections>
+                        <segue destination="9DQ-ed-qhe" kind="custom" identifier="toMainScreen" customClass="FadeInOutSegue" customModule="slime" customModuleProvider="target" id="mb3-US-1F9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Uf-8M-dqT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -59,6 +62,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="ViG-RC-2m5"/>
+        <segue reference="25m-7d-rcI"/>
     </inferredMetricsTieBreakers>
 </document>

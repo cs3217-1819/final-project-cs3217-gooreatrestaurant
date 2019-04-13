@@ -10,6 +10,8 @@ import Foundation
 import SpriteKit
 
 class GameOverPrefab: SKSpriteNode {
+    let controller = GameViewController()
+    
     override init(texture: SKTexture?, color: UIColor, size: CGSize) {
         let base = SKTexture(imageNamed: "Base")
         base.filteringMode = .nearest
@@ -25,7 +27,6 @@ class GameOverPrefab: SKSpriteNode {
         slime.texture?.filteringMode = .nearest
         slime.position = CGPoint.zero
         slime.size = CGSize(width: 220, height: 220)
-//        slime.zPosition = 11
 
         let blackBG = SKSpriteNode.init(color: .black, size: CGSize(width: ScreenSize.width, height: ScreenSize.height))
         blackBG.alpha = 0.5
@@ -82,6 +83,7 @@ class GameOverPrefab: SKSpriteNode {
     lazy var exitButton: BDButton = {
         var button = BDButton(imageNamed: "ExitButton", buttonAction: {
             print("EXIT GAME")
+            self.controller.segueToMainScreen()
         })
         button.setScale(0.35)
         button.isEnabled = true
