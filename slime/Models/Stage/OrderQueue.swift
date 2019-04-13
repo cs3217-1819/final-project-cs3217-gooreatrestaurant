@@ -99,12 +99,10 @@ class OrderQueue: SKSpriteNode, Codable {
             return
         }
 
-        newOrderTimer = Timer.scheduledTimer(timeInterval: StageConstants.orderComingInterval,
-                                             target: self,
-                                             selector: #selector(addRandomOrder),
-                                             userInfo: nil,
-                                             repeats: true)
-
+        newOrderTimer = Timer.scheduledTimer(withTimeInterval: StageConstants.orderComingInterval, repeats: true, block: { (timer) in
+            self.isMultiplayerEnabled ? self.multiplayerAddRandomOrder() : self.addRandomOrder()
+        })
+        
         while recipeOrdered.count < StageConstants.minNumbersOfOrdersShown {
             self.addRandomOrder()
         }
@@ -175,7 +173,6 @@ class OrderQueue: SKSpriteNode, Codable {
         case possibleRecipes
         case recipeOrdered
         case nodeOrder
-        case nextTimer
     }
 
     required convenience init(from decoder: Decoder) throws {
@@ -184,18 +181,11 @@ class OrderQueue: SKSpriteNode, Codable {
         let possibleRecipes = try values.decode(Set<Recipe>.self, forKey: .possibleRecipes)
         let recipeOrdered = try values.decode([Recipe].self, forKey: .recipeOrdered)
         let nodeOrder = try values.decode([MenuPrefab].self, forKey: .nodeOrder)
-        let nextTimer = try values.decode(Date.self, forKey: .nextTimer)
 
         self.init()
         self.possibleRecipes = possibleRecipes
         self.recipeOrdered = recipeOrdered
         self.nodeOrder = nodeOrder
-        self.newOrderTimer = Timer(fireAt: nextTimer,
-                                   interval: StageConstants.timerInterval,
-                                   target: self,
-                                   selector: #selector((isMultiplayerEnabled ? multiplayerAddRandomOrder : addRandomOrder)),
-                                   userInfo: nil,
-                                   repeats: true)
     }
 
     func encode(to encoder: Encoder) throws {
@@ -204,6 +194,5 @@ class OrderQueue: SKSpriteNode, Codable {
         try container.encode(possibleRecipes, forKey: .possibleRecipes)
         try container.encode(recipeOrdered, forKey: .recipeOrdered)
         try container.encode(nodeOrder, forKey: .nodeOrder)
-        try container.encode(newOrderTimer.fireDate, forKey: .nextTimer)
     }
 }
