@@ -411,6 +411,7 @@ class GameDB: GameDatabase {
         gameDict.updateValue(FirebaseSystemValues.defaultFalse as AnyObject, forKey: FirebaseKeys.games_hasEnded)
         gameDict.updateValue(200 as AnyObject, forKey: FirebaseKeys.games_timeLeft)
         gameDict.updateValue(NSTimeIntervalSince1970 as AnyObject, forKey: FirebaseKeys.games_startTime)
+        gameDict.updateValue(FirebaseSystemValues.defaultNoItem as AnyObject, forKey: FirebaseKeys.games_orderQueue)
         gameDict.updateValue(FirebaseSystemValues.defaultFalse as AnyObject, forKey: FirebaseKeys.games_hasStarted)
         gameDict.updateValue(0 as AnyObject, forKey: FirebaseKeys.games_score)
         gameDict.updateValue(players as AnyObject, forKey: FirebaseKeys.games_players)

@@ -86,6 +86,11 @@ class OrderQueue: SKSpriteNode, Codable {
             return
         }
         self.addOrder(ofRecipe: randomRecipe)
+    }
+    
+    @objc
+    func multiplayerAddRandomOrder() {
+        self.addRandomOrder()
         if isMultiplayerEnabled { multiplayerUpdateSelf() }
     }
 
@@ -125,7 +130,7 @@ class OrderQueue: SKSpriteNode, Codable {
         removeMenuPrefab(inNum: matchedOrder)
 
         if recipeOrdered.count < StageConstants.maxNumbersOfOrdersShown {
-            self.addRandomOrder()
+            self.isMultiplayerEnabled ? self.multiplayerAddRandomOrder() : self.addRandomOrder()
         }
 
         return true
@@ -141,11 +146,8 @@ class OrderQueue: SKSpriteNode, Codable {
         removeMenuPrefab(inNum: matchedOrder)
 
         if recipeOrdered.count < StageConstants.minNumbersOfOrdersShown {
-            self.addRandomOrder()
-            return
+            self.isMultiplayerEnabled ? self.multiplayerAddRandomOrder() : self.addRandomOrder()
         }
-        
-        if isMultiplayerEnabled { self.multiplayerUpdateSelf() }
     }
 
     func removeMenuPrefab(inNum: Int) {
@@ -188,7 +190,7 @@ class OrderQueue: SKSpriteNode, Codable {
         self.newOrderTimer = Timer(fireAt: nextTimer,
                                    interval: StageConstants.timerInterval,
                                    target: self,
-                                   selector: #selector(addRandomOrder),
+                                   selector: #selector((isMultiplayerEnabled ? multiplayerAddRandomOrder : addRandomOrder)),
                                    userInfo: nil,
                                    repeats: true)
     }
