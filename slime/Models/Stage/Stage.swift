@@ -100,7 +100,7 @@ class Stage: SKScene {
         
         database.observeGameState(forRoom: room, onPlayerUpdate: { (player) in
             guard let currentSlime = self.allSlimesDict[player.uid] else { return }
-            
+
             currentSlime.position = CGPoint(x: player.positionX, y: player.positionY)
             currentSlime.physicsBody?.velocity = CGVector(dx: player.velocityX, dy: player.velocityY)
             currentSlime.xScale = player.xScale
@@ -121,7 +121,7 @@ class Stage: SKScene {
                 })
             }
         }, onOrderQueueChange: { (orderQueue) in
-            self.updateOrderQueue(into: orderQueue)
+//            self.updateOrderQueue(into: orderQueue)
         }, onScoreChange: { (score) in
             self.levelScore = score
             self.scoreLabel.text = "Score: \(self.levelScore)"
@@ -532,7 +532,7 @@ class Stage: SKScene {
 
     override func didSimulatePhysics() {
         self.spaceship.setAutomaticCooking()
-        self.slimeToControl?.resetMovement()
+        for (_, slime) in self.allSlimesDict { slime.resetMovement() }
         super.didSimulatePhysics()
     }
 
@@ -577,6 +577,10 @@ class Stage: SKScene {
             // multiplayer serve food
             guard let database = self.db else { return }
             guard let room = self.previousRoom else { return }
+            
+            database.updatePlayerHoldingItem(forGameId: room.id, toItem: "BUH BUH SLIME" as AnyObject, { }) { (err) in
+                print(err.localizedDescription)
+            }
 
             database.submitOrder(forGameId: room.id, withPlate: plate, { }) { (err) in
                 print(err.localizedDescription)

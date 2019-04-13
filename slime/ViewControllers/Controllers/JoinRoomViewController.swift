@@ -17,7 +17,17 @@ class JoinRoomViewController: ViewController<JoinRoomView> {
         codeInputController.configure()
         codeInputController.onComplete { _ in
             // TODO: replace with true code
-            let roomJoinId = "28280"
+            let code = try? codeInputController.inputCode.value()
+            guard let codeArr = code else { return }
+            
+            var roomJoinId = ""
+            
+            for int in codeArr {
+                roomJoinId = "\(roomJoinId)\(int)"
+            }
+            
+            print(roomJoinId)
+            
             self.showLoadingAlert(withDescription: "Teleporting slime agent...")
 
             guard let userCharacter = try? self.context.data.userCharacter?.value() else {
@@ -34,12 +44,15 @@ class JoinRoomViewController: ViewController<JoinRoomView> {
                 self.context.modal.closeAlert()
             }, {
                 // room contains 4 players already
+                self.context.modal.closeAlert()
                 self.showErrorAlert(withDescription: "Room is full!")
             }, {
                 // room does not exist
+                self.context.modal.closeAlert()
                 self.showErrorAlert(withDescription: "Room does not exist!!")
             }, {
                 // room has started game
+                self.context.modal.closeAlert()
                 self.showErrorAlert(withDescription: "This room has started the game")
             }, { (err) in
                 self.showErrorAlert(withDescription: err.localizedDescription)

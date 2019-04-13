@@ -553,7 +553,8 @@ class GameDB: GameDatabase {
                 FirebaseKeys.games_items_encodedData: FirebaseSystemValues.defaultNoItem] as [String : AnyObject]
                 
                 let newGamePlayerDict =
-                    [FirebaseKeys.games_players_isHost: player.isHost,
+                    [FirebaseKeys.games_players_uid: player.uid,
+                     FirebaseKeys.games_players_isHost: player.isHost,
                      FirebaseKeys.games_players_isReady: FirebaseSystemValues.defaultFalse,
                      FirebaseKeys.games_players_isConnected: FirebaseSystemValues.defaultFalse,
                      FirebaseKeys.games_players_positionX: pos.x,
@@ -839,7 +840,7 @@ class GameDB: GameDatabase {
                 guard let orderQueue = snap.value as? String else {
                     return
                 }
-                
+                return
                 guard let oq = self.firebaseOrderQueueFactory(forEncodedString: orderQueue) else { return }
                 
                 onOrderQueueChange(oq)
@@ -859,11 +860,11 @@ class GameDB: GameDatabase {
 
         for player in room.players {
             if player.uid == user.uid { continue }
-
+            
             let indPlayerRef = playerRef.child(player.uid)
             let playerHandle = indPlayerRef.observe(.value, with: { (snap) in
                 guard let playerDict = snap.value as? [String : AnyObject] else { return }
-
+                
                 onPlayerUpdate(self.firebaseGamePlayerModelFactory(withPlayerUid: player.uid, forDict: playerDict))
             }, withCancel: { (err) in
                 onError(err)
@@ -1461,6 +1462,7 @@ struct FirebaseKeys {
     static let games_startTime = "start_time"
     static let games_timeLeft = "time_left"
     static let games_players = "players"
+    static let games_players_uid = "uid"
     static let games_players_isHost = "is_host"
     static let games_players_isConnected = "is_connected"
     static let games_players_isReady = "is_ready"

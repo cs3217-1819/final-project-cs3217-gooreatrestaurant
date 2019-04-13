@@ -54,6 +54,7 @@ struct GamePlayerModel {
         self.color = color
         self.accessory = accessory
         self.level = level
+        self.uid = uid
     }
 }
 
