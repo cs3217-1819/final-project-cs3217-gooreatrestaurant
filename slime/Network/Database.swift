@@ -261,8 +261,24 @@ protocol GameDatabase {
     ///       occurs
     func submitOrder(forGameId id: String, withRecipe recipe: Recipe, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void)
     
+    /// adds a score to the specified game id
+    /// - Parameters:
+    ///     - by: the increment of the score to be added
+    ///     - forGameId: the game id which score needs
+    ///       to be modified
+    ///     - onComplete: the completion block after add
+    ///       score completes
+    ///     - onError: a closure run when an error occurs
     func addScore(by score: Int, forGameId id: String, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void)
     
+    /// closes a game and its respective room,
+    /// so that the id can be reused by another
+    /// user
+    /// - Parameters:
+    ///     - forGameId: the game id to be closed
+    ///     - onComplete: a closure run when closing
+    ///       the game and the room succeeds
+    ///     - onError: closure run when an error occurs
     func closeGame(forGameId id: String, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void)
 
     /// removes an order from the current list of orders
@@ -295,7 +311,16 @@ protocol GameDatabase {
     ///     - onSuccess: closure run after successful
     ///       rejoin
     ///     - onError: closure run when an error occurs
-    func rejoinGame(forGameId id: String, _ onSuccess: @escaping () -> Void, _ onError: @escaping (Error) -> Void)
+    func rejoinGame(forGameId id: String, _ onSuccess: @escaping (RoomModel) -> Void, _ onError: @escaping (Error) -> Void)
+    
+    /// user does not want to rejoin the
+    /// game
+    /// - Parameters:
+    ///     - onSuccess: a closure run when this
+    ///       process is successful
+    ///     - onError: a closure run when an
+    ///       error occurs
+    func cancelRejoinGame(_ onSuccess: @escaping () -> Void, _ onError: @escaping (Error) -> Void)
     
     /// updates own user's outfit for hats, color
     /// and accessories

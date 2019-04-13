@@ -1145,43 +1145,70 @@ class GameDB: GameDatabase {
     }
 
     func checkRejoinGame(_ onGameExist: @escaping (String) -> Void, _ onError: @escaping (Error) -> Void) {
-        guard let user = GameAuth.currentUser else {
-            return
-        }
+        guard let user = GameAuth.currentUser else { return }
 
         let ref = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.rejoins, user.uid]))
 
         ref.observeSingleEvent(of: .value, with: { (snap) in
-            guard let gameId = snap.value as? String else {
-                return
-            }
+            guard let gameId = snap.value as? String else { return }
+            
+            let gameRef = self.dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, gameId, FirebaseKeys.games_hasEnded]))
+            
+            gameRef.observeSingleEvent(of: .value, with: { (snap) in
+                guard let gameHasEnded = snap.value as? Bool else { return }
 
-            onGameExist(gameId)
+                if !gameHasEnded {
+                    onGameExist(gameId)
+                } else {
+                    ref.setValue(nil, withCompletionBlock: { (err, ref) in
+                        if let error = err {
+                            onError(error)
+                            return
+                        }
+                    })
+                }
+            }, withCancel: { (err) in
+                onError(err)
+            })
         }, withCancel: { (err) in
             onError(err)
         })
     }
+    
+    func cancelRejoinGame(_ onSuccess: @escaping () -> Void, _ onError: @escaping (Error) -> Void) {
+        guard let user = GameAuth.currentUser else { return }
+        
+        let ref = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.rejoins, user.uid]))
+        
+        ref.setValue(nil) { (err, ref) in
+            if let error = err {
+                onError(error)
+                return
+            }
+            
+            onSuccess()
+        }
+    }
 
-    func rejoinGame(forGameId id: String, _ onSuccess: @escaping () -> Void, _ onError: @escaping (Error) -> Void) {
+    func rejoinGame(forGameId id: String, _ onSuccess: @escaping (RoomModel) -> Void, _ onError: @escaping (Error) -> Void) {
         // TODO
         guard let user = GameAuth.currentUser else { return }
 
         let rejoinRef = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.rejoins, user.uid]))
-        let connectedRef = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, id, FirebaseKeys.games_players, FirebaseKeys.games_players_isConnected]))
+        let roomRef = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.rooms, id]))
 
         rejoinRef.setValue(nil) { (err, ref) in
             if let error = err {
                 onError(error)
                 return
             }
-
-            connectedRef.setValue(true, withCompletionBlock: { (err, ref) in
-                if let error = err {
-                    onError(error)
-                    return
-                }
-
-                onSuccess()
+            
+            roomRef.observeSingleEvent(of: .value, with: { (snap) in
+                guard let roomDict = snap.value as? [String : AnyObject] else { return }
+                
+                onSuccess(self.firebaseRoomModelFactory(forDict: roomDict))
+            }, withCancel: { (err) in
+                onError(err)
             })
         }
     }
@@ -1302,6 +1329,9 @@ struct Observer {
     }
 }
 
+/**
+ serializes item types in game to JSON strings
+ **/
 struct ItemSerializer {
     static func serializeItem(forItem item: AnyObject, withType type: String) -> String {
         switch (type) {

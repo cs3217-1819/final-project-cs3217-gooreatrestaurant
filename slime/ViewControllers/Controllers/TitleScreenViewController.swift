@@ -7,10 +7,13 @@
 //
 
 class TitleScreenViewController: ViewController<TitleScreenView> {
+    var activeAlert: AlertController?
+    
     override func configureSubviews() {
         setupUserInfo()
         setupButtons()
         setupAnonymousAuth()
+        checkForRejoins()
     }
 
     private func setupUserInfo() {
@@ -67,5 +70,42 @@ class TitleScreenViewController: ViewController<TitleScreenView> {
         GameAuth.signInAnonymously { (err) in
             Logger.it.error("\(err)")
         }
+    }
+    
+    private func checkForRejoins() {
+        self.context.db.checkRejoinGame({ (gameId) in
+            self.setRejoinAlert(to: "You were disconnected from an on-going game with code \(gameId). Do you want to rejoin this game?", withOkCallback: {
+                self.context.db.rejoinGame(forGameId: gameId, { (room) in
+                    // TODO: route to game
+                }, { (err) in
+                    Logger.it.error("\(err)")
+                })
+            }, withCancelCallback: {
+                self.context.db.cancelRejoinGame({ }, { (err) in
+                    Logger.it.error("\(err)")
+                })
+            })
+            self.presentActiveAlert(dismissible: false)
+        }) { (err) in
+            Logger.it.error("\(err)")
+        }
+    }
+    
+    private func presentActiveAlert(dismissible: Bool) {
+        guard let alert = self.activeAlert else { return }
+        if dismissible {
+            self.context.modal.presentUnimportantAlert(alert)
+            return
+        }
+
+        self.context.modal.presentAlert(alert)
+    }
+    
+    private func setRejoinAlert(to description: String, withOkCallback: @escaping () -> Void, withCancelCallback: @escaping () -> Void) {
+        self.activeAlert = self.context.modal.createAlert()
+            .setTitle("Warning!!")
+            .setDescription(description)
+            .addAction(AlertAction(with: "NO", callback: withCancelCallback, of: .Success))
+            .addAction(AlertAction(with: "YES PLZ", callback: withOkCallback, of: .Success))
     }
 }
