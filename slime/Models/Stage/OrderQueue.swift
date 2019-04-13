@@ -12,11 +12,7 @@ import SpriteKit
 class OrderQueue: SKSpriteNode, Codable {
     var possibleRecipes: Set<Recipe> = []
     var recipeOrdered: [Recipe] = []
-    var newOrderTimer = Timer.scheduledTimer(timeInterval: StageConstants.orderComingInterval,
-                                             target: self,
-                                             selector: #selector(addRandomOrder),
-                                             userInfo: nil,
-                                             repeats: true)
+    var newOrderTimer: Timer = Timer()
     var nodeOrder: [MenuPrefab] = []
     
     // for multiplayer
@@ -98,9 +94,16 @@ class OrderQueue: SKSpriteNode, Codable {
             return
         }
 
+        newOrderTimer = Timer.scheduledTimer(timeInterval: StageConstants.orderComingInterval,
+                                             target: self,
+                                             selector: #selector(addRandomOrder),
+                                             userInfo: nil,
+                                             repeats: true)
+
         while recipeOrdered.count < StageConstants.minNumbersOfOrdersShown {
             self.addRandomOrder()
         }
+        
         
         if isMultiplayerEnabled { multiplayerUpdateSelf() }
     }
