@@ -144,6 +144,7 @@ class OrderQueue: SKSpriteNode, Codable {
 
         if recipeOrdered.count < StageConstants.minNumbersOfOrdersShown {
             self.addRandomOrder()
+            return
         }
         
         if isMultiplayerEnabled { self.multiplayerUpdateSelf() }
