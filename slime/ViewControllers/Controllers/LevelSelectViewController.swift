@@ -13,7 +13,7 @@ class LevelSelectViewController: ViewController<LevelSelectView> {
 
     override func configureSubviews() {
         setupStoryModeView()
-        configureUpButtonAsPrevious()
+        configureUpButton(to: .PlayScreen)
     }
 
     func setupStoryModeView() {

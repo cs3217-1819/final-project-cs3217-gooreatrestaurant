@@ -33,14 +33,26 @@ class Context {
                                     to: router.currentViewController,
                                     coordsDiff: router.currentRoute.coordinates - previousRoute.coordinates)
     }
+    
+    func routeToFade(_ route: Route) {
+        let previousVC = router.currentViewController
+        router.routeTo(route)
+        mainController.performSegue(from: previousVC,
+                                    to: router.currentViewController)
+    }
 
     func routeToAndPrepareFor<Control: ViewControllerProtocol>(_ route: Route) -> Control {
         routeTo(route)
         return router.currentViewController as! Control
     }
+    
+    func routeToAndPrepareForFade<Control: ViewControllerProtocol>(_ route: Route) -> Control {
+        routeToFade(route)
+        return router.currentViewController as! Control
+    }
 
     func segueToGame() {
-        mainController.performSegue(withIdentifier: "toGame", sender: nil)
+        routeToFade(.GameScreen)
     }
     
     func segueToMultiplayerGame() {
