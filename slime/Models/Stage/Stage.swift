@@ -129,7 +129,7 @@ class Stage: SKScene {
             self.levelScore = score
             self.scoreLabel.text = "Score: \(self.levelScore)"
         }, onAllPlayersReady: {
-            // only for host, starts the game proper
+            // only for host, stay away
             self.multiplayerIndicateGameHasStarted()
         }, onGameStart: {
             self.hasStarted = true
@@ -151,8 +151,8 @@ class Stage: SKScene {
             database.removeAllObservers()
             database.removeAllDisconnectObservers()
         }, onNewOrderSubmitted: { (plate) in
-            // only for host, do not touch
-            // TODO:
+            // only for host, don't touch
+            self.multiplayerHandleServe(forPlate: plate)
         }, onComplete: {
             // joins game after attaching all
             // relevant observers, this onComplete
@@ -181,6 +181,10 @@ class Stage: SKScene {
     private func stopStreamingSelf() {
         guard let timer = self.streamingTimer else { return }
         timer.invalidate()
+    }
+    
+    private func multiplayerHandleServe(forPlate plate: Plate) {
+        
     }
     
     private func handleStationChanged(forStationId id: String, forStation station: GameStationModel) {

@@ -793,6 +793,7 @@ class GameDB: GameDatabase {
         
         if hostInRoom(room) == user.uid {
             let playerReadyRef = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, room.id, FirebaseKeys.games_players]))
+            let newOrderRef = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, room.id, FirebaseKeys.games_ordersSubmitted]))
             
             let playerReadyHandle = playerReadyRef.observe(.value, with: { (snap) in
                 guard let playerDict = snap.value as? [String : AnyObject] else {
@@ -819,7 +820,17 @@ class GameDB: GameDatabase {
                 onError(err)
             }
             
+            let newOrderHandle = newOrderRef.observe(.childAdded, with: { (snap) in
+                guard let order = snap.value as? String else { return }
+                guard let plate = self.firebasePlateFactory(forEncodedString: order) else { return }
+                
+                onNewOrderSubmitted(plate)
+            }) { (err) in
+                onError(err)
+            }
+            
             self.observers.append(Observer(withHandle: playerReadyHandle, withRef: playerReadyRef))
+            self.observers.append(Observer(withHandle: newOrderHandle, withRef: newOrderRef))
         } else {
             let orderQueueRef = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, room.id, FirebaseKeys.games_orderQueue]))
             
@@ -897,6 +908,18 @@ class GameDB: GameDatabase {
         self.observers.append(Observer(withHandle: timeLeftHandle, withRef: timeLeftRef))
         
         onComplete()
+    }
+    
+    private func firebasePlateFactory(forEncodedString string: String) -> Plate? {
+        let decoder = JSONDecoder()
+        
+        let data = string.data(using: .utf8)
+        guard let decodedData = data else { return nil }
+        let res = try? decoder.decode(Plate.self, from: decodedData)
+        
+        guard let plate = res else { return nil }
+        
+        return plate
     }
     
     private func generateStationIdList(fromMap map: String) -> [String] {
