@@ -10,7 +10,7 @@ import UIKit
 import SpriteKit
 import AVFoundation
 
-class GameViewController: UIViewController {
+class GameViewController: ViewController<UIView> {
     
     var db: GameDatabase = GameDB()
     
@@ -26,14 +26,7 @@ class GameViewController: UIViewController {
         return collection
     }()
 
-   override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        
+    override func configureSubviews() {
         let stage = Stage()
         stage.isMultiplayer = self.isMultiplayer
         stage.setupControl()
@@ -59,11 +52,6 @@ class GameViewController: UIViewController {
         //        setupCollection()
         
         stage.setupPlayers()
-        
-        Timer.scheduledTimer(withTimeInterval: 1, repeats: false, block: { _ in
-            print("going back to main")
-            self.segueToMainScreen()
-        })
     }
 
     func setupCollection() {
@@ -74,45 +62,31 @@ class GameViewController: UIViewController {
     }
 
     func segueToMainScreen() {
-        self.performSegue(withIdentifier: "toMainScreen", sender: nil)
+        let control: StageSummaryController = context.routeToAndPrepareForFade(.StageSummary)
+        control.set(exp: 80, score: 300, isMultiplayer: false)
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toMainScreen" {
-            let vc = segue.destination as! MainController
-            let stageSummaryVC: StageSummaryController = vc.prepareForInitialRoute(.StageSummary)
-            stageSummaryVC.stageScore = 88
-            stageSummaryVC.expGained = 88
-        }
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     deinit {
         print("Game VC deinit")
     }
 }
 
-extension GameViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // need to change this somehow since now there is minimum and maximum
-        return StageConstants.minNumbersOfOrdersShown
-    }
-
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyCell", for: indexPath) as! IngredientsCell
-        cell.imageView.image = UIImage(named: "Menu-Slimes_01")
-        return cell
-    }
-
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 100, height: 100)
-    }
-
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-//        return UIEdgeInsets(top: 3, left: 3, bottom: 3, right: 3)
+//class CollectionDelegate: NSObject, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        // need to change this somehow since now there is minimum and maximum
+//        return StageConstants.minNumbersOfOrdersShown
 //    }
-}
+//
+//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyCell", for: indexPath) as! IngredientsCell
+//        cell.imageView.image = UIImage(named: "Menu-Slimes_01")
+//        return cell
+//    }
+//
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        return CGSize(width: 100, height: 100)
+//    }
+//
+////    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+////        return UIEdgeInsets(top: 3, left: 3, bottom: 3, right: 3)
+////    }
+//}

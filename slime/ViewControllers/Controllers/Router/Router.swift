@@ -21,6 +21,8 @@ enum Route {
     case MultiplayerLobby
     case LoadingScreen
     case StageSummary
+    case GameScreen
+    case MultiplayerGameScreen
 
     var coordinates: CGPoint {
         switch(self) {
@@ -48,6 +50,8 @@ enum Route {
             return CGPoint(x: -1, y: 4)
         case .LoadingScreen:
             return CGPoint(x: 0, y: 10)
+        case .GameScreen, .MultiplayerGameScreen:
+            return CGPoint(x: 0, y: 11)
         }
     }
 }
@@ -97,6 +101,8 @@ class Router {
             return StageSummaryController(with: UIView.initFromNib("StageSummaryView"))
         case .LoadingScreen:
             return LoadingScreenViewController(with: UIView.initFromNib("LoadingScreenView"))
+        case .GameScreen, .MultiplayerGameScreen:
+            return GameViewController(with: UIView())
         }
     }
 

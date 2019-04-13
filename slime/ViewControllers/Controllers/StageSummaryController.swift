@@ -20,6 +20,15 @@ class StageSummaryController: ViewController<StageSummaryView> {
         gainExp()
     }
     
+    func set(exp: Int, score: Int, isMultiplayer: Bool) {
+        expGained = exp
+        stageScore = score
+        self.isMultiplayer = isMultiplayer
+        
+        setLabels()
+        gainExp()
+    }
+    
     private func gainExp() {
         context.data.gainCharacterExp(expGained)
     }

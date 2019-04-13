@@ -10,7 +10,7 @@ import Foundation
 import SpriteKit
 
 class GameOverPrefab: SKSpriteNode {
-    let controller = GameViewController()
+    let controller = GameViewController(with: UIView())
     
     override init(texture: SKTexture?, color: UIColor, size: CGSize) {
         let base = SKTexture(imageNamed: "Base")
