@@ -13,7 +13,6 @@ import Firebase
  Firebase Realtime Database
  */
 class GameDB: GameDatabase {
-
     var dbRef: DatabaseReference = Database.database().reference()
     internal var observers: [Observer] = []
     internal var disconnectObservers: [DatabaseReference] = []
@@ -671,63 +670,59 @@ class GameDB: GameDatabase {
         })
     }
 
-    func queueOrder(forGameId id: String, withRecipe recipe: Recipe, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void) {
-        let ref = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, id, FirebaseKeys.games_orders]))
-
-        guard let key = ref.childByAutoId().key else { return }
-
-        // TODO: encode recipe
-        let dict = [FirebaseKeys.games_orders_issueTime: NSTimeIntervalSince1970,
-                    FirebaseKeys.games_orders_timeLimit: 30,
-        FirebaseKeys.games_orders_encodedRecipe: "TODO: encoded recipe"] as [String : AnyObject]
-
-        ref.child(key).setValue(dict) { (err, _) in
-            if let error = err {
-                onError(error)
-                return
-            }
-
-            onComplete()
-        }
-    }
-
     func submitOrder(forGameId id: String, withRecipe recipe: Recipe, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void) {
         // encode recipe first
-        let ref = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, id, FirebaseKeys.games_orders])).queryLimited(toFirst: 1).queryEqual(toValue: recipe, childKey: FirebaseKeys.games_orders_encodedRecipe)
-
-        ref.observeSingleEvent(of: .value, with: { (snap) in
-            guard var dict = snap.value as? [String: AnyObject] else {
-                // no recipe match
-                return
-            }
-
-            guard let order = dict.popFirst() else { return }
-            
-            self.removeOrder(forGameId: id, forOrderKey: order.key, {
-                self.addScore(by: 20, forGameId: id, {
-                    onComplete()
-                }, { (err) in
-                    onError(err)
-                })
-            }, { (err) in
-                onError(err)
-            })
-        }) { (err) in
-            onError(err)
-        }
-    }
-
-    func removeOrder(forGameId id: String, forOrderKey key: String, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void) {
-        let ref = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, id, FirebaseKeys.games_orders, key]))
-
-        ref.setValue(nil) { (err, _) in
+        let ref = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, id, FirebaseKeys.games_ordersSubmitted]))
+        
+        guard let key = ref.childByAutoId().key else { return }
+        
+        guard let newOrder = self.convertRecipeToEncodedData(forRecipe: recipe) else { return }
+        
+        ref.child(key).setValue(newOrder) { (err, ref) in
             if let error = err {
                 onError(error)
                 return
             }
-
+            
             onComplete()
         }
+    }
+    
+    private func convertRecipeToEncodedData(forRecipe recipe: Recipe) -> String? {
+        let encoder = JSONEncoder()
+        
+        let data = try? encoder.encode(recipe)
+        
+        guard let encodedData = data else { return nil }
+        guard let res = String(data: encodedData, encoding: .utf8) else { return nil }
+        
+        return res
+    }
+    
+    func updateOrderQueue(forGameId id: String, withOrderQueue oq: OrderQueue, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void) {
+        let ref = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, id, FirebaseKeys.games_orderQueue]))
+        
+        guard let newOrderQueue = self.convertOrderQueueToEncodedData(forOrderQueue: oq) else { return }
+        
+        ref.setValue(newOrderQueue) { (err, ref) in
+            if let error = err {
+                onError(error)
+                return
+            }
+            
+            onComplete()
+        }
+    }
+    
+    private func convertOrderQueueToEncodedData(forOrderQueue oq: OrderQueue) -> String? {
+        let encoder = JSONEncoder()
+        
+        let data = try? encoder.encode(oq)
+        
+        guard let encodedData = data else { return nil }
+        guard let res = String(data: encodedData, encoding: .utf8) else { return nil }
+        
+        return res
     }
 
     func changeRoomMap(fromRoomId id: String, toMapId mapId: String, _ onError: @escaping (Error) -> Void) {
@@ -741,14 +736,14 @@ class GameDB: GameDatabase {
         }
     }
 
-    func observeGameState(forRoom room: RoomModel, onPlayerUpdate: @escaping (GamePlayerModel) -> Void, onStationUpdate: @escaping (String, GameStationModel) -> Void, onGameEnd: @escaping () -> Void, onOrderChange: @escaping ([GameOrderModel]) -> Void, onScoreChange: @escaping (Int) -> Void, onAllPlayersReady: @escaping () -> Void, onGameStart: @escaping () -> Void, onSelfItemChange: @escaping (ItemModel) -> Void, onTimeLeftChange: @escaping (Int) -> Void, onHostDisconnected: @escaping () -> Void, onComplete: @escaping () -> Void, onError: @escaping (Error) -> Void) {
+    func observeGameState(forRoom room: RoomModel, onPlayerUpdate: @escaping (GamePlayerModel) -> Void, onStationUpdate: @escaping (String, GameStationModel) -> Void, onGameEnd: @escaping () -> Void, onOrderQueueChange: @escaping (OrderQueue) -> Void, onScoreChange: @escaping (Int) -> Void, onAllPlayersReady: @escaping () -> Void, onGameStart: @escaping () -> Void, onSelfItemChange: @escaping (ItemModel) -> Void, onTimeLeftChange: @escaping (Int) -> Void, onHostDisconnected: @escaping () -> Void, onComplete: @escaping () -> Void, onError: @escaping (Error) -> Void) {
         guard let user = GameAuth.currentUser else {
             return
         }
         
         let roomRef = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, room.id]))
         let playerRef = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, room.id, FirebaseKeys.games_players]))
-        let orderRef = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, room.id, FirebaseKeys.games_orders]))
+        let orderQueueRef = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, room.id, FirebaseKeys.games_orderQueue]))
         let scoreRef = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, room.id, FirebaseKeys.games_score]))
         let endRef = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, room.id, FirebaseKeys.games_hasEnded]))
         let hasStartedRef = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, room.id, FirebaseKeys.games_hasStarted]))
@@ -842,20 +837,14 @@ class GameDB: GameDatabase {
             self.observers.append(Observer(withHandle: playerHandle, withRef: indPlayerRef))
         }
 
-        let orderHandle = orderRef.observe(.value, with: { (snap) in
-            guard let orders = snap.value as? [String : AnyObject] else {
+        let orderQueueHandle = orderQueueRef.observe(.value, with: { (snap) in
+            guard let orderQueue = snap.value as? String else {
                 return
             }
+            
+            guard let oq = self.firebaseOrderQueueFactory(forEncodedString: orderQueue) else { return }
 
-            var listOfOrders: [GameOrderModel] = []
-
-            for order in orders {
-                guard let orderObject = self.convertOrderDictToOrder(dict: order) else { return }
-
-                listOfOrders.append(orderObject)
-            }
-
-            onOrderChange(listOfOrders)
+            onOrderQueueChange(oq)
         }) { (err) in
             onError(err)
         }
@@ -891,7 +880,7 @@ class GameDB: GameDatabase {
         }
 
         self.observers.append(Observer(withHandle: roomHandle, withRef: roomRef))
-        self.observers.append(Observer(withHandle: orderHandle, withRef: orderRef))
+        self.observers.append(Observer(withHandle: orderQueueHandle, withRef: orderQueueRef))
         self.observers.append(Observer(withHandle: scoreHandle, withRef: scoreRef))
         self.observers.append(Observer(withHandle: endHandle, withRef: endRef))
         self.observers.append(Observer(withHandle: selfHandle, withRef: selfHoldingItemRef))
@@ -933,6 +922,18 @@ class GameDB: GameDatabase {
             print(error.localizedDescription)
             return []
         }
+    }
+    
+    private func firebaseOrderQueueFactory(forEncodedString string: String) -> OrderQueue? {
+        let decoder = JSONDecoder()
+        
+        let data = string.data(using: .utf8)
+        guard let decodedData = data else { return nil }
+        let oq = try? decoder.decode(OrderQueue.self, from: decodedData)
+        
+        guard let orderQueue = oq else { return nil }
+        
+        return orderQueue
     }
     
     private func firebaseGameStationModelFactory(forDict stationDict: [String : AnyObject]) -> GameStationModel {
@@ -1443,7 +1444,8 @@ struct FirebaseKeys {
     static let games_items_type = "type"
     static let games_items_encodedData = "encoded_data"
     //    static let games_objects = "objects"
-    static let games_orders = "orders"
+    static let games_orderQueue = "order_queue"
+    static let games_ordersSubmitted = "orders_submitted"
     static let games_orders_encodedRecipe = "encoded_recipe"
     static let games_orders_issueTime = "issue_time"
     static let games_orders_timeLimit = "time_limit"

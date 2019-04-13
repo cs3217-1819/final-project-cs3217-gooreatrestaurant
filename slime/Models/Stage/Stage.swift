@@ -119,14 +119,11 @@ class Stage: SKScene {
                     print(err.localizedDescription)
                 })
             }
-        }, onOrderChange: { (orders) in
+        }, onOrderQueueChange: { (orderQueue) in
             // the function here occurs everytime the
-            // order in the db changes
+            // orderQueue in the db changes
             // TODO: render this into the screen
             // when order changes
-            for order in orders {
-                print(order.name)
-            }
         }, onScoreChange: { (score) in
             self.levelScore = score
             self.scoreLabel.text = "Score: \(self.levelScore)"

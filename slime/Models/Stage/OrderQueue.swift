@@ -14,6 +14,8 @@ class OrderQueue: SKSpriteNode, Codable {
     var recipeOrdered: [Recipe] = []
     var newOrderTimer: Timer = Timer()
     var nodeOrder: [MenuPrefab] = []
+    
+    var isMultiplayer = false
 
     var tempNode: SKSpriteNode = SKSpriteNode.init()
 
@@ -32,10 +34,11 @@ class OrderQueue: SKSpriteNode, Codable {
 
     var scoreToIncrease = 0
 
-    init() {
+    init(isMultiplayer: Bool = false) {
         super.init(texture: nil, color: .clear, size: CGSize.zero)
         self.position = CGPoint.zero
         self.name = StageConstants.orderQueueName
+        self.isMultiplayer = isMultiplayer
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -87,12 +90,16 @@ class OrderQueue: SKSpriteNode, Codable {
         while recipeOrdered.count < StageConstants.minNumbersOfOrdersShown {
             self.addRandomOrder()
         }
-
+        
         newOrderTimer = Timer.scheduledTimer(timeInterval: StageConstants.orderComingInterval,
                                              target: self,
                                              selector: #selector(addRandomOrder),
                                              userInfo: nil,
                                              repeats: true)
+    }
+    
+    func sendEncodedSelfToDatabase() {
+        let db = GameDB()
     }
 
     // True if success, false if failed (no corresponding orders)

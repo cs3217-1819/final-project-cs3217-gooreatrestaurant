@@ -172,7 +172,7 @@ protocol GameDatabase {
     ///     - onDataChange: a closure which is fired
     ///       every time a data value changes
     ///     - onError: fired when an error happens
-    func observeGameState(forRoom room: RoomModel, onPlayerUpdate: @escaping (GamePlayerModel) -> Void, onStationUpdate: @escaping (String, GameStationModel) -> Void, onGameEnd: @escaping () -> Void, onOrderChange: @escaping ([GameOrderModel]) -> Void, onScoreChange: @escaping (Int) -> Void, onAllPlayersReady: @escaping () -> Void, onGameStart: @escaping () -> Void, onSelfItemChange: @escaping (ItemModel) -> Void, onTimeLeftChange: @escaping (Int) -> Void, onHostDisconnected: @escaping () -> Void, onComplete: @escaping () -> Void, onError: @escaping (Error) -> Void)
+    func observeGameState(forRoom room: RoomModel, onPlayerUpdate: @escaping (GamePlayerModel) -> Void, onStationUpdate: @escaping (String, GameStationModel) -> Void, onGameEnd: @escaping () -> Void, onOrderQueueChange: @escaping (OrderQueue) -> Void, onScoreChange: @escaping (Int) -> Void, onAllPlayersReady: @escaping () -> Void, onGameStart: @escaping () -> Void, onSelfItemChange: @escaping (ItemModel) -> Void, onTimeLeftChange: @escaping (Int) -> Void, onHostDisconnected: @escaping () -> Void, onComplete: @escaping () -> Void, onError: @escaping (Error) -> Void)
     
     /// updates the hasStarted flag inside the game
     /// only used by host to indicate that the game
@@ -229,11 +229,20 @@ protocol GameDatabase {
     /// usually performed by host, this should prevent
     /// race conditions
     /// - Parameters:
-    ///     - forGameId: the game if to be decremmented
+    ///     - forGameId: the game id to be decremmented
     ///     - onComplete: completion block run after decrement
     ///       is successful
     ///     - onError: error block run when an error occurs
     func decrementTimeLeft(forGameId id: String, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void)
+    
+    /// updates the current order queue
+    /// - Parameters:
+    ///     - forGameId: the game id to be updated
+    ///     - withOrderQueue: the new order queue object
+    ///     - onComplete: closure run when this method
+    ///       is complete
+    ///     - onError: closure run when error occurs
+    func updateOrderQueue(forGameId id: String, withOrderQueue oq: OrderQueue, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void)
 
     /// adds an order to the end of the current list
     /// of orders
@@ -245,7 +254,7 @@ protocol GameDatabase {
     ///       method has completed
     ///     - onError: a closure run when this method
     ///       throws an error
-    func queueOrder(forGameId id: String, withRecipe recipe: Recipe, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void)
+//    func queueOrder(forGameId id: String, withRecipe recipe: Recipe, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void)
 
     /// submits an order to be compared with the list of
     /// available orders, returning the earliest possible
@@ -290,7 +299,7 @@ protocol GameDatabase {
     ///     - onComplete: completion block after successful
     ///       removal
     ///     - onError: a closure run when an error occurs
-    func removeOrder(forGameId id: String, forOrderKey key: String, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void)
+//    func removeOrder(forGameId id: String, forOrderKey key: String, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void)
 
     // MARK: Other methods
 
