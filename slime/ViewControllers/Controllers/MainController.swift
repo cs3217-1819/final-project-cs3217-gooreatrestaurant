@@ -36,6 +36,7 @@ class MainController: UIViewController {
     override func viewWillLayoutSubviews() {
         if !isSetup {
             setupView()
+            bgControl = ScrollingBackgroundViewController(with: underlyingView)
             bgControl?.configure()
             isSetup = true
         }
@@ -45,7 +46,6 @@ class MainController: UIViewController {
         super.viewDidLoad()
 
         setBGM()
-        bgControl = ScrollingBackgroundViewController(with: underlyingView)
         setupHideKeyboardOnTap()
     }
 

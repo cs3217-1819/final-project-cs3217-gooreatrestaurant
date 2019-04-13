@@ -19,7 +19,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gCy-yL-Fpa" customClass="DesignableView" customModule="slime" customModuleProvider="target">
                     <rect key="frame" x="80" y="-16" width="652" height="247"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tut-cutapple-step-1" translatesAutoresizingMaskIntoConstraints="NO" id="8fv-b2-tTC">
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tut-cutapple-step-1" translatesAutoresizingMaskIntoConstraints="NO" id="8fv-b2-tTC">
                             <rect key="frame" x="16" y="16" width="620" height="215"/>
                         </imageView>
                     </subviews>
@@ -39,7 +39,7 @@
                     <rect key="frame" x="80" y="263" width="652" height="128"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Step 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zdq-th-hdz" customClass="TextLabel" customModule="slime" customModuleProvider="target">
-                            <rect key="frame" x="304.5" y="15" width="43.5" height="21"/>
+                            <rect key="frame" x="302.5" y="15" width="47.5" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -49,7 +49,7 @@
                             </userDefinedRuntimeAttributes>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Jp-Cj-plZ" customClass="TextLabel" customModule="slime" customModuleProvider="target">
-                            <rect key="frame" x="16" y="52" width="620" height="21.5"/>
+                            <rect key="frame" x="16" y="52" width="620" height="20.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
