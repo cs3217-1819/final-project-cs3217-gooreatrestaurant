@@ -353,7 +353,7 @@ class Stage: SKScene {
 
     lazy var backButton: BDButton = {
         var button = BDButton(imageNamed: "BackButton", buttonAction: {
-            self.controller.segueToMainScreen()
+            self.controller.segueToMainScreen(isMultiplayer: self.isMultiplayer)
         })
         button.setScale(0.1)
         button.isEnabled = true
@@ -626,6 +626,8 @@ class Stage: SKScene {
 
     func gameOver(ifWon: Bool) {
         let gameOverPrefab = GameOverPrefab(color: .clear, size: StageConstants.gameOverPrefabSize)
+        if self.isMultiplayer { gameOverPrefab.setToMultiplayer() }
+        gameOverPrefab.initializeButtons()
         gameOverPrefab.setScore(inScore: levelScore)
         gameOverPrefab.controller = self.controller
         self.sceneCam?.addChild(gameOverPrefab)

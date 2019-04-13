@@ -66,9 +66,9 @@ class GameViewController: ViewController<UIView> {
         newCollection.widthAnchor.constraint(equalToConstant: 225).isActive = true
     }
 
-    func segueToMainScreen() {
+    func segueToMainScreen(isMultiplayer: Bool) {
         let control: StageSummaryController = context.routeToAndPrepareForFade(.StageSummary)
-        control.set(exp: 80, score: 300, isMultiplayer: false)
+        control.set(exp: 80, score: 300, isMultiplayer: isMultiplayer)
     }
     deinit {
         print("Game VC deinit")

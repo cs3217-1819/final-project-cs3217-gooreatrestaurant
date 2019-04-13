@@ -11,11 +11,14 @@ import SpriteKit
 
 class GameOverPrefab: SKSpriteNode {
     var controller = GameViewController(with: UIView())
+    var isMultiplayer: Bool = false
+    var baseNode: SKSpriteNode?
     
     override init(texture: SKTexture?, color: UIColor, size: CGSize) {
         let base = SKTexture(imageNamed: "Base")
         base.filteringMode = .nearest
         let baseNode = SKSpriteNode(texture: base)
+        self.baseNode = baseNode
         baseNode.size = size
         baseNode.zPosition = 10
 
@@ -33,17 +36,24 @@ class GameOverPrefab: SKSpriteNode {
         blackBG.zPosition = 5
 
         baseNode.addChild(slime)
-        baseNode.addChild(titleLabel)
-        baseNode.addChild(scoreLabel)
-        baseNode.addChild(replayButton)
-        baseNode.addChild(exitButton)
         self.addChild(blackBG)
-
-        self.addChild(baseNode)
     }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func initializeButtons() {
+        guard let baseNode = self.baseNode else { return }
+        baseNode.addChild(titleLabel)
+        baseNode.addChild(scoreLabel)
+        if let replay = replayButton { baseNode.addChild(replay) }
+        baseNode.addChild(exitButton)
+        self.addChild(baseNode)
+    }
+    
+    func setToMultiplayer() {
+        self.isMultiplayer = true
     }
 
     lazy var titleLabel: SKLabelNode = {
@@ -69,7 +79,8 @@ class GameOverPrefab: SKSpriteNode {
         return label
     }()
 
-    lazy var replayButton: BDButton = {
+    lazy var replayButton: BDButton? = {
+        if isMultiplayer { return nil }
         var button = BDButton(imageNamed: "ReplayButton", buttonAction: {
             self.controller.setupScene()
         })
@@ -82,11 +93,11 @@ class GameOverPrefab: SKSpriteNode {
 
     lazy var exitButton: BDButton = {
         var button = BDButton(imageNamed: "ExitButton", buttonAction: {
-            self.controller.segueToMainScreen()
+            self.controller.segueToMainScreen(isMultiplayer: self.isMultiplayer)
         })
         button.setScale(0.35)
         button.isEnabled = true
-        button.position = CGPoint(x: 80, y: -130)
+        button.position = CGPoint(x: (isMultiplayer ? 0 : 80), y: -130)
         button.zPosition = StageConstants.buttonZPos
         return button
     }()
