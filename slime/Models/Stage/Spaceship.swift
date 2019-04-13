@@ -25,7 +25,6 @@ class Spaceship: SKSpriteNode {
         spaceshipBody.filteringMode = .nearest // shorter form for SKTextureFilteringMode.Nearest
         let room = SKSpriteNode(texture: spaceshipBody)
         room.position = CGPoint(x: 0, y: 0)
-//        room.setScale(0.8)
         room.size = StageConstants.gameAreaSize
         room.zPosition = 1
         room.name = StageConstants.roomName
