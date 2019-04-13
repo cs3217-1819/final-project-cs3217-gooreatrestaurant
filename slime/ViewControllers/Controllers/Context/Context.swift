@@ -50,6 +50,17 @@ class Context {
         routeToFade(route)
         return router.currentViewController as! Control
     }
+    
+    func routeToAndPrepareFor<Control: ViewControllerProtocol>(_ route: Route, callback: (Control) -> ()) {
+        let previousRoute = router.currentRoute
+        let previousVC = router.currentViewController
+        router.routeTo(route)
+        callback(router.currentViewController as! Control)
+        mainController.performSegue(from: previousVC,
+                                    to: router.currentViewController,
+                                    coordsDiff: router.currentRoute.coordinates - previousRoute.coordinates)
+        
+    }
 
     func segueToGame() {
         routeToFade(.GameScreen)
