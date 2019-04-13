@@ -629,7 +629,6 @@ class Stage: SKScene {
         gameOverPrefab.setScore(inScore: levelScore)
         gameOverPrefab.controller = self.controller
         self.sceneCam?.addChild(gameOverPrefab)
-        print("gameOver!")
     }
     
     func showReadyFlag() {

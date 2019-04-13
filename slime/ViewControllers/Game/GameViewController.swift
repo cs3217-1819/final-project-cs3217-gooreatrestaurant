@@ -32,7 +32,11 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
+
+        setupScene()
+    }
+
+    func setupScene() {
         let stage = Stage()
         stage.isMultiplayer = self.isMultiplayer
         stage.setupControl()
@@ -48,7 +52,7 @@ class GameViewController: UIViewController {
         // TODO: multiplayer stuff, add all the players to stage, then the setupPlayers() will map the slime to player
         if isMultiplayer { if let room = self.previousRoom { stage.setupMultiplayer(forRoom: room) }}
         if !isMultiplayer { stage.setupSinglePlayer() }
-        
+
         stage.generateLevel(inLevel: "Level1")
 
         //        newCollection.delegate = self
@@ -56,7 +60,7 @@ class GameViewController: UIViewController {
         //        newCollection.register(IngredientsCell.self, forCellWithReuseIdentifier: "MyCell")
         //        view.addSubview(newCollection)
         //        setupCollection()
-        
+
         stage.setupPlayers()
     }
 

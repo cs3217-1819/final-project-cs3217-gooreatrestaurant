@@ -71,7 +71,7 @@ class GameOverPrefab: SKSpriteNode {
 
     lazy var replayButton: BDButton = {
         var button = BDButton(imageNamed: "ReplayButton", buttonAction: {
-            print("REPLAY GAME")
+            self.controller.setupScene()
         })
         button.setScale(0.35)
         button.isEnabled = true
@@ -82,7 +82,6 @@ class GameOverPrefab: SKSpriteNode {
 
     lazy var exitButton: BDButton = {
         var button = BDButton(imageNamed: "ExitButton", buttonAction: {
-            print("EXIT GAME")
             self.controller.segueToMainScreen()
         })
         button.setScale(0.35)
