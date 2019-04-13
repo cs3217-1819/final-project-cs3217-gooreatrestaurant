@@ -123,7 +123,6 @@ class Stage: SKScene {
             if self.isUserHost { self.startCounter() }
             // TODO: do setup when game has started, add stuff whenever necessary
         }, onSelfItemChange: { (item) in
-            print("gawa")
             self.handleSelfItemChange(forItem: item)
         }, onTimeLeftChange: { (timeLeft) in
             self.countdownLabel.text = "Time: \(timeLeft)"
