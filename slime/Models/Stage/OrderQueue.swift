@@ -30,6 +30,8 @@ class OrderQueue: SKSpriteNode, Codable {
                         CGPoint(x: ScreenSize.width * 0.5 - 90,
                                 y: ScreenSize.height * 0.5 - 200)]
 
+    var scoreToIncrease = 0
+
     init() {
         super.init(texture: nil, color: .clear, size: CGSize.zero)
         self.position = CGPoint.zero
@@ -129,11 +131,18 @@ class OrderQueue: SKSpriteNode, Codable {
         //remove the node image and the list
         nodeOrder[inNum].removeFromParent()
         nodeOrder.remove(at: inNum)
+        
+        self.scoreToIncrease = calculateScore(timeLeft: nodeOrder[inNum].time)
 
         //update positionings
         for i in 1...nodeOrder.count {
             nodeOrder[i-1].position = positionings[i-1]
         }
+    }
+
+    func calculateScore(timeLeft: CGFloat) -> Int {
+        let score = Int(timeLeft / StageConstants.defaultTimeLimitOrder * 100)
+        return score
     }
 
     enum CodingKeys: String, CodingKey {

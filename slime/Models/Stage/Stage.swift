@@ -557,7 +557,7 @@ class Stage: SKScene {
                 return
             }
             
-            levelScore += 20 // TODO: put score in constants
+            levelScore += orderQueue.scoreToIncrease 
             scoreLabel.text = "Score: \(levelScore)"
         } else {
             // multiplayer serve food
