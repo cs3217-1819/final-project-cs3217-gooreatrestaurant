@@ -35,6 +35,8 @@ class Stage: SKScene {
     //Camera
     var sceneCam: SKCameraNode?
 
+    var controller = GameViewController()
+
     override init(size: CGSize = CGSize(width: StageConstants.maxXAxisUnits, height: StageConstants.maxYAxisUnits)) {
         spaceship = Spaceship(inPosition: StageConstants.spaceshipPosition, withSize: StageConstants.spaceshipSize)
         super.init(size: size)
@@ -625,6 +627,7 @@ class Stage: SKScene {
     func gameOver(ifWon: Bool) {
         let gameOverPrefab = GameOverPrefab(color: .clear, size: StageConstants.gameOverPrefabSize)
         gameOverPrefab.setScore(inScore: levelScore)
+        gameOverPrefab.controller = self.controller
         self.sceneCam?.addChild(gameOverPrefab)
         print("gameOver!")
     }

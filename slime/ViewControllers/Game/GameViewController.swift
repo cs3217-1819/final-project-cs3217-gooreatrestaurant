@@ -11,7 +11,6 @@ import SpriteKit
 import AVFoundation
 
 class GameViewController: UIViewController {
-    
     var db: GameDatabase = GameDB()
     
     // multiplayer stuff
@@ -37,6 +36,7 @@ class GameViewController: UIViewController {
         let stage = Stage()
         stage.isMultiplayer = self.isMultiplayer
         stage.setupControl()
+        stage.controller = self
         let skview = SKView(frame: CGRect(x: 0.0, y: 0.0, width: ScreenSize.width, height: ScreenSize.height))
         skview.presentScene(stage)
         skview.showsPhysics = true
