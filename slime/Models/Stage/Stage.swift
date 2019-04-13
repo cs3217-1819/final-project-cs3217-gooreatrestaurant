@@ -353,7 +353,7 @@ class Stage: SKScene {
 
     lazy var backButton: BDButton = {
         var button = BDButton(imageNamed: "BackButton", buttonAction: {
-            print("AAAA")
+            self.controller.segueToMainScreen()
         })
         button.setScale(0.1)
         button.isEnabled = true
@@ -364,7 +364,7 @@ class Stage: SKScene {
 
     var counter = 0
     var counterTime = Timer()
-    var counterStartTime = 1
+    var counterStartTime = 200
     var isGameOver = false
 
     lazy var countdownLabel: SKLabelNode = {
