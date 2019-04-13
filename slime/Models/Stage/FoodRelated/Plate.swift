@@ -13,12 +13,12 @@ class Plate: SKSpriteNode, Codable {
     var food = Food()
     var listOfIngredients: [Ingredient] = []
 
-    let positionings = [CGPoint(x: -15, y: 10),
-                        CGPoint(x: 0, y: 10),
-                        CGPoint(x: 15, y: 10),
-                        CGPoint(x: -15, y: 25),
-                        CGPoint(x: 0, y: 25),
-                        CGPoint(x: 15, y: 25)]
+    let positionings = [CGPoint(x: -30, y: 20),
+                        CGPoint(x: 0, y: 20),
+                        CGPoint(x: 30, y: 20),
+                        CGPoint(x: -30, y: 50),
+                        CGPoint(x: 0, y: 50),
+                        CGPoint(x: 30 , y: 50)]
 
     init(inPosition position: CGPoint, withSize size: CGSize = StageConstants.plateSize) {
         let plate = SKTexture(imageNamed: "Plate")
@@ -75,7 +75,7 @@ class Plate: SKSpriteNode, Codable {
         texture = ingredientsAtlas.textureNamed(inIngredient.type.rawValue)
 
         let ingredient = SKSpriteNode(texture: texture)
-        ingredient.size = CGSize(width: 15, height: 15)
+        ingredient.size = CGSize(width: 30, height: 30)
 
         //repositioning
         if (listOfIngredients.count <= 6) {
