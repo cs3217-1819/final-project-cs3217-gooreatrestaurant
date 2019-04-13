@@ -10,15 +10,15 @@ import UIKit
 import SpriteKit
 
 class Plate: SKSpriteNode, Codable {
-    var food = Food()
-    var listOfIngredients: [Ingredient] = []
+    private(set) var food = Food()
+    private(set) var listOfIngredients: [Ingredient] = []
 
-    let positionings = [CGPoint(x: -15, y: 10),
-                        CGPoint(x: 0, y: 10),
-                        CGPoint(x: 15, y: 10),
-                        CGPoint(x: -15, y: 25),
-                        CGPoint(x: 0, y: 25),
-                        CGPoint(x: 15, y: 25)]
+    private let positionings = [CGPoint(x: -15, y: 10),
+                                CGPoint(x: 0, y: 10),
+                                CGPoint(x: 15, y: 10),
+                                CGPoint(x: -15, y: 25),
+                                CGPoint(x: 0, y: 25),
+                                CGPoint(x: 15, y: 25)]
 
     init(inPosition position: CGPoint, withSize size: CGSize = StageConstants.plateSize) {
         let plate = SKTexture(imageNamed: "Plate")
