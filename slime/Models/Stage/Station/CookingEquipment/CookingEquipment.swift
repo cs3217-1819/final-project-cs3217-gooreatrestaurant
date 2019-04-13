@@ -84,7 +84,7 @@ class CookingEquipment: Station {
                 return nil
             }
 
-            plate.food.addIngredients(toAdd)
+            plate.addIngredients(toAdd)
             return plate
         }
         return nil
