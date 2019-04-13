@@ -31,6 +31,7 @@ class GameViewController: ViewController<UIView> {
     }
     
     func setupScene() {
+        self.context.modal.closeAlert()
         let stage = Stage()
         stage.isMultiplayer = self.isMultiplayer
         stage.setupControl()

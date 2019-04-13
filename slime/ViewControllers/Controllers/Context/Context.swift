@@ -66,20 +66,10 @@ class Context {
         routeToFade(.GameScreen)
     }
     
-    func segueToMultiplayerGame(rejoin: Bool) {
-        let gameRoom: RoomModel?
-        
-        if rejoin {
-            gameRoom = nil
-        } else {
-            guard let multiplayerLobby = router.currentViewController as? MultiplayerLobbyViewController else { return }
-            gameRoom = multiplayerLobby.currentRoom
-        }
-        
+    func segueToMultiplayerGame(forRoom room: RoomModel) {
         routeToAndPrepareFor(.GameScreen) { (controller) in
             guard let vc = controller as? GameViewController else { return }
             vc.isMultiplayer = true
-            guard let room = gameRoom else { return }
             vc.previousRoom = room
         }
     }

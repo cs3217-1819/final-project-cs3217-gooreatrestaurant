@@ -62,14 +62,15 @@ class MultiplayerLobbyViewController: ViewController<MultiplayerLobbyView> {
             self.setupRoomDetails(forRoom: room)
 
             if room.gameIsCreated {
+                self.context.modal.closeAlert()
                 self.setLoadingAlert(withDescription: "Pumping slimes into spaceship...")
                 self.presentActiveAlert(dismissible: false)
 
                 self.context.db.removeAllObservers()
                 self.context.db.removeAllDisconnectObservers()
 
-                // TODO: route to game room
-                self.context.segueToMultiplayerGame(rejoin: false)
+                self.context.segueToMultiplayerGame(forRoom: room)
+                
                 return
             }
 

@@ -76,7 +76,9 @@ class TitleScreenViewController: ViewController<TitleScreenView> {
         self.context.db.checkRejoinGame({ (gameId) in
             self.setRejoinAlert(to: "You were disconnected from an on-going game with code \(gameId). Do you want to rejoin this game?", withOkCallback: {
                 self.context.db.rejoinGame(forGameId: gameId, { (room) in
-                    // TODO: route to game
+                    self.setLoadingAlert(withDescription: "Teleporting slime agent...")
+                    self.presentActiveAlert(dismissible: false)
+                    self.context.segueToMultiplayerGame(forRoom: room)
                 }, { (err) in
                     Logger.it.error("\(err)")
                 })
@@ -107,5 +109,11 @@ class TitleScreenViewController: ViewController<TitleScreenView> {
             .setDescription(description)
             .addAction(AlertAction(with: "NO", callback: withCancelCallback, of: .Success))
             .addAction(AlertAction(with: "YES PLZ", callback: withOkCallback, of: .Success))
+    }
+    
+    private func setLoadingAlert(withDescription description: String) {
+        self.activeAlert = self.context.modal.createAlert()
+            .setTitle("Loading...")
+            .setDescription(description)
     }
 }

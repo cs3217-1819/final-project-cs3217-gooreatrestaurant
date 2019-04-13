@@ -104,6 +104,7 @@ class Stage: SKScene {
             currentSlime.position = CGPoint(x: player.positionX, y: player.positionY)
             currentSlime.physicsBody?.velocity = CGVector(dx: player.velocityX, dy: player.velocityY)
             currentSlime.xScale = player.xScale
+            self.handleSlimeItemChange(forSlime: currentSlime, forItem: player.holdingItem)
         }, onStationUpdate: { (id, station) in
             self.handleStationChanged(forStationId: id, forStation: station)
         }, onGameEnd: {
@@ -137,7 +138,8 @@ class Stage: SKScene {
             if self.isUserHost { self.startCounter() }
             // TODO: do setup when game has started, add stuff whenever necessary
         }, onSelfItemChange: { (item) in
-            self.handleSelfItemChange(forItem: item)
+            guard let slime = self.slimeToControl else { return }
+            self.handleSlimeItemChange(forSlime: slime, forItem: item)
         }, onTimeLeftChange: { (timeLeft) in
             self.countdownLabel.text = "Time: \(timeLeft)"
             if self.isUserHost && self.isMultiplayerTimeUp(forTime: timeLeft) { self.endMultiplayerGame() }
@@ -221,9 +223,7 @@ class Stage: SKScene {
         return item
     }
     
-    private func handleSelfItemChange(forItem item: ItemModel) {
-        guard let slime = self.slimeToControl else { return }
-        
+    private func handleSlimeItemChange(forSlime slime: Slime, forItem item: ItemModel) {
         if item.type == FirebaseSystemValues.ItemTypes.none.rawValue {
             slime.removeItem()
         } else if item.type == FirebaseSystemValues.ItemTypes.plate.rawValue {
@@ -571,9 +571,7 @@ class Stage: SKScene {
             database.submitOrder(forGameId: room.id, withPlate: plate, { }) { (err) in
                 print(err.localizedDescription)
             }
-            
         }
-        
     }
 
     func startCounter() {
