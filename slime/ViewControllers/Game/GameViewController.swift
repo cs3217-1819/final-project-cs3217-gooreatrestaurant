@@ -27,6 +27,10 @@ class GameViewController: ViewController<UIView> {
     }()
 
     override func configureSubviews() {
+        setupScene()
+    }
+    
+    func setupScene() {
         let stage = Stage()
         stage.isMultiplayer = self.isMultiplayer
         stage.setupControl()

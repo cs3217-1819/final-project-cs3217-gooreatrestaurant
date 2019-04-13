@@ -35,7 +35,7 @@ class Stage: SKScene {
     //Camera
     var sceneCam: SKCameraNode?
 
-    var controller = GameViewController()
+    var controller = GameViewController(with: UIView())
 
     override init(size: CGSize = CGSize(width: StageConstants.maxXAxisUnits, height: StageConstants.maxYAxisUnits)) {
         spaceship = Spaceship(inPosition: StageConstants.spaceshipPosition, withSize: StageConstants.spaceshipSize)
