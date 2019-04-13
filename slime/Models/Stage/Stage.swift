@@ -32,21 +32,35 @@ class Stage: SKScene {
     //Level score
     var levelScore: Int = 0
 
+    //Camera
+    var sceneCam: SKCameraNode?
+
     override init(size: CGSize = CGSize(width: StageConstants.maxXAxisUnits, height: StageConstants.maxYAxisUnits)) {
         spaceship = Spaceship(inPosition: StageConstants.spaceshipPosition, withSize: StageConstants.spaceshipSize)
         super.init(size: size)
 
-        let order = OrderQueue()
-        self.addChild(order)
+        sceneCam = SKCameraNode()
+        self.camera = sceneCam
+        self.addChild(sceneCam!)
 
         let background = SKSpriteNode(imageNamed: "background-1")
         background.position = StageConstants.spaceshipPosition
         anchorPoint = CGPoint(x: 0.5, y: 0.5)
         background.size = size
-        background.scaleTo(screenWidthPercentage: 1.0)
+        background.scaleTo(screenWidthPercentage: 2.0)
         background.zPosition = StageConstants.backgroundZPos
         self.addChild(background)
         self.addChild(spaceship)
+
+        let order = OrderQueue()
+        self.sceneCam?.addChild(order)
+    }
+
+    override func update(_ currentTime: TimeInterval) {
+        super.update(currentTime)
+        if let camera = sceneCam {
+            camera.position = (self.slimeToControl?.position)!
+        }
     }
     
     func joinGame(forRoom room: RoomModel) {
@@ -374,12 +388,12 @@ class Stage: SKScene {
     }()
 
     func setupControl() {
-        self.addChild(jumpButton)
-        self.addChild(interactButton)
-        self.addChild(backButton)
-        self.addChild(analogJoystick)
-        self.addChild(countdownLabel)
-        self.addChild(scoreLabel)
+        self.sceneCam?.addChild(jumpButton)
+        self.sceneCam?.addChild(interactButton)
+        self.sceneCam?.addChild(backButton)
+        self.sceneCam?.addChild(analogJoystick)
+        self.sceneCam?.addChild(countdownLabel)
+        self.sceneCam?.addChild(scoreLabel)
 
         if !isMultiplayer {
             counter = counterStartTime
@@ -435,7 +449,7 @@ class Stage: SKScene {
 
     func initializeOrders(withData data: [RecipeData]) {
         if !isMultiplayer {
-            guard let orderQueue = self.childNode(withName: StageConstants.orderQueueName) as? OrderQueue else {
+            guard let orderQueue = self.sceneCam?.childNode(withName: StageConstants.orderQueueName) as? OrderQueue else {
                 return
             }
             
@@ -529,7 +543,7 @@ class Stage: SKScene {
         if !isMultiplayer {
             let foodToServe = plate.food
             
-            guard let orderQueue = self.childNode(withName: StageConstants.orderQueueName) as? OrderQueue else {
+            guard let orderQueue = self.sceneCam?.childNode(withName: StageConstants.orderQueueName) as? OrderQueue else {
                 print("error")
                 return
             }
@@ -607,34 +621,13 @@ class Stage: SKScene {
     }
 
     func gameOver(ifWon: Bool) {
-        let temp = GameOverPrefab(color: .clear, size: StageConstants.gameOverPrefabSize)
-        temp.setScore(inScore: levelScore)
-        self.addChild(temp)
+        let gameOverPrefab = GameOverPrefab(color: .clear, size: StageConstants.gameOverPrefabSize)
+        gameOverPrefab.setScore(inScore: levelScore)
+        self.sceneCam?.addChild(gameOverPrefab)
         print("gameOver!")
     }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("initiation using storyboard is not implemented yet.")
-    }
-
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        let touch = touches.first!
-        let location = touch.location(in: self)
-        if (location.x < -150 && location.y < 80) {
-            analogJoystick.position = location
-            analogJoystick.touchesBegan(touches, with: event)
-        }
-    }
-
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        analogJoystick.touchesMoved(touches, with: event)
-    }
-
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        analogJoystick.touchesEnded(touches, with: event)
-    }
-
-    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        analogJoystick.touchesEnded(touches, with: event)
     }
 }

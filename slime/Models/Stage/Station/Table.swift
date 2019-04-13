@@ -60,6 +60,7 @@ class Table: Station {
             }
 
             plate.food.addIngredients(ingredient)
+            plate.addIngredientImage(inIngredient: ingredient)
             return nil
 
         } else if willTakeIngredientToPlate {
@@ -74,6 +75,7 @@ class Table: Station {
 
             ingredient.removeFromParent()
             plate.food.addIngredients(ingredient)
+            plate.addIngredientImage(inIngredient: ingredient)
             return plate
         }
 

@@ -18,7 +18,7 @@ class Ladder: SKSpriteNode {
         self.position = position
         self.zPosition = StageConstants.ladderZPos
 
-        self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 10, height: 45))
+        self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 20, height: 90))
         self.physicsBody?.categoryBitMask = StageConstants.ladderCategory
         self.physicsBody?.isDynamic = false
     }

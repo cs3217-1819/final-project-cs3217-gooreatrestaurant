@@ -17,7 +17,7 @@ class Oven: CookingEquipment {
                    withSize: size,
                    canProcessIngredients: [.apple, .dough])
         self.texture = SKTexture(imageNamed: "Oven")
-        self.size = CGSize(width: 50, height: 50)
+        self.size = CGSize(width: 100, height: 100)
     }
 
     required init?(coder aDecoder: NSCoder) {
