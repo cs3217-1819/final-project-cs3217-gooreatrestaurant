@@ -121,10 +121,7 @@ class Stage: SKScene {
                 })
             }
         }, onOrderQueueChange: { (orderQueue) in
-            // the function here occurs everytime the
-            // orderQueue in the db changes
-            // TODO: render this into the screen
-            // when order changes
+            self.updateOrderQueue(into: orderQueue)
         }, onScoreChange: { (score) in
             self.levelScore = score
             self.scoreLabel.text = "Score: \(self.levelScore)"
@@ -146,7 +143,7 @@ class Stage: SKScene {
         }, onHostDisconnected: {
             self.gameHasEnded = true
             self.stopStreamingSelf()
-            self.gameOver(ifWon: false)
+            self.gameOver(ifWon: false, withMessage: "HOST EXPLODED")
             guard let database = self.db else { return }
             database.removeAllObservers()
             database.removeAllDisconnectObservers()
@@ -181,10 +178,6 @@ class Stage: SKScene {
     private func stopStreamingSelf() {
         guard let timer = self.streamingTimer else { return }
         timer.invalidate()
-    }
-    
-    private func multiplayerHandleServe(forPlate plate: Plate) {
-        
     }
     
     private func handleStationChanged(forStationId id: String, forStation station: GameStationModel) {
@@ -456,50 +449,52 @@ class Stage: SKScene {
     }
 
     func initializeOrders(withData data: [RecipeData]) {
-        if !isMultiplayer {
-            guard let orderQueue = self.sceneCam?.childNode(withName: StageConstants.orderQueueName) as? OrderQueue else {
-                return
-            }
-            
-            for datum in data {
-                var recipeName: String = ""
-                var compulsoryIngredients: [Ingredient] = []
-                var optionalIngredients: [(item: Ingredient, probability: Double)] = []
-                
-                for name in datum["recipeName"] ?? [] {
-                    recipeName = (name.first?.value)!
-                }
-                
-                for ingredientRequirement in datum["compulsoryIngredients"] ?? [] {
-                    guard let ingredient = getIngredient(fromDictionaryData: ingredientRequirement) else {
-                        continue
-                    }
-                    compulsoryIngredients.append(ingredient)
-                }
-                
-                for ingredientRequirement in datum["optionalIngredients"] ?? [] {
-                    guard let ingredient = getIngredient(fromDictionaryData: ingredientRequirement) else {
-                        continue
-                    }
-                    
-                    guard let probabilityString = ingredientRequirement["probability"] else {
-                        continue
-                    }
-                    
-                    guard let probability = Double(probabilityString) else {
-                        continue
-                    }
-                    
-                    optionalIngredients.append((item: ingredient, probability: probability))
-                }
-                let recipe = Recipe(inRecipeName: recipeName, withCompulsoryIngredients: compulsoryIngredients,
-                                    withOptionalIngredients: optionalIngredients)
-                orderQueue.addPossibleRecipe(recipe)
-            }
-            orderQueue.initialize()
-        } else {
-            
+        if isMultiplayer && !isUserHost { return }
+
+        guard let orderQueue = self.sceneCam?.childNode(withName: StageConstants.orderQueueName) as? OrderQueue else {
+            return
         }
+        
+        if isMultiplayer {
+            if let id = self.previousRoom?.id { orderQueue.setMultiplayer(withGameId: id) }
+        }
+        
+        for datum in data {
+            var recipeName: String = ""
+            var compulsoryIngredients: [Ingredient] = []
+            var optionalIngredients: [(item: Ingredient, probability: Double)] = []
+            
+            for name in datum["recipeName"] ?? [] {
+                recipeName = (name.first?.value)!
+            }
+            
+            for ingredientRequirement in datum["compulsoryIngredients"] ?? [] {
+                guard let ingredient = getIngredient(fromDictionaryData: ingredientRequirement) else {
+                    continue
+                }
+                compulsoryIngredients.append(ingredient)
+            }
+            
+            for ingredientRequirement in datum["optionalIngredients"] ?? [] {
+                guard let ingredient = getIngredient(fromDictionaryData: ingredientRequirement) else {
+                    continue
+                }
+                
+                guard let probabilityString = ingredientRequirement["probability"] else {
+                    continue
+                }
+                
+                guard let probability = Double(probabilityString) else {
+                    continue
+                }
+                
+                optionalIngredients.append((item: ingredient, probability: probability))
+            }
+            let recipe = Recipe(inRecipeName: recipeName, withCompulsoryIngredients: compulsoryIngredients,
+                                withOptionalIngredients: optionalIngredients)
+            orderQueue.addPossibleRecipe(recipe)
+        }
+        orderQueue.initialize()
     }
 
     // For multiplayer (future use)
@@ -547,8 +542,19 @@ class Stage: SKScene {
         return self.allSlimesDict[user.uid]
     }
     
-    func handleMultiplayerServe() {
+    private func multiplayerHandleServe(forPlate plate: Plate) {
+        let food = plate.food
         
+        guard let orderQueue = self.sceneCam?.childNode(withName: StageConstants.orderQueueName) as? OrderQueue else { return }
+        
+        guard orderQueue.completeOrder(withFood: food) == true else { return }
+        
+        // success
+        guard let database = self.db else { return }
+        guard let room = self.previousRoom else { return }
+        database.addScore(by: 20, forGameId: room.id, { }) { (err) in
+            print(err.localizedDescription)
+        }
     }
 
     func serve(_ plate: Plate) {
@@ -620,6 +626,7 @@ class Stage: SKScene {
     }
     
     private func endMultiplayerGame() {
+        counterTime.invalidate()
         guard let database = self.db else { return }
         guard let room = self.previousRoom else { return }
         
@@ -628,12 +635,13 @@ class Stage: SKScene {
         }
     }
 
-    func gameOver(ifWon: Bool) {
+    func gameOver(ifWon: Bool, withMessage: String? = nil) {
         let gameOverPrefab = GameOverPrefab(color: .clear, size: StageConstants.gameOverPrefabSize)
         if self.isMultiplayer { gameOverPrefab.setToMultiplayer() }
         gameOverPrefab.initializeButtons()
         gameOverPrefab.setScore(inScore: levelScore)
         gameOverPrefab.controller = self.controller
+        if let message = withMessage { gameOverPrefab.titleLabel.text = message }
         self.sceneCam?.addChild(gameOverPrefab)
     }
     

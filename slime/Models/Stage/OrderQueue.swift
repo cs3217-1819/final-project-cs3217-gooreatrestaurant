@@ -15,7 +15,9 @@ class OrderQueue: SKSpriteNode, Codable {
     var newOrderTimer: Timer = Timer()
     var nodeOrder: [MenuPrefab] = []
     
-    var isMultiplayer = false
+    // for multiplayer
+    var isMultiplayerEnabled = false
+    var gameId: String?
 
     var tempNode: SKSpriteNode = SKSpriteNode.init()
 
@@ -34,15 +36,19 @@ class OrderQueue: SKSpriteNode, Codable {
 
     var scoreToIncrease = 0
 
-    init(isMultiplayer: Bool = false) {
+    init() {
         super.init(texture: nil, color: .clear, size: CGSize.zero)
         self.position = CGPoint.zero
         self.name = StageConstants.orderQueueName
-        self.isMultiplayer = isMultiplayer
     }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setMultiplayer(withGameId id: String) {
+        self.isMultiplayerEnabled = true
+        self.gameId = id
     }
 
     private func addOrderFronDecoder(ofRecipe recipe: Recipe, andPrefab prefab: MenuPrefab) {
@@ -76,6 +82,7 @@ class OrderQueue: SKSpriteNode, Codable {
             return
         }
         self.addOrder(ofRecipe: randomRecipe)
+        if isMultiplayerEnabled { multiplayerUpdateSelf() }
     }
 
     func addPossibleRecipe(_ recipe: Recipe) {
@@ -96,10 +103,16 @@ class OrderQueue: SKSpriteNode, Codable {
                                              selector: #selector(addRandomOrder),
                                              userInfo: nil,
                                              repeats: true)
+        
+        if isMultiplayerEnabled { multiplayerUpdateSelf() }
     }
     
     func multiplayerUpdateSelf() {
-//        let db = GameDB()
+        let db = GameDB()
+        guard let id = gameId else { return }
+        db.updateOrderQueue(forGameId: id, withOrderQueue: self, { }) { (err) in
+            print(err.localizedDescription)
+        }
     }
 
     // True if success, false if failed (no corresponding orders)
@@ -133,7 +146,7 @@ class OrderQueue: SKSpriteNode, Codable {
             self.addRandomOrder()
         }
         
-        if isMultiplayer { self.multiplayerUpdateSelf() }
+        if isMultiplayerEnabled { self.multiplayerUpdateSelf() }
     }
 
     func removeMenuPrefab(inNum: Int) {
