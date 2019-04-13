@@ -133,6 +133,7 @@ class Stage: SKScene {
             self.multiplayerIndicateGameHasStarted()
         }, onGameStart: {
             self.hasStarted = true
+            self.showStartFlag()
             self.startStreamingSelf()
             if self.isUserHost { self.startCounter() }
             // TODO: do setup when game has started, add stuff whenever necessary
@@ -249,6 +250,7 @@ class Stage: SKScene {
                 if isMultiplayer {
                     guard let room = self.previousRoom else { return }
                     for _ in room.players { spaceship.addSlime(inPosition: value.slimeInitPos) }
+                    self.showReadyFlag()
                 }
                 
                 spaceship.addWall(inCoord: value.border)
@@ -625,6 +627,14 @@ class Stage: SKScene {
         gameOverPrefab.setScore(inScore: levelScore)
         self.sceneCam?.addChild(gameOverPrefab)
         print("gameOver!")
+    }
+    
+    func showReadyFlag() {
+        
+    }
+    
+    func showStartFlag() {
+        
     }
 
     required init?(coder aDecoder: NSCoder) {
