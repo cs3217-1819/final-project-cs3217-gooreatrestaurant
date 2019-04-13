@@ -37,7 +37,7 @@ class ScrollingBackgroundViewController: Controller {
             self.background.alpha = alpha
         })
     }
-
+    
     func transitionTo(_ imageNamed: String) {
         if imageName == imageNamed {
             // currently has same background

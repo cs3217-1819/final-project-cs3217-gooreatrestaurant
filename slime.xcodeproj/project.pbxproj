@@ -187,6 +187,9 @@
 		ECA66DC4223D5F4000D1D0BC /* CreditsScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA66DC3223D5F4000D1D0BC /* CreditsScreenView.swift */; };
 		ECB57119225D702B0083E945 /* DialogBoxView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECB57118225D702B0083E945 /* DialogBoxView.xib */; };
 		ECB5711B225D71470083E945 /* DialogBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB5711A225D71470083E945 /* DialogBoxView.swift */; };
+		ECBA67C52261C79F007042A8 /* StageSummaryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECBA67C42261C79F007042A8 /* StageSummaryView.xib */; };
+		ECBA67C72261C7AE007042A8 /* StageSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECBA67C62261C7AE007042A8 /* StageSummaryView.swift */; };
+		ECBA67C92261CAE0007042A8 /* StageSummaryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECBA67C82261CAE0007042A8 /* StageSummaryController.swift */; };
 		ECD2441E224AFFDD00767A56 /* SlimeNumberInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD2441D224AFFDD00767A56 /* SlimeNumberInputView.swift */; };
 		ECD24420224AFFEB00767A56 /* SlimeNumberInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECD2441F224AFFEB00767A56 /* SlimeNumberInputView.xib */; };
 		ECD24422224B011B00767A56 /* SlimeNumberInputController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD24421224B011B00767A56 /* SlimeNumberInputController.swift */; };
@@ -433,6 +436,9 @@
 		ECA66DC3223D5F4000D1D0BC /* CreditsScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsScreenView.swift; sourceTree = "<group>"; };
 		ECB57118225D702B0083E945 /* DialogBoxView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DialogBoxView.xib; sourceTree = "<group>"; };
 		ECB5711A225D71470083E945 /* DialogBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogBoxView.swift; sourceTree = "<group>"; };
+		ECBA67C42261C79F007042A8 /* StageSummaryView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StageSummaryView.xib; sourceTree = "<group>"; };
+		ECBA67C62261C7AE007042A8 /* StageSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageSummaryView.swift; sourceTree = "<group>"; };
+		ECBA67C82261CAE0007042A8 /* StageSummaryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageSummaryController.swift; sourceTree = "<group>"; };
 		ECD2441D224AFFDD00767A56 /* SlimeNumberInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlimeNumberInputView.swift; sourceTree = "<group>"; };
 		ECD2441F224AFFEB00767A56 /* SlimeNumberInputView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SlimeNumberInputView.xib; sourceTree = "<group>"; };
 		ECD24421224B011B00767A56 /* SlimeNumberInputController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlimeNumberInputController.swift; sourceTree = "<group>"; };
@@ -857,6 +863,7 @@
 				EC21B408224217E200827121 /* LoadingScreenViewController.swift */,
 				EC0E316D224F69A400AF1254 /* CharacterCreationViewController.swift */,
 				EC6E7562225A426800B9C7CF /* CharacterCustomizationViewController.swift */,
+				ECBA67C82261CAE0007042A8 /* StageSummaryController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -864,6 +871,7 @@
 		EC449B73223B7E4A00A8EA35 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				ECBA67C32261C780007042A8 /* StageSummaryView */,
 				EC81B78A2255B8DA00B6F7EE /* CharacterCustomizationView */,
 				EC0E3161224F60E700AF1254 /* CharacterCreationView */,
 				ECD2442F224B113400767A56 /* JoinRoomView */,
@@ -1089,6 +1097,15 @@
 				EC1B44A5225D71B800CBE688 /* DialogBoxController.swift */,
 			);
 			path = DialogBox;
+			sourceTree = "<group>";
+		};
+		ECBA67C32261C780007042A8 /* StageSummaryView */ = {
+			isa = PBXGroup;
+			children = (
+				ECBA67C42261C79F007042A8 /* StageSummaryView.xib */,
+				ECBA67C62261C7AE007042A8 /* StageSummaryView.swift */,
+			);
+			path = StageSummaryView;
 			sourceTree = "<group>";
 		};
 		ECD2441C224AFF9D00767A56 /* CodeInput */ = {
@@ -1336,6 +1353,7 @@
 				ECD455612240F499006AF78D /* MultiplayerLobbyView.xib in Resources */,
 				ECB57119225D702B0083E945 /* DialogBoxView.xib in Resources */,
 				ECD24431224B114400767A56 /* JoinRoomView.xib in Resources */,
+				ECBA67C52261C79F007042A8 /* StageSummaryView.xib in Resources */,
 				EC4924EB22461FEC007B9797 /* OrderBlob.xib in Resources */,
 				EC38246C223A1803000D7148 /* Rubik-BoldItalic.ttf in Resources */,
 				EC449B87223BA49D00A8EA35 /* LevelSelectView.xib in Resources */,
@@ -1518,6 +1536,7 @@
 			files = (
 				EC38245C223A100B000D7148 /* TextStyles.swift in Sources */,
 				8BD816B3224262F100586180 /* AnalogJoystick.swift in Sources */,
+				ECBA67C72261C7AE007042A8 /* StageSummaryView.swift in Sources */,
 				F9F26FF2225DDA7A008BFD50 /* User.swift in Sources */,
 				1DD6EBE5224E76F0006FF6CD /* IngredientType.swift in Sources */,
 				EC57D2DC225C8B7400F26808 /* SlimeCharacterView.swift in Sources */,
@@ -1584,6 +1603,7 @@
 				EC4924E8224618E6007B9797 /* LevelPlaceView.swift in Sources */,
 				1D2202A3224AB5850080CF7D /* StageConstants.swift in Sources */,
 				EC382479223A1BE7000D7148 /* PrimaryButtonColor.swift in Sources */,
+				ECBA67C92261CAE0007042A8 /* StageSummaryController.swift in Sources */,
 				ECA66DC4223D5F4000D1D0BC /* CreditsScreenView.swift in Sources */,
 				EC0E316C224F641C00AF1254 /* TextInputController.swift in Sources */,
 				EC449B96223BB1D400A8EA35 /* StoryModeLevelSelectView.swift in Sources */,
@@ -1833,7 +1853,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = CZ7H96C646;
+				DEVELOPMENT_TEAM = H8MD8RH9XR;
 				INFOPLIST_FILE = slime/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1854,7 +1874,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = CZ7H96C646;
+				DEVELOPMENT_TEAM = H8MD8RH9XR;
 				INFOPLIST_FILE = slime/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

@@ -34,6 +34,9 @@ class DialogBoxController: Controller {
         // Find out how long each character should take
         Observable<Int>
             .interval(durationPerCharacter, scheduler: MainScheduler.instance)
+            .takeWhile { x in
+                x <= self.text.count
+            }
             .subscribe { event in
                 guard let index = event.element else {
                     return
@@ -48,17 +51,7 @@ class DialogBoxController: Controller {
     func startAnimation(duration: Double) {
         // Find out how long each character should take
         let charDuration = duration / Double(text.count)
-        Observable<Int>
-            .interval(charDuration, scheduler: MainScheduler.instance)
-            .subscribe { event in
-                guard let index = event.element else {
-                    return
-                }
-                if index > self.text.count {
-                    return
-                }
-                self.dialogText.onNext(String(self.text[0..<index]))
-            }.disposed(by: disposeBag)
+        startAnimation(durationPerCharacter: charDuration)
     }
     
     

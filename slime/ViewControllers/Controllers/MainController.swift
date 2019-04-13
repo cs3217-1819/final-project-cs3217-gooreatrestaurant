@@ -11,23 +11,32 @@ import RxSwift
 
 class MainController: UIViewController {
     @IBOutlet var underlyingView: UIView!
+    private var initialRoute: Route = .TitleScreen
     private let disposeBag = DisposeBag()
-    private var context: Context!
+    private var _context: Context?
+    private var context: Context {
+        if let con = _context {
+            return con
+        }
+        let newContext = Context(using: self)
+        _context = newContext
+        return newContext
+    }
     private var router: Router {
         return context.router
     }
     private var bgControl: ScrollingBackgroundViewController?
     fileprivate var isSetup: Bool = false
     
-    override func viewWillAppear(_ animated: Bool) {
-        bgControl = ScrollingBackgroundViewController(with: underlyingView)
+    func prepareForInitialRoute<Control: ViewControllerProtocol>(_ route: Route) -> Control {
+        context.router.routeTo(route)
+        return context.router.currentViewController as! Control
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        bgControl?.configure()
-        
+    override func viewWillLayoutSubviews() {
         if !isSetup {
             setupView()
+            bgControl?.configure()
             isSetup = true
         }
     }
@@ -36,11 +45,11 @@ class MainController: UIViewController {
         super.viewDidLoad()
 
         setBGM()
-        context = Context(using: self)
+        bgControl = ScrollingBackgroundViewController(with: underlyingView)
         setupHideKeyboardOnTap()
     }
 
-    func setupHideKeyboardOnTap() {
+    private func setupHideKeyboardOnTap() {
         self.view.addGestureRecognizer(self.endEditingRecognizer())
         self.navigationController?.navigationBar.addGestureRecognizer(self.endEditingRecognizer())
     }
@@ -78,6 +87,33 @@ class MainController: UIViewController {
             fromVC.onDisappear()
         })
     }
+    
+    // Alternative performSegue, using fade
+    func performSegue(from fromVC: ViewControllerProtocol,
+                      to toVC: ViewControllerProtocol) {
+        adjustBackground()
+        
+        let toView = toVC.getView()
+        toView.alpha = 0
+        toView.frame = CGRect(x: 0, y: 0, width: underlyingView.bounds.width, height: underlyingView.bounds.height)
+        toView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        toVC.use(context: context)
+        toVC.configureSubviews()
+        
+        underlyingView.addSubview(toView)
+        
+        UIView.animateKeyframes(withDuration: 1.0, delay: 0.0, options: [], animations: {
+            UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 0.5, animations: {
+                fromVC.getView().alpha = 0
+            })
+            
+            UIView.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 0.5, animations: {
+                toView.alpha = 1
+            })
+        }, completion: { _ in
+            fromVC.onDisappear()
+        })
+    }
 
     private func setupView() {
         adjustBackground()
@@ -93,6 +129,9 @@ class MainController: UIViewController {
         if router.currentRoute == .TitleScreen {
             bgControl?.toAlpha(1.0)
             bgControl?.transitionTo("background")
+        } else if router.currentRoute == .GameScreen || router.currentRoute == .MultiplayerGameScreen {
+            bgControl?.toAlpha(1.0)
+            bgControl?.transitionTo("black")
         } else {
             bgControl?.toAlpha(0.5)
             bgControl?.transitionTo("background-1")
@@ -101,25 +140,5 @@ class MainController: UIViewController {
     
     private func setBGM() {
         AudioMaster.instance.playBGM(name: "menu-bgm")
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toMultiplayerGame" {
-            let destination = segue.destination as! GameViewController
-            let currentRoute = self.router.currentViewController as! MultiplayerLobbyViewController
-
-            guard let room = currentRoute.currentRoom else {
-                print("pew pew no room pew")
-                return
-            }
-            
-            destination.isMultiplayer = true
-            destination.previousRoom = room
-        }
-        
-        if segue.identifier == "toGame" {
-            // let destination = segue.destination as! GameViewController
-            // let currentRoute = self.router.currentViewController as! LevelSelectViewController
-        }
     }
 }
