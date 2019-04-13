@@ -59,6 +59,11 @@ class GameViewController: UIViewController {
         //        setupCollection()
         
         stage.setupPlayers()
+        
+        Timer.scheduledTimer(withTimeInterval: 1, repeats: false, block: { _ in
+            print("going back to main")
+            self.segueToMainScreen()
+        })
     }
 
     func setupCollection() {
@@ -71,10 +76,23 @@ class GameViewController: UIViewController {
     func segueToMainScreen() {
         self.performSegue(withIdentifier: "toMainScreen", sender: nil)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toMainScreen" {
+            let vc = segue.destination as! MainController
+            let stageSummaryVC: StageSummaryController = vc.prepareForInitialRoute(.StageSummary)
+            stageSummaryVC.stageScore = 88
+            stageSummaryVC.expGained = 88
+        }
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    deinit {
+        print("Game VC deinit")
     }
 }
 

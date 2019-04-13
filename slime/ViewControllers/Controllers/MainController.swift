@@ -11,23 +11,32 @@ import RxSwift
 
 class MainController: UIViewController {
     @IBOutlet var underlyingView: UIView!
+    private var initialRoute: Route = .TitleScreen
     private let disposeBag = DisposeBag()
-    private var context: Context!
+    private var _context: Context?
+    private var context: Context {
+        if let con = _context {
+            return con
+        }
+        let newContext = Context(using: self)
+        _context = newContext
+        return newContext
+    }
     private var router: Router {
         return context.router
     }
     private var bgControl: ScrollingBackgroundViewController?
     fileprivate var isSetup: Bool = false
     
-    override func viewWillAppear(_ animated: Bool) {
-        bgControl = ScrollingBackgroundViewController(with: underlyingView)
+    func prepareForInitialRoute<Control: ViewControllerProtocol>(_ route: Route) -> Control {
+        context.router.routeTo(route)
+        return context.router.currentViewController as! Control
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        bgControl?.configure()
-        
+    override func viewWillLayoutSubviews() {
         if !isSetup {
             setupView()
+            bgControl?.configure()
             isSetup = true
         }
     }
@@ -36,11 +45,11 @@ class MainController: UIViewController {
         super.viewDidLoad()
 
         setBGM()
-        context = Context(using: self)
+        bgControl = ScrollingBackgroundViewController(with: underlyingView)
         setupHideKeyboardOnTap()
     }
 
-    func setupHideKeyboardOnTap() {
+    private func setupHideKeyboardOnTap() {
         self.view.addGestureRecognizer(self.endEditingRecognizer())
         self.navigationController?.navigationBar.addGestureRecognizer(self.endEditingRecognizer())
     }
@@ -75,6 +84,7 @@ class MainController: UIViewController {
         })
 
         Timer.scheduledTimer(withTimeInterval: 0.210, repeats: false, block: { _ in
+            print("disappear")
             fromVC.onDisappear()
         })
     }
