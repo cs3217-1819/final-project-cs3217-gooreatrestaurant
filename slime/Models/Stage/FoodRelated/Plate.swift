@@ -34,6 +34,11 @@ class Plate: SKSpriteNode, Codable {
         fatalError("init(coder:) has not been implemented")
     }
 
+    func addIngredients(_ ingredient: Ingredient) {
+        food.addIngredients(ingredient)
+        addIngredientImage(inIngredient: ingredient)
+    }
+
     enum CodingKeys: String, CodingKey {
         case food
         case position
