@@ -9,7 +9,9 @@
 import Foundation
 import SpriteKit
 
-class MenuPrefab : SKSpriteNode {
+class MenuPrefab: SKSpriteNode, Codable {
+    var randInt: Int
+
     var recipe: Recipe?
 
     var blackBar: SKSpriteNode
@@ -17,7 +19,7 @@ class MenuPrefab : SKSpriteNode {
     var timer: Timer =  Timer()
 
     var time: CGFloat = StageConstants.defaultTimeLimitOrder
-    let duration: CGFloat = StageConstants.defaultTimeLimitOrder
+    var duration: CGFloat = StageConstants.defaultTimeLimitOrder
 
     let positionings = [CGPoint(x: -10, y: -15),
                         CGPoint(x: 10, y: -15)]
@@ -27,6 +29,7 @@ class MenuPrefab : SKSpriteNode {
         let spaceshipBody = SKTexture(imageNamed: "Menu-Slimes_" + String(randNum))
         spaceshipBody.filteringMode = .nearest
 
+        self.randInt = randNum
         self.blackBar = SKSpriteNode(imageNamed: "Black bar")
         self.greenBar = SKSpriteNode(imageNamed: "Green bar")
 
@@ -58,18 +61,22 @@ class MenuPrefab : SKSpriteNode {
         }
 
         //Adding the countdown bar
-        blackBar.position = CGPoint(x: 25, y: -25)
-        blackBar.size = CGSize(width: 35, height: 30)
+        blackBar.position = StageConstants.blackBarPosOQ
+        blackBar.size = StageConstants.blackBarSizeOQ
         dish.addChild(blackBar)
 
-        greenBar.anchorPoint = CGPoint(x: 0, y: 0)
-        greenBar.position = CGPoint(x: -15, y: -15)
-        greenBar.size = CGSize(width: 30, height: 30)
+        greenBar.anchorPoint = StageConstants.greenBarAnchorOQ
+        greenBar.position = StageConstants.greenBarPositionOQ
+        greenBar.size = StageConstants.greenBarSizeOQ
         blackBar.addChild(greenBar)
 
         self.addChild(dish)
 
-        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(countdown), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: StageConstants.timerInterval,
+                                     target: self,
+                                     selector: #selector(countdown),
+                                     userInfo: nil,
+                                     repeats: true)
     }
 
     func addIngredient(withType type: String) -> SKSpriteNode {
@@ -91,7 +98,8 @@ class MenuPrefab : SKSpriteNode {
     @objc func countdown() {
         if (time > 0.0) {
             time -= CGFloat(1.0)
-            self.greenBar.size =  CGSize(width: greenBar.size.width, height: self.greenBar.size.height * time / (time + 1.0))
+            self.greenBar.size =  CGSize(width: greenBar.size.width,
+                                         height: StageConstants.greenBarSizeOQ.height * time / duration)
         } else {
             timer.invalidate()
             guard let parent = self.parent else {
@@ -106,5 +114,50 @@ class MenuPrefab : SKSpriteNode {
             }
             orderQueue.orderTimeOut(ofRecipe: thisRecipe)
         }
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case randInt
+        case recipe
+        case time
+        case duration
+        case position
+        case nextTimer
+    }
+
+    required convenience init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+
+        let randInt = try values.decode(Int.self, forKey: .randInt)
+        let recipe = try values.decode(Recipe.self, forKey: .recipe)
+        let time = try values.decode(CGFloat.self, forKey: .time)
+        let duration = try values.decode(CGFloat.self, forKey: .duration)
+        let position = try values.decode(CGPoint.self, forKey: .position)
+        let nextTimer = try values.decode(Date.self, forKey: .nextTimer)
+
+        self.init(color: StageConstants.menuPrefabColor, size: StageConstants.menuPrefabSize)
+        self.randInt = randInt
+        self.texture = SKTexture(imageNamed: "Menu-Slimes_" + String(randInt))
+        self.texture?.filteringMode = .nearest
+        self.addRecipe(recipe, inPosition: position)
+        self.time = time
+        self.duration = duration
+        self.timer = Timer(fireAt: nextTimer,
+                           interval: StageConstants.timerInterval,
+                           target: self,
+                           selector: #selector(countdown),
+                           userInfo: nil,
+                           repeats: true)
+    }
+
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+
+        try container.encode(randInt, forKey: .randInt)
+        try container.encode(recipe, forKey: .recipe)
+        try container.encode(time, forKey: .time)
+        try container.encode(duration, forKey: .duration)
+        try container.encode(position, forKey: .position)
+        try container.encode(timer.fireDate, forKey: .nextTimer)
     }
 }

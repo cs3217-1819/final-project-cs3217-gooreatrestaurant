@@ -85,4 +85,17 @@ class StageConstants {
     static let minNumbersOfOrdersShown = 1
     static let maxNumbersOfOrdersShown = 6
     static let orderComingInterval = 20.0
+
+    //OrderQueue and its components
+    static let menuPrefabSize = CGSize(width: 80, height: 80)
+    static let menuPrefabColor = UIColor.clear
+    static let blackBarPosOQ = CGPoint(x: 25, y: -25)
+    static let blackBarSizeOQ = CGSize(width: 35, height: 30)
+    static let greenBarAnchorOQ = CGPoint(x: 0, y: 0)
+    static let greenBarPositionOQ = CGPoint(x: -15, y: -15)
+    static let greenBarSizeOQ = CGSize(width: 30, height: 30)
+    static let timerInterval = 1.0
+
+    // general constant
+    static let notFound = Int.min
 }
