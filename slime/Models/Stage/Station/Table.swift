@@ -59,7 +59,7 @@ class Table: Station {
                 return item
             }
 
-            plate.food.addIngredients(ingredient)
+            plate.addIngredients(ingredient)
             return nil
 
         } else if willTakeIngredientToPlate {
@@ -73,7 +73,7 @@ class Table: Station {
             }
 
             ingredient.removeFromParent()
-            plate.food.addIngredients(ingredient)
+            plate.addIngredients(ingredient)
             return plate
         }
 
