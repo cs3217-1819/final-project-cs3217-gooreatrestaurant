@@ -138,7 +138,7 @@ class Stage: SKScene {
             self.hasStarted = true
             self.showStartFlag()
             self.startStreamingSelf()
-            if self.isUserHost { self.startCounter() }
+            if self.isUserHost { self.showReadyFlag() }
             // TODO: do setup when game has started, add stuff whenever necessary
         }, onSelfItemChange: { (item) in
             guard let slime = self.slimeToControl else { return }
@@ -326,7 +326,8 @@ class Stage: SKScene {
 
         if !isMultiplayer {
             counter = counterStartTime
-            startCounter()
+//            startCounter()
+            showReadyFlag()
         }
 
         analogJoystick.trackingHandler = { [unowned self] data in
