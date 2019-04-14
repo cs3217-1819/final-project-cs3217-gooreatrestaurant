@@ -746,29 +746,18 @@ class GameDB: GameDatabase {
         }
     }
 
-    func observeGameState(forRoom room: RoomModel, onPlayerUpdate: @escaping (GamePlayerModel) -> Void, onStationUpdate: @escaping (String, GameStationModel) -> Void, onGameEnd: @escaping () -> Void, onOrderQueueChange: @escaping (OrderQueue) -> Void, onScoreChange: @escaping (Int) -> Void, onAllPlayersReady: @escaping () -> Void, onGameStart: @escaping () -> Void, onSelfItemChange: @escaping (ItemModel) -> Void, onTimeLeftChange: @escaping (Int) -> Void, onHostDisconnected: @escaping () -> Void, onNewOrderSubmitted: @escaping (Plate) -> Void, onComplete: @escaping () -> Void, onError: @escaping (Error) -> Void) {
+    func observeGameState(forRoom room: RoomModel, onPlayerUpdate: @escaping (GamePlayerModel) -> Void, onStationUpdate: @escaping (String, GameStationModel) -> Void, onGameEnd: @escaping () -> Void, onOrderQueueChange: @escaping (OrderQueue) -> Void, onScoreChange: @escaping (Int) -> Void, onAllPlayersReady: @escaping () -> Void, onGameStart: @escaping () -> Void, onSelfItemChange: @escaping (ItemModel) -> Void, onTimeLeftChange: @escaping (Int) -> Void, onHostDisconnected: @escaping () -> Void, onNewOrderSubmitted: @escaping (Plate) -> Void, onNewNotificationAdded: @escaping (String) -> Void, onComplete: @escaping () -> Void, onError: @escaping (Error) -> Void) {
         guard let user = GameAuth.currentUser else {
             return
         }
         
-        let roomRef = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, room.id]))
         let playerRef = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, room.id, FirebaseKeys.games_players]))
         let scoreRef = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, room.id, FirebaseKeys.games_score]))
         let endRef = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, room.id, FirebaseKeys.games_hasEnded]))
         let hasStartedRef = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, room.id, FirebaseKeys.games_hasStarted]))
         let timeLeftRef = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, room.id, FirebaseKeys.games_timeLeft]))
         let selfHoldingItemRef = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, room.id, FirebaseKeys.games_players, user.uid, FirebaseKeys.games_players_holdingItem]))
-        
-        let roomHandle = roomRef.observe(.value, with: { (snap) in
-            guard let _ = snap.value as? [String : AnyObject] else {
-                onHostDisconnected()
-                return
-            }
-            
-            return
-        }) { (err) in
-            onError(err)
-        }
+        let notificationRef = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, room.id, FirebaseKeys.games_notifications]))
         
         let selfHandle = selfHoldingItemRef.observe(.value, with: { (snap) in
             guard let itemInsideDict = snap.value as? [String : String] else {
@@ -840,7 +829,7 @@ class GameDB: GameDatabase {
                 guard let orderQueue = snap.value as? String else {
                     return
                 }
-                return
+                
                 guard let oq = self.firebaseOrderQueueFactory(forEncodedString: orderQueue) else { return }
                 
                 onOrderQueueChange(oq)
@@ -895,15 +884,25 @@ class GameDB: GameDatabase {
             
             observers.append(Observer(withHandle: stationHandle, withRef: stationRef))
         }
+        
+        let notificationHandle = notificationRef.observe(.childAdded, with: { (snap) in
+            guard let description = snap.value as? String else { return }
+            
+            onNewNotificationAdded(description)
+        }) { (err) in
+            onError(err)
+        }
 
         let endHandle = endRef.observe(.value, with: { (snap) in
-            guard let end = snap.value as? Bool else { return }
+            guard let end = snap.value as? Bool else {
+                onHostDisconnected()
+                return
+            }
             if end { onGameEnd() }
         }) { (err) in
             onError(err)
         }
 
-        self.observers.append(Observer(withHandle: roomHandle, withRef: roomRef))
         self.observers.append(Observer(withHandle: scoreHandle, withRef: scoreRef))
         self.observers.append(Observer(withHandle: endHandle, withRef: endRef))
         self.observers.append(Observer(withHandle: selfHandle, withRef: selfHoldingItemRef))
@@ -1036,6 +1035,21 @@ class GameDB: GameDatabase {
         let name = orderInfo[FirebaseKeys.games_orders_encodedRecipe] as? String ?? ""
 
         return GameOrderModel(id: dict.key, name: name, issueTime: issueTime, timeLimit: timeLimit)
+    }
+    
+    func sendNotification(forGameId id: String, withDescription description: String, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void) {
+        let ref = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, id, FirebaseKeys.games_notifications]))
+        
+        guard let key = ref.childByAutoId().key else { return }
+        
+        ref.child(key).setValue(description) { (err, ref) in
+            if let error = err {
+                onError(error)
+                return
+            }
+            
+            onComplete()
+        }
     }
     
     func updateGameHasEnded(forGameId id: String, to hasEnded: Bool, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void) {
@@ -1191,7 +1205,12 @@ class GameDB: GameDatabase {
             let gameRef = self.dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, gameId, FirebaseKeys.games_hasEnded]))
             
             gameRef.observeSingleEvent(of: .value, with: { (snap) in
-                guard let gameHasEnded = snap.value as? Bool else { return }
+                guard let gameHasEnded = snap.value as? Bool else {
+                    self.cancelRejoinGame({ }, { (err) in
+                        onError(err)
+                    })
+                    return
+                }
 
                 if !gameHasEnded {
                     onGameExist(gameId)
@@ -1485,9 +1504,7 @@ struct FirebaseKeys {
     static let games_orders_encodedRecipe = "encoded_recipe"
     static let games_orders_issueTime = "issue_time"
     static let games_orders_timeLimit = "time_limit"
-    static let games_announcements = "announcements"
-    static let games_announcements_issueTime = "issue_time"
-    static let games_announcements_message = "message"
+    static let games_notifications = "notifications"
     
     // leaderboard stuff
     static let scores = "scores"

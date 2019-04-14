@@ -125,7 +125,7 @@ class Spaceship: SKSpriteNode {
     }
 
     func addTrashBin(inPositions positions: [String]) {
-        for position in positions {
+        for (index, position) in positions.enumerated() {
             let trashBin = Trash(inPosition: NSCoder.cgPoint(for: position), withSize: CGSize(width: 100, height: 100))
             trashBin.id = "trashBin-\(index)"
             self.addChild(trashBin)

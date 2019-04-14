@@ -25,6 +25,9 @@ class Stage: SKScene {
     var isUserHost: Bool = false
     var allSlimesDict: [String : Slime] = [:] // [uid: Slime]
     var allStationsDict: [String : Station] = [:]
+    
+    // notification stuff
+//    var notification: NotificationPrefab = NotificationPrefab(color: .clear, size: StageConstants.notificationSize)
 
     //For countdown of game
     var counter = 0
@@ -34,6 +37,9 @@ class Stage: SKScene {
 
     // RI: the players are unique
     var players: [Player] = []
+
+    // Order queue
+    var orderQueue = OrderQueue()
 
     //Level score
     var levelScore: Int = 0
@@ -59,9 +65,9 @@ class Stage: SKScene {
         background.zPosition = StageConstants.backgroundZPos
         self.addChild(background)
         self.addChild(spaceship)
-
-        let order = OrderQueue()
-        self.sceneCam?.addChild(order)
+        
+//        self.sceneCam?.addChild(notification)
+        self.sceneCam?.addChild(orderQueue)
     }
 
     override func update(_ currentTime: TimeInterval) {
@@ -127,7 +133,7 @@ class Stage: SKScene {
                 })
             }
         }, onOrderQueueChange: { (orderQueue) in
-//            self.updateOrderQueue(into: orderQueue)
+            self.updateOrderQueue(into: orderQueue)
         }, onScoreChange: { (score) in
             self.levelScore = score
             self.scoreLabel.text = "Score: \(self.levelScore)"
@@ -156,6 +162,9 @@ class Stage: SKScene {
         }, onNewOrderSubmitted: { (plate) in
             // only for host, don't touch
             self.multiplayerHandleServe(forPlate: plate)
+        }, onNewNotificationAdded: { (description) in
+            // when new notification is received
+            print(description)
         }, onComplete: {
             // joins game after attaching all
             // relevant observers, this onComplete
@@ -379,13 +388,9 @@ class Stage: SKScene {
 
     func initializeOrders(withData data: [RecipeData]) {
         if isMultiplayer && !isUserHost { return }
-
-        guard let orderQueue = self.sceneCam?.childNode(withName: StageConstants.orderQueueName) as? OrderQueue else {
-            return
-        }
         
         if isMultiplayer {
-            if let id = self.previousRoom?.id { orderQueue.setMultiplayer(withGameId: id) }
+            if let id = self.previousRoom?.id { self.orderQueue.setMultiplayer(withGameId: id) }
         }
         
         for datum in data {
@@ -421,9 +426,9 @@ class Stage: SKScene {
             }
             let recipe = Recipe(inRecipeName: recipeName, withCompulsoryIngredients: compulsoryIngredients,
                                 withOptionalIngredients: optionalIngredients)
-            orderQueue.addPossibleRecipe(recipe)
+            self.orderQueue.addPossibleRecipe(recipe)
         }
-        orderQueue.initialize()
+        self.orderQueue.initialize()
     }
 
     // For multiplayer (future use)
@@ -473,9 +478,7 @@ class Stage: SKScene {
     private func multiplayerHandleServe(forPlate plate: Plate) {
         let food = plate.food
         
-        guard let orderQueue = self.sceneCam?.childNode(withName: StageConstants.orderQueueName) as? OrderQueue else { return }
-        
-        guard orderQueue.completeOrder(withFood: food) == true else { return }
+        guard self.orderQueue.completeOrder(withFood: food) == true else { return }
         
         // success
         guard let database = self.db else { return }
@@ -489,17 +492,12 @@ class Stage: SKScene {
         if !isMultiplayer {
             let foodToServe = plate.food
             
-            guard let orderQueue = self.sceneCam?.childNode(withName: StageConstants.orderQueueName) as? OrderQueue else {
-                print("error")
-                return
-            }
-            
-            guard orderQueue.completeOrder(withFood: foodToServe) == true else {
+            guard self.orderQueue.completeOrder(withFood: foodToServe) == true else {
                 print("failed")
                 return
             }
             
-            levelScore += orderQueue.scoreToIncrease 
+            levelScore += self.orderQueue.scoreToIncrease 
             scoreLabel.text = "Score: \(levelScore)"
         } else {
             // multiplayer serve food
@@ -594,11 +592,9 @@ class Stage: SKScene {
     }
 
     func updateOrderQueue(into orderQueue: OrderQueue) {
-        guard let oldOrderQueue = self.sceneCam?.childNode(withName: StageConstants.orderQueueName) else {
-            return
-        }
+        self.orderQueue.removeFromParent()
 
-        oldOrderQueue.removeFromParent()
+        self.orderQueue = orderQueue
         self.sceneCam?.addChild(orderQueue)
     }
 

@@ -148,7 +148,10 @@ class OrderQueue: SKSpriteNode, Codable {
 
         if recipeOrdered.count < StageConstants.minNumbersOfOrdersShown {
             self.isMultiplayerEnabled ? self.multiplayerAddRandomOrder() : self.addRandomOrder()
+            return
         }
+        
+        if self.isMultiplayerEnabled { self.multiplayerUpdateSelf() }
     }
 
     func removeMenuPrefab(inNum: Int) {
@@ -186,6 +189,10 @@ class OrderQueue: SKSpriteNode, Codable {
         self.possibleRecipes = possibleRecipes
         self.recipeOrdered = recipeOrdered
         self.nodeOrder = nodeOrder
+
+        for prefab in nodeOrder {
+            self.addChild(prefab)
+        }
     }
 
     func encode(to encoder: Encoder) throws {
