@@ -11,6 +11,20 @@ import SpriteKit
 
 class Table: Station {
 
+    // Table can process in multiple different conditions
+    // 1. When we want to take item from the table
+    //      Requirement: item given is nil and the table own an item
+    //      Return: The item on the table
+    // 2. When we want to put item on the table
+    //      Requirement: item given is an non-nil and the table doesnt own any item
+    //      Return: nil
+    // 3. When we want to put an ingredient to the plate in the table
+    //      Requirement: item given is an ingredient and the table own a plate
+    //      Return: nil
+    // 4. When we want to put an ingredient on the table to the plate
+    //      Requirement: item given is a plate and the table own an ingredient
+    //      Return: return back the plate after the ingredient is put into the food on the plate
+
     override func ableToProcess(_ item: SKSpriteNode?) -> Bool {
 
         let willTake = (item == nil && self.itemInside != nil)
@@ -31,6 +45,7 @@ class Table: Station {
         let willAddIngredient = (item is Ingredient && self.itemInside is Plate)
         let willTakeIngredientToPlate = (item is Plate && self.itemInside is Ingredient)
 
+        // Condition 1
         if willPut {
 
             guard let itemToPut = item else {
@@ -40,6 +55,7 @@ class Table: Station {
             self.addItem(itemToPut)
             return nil
 
+        // Condition 2
         } else if willTake {
 
             guard let itemToTake = self.itemInside as? SKSpriteNode else {
@@ -49,6 +65,7 @@ class Table: Station {
             self.removeItem()
             return itemToTake
 
+        // Condition 3
         } else if willAddIngredient {
 
             guard let plate = self.itemInside as? Plate else {
@@ -63,6 +80,7 @@ class Table: Station {
             plate.addIngredientImage(inIngredient: ingredient)
             return nil
 
+        // Condition 4
         } else if willTakeIngredientToPlate {
 
             guard let plate = item as? Plate else {

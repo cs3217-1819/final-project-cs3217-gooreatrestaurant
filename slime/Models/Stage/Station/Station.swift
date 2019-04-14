@@ -45,9 +45,11 @@ class Station: SKSpriteNode {
         fatalError("init(coder:) has not been implemented")
     }
 
-    // How to make different stations:
-    // - Subclass this class
-    // - Override ableToProcess and process func with the subclass specifications, explained below
+    /* 
+     * How to make different stations:
+     * - Subclass this class
+     * - Override ableToProcess and process func with the subclass specifications, explained below
+    **/
 
     // Check whether the item is able to be processed by this station
     // Parameters:
@@ -67,7 +69,15 @@ class Station: SKSpriteNode {
         return nil
     }
 
+    // Add an item to the station
+    // If the station contained an item, do not do anything
+    // Parameters:
+    //      - item: the item to be added
     func addItem(_ item: SKSpriteNode) {
+        guard itemInside == nil else {
+            return
+        }
+
         item.removeFromParent()
         item.position.x = 0.0
         item.position.y = 0.5 * (self.size.height + item.size.height)
@@ -75,6 +85,7 @@ class Station: SKSpriteNode {
         self.addChild(item)
     }
 
+    // Remove the item that this station held (and for future expansion, this will remove all items)
     func removeItem() {
         self.removeAllChildren()
     }
