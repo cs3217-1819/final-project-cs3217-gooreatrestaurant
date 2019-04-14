@@ -96,6 +96,7 @@ class StageConstants {
     static let greenBarPositionOQ = CGPoint(x: -15, y: -15)
     static let greenBarSizeOQ = CGSize(width: 30, height: 30)
     static let timerInterval = 1.0
+    static let cookingTimerInterval = 1.0 / 60.0
 
     // general constant
     static let notFound = Int.min

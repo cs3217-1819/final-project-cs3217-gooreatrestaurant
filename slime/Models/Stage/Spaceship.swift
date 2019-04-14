@@ -132,17 +132,6 @@ class Spaceship: SKSpriteNode {
         }
     }
 
-    func setAutomaticCooking() {
-        self.enumerateChildNodes(withName: StageConstants.stationName) {
-            node, _ in
-
-            guard let cookingEquipment = node as? CookingEquipment else {
-                return
-            }
-            cookingEquipment.automaticProcessing()
-        }
-    }
-
     required init?(coder aDecoder: NSCoder) {
         fatalError("initiation using storyboard is not implemented yet.")
     }
