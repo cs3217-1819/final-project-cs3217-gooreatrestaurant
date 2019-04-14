@@ -26,6 +26,12 @@ class Stage: SKScene {
     var allSlimesDict: [String : Slime] = [:] // [uid: Slime]
     var allStationsDict: [String : Station] = [:]
 
+    //For countdown of game
+    var counter = 0
+    var counterTime = Timer()
+    var counterStartTime = 200
+    var isGameOver = false
+
     // RI: the players are unique
     var players: [Player] = []
 
@@ -285,7 +291,6 @@ class Stage: SKScene {
     }
 
     // Setupping Joystick and Buttons
-
     lazy var analogJoystick: AnalogJoystick = {
         let js = AnalogJoystick(diameter: StageConstants.joystickSize,
                                 colors: nil,
@@ -321,6 +326,41 @@ class Stage: SKScene {
         button.zPosition = StageConstants.buttonZPos
         return button
     }()
+
+    lazy var backButton: BDButton = {
+        var button = BDButton(imageNamed: "BackButton", buttonAction: {
+            self.controller.segueToMainScreen(isMultiplayer: self.isMultiplayer)
+        })
+        button.setScale(0.1)
+        button.isEnabled = true
+        button.position = StageConstants.backButtonPosition
+        button.zPosition = StageConstants.buttonZPos
+        return button
+    }()
+
+    lazy var countdownLabel: SKLabelNode = {
+        var label = SKLabelNode(fontNamed: "SquidgySlimes")
+        label.fontSize = CGFloat(40)
+        label.zPosition = 10
+        label.color = .red
+        label.horizontalAlignmentMode = .left
+        label.verticalAlignmentMode = .center
+        label.text = "Time: \(counterStartTime)"
+        label.position = StageConstants.timerPosition
+        return label
+    }()
+
+    lazy var scoreLabel: SKLabelNode = {
+        var label = SKLabelNode(fontNamed: "SquidgySlimes")
+        label.fontSize = CGFloat(30)
+        label.zPosition = 10
+        label.color = .red
+        label.horizontalAlignmentMode = .left
+        label.verticalAlignmentMode = .center
+        label.text = "Score: \(levelScore)"
+        label.position = StageConstants.scorePosition
+        return label
+    }()
     
     private func handleMultiplayerInteract(withStation station: Station) {
         guard let database = self.db else { return }
@@ -347,46 +387,6 @@ class Stage: SKScene {
             }
         }
     }
-
-    lazy var backButton: BDButton = {
-        var button = BDButton(imageNamed: "BackButton", buttonAction: {
-            self.controller.segueToMainScreen(isMultiplayer: self.isMultiplayer)
-        })
-        button.setScale(0.1)
-        button.isEnabled = true
-        button.position = StageConstants.backButtonPosition
-        button.zPosition = StageConstants.buttonZPos
-        return button
-    }()
-
-    var counter = 0
-    var counterTime = Timer()
-    var counterStartTime = 200
-    var isGameOver = false
-
-    lazy var countdownLabel: SKLabelNode = {
-        var label = SKLabelNode(fontNamed: "SquidgySlimes")
-        label.fontSize = CGFloat(40)
-        label.zPosition = 10
-        label.color = .red
-        label.horizontalAlignmentMode = .left
-        label.verticalAlignmentMode = .center
-        label.text = "Time: \(counterStartTime)"
-        label.position = StageConstants.timerPosition
-        return label
-    }()
-
-    lazy var scoreLabel: SKLabelNode = {
-        var label = SKLabelNode(fontNamed: "SquidgySlimes")
-        label.fontSize = CGFloat(30)
-        label.zPosition = 10
-        label.color = .red
-        label.horizontalAlignmentMode = .left
-        label.verticalAlignmentMode = .center
-        label.text = "Score: \(levelScore)"
-        label.position = StageConstants.scorePosition
-        return label
-    }()
 
     func setupControl() {
         self.sceneCam?.addChild(jumpButton)
