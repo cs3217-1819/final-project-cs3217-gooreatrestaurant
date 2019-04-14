@@ -669,4 +669,15 @@ class Stage: SKScene {
         label.position = StageConstants.scorePosition
         return label
     }()
+
+    lazy var readyLabel: SKLabelNode = {
+        var label = SKLabelNode(fontNamed: "SquidgySlimes")
+        label.fontSize = CGFloat(50)
+        label.zPosition = 10
+        label.horizontalAlignmentMode = .center
+        label.verticalAlignmentMode = .center
+        label.text = "READY?"
+        label.position = (self.sceneCam?.position)!
+        return label
+    }()
 }
