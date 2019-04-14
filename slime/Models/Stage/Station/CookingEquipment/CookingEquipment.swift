@@ -12,6 +12,7 @@ import SpriteKit
 class CookingEquipment: Station {
 
     let cookingType: CookingType
+    var automaticProcessingTimer = Timer()
     var ingredientsAllowed: Set<IngredientType> = []
 
     init(type: CookingType,
@@ -26,7 +27,11 @@ class CookingEquipment: Station {
         }
 
         super.init(inPosition: position, withSize: size)
-        self.color = .green
+        self.automaticProcessingTimer = Timer.scheduledTimer(timeInterval: StageConstants.cookingTimerInterval,
+                                                             target: self,
+                                                             selector: #selector(automaticProcessing),
+                                                             userInfo: nil,
+                                                             repeats: true)
     }
 
     private var canTakeIngredient: Bool {
@@ -108,6 +113,7 @@ class CookingEquipment: Station {
         }
     }
 
+    @objc
     func automaticProcessing() {
         continueProcessing(withProgress: 0.0)
     }

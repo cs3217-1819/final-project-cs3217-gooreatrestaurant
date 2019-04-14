@@ -459,7 +459,6 @@ class Stage: SKScene {
     }
 
     override func didSimulatePhysics() {
-        self.spaceship.setAutomaticCooking()
         for (_, slime) in self.allSlimesDict { slime.resetMovement() }
         super.didSimulatePhysics()
     }
