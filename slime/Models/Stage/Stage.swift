@@ -121,7 +121,7 @@ class Stage: SKScene {
                 })
             }
         }, onOrderQueueChange: { (orderQueue) in
-//            self.updateOrderQueue(into: orderQueue)
+            self.updateOrderQueue(into: orderQueue)
         }, onScoreChange: { (score) in
             self.levelScore = score
             self.scoreLabel.text = "Score: \(self.levelScore)"

@@ -840,7 +840,7 @@ class GameDB: GameDatabase {
                 guard let orderQueue = snap.value as? String else {
                     return
                 }
-                return
+                
                 guard let oq = self.firebaseOrderQueueFactory(forEncodedString: orderQueue) else { return }
                 
                 onOrderQueueChange(oq)
