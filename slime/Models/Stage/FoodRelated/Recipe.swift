@@ -85,7 +85,10 @@ class Recipe: NSObject, Codable {
         let optionalIngredientsProbability = try values.decode([Double].self, forKey: .optionalIngredientsProbability)
 
         var optionalIngredients: [(item: Ingredient, probability: Double)] = []
-        for index in 0...min(optionalIngredientsProbability.count, optionalIngredientsIngredient.count)-1 {
+
+        let noOfElement = min(optionalIngredientsProbability.count, optionalIngredientsIngredient.count)
+
+        for index in 0...max(noOfElement-1, 0) {
             let ingredient = optionalIngredientsIngredient[index]
             let probability = optionalIngredientsProbability[index]
             optionalIngredients.append((item: ingredient, probability: probability))
