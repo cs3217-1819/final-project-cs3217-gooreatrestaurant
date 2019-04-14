@@ -751,24 +751,12 @@ class GameDB: GameDatabase {
             return
         }
         
-        let roomRef = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, room.id]))
         let playerRef = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, room.id, FirebaseKeys.games_players]))
         let scoreRef = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, room.id, FirebaseKeys.games_score]))
         let endRef = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, room.id, FirebaseKeys.games_hasEnded]))
         let hasStartedRef = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, room.id, FirebaseKeys.games_hasStarted]))
         let timeLeftRef = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, room.id, FirebaseKeys.games_timeLeft]))
         let selfHoldingItemRef = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, room.id, FirebaseKeys.games_players, user.uid, FirebaseKeys.games_players_holdingItem]))
-        
-        let roomHandle = roomRef.observe(.value, with: { (snap) in
-            guard let _ = snap.value as? [String : AnyObject] else {
-                onHostDisconnected()
-                return
-            }
-            
-            return
-        }) { (err) in
-            onError(err)
-        }
         
         let selfHandle = selfHoldingItemRef.observe(.value, with: { (snap) in
             guard let itemInsideDict = snap.value as? [String : String] else {
@@ -897,13 +885,15 @@ class GameDB: GameDatabase {
         }
 
         let endHandle = endRef.observe(.value, with: { (snap) in
-            guard let end = snap.value as? Bool else { return }
+            guard let end = snap.value as? Bool else {
+                onHostDisconnected()
+                return
+            }
             if end { onGameEnd() }
         }) { (err) in
             onError(err)
         }
 
-        self.observers.append(Observer(withHandle: roomHandle, withRef: roomRef))
         self.observers.append(Observer(withHandle: scoreHandle, withRef: scoreRef))
         self.observers.append(Observer(withHandle: endHandle, withRef: endRef))
         self.observers.append(Observer(withHandle: selfHandle, withRef: selfHoldingItemRef))
