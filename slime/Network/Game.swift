@@ -83,3 +83,13 @@ struct GameOrderModel {
         self.timeLimit = timeLimit
     }
 }
+
+struct NotificationModel {
+    var description: String = ""
+    var type: String = ""
+    
+    init(description: String, type: String) {
+        self.description = description
+        self.type = type
+    }
+}

@@ -746,7 +746,7 @@ class GameDB: GameDatabase {
         }
     }
 
-    func observeGameState(forRoom room: RoomModel, onPlayerUpdate: @escaping (GamePlayerModel) -> Void, onStationUpdate: @escaping (String, GameStationModel) -> Void, onGameEnd: @escaping () -> Void, onOrderQueueChange: @escaping (OrderQueue) -> Void, onScoreChange: @escaping (Int) -> Void, onAllPlayersReady: @escaping () -> Void, onGameStart: @escaping () -> Void, onSelfItemChange: @escaping (ItemModel) -> Void, onTimeLeftChange: @escaping (Int) -> Void, onHostDisconnected: @escaping () -> Void, onNewOrderSubmitted: @escaping (Plate) -> Void, onNewNotificationAdded: @escaping (String) -> Void, onComplete: @escaping () -> Void, onError: @escaping (Error) -> Void) {
+    func observeGameState(forRoom room: RoomModel, onPlayerUpdate: @escaping (GamePlayerModel) -> Void, onStationUpdate: @escaping (String, GameStationModel) -> Void, onGameEnd: @escaping () -> Void, onOrderQueueChange: @escaping (OrderQueue) -> Void, onScoreChange: @escaping (Int) -> Void, onAllPlayersReady: @escaping () -> Void, onGameStart: @escaping () -> Void, onSelfItemChange: @escaping (ItemModel) -> Void, onTimeLeftChange: @escaping (Int) -> Void, onHostDisconnected: @escaping () -> Void, onNewOrderSubmitted: @escaping (Plate) -> Void, onNewNotificationAdded: @escaping (NotificationModel) -> Void, onComplete: @escaping () -> Void, onError: @escaping (Error) -> Void) {
         guard let user = GameAuth.currentUser else {
             return
         }
@@ -886,9 +886,9 @@ class GameDB: GameDatabase {
         }
         
         let notificationHandle = notificationRef.observe(.childAdded, with: { (snap) in
-            guard let description = snap.value as? String else { return }
+            guard let res = snap.value as? [String : String] else { return }
             
-            onNewNotificationAdded(description)
+            onNewNotificationAdded(self.firebaseNotificationModelFactory(forData: res))
         }) { (err) in
             onError(err)
         }
@@ -907,8 +907,16 @@ class GameDB: GameDatabase {
         self.observers.append(Observer(withHandle: endHandle, withRef: endRef))
         self.observers.append(Observer(withHandle: selfHandle, withRef: selfHoldingItemRef))
         self.observers.append(Observer(withHandle: timeLeftHandle, withRef: timeLeftRef))
+        self.observers.append(Observer(withHandle: notificationHandle, withRef: notificationRef))
         
         onComplete()
+    }
+    
+    private func firebaseNotificationModelFactory(forData data: [String : String]) -> NotificationModel {
+        let description = data[FirebaseKeys.games_notifications_description] ?? ""
+        let type = data[FirebaseKeys.games_notifications_type] ?? "info"
+        
+        return NotificationModel(description: description, type: type)
     }
     
     private func firebasePlateFactory(forEncodedString string: String) -> Plate? {
@@ -1037,12 +1045,15 @@ class GameDB: GameDatabase {
         return GameOrderModel(id: dict.key, name: name, issueTime: issueTime, timeLimit: timeLimit)
     }
     
-    func sendNotification(forGameId id: String, withDescription description: String, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void) {
+    func sendNotification(forGameId id: String, withDescription description: String, withType type: String, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void) {
         let ref = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, id, FirebaseKeys.games_notifications]))
+        
+        let res = [FirebaseKeys.games_notifications_description: description,
+                   FirebaseKeys.games_notifications_type: type]
         
         guard let key = ref.childByAutoId().key else { return }
         
-        ref.child(key).setValue(description) { (err, ref) in
+        ref.child(key).setValue(res) { (err, ref) in
             if let error = err {
                 onError(error)
                 return
@@ -1505,6 +1516,8 @@ struct FirebaseKeys {
     static let games_orders_issueTime = "issue_time"
     static let games_orders_timeLimit = "time_limit"
     static let games_notifications = "notifications"
+    static let games_notifications_description = "description"
+    static let games_notifications_type = "type"
     
     // leaderboard stuff
     static let scores = "scores"
