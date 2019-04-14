@@ -323,7 +323,6 @@ class Stage: SKScene {
         self.sceneCam?.addChild(analogJoystick)
         self.sceneCam?.addChild(countdownLabel)
         self.sceneCam?.addChild(scoreLabel)
-        self.sceneCam?.addChild(readyLabel)
 
         if !isMultiplayer {
             counter = counterStartTime
@@ -578,11 +577,19 @@ class Stage: SKScene {
     }
     
     func showReadyFlag() {
-        
+        print("showReadyFlag")
+        self.sceneCam?.addChild(readyLabel)
+
+        //after timer
+        //showStartFlag()
     }
     
     func showStartFlag() {
-        
+        print("showStartFlag")
+        readyLabel.text = "GO!"
+
+        //after timer
+        //readyLabel removefromparent
     }
 
     func updateOrderQueue(into orderQueue: OrderQueue) {
@@ -672,8 +679,9 @@ class Stage: SKScene {
 
     lazy var readyLabel: SKLabelNode = {
         var label = SKLabelNode(fontNamed: "SquidgySlimes")
-        label.fontSize = CGFloat(50)
+        label.fontSize = CGFloat(80)
         label.zPosition = 10
+        label.fontColor = UIColor(red: 58, green: 58, blue: 58)
         label.horizontalAlignmentMode = .center
         label.verticalAlignmentMode = .center
         label.text = "READY?"
