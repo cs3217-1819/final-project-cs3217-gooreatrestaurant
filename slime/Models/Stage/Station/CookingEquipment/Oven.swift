@@ -24,9 +24,8 @@ class Oven: CookingEquipment {
         fatalError("init(coder:) has not been implemented")
     }
 
-    // 60 times a second, so 120 count is 2 seconds
     override func automaticProcessing() {
-        continueProcessing(withProgress: 100.0 / 120.0)
+        continueProcessing(withProgress: 100.0 / 40.0)
     }
 
     override func manualProcessing() {
