@@ -1181,7 +1181,12 @@ class GameDB: GameDatabase {
             let gameRef = self.dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, gameId, FirebaseKeys.games_hasEnded]))
             
             gameRef.observeSingleEvent(of: .value, with: { (snap) in
-                guard let gameHasEnded = snap.value as? Bool else { return }
+                guard let gameHasEnded = snap.value as? Bool else {
+                    self.cancelRejoinGame({ }, { (err) in
+                        onError(err)
+                    })
+                    return
+                }
 
                 if !gameHasEnded {
                     onGameExist(gameId)
