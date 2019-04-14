@@ -60,7 +60,7 @@ class Stage: SKScene {
         self.addChild(background)
         self.addChild(spaceship)
         
-        self.sceneCam?.addChild(notification)
+//        self.sceneCam?.addChild(notification)
         self.sceneCam?.addChild(orderQueue)
     }
 
@@ -156,6 +156,9 @@ class Stage: SKScene {
         }, onNewOrderSubmitted: { (plate) in
             // only for host, don't touch
             self.multiplayerHandleServe(forPlate: plate)
+        }, onNewNotificationAdded: { (description) in
+            // when new notification is received
+            print(description)
         }, onComplete: {
             // joins game after attaching all
             // relevant observers, this onComplete
