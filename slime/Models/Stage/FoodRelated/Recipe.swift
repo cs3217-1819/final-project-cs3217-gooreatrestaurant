@@ -88,10 +88,12 @@ class Recipe: NSObject, Codable {
 
         let noOfElement = min(optionalIngredientsProbability.count, optionalIngredientsIngredient.count)
 
-        for index in 0...max(noOfElement-1, 0) {
-            let ingredient = optionalIngredientsIngredient[index]
-            let probability = optionalIngredientsProbability[index]
-            optionalIngredients.append((item: ingredient, probability: probability))
+        if noOfElement > 0 {
+            for index in 0...(noOfElement-1) {
+                let ingredient = optionalIngredientsIngredient[index]
+                let probability = optionalIngredientsProbability[index]
+                optionalIngredients.append((item: ingredient, probability: probability))
+            }
         }
 
         self.init(inRecipeName: recipeName,
