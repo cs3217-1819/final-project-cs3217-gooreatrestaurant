@@ -25,6 +25,9 @@ class Stage: SKScene {
     var isUserHost: Bool = false
     var allSlimesDict: [String : Slime] = [:] // [uid: Slime]
     var allStationsDict: [String : Station] = [:]
+    
+    // notification stuff
+//    var notification: NotificationPrefab = NotificationPrefab(color: .clear, size: StageConstants.notificationSize)
 
     // RI: the players are unique
     var players: [Player] = []
@@ -56,7 +59,8 @@ class Stage: SKScene {
         background.zPosition = StageConstants.backgroundZPos
         self.addChild(background)
         self.addChild(spaceship)
-
+        
+        self.sceneCam?.addChild(notification)
         self.sceneCam?.addChild(orderQueue)
     }
 

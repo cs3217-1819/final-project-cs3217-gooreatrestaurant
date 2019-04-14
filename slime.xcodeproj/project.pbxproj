@@ -233,6 +233,7 @@
 		F92ECAE6224BAEDB0040A4E2 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92ECAE5224BAEDB0040A4E2 /* Room.swift */; };
 		F92ECAE8224BAEEF0040A4E2 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92ECAE7224BAEEF0040A4E2 /* Game.swift */; };
 		F92ECAEA224D1B490040A4E2 /* FadeInOutSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92ECAE9224D1B490040A4E2 /* FadeInOutSegue.swift */; };
+		F9D0E19A22637AC5003D0D02 /* NotificationPrefab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D0E19922637AC5003D0D02 /* NotificationPrefab.swift */; };
 		F9F26FEE22564873008BFD50 /* GameDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F26FED22564873008BFD50 /* GameDB.swift */; };
 		F9F26FF2225DDA7A008BFD50 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F26FF1225DDA7A008BFD50 /* User.swift */; };
 /* End PBXBuildFile section */
@@ -482,6 +483,7 @@
 		F92ECAE5224BAEDB0040A4E2 /* Room.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 		F92ECAE7224BAEEF0040A4E2 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		F92ECAE9224D1B490040A4E2 /* FadeInOutSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FadeInOutSegue.swift; sourceTree = "<group>"; };
+		F9D0E19922637AC5003D0D02 /* NotificationPrefab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationPrefab.swift; sourceTree = "<group>"; };
 		F9F26FED22564873008BFD50 /* GameDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDB.swift; sourceTree = "<group>"; };
 		F9F26FF1225DDA7A008BFD50 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -585,6 +587,7 @@
 				8BEDCD44224F3EC900E24A20 /* MenuPrefab.swift */,
 				8BEDCD4A22531CDF00E24A20 /* IngredientsCell.swift */,
 				8BFA63E82257D7FE007645F9 /* GameOverPrefab.swift */,
+				F9D0E19922637AC5003D0D02 /* NotificationPrefab.swift */,
 			);
 			path = Sprites;
 			sourceTree = "<group>";
@@ -1660,6 +1663,7 @@
 				ECD455692240FB23006AF78D /* MultiplayerLobbyViewController.swift in Sources */,
 				EC21B407224216C500827121 /* LoadingScreenView.swift in Sources */,
 				EC38244F2238F023000D7148 /* PrimaryButton.swift in Sources */,
+				F9D0E19A22637AC5003D0D02 /* NotificationPrefab.swift in Sources */,
 				ECD24426224B02C900767A56 /* Logger.swift in Sources */,
 				EC0E31712252075300AF1254 /* ItemSelectorView.swift in Sources */,
 				EC449B85223BA48100A8EA35 /* LevelSelectView.swift in Sources */,
