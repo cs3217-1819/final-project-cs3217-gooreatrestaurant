@@ -186,6 +186,10 @@ class OrderQueue: SKSpriteNode, Codable {
         self.possibleRecipes = possibleRecipes
         self.recipeOrdered = recipeOrdered
         self.nodeOrder = nodeOrder
+
+        for prefab in nodeOrder {
+            self.addChild(prefab)
+        }
     }
 
     func encode(to encoder: Encoder) throws {
