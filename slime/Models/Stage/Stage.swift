@@ -29,6 +29,9 @@ class Stage: SKScene {
     // RI: the players are unique
     var players: [Player] = []
 
+    // Order queue
+    var orderQueue = OrderQueue()
+
     //Level score
     var levelScore: Int = 0
 
@@ -54,8 +57,7 @@ class Stage: SKScene {
         self.addChild(background)
         self.addChild(spaceship)
 
-        let order = OrderQueue()
-        self.sceneCam?.addChild(order)
+        self.sceneCam?.addChild(orderQueue)
     }
 
     override func update(_ currentTime: TimeInterval) {
@@ -450,13 +452,9 @@ class Stage: SKScene {
 
     func initializeOrders(withData data: [RecipeData]) {
         if isMultiplayer && !isUserHost { return }
-
-        guard let orderQueue = self.sceneCam?.childNode(withName: StageConstants.orderQueueName) as? OrderQueue else {
-            return
-        }
         
         if isMultiplayer {
-            if let id = self.previousRoom?.id { orderQueue.setMultiplayer(withGameId: id) }
+            if let id = self.previousRoom?.id { self.orderQueue.setMultiplayer(withGameId: id) }
         }
         
         for datum in data {
@@ -492,9 +490,9 @@ class Stage: SKScene {
             }
             let recipe = Recipe(inRecipeName: recipeName, withCompulsoryIngredients: compulsoryIngredients,
                                 withOptionalIngredients: optionalIngredients)
-            orderQueue.addPossibleRecipe(recipe)
+            self.orderQueue.addPossibleRecipe(recipe)
         }
-        orderQueue.initialize()
+        self.orderQueue.initialize()
     }
 
     // For multiplayer (future use)
@@ -544,9 +542,7 @@ class Stage: SKScene {
     private func multiplayerHandleServe(forPlate plate: Plate) {
         let food = plate.food
         
-        guard let orderQueue = self.sceneCam?.childNode(withName: StageConstants.orderQueueName) as? OrderQueue else { return }
-        
-        guard orderQueue.completeOrder(withFood: food) == true else { return }
+        guard self.orderQueue.completeOrder(withFood: food) == true else { return }
         
         // success
         guard let database = self.db else { return }
@@ -560,17 +556,12 @@ class Stage: SKScene {
         if !isMultiplayer {
             let foodToServe = plate.food
             
-            guard let orderQueue = self.sceneCam?.childNode(withName: StageConstants.orderQueueName) as? OrderQueue else {
-                print("error")
-                return
-            }
-            
-            guard orderQueue.completeOrder(withFood: foodToServe) == true else {
+            guard self.orderQueue.completeOrder(withFood: foodToServe) == true else {
                 print("failed")
                 return
             }
             
-            levelScore += orderQueue.scoreToIncrease 
+            levelScore += self.orderQueue.scoreToIncrease 
             scoreLabel.text = "Score: \(levelScore)"
         } else {
             // multiplayer serve food
@@ -657,11 +648,9 @@ class Stage: SKScene {
     }
 
     func updateOrderQueue(into orderQueue: OrderQueue) {
-        guard let oldOrderQueue = self.sceneCam?.childNode(withName: StageConstants.orderQueueName) else {
-            return
-        }
+        self.orderQueue.removeFromParent()
 
-        oldOrderQueue.removeFromParent()
+        self.orderQueue = orderQueue
         self.sceneCam?.addChild(orderQueue)
     }
 
