@@ -323,6 +323,7 @@ class Stage: SKScene {
         self.sceneCam?.addChild(analogJoystick)
         self.sceneCam?.addChild(countdownLabel)
         self.sceneCam?.addChild(scoreLabel)
+        self.sceneCam?.addChild(readyLabel)
 
         if !isMultiplayer {
             counter = counterStartTime
