@@ -289,78 +289,6 @@ class Stage: SKScene {
             }
         }
     }
-
-    // Setupping Joystick and Buttons
-    lazy var analogJoystick: AnalogJoystick = {
-        let js = AnalogJoystick(diameter: StageConstants.joystickSize,
-                                colors: nil,
-                                images: (substrate: #imageLiteral(resourceName: "jSubstrate"),
-                                stick: #imageLiteral(resourceName: "jStick")))
-        js.position = StageConstants.joystickPosition
-        js.zPosition = StageConstants.joystickZPos
-        return js
-    }()
-
-    lazy var jumpButton: BDButton = {
-        var button = BDButton(imageNamed: "Up", buttonAction: {
-            self.slimeToControl?.jump()
-            })
-        button.setScale(0.15)
-        button.isEnabled = true
-        button.position = StageConstants.jumpButtonPosition
-        button.zPosition = StageConstants.buttonZPos
-        return button
-    }()
-
-    lazy var interactButton: BDButton = {
-        var button = BDButton(imageNamed: "Interact", buttonAction: {
-            let interactedStation = self.slimeToControl?.interact()
-            if self.isMultiplayer {
-                guard let station = interactedStation else { return }
-                self.handleMultiplayerInteract(withStation: station)
-            }
-            })
-        button.setScale(0.15)
-        button.isEnabled = true
-        button.position = StageConstants.interactButtonPosition
-        button.zPosition = StageConstants.buttonZPos
-        return button
-    }()
-
-    lazy var backButton: BDButton = {
-        var button = BDButton(imageNamed: "BackButton", buttonAction: {
-            self.controller.segueToMainScreen(isMultiplayer: self.isMultiplayer)
-        })
-        button.setScale(0.1)
-        button.isEnabled = true
-        button.position = StageConstants.backButtonPosition
-        button.zPosition = StageConstants.buttonZPos
-        return button
-    }()
-
-    lazy var countdownLabel: SKLabelNode = {
-        var label = SKLabelNode(fontNamed: "SquidgySlimes")
-        label.fontSize = CGFloat(40)
-        label.zPosition = 10
-        label.color = .red
-        label.horizontalAlignmentMode = .left
-        label.verticalAlignmentMode = .center
-        label.text = "Time: \(counterStartTime)"
-        label.position = StageConstants.timerPosition
-        return label
-    }()
-
-    lazy var scoreLabel: SKLabelNode = {
-        var label = SKLabelNode(fontNamed: "SquidgySlimes")
-        label.fontSize = CGFloat(30)
-        label.zPosition = 10
-        label.color = .red
-        label.horizontalAlignmentMode = .left
-        label.verticalAlignmentMode = .center
-        label.text = "Score: \(levelScore)"
-        label.position = StageConstants.scorePosition
-        return label
-    }()
     
     private func handleMultiplayerInteract(withStation station: Station) {
         guard let database = self.db else { return }
@@ -669,4 +597,76 @@ class Stage: SKScene {
     required init?(coder aDecoder: NSCoder) {
         fatalError("initiation using storyboard is not implemented yet.")
     }
+
+    // Setupping Joystick and Buttons
+    lazy var analogJoystick: AnalogJoystick = {
+        let js = AnalogJoystick(diameter: StageConstants.joystickSize,
+                                colors: nil,
+                                images: (substrate: #imageLiteral(resourceName: "jSubstrate"),
+                                         stick: #imageLiteral(resourceName: "jStick")))
+        js.position = StageConstants.joystickPosition
+        js.zPosition = StageConstants.joystickZPos
+        return js
+    }()
+
+    lazy var jumpButton: BDButton = {
+        var button = BDButton(imageNamed: "Up", buttonAction: {
+            self.slimeToControl?.jump()
+        })
+        button.setScale(0.15)
+        button.isEnabled = true
+        button.position = StageConstants.jumpButtonPosition
+        button.zPosition = StageConstants.buttonZPos
+        return button
+    }()
+
+    lazy var interactButton: BDButton = {
+        var button = BDButton(imageNamed: "Interact", buttonAction: {
+            let interactedStation = self.slimeToControl?.interact()
+            if self.isMultiplayer {
+                guard let station = interactedStation else { return }
+                self.handleMultiplayerInteract(withStation: station)
+            }
+        })
+        button.setScale(0.15)
+        button.isEnabled = true
+        button.position = StageConstants.interactButtonPosition
+        button.zPosition = StageConstants.buttonZPos
+        return button
+    }()
+
+    lazy var backButton: BDButton = {
+        var button = BDButton(imageNamed: "BackButton", buttonAction: {
+            self.controller.segueToMainScreen(isMultiplayer: self.isMultiplayer)
+        })
+        button.setScale(0.1)
+        button.isEnabled = true
+        button.position = StageConstants.backButtonPosition
+        button.zPosition = StageConstants.buttonZPos
+        return button
+    }()
+
+    lazy var countdownLabel: SKLabelNode = {
+        var label = SKLabelNode(fontNamed: "SquidgySlimes")
+        label.fontSize = CGFloat(40)
+        label.zPosition = 10
+        label.color = .red
+        label.horizontalAlignmentMode = .left
+        label.verticalAlignmentMode = .center
+        label.text = "Time: \(counterStartTime)"
+        label.position = StageConstants.timerPosition
+        return label
+    }()
+
+    lazy var scoreLabel: SKLabelNode = {
+        var label = SKLabelNode(fontNamed: "SquidgySlimes")
+        label.fontSize = CGFloat(30)
+        label.zPosition = 10
+        label.color = .red
+        label.horizontalAlignmentMode = .left
+        label.verticalAlignmentMode = .center
+        label.text = "Score: \(levelScore)"
+        label.position = StageConstants.scorePosition
+        return label
+    }()
 }
