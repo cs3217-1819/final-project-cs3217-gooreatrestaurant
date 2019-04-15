@@ -25,6 +25,7 @@ class Stage: SKScene {
     var isUserHost: Bool = false
     var allSlimesDict: [String : Slime] = [:] // [uid: Slime]
     var allStationsDict: [String : Station] = [:]
+    var allStageItemsDict: [String : MobileItem] = [:]
     
     // notification stuff
     var notificationPrefab: NotificationPrefab = NotificationPrefab(color: .clear, size: StageConstants.notificationSize)
@@ -171,12 +172,14 @@ class Stage: SKScene {
             self.notificationPrefab.show(withDescription: notification.description, ofType: type)
         }, onStageItemAdded: { (item) in
             // stage item added
+            self.handleStageItemAdded(forItem: item)
         }, onStageItemRemoved: { (item) in
             // stage item removed
+            self.handleStageItemRemoved(forItem: item)
         }, onComplete: {
-            // this is run BEFORE the stage
-            // fully loads, and only after
-            // all listeners are attached
+            // this is run BEFORE the stage fully loads, and only after
+            // all listeners are attached refrain from running anything
+            // related to game flow here, might be called prematurely
         }) { (err) in
             print(err.localizedDescription)
         }
@@ -200,6 +203,31 @@ class Stage: SKScene {
     private func stopStreamingSelf() {
         guard let timer = self.streamingTimer else { return }
         timer.invalidate()
+    }
+    
+    private func handleStageItemRemoved(forItem item: StageItemModel) {
+        let removedItem = self.allStageItemsDict.removeValue(forKey: item.uid)
+        guard let item = removedItem else { return }
+        
+        if let plate = item as? Plate { plate.removeFromParent() }
+        if let ingredient = item as? Ingredient { ingredient.removeFromParent() }
+    }
+    
+    private func handleStageItemAdded(forItem item: StageItemModel) {
+        let decoder = JSONDecoder()
+        guard let data = item.encodedData.data(using: .utf8) else { return }
+
+        if item.type == FirebaseSystemValues.ItemTypes.plate.rawValue {
+            let plate = try? decoder.decode(Plate.self, from: data)
+            guard let addedPlate = plate else { return }
+            self.allStageItemsDict.updateValue(addedPlate as MobileItem, forKey: item.uid)
+        }
+        
+        if item.type == FirebaseSystemValues.ItemTypes.ingredient.rawValue {
+            let ingredient = try? decoder.decode(Ingredient.self, from: data)
+            guard let addedIngredient = ingredient else { return }
+            self.allStageItemsDict.updateValue(addedIngredient as MobileItem, forKey: item.uid)
+        }
     }
     
     private func handleStationChanged(forStationId id: String, forStation station: GameStationModel) {
