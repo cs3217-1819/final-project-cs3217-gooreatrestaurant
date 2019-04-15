@@ -10,20 +10,21 @@ import UIKit
 import SpriteKit
 
 class Spaceship: SKSpriteNode {
+    let SpaceshipAtlas = SKTextureAtlas(named: "Spaceship")
 
     // position is in the center
     init(inPosition position: CGPoint, withSize size: CGSize) {
-        let spaceshipBody = SKTexture(imageNamed: "SpaceshipMAIN")
-        spaceshipBody.filteringMode = .nearest
-        super.init(texture: spaceshipBody, color: .clear, size: size)
+        let texture = SpaceshipAtlas.textureNamed("Spaceship-1")
+        texture.filteringMode = .nearest
+        super.init(texture: texture, color: .clear, size: size)
         self.position = CGPoint.zero
         self.zPosition = 0
     }
 
     func addRoom() {
-        let spaceshipBody = SKTexture(imageNamed: "Area")
-        spaceshipBody.filteringMode = .nearest // shorter form for SKTextureFilteringMode.Nearest
-        let room = SKSpriteNode(texture: spaceshipBody)
+        let texture = SpaceshipAtlas.textureNamed("Area-1")
+        texture.filteringMode = .nearest
+        let room = SKSpriteNode(texture: texture)
         room.position = CGPoint(x: 0, y: 0)
         room.size = StageConstants.gameAreaSize
         room.zPosition = 1

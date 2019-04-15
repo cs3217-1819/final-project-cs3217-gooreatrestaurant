@@ -36,15 +36,15 @@ class Trash: Station {
     // Requirement: item given is non-nil
     // Return: nil (the item given to the trash will be gone forever)
 
-    override func ableToProcess(_ item: SKSpriteNode?) -> Bool {
+    override func ableToInteract(withItem item: Item?) -> Bool {
         if item == nil {
             return false
         }
         return true
     }
 
-    override func process(_ item: SKSpriteNode?) -> SKSpriteNode? {
-        guard ableToProcess(item) == true else {
+    override func interact(withItem item: Item?) -> Item? {
+        guard ableToInteract(withItem: item) == true else {
             return item
         }
         

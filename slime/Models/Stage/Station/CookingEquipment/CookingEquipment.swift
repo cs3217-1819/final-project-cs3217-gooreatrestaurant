@@ -82,19 +82,19 @@ class CookingEquipment: Station {
 
     // Take out the item inside this equipment
     // return the item as SKSpriteNode
-    func takeitemInside() -> SKSpriteNode? {
+    func takeitemInside() -> Item? {
         guard canTakeIngredient == true else {
             return nil
         }
 
-        guard let toTake = itemInside as? SKSpriteNode else {
+        guard let toTake = itemInside as? Item else {
             return nil
         }
         self.removeItem()
         return toTake
     }
 
-    override func ableToProcess(_ item: SKSpriteNode?) -> Bool {
+    override func ableToInteract(withItem item: Item?) -> Bool {
 
         let willPut = (item is Ingredient && self.itemInside == nil)
         let willProcess = (item == nil && self.itemInside != nil)
@@ -103,8 +103,8 @@ class CookingEquipment: Station {
         return willPut || willProcess || willTakeIngredientToPlate
     }
 
-    override func process(_ item: SKSpriteNode?) -> SKSpriteNode? {
-        guard ableToProcess(item) == true else {
+    override func interact(withItem item: Item?) -> Item? {
+        guard ableToInteract(withItem: item) == true else {
             return nil
         }
 
