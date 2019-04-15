@@ -98,7 +98,7 @@ class CookingEquipment: Station {
 
         let willPut = (item is Ingredient && self.itemInside == nil)
         let willProcess = (item == nil && self.itemInside != nil)
-        let willTakeIngredientToPlate = (item is Plate && self.itemInside is Ingredient)
+        let willTakeIngredientToPlate = self.itemInside?.ableToInteract(withItem: item) ?? false
 
         return willPut || willProcess || willTakeIngredientToPlate
     }
@@ -132,12 +132,7 @@ class CookingEquipment: Station {
                 return nil
             }
 
-            guard let plate = item as? Plate else {
-                return nil
-            }
-
-            plate.addIngredients(toAdd)
-            return plate
+            return toAdd.interact(withItem: item)
         }
         return nil
     }
