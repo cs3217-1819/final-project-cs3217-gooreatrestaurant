@@ -39,7 +39,7 @@ class MenuPrefab: SKSpriteNode, Codable {
         super.init(texture: texture, color: color, size: size)
         self.position = CGPoint(x: ScreenSize.width * 0.5 - 60,
                                 y: ScreenSize.height * 0.5 - 60)
-        self.zPosition = 5
+        self.zPosition = 8
     }
 
     required init?(coder aDecoder: NSCoder) {
