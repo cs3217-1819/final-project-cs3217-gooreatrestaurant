@@ -28,7 +28,7 @@ class GameOverPrefab: SKSpriteNode {
         self.position = CGPoint.zero
         self.zPosition = 10
 
-        let slime = SKSpriteNode(texture: UIAtlas.textureNamed("Shocked Slime"))
+        let slime = SKSpriteNode(texture: UIAtlas.textureNamed("ShockedSlime"))
         slime.texture?.filteringMode = .nearest
         slime.position = CGPoint.zero
         slime.size = CGSize(width: 220, height: 220)
