@@ -28,11 +28,15 @@ class Plate: MobileItem, Codable {
         super.init(inPosition: position, withSize: size, withTexture: plate, withName: "Plate")
 
         self.name = StageConstants.plateName
-        self.physicsBody?.categoryBitMask = StageConstants.plateCategory
     }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    override func setPhysicsBody() {
+        super.setPhysicsBody()
+        self.physicsBody?.categoryBitMask = StageConstants.plateCategory
     }
 
     func addIngredients(_ ingredient: Ingredient) {

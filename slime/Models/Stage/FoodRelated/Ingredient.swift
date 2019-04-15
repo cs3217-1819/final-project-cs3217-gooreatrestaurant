@@ -31,9 +31,12 @@ class Ingredient: MobileItem, Codable {
         super.init(inPosition: position, withSize: size, withTexture: texture, withName: "Ingredient")
 
         self.name = StageConstants.ingredientName
-        self.physicsBody?.categoryBitMask = StageConstants.ingredientCategory
-
         setupBars()
+    }
+
+    override func setPhysicsBody() {
+        super.setPhysicsBody()
+        self.physicsBody?.categoryBitMask = StageConstants.ingredientCategory
     }
 
     private func setupBars() {

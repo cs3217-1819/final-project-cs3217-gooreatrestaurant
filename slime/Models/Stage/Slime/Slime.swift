@@ -100,16 +100,18 @@ class Slime: SKSpriteNode {
         self.removeAllChildren()
     }
 
-    func takeItem(_ item: Item?) {
-        guard let itemToTake = item else {
+    func takeItem(_ item: MobileItem?) {
+        guard itemCarried == nil else {
             return
         }
+        item?.taken(by: self)
+    }
 
-        itemToTake.removeFromParent()
-        itemToTake.position.x = 0.0
-        itemToTake.position.y = 0.4 * (self.size.height + itemToTake.size.height)
-        itemToTake.physicsBody = nil
-        self.addChild(itemToTake)
+    func dropItem() {
+        guard let item = itemCarried else {
+            return
+        }
+        item.dropped(by: self)
     }
 
     func interact() -> Station? {
@@ -130,8 +132,9 @@ class Slime: SKSpriteNode {
                 let itemToProcess = self.itemCarried
                 itemToProcess?.removeFromParent()
 
-                let itemProcessed = station.interact(withItem: itemToProcess)
-                self.takeItem(itemProcessed)
+                if let itemProcessed = station.interact(withItem: itemToProcess) as? MobileItem {
+                    self.takeItem(itemProcessed)
+                }
                 return station
             }
         }

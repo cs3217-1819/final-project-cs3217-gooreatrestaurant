@@ -48,7 +48,7 @@ class Table: Station {
         // Condition 1
         if willPut {
 
-            guard let itemToPut = item else {
+            guard let itemToPut = item as? MobileItem else {
                 return item
             }
 
