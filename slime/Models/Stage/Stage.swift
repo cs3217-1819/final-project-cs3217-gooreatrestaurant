@@ -757,4 +757,28 @@ class Stage: SKScene {
         blackBG.zPosition = 6
         return blackBG
     }()
+
+    open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if (hasStarted) {
+            if let touch = touches.first{
+                let touchPos = touch.location(in: (self.sceneCam)!)
+                print(touchPos)
+                print(self.sceneCam?.position)
+                analogJoystick.position = touchPos
+                analogJoystick.touchesBegan(touches, with: event)
+            }
+        }
+    }
+
+    open override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        analogJoystick.touchesMoved(touches, with: event)
+    }
+
+    open override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        analogJoystick.touchesEnded(touches, with: event)
+    }
+
+    open override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        analogJoystick.touchesCancelled(touches, with: event)
+    }
 }
