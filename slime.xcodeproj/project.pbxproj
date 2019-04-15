@@ -36,6 +36,7 @@
 		8B5B2005226470C400059756 /* Recipes.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 8B5B2004226470C400059756 /* Recipes.atlas */; };
 		8B5B20092264759200059756 /* SlicedIngredients.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 8B5B20082264759200059756 /* SlicedIngredients.atlas */; };
 		8B5B200B2264886900059756 /* BakedIngredients.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 8B5B200A2264886800059756 /* BakedIngredients.atlas */; };
+		8B5B200D22648BE300059756 /* BakedSlicedIngredients.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 8B5B200C22648BE300059756 /* BakedSlicedIngredients.atlas */; };
 		8B81EFBC224344AD007BFDB0 /* Slime.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 8B81EFBB224344AD007BFDB0 /* Slime.atlas */; };
 		8BD816AF22422C6700586180 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD816AE22422C6700586180 /* Extensions.swift */; };
 		8BD816B3224262F100586180 /* AnalogJoystick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD816B2224262F100586180 /* AnalogJoystick.swift */; };
@@ -283,6 +284,7 @@
 		8B5B2004226470C400059756 /* Recipes.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Recipes.atlas; sourceTree = "<group>"; };
 		8B5B20082264759200059756 /* SlicedIngredients.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = SlicedIngredients.atlas; sourceTree = "<group>"; };
 		8B5B200A2264886800059756 /* BakedIngredients.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = BakedIngredients.atlas; sourceTree = "<group>"; };
+		8B5B200C22648BE300059756 /* BakedSlicedIngredients.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = BakedSlicedIngredients.atlas; sourceTree = "<group>"; };
 		8B81EFBB224344AD007BFDB0 /* Slime.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Slime.atlas; sourceTree = "<group>"; };
 		8BD816AE22422C6700586180 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		8BD816B2224262F100586180 /* AnalogJoystick.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalogJoystick.swift; sourceTree = "<group>"; };
@@ -585,6 +587,7 @@
 		8BD816B42242643C00586180 /* Sprites */ = {
 			isa = PBXGroup;
 			children = (
+				8B5B200C22648BE300059756 /* BakedSlicedIngredients.atlas */,
 				8B5B200A2264886800059756 /* BakedIngredients.atlas */,
 				8B5B20082264759200059756 /* SlicedIngredients.atlas */,
 				8B5B2004226470C400059756 /* Recipes.atlas */,
@@ -1391,6 +1394,7 @@
 				EC6E75522255CB9000B9C7CF /* CustomizationMainView.xib in Resources */,
 				EC57D2DE225C8B7B00F26808 /* SlimeCharacterView.xib in Resources */,
 				EC6E7558225A3A8000B9C7CF /* JokesSlimesView.xib in Resources */,
+				8B5B200D22648BE300059756 /* BakedSlicedIngredients.atlas in Resources */,
 				EC7168EF22603AED004EF2B0 /* back.mp3 in Resources */,
 				ECD4556C2240FBED006AF78D /* PlayerBox.xib in Resources */,
 				EC7168E4225DD3CF004EF2B0 /* gameover.mp3 in Resources */,
