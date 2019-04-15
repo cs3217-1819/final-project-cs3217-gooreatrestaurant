@@ -172,9 +172,15 @@ class Stage: SKScene {
             self.notificationPrefab.show(withDescription: notification.description, ofType: type)
         }, onStageItemAdded: { (item) in
             // stage item added
+            print(item.uid)
+            print(item.type)
+            print(item.encodedData)
             self.handleStageItemAdded(forItem: item)
         }, onStageItemRemoved: { (item) in
             // stage item removed
+            print(item.uid)
+            print(item.type)
+            print(item.encodedData)
             self.handleStageItemRemoved(forItem: item)
         }, onComplete: {
             // this is run BEFORE the stage fully loads, and only after
