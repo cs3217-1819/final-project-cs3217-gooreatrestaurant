@@ -1460,7 +1460,6 @@
 				EC38243F223882C5000D7148 /* PrimaryButton.xib in Resources */,
 				EC7168E8225DD3CF004EF2B0 /* leftroom.mp3 in Resources */,
 				EC4708B12264B17C00F3BC19 /* pickup.mp3 in Resources */,
-				1D37DBC0225E6ED900E637C9 /* ProcessedIngredients.atlas in Resources */,
 				EC7168E7225DD3CF004EF2B0 /* joinroom.mp3 in Resources */,
 				EC6E99F5224F2D1600A9554C /* ProgressBarView.xib in Resources */,
 				EC7168EB225DD571004EF2B0 /* bloop.mp3 in Resources */,
@@ -1915,13 +1914,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = H8MD8RH9XR;
+				DEVELOPMENT_TEAM = W76H98A34A;
 				INFOPLIST_FILE = slime/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = nus.cs3217.a0143378y.slimeo;
+				PRODUCT_BUNDLE_IDENTIFIER = nus.cs3217.a0166733y.slime;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
@@ -1936,13 +1935,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = H8MD8RH9XR;
+				DEVELOPMENT_TEAM = W76H98A34A;
 				INFOPLIST_FILE = slime/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = nus.cs3217.a0143378y.slimeo;
+				PRODUCT_BUNDLE_IDENTIFIER = nus.cs3217.a0166733y.slime;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;

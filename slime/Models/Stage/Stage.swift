@@ -169,6 +169,10 @@ class Stage: SKScene {
             // when new notification is received
             guard let type = NotificationPrefab.NotificationTypes(rawValue: notification.type) else { return }
             self.notificationPrefab.show(withDescription: notification.description, ofType: type)
+        }, onStageItemAdded: { (item) in
+            // stage item added
+        }, onStageItemRemoved: { (item) in
+            // stage item removed
         }, onComplete: {
             // this is run BEFORE the stage
             // fully loads, and only after
