@@ -35,6 +35,7 @@
 		3F1EE6CE45AA94FFF3DA1410 /* Pods_slimeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD598D8D4712AAF7695D5C8 /* Pods_slimeTests.framework */; };
 		84A297CC3884A9F329049AA5 /* Pods_slime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80487C6681A5E05D3D2137F7 /* Pods_slime.framework */; };
 		8B5B2005226470C400059756 /* Recipes.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 8B5B2004226470C400059756 /* Recipes.atlas */; };
+		8B5B20092264759200059756 /* SlicedIngredients.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 8B5B20082264759200059756 /* SlicedIngredients.atlas */; };
 		8B81EFBC224344AD007BFDB0 /* Slime.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 8B81EFBB224344AD007BFDB0 /* Slime.atlas */; };
 		8BD816AF22422C6700586180 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD816AE22422C6700586180 /* Extensions.swift */; };
 		8BD816B3224262F100586180 /* AnalogJoystick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD816B2224262F100586180 /* AnalogJoystick.swift */; };
@@ -281,6 +282,7 @@
 		7AD598D8D4712AAF7695D5C8 /* Pods_slimeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_slimeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		80487C6681A5E05D3D2137F7 /* Pods_slime.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_slime.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B5B2004226470C400059756 /* Recipes.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Recipes.atlas; sourceTree = "<group>"; };
+		8B5B20082264759200059756 /* SlicedIngredients.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = SlicedIngredients.atlas; sourceTree = "<group>"; };
 		8B81EFBB224344AD007BFDB0 /* Slime.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Slime.atlas; sourceTree = "<group>"; };
 		8BD816AE22422C6700586180 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		8BD816B2224262F100586180 /* AnalogJoystick.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalogJoystick.swift; sourceTree = "<group>"; };
@@ -583,6 +585,7 @@
 		8BD816B42242643C00586180 /* Sprites */ = {
 			isa = PBXGroup;
 			children = (
+				8B5B20082264759200059756 /* SlicedIngredients.atlas */,
 				8B5B2004226470C400059756 /* Recipes.atlas */,
 				1D37DBBF225E6ED900E637C9 /* Ingredients.atlas */,
 				1D37DBBE225E6ED900E637C9 /* ProcessedIngredients.atlas */,
@@ -1393,6 +1396,7 @@
 				EC7168E4225DD3CF004EF2B0 /* gameover.mp3 in Resources */,
 				EC3824252238803D000D7148 /* Assets.xcassets in Resources */,
 				EC4924E42246163C007B9797 /* LevelPlaceView.xib in Resources */,
+				8B5B20092264759200059756 /* SlicedIngredients.atlas in Resources */,
 				ECA66DC2223D5DD100D1D0BC /* CreditsScreenView.xib in Resources */,
 				EC38246E223A1803000D7148 /* Rubik-Italic.ttf in Resources */,
 				EC7676BF225B52CE00F6A450 /* CustomizationCosmeticView.xib in Resources */,

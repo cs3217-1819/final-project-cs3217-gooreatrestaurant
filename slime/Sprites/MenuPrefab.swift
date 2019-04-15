@@ -54,9 +54,9 @@ class MenuPrefab: SKSpriteNode, Codable {
         texture = ingredientsAtlas.textureNamed(recipe.recipeName)
 
         let dish = SKSpriteNode(texture: texture)
-        dish.position = CGPoint(x: 0, y: 20)
+        dish.position = CGPoint(x: 0, y: 10)
         dish.zPosition = 5
-        dish.size = CGSize(width: 45, height: 45)
+        dish.size = CGSize(width: 55, height: 55)
 
         var i = 0
         for (key, _) in recipe.ingredientsNeeded {
