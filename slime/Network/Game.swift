@@ -93,3 +93,15 @@ struct NotificationModel {
         self.type = type
     }
 }
+
+struct StageItemModel {
+    var uid: String = ""
+    var encodedData: String = ""
+    var type: String = ""
+    
+    init(uid: String, encodedData: String, type: String) {
+        self.uid = uid
+        self.encodedData = encodedData
+        self.type = type
+    }
+}
