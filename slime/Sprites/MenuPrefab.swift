@@ -21,20 +21,22 @@ class MenuPrefab: SKSpriteNode, Codable {
     var time: CGFloat = StageConstants.defaultTimeLimitOrder
     var duration: CGFloat = StageConstants.defaultTimeLimitOrder
 
+    let UIAtlas = SKTextureAtlas(named: "UI")
+
     let positionings = [CGPoint(x: -25, y: -15),
                         CGPoint(x: -5, y: -15),
                         CGPoint(x: 15, y: -15)]
 
     override init(texture: SKTexture?, color: UIColor, size: CGSize) {
         let randNum = Int.random(in: 1...4)
-        let spaceshipBody = SKTexture(imageNamed: "Menu-Slimes_" + String(randNum))
-        spaceshipBody.filteringMode = .nearest
+        let texture = UIAtlas.textureNamed("Menu-Slimes_" + String(randNum))
+        texture.filteringMode = .nearest
 
         self.randInt = randNum
         self.blackBar = SKSpriteNode(imageNamed: "Black bar")
         self.greenBar = SKSpriteNode(imageNamed: "Green bar")
 
-        super.init(texture: spaceshipBody, color: color, size: size)
+        super.init(texture: texture, color: color, size: size)
         self.position = CGPoint(x: ScreenSize.width * 0.5 - 60,
                                 y: ScreenSize.height * 0.5 - 60)
         self.zPosition = 5
