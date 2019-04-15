@@ -21,8 +21,9 @@ class MenuPrefab: SKSpriteNode, Codable {
     var time: CGFloat = StageConstants.defaultTimeLimitOrder
     var duration: CGFloat = StageConstants.defaultTimeLimitOrder
 
-    let positionings = [CGPoint(x: -10, y: -15),
-                        CGPoint(x: 10, y: -15)]
+    let positionings = [CGPoint(x: -25, y: -15),
+                        CGPoint(x: -5, y: -15),
+                        CGPoint(x: 15, y: -15)]
 
     override init(texture: SKTexture?, color: UIColor, size: CGSize) {
         let randNum = Int.random(in: 1...4)
@@ -54,7 +55,7 @@ class MenuPrefab: SKSpriteNode, Codable {
         texture = ingredientsAtlas.textureNamed(recipe.recipeName)
 
         let dish = SKSpriteNode(texture: texture)
-        dish.position = CGPoint(x: 0, y: 10)
+        dish.position = CGPoint(x: 0, y: 15)
         dish.zPosition = 5
         dish.size = CGSize(width: 55, height: 55)
 
