@@ -86,10 +86,23 @@ class OrderQueue: SKSpriteNode, Codable {
     
     @objc
     func multiplayerAddRandomOrder() {
-        self.addRandomOrder()
-        if isMultiplayerEnabled { multiplayerUpdateSelf() }
+        guard let recipe = self.generateRandomRecipe() else { return }
+        self.addOrder(ofRecipe: recipe)
+        
+        if isMultiplayerEnabled {
+            multiplayerUpdateSelf()
+            sendNotification(withDescription: "someone ordered \(recipe.recipeName), chop chop!")
+        }
     }
-
+    
+    private func sendNotification(withDescription description: String, withType type: String = NotificationPrefab.NotificationTypes.info.rawValue) {
+        let database = GameDB()
+        guard let id = self.gameId else { return }
+        database.sendNotification(forGameId: id, withDescription: description, withType: type, { }) { (err) in
+            print(err.localizedDescription)
+        }
+    }
+    
     func addPossibleRecipe(_ recipe: Recipe) {
         self.possibleRecipes.insert(recipe)
     }
@@ -151,7 +164,10 @@ class OrderQueue: SKSpriteNode, Codable {
             return
         }
         
-        if self.isMultiplayerEnabled { self.multiplayerUpdateSelf() }
+        if self.isMultiplayerEnabled {
+            self.multiplayerUpdateSelf()
+            self.sendNotification(withDescription: "oops! you missed the \(recipe.recipeName) order!", withType: NotificationPrefab.NotificationTypes.warning.rawValue)
+        }
     }
 
     func removeMenuPrefab(inNum: Int) {

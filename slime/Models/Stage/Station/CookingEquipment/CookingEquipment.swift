@@ -11,10 +11,16 @@ import SpriteKit
 
 class CookingEquipment: Station {
 
-    let cookingType: CookingType
-    var automaticProcessingTimer = Timer()
-    var ingredientsAllowed: Set<IngredientType> = []
+    // The cooking type of this equipment
+    private let cookingType: CookingType
 
+    // Timer that fire once in a while to automatically process the ingredients
+    private var automaticProcessingTimer = Timer()
+
+    // Allowed ingredients to be processed into this cooking equipment
+    private var ingredientsAllowed: Set<IngredientType> = []
+
+    // Construct a cooking equipment
     init(type: CookingType,
          inPosition position: CGPoint,
          withSize size: CGSize,
@@ -34,6 +40,7 @@ class CookingEquipment: Station {
                                                              repeats: true)
     }
 
+    // To check whether the ingredient inside this equipment is ready to take (finished processing)
     private var canTakeIngredient: Bool {
         guard let ingredient = self.itemInside as? Ingredient else {
             return false
@@ -46,6 +53,30 @@ class CookingEquipment: Station {
         }
 
         return false
+    }
+
+    // Put ingredient inside this cooking equipment
+    // Parameters: the ingredient that will be added
+    func putIngredient(_ ingredient: Ingredient) {
+        guard itemInside == nil else {
+            return
+        }
+
+        self.addItem(ingredient)
+    }
+
+    // Take out the item inside this equipment
+    // return the item as SKSpriteNode
+    func takeitemInside() -> SKSpriteNode? {
+        guard canTakeIngredient == true else {
+            return nil
+        }
+
+        guard let toTake = itemInside as? SKSpriteNode else {
+            return nil
+        }
+        self.removeItem()
+        return toTake
     }
 
     override func ableToProcess(_ item: SKSpriteNode?) -> Bool {
@@ -95,6 +126,8 @@ class CookingEquipment: Station {
         return nil
     }
 
+    // To process ingredient with a particular progress value
+    // If the ingredient is allowed to be processed by this equipment, will cook the ingredients. Else, will ruin it
     func continueProcessing(withProgress progress: Double) {
         guard let ingredient = itemInside as? Ingredient else {
             return
@@ -113,33 +146,14 @@ class CookingEquipment: Station {
         }
     }
 
-    @objc
-    func automaticProcessing() {
+    // Automatic processing, called by timer
+    @objc func automaticProcessing() {
         continueProcessing(withProgress: 0.0)
     }
 
+    // Manual processing, called from 
     func manualProcessing() {
         continueProcessing(withProgress: 100.0)
-    }
-
-    func putIngredient(_ ingredient: Ingredient) {
-        guard itemInside == nil else {
-            return
-        }
-
-        self.addItem(ingredient)
-    }
-
-    func takeitemInside() -> SKSpriteNode? {
-        guard canTakeIngredient == true else {
-            return nil
-        }
-
-        guard let toTake = itemInside as? SKSpriteNode else {
-            return nil
-        }
-        self.removeItem()
-        return toTake
     }
 
     required init?(coder aDecoder: NSCoder) {

@@ -172,7 +172,7 @@ protocol GameDatabase {
     ///     - onDataChange: a closure which is fired
     ///       every time a data value changes
     ///     - onError: fired when an error happens
-    func observeGameState(forRoom room: RoomModel, onPlayerUpdate: @escaping (GamePlayerModel) -> Void, onStationUpdate: @escaping (String, GameStationModel) -> Void, onGameEnd: @escaping () -> Void, onOrderQueueChange: @escaping (OrderQueue) -> Void, onScoreChange: @escaping (Int) -> Void, onAllPlayersReady: @escaping () -> Void, onGameStart: @escaping () -> Void, onSelfItemChange: @escaping (ItemModel) -> Void, onTimeLeftChange: @escaping (Int) -> Void, onHostDisconnected: @escaping () -> Void, onNewOrderSubmitted: @escaping (Plate) -> Void, onNewNotificationAdded: @escaping (String) -> Void, onComplete: @escaping () -> Void, onError: @escaping (Error) -> Void)
+    func observeGameState(forRoom room: RoomModel, onPlayerUpdate: @escaping (GamePlayerModel) -> Void, onStationUpdate: @escaping (String, GameStationModel) -> Void, onGameEnd: @escaping () -> Void, onOrderQueueChange: @escaping (OrderQueue) -> Void, onScoreChange: @escaping (Int) -> Void, onAllPlayersReady: @escaping () -> Void, onGameStart: @escaping () -> Void, onSelfItemChange: @escaping (ItemModel) -> Void, onTimeLeftChange: @escaping (Int) -> Void, onHostDisconnected: @escaping () -> Void, onNewOrderSubmitted: @escaping (Plate) -> Void, onNewNotificationAdded: @escaping (NotificationModel) -> Void, onComplete: @escaping () -> Void, onError: @escaping (Error) -> Void)
     
     /// updates the hasStarted flag inside the game
     /// only used by host to indicate that the game
@@ -297,11 +297,12 @@ protocol GameDatabase {
     ///       is to be sent
     ///     - withDescription: the description of
     ///       the notification in string
+    ///     - withType: the type of notification
     ///     - onComplete: the closure run after this
     ///       is complete
     ///     - onError: the closure run when an error
     ///       occurs
-    func sendNotification(forGameId id: String, withDescription description: String, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void)
+    func sendNotification(forGameId id: String, withDescription description: String, withType type: String, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void)
 
     /// removes an order from the current list of orders
     /// wtih a specified key

@@ -27,7 +27,7 @@ class Stage: SKScene {
     var allStationsDict: [String : Station] = [:]
     
     // notification stuff
-//    var notification: NotificationPrefab = NotificationPrefab(color: .clear, size: StageConstants.notificationSize)
+    var notificationPrefab: NotificationPrefab = NotificationPrefab(color: .clear, size: StageConstants.notificationSize)
 
     //For countdown of game
     var counter = 0
@@ -66,7 +66,7 @@ class Stage: SKScene {
         self.addChild(background)
         self.addChild(spaceship)
         
-//        self.sceneCam?.addChild(notification)
+        self.sceneCam?.addChild(notificationPrefab)
         self.sceneCam?.addChild(orderQueue)
     }
 
@@ -151,6 +151,7 @@ class Stage: SKScene {
             self.handleSlimeItemChange(forSlime: slime, forItem: item)
         }, onTimeLeftChange: { (timeLeft) in
             self.countdownLabel.text = "Time: \(timeLeft)"
+            self.checkForNotificationTimes(forTime: timeLeft)
             if self.isUserHost && self.isMultiplayerTimeUp(forTime: timeLeft) { self.endMultiplayerGame() }
         }, onHostDisconnected: {
             self.gameHasEnded = true
@@ -162,9 +163,10 @@ class Stage: SKScene {
         }, onNewOrderSubmitted: { (plate) in
             // only for host, don't touch
             self.multiplayerHandleServe(forPlate: plate)
-        }, onNewNotificationAdded: { (description) in
+        }, onNewNotificationAdded: { (notification) in
             // when new notification is received
-            print(description)
+            guard let type = NotificationPrefab.NotificationTypes(rawValue: notification.type) else { return }
+            self.notificationPrefab.show(withDescription: notification.description, ofType: type)
         }, onComplete: {
             // joins game after attaching all
             // relevant observers, this onComplete
@@ -477,13 +479,22 @@ class Stage: SKScene {
     
     private func multiplayerHandleServe(forPlate plate: Plate) {
         let food = plate.food
-        
-        guard self.orderQueue.completeOrder(withFood: food) == true else { return }
-        
-        // success
         guard let database = self.db else { return }
         guard let room = self.previousRoom else { return }
-        database.addScore(by: 20, forGameId: room.id, { }) { (err) in
+        
+        guard self.orderQueue.completeOrder(withFood: food) == true else {
+            database.sendNotification(forGameId: room.id, withDescription: "wrong order, bud!", withType: NotificationPrefab.NotificationTypes.warning.rawValue, { }) { (err) in
+                print(err.localizedDescription)
+            }
+            return
+        }
+        
+        // success
+        database.addScore(by: 20, forGameId: room.id, {
+            database.sendNotification(forGameId: room.id, withDescription: "order completed! great job!", withType: NotificationPrefab.NotificationTypes.info.rawValue, { }, { (err) in
+                print(err.localizedDescription)
+            })
+        }) { (err) in
             print(err.localizedDescription)
         }
     }
@@ -553,6 +564,23 @@ class Stage: SKScene {
     private func isMultiplayerTimeUp(forTime time: Int) -> Bool {
         if time <= 0 { return true }
         return false
+    }
+    
+    private func checkForNotificationTimes(forTime time: Int) {
+        guard let database = self.db else { return }
+        guard let gameId = self.previousRoom?.id else { return }
+        
+        if time == 60 {
+            database.sendNotification(forGameId: gameId, withDescription: "less than 60 seconds left!", withType: NotificationPrefab.NotificationTypes.warning.rawValue, { }) { (err) in
+                print(err.localizedDescription)
+            }
+        }
+        
+        if time == 10 {
+            database.sendNotification(forGameId: gameId, withDescription: "less than 10 seconds left!!", withType: NotificationPrefab.NotificationTypes.warning.rawValue, { }) { (err) in
+                print(err.localizedDescription)
+            }
+        }
     }
     
     private func endMultiplayerGame() {

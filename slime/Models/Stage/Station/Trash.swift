@@ -32,7 +32,10 @@ class Trash: Station {
         fatalError("init(coder:) has not been implemented")
     }
 
-    // Trash can only be used when there is an item given to the trash
+    // Trash works by taking a non nil item discards it away
+    // Requirement: item given is non-nil
+    // Return: nil (the item given to the trash will be gone forever)
+
     override func ableToProcess(_ item: SKSpriteNode?) -> Bool {
         if item == nil {
             return false
@@ -40,7 +43,6 @@ class Trash: Station {
         return true
     }
 
-    // Trash process an item by discarding the item given to the trash
     override func process(_ item: SKSpriteNode?) -> SKSpriteNode? {
         guard ableToProcess(item) == true else {
             return item

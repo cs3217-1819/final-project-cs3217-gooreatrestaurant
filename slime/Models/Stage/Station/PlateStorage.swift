@@ -11,6 +11,10 @@ import SpriteKit
 
 class PlateStorage: Station {
 
+    // PlateStorage acts as "plate producer"
+    // Requirements: There is no item given to the station (this station does not accept any item)
+    // Returns: A plate
+
     override func ableToProcess(_ item: SKSpriteNode?) -> Bool {
         if item == nil {
             return true
@@ -22,11 +26,6 @@ class PlateStorage: Station {
         guard ableToProcess(item) == true else {
             return nil
         }
-        return Plate(inPosition: self.position)
-    }
-
-    // TO DO Remove this
-    func takePlate() -> Plate {
         return Plate(inPosition: self.position)
     }
 }
