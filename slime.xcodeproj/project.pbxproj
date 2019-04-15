@@ -39,7 +39,7 @@
 		8B5B20092264759200059756 /* SlicedIngredients.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 8B5B20082264759200059756 /* SlicedIngredients.atlas */; };
 		8B5B200B2264886900059756 /* BakedIngredients.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 8B5B200A2264886800059756 /* BakedIngredients.atlas */; };
 		8B5B200D22648BE300059756 /* BakedSlicedIngredients.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 8B5B200C22648BE300059756 /* BakedSlicedIngredients.atlas */; };
-		8B5B201E2264CEDE00059756 /* UI.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 8B5B201D2264CEDE00059756 /* UI.atlas */; };
+		8B5B20252264D38D00059756 /* Spaceship.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 8B5B20242264D38D00059756 /* Spaceship.atlas */; };
 		8B81EFBC224344AD007BFDB0 /* Slime.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 8B81EFBB224344AD007BFDB0 /* Slime.atlas */; };
 		8BD816AF22422C6700586180 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD816AE22422C6700586180 /* Extensions.swift */; };
 		8BD816B3224262F100586180 /* AnalogJoystick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD816B2224262F100586180 /* AnalogJoystick.swift */; };
@@ -301,8 +301,7 @@
 		8B5B20082264759200059756 /* SlicedIngredients.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = SlicedIngredients.atlas; sourceTree = "<group>"; };
 		8B5B200A2264886800059756 /* BakedIngredients.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = BakedIngredients.atlas; sourceTree = "<group>"; };
 		8B5B200C22648BE300059756 /* BakedSlicedIngredients.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = BakedSlicedIngredients.atlas; sourceTree = "<group>"; };
-		8B5B201D2264CEDE00059756 /* UI.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = UI.atlas; path = ../../../UI.atlas; sourceTree = "<group>"; };
-		8B5B201F2264CFEF00059756 /* Spaceship.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = Spaceship.atlas; path = ../../Spaceship.atlas; sourceTree = "<group>"; };
+		8B5B20242264D38D00059756 /* Spaceship.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = Spaceship.atlas; path = ../../../Spaceship.atlas; sourceTree = "<group>"; };
 		8B81EFBB224344AD007BFDB0 /* Slime.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Slime.atlas; sourceTree = "<group>"; };
 		8BD816AE22422C6700586180 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		8BD816B2224262F100586180 /* AnalogJoystick.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalogJoystick.swift; sourceTree = "<group>"; };
@@ -630,8 +629,7 @@
 		8BD816B42242643C00586180 /* Sprites */ = {
 			isa = PBXGroup;
 			children = (
-				8B5B201F2264CFEF00059756 /* Spaceship.atlas */,
-				8B5B201D2264CEDE00059756 /* UI.atlas */,
+				8B5B20242264D38D00059756 /* Spaceship.atlas */,
 				8B5B20182264CDDB00059756 /* Food */,
 				8BEDCD44224F3EC900E24A20 /* MenuPrefab.swift */,
 				8BEDCD4A22531CDF00E24A20 /* IngredientsCell.swift */,
@@ -1442,7 +1440,6 @@
 				EC38246B223A1803000D7148 /* Rubik-Regular.ttf in Resources */,
 				1D37DBC1225E6ED900E637C9 /* Ingredients.atlas in Resources */,
 				ECD24428224B0A9300767A56 /* SlimeNumberPadView.xib in Resources */,
-				8B5B201E2264CEDE00059756 /* UI.atlas in Resources */,
 				EC449B75223B7E6300A8EA35 /* TitleScreenView.xib in Resources */,
 				EC21B40022420CA700827121 /* LevelPlayButton.xib in Resources */,
 				EC449B8B223BACD500A8EA35 /* StoryModeLevelSelectView.xib in Resources */,
@@ -1465,6 +1462,7 @@
 				ECA66DC2223D5DD100D1D0BC /* CreditsScreenView.xib in Resources */,
 				EC38246E223A1803000D7148 /* Rubik-Italic.ttf in Resources */,
 				EC7676BF225B52CE00F6A450 /* CustomizationCosmeticView.xib in Resources */,
+				8B5B20252264D38D00059756 /* Spaceship.atlas in Resources */,
 				EC470898226456D300F3BC19 /* oven-timer.mp3 in Resources */,
 				EC449B9B223BB9EA00A8EA35 /* SinglePlayerLevels.json in Resources */,
 				EC382480223A2999000D7148 /* PlayMenuButton.xib in Resources */,
