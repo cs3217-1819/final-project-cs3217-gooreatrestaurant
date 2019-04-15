@@ -10,7 +10,8 @@ import UIKit
 import SpriteKit
 
 class Oven: CookingEquipment {
-
+    var timer: Timer?
+    
     init(inPosition position: CGPoint, withSize size: CGSize = StageConstants.stationSize) {
         super.init(type: .baking,
                    inPosition: position,
@@ -22,6 +23,21 @@ class Oven: CookingEquipment {
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func onStartProcessing() {
+        timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true, block: { _ in
+            AudioMaster.instance.playSFX(name: "oven-timer")
+        })
+    }
+    
+    override func onEndProcessing() {
+        guard let activeTimer = timer else {
+            return
+        }
+        activeTimer.invalidate()
+        timer = nil
+        AudioMaster.instance.playSFX(name: "oven-ding")
     }
 
     override func automaticProcessing() {

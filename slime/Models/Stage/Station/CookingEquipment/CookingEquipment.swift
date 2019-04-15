@@ -39,6 +39,21 @@ class CookingEquipment: Station {
                                                              userInfo: nil,
                                                              repeats: true)
     }
+    
+    // Function to be overridden, called when the food starts processing
+    func onStartProcessing() {
+        
+    }
+    
+    // Function to be overridden, called when the food gets progressed.
+    func onProgressProcessing() {
+        
+    }
+    
+    // Function to be overridden, called when the food finishes processing
+    func onEndProcessing() {
+        
+    }
 
     // To check whether the ingredient inside this equipment is ready to take (finished processing)
     private var canTakeIngredient: Bool {
@@ -101,6 +116,7 @@ class CookingEquipment: Station {
             guard let ingredientToPut = item as? Ingredient else {
                 return item
             }
+            onStartProcessing()
             putIngredient(ingredientToPut)
             return nil
 
@@ -138,9 +154,15 @@ class CookingEquipment: Station {
         if progress == 0.0 {
             return
         }
+        
+        onProgressProcessing()
 
         if ingredientsAllowed.contains(ingredient.type) {
             ingredient.cook(by: self.cookingType, withProgress: progress)
+            
+            if canTakeIngredient {
+                onEndProcessing()
+            }
         } else {
             ingredient.ruin()
         }

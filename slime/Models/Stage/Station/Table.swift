@@ -53,6 +53,7 @@ class Table: Station {
             }
 
             self.addItem(itemToPut)
+            AudioMaster.instance.playSFX(name: "pickup")
             return nil
 
         // Condition 2
@@ -63,6 +64,7 @@ class Table: Station {
             }
 
             self.removeItem()
+            AudioMaster.instance.playSFX(name: "pickup")
             return itemToTake
 
         // Condition 3
@@ -94,9 +96,10 @@ class Table: Station {
             ingredient.removeFromParent()
             plate.food.addIngredients(ingredient)
             plate.addIngredientImage(inIngredient: ingredient)
+            AudioMaster.instance.playSFX(name: "pickup")
             return plate
         }
-
+        
         return item
 
     }

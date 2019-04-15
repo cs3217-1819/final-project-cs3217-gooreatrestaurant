@@ -47,7 +47,8 @@ class Trash: Station {
         guard ableToProcess(item) == true else {
             return item
         }
-
+        
+        AudioMaster.instance.playSFX(name: "trash")
         item?.removeFromParent()
         return nil
     }

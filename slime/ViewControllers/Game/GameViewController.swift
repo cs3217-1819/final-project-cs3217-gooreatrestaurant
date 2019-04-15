@@ -13,6 +13,7 @@ import AVFoundation
 class GameViewController: ViewController<UIView> {
     
     var db: GameDatabase = GameDB()
+    private var stage: Stage!
     
     // multiplayer stuff
     var isMultiplayer: Bool = false
@@ -32,7 +33,7 @@ class GameViewController: ViewController<UIView> {
     
     func setupScene() {
         self.context.modal.closeAlert()
-        let stage = Stage()
+        stage = Stage()
         stage.isMultiplayer = self.isMultiplayer
         stage.setupControl()
         stage.controller = self
@@ -68,7 +69,7 @@ class GameViewController: ViewController<UIView> {
 
     func segueToMainScreen(isMultiplayer: Bool) {
         let control: StageSummaryController = context.routeToAndPrepareForFade(.StageSummary)
-        control.set(exp: 80, score: 300, isMultiplayer: isMultiplayer)
+        control.set(exp: stage.levelScore / 10, score: stage.levelScore, isMultiplayer: isMultiplayer)
     }
     deinit {
         print("Game VC deinit")
