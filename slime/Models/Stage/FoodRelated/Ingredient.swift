@@ -75,19 +75,23 @@ class Ingredient: SKSpriteNode, Codable {
 
         if processingProgress >= 100.0 {
             setupBars()
+            currentProcessing = nil
+            processingProgress = 0.0
+            processed.append(method)
+
             var ingredientsAtlas = SKTextureAtlas.init()
-            if method == CookingType.baking {
-                ingredientsAtlas = SKTextureAtlas(named: "BakedIngredients")
-            } else if method == CookingType.chopping {
-                ingredientsAtlas = SKTextureAtlas(named: "SlicedIngredients")
+            if (processed.count == 1) {
+                if method == CookingType.baking {
+                    ingredientsAtlas = SKTextureAtlas(named: "BakedIngredients")
+                } else if method == CookingType.chopping {
+                    ingredientsAtlas = SKTextureAtlas(named: "SlicedIngredients")
+                }
+            } else {
+                ingredientsAtlas = SKTextureAtlas(named: "BakedSlicedIngredients")
             }
             var texture: SKTexture = SKTexture.init()
             texture = ingredientsAtlas.textureNamed(self.type.rawValue)
             self.texture = texture
-
-            currentProcessing = nil
-            processingProgress = 0.0
-            processed.append(method)
         } else {
             greenBar.setScale(1)
             greenBar.yScale = CGFloat(processingProgress / 100.0) * greenBar.yScale
