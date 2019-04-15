@@ -215,7 +215,6 @@ class Stage: SKScene {
     private func handleStageItemRemoved(forItem item: StageItemModel) {
         let removedItem = self.allStageItemsDict.removeValue(forKey: item.uid)
         guard let item = removedItem else { return }
-        
         if let plate = item as? Plate { plate.removeFromParent() }
         if let ingredient = item as? Ingredient { ingredient.removeFromParent() }
     }
@@ -245,13 +244,17 @@ class Stage: SKScene {
     private func handleStageItemChanged(forItem item: StageItemModel) {
         let decoder = JSONDecoder()
         guard let data = item.encodedData.data(using: .utf8) else { return }
+        guard let userUid = GameAuth.currentUser?.uid else { return }
         
         if item.type == FirebaseSystemValues.ItemTypes.plate.rawValue {
             let plate = try? decoder.decode(Plate.self, from: data)
             guard let addedPlate = plate else { return }
-            if let currentPlate = allStageItemsDict[item.uid] as? Plate { currentPlate.removeFromParent()
+            print(addedPlate)
+            if let currentPlate = allStageItemsDict[item.uid] as? Plate {
+                currentPlate.removeFromParent()
             }
             self.allStageItemsDict.updateValue(addedPlate as MobileItem, forKey: item.uid)
+            if item.lastInteractedBy.starts(with: userUid) { return }
             self.addChild(addedPlate)
         }
         
@@ -721,16 +724,17 @@ class Stage: SKScene {
 
     lazy var interactButton: BDButton = {
         let texture = UIAtlas.textureNamed("InteractButton")
-        var button = BDButton(imageNamed: "Interact", buttonAction: {
+        var button = BDButton(inTexture: texture, buttonAction: {
             self.slimeToControl?.interact(onInteractWithStation: { (station) in
                 if self.isMultiplayer { self.handleMultiplayerInteractWithStation(station) }
-            }, onPickUpItem: { (item) in
-                if self.isMultiplayer { self.handleMultiplayerPickUpItem(item) }
+            }, onPickUpItem: { (itemOnGround, itemPickedUp) in
+                if self.isMultiplayer { self.handleMultiplayerPickUpItem(itemOnGround, itemPickedUp) }
             }, onDropItem: { (item) in
                 if self.isMultiplayer { self.handleMultiplayerDropItem(item) }
             }, onInteractWithItem: { (item) in
                 if self.isMultiplayer { self.handleMultiplayerInteractWithItem(item) }
             })
+        })
         button.setScale(0.15)
         button.isEnabled = true
         button.position = StageConstants.interactButtonPosition
@@ -738,16 +742,16 @@ class Stage: SKScene {
         return button
     }()
 
-    private func handleMultiplayerPickUpItem(_ item: MobileItem) {
+    private func handleMultiplayerPickUpItem(_ itemOnGround: MobileItem, _ itemPickedUp: MobileItem) {
         guard let database = self.db else { return }
         guard let room = self.previousRoom else { return }
-        guard let id = item.id else { return }
+        guard let id = itemOnGround.id else { return }
         
-        database.removeStageItem(forGameId: room.id, withItemUid: id, {
-            database.updatePlayerHoldingItem(forGameId: room.id, toItem: item, { }) { (err) in
-                print(err.localizedDescription)
-            }
-        }) { (err) in
+        database.removeStageItem(forGameId: room.id, withItemUid: id, { }) { (err) in
+            print(err.localizedDescription)
+        }
+        
+        database.updatePlayerHoldingItem(forGameId: room.id, toItem: itemPickedUp, { }) { (err) in
             print(err.localizedDescription)
         }
     }
@@ -757,11 +761,11 @@ class Stage: SKScene {
         guard let room = self.previousRoom else { return }
         guard let id = item.id else { return }
         
-        database.updateStageItem(forGameId: room.id, withItem: item, withItemUid: id, {
-            database.updatePlayerHoldingItem(forGameId: room.id, toItem: "BUH BYE" as AnyObject, { }) { (err) in
-                print(err.localizedDescription)
-            }
-        }) { (err) in
+        database.updateStageItem(forGameId: room.id, withItem: item, withItemUid: id, { }) { (err) in
+            print(err.localizedDescription)
+        }
+        
+        database.updatePlayerHoldingItem(forGameId: room.id, toItem: "BUH BYE" as AnyObject, { }) { (err) in
             print(err.localizedDescription)
         }
     }
