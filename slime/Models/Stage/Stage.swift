@@ -144,7 +144,7 @@ class Stage: SKScene {
             self.hasStarted = true
             self.showStartFlag()
             self.startStreamingSelf()
-            if self.isUserHost { self.showReadyFlag() }
+            if self.isUserHost { self.startCounter() }
             // TODO: do setup when game has started, add stuff whenever necessary
         }, onSelfItemChange: { (item) in
             guard let slime = self.slimeToControl else { return }
@@ -337,7 +337,7 @@ class Stage: SKScene {
 
         if !isMultiplayer {
             counter = counterStartTime
-            showReadyFlag()
+            self.showReadyFlag()
         }
 
         analogJoystick.trackingHandler = { [unowned self] data in
@@ -533,11 +533,10 @@ class Stage: SKScene {
 
     @objc func startCounter() {
         hasStarted = true
-        blackBG.removeFromParent()
-        readyNode.removeFromParent()
         if !isMultiplayer {
             counterTime = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(decrementCounter), userInfo: nil, repeats: true)
         } else {
+            // only for host, get out
             counterTime = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { (timer) in
                 guard let database = self.db else { return }
                 guard let room = self.previousRoom else { return }
@@ -616,13 +615,20 @@ class Stage: SKScene {
         self.sceneCam?.addChild(blackBG)
         self.sceneCam?.addChild(readyNode)
 
+        if isMultiplayer { return }
+        
         _ = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(showStartFlag), userInfo: nil, repeats: false)
     }
     
     @objc func showStartFlag() {
         readyNode.texture = SKTexture(imageNamed: "Go")
 
-        _ = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(startCounter), userInfo: nil, repeats: false)
+        _ = Timer.scheduledTimer(withTimeInterval: 2, repeats: false, block: { (timer) in
+            self.blackBG.removeFromParent()
+            self.readyNode.removeFromParent()
+            if self.isMultiplayer { return }
+            self.startCounter()
+        })
     }
 
     func updateOrderQueue(into orderQueue: OrderQueue) {
