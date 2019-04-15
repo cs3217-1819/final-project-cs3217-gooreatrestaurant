@@ -621,10 +621,10 @@ class Stage: SKScene {
     }
     
     @objc func showStartFlag() {
+        self.blackBG.removeFromParent()
         readyNode.texture = SKTexture(imageNamed: "Go")
 
         _ = Timer.scheduledTimer(withTimeInterval: 2, repeats: false, block: { (timer) in
-            self.blackBG.removeFromParent()
             self.readyNode.removeFromParent()
             if self.isMultiplayer { return }
             self.startCounter()
