@@ -532,6 +532,8 @@ class Stage: SKScene {
     }
 
     @objc func startCounter() {
+        hasStarted = true
+        blackBG.removeFromParent()
         readyNode.removeFromParent()
         if !isMultiplayer {
             counterTime = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(decrementCounter), userInfo: nil, repeats: true)
@@ -611,6 +613,7 @@ class Stage: SKScene {
     }
     
     func showReadyFlag() {
+        self.sceneCam?.addChild(blackBG)
         self.sceneCam?.addChild(readyNode)
 
         _ = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(showStartFlag), userInfo: nil, repeats: false)
@@ -712,5 +715,13 @@ class Stage: SKScene {
         label.zPosition = 10
         label.position = (self.sceneCam?.position)!
         return label
+    }()
+
+    //can reuse this for other purposes
+    lazy var blackBG: SKSpriteNode = {
+        let blackBG = SKSpriteNode.init(color: .black, size: CGSize(width: ScreenSize.width, height: ScreenSize.height))
+        blackBG.alpha = 0.5
+        blackBG.zPosition = 6
+        return blackBG
     }()
 }
