@@ -172,7 +172,7 @@ protocol GameDatabase {
     ///     - onDataChange: a closure which is fired
     ///       every time a data value changes
     ///     - onError: fired when an error happens
-    func observeGameState(forRoom room: RoomModel, onPlayerUpdate: @escaping (GamePlayerModel) -> Void, onStationUpdate: @escaping (String, GameStationModel) -> Void, onGameEnd: @escaping () -> Void, onOrderQueueChange: @escaping (OrderQueue) -> Void, onScoreChange: @escaping (Int) -> Void, onAllPlayersReady: @escaping () -> Void, onGameStart: @escaping () -> Void, onSelfItemChange: @escaping (ItemModel) -> Void, onTimeLeftChange: @escaping (Int) -> Void, onHostDisconnected: @escaping () -> Void, onNewOrderSubmitted: @escaping (Plate) -> Void, onNewNotificationAdded: @escaping (NotificationModel) -> Void, onStageItemAdded: @escaping (StageItemModel) -> Void, onStageItemRemoved: @escaping (StageItemModel) -> Void, onComplete: @escaping () -> Void, onError: @escaping (Error) -> Void)
+    func observeGameState(forRoom room: RoomModel, onPlayerUpdate: @escaping (GamePlayerModel) -> Void, onStationUpdate: @escaping (String, GameStationModel) -> Void, onGameEnd: @escaping () -> Void, onOrderQueueChange: @escaping (OrderQueue) -> Void, onScoreChange: @escaping (Int) -> Void, onAllPlayersReady: @escaping () -> Void, onGameStart: @escaping () -> Void, onSelfItemChange: @escaping (ItemModel) -> Void, onTimeLeftChange: @escaping (Int) -> Void, onHostDisconnected: @escaping () -> Void, onNewOrderSubmitted: @escaping (Plate) -> Void, onNewNotificationAdded: @escaping (NotificationModel) -> Void, onStageItemAdded: @escaping (StageItemModel) -> Void, onStageItemRemoved: @escaping (StageItemModel) -> Void, onStageItemChanged: @escaping (StageItemModel) -> Void, onComplete: @escaping () -> Void, onError: @escaping (Error) -> Void)
     
     /// updates the hasStarted flag inside the game
     /// only used by host to indicate that the game
@@ -273,6 +273,8 @@ protocol GameDatabase {
     func addStageItem(forGameId id: String, withItem item: AnyObject, withItemUid uid: String, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void)
     
     func removeStageItem(forGameId id: String, withItemUid uid: String, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void)
+    
+    func updateStageItem(forGameId id: String, withItem item: AnyObject, withItemUid uid: String, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void)
     
     /// adds a score to the specified game id
     /// - Parameters:

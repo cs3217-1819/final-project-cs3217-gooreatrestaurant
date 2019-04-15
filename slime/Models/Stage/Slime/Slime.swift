@@ -107,17 +107,16 @@ class Slime: SKSpriteNode {
         item?.taken(by: self)
     }
 
-    func dropItem() {
+    func dropItem() -> MobileItem? {
         guard let item = itemCarried else {
-            return
-        }
-        item.dropped(by: self)
-    }
-
-    func interact() -> Station? {
-        guard let contactedBodies = self.physicsBody?.allContactedBodies() else {
             return nil
         }
+        item.dropped(by: self)
+        return item
+    }
+
+    func interact(onInteractWithStation: @escaping (Station) -> Void, onPickUpItem: @escaping (MobileItem) -> Void, onDropItem: @escaping (MobileItem) -> Void, onInteractWithItem: @escaping (MobileItem) -> Void) {
+        guard let contactedBodies = self.physicsBody?.allContactedBodies() else { return }
 
         for body in contactedBodies {
             guard let node = body.node else {
@@ -134,8 +133,12 @@ class Slime: SKSpriteNode {
 
                 if let resultingItem = mobileItem.interact(withItem: itemToInteract) as? MobileItem {
                     self.takeItem(resultingItem)
+                    onPickUpItem(resultingItem)
+                    return
                 }
-                return nil
+                
+                onInteractWithItem(mobileItem)
+                return
             }
         }
 
@@ -155,11 +158,16 @@ class Slime: SKSpriteNode {
                 if let itemProcessed = station.interact(withItem: itemToProcess) as? MobileItem {
                     self.takeItem(itemProcessed)
                 }
-                return station
+                
+                onInteractWithStation(station)
+                return
             }
         }
-        dropItem()
-        return nil
+        
+        let item = dropItem()
+        guard let droppedItem = item else { return }
+        onDropItem(droppedItem)
+        return
     }
 
     func addUser(_ user: Player) {

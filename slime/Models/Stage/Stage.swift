@@ -172,16 +172,15 @@ class Stage: SKScene {
             self.notificationPrefab.show(withDescription: notification.description, ofType: type)
         }, onStageItemAdded: { (item) in
             // stage item added
-            print(item.uid)
-            print(item.type)
-            print(item.encodedData)
+            print("stageItemAdded")
             self.handleStageItemAdded(forItem: item)
         }, onStageItemRemoved: { (item) in
             // stage item removed
-            print(item.uid)
-            print(item.type)
-            print(item.encodedData)
+            print("stageItemRemoved")
             self.handleStageItemRemoved(forItem: item)
+        }, onStageItemChanged: { (item) in
+            print("stageItemChanged")
+            self.handleStageItemChanged(forItem: item)
         }, onComplete: {
             // this is run BEFORE the stage fully loads, and only after
             // all listeners are attached refrain from running anything
@@ -220,6 +219,7 @@ class Stage: SKScene {
     }
     
     private func handleStageItemAdded(forItem item: StageItemModel) {
+        guard let userUid = GameAuth.currentUser?.uid else { return }
         let decoder = JSONDecoder()
         guard let data = item.encodedData.data(using: .utf8) else { return }
 
@@ -227,12 +227,38 @@ class Stage: SKScene {
             let plate = try? decoder.decode(Plate.self, from: data)
             guard let addedPlate = plate else { return }
             self.allStageItemsDict.updateValue(addedPlate as MobileItem, forKey: item.uid)
+            if item.lastInteractedBy.starts(with: userUid) { return }
             self.addChild(addedPlate)
         }
         
         if item.type == FirebaseSystemValues.ItemTypes.ingredient.rawValue {
             let ingredient = try? decoder.decode(Ingredient.self, from: data)
             guard let addedIngredient = ingredient else { return }
+            self.allStageItemsDict.updateValue(addedIngredient as MobileItem, forKey: item.uid)
+            if item.lastInteractedBy.starts(with: userUid) { return }
+            self.addChild(addedIngredient)
+        }
+    }
+    
+    private func handleStageItemChanged(forItem item: StageItemModel) {
+        let decoder = JSONDecoder()
+        guard let data = item.encodedData.data(using: .utf8) else { return }
+        
+        if item.type == FirebaseSystemValues.ItemTypes.plate.rawValue {
+            let plate = try? decoder.decode(Plate.self, from: data)
+            guard let addedPlate = plate else { return }
+            if let currentPlate = allStageItemsDict[item.uid] as? Plate { currentPlate.removeFromParent()
+            }
+            self.allStageItemsDict.updateValue(addedPlate as MobileItem, forKey: item.uid)
+            self.addChild(addedPlate)
+        }
+        
+        if item.type == FirebaseSystemValues.ItemTypes.ingredient.rawValue {
+            let ingredient = try? decoder.decode(Ingredient.self, from: data)
+            guard let addedIngredient = ingredient else { return }
+            if let currentIngredient = allStageItemsDict[item.uid] as? Ingredient {
+                currentIngredient.removeFromParent()
+            }
             self.allStageItemsDict.updateValue(addedIngredient as MobileItem, forKey: item.uid)
             self.addChild(addedIngredient)
         }
@@ -338,32 +364,6 @@ class Stage: SKScene {
                 self.initializeOrders(withData: value.possibleRecipes)
             } catch {
                 print(error.localizedDescription)
-            }
-        }
-    }
-    
-    private func handleMultiplayerInteract(withStation station: Station) {
-        guard let database = self.db else { return }
-        guard let room = self.previousRoom else { return }
-        guard let id = station.id else { return }
-        
-        if let item = station.itemInside {
-            database.updateStationItemInside(forGameId: room.id, forStation: id, toItem: item, { }) { (err) in
-                print(err.localizedDescription)
-            }
-        } else {
-            database.updateStationItemInside(forGameId: room.id, forStation: id, toItem: "MAH MAH SLIME" as AnyObject, { }) { (err) in
-                print(err.localizedDescription)
-            }
-        }
-        
-        if let selfItem = self.slimeToControl?.itemCarried {
-            database.updatePlayerHoldingItem(forGameId: room.id, toItem: selfItem, { }) { (err) in
-                print(err.localizedDescription)
-            }
-        } else {
-            database.updatePlayerHoldingItem(forGameId: room.id, toItem: "AH AH SLIME" as AnyObject, { }) { (err) in
-                print(err.localizedDescription)
             }
         }
     }
@@ -717,11 +717,15 @@ class Stage: SKScene {
 
     lazy var interactButton: BDButton = {
         var button = BDButton(imageNamed: "Interact", buttonAction: {
-            let interactedStation = self.slimeToControl?.interact()
-            if self.isMultiplayer {
-                guard let station = interactedStation else { return }
-                self.handleMultiplayerInteract(withStation: station)
-            }
+            self.slimeToControl?.interact(onInteractWithStation: { (station) in
+                if self.isMultiplayer { self.handleMultiplayerInteractWithStation(station) }
+            }, onPickUpItem: { (item) in
+                if self.isMultiplayer { self.handleMultiplayerPickUpItem(item) }
+            }, onDropItem: { (item) in
+                if self.isMultiplayer { self.handleMultiplayerDropItem(item) }
+            }, onInteractWithItem: { (item) in
+                if self.isMultiplayer { self.handleMultiplayerInteractWithItem(item) }
+            })
         })
         button.setScale(0.15)
         button.isEnabled = true
@@ -730,6 +734,74 @@ class Stage: SKScene {
         return button
     }()
 
+    private func handleMultiplayerPickUpItem(_ item: MobileItem) {
+        guard let database = self.db else { return }
+        guard let room = self.previousRoom else { return }
+        guard let id = item.id else { return }
+        
+        database.removeStageItem(forGameId: room.id, withItemUid: id, {
+            database.updatePlayerHoldingItem(forGameId: room.id, toItem: item, { }) { (err) in
+                print(err.localizedDescription)
+            }
+        }) { (err) in
+            print(err.localizedDescription)
+        }
+    }
+    
+    private func handleMultiplayerInteractWithItem(_ item: MobileItem) {
+        guard let database = self.db else { return }
+        guard let room = self.previousRoom else { return }
+        guard let id = item.id else { return }
+        
+        database.updateStageItem(forGameId: room.id, withItem: item, withItemUid: id, {
+            database.updatePlayerHoldingItem(forGameId: room.id, toItem: "BUH BYE" as AnyObject, { }) { (err) in
+                print(err.localizedDescription)
+            }
+        }) { (err) in
+            print(err.localizedDescription)
+        }
+    }
+    
+    private func handleMultiplayerDropItem(_ item: MobileItem) {
+        guard let database = self.db else { return }
+        guard let room = self.previousRoom else { return }
+        guard let id = item.id else { return }
+        
+        database.updatePlayerHoldingItem(forGameId: room.id, toItem: "BUH BUH Sling" as AnyObject, {
+            database.addStageItem(forGameId: room.id, withItem: item, withItemUid: id, { }) { (err) in
+                print(err.localizedDescription)
+            }
+        }) { (err) in
+            print(err.localizedDescription)
+        }
+    }
+    
+    private func handleMultiplayerInteractWithStation(_ station: Station) {
+        guard let database = self.db else { return }
+        guard let room = self.previousRoom else { return }
+        guard let id = station.id else { return }
+        
+        if let item = station.itemInside {
+            database.updateStationItemInside(forGameId: room.id, forStation: id, toItem: item, { }) { (err) in
+                print(err.localizedDescription)
+            }
+        } else {
+            database.updateStationItemInside(forGameId: room.id, forStation: id, toItem: "MAH MAH SLIME" as AnyObject, { }) { (err) in
+                print(err.localizedDescription)
+            }
+        }
+        
+        if let selfItem = self.slimeToControl?.itemCarried {
+            database.updatePlayerHoldingItem(forGameId: room.id, toItem: selfItem, { }) { (err) in
+                print(err.localizedDescription)
+            }
+        } else {
+            database.updatePlayerHoldingItem(forGameId: room.id, toItem: "AH AH SLIME" as AnyObject, { }) { (err) in
+                print(err.localizedDescription)
+            }
+        }
+    }
+    
     lazy var backButton: BDButton = {
         var button = BDButton(imageNamed: "BackButton", buttonAction: {
             if self.isMultiplayer {
