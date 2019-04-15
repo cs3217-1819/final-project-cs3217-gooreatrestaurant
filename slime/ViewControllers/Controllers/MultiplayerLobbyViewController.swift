@@ -69,7 +69,7 @@ class MultiplayerLobbyViewController: ViewController<MultiplayerLobbyView> {
                 self.context.db.removeAllObservers()
                 self.context.db.removeAllDisconnectObservers()
 
-                self.context.segueToMultiplayerGame(forRoom: room)
+                self.context.segueToMultiplayerGame(forRoom: room, level: "Level1")
                 
                 return
             }

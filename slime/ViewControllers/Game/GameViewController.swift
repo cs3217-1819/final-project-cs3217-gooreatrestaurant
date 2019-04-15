@@ -14,6 +14,7 @@ class GameViewController: ViewController<UIView> {
     
     var db: GameDatabase = GameDB()
     private var stage: Stage!
+    private var levelName: String?
     
     // multiplayer stuff
     var isMultiplayer: Bool = false
@@ -31,7 +32,15 @@ class GameViewController: ViewController<UIView> {
         setupScene()
     }
     
+    func setLevel(name: String) {
+        levelName = name
+    }
+    
     func setupScene() {
+        guard let levelName = self.levelName else {
+            Logger.it.error("Level name should be set")
+            fatalError()
+        }
         self.context.modal.closeAlert()
         stage = Stage()
         stage.isMultiplayer = self.isMultiplayer
@@ -48,8 +57,8 @@ class GameViewController: ViewController<UIView> {
         // TODO: multiplayer stuff, add all the players to stage, then the setupPlayers() will map the slime to player
         if isMultiplayer { if let room = self.previousRoom { stage.setupMultiplayer(forRoom: room) }}
         if !isMultiplayer { stage.setupSinglePlayer() }
-
-        stage.generateLevel(inLevel: "Level1")
+        
+        stage.generateLevel(inLevel: levelName)
 
         //        newCollection.delegate = self
         //        newCollection.dataSource = self

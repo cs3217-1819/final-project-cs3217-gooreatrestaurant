@@ -26,22 +26,8 @@ class StoryModeLevelSelectController: ViewController<StoryModeLevelSelectView>,
         configureDots()
     }
 
-    /* TODO: Replace with real data. Currently some mock data */
     private func getLevels() -> [Level] {
-        let levelOne = Level(id: "1-1", name: "Hello World", bestScore: 100)
-        var levelTwo = levelOne
-        levelTwo.id = "1-2"
-        var levelThree = levelOne
-        levelThree.id = "1-3"
-        var levelFour = levelOne
-        levelFour.id = "1-4"
-
-        return [
-            levelOne,
-            levelTwo,
-            levelThree,
-            levelFour
-        ]
+        return LevelsReader.readSinglePlayerLevels()
     }
 
     func configureScrollView() {
