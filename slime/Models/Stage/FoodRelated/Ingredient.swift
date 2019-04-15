@@ -153,6 +153,7 @@ class Ingredient: MobileItem, Codable {
     }
 
     enum CodingKeys: String, CodingKey {
+        case id
         case type
         case processed
         case currentProcessing
@@ -167,8 +168,10 @@ class Ingredient: MobileItem, Codable {
         let currentProcessing = try values.decode(CookingType?.self, forKey: .currentProcessing)
         let processingProgress = try values.decode(Double.self, forKey: .processingProgress)
         let position = try values.decode(CGPoint.self, forKey: .position)
+        let id = try values.decode(String.self, forKey: .id)
 
         self.init(type: type, inPosition: position)
+        self.id = id
         for processing in processed { self.cook(by: processing) }
         
         guard let processing = currentProcessing else { return }
@@ -183,6 +186,7 @@ class Ingredient: MobileItem, Codable {
         try container.encode(currentProcessing, forKey: .currentProcessing)
         try container.encode(processingProgress, forKey: .processingProgress)
         try container.encode(position, forKey: .position)
+        try container.encode(id, forKey: .id)
     }
 
     required init?(coder aDecoder: NSCoder) {

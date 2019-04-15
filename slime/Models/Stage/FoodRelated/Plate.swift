@@ -80,6 +80,7 @@ class Plate: MobileItem, Codable {
     }
 
     enum CodingKeys: String, CodingKey {
+        case id
         case food
         case position
         case listOfIngredients
@@ -90,8 +91,10 @@ class Plate: MobileItem, Codable {
         let food = try values.decode(Food.self, forKey: .food)
         let position = try values.decode(CGPoint.self, forKey: .position)
         let listOfIngredients = try values.decode([Ingredient].self, forKey: .listOfIngredients)
-        
+        let id = try values.decode(String.self, forKey: .id)
+
         self.init(inPosition: position)
+        self.id = id
         self.food = food
         
         for ingredient in listOfIngredients { self.addIngredientImage(inIngredient: ingredient) }
@@ -103,6 +106,7 @@ class Plate: MobileItem, Codable {
         try container.encode(food, forKey: .food)
         try container.encode(position, forKey: .position)
         try container.encode(listOfIngredients, forKey: .listOfIngredients)
+        try container.encode(id, forKey: .id)
     }
 
     func addIngredientImage(inIngredient: Ingredient) {
