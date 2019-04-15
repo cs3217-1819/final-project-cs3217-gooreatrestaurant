@@ -11,7 +11,8 @@ import SpriteKit
 
 class IngredientStorage: Station {
 
-    let type: IngredientType
+    // The type of ingredient given
+    private let type: IngredientType
 
     init(ofType type: IngredientType,
          inPosition position: CGPoint,
@@ -23,6 +24,10 @@ class IngredientStorage: Station {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+    // IngredientStorage act as "ingrdient producer"
+    // Requirements: item given to this station is nil (this station does not accept any item)
+    // Return: The ingredient with a specific type
 
     override func ableToProcess(_ item: SKSpriteNode?) -> Bool {
         if item == nil {
