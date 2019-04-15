@@ -128,7 +128,7 @@ class CookingEquipment: Station {
 
     // To process ingredient with a particular progress value
     // If the ingredient is allowed to be processed by this equipment, will cook the ingredients. Else, will ruin it
-    private func continueProcessing(withProgress progress: Double) {
+    func continueProcessing(withProgress progress: Double) {
         guard let ingredient = itemInside as? Ingredient else {
             return
         }
@@ -146,12 +146,12 @@ class CookingEquipment: Station {
         }
     }
 
-    // Automatic proces
-    @objc
-    func automaticProcessing() {
+    // Automatic processing, called by timer
+    @objc func automaticProcessing() {
         continueProcessing(withProgress: 0.0)
     }
 
+    // Manual processing, called from 
     func manualProcessing() {
         continueProcessing(withProgress: 100.0)
     }
