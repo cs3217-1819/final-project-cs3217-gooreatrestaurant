@@ -34,8 +34,13 @@ class StoreFront: Station {
         guard let stage = self.scene as? Stage else {
             return item
         }
-
-        stage.serve(plate)
+        
+        let successfullyServed = stage.serve(plate)
+        if successfullyServed {
+            AudioMaster.instance.playSFX(name: "kaching")
+        } else {
+            AudioMaster.instance.playSFX(name: "bad-order")
+        }
 
         return nil
     }

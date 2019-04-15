@@ -38,14 +38,17 @@ class TutorialScreenController: Controller {
     }
     
     private func setupReactive() {
+        let count = tutorialSteps.count
         currentTutorialIndex.scan(0, accumulator: { $0 + $1 }).subscribe { event in
             guard let tutorialIndex = event.element else {
                 return
             }
             
-            if tutorialIndex == self.tutorialSteps.count {
+            if tutorialIndex == count {
                 // Go to next screen
                 self.callback?()
+                return
+            } else if tutorialIndex > count {
                 return
             }
             

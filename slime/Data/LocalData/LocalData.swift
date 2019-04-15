@@ -27,6 +27,14 @@ class LocalData {
         let user = UserCharacter(named: name)
         LocalDataProvider.it.save(user: user)
     }
+    
+    func getBestScoreFor(level id: String) -> Int {
+        return LocalDataProvider.it.readLevelBestScore(id: id)
+    }
+    
+    func saveBestScore(level: Level, score: Int) {
+        LocalDataProvider.it.saveLevelData(level: level, bestScore: score)
+    }
 
     func saveCharacter(_ characterToSave: UserCharacter) {
         LocalDataProvider.it.save(user: characterToSave)

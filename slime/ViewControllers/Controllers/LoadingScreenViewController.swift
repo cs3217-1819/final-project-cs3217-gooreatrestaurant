@@ -8,6 +8,13 @@
 import Foundation
 
 class LoadingScreenViewController: ViewController<LoadingScreenView> {
+    private var levelToLoad: String?
+    
+    // set filename of level to load
+    func setLevelToLoad(_ levelToLoad: String) {
+        self.levelToLoad = levelToLoad
+    }
+    
     override func configureSubviews() {
         configureTutorial()
     }
@@ -16,7 +23,10 @@ class LoadingScreenViewController: ViewController<LoadingScreenView> {
         let controller = TutorialScreenController(withXib: view.tutorialScreenView)
         controller.use(tutorialSteps: TutorialConstants.cutApple)
         controller.onDone {
-            self.context.segueToGame()
+            guard let level = self.levelToLoad else {
+                return
+            }
+            self.context.segueToGame(with: level)
         }
         controller.configure()
         

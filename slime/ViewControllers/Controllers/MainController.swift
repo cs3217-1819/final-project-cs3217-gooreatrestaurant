@@ -45,7 +45,6 @@ class MainController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setBGM()
         setupHideKeyboardOnTap()
     }
 
@@ -66,6 +65,8 @@ class MainController: UIViewController {
                       to toVC: ViewControllerProtocol,
                       coordsDiff: CGPoint) {
         adjustBackground()
+        setBGM()
+        
         let screenSize = CGPoint(x: underlyingView.frame.width, y: underlyingView.frame.height)
         // points based on scale of screen size
         let diff = coordsDiff .* screenSize
@@ -92,6 +93,7 @@ class MainController: UIViewController {
     func performSegue(from fromVC: ViewControllerProtocol,
                       to toVC: ViewControllerProtocol) {
         adjustBackground()
+        setBGM()
         
         let toView = toVC.getView()
         toView.alpha = 0
@@ -116,6 +118,7 @@ class MainController: UIViewController {
     }
 
     private func setupView() {
+        setBGM()
         adjustBackground()
         let vc = router.currentViewController
         vc.use(context: context)
@@ -139,6 +142,10 @@ class MainController: UIViewController {
     }
     
     private func setBGM() {
-        AudioMaster.instance.playBGM(name: "menu-bgm")
+        if router.currentRoute == .GameScreen {
+            AudioMaster.instance.playBGM(name: "game-bgm")
+        } else {
+            AudioMaster.instance.playBGM(name: "menu-bgm")
+        }
     }
 }

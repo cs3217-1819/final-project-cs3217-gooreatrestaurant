@@ -54,7 +54,10 @@ class LevelPlaceController: Controller {
 
         playButtonController = ButtonController(using: view.playButton)
         playButtonController?.onTap {
-            self.context.routeTo(.LoadingScreen)
+            self.context.routeToAndPrepareFor(.LoadingScreen, callback: { vc in
+                let loadingVC = vc as! LoadingScreenViewController
+                loadingVC.setLevelToLoad(self.level.fileName)
+            })
         }
 
         isActive.asObservable().distinctUntilChanged().subscribe { event in
