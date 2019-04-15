@@ -146,6 +146,30 @@
 				</dict>
 			</array>
 		</dict>
+		<dict>
+			<key>recipeName</key>
+			<array>
+				<dict>
+					<key>recipeName</key>
+					<string>BakedApple</string>
+				</dict>
+			</array>
+			<key>compulsoryIngredients</key>
+			<array>
+				<dict>
+					<key>type</key>
+					<string>apple</string>
+					<key>processing</key>
+					<string>baking</string>
+				</dict>
+				<dict>
+					<key>type</key>
+					<string>apple</string>
+					<key>processing</key>
+					<string>baking</string>
+				</dict>
+			</array>
+		</dict>
 	</array>
 </dict>
 </plist>

@@ -49,22 +49,25 @@ class MenuPrefab: SKSpriteNode, Codable {
         self.recipe = recipe
         //Adding image of the main recipe
         let ingredientsAtlas = SKTextureAtlas(named: "Recipes")
-        print(ingredientsAtlas.textureNames)
         var texture: SKTexture = SKTexture.init()
-        print(recipe.recipeName)
         texture = ingredientsAtlas.textureNamed(recipe.recipeName)
 
         let dish = SKSpriteNode(texture: texture)
         dish.position = CGPoint(x: 0, y: 15)
         dish.zPosition = 5
-        dish.size = CGSize(width: 55, height: 55)
+        dish.size = CGSize(width: 45, height: 45)
 
         var i = 0
         for (key, _) in recipe.ingredientsNeeded {
-            let child = addIngredient(withType: key.type.rawValue)
-            child.position = positionings[i]
-            i += 1
-            self.addChild(child)
+            guard let ingredientCount = recipe.ingredientsNeeded[key] else {
+                continue
+            }
+            for _ in 1...ingredientCount {
+                let child = addIngredient(withType: key.type.rawValue)
+                child.position = positionings[i]
+                i += 1
+                self.addChild(child)
+            }
         }
 
         //Adding the countdown bar
