@@ -759,11 +759,9 @@ class Stage: SKScene {
     }()
 
     open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if (hasStarted) {
-            if let touch = touches.first{
-                let touchPos = touch.location(in: (self.sceneCam)!)
-                print(touchPos)
-                print(self.sceneCam?.position)
+        if let touch = touches.first{
+            let touchPos = touch.location(in: (self.sceneCam)!)
+            if (hasStarted && touchPos.x < (self.sceneCam?.position.x)!) {
                 analogJoystick.position = touchPos
                 analogJoystick.touchesBegan(touches, with: event)
             }
