@@ -25,7 +25,7 @@ class Plate: MobileItem, Codable {
         let plate = SKTexture(imageNamed: "Plate")
         plate.filteringMode = .nearest
 
-        super.init(inPosition: position, withSize: size, withTexture: plate)
+        super.init(inPosition: position, withSize: size, withTexture: plate, withName: "Plate")
 
         self.name = StageConstants.plateName
         self.physicsBody?.categoryBitMask = StageConstants.plateCategory

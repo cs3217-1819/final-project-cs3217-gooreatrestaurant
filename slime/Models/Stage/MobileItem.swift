@@ -11,11 +11,17 @@ import SpriteKit
 
 class MobileItem: Item {
 
-    override init(inPosition position: CGPoint, withSize size: CGSize, withTexture texture: SKTexture?) {
+    init(inPosition position: CGPoint, withSize size: CGSize, withTexture texture: SKTexture?, withName name: String) {
         super.init(inPosition: position, withSize: size, withTexture: texture)
 
         self.physicsBody = SKPhysicsBody(rectangleOf: size)
         self.physicsBody?.collisionBitMask = StageConstants.wallCategoryCollision
+
+        let timeValue = Date().timeIntervalSinceReferenceDate
+        let timeString = String(format: "%.5f", timeValue)
+        let user = GameAuth.currentUser?.uid ?? "someRandomString"
+
+        self.id = name + "-" + user + "-" + timeString
     }
     
     required init?(coder aDecoder: NSCoder) {

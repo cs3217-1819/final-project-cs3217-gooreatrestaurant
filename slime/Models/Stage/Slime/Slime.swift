@@ -72,7 +72,7 @@ class Slime: SKSpriteNode {
         return node as? Ingredient
     }
 
-    var itemCarried: Item? {
+    var itemCarried: MobileItem? {
         if let plate = plateCarried {
             return plate
         }

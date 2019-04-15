@@ -28,7 +28,7 @@ class Ingredient: MobileItem, Codable {
         var texture: SKTexture = SKTexture.init()
         texture = ingredientsAtlas.textureNamed(type.rawValue)
 
-        super.init(inPosition: position, withSize: size, withTexture: texture)
+        super.init(inPosition: position, withSize: size, withTexture: texture, withName: "Ingredient")
 
         self.name = StageConstants.ingredientName
         self.physicsBody?.categoryBitMask = StageConstants.ingredientCategory
