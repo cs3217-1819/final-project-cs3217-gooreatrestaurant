@@ -9,10 +9,7 @@
 import UIKit
 import SpriteKit
 
-class Station: SKSpriteNode {
-
-    // ID of the station, to refer to it in the networking database
-    var id: String?
+class Station: Item {
 
     // Item inside the station, if the station allow item storing
     var itemInside: SKNode? {
@@ -29,9 +26,10 @@ class Station: SKSpriteNode {
         // default texture of station is using table's texture
         let table = SKSpriteNode(imageNamed: "table")
         table.size = size
-        super.init(texture: table.texture, color: .clear, size: size)
+
+        super.init(inPosition: position, withSize: size, withTexture: table.texture)
+
         self.name = StageConstants.stationName
-        self.position = position
         self.zPosition = StageConstants.stationZPos
 
         self.physicsBody = SKPhysicsBody(texture: table.texture!, size: table.size)
@@ -48,26 +46,8 @@ class Station: SKSpriteNode {
     /* 
      * How to make different stations:
      * - Subclass this class
-     * - Override ableToProcess and process func with the subclass specifications, explained below
+     * - Override ableToInteract and interact func with the subclass specifications, explained below
     **/
-
-    // Check whether the item is able to be processed by this station
-    // Parameters:
-    //      - item: the item that is queried, can be nil, where there is no item passed to this station
-    // Return value:
-    //        true if the the item is able to be processed by this station, false otherwise
-    func ableToProcess(_ item: SKSpriteNode?) -> Bool {
-        return false
-    }
-
-    // Process an item
-    // Parameters:
-    //      - item: the item that will be processed, can be nil when there is no item passed to this station
-    // Return value:
-    //      Optional SKSpriteNode, the item that has been processed (or nil if the processing does not produce anything)
-    func process(_ item: SKSpriteNode?) -> SKSpriteNode? {
-        return nil
-    }
 
     // Add an item to the station
     // If the station contained an item, do not do anything

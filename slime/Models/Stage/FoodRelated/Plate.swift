@@ -9,7 +9,7 @@
 import UIKit
 import SpriteKit
 
-class Plate: SKSpriteNode, Codable {
+class Plate: MobileItem, Codable {
 
     private(set) var food = Food()
     private(set) var listOfIngredients: [Ingredient] = []
@@ -24,11 +24,11 @@ class Plate: SKSpriteNode, Codable {
     init(inPosition position: CGPoint, withSize size: CGSize = StageConstants.plateSize) {
         let plate = SKTexture(imageNamed: "Plate")
         plate.filteringMode = .nearest
-        super.init(texture: plate, color: .clear, size: size)
+
+        super.init(inPosition: position, withSize: size, withTexture: plate)
+
         self.name = StageConstants.plateName
-        self.physicsBody = SKPhysicsBody(rectangleOf: size)
         self.physicsBody?.categoryBitMask = StageConstants.plateCategory
-        self.physicsBody?.collisionBitMask = StageConstants.wallCategoryCollision
     }
 
     required init?(coder aDecoder: NSCoder) {

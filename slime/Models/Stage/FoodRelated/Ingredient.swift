@@ -9,7 +9,7 @@
 import UIKit
 import SpriteKit
 
-class Ingredient: SKSpriteNode, Codable {
+class Ingredient: MobileItem, Codable {
     var type: IngredientType
     var processed: [CookingType] = []
 
@@ -24,18 +24,14 @@ class Ingredient: SKSpriteNode, Codable {
          inPosition position: CGPoint = CGPoint.zero) {
 
         self.type = type
-
         let ingredientsAtlas = SKTextureAtlas(named: "Ingredients")
         var texture: SKTexture = SKTexture.init()
         texture = ingredientsAtlas.textureNamed(type.rawValue)
-        super.init(texture: texture, color: .clear, size: size)
+
+        super.init(inPosition: position, withSize: size, withTexture: texture)
 
         self.name = StageConstants.ingredientName
-        self.position = position
-
-        self.physicsBody = SKPhysicsBody(rectangleOf: size)
         self.physicsBody?.categoryBitMask = StageConstants.ingredientCategory
-        self.physicsBody?.collisionBitMask = StageConstants.wallCategoryCollision
 
         setupBars()
     }
