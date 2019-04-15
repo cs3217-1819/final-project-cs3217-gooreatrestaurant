@@ -10,8 +10,9 @@ import UIKit
 import SpriteKit
 
 class Ladder: SKSpriteNode {
+    let kitchenwareAtlas = SKTextureAtlas(named: "Kitchenware")
     init(inPosition position: CGPoint) {
-        let ladder = SKTexture(imageNamed: "Ladder")
+        let ladder = kitchenwareAtlas.textureNamed("Ladder")
         ladder.filteringMode = .nearest
         super.init(texture: ladder, color: .clear, size: StageConstants.ladderSize)
         self.name = StageConstants.ladderName
