@@ -337,7 +337,6 @@ class Stage: SKScene {
 
         if !isMultiplayer {
             counter = counterStartTime
-//            startCounter()
             showReadyFlag()
         }
 
@@ -525,7 +524,8 @@ class Stage: SKScene {
         }
     }
 
-    func startCounter() {
+    @objc func startCounter() {
+        readyNode.removeFromParent()
         if !isMultiplayer {
             counterTime = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(decrementCounter), userInfo: nil, repeats: true)
         } else {
@@ -604,18 +604,15 @@ class Stage: SKScene {
     }
     
     func showReadyFlag() {
-        print("showReadyFlag")
         self.sceneCam?.addChild(readyNode)
 
-        //after timer
-        //showStartFlag()
+        _ = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(showStartFlag), userInfo: nil, repeats: false)
     }
     
-    func showStartFlag() {
-        print("showStartFlag")
+    @objc func showStartFlag() {
+        readyNode.texture = SKTexture(imageNamed: "Go")
 
-        //after timer
-        //readyLabel removefromparent
+        _ = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(startCounter), userInfo: nil, repeats: false)
     }
 
     func updateOrderQueue(into orderQueue: OrderQueue) {
@@ -704,6 +701,7 @@ class Stage: SKScene {
     lazy var readyNode: SKSpriteNode = {
         let texture = SKTexture(imageNamed: "Ready")
         var label = SKSpriteNode(texture: texture)
+        label.size = CGSize(width: ScreenSize.width * 0.5, height: ScreenSize.height * 0.5)
         label.zPosition = 10
         label.position = (self.sceneCam?.position)!
         return label
