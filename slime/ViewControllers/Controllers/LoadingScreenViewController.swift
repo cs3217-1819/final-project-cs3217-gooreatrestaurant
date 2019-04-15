@@ -8,10 +8,10 @@
 import Foundation
 
 class LoadingScreenViewController: ViewController<LoadingScreenView> {
-    private var levelToLoad: String?
+    private var levelToLoad: Level?
     
     // set filename of level to load
-    func setLevelToLoad(_ levelToLoad: String) {
+    func setLevelToLoad(_ levelToLoad: Level) {
         self.levelToLoad = levelToLoad
     }
     

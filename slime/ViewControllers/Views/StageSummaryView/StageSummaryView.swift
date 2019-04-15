@@ -13,4 +13,7 @@ class StageSummaryView: UIView {
     @IBOutlet var scoreLabel: UILabel!
     @IBOutlet var expLabel: UILabel!
     @IBOutlet var okButton: XibView!
+    @IBOutlet var progressBarView: XibView!
+    @IBOutlet var levelLabel: TextLabel!
+    @IBOutlet var nameLabel: TextLabel!
 }
