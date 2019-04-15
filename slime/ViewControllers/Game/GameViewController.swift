@@ -57,7 +57,10 @@ class GameViewController: ViewController<UIView> {
         //        setupCollection()
 
         stage.setupPlayers()
-        stage.stageDidLoad()
+        
+        Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false) { (timer) in
+            stage.stageDidLoad()
+        }
     }
 
     func setupCollection() {
