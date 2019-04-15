@@ -21,6 +21,8 @@ class MobileItem: Item {
         let user = GameAuth.currentUser?.uid ?? "someRandomString"
 
         self.id = name + "-" + user + "-" + timeString
+
+        self.zPosition = StageConstants.mobileItemZPos
     }
 
     func setPhysicsBody() {

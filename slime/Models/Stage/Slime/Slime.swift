@@ -124,6 +124,26 @@ class Slime: SKSpriteNode {
                 continue
             }
 
+            guard let mobileItem = node as? MobileItem else {
+                continue
+            }
+
+            if mobileItem.ableToInteract(withItem: self.itemCarried) {
+                let itemToInteract = self.itemCarried
+                itemToInteract?.removeFromParent()
+
+                if let resultingItem = mobileItem.interact(withItem: itemToInteract) as? MobileItem {
+                    self.takeItem(resultingItem)
+                }
+                return nil
+            }
+        }
+
+        for body in contactedBodies {
+            guard let node = body.node else {
+                continue
+            }
+
             guard let station = node as? Station else {
                 continue
             }
@@ -138,7 +158,7 @@ class Slime: SKSpriteNode {
                 return station
             }
         }
-        
+        dropItem()
         return nil
     }
 

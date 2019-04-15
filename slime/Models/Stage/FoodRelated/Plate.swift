@@ -39,6 +39,39 @@ class Plate: MobileItem, Codable {
         self.physicsBody?.categoryBitMask = StageConstants.plateCategory
     }
 
+    override func ableToInteract(withItem item: Item?) -> Bool {
+
+        let willTake = (item == nil)
+        let willAddIngredient = item is Ingredient
+
+        return willTake || willAddIngredient
+    }
+
+    override func interact(withItem item: Item?) -> Item? {
+        guard ableToInteract(withItem: item) == true else {
+            return item
+        }
+
+        let willTake = (item == nil)
+        let willAddIngredient = item is Ingredient
+
+        if willTake {
+
+            return self
+
+        } else if willAddIngredient {
+            guard let ingredient = item as? Ingredient else {
+                return nil
+            }
+
+            addIngredients(ingredient)
+
+            return nil
+        }
+
+        return nil
+    }
+
     func addIngredients(_ ingredient: Ingredient) {
         food.addIngredients(ingredient)
         addIngredientImage(inIngredient: ingredient)

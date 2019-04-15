@@ -104,6 +104,39 @@ class Ingredient: MobileItem, Codable {
         self.processed = []
     }
 
+    override func ableToInteract(withItem item: Item?) -> Bool {
+
+        let willTake = (item == nil)
+        let willAddToPlate = item is Plate
+
+        return willTake || willAddToPlate
+    }
+
+    override func interact(withItem item: Item?) -> Item? {
+        guard ableToInteract(withItem: item) == true else {
+            return item
+        }
+
+        let willTake = (item == nil)
+        let willAddToPlate = item is Plate
+
+        if willTake {
+
+            return self
+
+        } else if willAddToPlate {
+            guard let plate = item as? Plate else {
+                return nil
+            }
+
+            plate.addIngredients(self)
+            self.removeFromParent()
+            return plate
+        }
+
+        return nil
+    }
+
     override var hash: Int {
         var hasher = Hasher()
         hasher.combine(self.type)
