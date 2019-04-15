@@ -156,7 +156,7 @@ class Stage: SKScene {
         }, onHostDisconnected: {
             self.gameHasEnded = true
             self.stopStreamingSelf()
-            self.gameOver(ifWon: false, withMessage: "HOST EXPLODED")
+            self.gameOver(ifWon: false, withMessage: (self.gameHasEnded ? "GAME OVER" : "HOST EXPLODED"))
             guard let database = self.db else { return }
             database.removeAllObservers()
             database.removeAllDisconnectObservers()
