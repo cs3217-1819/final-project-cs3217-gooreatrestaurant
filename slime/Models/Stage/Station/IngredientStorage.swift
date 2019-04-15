@@ -29,15 +29,15 @@ class IngredientStorage: Station {
     // Requirements: item given to this station is nil (this station does not accept any item)
     // Return: The ingredient with a specific type
 
-    override func ableToProcess(_ item: SKSpriteNode?) -> Bool {
+    override func ableToInteract(withItem item: Item?) -> Bool {
         if item == nil {
             return true
         }
         return false
     }
 
-    override func process(_ item: SKSpriteNode?) -> SKSpriteNode? {
-        guard ableToProcess(item) == true else {
+    override func interact(withItem item: Item?) -> Item? {
+        guard ableToInteract(withItem: item) == true else {
             return nil
         }
         
