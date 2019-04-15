@@ -221,12 +221,14 @@ class Stage: SKScene {
             let plate = try? decoder.decode(Plate.self, from: data)
             guard let addedPlate = plate else { return }
             self.allStageItemsDict.updateValue(addedPlate as MobileItem, forKey: item.uid)
+            self.addChild(addedPlate)
         }
         
         if item.type == FirebaseSystemValues.ItemTypes.ingredient.rawValue {
             let ingredient = try? decoder.decode(Ingredient.self, from: data)
             guard let addedIngredient = ingredient else { return }
             self.allStageItemsDict.updateValue(addedIngredient as MobileItem, forKey: item.uid)
+            self.addChild(addedIngredient)
         }
     }
     
