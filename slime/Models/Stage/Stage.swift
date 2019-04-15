@@ -512,21 +512,23 @@ class Stage: SKScene {
         }
     }
 
-    func serve(_ plate: Plate) {
+    // Returns true if serving is successful, and false if not
+    func serve(_ plate: Plate) -> Bool {
         if !isMultiplayer {
             let foodToServe = plate.food
             
             guard self.orderQueue.completeOrder(withFood: foodToServe) == true else {
                 print("failed")
-                return
+                return false
             }
             
             levelScore += self.orderQueue.scoreToIncrease 
             scoreLabel.text = "Score: \(levelScore)"
+            return true
         } else {
             // multiplayer serve food
-            guard let database = self.db else { return }
-            guard let room = self.previousRoom else { return }
+            guard let database = self.db else { return false }
+            guard let room = self.previousRoom else { return false }
             
             database.updatePlayerHoldingItem(forGameId: room.id, toItem: "BUH BUH SLIME" as AnyObject, { }) { (err) in
                 print(err.localizedDescription)
@@ -535,6 +537,8 @@ class Stage: SKScene {
             database.submitOrder(forGameId: room.id, withPlate: plate, { }) { (err) in
                 print(err.localizedDescription)
             }
+            
+            return true
         }
     }
 

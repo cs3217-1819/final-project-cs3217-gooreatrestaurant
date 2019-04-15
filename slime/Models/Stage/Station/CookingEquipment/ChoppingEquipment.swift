@@ -20,6 +20,10 @@ class ChoppingEquipment: CookingEquipment {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    override func onProgressProcessing() {
+        AudioMaster.instance.playSFX(name: "chop")
+    }
 
     override func automaticProcessing() {
         continueProcessing(withProgress: 0.0)

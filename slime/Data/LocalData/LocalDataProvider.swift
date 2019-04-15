@@ -32,6 +32,26 @@ class LocalDataProvider {
             self.realm.add(user.asLocalDataType(), update: true)
         }
     }
+    
+    func readLevelBestScore(id: String) -> Int {
+        guard let levelScore = realm.object(ofType: LocalLevelScore.self, forPrimaryKey: id) else {
+            return 0
+        }
+        return levelScore.bestScore
+    }
+    
+    func saveLevelData(level: Level, bestScore: Int) {
+        if level.bestScore >= bestScore {
+            // Ignore requests to write a lower best score
+            return
+        }
+        let savedLevel = LocalLevelScore()
+        savedLevel.id = level.id
+        savedLevel.bestScore = bestScore
+        try! realm.write {
+            self.realm.add(savedLevel, update: true)
+        }
+    }
 
     func reset() {
         try! realm.write {

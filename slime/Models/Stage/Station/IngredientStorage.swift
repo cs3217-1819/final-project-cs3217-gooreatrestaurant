@@ -40,6 +40,8 @@ class IngredientStorage: Station {
         guard ableToProcess(item) == true else {
             return nil
         }
+        
+        AudioMaster.instance.playSFX(name: "pickup")
         return Ingredient(type: self.type, inPosition: self.position)
     }
 }

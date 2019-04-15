@@ -125,8 +125,19 @@
 		EC449B94223BB08700A8EA35 /* LevelDetailsBoxController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC449B93223BB08700A8EA35 /* LevelDetailsBoxController.swift */; };
 		EC449B96223BB1D400A8EA35 /* StoryModeLevelSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC449B95223BB1D400A8EA35 /* StoryModeLevelSelectView.swift */; };
 		EC449B98223BB20400A8EA35 /* StoryModeLevelSelectController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC449B97223BB20400A8EA35 /* StoryModeLevelSelectController.swift */; };
-		EC449B9B223BB9EA00A8EA35 /* levels.json in Resources */ = {isa = PBXBuildFile; fileRef = EC449B9A223BB9E900A8EA35 /* levels.json */; };
+		EC449B9B223BB9EA00A8EA35 /* SinglePlayerLevels.json in Resources */ = {isa = PBXBuildFile; fileRef = EC449B9A223BB9E900A8EA35 /* SinglePlayerLevels.json */; };
 		EC449B9E223BBA0300A8EA35 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC449B9D223BBA0300A8EA35 /* Level.swift */; };
+		EC470898226456D300F3BC19 /* oven-timer.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EC470893226456D300F3BC19 /* oven-timer.mp3 */; };
+		EC470899226456D300F3BC19 /* oven-ding.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EC470894226456D300F3BC19 /* oven-ding.mp3 */; };
+		EC47089A226456D300F3BC19 /* kaching.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EC470895226456D300F3BC19 /* kaching.mp3 */; };
+		EC47089B226456D300F3BC19 /* jump.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EC470896226456D300F3BC19 /* jump.mp3 */; };
+		EC47089C226456D300F3BC19 /* chop.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EC470897226456D300F3BC19 /* chop.mp3 */; };
+		EC47089E2264794200F3BC19 /* trash.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EC47089D2264794100F3BC19 /* trash.mp3 */; };
+		EC4708A022647A3A00F3BC19 /* pickup.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EC47089F22647A3A00F3BC19 /* pickup.mp3 */; };
+		EC4708A22264807900F3BC19 /* bad-order.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EC4708A12264807900F3BC19 /* bad-order.mp3 */; };
+		EC4708A4226484DA00F3BC19 /* game-bgm.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EC4708A3226484DA00F3BC19 /* game-bgm.mp3 */; };
+		EC4708AA22648D2400F3BC19 /* LocalLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4708A922648D2400F3BC19 /* LocalLevel.swift */; };
+		EC4708AC22649C9F00F3BC19 /* MultiplayerLevels.json in Sources */ = {isa = PBXBuildFile; fileRef = EC4708AB22649C9F00F3BC19 /* MultiplayerLevels.json */; };
 		EC4924E42246163C007B9797 /* LevelPlaceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC4924E32246163C007B9797 /* LevelPlaceView.xib */; };
 		EC4924E8224618E6007B9797 /* LevelPlaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4924E7224618E6007B9797 /* LevelPlaceView.swift */; };
 		EC4924EB22461FEC007B9797 /* OrderBlob.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC4924EA22461FEC007B9797 /* OrderBlob.xib */; };
@@ -378,8 +389,19 @@
 		EC449B93223BB08700A8EA35 /* LevelDetailsBoxController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelDetailsBoxController.swift; sourceTree = "<group>"; };
 		EC449B95223BB1D400A8EA35 /* StoryModeLevelSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryModeLevelSelectView.swift; sourceTree = "<group>"; };
 		EC449B97223BB20400A8EA35 /* StoryModeLevelSelectController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryModeLevelSelectController.swift; sourceTree = "<group>"; };
-		EC449B9A223BB9E900A8EA35 /* levels.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = levels.json; sourceTree = "<group>"; };
+		EC449B9A223BB9E900A8EA35 /* SinglePlayerLevels.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SinglePlayerLevels.json; sourceTree = "<group>"; };
 		EC449B9D223BBA0300A8EA35 /* Level.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
+		EC470893226456D300F3BC19 /* oven-timer.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "oven-timer.mp3"; sourceTree = "<group>"; };
+		EC470894226456D300F3BC19 /* oven-ding.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "oven-ding.mp3"; sourceTree = "<group>"; };
+		EC470895226456D300F3BC19 /* kaching.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = kaching.mp3; sourceTree = "<group>"; };
+		EC470896226456D300F3BC19 /* jump.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = jump.mp3; sourceTree = "<group>"; };
+		EC470897226456D300F3BC19 /* chop.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = chop.mp3; sourceTree = "<group>"; };
+		EC47089D2264794100F3BC19 /* trash.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = trash.mp3; path = assets/sfx/trash.mp3; sourceTree = SOURCE_ROOT; };
+		EC47089F22647A3A00F3BC19 /* pickup.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = pickup.mp3; path = assets/sfx/pickup.mp3; sourceTree = SOURCE_ROOT; };
+		EC4708A12264807900F3BC19 /* bad-order.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "bad-order.mp3"; path = "assets/sfx/bad-order.mp3"; sourceTree = SOURCE_ROOT; };
+		EC4708A3226484DA00F3BC19 /* game-bgm.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "game-bgm.mp3"; sourceTree = "<group>"; };
+		EC4708A922648D2400F3BC19 /* LocalLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalLevel.swift; sourceTree = "<group>"; };
+		EC4708AB22649C9F00F3BC19 /* MultiplayerLevels.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = MultiplayerLevels.json; sourceTree = "<group>"; };
 		EC4924E32246163C007B9797 /* LevelPlaceView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LevelPlaceView.xib; sourceTree = "<group>"; };
 		EC4924E7224618E6007B9797 /* LevelPlaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelPlaceView.swift; sourceTree = "<group>"; };
 		EC4924EA22461FEC007B9797 /* OrderBlob.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderBlob.xib; sourceTree = "<group>"; };
@@ -920,8 +942,9 @@
 			children = (
 				EC6E99E9224F21F900A9554C /* LocalData */,
 				8BEDCD382247F10100E24A20 /* Level1.plist */,
-				EC449B9A223BB9E900A8EA35 /* levels.json */,
+				EC449B9A223BB9E900A8EA35 /* SinglePlayerLevels.json */,
 				EC6AC1D3225216EF00D95C90 /* SlimeColors.swift */,
+				EC4708AB22649C9F00F3BC19 /* MultiplayerLevels.json */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -993,6 +1016,7 @@
 				EC6E99E7224F1BB400A9554C /* LocalDataProvider.swift */,
 				EC6E99EC224F22C000A9554C /* LocalUserCharacter.swift */,
 				EC6E99EE224F256500A9554C /* LocalData.swift */,
+				EC4708A922648D2400F3BC19 /* LocalLevel.swift */,
 			);
 			path = LocalData;
 			sourceTree = "<group>";
@@ -1029,6 +1053,7 @@
 		EC7168D2225DD277004EF2B0 /* BGM */ = {
 			isa = PBXGroup;
 			children = (
+				EC4708A3226484DA00F3BC19 /* game-bgm.mp3 */,
 				EC7168D3225DD281004EF2B0 /* menu-bgm.mp3 */,
 				EC7168DC225DD2A8004EF2B0 /* menu-bgm-alt.mp3 */,
 			);
@@ -1038,10 +1063,18 @@
 		EC7168D5225DD286004EF2B0 /* SFX */ = {
 			isa = PBXGroup;
 			children = (
+				EC47089F22647A3A00F3BC19 /* pickup.mp3 */,
+				EC470897226456D300F3BC19 /* chop.mp3 */,
+				EC470896226456D300F3BC19 /* jump.mp3 */,
+				EC470895226456D300F3BC19 /* kaching.mp3 */,
+				EC470894226456D300F3BC19 /* oven-ding.mp3 */,
+				EC470893226456D300F3BC19 /* oven-timer.mp3 */,
 				EC7168EE22603AED004EF2B0 /* back.mp3 */,
+				EC47089D2264794100F3BC19 /* trash.mp3 */,
 				EC7168F222603B08004EF2B0 /* selection.mp3 */,
 				EC7168F022603AFD004EF2B0 /* done-loading.mp3 */,
 				EC7168DF225DD3CE004EF2B0 /* error.mp3 */,
+				EC4708A12264807900F3BC19 /* bad-order.mp3 */,
 				EC7168DE225DD3CE004EF2B0 /* gameover.mp3 */,
 				EC7168E1225DD3CE004EF2B0 /* joinroom.mp3 */,
 				EC7168E2225DD3CF004EF2B0 /* leftroom.mp3 */,
@@ -1359,6 +1392,7 @@
 			files = (
 				EC3824282238803D000D7148 /* LaunchScreen.storyboard in Resources */,
 				EC38246D223A1803000D7148 /* Rubik-Bold.ttf in Resources */,
+				EC4708A4226484DA00F3BC19 /* game-bgm.mp3 in Resources */,
 				EC382470223A1803000D7148 /* Rubik-BlackItalic.ttf in Resources */,
 				EC7168F322603B08004EF2B0 /* selection.mp3 in Resources */,
 				EC382473223A1803000D7148 /* Rubik-Black.ttf in Resources */,
@@ -1367,11 +1401,13 @@
 				ECD24431224B114400767A56 /* JoinRoomView.xib in Resources */,
 				ECBA67C52261C79F007042A8 /* StageSummaryView.xib in Resources */,
 				EC4924EB22461FEC007B9797 /* OrderBlob.xib in Resources */,
+				EC470899226456D300F3BC19 /* oven-ding.mp3 in Resources */,
 				EC38246C223A1803000D7148 /* Rubik-BoldItalic.ttf in Resources */,
 				EC449B87223BA49D00A8EA35 /* LevelSelectView.xib in Resources */,
 				EC0E3163224F610300AF1254 /* CharacterCreationView.xib in Resources */,
 				EC38246F223A1803000D7148 /* Rubik-LightItalic.ttf in Resources */,
 				F92ECADF224BADEC0040A4E2 /* GoogleService-Info.plist in Resources */,
+				EC47089B226456D300F3BC19 /* jump.mp3 in Resources */,
 				EC449B90223BADBB00A8EA35 /* LevelDetailsBox.xib in Resources */,
 				ECD24420224AFFEB00767A56 /* SlimeNumberInputView.xib in Resources */,
 				EC449B77223B81FE00A8EA35 /* PlayScreenView.xib in Resources */,
@@ -1389,13 +1425,17 @@
 				EC21B40022420CA700827121 /* LevelPlayButton.xib in Resources */,
 				EC449B8B223BACD500A8EA35 /* StoryModeLevelSelectView.xib in Resources */,
 				ECD45541223FA21E006AF78D /* Modal.xib in Resources */,
+				EC47089A226456D300F3BC19 /* kaching.mp3 in Resources */,
 				EC449B8E223BAD4400A8EA35 /* MapDot.xib in Resources */,
 				EC38246A223A1803000D7148 /* Rubik-Light.ttf in Resources */,
 				EC6E75522255CB9000B9C7CF /* CustomizationMainView.xib in Resources */,
 				EC57D2DE225C8B7B00F26808 /* SlimeCharacterView.xib in Resources */,
+				EC4708A022647A3A00F3BC19 /* pickup.mp3 in Resources */,
 				EC6E7558225A3A8000B9C7CF /* JokesSlimesView.xib in Resources */,
 				8B5B200D22648BE300059756 /* BakedSlicedIngredients.atlas in Resources */,
 				EC7168EF22603AED004EF2B0 /* back.mp3 in Resources */,
+				EC47089E2264794200F3BC19 /* trash.mp3 in Resources */,
+				EC47089C226456D300F3BC19 /* chop.mp3 in Resources */,
 				ECD4556C2240FBED006AF78D /* PlayerBox.xib in Resources */,
 				EC7168E4225DD3CF004EF2B0 /* gameover.mp3 in Resources */,
 				8B5B200B2264886900059756 /* BakedIngredients.atlas in Resources */,
@@ -1405,7 +1445,9 @@
 				ECA66DC2223D5DD100D1D0BC /* CreditsScreenView.xib in Resources */,
 				EC38246E223A1803000D7148 /* Rubik-Italic.ttf in Resources */,
 				EC7676BF225B52CE00F6A450 /* CustomizationCosmeticView.xib in Resources */,
-				EC449B9B223BB9EA00A8EA35 /* levels.json in Resources */,
+				EC470898226456D300F3BC19 /* oven-timer.mp3 in Resources */,
+				EC449B9B223BB9EA00A8EA35 /* SinglePlayerLevels.json in Resources */,
+				EC4708A22264807900F3BC19 /* bad-order.mp3 in Resources */,
 				EC382480223A2999000D7148 /* PlayMenuButton.xib in Resources */,
 				EC0E3168224F618B00AF1254 /* TextInputView.xib in Resources */,
 				EC7168E5225DD3CF004EF2B0 /* error.mp3 in Resources */,
@@ -1668,6 +1710,7 @@
 				F92ECAE8224BAEEF0040A4E2 /* Game.swift in Sources */,
 				1DE6FC5C224CA46700B36F48 /* Table.swift in Sources */,
 				1DE6FC65224D1D3900B36F48 /* Oven.swift in Sources */,
+				EC4708AC22649C9F00F3BC19 /* MultiplayerLevels.json in Sources */,
 				EC0E3165224F611200AF1254 /* CharacterCreationView.swift in Sources */,
 				EC38244B22389649000D7148 /* ImageProvider.swift in Sources */,
 				EC38244322388389000D7148 /* XibView.swift in Sources */,
@@ -1681,6 +1724,7 @@
 				EC449B85223BA48100A8EA35 /* LevelSelectView.swift in Sources */,
 				EC6AC1D82254884000D95C90 /* ContextDataHandler.swift in Sources */,
 				ECA66DBE223D2A1B00D1D0BC /* LevelPlaceController.swift in Sources */,
+				EC4708AA22648D2400F3BC19 /* LocalLevel.swift in Sources */,
 				EC6E99F9224F2DDB00A9554C /* ProgressBarController.swift in Sources */,
 				EC6E99F7224F2DA200A9554C /* ProgressBarView.swift in Sources */,
 				EC7168CF225DD083004EF2B0 /* AudioMaster.swift in Sources */,
@@ -1869,13 +1913,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = CZ7H96C646;
+				DEVELOPMENT_TEAM = H8MD8RH9XR;
 				INFOPLIST_FILE = slime/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = nus.cs3217.a0143378y.slime;
+				PRODUCT_BUNDLE_IDENTIFIER = nus.cs3217.a0143378y.slimeo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
@@ -1890,13 +1934,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = CZ7H96C646;
+				DEVELOPMENT_TEAM = H8MD8RH9XR;
 				INFOPLIST_FILE = slime/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = nus.cs3217.a0143378y.slime;
+				PRODUCT_BUNDLE_IDENTIFIER = nus.cs3217.a0143378y.slimeo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;

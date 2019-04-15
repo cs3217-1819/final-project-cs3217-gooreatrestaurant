@@ -5,6 +5,7 @@
 .DS_Store
 .vs
 **/.DS_Store
+assets/
 
 ## Build generated
 build/

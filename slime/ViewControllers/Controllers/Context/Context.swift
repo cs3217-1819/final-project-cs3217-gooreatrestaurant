@@ -71,14 +71,18 @@ class Context {
         
     }
 
-    func segueToGame() {
-        routeToFade(.GameScreen)
+    func segueToGame(with levelName: String) {
+        routeToFade(.GameScreen, withCallback: { vc in
+            let gameVC = vc as! GameViewController
+            gameVC.setLevel(name: levelName)
+        })
     }
     
-    func segueToMultiplayerGame(forRoom room: RoomModel) {
+    func segueToMultiplayerGame(forRoom room: RoomModel, level: String) {
         routeToFade(.GameScreen) { (controller) in
             guard let vc = controller as? GameViewController else { return }
             vc.isMultiplayer = true
+            vc.setLevel(name: level)
             vc.previousRoom = room
         }
 //        routeToAndPrepareFor(.GameScreen) { (controller) in
