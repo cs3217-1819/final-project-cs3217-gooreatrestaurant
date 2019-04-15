@@ -614,7 +614,7 @@
 			path = CookingEquipment;
 			sourceTree = "<group>";
 		};
-		8B5B20182264CDDB00059756 /* Food */ = {
+		8B5B20282264D80400059756 /* Food */ = {
 			isa = PBXGroup;
 			children = (
 				8B5B200C22648BE300059756 /* BakedSlicedIngredients.atlas */,
@@ -622,18 +622,17 @@
 				8B5B20082264759200059756 /* SlicedIngredients.atlas */,
 				8B5B2004226470C400059756 /* Recipes.atlas */,
 				1D37DBBF225E6ED900E637C9 /* Ingredients.atlas */,
-				8B81EFBB224344AD007BFDB0 /* Slime.atlas */,
 			);
-			name = Food;
-			path = "New Group";
+			path = Food;
 			sourceTree = "<group>";
 		};
 		8BD816B42242643C00586180 /* Sprites */ = {
 			isa = PBXGroup;
 			children = (
+				8B5B20282264D80400059756 /* Food */,
+				8B81EFBB224344AD007BFDB0 /* Slime.atlas */,
 				8B5B20262264D57400059756 /* UI.atlas */,
 				8B5B20242264D38D00059756 /* Spaceship.atlas */,
-				8B5B20182264CDDB00059756 /* Food */,
 				8BEDCD44224F3EC900E24A20 /* MenuPrefab.swift */,
 				8BEDCD4A22531CDF00E24A20 /* IngredientsCell.swift */,
 				8BFA63E82257D7FE007645F9 /* GameOverPrefab.swift */,
