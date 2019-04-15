@@ -34,6 +34,7 @@
 		1DE6FC6B224D26A200B36F48 /* Trash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE6FC6A224D26A200B36F48 /* Trash.swift */; };
 		3F1EE6CE45AA94FFF3DA1410 /* Pods_slimeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD598D8D4712AAF7695D5C8 /* Pods_slimeTests.framework */; };
 		84A297CC3884A9F329049AA5 /* Pods_slime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80487C6681A5E05D3D2137F7 /* Pods_slime.framework */; };
+		8B5B2005226470C400059756 /* Recipes.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 8B5B2004226470C400059756 /* Recipes.atlas */; };
 		8B81EFBC224344AD007BFDB0 /* Slime.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 8B81EFBB224344AD007BFDB0 /* Slime.atlas */; };
 		8BD816AF22422C6700586180 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD816AE22422C6700586180 /* Extensions.swift */; };
 		8BD816B3224262F100586180 /* AnalogJoystick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD816B2224262F100586180 /* AnalogJoystick.swift */; };
@@ -279,6 +280,7 @@
 		773A5B5FFC68C9B4D85E485C /* Pods-slimeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-slimeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-slimeTests/Pods-slimeTests.release.xcconfig"; sourceTree = "<group>"; };
 		7AD598D8D4712AAF7695D5C8 /* Pods_slimeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_slimeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		80487C6681A5E05D3D2137F7 /* Pods_slime.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_slime.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8B5B2004226470C400059756 /* Recipes.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Recipes.atlas; sourceTree = "<group>"; };
 		8B81EFBB224344AD007BFDB0 /* Slime.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Slime.atlas; sourceTree = "<group>"; };
 		8BD816AE22422C6700586180 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		8BD816B2224262F100586180 /* AnalogJoystick.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalogJoystick.swift; sourceTree = "<group>"; };
@@ -581,6 +583,7 @@
 		8BD816B42242643C00586180 /* Sprites */ = {
 			isa = PBXGroup;
 			children = (
+				8B5B2004226470C400059756 /* Recipes.atlas */,
 				1D37DBBF225E6ED900E637C9 /* Ingredients.atlas */,
 				1D37DBBE225E6ED900E637C9 /* ProcessedIngredients.atlas */,
 				8B81EFBB224344AD007BFDB0 /* Slime.atlas */,
@@ -1411,6 +1414,7 @@
 				EC7168E7225DD3CF004EF2B0 /* joinroom.mp3 in Resources */,
 				EC6E99F5224F2D1600A9554C /* ProgressBarView.xib in Resources */,
 				EC7168EB225DD571004EF2B0 /* bloop.mp3 in Resources */,
+				8B5B2005226470C400059756 /* Recipes.atlas in Resources */,
 				EC3824232238803A000D7148 /* Main.storyboard in Resources */,
 				EC6E99F2224F2BFE00A9554C /* UserInfoView.xib in Resources */,
 				EC38245F223A17F7000D7148 /* Squidgy Slimes.ttf in Resources */,
