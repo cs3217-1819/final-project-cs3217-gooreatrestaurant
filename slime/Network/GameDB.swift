@@ -702,7 +702,7 @@ class GameDB: GameDatabase {
     }
     
     func addStageItem(forGameId id: String, withItem item: AnyObject, withItemUid uid: String, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void) {
-        let ref = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, id, FirebaseKeys.games_stationItems, uid]))
+        let ref = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, id, FirebaseKeys.games_stageItems, uid]))
         
         ref.runTransactionBlock({ (current) -> TransactionResult in
             if var _ = current.value as? [String : String] {
@@ -734,9 +734,9 @@ class GameDB: GameDatabase {
             guard let result = data else { return nil }
             guard let encodedItem = String(data: result, encoding: .utf8) else { return nil }
             
-            return [FirebaseKeys.games_stationItems_uid: uid,
-                    FirebaseKeys.games_stationItems_type: FirebaseSystemValues.ItemTypes.ingredient.rawValue,
-                    FirebaseKeys.games_stationItems_encodedData: encodedItem]
+            return [FirebaseKeys.games_stageItems_uid: uid,
+                    FirebaseKeys.games_stageItems_type: FirebaseSystemValues.ItemTypes.ingredient.rawValue,
+                    FirebaseKeys.games_stageItems_encodedData: encodedItem]
         }
         
         if let plate = item as? Plate {
@@ -744,16 +744,16 @@ class GameDB: GameDatabase {
             guard let result = data else { return nil }
             guard let encodedItem = String(data: result, encoding: .utf8) else { return nil }
             
-            return [FirebaseKeys.games_stationItems_uid: uid,
-                    FirebaseKeys.games_stationItems_type: FirebaseSystemValues.ItemTypes.plate.rawValue,
-                    FirebaseKeys.games_stationItems_encodedData: encodedItem]
+            return [FirebaseKeys.games_stageItems_uid: uid,
+                    FirebaseKeys.games_stageItems_type: FirebaseSystemValues.ItemTypes.plate.rawValue,
+                    FirebaseKeys.games_stageItems_encodedData: encodedItem]
         }
         
         return nil
     }
     
     func removeStageItem(forGameId id: String, withItemUid uid: String, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void) {
-        let ref = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, id, FirebaseKeys.games_stationItems, uid]))
+        let ref = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, id, FirebaseKeys.games_stageItems, uid]))
         
         ref.runTransactionBlock({ (current) -> TransactionResult in
             guard var _ = current.value as? [String : String] else {
@@ -828,7 +828,7 @@ class GameDB: GameDatabase {
         let hasStartedRef = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, room.id, FirebaseKeys.games_hasStarted]))
         let timeLeftRef = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, room.id, FirebaseKeys.games_timeLeft]))
         let selfHoldingItemRef = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, room.id, FirebaseKeys.games_players, user.uid, FirebaseKeys.games_players_holdingItem]))
-        let stageItemRef = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, room.id, FirebaseKeys.games_stationItems]))
+        let stageItemRef = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, room.id, FirebaseKeys.games_stageItems]))
         let notificationRef = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, room.id, FirebaseKeys.games_notifications]))
         
         let selfHandle = selfHoldingItemRef.observe(.value, with: { (snap) in
@@ -1001,9 +1001,9 @@ class GameDB: GameDatabase {
     }
     
     private func firebaseStageItemModelFactory(fromData data: [String : String]) -> StageItemModel {
-        let encodedData = data[FirebaseKeys.games_stationItems_encodedData] ?? ""
-        let type = data[FirebaseKeys.games_stationItems_type] ?? ""
-        let uid = data[FirebaseKeys.games_stationItems_uid] ?? ""
+        let encodedData = data[FirebaseKeys.games_stageItems_encodedData] ?? ""
+        let type = data[FirebaseKeys.games_stageItems_type] ?? ""
+        let uid = data[FirebaseKeys.games_stageItems_uid] ?? ""
         
         return StageItemModel(uid: uid, encodedData: encodedData, type: type)
     }
@@ -1614,10 +1614,10 @@ struct FirebaseKeys {
     static let games_notifications = "notifications"
     static let games_notifications_description = "description"
     static let games_notifications_type = "type"
-    static let games_stationItems = "station_items"
-    static let games_stationItems_uid = "uid"
-    static let games_stationItems_type = "type"
-    static let games_stationItems_encodedData = "encoded_data"
+    static let games_stageItems = "station_items"
+    static let games_stageItems_uid = "uid"
+    static let games_stageItems_type = "type"
+    static let games_stageItems_encodedData = "encoded_data"
     
     // leaderboard stuff
     static let scores = "scores"

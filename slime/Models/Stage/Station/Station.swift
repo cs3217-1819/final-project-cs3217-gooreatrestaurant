@@ -53,16 +53,12 @@ class Station: Item {
     // If the station contained an item, do not do anything
     // Parameters:
     //      - item: the item to be added
-    func addItem(_ item: SKSpriteNode) {
+    func addItem(_ item: MobileItem) {
         guard itemInside == nil else {
             return
         }
 
-        item.removeFromParent()
-        item.position.x = 0.0
-        item.position.y = 0.4 * (self.size.height + item.size.height)
-        item.physicsBody = nil
-        self.addChild(item)
+        item.taken(by: self)
     }
 
     // Remove the item that this station held (and for future expansion, this will remove all items)

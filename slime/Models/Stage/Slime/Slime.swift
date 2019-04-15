@@ -72,7 +72,7 @@ class Slime: SKSpriteNode {
         return node as? Ingredient
     }
 
-    var itemCarried: Item? {
+    var itemCarried: MobileItem? {
         if let plate = plateCarried {
             return plate
         }
@@ -100,21 +100,43 @@ class Slime: SKSpriteNode {
         self.removeAllChildren()
     }
 
-    func takeItem(_ item: Item?) {
-        guard let itemToTake = item else {
+    func takeItem(_ item: MobileItem?) {
+        guard itemCarried == nil else {
             return
         }
+        item?.taken(by: self)
+    }
 
-        itemToTake.removeFromParent()
-        itemToTake.position.x = 0.0
-        itemToTake.position.y = 0.4 * (self.size.height + itemToTake.size.height)
-        itemToTake.physicsBody = nil
-        self.addChild(itemToTake)
+    func dropItem() {
+        guard let item = itemCarried else {
+            return
+        }
+        item.dropped(by: self)
     }
 
     func interact() -> Station? {
         guard let contactedBodies = self.physicsBody?.allContactedBodies() else {
             return nil
+        }
+
+        for body in contactedBodies {
+            guard let node = body.node else {
+                continue
+            }
+
+            guard let mobileItem = node as? MobileItem else {
+                continue
+            }
+
+            if mobileItem.ableToInteract(withItem: self.itemCarried) {
+                let itemToInteract = self.itemCarried
+                itemToInteract?.removeFromParent()
+
+                if let resultingItem = mobileItem.interact(withItem: itemToInteract) as? MobileItem {
+                    self.takeItem(resultingItem)
+                }
+                return nil
+            }
         }
 
         for body in contactedBodies {
@@ -130,12 +152,13 @@ class Slime: SKSpriteNode {
                 let itemToProcess = self.itemCarried
                 itemToProcess?.removeFromParent()
 
-                let itemProcessed = station.interact(withItem: itemToProcess)
-                self.takeItem(itemProcessed)
+                if let itemProcessed = station.interact(withItem: itemToProcess) as? MobileItem {
+                    self.takeItem(itemProcessed)
+                }
                 return station
             }
         }
-        
+        dropItem()
         return nil
     }
 
