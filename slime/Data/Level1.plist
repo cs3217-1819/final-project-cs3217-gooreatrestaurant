@@ -66,17 +66,17 @@
 			<string>{-70,-160}</string>
 		</array>
 		<array>
-			<string>{-70,-150}</string>
-			<string>{50,-150}</string>
-			<string>{50,-100}</string>
-			<string>{320,-100}</string>
-			<string>{320,100}</string>
+			<string>{-70,-145}</string>
+			<string>{48,-145}</string>
+			<string>{48,-94}</string>
+			<string>{310,-94}</string>
+			<string>{310,100}</string>
 		</array>
 		<array>
-			<string>{220,100}</string>
-			<string>{220,190}</string>
-			<string>{180,190}</string>
-			<string>{180,250}</string>
+			<string>{210,90}</string>
+			<string>{210,195}</string>
+			<string>{170,195}</string>
+			<string>{170,250}</string>
 		</array>
 	</array>
 	<key>choppingEquipment</key>
