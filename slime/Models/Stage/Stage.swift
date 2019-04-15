@@ -168,10 +168,10 @@ class Stage: SKScene {
             guard let type = NotificationPrefab.NotificationTypes(rawValue: notification.type) else { return }
             self.notificationPrefab.show(withDescription: notification.description, ofType: type)
         }, onComplete: {
-            // joins game after attaching all
-            // relevant observers, this onComplete
-            // does not refer to the game state at all
-            self.joinGame(forRoom: room)
+            // on complete handler
+            // this is run BEFORE the stage
+            // fully loads, this is run after
+            // all listeners are attached
         }) { (err) in
             print(err.localizedDescription)
         }
@@ -462,6 +462,13 @@ class Stage: SKScene {
             slime.addUser(player)
             self.allSlimesDict.updateValue(slime, forKey: player.name)
             currentPlayerIndex += 1
+        }
+    }
+    
+    func stageDidLoad() {
+        if self.isMultiplayer {
+            guard let room = self.previousRoom else { return }
+            self.joinGame(forRoom: room)
         }
     }
 

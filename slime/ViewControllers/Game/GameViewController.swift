@@ -57,6 +57,7 @@ class GameViewController: ViewController<UIView> {
         //        setupCollection()
 
         stage.setupPlayers()
+        stage.stageDidLoad()
     }
 
     func setupCollection() {
