@@ -133,6 +133,7 @@ class Slime: SKSpriteNode {
                 itemToInteract?.removeFromParent()
 
                 if let resultingItem = mobileItem.interact(withItem: itemToInteract) as? MobileItem {
+                    AudioMaster.instance.playSFX(name: "pickup")
                     self.takeItem(resultingItem)
                 }
                 return nil
@@ -153,6 +154,7 @@ class Slime: SKSpriteNode {
                 itemToProcess?.removeFromParent()
 
                 if let itemProcessed = station.interact(withItem: itemToProcess) as? MobileItem {
+                    AudioMaster.instance.playSFX(name: "pickup")
                     self.takeItem(itemProcessed)
                 }
                 return station

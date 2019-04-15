@@ -41,7 +41,6 @@ class IngredientStorage: Station {
             return nil
         }
         
-        AudioMaster.instance.playSFX(name: "pickup")
         return Ingredient(type: self.type, inPosition: self.position)
     }
 }

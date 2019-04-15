@@ -13,6 +13,8 @@ class GameOverPrefab: SKSpriteNode {
     var controller = GameViewController(with: UIView())
     var isMultiplayer: Bool = false
     var baseNode: SKSpriteNode?
+
+    let UIAtlas = SKTextureAtlas(named: "UI")
     
     override init(texture: SKTexture?, color: UIColor, size: CGSize) {
         let base = SKTexture(imageNamed: "Base")
@@ -26,7 +28,7 @@ class GameOverPrefab: SKSpriteNode {
         self.position = CGPoint.zero
         self.zPosition = 10
 
-        let slime = SKSpriteNode(imageNamed: "Shocked Slime")
+        let slime = SKSpriteNode(texture: UIAtlas.textureNamed("Shocked Slime"))
         slime.texture?.filteringMode = .nearest
         slime.position = CGPoint.zero
         slime.size = CGSize(width: 220, height: 220)
@@ -81,7 +83,8 @@ class GameOverPrefab: SKSpriteNode {
 
     lazy var replayButton: BDButton? = {
         if isMultiplayer { return nil }
-        var button = BDButton(imageNamed: "ReplayButton", buttonAction: {
+        let texture = UIAtlas.textureNamed("TryAgainButton")
+        var button = BDButton(inTexture: texture, buttonAction: {
             self.controller.setupScene()
         })
         button.setScale(0.35)
@@ -92,7 +95,8 @@ class GameOverPrefab: SKSpriteNode {
     }()
 
     lazy var exitButton: BDButton = {
-        var button = BDButton(imageNamed: "ExitButton", buttonAction: {
+        let texture = UIAtlas.textureNamed("ReturnToMMButton")
+        var button = BDButton(inTexture: texture, buttonAction: {
             self.controller.segueToMainScreen(isMultiplayer: self.isMultiplayer)
         })
         button.setScale(0.35)
