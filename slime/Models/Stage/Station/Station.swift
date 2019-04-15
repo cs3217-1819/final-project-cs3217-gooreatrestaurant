@@ -12,8 +12,8 @@ import SpriteKit
 class Station: Item {
 
     // Item inside the station, if the station allow item storing
-    var itemInside: SKNode? {
-        return children.first
+    var itemInside: MobileItem? {
+        return children.first as? MobileItem
     }
 
     // Construct a station
