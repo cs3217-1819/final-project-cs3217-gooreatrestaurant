@@ -57,10 +57,7 @@ class GameViewController: ViewController<UIView> {
         //        setupCollection()
 
         stage.setupPlayers()
-        
-        Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false) { (timer) in
-            stage.stageDidLoad()
-        }
+        stage.stageDidLoad()
     }
 
     func setupCollection() {
@@ -74,6 +71,7 @@ class GameViewController: ViewController<UIView> {
         let control: StageSummaryController = context.routeToAndPrepareForFade(.StageSummary)
         control.set(exp: 80, score: 300, isMultiplayer: isMultiplayer)
     }
+    
     deinit {
         print("Game VC deinit")
     }
