@@ -56,7 +56,7 @@ class LevelPlaceController: Controller {
         playButtonController?.onTap {
             self.context.routeToAndPrepareFor(.LoadingScreen, callback: { vc in
                 let loadingVC = vc as! LoadingScreenViewController
-                loadingVC.setLevelToLoad(self.level.fileName)
+                loadingVC.setLevelToLoad(self.level)
             })
         }
 

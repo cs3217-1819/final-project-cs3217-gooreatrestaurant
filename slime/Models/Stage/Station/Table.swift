@@ -27,12 +27,10 @@ class Table: Station {
 
     override func ableToInteract(withItem item: Item?) -> Bool {
 
-        let willTake = (item == nil && self.itemInside != nil)
         let willPut = (item != nil && self.itemInside == nil)
-        let willAddIngredient = (item is Ingredient && self.itemInside is Plate)
-        let willTakeIngredientToPlate = (item is Plate && self.itemInside is Ingredient)
+        let willInteract = self.itemInside?.ableToInteract(withItem: item) ?? false
 
-        return willTake || willPut || willAddIngredient || willTakeIngredientToPlate
+        return willPut || willInteract
     }
 
     override func interact(withItem item: Item?) -> Item? {
@@ -40,10 +38,8 @@ class Table: Station {
             return item
         }
 
-        let willTake = (item == nil && self.itemInside != nil)
         let willPut = (item != nil && self.itemInside == nil)
-        let willAddIngredient = (item is Ingredient && self.itemInside is Plate)
-        let willTakeIngredientToPlate = (item is Plate && self.itemInside is Ingredient)
+        let willInteract = self.itemInside?.ableToInteract(withItem: item) ?? false
 
         // Condition 1
         if willPut {
@@ -53,51 +49,11 @@ class Table: Station {
             }
 
             self.addItem(itemToPut)
-            AudioMaster.instance.playSFX(name: "pickup")
             return nil
 
-        // Condition 2
-        } else if willTake {
-
-            guard let itemToTake = self.itemInside as? Item else {
-                return nil
-            }
-
-            self.removeItem()
-            AudioMaster.instance.playSFX(name: "pickup")
-            return itemToTake
-
-        // Condition 3
-        } else if willAddIngredient {
-
-            guard let plate = self.itemInside as? Plate else {
-                return item
-            }
-
-            guard let ingredient = item as? Ingredient else {
-                return item
-            }
-
-            plate.food.addIngredients(ingredient)
-            plate.addIngredientImage(inIngredient: ingredient)
-            return nil
-
-        // Condition 4
-        } else if willTakeIngredientToPlate {
-
-            guard let plate = item as? Plate else {
-                return item
-            }
-
-            guard let ingredient = self.itemInside as? Ingredient else {
-                return item
-            }
-
-            ingredient.removeFromParent()
-            plate.food.addIngredients(ingredient)
-            plate.addIngredientImage(inIngredient: ingredient)
-            AudioMaster.instance.playSFX(name: "pickup")
-            return plate
+        // Condition 2 and 3 and 4
+        } else if willInteract {
+            return self.itemInside?.interact(withItem: item)
         }
         
         return item

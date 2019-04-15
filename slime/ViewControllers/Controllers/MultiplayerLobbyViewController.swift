@@ -69,12 +69,14 @@ class MultiplayerLobbyViewController: ViewController<MultiplayerLobbyView> {
                 self.context.db.removeAllObservers()
                 self.context.db.removeAllDisconnectObservers()
 
-                self.context.segueToMultiplayerGame(forRoom: room, level: "Level1")
+                AudioMaster.instance.playSFX(name: "done-loading")
+                self.context.segueToMultiplayerGame(forRoom: room, level: Level(id: "mp-1-1", name: "Level1", fileName: "Level1", bestScore: 0))
                 
                 return
             }
 
             if room.hasStarted {
+                AudioMaster.instance.playSFX(name: "done-loading")
                 self.setLoadingAlert(withDescription: "Spaceship is ready, just tidying up a few things...")
                 self.presentActiveAlert(dismissible: false)
             }

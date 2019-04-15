@@ -10,10 +10,10 @@ import UIKit
 import SpriteKit
 
 class Station: Item {
-
+    let kitchenwareAtlas = SKTextureAtlas(named: "Kitchenware")
     // Item inside the station, if the station allow item storing
-    var itemInside: SKNode? {
-        return children.first
+    var itemInside: MobileItem? {
+        return children.first as? MobileItem
     }
 
     // Construct a station
@@ -24,7 +24,7 @@ class Station: Item {
     init(inPosition position: CGPoint, withSize size: CGSize = StageConstants.stationSize) {
 
         // default texture of station is using table's texture
-        let table = SKSpriteNode(imageNamed: "table")
+        let table = SKSpriteNode(texture: kitchenwareAtlas.textureNamed("Table"))
         table.size = size
 
         super.init(inPosition: position, withSize: size, withTexture: table.texture)
