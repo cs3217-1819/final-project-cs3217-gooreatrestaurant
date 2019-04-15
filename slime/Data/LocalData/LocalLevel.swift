@@ -13,6 +13,7 @@ class LocalLevelScore: Object {
     @objc dynamic var bestScore: Int = 0
     
     override static func primaryKey() -> String? {
+        print("test")
         return "id"
     }
 }
