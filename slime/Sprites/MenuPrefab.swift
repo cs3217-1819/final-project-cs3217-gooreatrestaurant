@@ -47,7 +47,11 @@ class MenuPrefab: SKSpriteNode, Codable {
         self.position = inPosition
         self.recipe = recipe
         //Adding image of the main recipe
-        let dish = SKSpriteNode(imageNamed: recipe.recipeName)
+        let ingredientsAtlas = SKTextureAtlas(named: "Recipes")
+        var texture: SKTexture = SKTexture.init()
+        texture = ingredientsAtlas.textureNamed(recipe.recipeName)
+
+        let dish = SKSpriteNode(texture: texture)
         dish.position = CGPoint(x: 0, y: 20)
         dish.zPosition = 5
         dish.size = CGSize(width: 45, height: 45)
