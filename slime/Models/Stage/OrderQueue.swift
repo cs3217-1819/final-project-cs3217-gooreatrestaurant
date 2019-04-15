@@ -18,6 +18,7 @@ class OrderQueue: SKSpriteNode, Codable {
     // for multiplayer
     var isMultiplayerEnabled = false
     var gameId: String?
+    var orderQueueInvalidated: Bool = false
 
     var tempNode: SKSpriteNode = SKSpriteNode.init()
 
@@ -152,6 +153,7 @@ class OrderQueue: SKSpriteNode, Codable {
 
     // The view will call this function if there is timeout of an order
     func orderTimeOut(ofRecipe recipe: Recipe) {
+        if orderQueueInvalidated { return }
         guard let matchedOrder = recipeOrdered.firstIndex(where: { $0 == recipe }) else {
             return
         }
