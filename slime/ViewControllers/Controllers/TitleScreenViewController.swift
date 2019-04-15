@@ -78,7 +78,7 @@ class TitleScreenViewController: ViewController<TitleScreenView> {
                 self.context.db.rejoinGame(forGameId: gameId, { (room) in
                     self.setLoadingAlert(withDescription: "Teleporting slime agent...")
                     self.presentActiveAlert(dismissible: false)
-                    self.context.segueToMultiplayerGame(forRoom: room, level: "Level1")
+                    self.context.segueToMultiplayerGame(forRoom: room, level: Level(id: "mp-1-1", name: "Level1", fileName: "Level1", bestScore: 0))
                 }, { (err) in
                     Logger.it.error("\(err)")
                 })

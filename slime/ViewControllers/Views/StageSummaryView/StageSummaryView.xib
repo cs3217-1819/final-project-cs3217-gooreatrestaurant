@@ -16,21 +16,11 @@
             <rect key="frame" x="0.0" y="0.0" width="812" height="375"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UNb-lF-rbP" customClass="XibView" customModule="slime" customModuleProvider="target">
-                    <rect key="frame" x="36" y="36" width="200" height="303"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="200" id="6r6-OO-6We"/>
-                    </constraints>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="nibName" value="SlimeCharacterView"/>
-                    </userDefinedRuntimeAttributes>
-                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EfF-P5-Wdw" customClass="DesignableView" customModule="slime" customModuleProvider="target">
-                    <rect key="frame" x="272" y="36" width="504" height="303"/>
+                    <rect key="frame" x="372" y="36" width="404" height="303"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Summary" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YjA-AM-h9b" customClass="TextLabel" customModule="slime" customModuleProvider="target">
-                            <rect key="frame" x="16" y="16" width="472" height="22"/>
+                            <rect key="frame" x="16" y="16" width="372" height="22"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="22" id="bLn-9N-zj4"/>
                             </constraints>
@@ -43,10 +33,10 @@
                             </userDefinedRuntimeAttributes>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G9L-Dx-iEA">
-                            <rect key="frame" x="0.0" y="54" width="504" height="64"/>
+                            <rect key="frame" x="0.0" y="54" width="404" height="64"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UJk-A1-juy" customClass="TextLabel" customModule="slime" customModuleProvider="target">
-                                    <rect key="frame" x="16" y="16" width="45" height="32"/>
+                                    <rect key="frame" x="16" y="16" width="48.5" height="32"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -56,7 +46,7 @@
                                     </userDefinedRuntimeAttributes>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uG2-Ya-80r" customClass="TextLabel" customModule="slime" customModuleProvider="target">
-                                    <rect key="frame" x="449.5" y="16" width="38.5" height="32"/>
+                                    <rect key="frame" x="346" y="16" width="42" height="32"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -78,10 +68,10 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="18t-qw-xN9">
-                            <rect key="frame" x="0.0" y="118" width="504" height="64"/>
+                            <rect key="frame" x="0.0" y="118" width="404" height="64"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Experience Gained" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uWO-p4-Adk" customClass="TextLabel" customModule="slime" customModuleProvider="target">
-                                    <rect key="frame" x="16" y="16" width="144" height="32"/>
+                                    <rect key="frame" x="16" y="16" width="156" height="32"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -91,7 +81,7 @@
                                     </userDefinedRuntimeAttributes>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qWm-LQ-qhF" customClass="TextLabel" customModule="slime" customModuleProvider="target">
-                                    <rect key="frame" x="459.5" y="16" width="28.5" height="32"/>
+                                    <rect key="frame" x="357.5" y="16" width="30.5" height="32"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -113,7 +103,7 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CeO-rU-9QQ" customClass="XibView" customModule="slime" customModuleProvider="target">
-                            <rect key="frame" x="16" y="198" width="472" height="89"/>
+                            <rect key="frame" x="16" y="198" width="372" height="89"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="string" keyPath="nibName" value="PrimaryButton"/>
@@ -141,23 +131,106 @@
                         <userDefinedRuntimeAttribute type="string" keyPath="background" value="pink7"/>
                     </userDefinedRuntimeAttributes>
                 </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sCF-PK-vdT" customClass="DesignableView" customModule="slime" customModuleProvider="target">
+                    <rect key="frame" x="36" y="36" width="300" height="303"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UNb-lF-rbP" customClass="XibView" customModule="slime" customModuleProvider="target">
+                            <rect key="frame" x="16" y="16" width="268" height="187"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="nibName" value="SlimeCharacterView"/>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kBF-4c-u7i" customClass="DesignableView" customModule="slime" customModuleProvider="target">
+                            <rect key="frame" x="16" y="219" width="268" height="68"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1ZS-Ed-IC9" customClass="XibView" customModule="slime" customModuleProvider="target">
+                                    <rect key="frame" x="8" y="8" width="52" height="52"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rc6-2G-NYj" customClass="TextLabel" customModule="slime" customModuleProvider="target">
+                                            <rect key="frame" x="23.5" y="15.5" width="5.5" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="style" value="h2"/>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="color" value="pink1"/>
+                                            </userDefinedRuntimeAttributes>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="1ZS-Ed-IC9" secondAttribute="height" multiplier="1:1" id="JTM-vz-Fx0"/>
+                                        <constraint firstItem="rc6-2G-NYj" firstAttribute="centerX" secondItem="1ZS-Ed-IC9" secondAttribute="centerX" id="fbz-6H-gOA"/>
+                                        <constraint firstItem="rc6-2G-NYj" firstAttribute="centerY" secondItem="1ZS-Ed-IC9" secondAttribute="centerY" id="gpn-BP-AFO"/>
+                                    </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="nibName" value="ProgressBarView"/>
+                                    </userDefinedRuntimeAttributes>
+                                </view>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JP0-1x-nLC" customClass="TextLabel" customModule="slime" customModuleProvider="target">
+                                    <rect key="frame" x="76" y="20.5" width="176" height="27.5"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="style" value="h1"/>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="color" value="pink1"/>
+                                    </userDefinedRuntimeAttributes>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="JP0-1x-nLC" firstAttribute="centerY" secondItem="kBF-4c-u7i" secondAttribute="centerY" id="Jc3-WO-mBn"/>
+                                <constraint firstItem="JP0-1x-nLC" firstAttribute="leading" secondItem="1ZS-Ed-IC9" secondAttribute="trailing" constant="16" id="MUd-G8-MJp"/>
+                                <constraint firstAttribute="bottom" secondItem="1ZS-Ed-IC9" secondAttribute="bottom" constant="8" id="W95-O0-Jxa"/>
+                                <constraint firstAttribute="trailing" secondItem="JP0-1x-nLC" secondAttribute="trailing" constant="16" id="XFo-LD-GtO"/>
+                                <constraint firstAttribute="height" constant="68" id="kLC-8s-r6L"/>
+                                <constraint firstItem="1ZS-Ed-IC9" firstAttribute="leading" secondItem="kBF-4c-u7i" secondAttribute="leading" constant="8" id="mSn-sB-sdo"/>
+                                <constraint firstItem="1ZS-Ed-IC9" firstAttribute="top" secondItem="kBF-4c-u7i" secondAttribute="top" constant="8" id="rr7-0f-eRK"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="rounded" value="YES"/>
+                                <userDefinedRuntimeAttribute type="string" keyPath="background" value="pink6"/>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="kBF-4c-u7i" firstAttribute="leading" secondItem="sCF-PK-vdT" secondAttribute="leading" constant="16" id="3Tq-UJ-LNI"/>
+                        <constraint firstItem="UNb-lF-rbP" firstAttribute="leading" secondItem="sCF-PK-vdT" secondAttribute="leading" constant="16" id="95P-mE-2pz"/>
+                        <constraint firstAttribute="trailing" secondItem="kBF-4c-u7i" secondAttribute="trailing" constant="16" id="DOW-TI-67f"/>
+                        <constraint firstAttribute="width" constant="300" id="EmJ-Np-b2p"/>
+                        <constraint firstAttribute="bottom" secondItem="kBF-4c-u7i" secondAttribute="bottom" constant="16" id="LrU-a4-76Q"/>
+                        <constraint firstItem="UNb-lF-rbP" firstAttribute="top" secondItem="sCF-PK-vdT" secondAttribute="top" constant="16" id="NzW-BH-ySw"/>
+                        <constraint firstItem="kBF-4c-u7i" firstAttribute="top" secondItem="UNb-lF-rbP" secondAttribute="bottom" constant="16" id="pW6-og-Iuc"/>
+                        <constraint firstAttribute="trailing" secondItem="UNb-lF-rbP" secondAttribute="trailing" constant="16" id="uXx-HX-60Y"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="rounded" value="YES"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="background" value="pink7"/>
+                    </userDefinedRuntimeAttributes>
+                </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="UNb-lF-rbP" secondAttribute="bottom" constant="36" id="A23-da-o6f"/>
-                <constraint firstItem="UNb-lF-rbP" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="36" id="LMI-Un-e6s"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="EfF-P5-Wdw" secondAttribute="bottom" constant="36" id="N7q-gp-c7d"/>
-                <constraint firstItem="UNb-lF-rbP" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="36" id="TXk-PH-Pf0"/>
-                <constraint firstItem="EfF-P5-Wdw" firstAttribute="leading" secondItem="UNb-lF-rbP" secondAttribute="trailing" constant="36" id="g04-Dp-Zuy"/>
+                <constraint firstAttribute="bottom" secondItem="sCF-PK-vdT" secondAttribute="bottom" constant="36" id="eeh-1e-gUD"/>
                 <constraint firstItem="EfF-P5-Wdw" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="36" id="nSt-fe-M8q"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="EfF-P5-Wdw" secondAttribute="trailing" constant="36" id="qEe-Eh-oRP"/>
+                <constraint firstItem="EfF-P5-Wdw" firstAttribute="leading" secondItem="sCF-PK-vdT" secondAttribute="trailing" constant="36" id="rKC-fe-1e1"/>
+                <constraint firstItem="sCF-PK-vdT" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="36" id="rqN-B5-hq7"/>
+                <constraint firstItem="sCF-PK-vdT" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="36" id="uAj-S9-aUi"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
                 <outlet property="characterView" destination="UNb-lF-rbP" id="ICP-r6-7yr"/>
                 <outlet property="expLabel" destination="qWm-LQ-qhF" id="3o2-uC-oBQ"/>
+                <outlet property="levelLabel" destination="rc6-2G-NYj" id="siQ-nN-rib"/>
+                <outlet property="nameLabel" destination="JP0-1x-nLC" id="t7B-Co-ZAI"/>
                 <outlet property="okButton" destination="CeO-rU-9QQ" id="RXy-OS-4Ki"/>
+                <outlet property="progressBarView" destination="1ZS-Ed-IC9" id="0qF-kU-wCK"/>
                 <outlet property="scoreLabel" destination="uG2-Ya-80r" id="lUl-E3-GMc"/>
             </connections>
             <point key="canvasLocation" x="246.40000000000001" y="-18.440779610194905"/>

@@ -158,6 +158,7 @@ class OrderQueue: SKSpriteNode, Codable {
             return
         }
 
+        AudioMaster.instance.playSFX(name: "order-missed")
         recipeOrdered.remove(at: matchedOrder)
         removeMenuPrefab(inNum: matchedOrder)
 

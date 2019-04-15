@@ -67,6 +67,12 @@ class MenuPrefab: SKSpriteNode, Codable {
             for _ in 1...ingredientCount {
                 let child = addIngredient(withType: key.type.rawValue)
                 child.position = positionings[i]
+                if (key.processed.contains(CookingType.baking)) {
+                    let cookingTypeImg = SKSpriteNode(texture: UIAtlas.textureNamed("Oven-BW"))
+                    cookingTypeImg.size = CGSize(width: 15, height: 15)
+                    cookingTypeImg.position = CGPoint(x: 0, y: -15)
+                    child.addChild(cookingTypeImg)
+                }
                 i += 1
                 self.addChild(child)
             }
@@ -93,7 +99,7 @@ class MenuPrefab: SKSpriteNode, Codable {
 
     func addIngredient(withType type: String) -> SKSpriteNode {
         let blackCircle = SKSpriteNode(imageNamed: "Black Base Circle")
-        blackCircle.position = CGPoint(x: 0, y: -20)
+        blackCircle.position = CGPoint(x: 0, y: -10)
         blackCircle.size = CGSize(width: 20, height: 20)
 
         //Add the ingredients

@@ -10,14 +10,13 @@ import UIKit
 import SpriteKit
 
 class Trash: Station {
-
     // Construct a trash
     override init(inPosition position: CGPoint, withSize size: CGSize) {
 
-        let trashBin = SKSpriteNode(imageNamed: "trashbin")
-        trashBin.size = StageConstants.stationSize
+        super.init(inPosition: position, withSize: size)
 
-        super.init(inPosition: position, withSize: trashBin.size)
+        let trashBin = SKSpriteNode(texture: kitchenwareAtlas.textureNamed("Trashbin"))
+        trashBin.size = StageConstants.stationSize
 
         self.texture = trashBin.texture
 

@@ -14,7 +14,7 @@ class GameViewController: ViewController<UIView> {
     
     var db: GameDatabase = GameDB()
     private var stage: Stage!
-    private var levelName: String?
+    private var level: Level?
     
     // multiplayer stuff
     var isMultiplayer: Bool = false
@@ -32,12 +32,12 @@ class GameViewController: ViewController<UIView> {
         setupScene()
     }
     
-    func setLevel(name: String) {
-        levelName = name
+    func setLevel(level: Level) {
+        self.level = level
     }
     
     func setupScene() {
-        guard let levelName = self.levelName else {
+        guard let levelFileName = level?.fileName else {
             Logger.it.error("Level name should be set")
             fatalError()
         }
@@ -58,7 +58,7 @@ class GameViewController: ViewController<UIView> {
         if isMultiplayer { if let room = self.previousRoom { stage.setupMultiplayer(forRoom: room) }}
         if !isMultiplayer { stage.setupSinglePlayer() }
         
-        stage.generateLevel(inLevel: levelName)
+        stage.generateLevel(inLevel: levelFileName)
 
         //        newCollection.delegate = self
         //        newCollection.dataSource = self
@@ -78,8 +78,13 @@ class GameViewController: ViewController<UIView> {
     }
 
     func segueToMainScreen(isMultiplayer: Bool) {
-        let control: StageSummaryController = context.routeToAndPrepareForFade(.StageSummary)
-        control.set(exp: stage.levelScore / 10, score: stage.levelScore, isMultiplayer: isMultiplayer)
+        context.routeToAndPrepareFor(.StageSummary, callback: { vc in
+            let summaryVC = vc as! StageSummaryController
+            summaryVC.set(levelID: self.level?.id ?? "",
+                          exp: self.stage.levelScore / 10,
+                          score: self.stage.levelScore,
+                          isMultiplayer: self.isMultiplayer)
+        })
     }
     
     deinit {

@@ -21,8 +21,10 @@ class Plate: MobileItem, Codable {
                                 CGPoint(x: 0, y: 50),
                                 CGPoint(x: 30 , y: 50)]
 
+    let kitchenwareAtlas = SKTextureAtlas(named: "Kitchenware")
+
     init(inPosition position: CGPoint, withSize size: CGSize = StageConstants.plateSize) {
-        let plate = SKTexture(imageNamed: "Plate")
+        let plate = kitchenwareAtlas.textureNamed("Plate")
         plate.filteringMode = .nearest
 
         super.init(inPosition: position, withSize: size, withTexture: plate, withName: "Plate")

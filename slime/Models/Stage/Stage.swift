@@ -33,7 +33,7 @@ class Stage: SKScene {
     //For countdown of game
     var counter = 0
     var counterTime = Timer()
-    var counterStartTime = 200
+    var counterStartTime = StageConstants.stageTime
     var isGameOver = false
 
     // RI: the players are unique
@@ -49,6 +49,8 @@ class Stage: SKScene {
     var sceneCam: SKCameraNode?
 
     var controller = GameViewController(with: UIView())
+
+    let UIAtlas = SKTextureAtlas(named: "UI")
 
     override init(size: CGSize = CGSize(width: StageConstants.maxXAxisUnits, height: StageConstants.maxYAxisUnits)) {
         spaceship = Spaceship(inPosition: StageConstants.spaceshipPosition, withSize: StageConstants.spaceshipSize)
@@ -653,6 +655,7 @@ class Stage: SKScene {
     }
 
     func gameOver(ifWon: Bool, withMessage: String? = nil) {
+        cleanup()
         let gameOverPrefab = GameOverPrefab(color: .clear, size: StageConstants.gameOverPrefabSize)
         if self.isMultiplayer { gameOverPrefab.setToMultiplayer() }
         gameOverPrefab.initializeButtons()
@@ -673,7 +676,7 @@ class Stage: SKScene {
     
     @objc func showStartFlag() {
         self.blackBG.removeFromParent()
-        readyNode.texture = SKTexture(imageNamed: "Go")
+        readyNode.texture = UIAtlas.textureNamed("Go")
 
         _ = Timer.scheduledTimer(withTimeInterval: 2, repeats: false, block: { (timer) in
             self.readyNode.removeFromParent()
@@ -705,7 +708,8 @@ class Stage: SKScene {
     }()
 
     lazy var jumpButton: BDButton = {
-        var button = BDButton(imageNamed: "Up", buttonAction: {
+        let texture = UIAtlas.textureNamed("JumpButton")
+        var button = BDButton(inTexture: texture, buttonAction: {
             self.slimeToControl?.jump()
         })
         button.setScale(0.15)
@@ -716,7 +720,8 @@ class Stage: SKScene {
     }()
 
     lazy var interactButton: BDButton = {
-        var button = BDButton(imageNamed: "Interact", buttonAction: {
+        let texture = UIAtlas.textureNamed("InteractButton")
+        var button = BDButton(inTexture: texture, buttonAction: {
             let interactedStation = self.slimeToControl?.interact()
             if self.isMultiplayer {
                 guard let station = interactedStation else { return }
@@ -731,7 +736,8 @@ class Stage: SKScene {
     }()
 
     lazy var backButton: BDButton = {
-        var button = BDButton(imageNamed: "BackButton", buttonAction: {
+        let texture = UIAtlas.textureNamed("BackButton")
+        var button = BDButton(inTexture: texture, buttonAction: {
             if self.isMultiplayer {
                 self.handleMultiplayerBackButton()
                 return
@@ -786,7 +792,7 @@ class Stage: SKScene {
     }()
 
     lazy var readyNode: SKSpriteNode = {
-        let texture = SKTexture(imageNamed: "Ready")
+        let texture = UIAtlas.textureNamed("Ready")
         var label = SKSpriteNode(texture: texture)
         label.size = CGSize(width: ScreenSize.width * 0.5, height: ScreenSize.height * 0.5)
         label.zPosition = 10
@@ -801,6 +807,12 @@ class Stage: SKScene {
         blackBG.zPosition = 6
         return blackBG
     }()
+    
+    // Deallocate stuff, invalidate timers
+    func cleanup() {
+        orderQueue.newOrderTimer.invalidate()
+        orderQueue.orderQueueInvalidated = true
+    }
 
     open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let touch = touches.first{
