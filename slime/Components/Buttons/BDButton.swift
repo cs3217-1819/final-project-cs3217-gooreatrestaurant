@@ -15,8 +15,8 @@ class BDButton: SKNode {
     private var cropNode: SKCropNode
     private var action:() -> Void
 
-    init(imageNamed: String, buttonAction: @escaping () -> Void) {
-        button = SKSpriteNode(imageNamed: imageNamed)
+    init(inTexture: SKTexture, buttonAction: @escaping () -> Void) {
+        button = SKSpriteNode(texture: inTexture)
 
         mask = SKSpriteNode(color: SKColor.black, size: button.size)
         mask.alpha = 0

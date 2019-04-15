@@ -707,7 +707,8 @@ class Stage: SKScene {
     }()
 
     lazy var jumpButton: BDButton = {
-        var button = BDButton(imageNamed: "Up", buttonAction: {
+        let texture = UIAtlas.textureNamed("JumpButton")
+        var button = BDButton(inTexture: texture, buttonAction: {
             self.slimeToControl?.jump()
         })
         button.setScale(0.15)
@@ -718,7 +719,8 @@ class Stage: SKScene {
     }()
 
     lazy var interactButton: BDButton = {
-        var button = BDButton(imageNamed: "Interact", buttonAction: {
+        let texture = UIAtlas.textureNamed("InteractButton")
+        var button = BDButton(inTexture: texture, buttonAction: {
             let interactedStation = self.slimeToControl?.interact()
             if self.isMultiplayer {
                 guard let station = interactedStation else { return }
@@ -733,7 +735,8 @@ class Stage: SKScene {
     }()
 
     lazy var backButton: BDButton = {
-        var button = BDButton(imageNamed: "BackButton", buttonAction: {
+        let texture = UIAtlas.textureNamed("BackButton")
+        var button = BDButton(inTexture: texture, buttonAction: {
             if self.isMultiplayer {
                 self.handleMultiplayerBackButton()
                 return
