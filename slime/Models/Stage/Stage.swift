@@ -577,7 +577,7 @@ class Stage: SKScene {
     
     func showReadyFlag() {
         print("showReadyFlag")
-        self.sceneCam?.addChild(readyLabel)
+        self.sceneCam?.addChild(readyNode)
 
         //after timer
         //showStartFlag()
@@ -585,7 +585,6 @@ class Stage: SKScene {
     
     func showStartFlag() {
         print("showStartFlag")
-        readyLabel.text = "GO!"
 
         //after timer
         //readyLabel removefromparent
@@ -674,14 +673,10 @@ class Stage: SKScene {
         return label
     }()
 
-    lazy var readyLabel: SKLabelNode = {
-        var label = SKLabelNode(fontNamed: "SquidgySlimes")
-        label.fontSize = CGFloat(80)
+    lazy var readyNode: SKSpriteNode = {
+        let texture = SKTexture(imageNamed: "Ready")
+        var label = SKSpriteNode(texture: texture)
         label.zPosition = 10
-        label.fontColor = UIColor(red: 58, green: 58, blue: 58)
-        label.horizontalAlignmentMode = .center
-        label.verticalAlignmentMode = .center
-        label.text = "READY?"
         label.position = (self.sceneCam?.position)!
         return label
     }()
