@@ -80,7 +80,7 @@ class Station: SKSpriteNode {
 
         item.removeFromParent()
         item.position.x = 0.0
-        item.position.y = 0.5 * (self.size.height + item.size.height)
+        item.position.y = 0.4 * (self.size.height + item.size.height)
         item.physicsBody = nil
         self.addChild(item)
     }
