@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:Spaceship.atlas">
+   </FileRef>
+   <FileRef
       location = "group:slime.xcodeproj">
    </FileRef>
    <FileRef
