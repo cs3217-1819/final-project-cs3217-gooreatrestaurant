@@ -28,7 +28,7 @@ class MobileItem: Item {
     func setPhysicsBody() {
         self.physicsBody = SKPhysicsBody(rectangleOf: size)
         self.physicsBody?.collisionBitMask = StageConstants.wallCategoryCollision
-        self.physicsBody.allowsRotation = false
+        self.physicsBody?.allowsRotation = false
     }
 
     func unsetPhysicsBody() {
