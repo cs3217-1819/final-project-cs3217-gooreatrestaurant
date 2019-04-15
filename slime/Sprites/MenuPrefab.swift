@@ -21,8 +21,9 @@ class MenuPrefab: SKSpriteNode, Codable {
     var time: CGFloat = StageConstants.defaultTimeLimitOrder
     var duration: CGFloat = StageConstants.defaultTimeLimitOrder
 
-    let positionings = [CGPoint(x: -10, y: -15),
-                        CGPoint(x: 10, y: -15)]
+    let positionings = [CGPoint(x: -25, y: -15),
+                        CGPoint(x: -5, y: -15),
+                        CGPoint(x: 15, y: -15)]
 
     override init(texture: SKTexture?, color: UIColor, size: CGSize) {
         let randNum = Int.random(in: 1...4)
@@ -47,17 +48,26 @@ class MenuPrefab: SKSpriteNode, Codable {
         self.position = inPosition
         self.recipe = recipe
         //Adding image of the main recipe
-        let dish = SKSpriteNode(imageNamed: recipe.recipeName)
-        dish.position = CGPoint(x: 0, y: 20)
+        let ingredientsAtlas = SKTextureAtlas(named: "Recipes")
+        var texture: SKTexture = SKTexture.init()
+        texture = ingredientsAtlas.textureNamed(recipe.recipeName)
+
+        let dish = SKSpriteNode(texture: texture)
+        dish.position = CGPoint(x: 0, y: 15)
         dish.zPosition = 5
         dish.size = CGSize(width: 45, height: 45)
 
         var i = 0
         for (key, _) in recipe.ingredientsNeeded {
-            let child = addIngredient(withType: key.type.rawValue)
-            child.position = positionings[i]
-            i += 1
-            self.addChild(child)
+            guard let ingredientCount = recipe.ingredientsNeeded[key] else {
+                continue
+            }
+            for _ in 1...ingredientCount {
+                let child = addIngredient(withType: key.type.rawValue)
+                child.position = positionings[i]
+                i += 1
+                self.addChild(child)
+            }
         }
 
         //Adding the countdown bar

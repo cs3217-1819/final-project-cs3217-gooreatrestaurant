@@ -127,6 +127,8 @@ class Stage: SKScene {
             database.removeAllObservers()
             database.removeAllDisconnectObservers()
             if self.isUserHost {
+                self.orderQueue.newOrderTimer.invalidate()
+                self.orderQueue.orderQueueInvalidated = true
                 guard let room = self.previousRoom else { return }
                 database.closeGame(forGameId: room.id, { }, { (err) in
                     print(err.localizedDescription)
@@ -144,7 +146,7 @@ class Stage: SKScene {
             self.hasStarted = true
             self.showStartFlag()
             self.startStreamingSelf()
-            if self.isUserHost { self.showReadyFlag() }
+            if self.isUserHost { self.startCounter() }
             // TODO: do setup when game has started, add stuff whenever necessary
         }, onSelfItemChange: { (item) in
             guard let slime = self.slimeToControl else { return }
@@ -156,7 +158,7 @@ class Stage: SKScene {
         }, onHostDisconnected: {
             self.gameHasEnded = true
             self.stopStreamingSelf()
-            self.gameOver(ifWon: false, withMessage: "HOST EXPLODED")
+            self.gameOver(ifWon: false, withMessage: (self.gameHasEnded ? "GAME OVER" : "HOST EXPLODED"))
             guard let database = self.db else { return }
             database.removeAllObservers()
             database.removeAllDisconnectObservers()
@@ -168,10 +170,9 @@ class Stage: SKScene {
             guard let type = NotificationPrefab.NotificationTypes(rawValue: notification.type) else { return }
             self.notificationPrefab.show(withDescription: notification.description, ofType: type)
         }, onComplete: {
-            // joins game after attaching all
-            // relevant observers, this onComplete
-            // does not refer to the game state at all
-            self.joinGame(forRoom: room)
+            // this is run BEFORE the stage
+            // fully loads, and only after
+            // all listeners are attached
         }) { (err) in
             print(err.localizedDescription)
         }
@@ -337,7 +338,7 @@ class Stage: SKScene {
 
         if !isMultiplayer {
             counter = counterStartTime
-            showReadyFlag()
+            self.showReadyFlag()
         }
 
         analogJoystick.trackingHandler = { [unowned self] data in
@@ -464,6 +465,19 @@ class Stage: SKScene {
             currentPlayerIndex += 1
         }
     }
+    
+    func stageDidLoad() {
+        if self.isMultiplayer {
+            Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false) { (timer) in
+                // normally this timer is to cater for the fade in
+                // animation from the previous scene
+                // however, this should be handled by the route
+                // which should be updated in the future
+                guard let room = self.previousRoom else { return }
+                self.joinGame(forRoom: room)
+            }
+        }
+    }
 
     override func didSimulatePhysics() {
         for (_, slime) in self.allSlimesDict { slime.resetMovement() }
@@ -529,10 +543,11 @@ class Stage: SKScene {
     }
 
     @objc func startCounter() {
-        readyNode.removeFromParent()
+        hasStarted = true
         if !isMultiplayer {
             counterTime = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(decrementCounter), userInfo: nil, repeats: true)
         } else {
+            // only for host, get out
             counterTime = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { (timer) in
                 guard let database = self.db else { return }
                 guard let room = self.previousRoom else { return }
@@ -608,15 +623,23 @@ class Stage: SKScene {
     }
     
     func showReadyFlag() {
+        self.sceneCam?.addChild(blackBG)
         self.sceneCam?.addChild(readyNode)
 
+        if isMultiplayer { return }
+        
         _ = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(showStartFlag), userInfo: nil, repeats: false)
     }
     
     @objc func showStartFlag() {
+        self.blackBG.removeFromParent()
         readyNode.texture = SKTexture(imageNamed: "Go")
 
-        _ = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(startCounter), userInfo: nil, repeats: false)
+        _ = Timer.scheduledTimer(withTimeInterval: 2, repeats: false, block: { (timer) in
+            self.readyNode.removeFromParent()
+            if self.isMultiplayer { return }
+            self.startCounter()
+        })
     }
 
     func updateOrderQueue(into orderQueue: OrderQueue) {
@@ -669,6 +692,10 @@ class Stage: SKScene {
 
     lazy var backButton: BDButton = {
         var button = BDButton(imageNamed: "BackButton", buttonAction: {
+            if self.isMultiplayer {
+                self.handleMultiplayerBackButton()
+                return
+            }
             self.controller.segueToMainScreen(isMultiplayer: self.isMultiplayer)
         })
         button.setScale(0.1)
@@ -677,6 +704,22 @@ class Stage: SKScene {
         button.zPosition = StageConstants.buttonZPos
         return button
     }()
+    
+    private func handleMultiplayerBackButton() {
+        guard let database = self.db else { return }
+        guard let room = self.previousRoom else { return }
+        self.stopStreamingSelf()
+        database.removeAllObservers()
+        database.removeAllDisconnectObservers()
+        if self.isUserHost {
+            self.orderQueue.newOrderTimer.invalidate()
+            self.orderQueue.orderQueueInvalidated = true
+            database.closeGame(forGameId: room.id, { }, { (err) in
+                print(err.localizedDescription)
+            })
+        }
+        self.controller.segueToMainScreen(isMultiplayer: self.isMultiplayer)
+    }
 
     lazy var countdownLabel: SKLabelNode = {
         var label = SKLabelNode(fontNamed: "SquidgySlimes")
@@ -709,5 +752,13 @@ class Stage: SKScene {
         label.zPosition = 10
         label.position = (self.sceneCam?.position)!
         return label
+    }()
+
+    //can reuse this for other purposes
+    lazy var blackBG: SKSpriteNode = {
+        let blackBG = SKSpriteNode.init(color: .black, size: CGSize(width: ScreenSize.width, height: ScreenSize.height))
+        blackBG.alpha = 0.5
+        blackBG.zPosition = 6
+        return blackBG
     }()
 }

@@ -70,9 +70,16 @@ class Plate: SKSpriteNode, Codable {
         listOfIngredients.append(inIngredient)
 
         var ingredientsAtlas = SKTextureAtlas.init()
+        let processedCount = inIngredient.processed.count
 
-        if (inIngredient.processed.count != 0) {
-            ingredientsAtlas = SKTextureAtlas(named: "ProcessedIngredients")
+        if (processedCount == 1) {
+            if (inIngredient.processed[processedCount - 1] == CookingType.baking) {
+                ingredientsAtlas = SKTextureAtlas(named: "BakedIngredients")
+            } else if (inIngredient.processed[processedCount - 1] == CookingType.chopping) {
+                ingredientsAtlas = SKTextureAtlas(named: "SlicedIngredients")
+            }
+        } else if (processedCount > 1){
+             ingredientsAtlas = SKTextureAtlas(named: "BakedSlicedIngredients")
         } else {
             ingredientsAtlas = SKTextureAtlas(named: "Ingredients")
         }

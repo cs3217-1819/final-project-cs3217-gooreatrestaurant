@@ -48,7 +48,7 @@ class GameViewController: ViewController<UIView> {
         stage.controller = self
         let skview = SKView(frame: CGRect(x: 0.0, y: 0.0, width: ScreenSize.width, height: ScreenSize.height))
         skview.presentScene(stage)
-        skview.showsPhysics = true
+//        skview.showsPhysics = true
         skview.showsFPS = true
         skview.showsNodeCount = true
         skview.isMultipleTouchEnabled = true
@@ -67,6 +67,7 @@ class GameViewController: ViewController<UIView> {
         //        setupCollection()
 
         stage.setupPlayers()
+        stage.stageDidLoad()
     }
 
     func setupCollection() {
@@ -80,6 +81,7 @@ class GameViewController: ViewController<UIView> {
         let control: StageSummaryController = context.routeToAndPrepareForFade(.StageSummary)
         control.set(exp: stage.levelScore / 10, score: stage.levelScore, isMultiplayer: isMultiplayer)
     }
+    
     deinit {
         print("Game VC deinit")
     }
