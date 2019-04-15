@@ -91,7 +91,7 @@ class StageConstants {
     static let orderComingInterval = 20.0
 
     //OrderQueue and its components
-    static let menuPrefabSize = CGSize(width: 80, height: 80)
+    static let menuPrefabSize = CGSize(width: 95, height: 95)
     static let menuPrefabColor = UIColor.clear
     static let blackBarPosOQ = CGPoint(x: 25, y: -25)
     static let blackBarSizeOQ = CGSize(width: 35, height: 30)
