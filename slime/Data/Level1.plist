@@ -20,9 +20,9 @@
 	<key>blockedArea</key>
 	<array>
 		<array>
-			<string>{-80,-10}</string>
-			<string>{-40,-10}</string>
-			<string>{-40,100}</string>
+			<string>{-80,0}</string>
+			<string>{-40,0}</string>
+			<string>{-40,110}</string>
 		</array>
 		<array>
 			<string>{-90,110}</string>
@@ -43,26 +43,26 @@
 	<key>border</key>
 	<array>
 		<array>
-			<string>{-230,140}</string>
-			<string>{-330,140}</string>
+			<string>{-220,130}</string>
+			<string>{-330,130}</string>
 			<string>{-330,0}</string>
 			<string>{-230,0}</string>
 		</array>
 		<array>
-			<string>{-290,-20}</string>
-			<string>{-290,-150}</string>
-			<string>{-170,-150}</string>
-			<string>{-170,-320}</string>
-			<string>{40,-320}</string>
-			<string>{40,-280}</string>
-			<string>{110,-280}</string>
-			<string>{110,-320}</string>
-			<string>{240,-320}</string>
-			<string>{240,-160}</string>
+			<string>{-280,-20}</string>
+			<string>{-280,-146}</string>
+			<string>{-170,-146}</string>
+			<string>{-170,-310}</string>
+			<string>{42,-310}</string>
+			<string>{42,-270}</string>
+			<string>{110,-270}</string>
+			<string>{110,-309}</string>
+			<string>{235,-309}</string>
+			<string>{235,-160}</string>
 			<string>{110,-160}</string>
-			<string>{110,-200}</string>
-			<string>{40,-200}</string>
-			<string>{40,-160}</string>
+			<string>{110,-198}</string>
+			<string>{42,-198}</string>
+			<string>{42,-160}</string>
 			<string>{-70,-160}</string>
 		</array>
 		<array>
