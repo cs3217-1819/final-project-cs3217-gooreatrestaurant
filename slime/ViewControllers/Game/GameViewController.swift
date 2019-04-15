@@ -48,7 +48,7 @@ class GameViewController: ViewController<UIView> {
         stage.controller = self
         let skview = SKView(frame: CGRect(x: 0.0, y: 0.0, width: ScreenSize.width, height: ScreenSize.height))
         skview.presentScene(stage)
-        skview.showsPhysics = true
+//        skview.showsPhysics = true
         skview.showsFPS = true
         skview.showsNodeCount = true
         skview.isMultipleTouchEnabled = true
