@@ -105,7 +105,7 @@ class TitleScreenViewController: ViewController<TitleScreenView> {
     
     private func setRejoinAlert(to description: String, withOkCallback: @escaping () -> Void, withCancelCallback: @escaping () -> Void) {
         self.activeAlert = self.context.modal.createAlert()
-            .setTitle("Warning!!")
+            .setTitle("HEY YOU!!")
             .setDescription(description)
             .addAction(AlertAction(with: "NO", callback: withCancelCallback, of: .Success))
             .addAction(AlertAction(with: "YES PLZ", callback: withOkCallback, of: .Success))

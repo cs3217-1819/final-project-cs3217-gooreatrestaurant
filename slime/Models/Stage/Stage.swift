@@ -127,6 +127,8 @@ class Stage: SKScene {
             database.removeAllObservers()
             database.removeAllDisconnectObservers()
             if self.isUserHost {
+                self.orderQueue.newOrderTimer.invalidate()
+                self.orderQueue.orderQueueInvalidated = true
                 guard let room = self.previousRoom else { return }
                 database.closeGame(forGameId: room.id, { }, { (err) in
                     print(err.localizedDescription)
@@ -168,9 +170,8 @@ class Stage: SKScene {
             guard let type = NotificationPrefab.NotificationTypes(rawValue: notification.type) else { return }
             self.notificationPrefab.show(withDescription: notification.description, ofType: type)
         }, onComplete: {
-            // on complete handler
             // this is run BEFORE the stage
-            // fully loads, this is run after
+            // fully loads, and only after
             // all listeners are attached
         }) { (err) in
             print(err.localizedDescription)
@@ -687,6 +688,10 @@ class Stage: SKScene {
 
     lazy var backButton: BDButton = {
         var button = BDButton(imageNamed: "BackButton", buttonAction: {
+            if self.isMultiplayer {
+                self.handleMultiplayerBackButton()
+                return
+            }
             self.controller.segueToMainScreen(isMultiplayer: self.isMultiplayer)
         })
         button.setScale(0.1)
@@ -695,6 +700,22 @@ class Stage: SKScene {
         button.zPosition = StageConstants.buttonZPos
         return button
     }()
+    
+    private func handleMultiplayerBackButton() {
+        guard let database = self.db else { return }
+        guard let room = self.previousRoom else { return }
+        self.stopStreamingSelf()
+        database.removeAllObservers()
+        database.removeAllDisconnectObservers()
+        if self.isUserHost {
+            self.orderQueue.newOrderTimer.invalidate()
+            self.orderQueue.orderQueueInvalidated = true
+            database.closeGame(forGameId: room.id, { }, { (err) in
+                print(err.localizedDescription)
+            })
+        }
+        self.controller.segueToMainScreen(isMultiplayer: self.isMultiplayer)
+    }
 
     lazy var countdownLabel: SKLabelNode = {
         var label = SKLabelNode(fontNamed: "SquidgySlimes")
