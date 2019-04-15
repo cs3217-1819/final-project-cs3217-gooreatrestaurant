@@ -50,6 +50,8 @@ class Stage: SKScene {
 
     var controller = GameViewController(with: UIView())
 
+    let UIAtlas = SKTextureAtlas(named: "UI")
+
     override init(size: CGSize = CGSize(width: StageConstants.maxXAxisUnits, height: StageConstants.maxYAxisUnits)) {
         spaceship = Spaceship(inPosition: StageConstants.spaceshipPosition, withSize: StageConstants.spaceshipSize)
         super.init(size: size)
@@ -673,7 +675,7 @@ class Stage: SKScene {
     
     @objc func showStartFlag() {
         self.blackBG.removeFromParent()
-        readyNode.texture = SKTexture(imageNamed: "Go")
+        readyNode.texture = UIAtlas.textureNamed("Go")
 
         _ = Timer.scheduledTimer(withTimeInterval: 2, repeats: false, block: { (timer) in
             self.readyNode.removeFromParent()
@@ -786,7 +788,7 @@ class Stage: SKScene {
     }()
 
     lazy var readyNode: SKSpriteNode = {
-        let texture = SKTexture(imageNamed: "Ready")
+        let texture = UIAtlas.textureNamed("Ready")
         var label = SKSpriteNode(texture: texture)
         label.size = CGSize(width: ScreenSize.width * 0.5, height: ScreenSize.height * 0.5)
         label.zPosition = 10
