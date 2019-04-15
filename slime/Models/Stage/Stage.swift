@@ -33,7 +33,7 @@ class Stage: SKScene {
     //For countdown of game
     var counter = 0
     var counterTime = Timer()
-    var counterStartTime = 200
+    var counterStartTime = StageConstants.stageTime
     var isGameOver = false
 
     // RI: the players are unique
@@ -655,6 +655,7 @@ class Stage: SKScene {
     }
 
     func gameOver(ifWon: Bool, withMessage: String? = nil) {
+        cleanup()
         let gameOverPrefab = GameOverPrefab(color: .clear, size: StageConstants.gameOverPrefabSize)
         if self.isMultiplayer { gameOverPrefab.setToMultiplayer() }
         gameOverPrefab.initializeButtons()
@@ -806,6 +807,12 @@ class Stage: SKScene {
         blackBG.zPosition = 6
         return blackBG
     }()
+    
+    // Deallocate stuff, invalidate timers
+    func cleanup() {
+        orderQueue.newOrderTimer.invalidate()
+        orderQueue.orderQueueInvalidated = true
+    }
 
     open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let touch = touches.first{

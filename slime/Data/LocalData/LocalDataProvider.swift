@@ -40,17 +40,20 @@ class LocalDataProvider {
         return levelScore.bestScore
     }
     
-    func saveLevelData(level: Level, bestScore: Int) {
-        if level.bestScore >= bestScore {
+    func saveLevelData(levelID: String, bestScore: Int) {
+        print("trying to save best score: \(bestScore) for \(levelID)")
+        let currentBestScore = readLevelBestScore(id: levelID)
+        if currentBestScore >= bestScore {
             // Ignore requests to write a lower best score
             return
         }
         let savedLevel = LocalLevelScore()
-        savedLevel.id = level.id
+        savedLevel.id = levelID
         savedLevel.bestScore = bestScore
         try! realm.write {
             self.realm.add(savedLevel, update: true)
         }
+        print("saved")
     }
 
     func reset() {

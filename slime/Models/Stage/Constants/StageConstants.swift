@@ -9,7 +9,7 @@
 import UIKit
 
 class StageConstants {
-
+    static let stageTime = 30
     static let maxPlayer = 4
     static let maxXAxisUnits = ScreenSize.width
     static let maxYAxisUnits = ScreenSize.height
