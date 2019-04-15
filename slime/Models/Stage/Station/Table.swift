@@ -25,7 +25,7 @@ class Table: Station {
     //      Requirement: item given is a plate and the table own an ingredient
     //      Return: return back the plate after the ingredient is put into the food on the plate
 
-    override func ableToProcess(_ item: SKSpriteNode?) -> Bool {
+    override func ableToInteract(withItem item: Item?) -> Bool {
 
         let willTake = (item == nil && self.itemInside != nil)
         let willPut = (item != nil && self.itemInside == nil)
@@ -35,8 +35,8 @@ class Table: Station {
         return willTake || willPut || willAddIngredient || willTakeIngredientToPlate
     }
 
-    override func process(_ item: SKSpriteNode?) -> SKSpriteNode? {
-        guard ableToProcess(item) == true else {
+    override func interact(withItem item: Item?) -> Item? {
+        guard ableToInteract(withItem: item) == true else {
             return item
         }
 
@@ -59,7 +59,7 @@ class Table: Station {
         // Condition 2
         } else if willTake {
 
-            guard let itemToTake = self.itemInside as? SKSpriteNode else {
+            guard let itemToTake = self.itemInside as? Item else {
                 return nil
             }
 

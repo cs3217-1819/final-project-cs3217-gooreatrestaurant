@@ -72,7 +72,7 @@ class Slime: SKSpriteNode {
         return node as? Ingredient
     }
 
-    var itemCarried: SKSpriteNode? {
+    var itemCarried: Item? {
         if let plate = plateCarried {
             return plate
         }
@@ -100,7 +100,7 @@ class Slime: SKSpriteNode {
         self.removeAllChildren()
     }
 
-    func takeItem(_ item: SKSpriteNode?) {
+    func takeItem(_ item: Item?) {
         guard let itemToTake = item else {
             return
         }
@@ -126,11 +126,11 @@ class Slime: SKSpriteNode {
                 continue
             }
 
-            if station.ableToProcess(self.itemCarried) {
+            if station.ableToInteract(withItem: self.itemCarried) {
                 let itemToProcess = self.itemCarried
                 itemToProcess?.removeFromParent()
 
-                let itemProcessed = station.process(itemToProcess)
+                let itemProcessed = station.interact(withItem: itemToProcess)
                 self.takeItem(itemProcessed)
                 return station
             }

@@ -15,15 +15,15 @@ class PlateStorage: Station {
     // Requirements: There is no item given to the station (this station does not accept any item)
     // Returns: A plate
 
-    override func ableToProcess(_ item: SKSpriteNode?) -> Bool {
+    override func ableToInteract(withItem item: Item?) -> Bool {
         if item == nil {
             return true
         }
         return false
     }
 
-    override func process(_ item: SKSpriteNode?) -> SKSpriteNode? {
-        guard ableToProcess(item) == true else {
+    override func interact(withItem item: Item?) -> Item? {
+        guard ableToInteract(withItem: item) == true else {
             return nil
         }
         return Plate(inPosition: self.position)

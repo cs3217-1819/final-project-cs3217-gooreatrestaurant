@@ -20,6 +20,8 @@
 		1D2202AD224AB68F0080CF7D /* PlateStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2202AC224AB68F0080CF7D /* PlateStorage.swift */; };
 		1D37DBC1225E6ED900E637C9 /* Ingredients.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 1D37DBBF225E6ED900E637C9 /* Ingredients.atlas */; };
 		1D3DAC0E2257930200491105 /* OrderQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3DAC0D2257930200491105 /* OrderQueue.swift */; };
+		1D50BDFF2264B9B100AC195F /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D50BDFE2264B9B100AC195F /* Item.swift */; };
+		1D50BE012264B9DE00AC195F /* MobileItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D50BE002264B9DE00AC195F /* MobileItem.swift */; };
 		1DD6EBE1224E368C006FF6CD /* ChoppingEquipment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD6EBE0224E368C006FF6CD /* ChoppingEquipment.swift */; };
 		1DD6EBE5224E76F0006FF6CD /* IngredientType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD6EBE4224E76F0006FF6CD /* IngredientType.swift */; };
 		1DD6EBE7224E76FC006FF6CD /* CookingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD6EBE6224E76FC006FF6CD /* CookingType.swift */; };
@@ -276,6 +278,8 @@
 		1D2202AC224AB68F0080CF7D /* PlateStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlateStorage.swift; sourceTree = "<group>"; };
 		1D37DBBF225E6ED900E637C9 /* Ingredients.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Ingredients.atlas; sourceTree = "<group>"; };
 		1D3DAC0D2257930200491105 /* OrderQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderQueue.swift; sourceTree = "<group>"; };
+		1D50BDFE2264B9B100AC195F /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Item.swift; path = slime/Models/Stage/Item.swift; sourceTree = SOURCE_ROOT; };
+		1D50BE002264B9DE00AC195F /* MobileItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MobileItem.swift; path = slime/Models/Stage/MobileItem.swift; sourceTree = SOURCE_ROOT; };
 		1DD6EBE0224E368C006FF6CD /* ChoppingEquipment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoppingEquipment.swift; sourceTree = "<group>"; };
 		1DD6EBE4224E76F0006FF6CD /* IngredientType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientType.swift; sourceTree = "<group>"; };
 		1DD6EBE6224E76FC006FF6CD /* CookingType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookingType.swift; sourceTree = "<group>"; };
@@ -852,6 +856,8 @@
 				EC79FFEC2242238C002E8FE7 /* Game */,
 				EC449B73223B7E4A00A8EA35 /* Views */,
 				EC449B72223B7E3F00A8EA35 /* Controllers */,
+				1D50BDFE2264B9B100AC195F /* Item.swift */,
+				1D50BE002264B9DE00AC195F /* MobileItem.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -1713,6 +1719,7 @@
 				1DE6FC65224D1D3900B36F48 /* Oven.swift in Sources */,
 				EC4708AC22649C9F00F3BC19 /* MultiplayerLevels.json in Sources */,
 				EC0E3165224F611200AF1254 /* CharacterCreationView.swift in Sources */,
+				1D50BDFF2264B9B100AC195F /* Item.swift in Sources */,
 				EC38244B22389649000D7148 /* ImageProvider.swift in Sources */,
 				EC38244322388389000D7148 /* XibView.swift in Sources */,
 				EC1B44AC225D83E800CBE688 /* Jokes.swift in Sources */,
@@ -1737,6 +1744,7 @@
 				EC449B7D223B873600A8EA35 /* RouterViewController.swift in Sources */,
 				EC7676C8225B57F400F6A450 /* CustomizationCosmeticView.swift in Sources */,
 				EC4924F82248D877007B9797 /* RatingViewController.swift in Sources */,
+				1D50BE012264B9DE00AC195F /* MobileItem.swift in Sources */,
 				ECD2442A224B0C9E00767A56 /* SlimeNumberPadView.swift in Sources */,
 				EC3824562239116D000D7148 /* CGRectExtension.swift in Sources */,
 				ECD45546223FAFBE006AF78D /* ContextController.swift in Sources */,
