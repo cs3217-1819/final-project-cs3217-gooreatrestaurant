@@ -43,10 +43,10 @@
 	<key>border</key>
 	<array>
 		<array>
-            <string>{-230,140}</string>
-            <string>{-330,140}</string>
-            <string>{-330,0}</string>
-            <string>{-230,0}</string>
+			<string>{-230,140}</string>
+			<string>{-330,140}</string>
+			<string>{-330,0}</string>
+			<string>{-230,0}</string>
 		</array>
 		<array>
 			<string>{-290,-20}</string>

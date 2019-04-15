@@ -48,7 +48,9 @@ class MenuPrefab: SKSpriteNode, Codable {
         self.recipe = recipe
         //Adding image of the main recipe
         let ingredientsAtlas = SKTextureAtlas(named: "Recipes")
+        print(ingredientsAtlas.textureNames)
         var texture: SKTexture = SKTexture.init()
+        print(recipe.recipeName)
         texture = ingredientsAtlas.textureNamed(recipe.recipeName)
 
         let dish = SKSpriteNode(texture: texture)
