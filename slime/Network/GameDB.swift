@@ -513,19 +513,6 @@ class GameDB: GameDatabase {
         
         return res
     }
-    
-    /// returns a key representing a coordinate
-    ///  where the . is replaced with , to conform
-    /// to the Firebase key nomenclature
-    /// - Parameters:
-    ///     - position: the position of the object
-    /// - Returns:
-    ///     - a string representation of the position
-    ///       as a Firebase-ready key
-    private func stringToPointKey(position: String) -> String {
-        let position = NSCoder.cgPoint(for: position)
-        return "\(position.x)+\(position.y)".replacingOccurrences(of: ".", with: ",")
-    }
 
     /// creates a Firebase-ready dictionary
     /// for players inside a game
@@ -1031,6 +1018,7 @@ class GameDB: GameDatabase {
         self.observers.append(Observer(withHandle: notificationHandle, withRef: notificationRef))
         self.observers.append(Observer(withHandle: onStageItemAddedHandle, withRef: stageItemRef))
         self.observers.append(Observer(withHandle: onStageItemRemovedHandle, withRef: stageItemRef))
+        self.observers.appen(Observer(withHandle: onStageItemChangedHandle, withRef: stageItemRef))
         
         onComplete()
     }
