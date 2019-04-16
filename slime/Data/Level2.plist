@@ -43,10 +43,15 @@
 	<key>border</key>
 	<array>
 		<array>
-			<string>{-220,135}</string>
-			<string>{-330,135}</string>
-			<string>{-330,-5}</string>
-			<string>{-230,-5}</string>
+            <string>{0,175}</string>
+            <string>{110,175}</string>
+            <string>{110,295}</string>
+            <string>{-105,295}</string>
+			<string>{-105,190}</string>
+			<string>{-315,190}</string>
+			<string>{-315,60}</string>
+			<string>{-185,60}</string>
+            <string>{-185,30}</string>
 		</array>
 		<array>
 			<string>{-280,-20}</string>
@@ -80,9 +85,7 @@
 		</array>
 	</array>
 	<key>choppingEquipment</key>
-	<array>
-		<string>{195,-283}</string>
-	</array>
+	<array/>
 	<key>fryingEquipment</key>
 	<array/>
 	<key>oven</key>
@@ -109,9 +112,7 @@
 	<key>storefront</key>
 	<string>{-280,20}</string>
 	<key>table</key>
-	<array>
-		<string>{115,-70}</string>
-	</array>
+	<array/>
 	<key>trashBin</key>
 	<array/>
 	<key>possibleRecipes</key>
