@@ -15,41 +15,9 @@ class Slime: SKSpriteNode {
     var player: Player?
 
     init(inPosition position: CGPoint, withSize size: CGSize = StageConstants.slimeSize) {
-        let slimeAnimatedAtlas = SKTextureAtlas(named: "Slime")
-        var walkFrames: [SKTexture] = []
-
-        let numImages = slimeAnimatedAtlas.textureNames.count
-        for i in 1...numImages {
-            let slimeTextureName = "slime\(i)"
-            walkFrames.append(slimeAnimatedAtlas.textureNamed(slimeTextureName))
-        }
-
-        super.init(texture: walkFrames[0], color: .clear, size: size)
+        super.init(texture: nil, color: .clear, size: size)
 
         self.name = StageConstants.slimeName
-
-        self.position = position
-        self.zPosition = StageConstants.slimeZPos
-        self.physicsBody = SKPhysicsBody(texture: slimeAnimatedAtlas.textureNamed("slime1"), size: size)
-        self.physicsBody?.isDynamic = true
-        self.physicsBody?.allowsRotation = false
-        self.physicsBody?.collisionBitMask = StageConstants.wallCategoryCollision
-        self.physicsBody?.categoryBitMask = StageConstants.slimeCategory
-        self.physicsBody?.contactTestBitMask = 0
-
-        self.physicsBody?.contactTestBitMask |= StageConstants.plateCategory
-        self.physicsBody?.contactTestBitMask |= StageConstants.ingredientCategory
-        self.physicsBody?.contactTestBitMask |= StageConstants.slimeCategory
-        self.physicsBody?.contactTestBitMask |= StageConstants.ladderCategory
-        self.physicsBody?.contactTestBitMask |= StageConstants.stationCategory
-
-        // animate slime
-        self.run(SKAction.repeatForever(
-            SKAction.animate(with: walkFrames,
-                             timePerFrame: 0.2,
-                             resize: false,
-                             restore: true)),
-                 withKey: "walkingInPlaceSlime")
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -174,5 +142,65 @@ class Slime: SKSpriteNode {
 
     func addUser(_ user: Player) {
         self.player = user
+        renderSlime()
+    }
+
+    func renderSlime() {
+        guard let color = self.player?.color else {
+            fatalError("Player Color is not set in Slime!")
+        }
+
+        let slimeAnimatedAtlas = SKTextureAtlas(named: color.toAtlasName())
+        var walkFrames: [SKTexture] = []
+
+        let numImages = slimeAnimatedAtlas.textureNames.count
+        for i in 1...numImages {
+            let slimeTextureName = "slime\(i)"
+            walkFrames.append(slimeAnimatedAtlas.textureNamed(slimeTextureName))
+        }
+
+        self.texture = walkFrames[0]
+
+        self.position = position
+        self.zPosition = StageConstants.slimeZPos
+        self.physicsBody = SKPhysicsBody(texture: slimeAnimatedAtlas.textureNamed("slime1"), size: size)
+        self.physicsBody?.isDynamic = true
+        self.physicsBody?.allowsRotation = false
+        self.physicsBody?.collisionBitMask = StageConstants.wallCategoryCollision
+        self.physicsBody?.categoryBitMask = StageConstants.slimeCategory
+        self.physicsBody?.contactTestBitMask = 0
+
+        self.physicsBody?.contactTestBitMask |= StageConstants.plateCategory
+        self.physicsBody?.contactTestBitMask |= StageConstants.ingredientCategory
+        self.physicsBody?.contactTestBitMask |= StageConstants.slimeCategory
+        self.physicsBody?.contactTestBitMask |= StageConstants.ladderCategory
+        self.physicsBody?.contactTestBitMask |= StageConstants.stationCategory
+
+        // animate slime
+        self.run(SKAction.repeatForever(
+            SKAction.animate(with: walkFrames,
+                             timePerFrame: 0.2,
+                             resize: false,
+                             restore: true)),
+                 withKey: "walkingInPlaceSlime")
+
+
+        let hatNode = SKSpriteNode.init()
+        if let hat = CosmeticConstants.hatsDict[player!.hat] {
+            if (hat.image != nil) {
+                hatNode.texture = SKTexture(image: hat.image!)
+                hatNode.size = CGSize(width: 10, height: 10)
+                self.addChild(hatNode)
+            }
+        }
+
+        let accessoryNode = SKSpriteNode.init()
+        if let accessory = CosmeticConstants.accessoriesDict[player!.accessory] {
+            if (accessory.image != nil) {
+                accessoryNode.texture = SKTexture(image: accessory.image!)
+                accessoryNode.size = CGSize(width: 10, height: 10)
+                self.addChild(accessoryNode)
+            }
+        }
     }
 }

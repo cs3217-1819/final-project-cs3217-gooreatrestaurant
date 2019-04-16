@@ -9,7 +9,10 @@
 import UIKit
 
 class StageConstants {
+    // should put the stage time in the plist
     static let stageTime = 30
+    static let multiplayerStageTime = 200
+    
     static let maxPlayer = 4
     static let maxXAxisUnits = ScreenSize.width
     static let maxYAxisUnits = ScreenSize.height
