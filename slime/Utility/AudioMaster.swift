@@ -49,6 +49,20 @@ public class AudioMaster {
         bgAudioPlayer?.stop()
     }
     
+    public func playSeparateSFX(name: String) -> AVAudioPlayer? {
+        guard let sound = Bundle.main.path(forResource: name, ofType: "mp3") else {
+            return nil
+        }
+        do {
+            let player = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: sound))
+            player.play()
+            return player
+        } catch {
+            Logger.it.error("\(error)")
+            return nil
+        }
+    }
+    
     public func playSFX(name: String) {
         let trueName = getTrueName(name: name)
         if let player = cache[trueName] {
