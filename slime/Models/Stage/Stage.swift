@@ -319,12 +319,12 @@ class Stage: SKScene {
     }
 
     func generateLevel(inLevel levelName: String) {
-        if let levelDesignURL = Bundle.main.url(forResource: "Multiplayer-Level1", withExtension: "plist") {
+        if let levelDesignURL = Bundle.main.url(forResource: levelName, withExtension: "plist") {
             do {
                 let data = try? Data(contentsOf: levelDesignURL)
                 let decoder = PropertyListDecoder()
                 let value = try decoder.decode(SerializableGameData.self, from: data!)
-                spaceship.setLevelName(inString: "Multiplayer-Level1")
+                spaceship.setLevelName(inString: levelName)
                 spaceship.addRoom()
                 
                 if !isMultiplayer {
@@ -891,7 +891,7 @@ class Stage: SKScene {
     }
 
     open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if let touch = touches.first{
+        if let touch = touches.first {
             let touchPos = touch.location(in: (self.sceneCam)!)
             if (hasStarted && touchPos.x < (self.sceneCam?.position.x)!) {
                 analogJoystick.position = touchPos
