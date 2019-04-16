@@ -35,7 +35,7 @@ class Spaceship: SKSpriteNode {
         texture.filteringMode = .nearest
         let room = SKSpriteNode(texture: texture)
         room.position = CGPoint(x: 0, y: 0)
-        room.size = StageConstants.gameAreaSize
+        room.size = self.levelName != "Multiplayer-Level1" ? StageConstants.gameAreaSize : CGSize(width: 1600, height: 800)
         room.zPosition = 1
         room.name = StageConstants.roomName
         self.addChild(room)
@@ -157,6 +157,7 @@ class Spaceship: SKSpriteNode {
             texture = SpaceshipAtlas.textureNamed("Spaceship-1")
         }
         texture.filteringMode = .nearest
+        self.size = self.levelName != "Multiplayer-Level1" ? StageConstants.gameAreaSize : CGSize(width: 1600, height: 800)
 
         self.texture = texture
     }
