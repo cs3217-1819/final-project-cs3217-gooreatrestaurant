@@ -198,7 +198,7 @@ class Slime: SKSpriteNode {
                         hatNode.run(SKAction.repeatForever(self.generateFrames(size: StageConstants.hatSize)))
                     })
                 })
-                
+
                 Timer.scheduledTimer(withTimeInterval: 2, repeats: false, block: { _ in
                     self.addChild(hatNode)
                 })

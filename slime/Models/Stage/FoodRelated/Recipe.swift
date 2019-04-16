@@ -11,8 +11,8 @@ import UIKit
 class Recipe: NSObject, Codable {
     private(set) var recipeName: String
     private(set) var ingredientsNeeded: [Ingredient: Int] = [:]
-    private let originalCompulsoryIngredients: [Ingredient]
-    private let originalOptionalIngredients: [(item: Ingredient, probability: Double)]
+    let originalCompulsoryIngredients: [Ingredient]
+    let originalOptionalIngredients: [(item: Ingredient, probability: Double)]
 
     init(inRecipeName nameOfRecipe: String, withCompulsoryIngredients compulsoryIngredients: [Ingredient],
          withOptionalIngredients optionalIngredients: [(item: Ingredient, probability: Double)]) {
