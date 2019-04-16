@@ -19,7 +19,7 @@ class StageConstants {
 
     static let speedMultiplier: CGFloat = 6.0
     static let jumpSpeed: CGFloat = 450.0
-    static let jumpDuration: CGFloat = 0.5
+    static let jumpDuration: Double = 0.5
     
     // multiplayer stuff
     static let streamingInterval = 0.1 // in seconds
@@ -101,10 +101,13 @@ class StageConstants {
     static let buttonZPos = CGFloat(4)
     static let slimeZPos = CGFloat(5)
     static let blackBGOpeningZPos = CGFloat(8)
+    static let blackBGEndingZPos = CGFloat(8)
     static let orderZPos = CGFloat(9)
     static let countdownLabelZPos = CGFloat(20)
     static let scoreLabelZPos = CGFloat(20)
     static let readyNodeZPos = CGFloat(20)
+    static let endgameZPos = CGFloat(20)
+    static let endgameBasenodeZPos = CGFloat(20)
 
     // gameplay related
     static let defaultOptionalProbability = 0.5
