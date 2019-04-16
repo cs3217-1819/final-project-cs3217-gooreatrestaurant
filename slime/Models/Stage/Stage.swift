@@ -40,7 +40,7 @@ class Stage: SKScene {
     var players: [Player] = []
 
     // Order queue
-    var orderQueue = OrderQueue()
+    var orderQueue = OrderQueue(interval: StageConstants.orderComingInterval[0])
 
     //Level score
     var levelScore: Int = 0
@@ -505,6 +505,8 @@ class Stage: SKScene {
             self.allSlimesDict.updateValue(slime, forKey: player.name)
             currentPlayerIndex += 1
         }
+        
+        orderQueue.interval = StageConstants.orderComingInterval[currentPlayerIndex]
     }
     
     func stageDidLoad() {

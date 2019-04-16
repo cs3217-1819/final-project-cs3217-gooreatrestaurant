@@ -14,6 +14,7 @@ class OrderQueue: SKSpriteNode, Codable {
     var recipeOrdered: [Recipe] = []
     var newOrderTimer: Timer = Timer()
     var nodeOrder: [MenuPrefab] = []
+    var interval: Double
     
     // for multiplayer
     var isMultiplayerEnabled = false
@@ -37,8 +38,10 @@ class OrderQueue: SKSpriteNode, Codable {
 
     var scoreToIncrease = 0
 
-    init() {
+    init(interval: Double) {
+        self.interval = interval
         super.init(texture: nil, color: .clear, size: CGSize.zero)
+        
         self.position = CGPoint.zero
         self.name = StageConstants.orderQueueName
         self.zPosition = StageConstants.orderZPos
@@ -108,15 +111,24 @@ class OrderQueue: SKSpriteNode, Codable {
     func addPossibleRecipe(_ recipe: Recipe) {
         self.possibleRecipes.insert(recipe)
     }
+    
+    private func generateTimer() {
+        newOrderTimer = Timer.scheduledTimer(withTimeInterval: interval, repeats: false, block: { _ in
+            if (self.orderQueueInvalidated) {
+                return
+            }
+            self.isMultiplayerEnabled ? self.multiplayerAddRandomOrder() : self.addRandomOrder()
+            
+            self.generateTimer()
+        })
+    }
 
     func initialize() {
         guard !possibleRecipes.isEmpty else {
             return
         }
 
-        newOrderTimer = Timer.scheduledTimer(withTimeInterval: StageConstants.orderComingInterval, repeats: true, block: { (timer) in
-            self.isMultiplayerEnabled ? self.multiplayerAddRandomOrder() : self.addRandomOrder()
-        })
+        generateTimer()
         
         while recipeOrdered.count < StageConstants.minNumbersOfOrdersShown {
             self.addRandomOrder()
@@ -211,7 +223,7 @@ class OrderQueue: SKSpriteNode, Codable {
         let recipeOrdered = try values.decode([Recipe].self, forKey: .recipeOrdered)
         let nodeOrder = try values.decode([MenuPrefab].self, forKey: .nodeOrder)
 
-        self.init()
+        self.init(interval: StageConstants.orderComingInterval[0])
         self.possibleRecipes = possibleRecipes
         self.recipeOrdered = recipeOrdered
         self.nodeOrder = nodeOrder
