@@ -40,7 +40,7 @@ class CharacterCreationViewController: ViewController<CharacterCreationView> {
     }
 
     private func setupButton() {
-        let control = PrimaryButtonController(using: view.submitButton)
+        let control = PrimaryButtonController(usingXib: view.submitButton)
             .set(label: "OK")
             .set(color: .green)
         control.onTap {

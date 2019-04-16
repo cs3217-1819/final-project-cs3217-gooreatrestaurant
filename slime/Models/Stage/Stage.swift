@@ -87,13 +87,13 @@ class Stage: SKScene {
         })
     }
     
-    func setupSinglePlayer() {
+    func setupSinglePlayer(player: Player) {
         guard let onlyUser = GameAuth.currentUser else {
             return
         }
-        // Level 1 here only placeholder TO DO
-        let onlyPlayer = Player(name: onlyUser.uid, level: 1)
-        self.addPlayer(onlyPlayer)
+        
+        player.name = onlyUser.uid
+        self.addPlayer(player)
     }
     
     func setupMultiplayer(forRoom room: RoomModel) {
@@ -109,7 +109,8 @@ class Stage: SKScene {
         for player in room.players {
             // sets isUserHost in current game instance
             if user.uid == player.uid { self.isUserHost = player.isHost }
-            let playerInGame = Player(name: player.uid, level: player.level)
+            let playerInGame = Player(from: player)
+            playerInGame.name = player.uid
             self.addPlayer(playerInGame)
         }
         
@@ -509,7 +510,7 @@ class Stage: SKScene {
     func stageDidLoad() {
         if self.isMultiplayer {
             Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false) { (timer) in
-                // normally this timer is to cater for the fade in
+                // this timer is to cater for the fade in
                 // animation from the previous scene
                 // however, this should be handled by the route
                 // which should be updated in the future
@@ -654,6 +655,7 @@ class Stage: SKScene {
 
     func gameOver(ifWon: Bool, withMessage: String? = nil) {
         cleanup()
+        AudioMaster.instance.playSFX(name: "gameover")
         let gameOverPrefab = GameOverPrefab(color: .clear, size: StageConstants.gameOverPrefabSize)
         if self.isMultiplayer { gameOverPrefab.setToMultiplayer() }
         gameOverPrefab.initializeButtons()
@@ -882,7 +884,7 @@ class Stage: SKScene {
     }()
     
     // Deallocate stuff, invalidate timers
-    func cleanup() {
+    private func cleanup() {
         orderQueue.newOrderTimer.invalidate()
         orderQueue.orderQueueInvalidated = true
     }

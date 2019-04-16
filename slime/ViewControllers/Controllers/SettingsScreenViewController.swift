@@ -23,7 +23,7 @@ class SettingsScreenViewController: ViewController<SettingsScreenView> {
     }
 
     private func configureResetButton() {
-        let control = PrimaryButtonController(using: view.resetButton)
+        let control = PrimaryButtonController(usingXib: view.resetButton)
             .set(label: "Reset Data")
             .set(color: .purple)
         control.sound = "back"

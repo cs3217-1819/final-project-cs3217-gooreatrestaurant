@@ -38,7 +38,7 @@ class PrimaryButtonController: Controller {
         setupReactive()
     }
 
-    init(using view: XibView) {
+    init(usingXib view: XibView) {
         guard let button = view.contentView as? PrimaryButton else {
             fatalError("Content view is unavailable")
         }

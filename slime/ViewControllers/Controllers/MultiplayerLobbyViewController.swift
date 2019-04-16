@@ -8,7 +8,8 @@
 import UIKit
 
 class MultiplayerLobbyViewController: ViewController<MultiplayerLobbyView> {
-
+    private var selectorController: StageSelectorController?
+    private var stagePreviewController: StagePreviewController?
     var activeAlert: AlertController?
     var currentRoom: RoomModel?
     var roomId: String = ""
@@ -30,9 +31,57 @@ class MultiplayerLobbyViewController: ViewController<MultiplayerLobbyView> {
     override func configureSubviews() {
         configureUpButton(to: .MultiplayerScreen)
         setupStartButton()
+        setupStagePreview()
         for controller in playerControllers {
             controller.configure()
         }
+    }
+    
+    private func setupStagePreview() {
+        let stagePreviewControl = StagePreviewController(with: view.stagePreviewView)
+        stagePreviewControl.setBackgroundName(name: "background-1")
+        if let map = currentRoom?.map {
+            setStagePreviewImage(for: map)
+        }
+        stagePreviewController = stagePreviewControl
+        stagePreviewControl.configure()
+    }
+    
+    private func setupChangeMapButton() {
+        let buttonController = PrimaryButtonController(usingXib: view.stageChangeButton)
+            .set(label: "Change")
+            .set(color: .green)
+        
+        buttonController.configure()
+        buttonController.onTap {
+            let modalView = UIView.initFromNib("StageSelectModal") as! StageSelectModal
+            modalView.snp.makeConstraints { make in
+                make.width.equalTo(450)
+                make.height.equalTo(300)
+            }
+            modalView.layoutIfNeeded()
+            let control = StageSelectorController(withXib: modalView.levelPreviewsView)
+            control.levels = LevelsReader.readMultiplayerLevels()
+            control.onSelect { level in
+                self.context.db.changeRoomMap(fromRoomId: self.roomId, toMapId: level.id, { error in
+                    fatalError(error.localizedDescription)
+                })
+                self.context.modal.closeAlert()
+            }
+            control.configure()
+            self.context.modal.showModal(view: modalView)
+            self.selectorController = control
+        }
+        
+        remember(buttonController)
+    }
+    
+    private func setStagePreviewImage(for id: String) {
+        guard let level = LevelsReader.getLevel(id: id) else {
+            return
+        }
+        // print("trying to read id: \(id) - preview: \(level.preview)")
+        stagePreviewController?.setStageName(name: level.preview)
     }
 
     private func setupPlayers(forPlayers players: [RoomPlayerModel]) {
@@ -43,16 +92,16 @@ class MultiplayerLobbyViewController: ViewController<MultiplayerLobbyView> {
                 playerControllers[i].removePlayer()
                 continue
             }
-
+            
             let roomPlayer = Player(from: players[i])
             playerControllers[i].setPlayer(roomPlayer)
         }
     }
 
     private func setupRoomDetails(forRoom room: RoomModel) {
-        // TODO:
         view.roomCodeLabel.text = room.id
         self.currentRoom = room
+        setStagePreviewImage(for: room.map)
     }
 
     func setupRoom(withId id: String) {
@@ -60,6 +109,9 @@ class MultiplayerLobbyViewController: ViewController<MultiplayerLobbyView> {
         self.context.db.observeRoomState(forRoomId: id, { (room) in
             self.setupPlayers(forPlayers: room.players)
             self.setupRoomDetails(forRoom: room)
+            if self.isHost() {
+                self.setupChangeMapButton()
+            }
 
             if room.gameIsCreated {
                 self.context.modal.closeAlert()
@@ -70,7 +122,10 @@ class MultiplayerLobbyViewController: ViewController<MultiplayerLobbyView> {
                 self.context.db.removeAllDisconnectObservers()
 
                 AudioMaster.instance.playSFX(name: "done-loading")
-                self.context.segueToMultiplayerGame(forRoom: room, level: Level(id: "mp-1-1", name: "Level1", fileName: "Level1", bestScore: 0))
+                guard let level = LevelsReader.getLevel(id: room.map) else {
+                    fatalError("no such level lol")
+                }
+                self.context.segueToMultiplayerGame(forRoom: room, level: level)
                 
                 return
             }
@@ -94,7 +149,7 @@ class MultiplayerLobbyViewController: ViewController<MultiplayerLobbyView> {
     }
     
     private func setupStartButton() {
-        let controller = PrimaryButtonController(using: view.startButton)
+        let controller = PrimaryButtonController(usingXib: view.startButton)
             .set(label: "Start")
             .set(color: .green)
         

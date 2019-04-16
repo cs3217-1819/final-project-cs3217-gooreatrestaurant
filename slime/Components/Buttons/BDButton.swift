@@ -26,7 +26,10 @@ class BDButton: SKNode {
         cropNode.zPosition = 3
         cropNode.addChild(mask)
 
-        action = buttonAction
+        action = {
+            AudioMaster.instance.playSFX(name: "selection")
+            buttonAction()
+        }
 
         super.init()
 

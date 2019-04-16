@@ -142,13 +142,14 @@ class Slime: SKSpriteNode {
 
     func addUser(_ user: Player) {
         self.player = user
-        renderSlime()
+//        renderSlime()
     }
 
     func renderSlime() {
         guard let color = self.player?.color else {
             fatalError("Player Color is not set in Slime!")
         }
+        print(color.toString())
 
         let slimeAnimatedAtlas = SKTextureAtlas(named: color.toAtlasName())
         var walkFrames: [SKTexture] = []
