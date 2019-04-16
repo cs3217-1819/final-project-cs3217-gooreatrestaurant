@@ -398,7 +398,7 @@ protocol GameDatabase {
     ///     - withName: the name to be changed to
     ///     - onComplete: closure when this block completes
     ///     - onError: closure run when an error occurs
-    func updateUserNmae(withName name: String, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void)
+    func updateUserName(withName name: String, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void)
     
     /// updates own user's level
     /// - Parameters:

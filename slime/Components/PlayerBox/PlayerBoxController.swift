@@ -19,9 +19,6 @@ class PlayerBoxController: Controller {
             fatalError("Nib class is wrong")
         }
         self.view = trueView
-
-        setupReactive()
-        setupCharacterView()
     }
 
     init(using view: XibView) {
@@ -33,6 +30,7 @@ class PlayerBoxController: Controller {
 
     func configure() {
         setupReactive()
+        setupCharacterView()
     }
 
     func setPlayer(_ player: Player) {
@@ -74,15 +72,8 @@ class PlayerBoxController: Controller {
     }
     
     private func setupCharacterView() {
-        let characterStream = player.flatMap { player -> Observable<UserCharacter> in
-            guard let character = player else {
-                return Observable.empty()
-            }
-            let userCharacter = UserCharacter(from: character)
-            return Observable.just(userCharacter)
-        }
         let characterController = SlimeCharacterController(withXib: view.characterView)
-        characterController.bindTo(characterStream)
+        characterController.bindTo(player: player)
     }
 
     private func setupReactive() {

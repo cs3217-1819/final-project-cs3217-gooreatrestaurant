@@ -70,8 +70,6 @@ class PrimaryButtonController: Controller {
                 guard let color = event.element else {
                     return
                 }
-                print(color)
-                print(self.button.buttonImage)
                 self.button.buttonImage.image = color.image
             }
             .disposed(by: disposeBag)

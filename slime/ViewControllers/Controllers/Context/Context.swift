@@ -75,6 +75,11 @@ class Context {
         routeToFade(.GameScreen, withCallback: { vc in
             let gameVC = vc as! GameViewController
             gameVC.setLevel(level: level)
+            
+            guard let character = try! self.data.userCharacter?.value() else {
+                return
+            }
+            gameVC.setSingleplayerUser(player: Player(from: character))
         })
     }
     
