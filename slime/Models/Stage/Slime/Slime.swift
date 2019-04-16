@@ -197,7 +197,7 @@ class Slime: SKSpriteNode {
                     hatNode.run(SKAction.repeatForever(self.generateFrames(size: StageConstants.hatSize)))
                 })
                 
-                Timer.scheduledTimer(withTimeInterval: 0.6, repeats: false, block: { _ in
+                Timer.scheduledTimer(withTimeInterval: 2, repeats: false, block: { _ in
                     self.addChild(hatNode)
                 })
             }
@@ -213,7 +213,7 @@ class Slime: SKSpriteNode {
                 accessoryNode.run(SKAction.move(by: CGVector(dx: 0, dy: StageConstants.accessorySize.height * 0.4), duration: 0.05), completion: {
                     accessoryNode.run(SKAction.repeatForever(self.generateFrames(size: StageConstants.accessorySize)))
                 })
-                Timer.scheduledTimer(withTimeInterval: 0.6, repeats: false, block: { _ in
+                Timer.scheduledTimer(withTimeInterval: 2, repeats: false, block: { _ in
                     self.addChild(accessoryNode)
                 })
                 // self.addChild(accessoryNode)
