@@ -513,19 +513,6 @@ class GameDB: GameDatabase {
         
         return res
     }
-    
-    /// returns a key representing a coordinate
-    ///  where the . is replaced with , to conform
-    /// to the Firebase key nomenclature
-    /// - Parameters:
-    ///     - position: the position of the object
-    /// - Returns:
-    ///     - a string representation of the position
-    ///       as a Firebase-ready key
-    private func stringToPointKey(position: String) -> String {
-        let position = NSCoder.cgPoint(for: position)
-        return "\(position.x)+\(position.y)".replacingOccurrences(of: ".", with: ",")
-    }
 
     /// creates a Firebase-ready dictionary
     /// for players inside a game
@@ -963,7 +950,10 @@ class GameDB: GameDatabase {
         }
 
         let scoreHandle = scoreRef.observe(.value, with: { (snap) in
-            guard let score = snap.value as? Int else { return }
+            guard let score = snap.value as? Int else {
+                onHostDisconnected()
+                return
+            }
             onScoreChange(score)
         }) { (err) in
             onError(err)
@@ -1015,10 +1005,7 @@ class GameDB: GameDatabase {
         }
 
         let endHandle = endRef.observe(.value, with: { (snap) in
-            guard let end = snap.value as? Bool else {
-                onHostDisconnected()
-                return
-            }
+            guard let end = snap.value as? Bool else { return }
             if end { onGameEnd() }
         }) { (err) in
             onError(err)
@@ -1031,6 +1018,7 @@ class GameDB: GameDatabase {
         self.observers.append(Observer(withHandle: notificationHandle, withRef: notificationRef))
         self.observers.append(Observer(withHandle: onStageItemAddedHandle, withRef: stageItemRef))
         self.observers.append(Observer(withHandle: onStageItemRemovedHandle, withRef: stageItemRef))
+        self.observers.append(Observer(withHandle: onStageItemChangedHandle, withRef: stageItemRef))
         
         onComplete()
     }
@@ -1524,29 +1512,6 @@ struct Observer {
     init(withHandle handle: DatabaseHandle, withRef reference: DatabaseReference) {
         self.handle = handle
         self.reference = reference
-    }
-}
-
-/**
- serializes item types in game to JSON strings
- **/
-struct ItemSerializer {
-    static func serializeItem(forItem item: AnyObject, withType type: String) -> String {
-        switch (type) {
-        case FirebaseSystemValues.ItemTypes.plate.rawValue:
-            // serialize to plate
-            return ""
-        case FirebaseSystemValues.ItemTypes.ingredient.rawValue:
-            // serialize to ingredient
-            return ""
-        default:
-            // return none
-            return ""
-        }
-    }
-    
-    static func deserializeItem(forData data: String) -> (type: String, item: AnyObject) {
-        return (type: "", item: "hello" as AnyObject)
     }
 }
 
