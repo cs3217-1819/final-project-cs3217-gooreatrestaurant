@@ -270,10 +270,41 @@ protocol GameDatabase {
     ///       occurs
     func submitOrder(forGameId id: String, withPlate plate: Plate, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void)
     
+    /// adds stage item instance inside the database
+    /// this does not perform an update, if the
+    /// item uid already exists, this will not occur
+    /// - Parameters:
+    ///     - forGameId: the game id the stage item
+    ///       is to be added
+    ///     - withItem: the item to be added
+    ///     - withItemUid: the item uid generated
+    ///     - onComplete: the completion closure
+    ///     - onError: a closure run when an error occurs
     func addStageItem(forGameId id: String, withItem item: AnyObject, withItemUid uid: String, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void)
     
+    /// removes a stage item inside the game instance
+    /// this will fail if there is no reference to
+    /// the uid in this database
+    /// - Parameters:
+    ///     - forGameId: the game id the item needs to be
+    ///       removed
+    ///     - withItemUid: the item uid to be removed
+    ///     - onComplete: the closure run when removing this
+    ///       item is complete
+    ///     - onError: a closure run when an error occurs
     func removeStageItem(forGameId id: String, withItemUid uid: String, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void)
     
+    /// updates the values of the stage item inside
+    /// the database. This fails if the referenced item
+    /// does not exist
+    /// - Parameters:
+    ///     - forGameId; the game id the item needs to be
+    ///       updated
+    ///     - withItem: the new item
+    ///     - withItemUid: the uid of the item
+    ///     - onComplete: a closure run when this process is
+    ///       complete
+    ///     - onError: a closure run when an error occurs
     func updateStageItem(forGameId id: String, withItem item: AnyObject, withItemUid uid: String, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void)
     
     /// adds a score to the specified game id
