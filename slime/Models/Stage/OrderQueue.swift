@@ -41,6 +41,7 @@ class OrderQueue: SKSpriteNode, Codable {
         super.init(texture: nil, color: .clear, size: CGSize.zero)
         self.position = CGPoint.zero
         self.name = StageConstants.orderQueueName
+        self.zPosition = StageConstants.orderZPos
     }
 
     required init?(coder aDecoder: NSCoder) {

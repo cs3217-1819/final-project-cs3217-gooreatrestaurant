@@ -99,6 +99,11 @@ class StageConstants {
     static let joystickZPos = CGFloat(4)
     static let buttonZPos = CGFloat(4)
     static let slimeZPos = CGFloat(5)
+    static let blackBGZPos = CGFloat(8)
+    static let orderZPos = CGFloat(9)
+    static let countdownLabelZPos = CGFloat(10)
+    static let scoreLabelZPos = CGFloat(10)
+    static let readyNodeZPos = CGFloat(10)
 
     // gameplay related
     static let defaultOptionalProbability = 0.5

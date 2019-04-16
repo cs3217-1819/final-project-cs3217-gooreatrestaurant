@@ -845,7 +845,7 @@ class Stage: SKScene {
     lazy var countdownLabel: SKLabelNode = {
         var label = SKLabelNode(fontNamed: "SquidgySlimes")
         label.fontSize = CGFloat(40)
-        label.zPosition = 10
+        label.zPosition = StageConstants.countdownLabelZPos
         label.color = .red
         label.horizontalAlignmentMode = .left
         label.verticalAlignmentMode = .center
@@ -857,7 +857,7 @@ class Stage: SKScene {
     lazy var scoreLabel: SKLabelNode = {
         var label = SKLabelNode(fontNamed: "SquidgySlimes")
         label.fontSize = CGFloat(30)
-        label.zPosition = 10
+        label.zPosition = StageConstants.scoreLabelZPos
         label.color = .red
         label.horizontalAlignmentMode = .left
         label.verticalAlignmentMode = .center
@@ -870,7 +870,7 @@ class Stage: SKScene {
         let texture = UIAtlas.textureNamed("Ready")
         var label = SKSpriteNode(texture: texture)
         label.size = CGSize(width: ScreenSize.width * 0.5, height: ScreenSize.height * 0.5)
-        label.zPosition = 10
+        label.zPosition = StageConstants.readyNodeZPos
         label.position = (self.sceneCam?.position)!
         return label
     }()
@@ -879,7 +879,7 @@ class Stage: SKScene {
     lazy var blackBG: SKSpriteNode = {
         let blackBG = SKSpriteNode.init(color: .black, size: CGSize(width: ScreenSize.width, height: ScreenSize.height))
         blackBG.alpha = 0.5
-        blackBG.zPosition = 8
+        blackBG.zPosition = StageConstants.blackBGZPos
         return blackBG
     }()
     
