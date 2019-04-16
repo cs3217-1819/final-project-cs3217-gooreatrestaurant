@@ -8,6 +8,7 @@
 
 import UIKit
 import AVKit
+import SpriteKit
 
 class FryingEquipment: CookingEquipment {
     private var sfxPlayer: AVAudioPlayer?
@@ -18,6 +19,12 @@ class FryingEquipment: CookingEquipment {
                    canProcessIngredients: [.potato])
         self.texture = kitchenwareAtlas.textureNamed("FryingPan")
         self.size = CGSize(width: 100, height: 100)
+
+        self.physicsBody = SKPhysicsBody(texture: self.texture!, size: self.size)
+        self.physicsBody?.isDynamic = false
+        self.physicsBody?.categoryBitMask = StageConstants.stationCategory
+        self.physicsBody?.contactTestBitMask = StageConstants.slimeCategory
+        self.physicsBody?.collisionBitMask = StageConstants.wallCategoryCollision
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -47,8 +54,9 @@ class FryingEquipment: CookingEquipment {
         return false
     }
 
+    // 20 per seconds
     override func automaticProcessing() {
-        continueProcessing(withProgress: 100.0 / 40.0)
+        continueProcessing(withProgress: 100.0 / 80.0)
     }
 
     override func manualProcessing() {
