@@ -142,7 +142,10 @@ class Slime: SKSpriteNode {
 
     func addUser(_ user: Player) {
         self.player = user
+        renderSlime()
+    }
 
+    func renderSlime() {
         guard let color = self.player?.color else {
             fatalError("Player Color is not set in Slime!")
         }
