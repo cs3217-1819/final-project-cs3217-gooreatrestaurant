@@ -142,7 +142,7 @@ class Slime: SKSpriteNode {
 
     func addUser(_ user: Player) {
         self.player = user
-        renderSlime()
+//        renderSlime()
     }
 
     func renderSlime() {
