@@ -508,7 +508,7 @@ class Stage: SKScene {
     func stageDidLoad() {
         if self.isMultiplayer {
             Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false) { (timer) in
-                // normally this timer is to cater for the fade in
+                // this timer is to cater for the fade in
                 // animation from the previous scene
                 // however, this should be handled by the route
                 // which should be updated in the future

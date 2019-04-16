@@ -43,7 +43,7 @@ class MultiplayerLobbyViewController: ViewController<MultiplayerLobbyView> {
                 playerControllers[i].removePlayer()
                 continue
             }
-
+            
             let roomPlayer = Player(from: players[i])
             playerControllers[i].setPlayer(roomPlayer)
         }
