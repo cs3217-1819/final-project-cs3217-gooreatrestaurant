@@ -10,19 +10,26 @@ import UIKit
 import SpriteKit
 
 class Spaceship: SKSpriteNode {
+    var levelName = ""
     let SpaceshipAtlas = SKTextureAtlas(named: "Spaceship")
 
     // position is in the center
     init(inPosition position: CGPoint, withSize size: CGSize) {
-        let texture = SpaceshipAtlas.textureNamed("Spaceship-1")
-        texture.filteringMode = .nearest
-        super.init(texture: texture, color: .clear, size: size)
+        super.init(texture: nil, color: .clear, size: size)
         self.position = CGPoint.zero
         self.zPosition = 0
     }
 
     func addRoom() {
-        let texture = SpaceshipAtlas.textureNamed("Area-1")
+        var texture = SpaceshipAtlas.textureNamed("")
+        switch self.levelName {
+        case "Level1":
+            texture = SpaceshipAtlas.textureNamed("Area-1")
+        case "Level2":
+            texture = SpaceshipAtlas.textureNamed("Area-2")
+        default:
+            texture = SpaceshipAtlas.textureNamed("Area-1")
+        }
         texture.filteringMode = .nearest
         let room = SKSpriteNode(texture: texture)
         room.position = CGPoint(x: 0, y: 0)
@@ -131,6 +138,23 @@ class Spaceship: SKSpriteNode {
             trashBin.id = "trashBin-\(index)"
             self.addChild(trashBin)
         }
+    }
+
+    func setLevelName(inString: String) {
+        self.levelName = inString
+
+        var texture = SpaceshipAtlas.textureNamed("")
+        switch self.levelName {
+        case "Level1":
+            texture = SpaceshipAtlas.textureNamed("Spaceship-1")
+        case "Level2":
+            texture = SpaceshipAtlas.textureNamed("Spaceship-2")
+        default:
+            texture = SpaceshipAtlas.textureNamed("Spaceship-1")
+        }
+        texture.filteringMode = .nearest
+
+        self.texture = texture
     }
 
     required init?(coder aDecoder: NSCoder) {
