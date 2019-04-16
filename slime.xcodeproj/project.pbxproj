@@ -629,13 +629,21 @@
 			path = Food;
 			sourceTree = "<group>";
 		};
+		8B5B202F2265A6F100059756 /* Slime */ = {
+			isa = PBXGroup;
+			children = (
+				8B81EFBB224344AD007BFDB0 /* Slime.atlas */,
+			);
+			path = Slime;
+			sourceTree = "<group>";
+		};
 		8BD816B42242643C00586180 /* Sprites */ = {
 			isa = PBXGroup;
 			children = (
+				8B5B202F2265A6F100059756 /* Slime */,
 				8B5B202B2264D86300059756 /* UI.atlas */,
 				8B5B20292264D85000059756 /* Spaceship.atlas */,
 				8B5B20282264D80400059756 /* Food */,
-				8B81EFBB224344AD007BFDB0 /* Slime.atlas */,
 				8BEDCD44224F3EC900E24A20 /* MenuPrefab.swift */,
 				8BEDCD4A22531CDF00E24A20 /* IngredientsCell.swift */,
 				8BFA63E82257D7FE007645F9 /* GameOverPrefab.swift */,

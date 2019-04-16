@@ -24,6 +24,11 @@ class Slime: SKSpriteNode {
             walkFrames.append(slimeAnimatedAtlas.textureNamed(slimeTextureName))
         }
 
+        let color = player?.color
+        guard let hat = CosmeticConstants.hatsDict[player!.hat] else {
+            fatalError()
+        }
+
         super.init(texture: walkFrames[0], color: .clear, size: size)
 
         self.name = StageConstants.slimeName
