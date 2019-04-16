@@ -11,6 +11,12 @@
             "name": "Sweet Dreams",
             "fileName": "Level2",
             "preview": "preview-level2"
+        },
+        {
+            "id": "mp1-3",
+            "name": "Bigass Level",
+            "fileName": "Multiplayer-Level1",
+            "preview": "preview-level1"
         }
     ]
 }
