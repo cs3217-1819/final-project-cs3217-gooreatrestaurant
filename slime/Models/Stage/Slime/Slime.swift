@@ -198,13 +198,8 @@ class Slime: SKSpriteNode {
                         hatNode.run(SKAction.repeatForever(self.generateFrames(size: StageConstants.hatSize)))
                     })
                 })
-                
-<<<<<<< Updated upstream
-                Timer.scheduledTimer(withTimeInterval: 0.6, repeats: false, block: { _ in
-=======
-                
+
                 Timer.scheduledTimer(withTimeInterval: 2, repeats: false, block: { _ in
->>>>>>> Stashed changes
                     self.addChild(hatNode)
                 })
             }
