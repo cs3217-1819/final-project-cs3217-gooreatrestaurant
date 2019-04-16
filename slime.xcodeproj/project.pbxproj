@@ -2052,7 +2052,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = nus.cs3217.a0143378y.slime;
+				PRODUCT_BUNDLE_IDENTIFIER = nus.cs3217.a0166733y.slime;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
@@ -2073,7 +2073,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = nus.cs3217.a0143378y.slime;
+				PRODUCT_BUNDLE_IDENTIFIER = nus.cs3217.a0166733y.slime;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;

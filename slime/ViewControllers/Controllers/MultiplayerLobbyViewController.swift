@@ -10,6 +10,7 @@ import UIKit
 class MultiplayerLobbyViewController: ViewController<MultiplayerLobbyView> {
     private var selectorController: StageSelectorController?
     private var stagePreviewController: StagePreviewController?
+    private var changeButtonListener: PrimaryButtonController?
     var activeAlert: AlertController?
     var currentRoom: RoomModel?
     var roomId: String = ""
@@ -62,6 +63,9 @@ class MultiplayerLobbyViewController: ViewController<MultiplayerLobbyView> {
     }
     
     private func setupChangeMapButton() {
+        if changeButtonListener != nil {
+            return
+        }
         let buttonController = PrimaryButtonController(usingXib: view.stageChangeButton)
             .set(label: "Change")
             .set(color: .purple)
@@ -91,7 +95,7 @@ class MultiplayerLobbyViewController: ViewController<MultiplayerLobbyView> {
             self.selectorController = control
         }
         
-        remember(buttonController)
+        changeButtonListener = buttonController
     }
     
     private func setStagePreviewImage(for id: String) {
@@ -148,7 +152,6 @@ class MultiplayerLobbyViewController: ViewController<MultiplayerLobbyView> {
                     fatalError("no such level lol")
                 }
                 self.context.segueToMultiplayerGame(forRoom: room, level: level)
-                
                 return
             }
 

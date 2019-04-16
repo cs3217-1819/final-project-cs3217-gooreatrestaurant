@@ -1,4 +1,5 @@
 import UIKit
+import SpriteKit
 
 extension Slime {
     func resetMovement() {
@@ -20,7 +21,13 @@ extension Slime {
 
         if physicsBody.velocity.dy == 0.0 {
             AudioMaster.instance.playSFX(name: "jump")
-            physicsBody.applyImpulse(CGVector(dx: 0.0, dy: StageConstants.jumpSpeed))
+            let waitAction = SKAction.wait(forDuration: 0.1)
+            let jumpAction = SKAction.run {
+                self.physicsBody?.velocity.dy = 450.0
+            }
+            jumpAction.duration = 0.5
+            let sequence = SKAction.sequence([waitAction, jumpAction])
+            self.run(sequence)
         }
 
     }
