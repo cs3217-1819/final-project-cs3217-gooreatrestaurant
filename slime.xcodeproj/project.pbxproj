@@ -43,6 +43,13 @@
 		8B5B202C2264D86300059756 /* UI.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 8B5B202B2264D86300059756 /* UI.atlas */; };
 		8B5B202E2264F92F00059756 /* Kitchenware.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 8B5B202D2264F92F00059756 /* Kitchenware.atlas */; };
 		8B5B20312265AA5D00059756 /* blue.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 8B5B20302265AA5D00059756 /* blue.atlas */; };
+		8B5B20332265AF8C00059756 /* red.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 8B5B20322265AF8B00059756 /* red.atlas */; };
+		8B5B20352265AF9B00059756 /* green.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 8B5B20342265AF9B00059756 /* green.atlas */; };
+		8B5B20372265AFB600059756 /* orange.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 8B5B20362265AFB600059756 /* orange.atlas */; };
+		8B5B20392265AFC300059756 /* angryRed.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 8B5B20382265AFC300059756 /* angryRed.atlas */; };
+		8B5B203B2265AFD300059756 /* lightGreen.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 8B5B203A2265AFD300059756 /* lightGreen.atlas */; };
+		8B5B203D2265AFE000059756 /* pastelPink.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 8B5B203C2265AFE000059756 /* pastelPink.atlas */; };
+		8B5B203F2265AFED00059756 /* pastelGreen.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 8B5B203E2265AFED00059756 /* pastelGreen.atlas */; };
 		8B81EFBC224344AD007BFDB0 /* yellow.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 8B81EFBB224344AD007BFDB0 /* yellow.atlas */; };
 		8BD816AF22422C6700586180 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD816AE22422C6700586180 /* Extensions.swift */; };
 		8BD816B3224262F100586180 /* AnalogJoystick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD816B2224262F100586180 /* AnalogJoystick.swift */; };
@@ -308,6 +315,13 @@
 		8B5B202B2264D86300059756 /* UI.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = UI.atlas; sourceTree = "<group>"; };
 		8B5B202D2264F92F00059756 /* Kitchenware.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Kitchenware.atlas; sourceTree = "<group>"; };
 		8B5B20302265AA5D00059756 /* blue.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = blue.atlas; sourceTree = "<group>"; };
+		8B5B20322265AF8B00059756 /* red.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = red.atlas; sourceTree = "<group>"; };
+		8B5B20342265AF9B00059756 /* green.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = green.atlas; sourceTree = "<group>"; };
+		8B5B20362265AFB600059756 /* orange.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = orange.atlas; sourceTree = "<group>"; };
+		8B5B20382265AFC300059756 /* angryRed.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = angryRed.atlas; sourceTree = "<group>"; };
+		8B5B203A2265AFD300059756 /* lightGreen.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = lightGreen.atlas; sourceTree = "<group>"; };
+		8B5B203C2265AFE000059756 /* pastelPink.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = pastelPink.atlas; sourceTree = "<group>"; };
+		8B5B203E2265AFED00059756 /* pastelGreen.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = pastelGreen.atlas; sourceTree = "<group>"; };
 		8B81EFBB224344AD007BFDB0 /* yellow.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = yellow.atlas; sourceTree = "<group>"; };
 		8BD816AE22422C6700586180 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		8BD816B2224262F100586180 /* AnalogJoystick.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalogJoystick.swift; sourceTree = "<group>"; };
@@ -634,6 +648,13 @@
 		8B5B202F2265A6F100059756 /* Slime */ = {
 			isa = PBXGroup;
 			children = (
+				8B5B203E2265AFED00059756 /* pastelGreen.atlas */,
+				8B5B203C2265AFE000059756 /* pastelPink.atlas */,
+				8B5B203A2265AFD300059756 /* lightGreen.atlas */,
+				8B5B20382265AFC300059756 /* angryRed.atlas */,
+				8B5B20362265AFB600059756 /* orange.atlas */,
+				8B5B20342265AF9B00059756 /* green.atlas */,
+				8B5B20322265AF8B00059756 /* red.atlas */,
 				8B5B20302265AA5D00059756 /* blue.atlas */,
 				8B81EFBB224344AD007BFDB0 /* yellow.atlas */,
 			);
@@ -1436,6 +1457,7 @@
 				ECBA67C52261C79F007042A8 /* StageSummaryView.xib in Resources */,
 				EC4924EB22461FEC007B9797 /* OrderBlob.xib in Resources */,
 				EC470899226456D300F3BC19 /* oven-ding.mp3 in Resources */,
+				8B5B20352265AF9B00059756 /* green.atlas in Resources */,
 				EC38246C223A1803000D7148 /* Rubik-BoldItalic.ttf in Resources */,
 				EC449B87223BA49D00A8EA35 /* LevelSelectView.xib in Resources */,
 				EC0E3163224F610300AF1254 /* CharacterCreationView.xib in Resources */,
@@ -1444,6 +1466,7 @@
 				8B5B202E2264F92F00059756 /* Kitchenware.atlas in Resources */,
 				F92ECADF224BADEC0040A4E2 /* GoogleService-Info.plist in Resources */,
 				EC47089B226456D300F3BC19 /* jump.mp3 in Resources */,
+				8B5B20392265AFC300059756 /* angryRed.atlas in Resources */,
 				EC449B90223BADBB00A8EA35 /* LevelDetailsBox.xib in Resources */,
 				ECD24420224AFFEB00767A56 /* SlimeNumberInputView.xib in Resources */,
 				EC449B77223B81FE00A8EA35 /* PlayScreenView.xib in Resources */,
@@ -1456,6 +1479,7 @@
 				EC4924F42248D616007B9797 /* RatingView.xib in Resources */,
 				EC38246B223A1803000D7148 /* Rubik-Regular.ttf in Resources */,
 				1D37DBC1225E6ED900E637C9 /* Ingredients.atlas in Resources */,
+				8B5B20372265AFB600059756 /* orange.atlas in Resources */,
 				ECD24428224B0A9300767A56 /* SlimeNumberPadView.xib in Resources */,
 				8B5B202C2264D86300059756 /* UI.atlas in Resources */,
 				EC449B75223B7E6300A8EA35 /* TitleScreenView.xib in Resources */,
@@ -1463,6 +1487,7 @@
 				EC449B8B223BACD500A8EA35 /* StoryModeLevelSelectView.xib in Resources */,
 				ECD45541223FA21E006AF78D /* Modal.xib in Resources */,
 				EC47089A226456D300F3BC19 /* kaching.mp3 in Resources */,
+				8B5B203F2265AFED00059756 /* pastelGreen.atlas in Resources */,
 				EC449B8E223BAD4400A8EA35 /* MapDot.xib in Resources */,
 				EC38246A223A1803000D7148 /* Rubik-Light.ttf in Resources */,
 				EC6E75522255CB9000B9C7CF /* CustomizationMainView.xib in Resources */,
@@ -1480,6 +1505,7 @@
 				8B5B20092264759200059756 /* SlicedIngredients.atlas in Resources */,
 				ECA66DC2223D5DD100D1D0BC /* CreditsScreenView.xib in Resources */,
 				EC38246E223A1803000D7148 /* Rubik-Italic.ttf in Resources */,
+				8B5B203D2265AFE000059756 /* pastelPink.atlas in Resources */,
 				EC7676BF225B52CE00F6A450 /* CustomizationCosmeticView.xib in Resources */,
 				EC470898226456D300F3BC19 /* oven-timer.mp3 in Resources */,
 				EC449B9B223BB9EA00A8EA35 /* SinglePlayerLevels.json in Resources */,
@@ -1501,8 +1527,10 @@
 				EC6E99F5224F2D1600A9554C /* ProgressBarView.xib in Resources */,
 				EC7168EB225DD571004EF2B0 /* bloop.mp3 in Resources */,
 				EC4708B22264B17C00F3BC19 /* trash.mp3 in Resources */,
+				8B5B203B2265AFD300059756 /* lightGreen.atlas in Resources */,
 				EC7168E7225DD3CF004EF2B0 /* joinroom.mp3 in Resources */,
 				8B5B2005226470C400059756 /* Recipes.atlas in Resources */,
+				8B5B20332265AF8C00059756 /* red.atlas in Resources */,
 				EC3824232238803A000D7148 /* Main.storyboard in Resources */,
 				EC6E99F2224F2BFE00A9554C /* UserInfoView.xib in Resources */,
 				EC38245F223A17F7000D7148 /* Squidgy Slimes.ttf in Resources */,
