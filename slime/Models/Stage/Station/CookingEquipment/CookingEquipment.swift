@@ -163,6 +163,7 @@ class CookingEquipment: Station {
             }
         } else {
             ingredient.ruin()
+            onEndProcessing()
         }
     }
 

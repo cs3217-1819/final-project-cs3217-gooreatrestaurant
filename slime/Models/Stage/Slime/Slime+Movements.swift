@@ -20,7 +20,8 @@ extension Slime {
 
         if physicsBody.velocity.dy == 0.0 {
             AudioMaster.instance.playSFX(name: "jump")
-            physicsBody.applyImpulse(CGVector(dx: 0.0, dy: StageConstants.jumpSpeed))
+            physicsBody.velocity.dy = 600
+            // physicsBody.applyImpulse(CGVector(dx: 0.0, dy: StageConstants.jumpSpeed))
         }
 
     }
