@@ -46,7 +46,6 @@ class NotificationPrefab: SKSpriteNode {
         
         switch type {
         case .warning:
-            print("hello")
             texture = SKTexture(imageNamed: "button-red")
             self.descriptionLabel?.fontColor = UIColor(red: 255, green: 255, blue: 255)
         case .info:
