@@ -23,6 +23,17 @@ class FryingEquipment: CookingEquipment {
         fatalError("init(coder:) has not been implemented")
     }
 
+    override func denyProcessing(ofItem item: Item?) {
+        guard let ingredient = item as? Ingredient else {
+            return false
+        }
+
+        if ingredient.type == .potato && !ingredient.processed.contains(.chopping) {
+            return true
+        }
+        return false
+    }
+
     override func automaticProcessing() {
         continueProcessing(withProgress: 100.0 / 40.0)
     }

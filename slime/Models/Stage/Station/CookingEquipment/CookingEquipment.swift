@@ -94,14 +94,16 @@ class CookingEquipment: Station {
         return toTake
     }
 
+    func denyProcessing(ofItem item: Item?) {
+        return false
+    }
+
     override func ableToInteract(withItem item: Item?) -> Bool {
-
         let willPut = (item is Ingredient && self.itemInside == nil)
-
         let willProcess = (item == nil && self.itemInside != nil)
         let willTakeIngredientToPlate = self.itemInside?.ableToInteract(withItem: item) ?? false
 
-        return willPut || willProcess || willTakeIngredientToPlate
+        return (willPut || willProcess || willTakeIngredientToPlate) && !denyProcessing(ofItem: item)
     }
 
     override func interact(withItem item: Item?) -> Item? {
