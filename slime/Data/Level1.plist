@@ -160,13 +160,13 @@
 					<key>type</key>
 					<string>apple</string>
 					<key>processing</key>
-					<string>baking</string>
+					<string>chopping,baking</string>
 				</dict>
 				<dict>
 					<key>type</key>
 					<string>apple</string>
 					<key>processing</key>
-					<string>baking</string>
+					<string>chopping,baking</string>
 				</dict>
 			</array>
 		</dict>
