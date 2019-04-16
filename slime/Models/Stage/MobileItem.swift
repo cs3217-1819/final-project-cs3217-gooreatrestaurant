@@ -17,10 +17,10 @@ class MobileItem: Item {
         setPhysicsBody()
 
         let timeValue = Date().timeIntervalSinceReferenceDate
-        let timeString = String(format: "%.5f", timeValue)
-        let user = GameAuth.currentUser?.uid ?? "someRandomString"
+        let timeString = Int(timeValue * 1000)
+        let uid = GameAuth.currentUser?.uid ?? "someRandomString"
 
-        self.id = name + "-" + user + "-" + timeString
+        self.id = "\(uid)-\(name)-\(timeString)"
 
         self.zPosition = StageConstants.mobileItemZPos
     }

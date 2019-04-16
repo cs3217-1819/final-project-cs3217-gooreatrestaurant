@@ -98,10 +98,12 @@ struct StageItemModel {
     var uid: String = ""
     var encodedData: String = ""
     var type: String = ""
+    var lastInteractedBy: String = ""
     
-    init(uid: String, encodedData: String, type: String) {
+    init(uid: String, encodedData: String, type: String, lastInteractedBy: String) {
         self.uid = uid
         self.encodedData = encodedData
         self.type = type
+        self.lastInteractedBy = lastInteractedBy
     }
 }
