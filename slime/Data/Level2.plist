@@ -11,107 +11,124 @@
 		<string>{-140,-80}</string>
 		<string>{-140,10}</string>
 		<string>{-140,100}</string>
-        <string>{-30,115}</string>
-        <string>{50,-260}</string>
-        <string>{50,-170}</string>
+		<string>{-30,115}</string>
+		<string>{50,-260}</string>
+		<string>{50,-170}</string>
 		<string>{160,-260}</string>
 		<string>{160,-170}</string>
 		<string>{160,-80}</string>
-        <string>{160,10}</string>
+		<string>{160,10}</string>
 	</array>
 	<key>blockedArea</key>
-	<array>
-	</array>
+	<array/>
 	<key>border</key>
 	<array>
 		<array>
-            <string>{-110,30}</string>
-            <string>{-110,60}</string>
-            <string>{5,60}</string>
-            <string>{5,170}</string>
-            <string>{110,170}</string>
-            <string>{110,295}</string>
-            <string>{-105,295}</string>
+			<string>{-110,30}</string>
+			<string>{-110,60}</string>
+			<string>{5,60}</string>
+			<string>{5,170}</string>
+			<string>{110,170}</string>
+			<string>{110,295}</string>
+			<string>{-105,295}</string>
 			<string>{-105,190}</string>
 			<string>{-315,190}</string>
 			<string>{-315,60}</string>
 			<string>{-185,60}</string>
-            <string>{-185,30}</string>
+			<string>{-185,30}</string>
 		</array>
 		<array>
 			<string>{-355,30}</string>
 			<string>{-355,-155}</string>
-            <string>{-185,-155}</string>
-            <string>{-185,-185}</string>
+			<string>{-185,-155}</string>
+			<string>{-185,-185}</string>
 		</array>
-        <array>
-            <string>{-285,-185}</string>
-            <string>{-285,-310}</string>
-            <string>{-110,-310}</string>
-            <string>{-110,-155}</string>
-            <string>{15,-155}</string>
-            <string>{15,-185}</string>
-        </array>
+		<array>
+			<string>{-285,-185}</string>
+			<string>{-285,-310}</string>
+			<string>{-110,-310}</string>
+			<string>{-110,-155}</string>
+			<string>{15,-155}</string>
+			<string>{15,-185}</string>
+		</array>
 		<array>
 			<string>{-90,-185}</string>
-            <string>{-90,-310}</string>
-            <string>{90,-310}</string>
-            <string>{90,-155}</string>
-            <string>{120,-155}</string>
-            <string>{120,-310}</string>
-            <string>{300,-310}</string>
-            <string>{300,-185}</string>
+			<string>{-90,-310}</string>
+			<string>{90,-310}</string>
+			<string>{90,-155}</string>
+			<string>{120,-155}</string>
+			<string>{120,-310}</string>
+			<string>{300,-310}</string>
+			<string>{300,-185}</string>
 		</array>
-        <array>
-            <string>{195,-185}</string>
-            <string>{195,-155}</string>
-            <string>{350,-155}</string>
-            <string>{350,35}</string>
-        </array>
-        <array>
-            <string>{195,35}</string>
-            <string>{195,45}</string>
-            <string>{300,45}</string>
-            <string>{300,160}</string>
-        </array>
-        <array>
-            <string>{80,160}</string>
-            <string>{80,45}</string>
-            <string>{115,45}</string>
-            <string>{115,35}</string>
-        </array>
+		<array>
+			<string>{195,-185}</string>
+			<string>{195,-155}</string>
+			<string>{350,-155}</string>
+			<string>{350,35}</string>
+		</array>
+		<array>
+			<string>{195,35}</string>
+			<string>{195,45}</string>
+			<string>{300,45}</string>
+			<string>{300,160}</string>
+		</array>
+		<array>
+			<string>{80,160}</string>
+			<string>{80,45}</string>
+			<string>{115,45}</string>
+			<string>{115,35}</string>
+		</array>
 	</array>
 	<key>choppingEquipment</key>
-	<array/>
+	<array>
+		<string>{-40,-280}</string>
+		<string>{240,70}</string>
+	</array>
 	<key>fryingEquipment</key>
-	<array/>
+	<array>
+		<string>{-50,-135}</string>
+	</array>
 	<key>oven</key>
 	<array/>
 	<key>ingredientStorage</key>
 	<array>
 		<dict>
 			<key>type</key>
-			<string>apple</string>
+			<string>lettuce</string>
 			<key>position</key>
-			<string>{-50, -287}</string>
+			<string>{-300, -130}</string>
 		</dict>
 		<dict>
 			<key>type</key>
-			<string>dough</string>
+			<string>potato</string>
 			<key>position</key>
-			<string>{50, 132}</string>
+			<string>{-270, 90}</string>
+		</dict>
+		<dict>
+			<key>type</key>
+			<string>carrot</string>
+			<key>position</key>
+			<string>{255, -280}</string>
 		</dict>
 	</array>
 	<key>plateStorage</key>
 	<array>
-		<string>{-30,-120}</string>
+		<string>{-225,-280}</string>
 	</array>
 	<key>storefront</key>
-	<string>{-280,20}</string>
+	<string>{50,195}</string>
 	<key>table</key>
-	<array/>
+	<array>
+		<string>{290,-128}</string>
+		<string>{220,-128}</string>
+		<string>{-80,90}</string>
+	</array>
 	<key>trashBin</key>
-	<array/>
+	<array>
+		<string>{105,-120}</string>
+		<string>{-230,-120}</string>
+	</array>
 	<key>possibleRecipes</key>
 	<array>
 		<dict>
