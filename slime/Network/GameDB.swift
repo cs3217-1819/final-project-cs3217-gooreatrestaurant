@@ -963,7 +963,10 @@ class GameDB: GameDatabase {
         }
 
         let scoreHandle = scoreRef.observe(.value, with: { (snap) in
-            guard let score = snap.value as? Int else { return }
+            guard let score = snap.value as? Int else {
+                onHostDisconnected()
+                return
+            }
             onScoreChange(score)
         }) { (err) in
             onError(err)
@@ -1015,10 +1018,7 @@ class GameDB: GameDatabase {
         }
 
         let endHandle = endRef.observe(.value, with: { (snap) in
-            guard let end = snap.value as? Bool else {
-                onHostDisconnected()
-                return
-            }
+            guard let end = snap.value as? Bool else { return }
             if end { onGameEnd() }
         }) { (err) in
             onError(err)
