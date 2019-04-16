@@ -38,7 +38,7 @@ class PrimaryButtonController: Controller {
         setupReactive()
     }
 
-    init(using view: XibView) {
+    init(usingXib view: XibView) {
         guard let button = view.contentView as? PrimaryButton else {
             fatalError("Content view is unavailable")
         }
@@ -70,6 +70,8 @@ class PrimaryButtonController: Controller {
                 guard let color = event.element else {
                     return
                 }
+                print(color)
+                print(self.button.buttonImage)
                 self.button.buttonImage.image = color.image
             }
             .disposed(by: disposeBag)

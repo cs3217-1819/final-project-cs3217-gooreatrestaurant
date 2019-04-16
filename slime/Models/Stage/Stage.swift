@@ -653,6 +653,7 @@ class Stage: SKScene {
 
     func gameOver(ifWon: Bool, withMessage: String? = nil) {
         cleanup()
+        AudioMaster.instance.playSFX(name: "gameover")
         let gameOverPrefab = GameOverPrefab(color: .clear, size: StageConstants.gameOverPrefabSize)
         if self.isMultiplayer { gameOverPrefab.setToMultiplayer() }
         gameOverPrefab.initializeButtons()
@@ -881,7 +882,7 @@ class Stage: SKScene {
     }()
     
     // Deallocate stuff, invalidate timers
-    func cleanup() {
+    private func cleanup() {
         orderQueue.newOrderTimer.invalidate()
         orderQueue.orderQueueInvalidated = true
     }

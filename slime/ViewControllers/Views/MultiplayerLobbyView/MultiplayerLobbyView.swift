@@ -15,4 +15,6 @@ class MultiplayerLobbyView: UIView {
     @IBOutlet var playerThreeView: XibView!
     @IBOutlet var playerFourView: XibView!
     @IBOutlet var startButton: XibView!
+    @IBOutlet var stagePreviewView: UIView!
+    @IBOutlet var stageChangeButton: XibView!
 }

@@ -33,7 +33,7 @@ class TitleScreenViewController: ViewController<TitleScreenView> {
     }
 
     private func setupButtons() {
-        let playButtonController = PrimaryButtonController(using: view.playButton)
+        let playButtonController = PrimaryButtonController(usingXib: view.playButton)
             .set(color: .green)
             .set(label: "Play")
         playButtonController.configure()
@@ -46,14 +46,14 @@ class TitleScreenViewController: ViewController<TitleScreenView> {
                 self.context.routeTo(.CharacterCreationScreen)
             }
         }
-        let settingsButtonController = PrimaryButtonController(using: view.settingsButton)
+        let settingsButtonController = PrimaryButtonController(usingXib: view.settingsButton)
             .set(color: .blue)
             .set(label: "Settings")
         settingsButtonController.configure()
         settingsButtonController.onTap {
             self.context.routeTo(.SettingsScreen)
         }
-        let creditsButtonController = PrimaryButtonController(using: view.creditsButton)
+        let creditsButtonController = PrimaryButtonController(usingXib: view.creditsButton)
             .set(color: .purple)
             .set(label: "Credits")
         creditsButtonController.configure()
@@ -78,7 +78,7 @@ class TitleScreenViewController: ViewController<TitleScreenView> {
                 self.context.db.rejoinGame(forGameId: gameId, { (room) in
                     self.setLoadingAlert(withDescription: "Teleporting slime agent...")
                     self.presentActiveAlert(dismissible: false)
-                    self.context.segueToMultiplayerGame(forRoom: room, level: Level(id: "mp-1-1", name: "Level1", fileName: "Level1", bestScore: 0))
+                    self.context.segueToMultiplayerGame(forRoom: room, level: Level(id: "mp-1-1", name: "Level1", fileName: "Level1", bestScore: 0, preview: "preview-level1"))
                 }, { (err) in
                     Logger.it.error("\(err)")
                 })

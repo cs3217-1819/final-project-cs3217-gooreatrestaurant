@@ -12,12 +12,14 @@ struct Level {
     var name: String
     var fileName: String
     var bestScore: Int
+    var preview: String
 
-    init(id: String, name: String, fileName: String, bestScore: Int) {
+    init(id: String, name: String, fileName: String, bestScore: Int, preview: String) {
         self.id = id
         self.name = name
         self.fileName = fileName
         self.bestScore = bestScore
+        self.preview = preview
     }
 }
 
@@ -25,6 +27,7 @@ struct SavedLevel: Codable {
     var id: String
     var name: String
     var fileName: String
+    var preview: String
 }
 
 struct LevelsProvider: Codable {
@@ -32,12 +35,28 @@ struct LevelsProvider: Codable {
 }
 
 class LevelsReader {
+    private static var multiplayerLevels: [Level]?
+    private static var singlePlayerLevels: [Level]?
     private init() {
         
     }
     
+    public static func getLevel(id: String) -> Level? {
+        let levels = LevelsReader.readMultiplayerLevels()
+        for level in levels {
+            if level.id == id {
+                return level
+            }
+        }
+        return nil
+    }
+    
     public static func readMultiplayerLevels() -> [Level] {
+        if let cachedLevels = LevelsReader.multiplayerLevels {
+            return cachedLevels
+        }
         guard let levelsProvider = LevelsReader.readLevelsData(fileName: "MultiplayerLevels") else {
+            Logger.it.info("Could not find any multiplayer levels")
             return []
         }
         
@@ -46,13 +65,18 @@ class LevelsReader {
             let level = Level(id: savedLevel.id,
                               name: savedLevel.name,
                               fileName: savedLevel.fileName,
-                              bestScore: 0)
+                              bestScore: 0,
+                              preview: savedLevel.preview)
             levels.append(level)
         }
+        LevelsReader.multiplayerLevels = levels
         return levels
     }
     
     public static func readSinglePlayerLevels() -> [Level] {
+        if let cachedLevels = LevelsReader.singlePlayerLevels {
+            return cachedLevels
+        }
         guard let levelsProvider = LevelsReader.readLevelsData(fileName: "SinglePlayerLevels") else {
             return []
         }
@@ -62,9 +86,11 @@ class LevelsReader {
             let level = Level(id: savedLevel.id,
                               name: savedLevel.name,
                               fileName: savedLevel.fileName,
-                              bestScore: LocalData.it.getBestScoreFor(level: savedLevel.id))
+                              bestScore: LocalData.it.getBestScoreFor(level: savedLevel.id),
+                              preview: savedLevel.preview)
             levels.append(level)
         }
+        LevelsReader.singlePlayerLevels = levels
         return levels
     }
     
