@@ -12,7 +12,7 @@ import SpriteKit
 class CookingEquipment: Station {
 
     // The cooking type of this equipment
-    let cookingType: CookingType
+    private let cookingType: CookingType
 
     // Timer that fire once in a while to automatically process the ingredients
     private var automaticProcessingTimer = Timer()
@@ -94,15 +94,9 @@ class CookingEquipment: Station {
         return toTake
     }
 
-    func ableToProcess(_ ingredient: Ingredient) -> Bool {
-        return ingredientsAllowed.contains(ingredient.type)
-    }
-
     override func ableToInteract(withItem item: Item?) -> Bool {
 
-        let willPut = (item is Ingredient &&
-                       self.itemInside == nil &&
-                       ableToProcess(item as? Ingredient ?? Ingredient(type: .junk)))
+        let willPut = (item is Ingredient && self.itemInside == nil)
 
         let willProcess = (item == nil && self.itemInside != nil)
         let willTakeIngredientToPlate = self.itemInside?.ableToInteract(withItem: item) ?? false
@@ -115,9 +109,7 @@ class CookingEquipment: Station {
             return nil
         }
 
-        let willPut = (item is Ingredient &&
-                       self.itemInside == nil &&
-                       ableToProcess(item as? Ingredient ?? Ingredient(type: .junk)))
+        let willPut = (item is Ingredient && self.itemInside == nil)
         let willProcess = (item == nil && self.itemInside != nil)
         let willTakeIngredientToPlate = (item is Plate && self.itemInside is Ingredient)
 
@@ -161,10 +153,14 @@ class CookingEquipment: Station {
         
         onProgressProcessing()
 
-        ingredient.cook(by: self.cookingType, withProgress: progress)
+        if ingredientsAllowed.contains(ingredient.type) {
+            ingredient.cook(by: self.cookingType, withProgress: progress)
 
-        if canTakeIngredient {
-            onEndProcessing()
+            if canTakeIngredient {
+                onEndProcessing()
+            }
+        } else {
+            ingredient.ruin()
         }
     }
 

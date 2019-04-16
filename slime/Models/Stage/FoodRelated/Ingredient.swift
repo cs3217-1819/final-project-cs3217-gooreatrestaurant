@@ -107,6 +107,11 @@ class Ingredient: MobileItem, Codable {
         }
     }
 
+    func ruin() {
+        self.type = .junk
+        self.processed = []
+    }
+
     override func ableToInteract(withItem item: Item?) -> Bool {
 
         let willTake = (item == nil)
