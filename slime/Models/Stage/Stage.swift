@@ -87,13 +87,13 @@ class Stage: SKScene {
         })
     }
     
-    func setupSinglePlayer() {
+    func setupSinglePlayer(player: Player) {
         guard let onlyUser = GameAuth.currentUser else {
             return
         }
-        // Level 1 here only placeholder TO DO
-        let onlyPlayer = Player(name: onlyUser.uid, level: 1)
-        self.addPlayer(onlyPlayer)
+        
+        player.name = onlyUser.uid
+        self.addPlayer(player)
     }
     
     func setupMultiplayer(forRoom room: RoomModel) {
@@ -109,7 +109,8 @@ class Stage: SKScene {
         for player in room.players {
             // sets isUserHost in current game instance
             if user.uid == player.uid { self.isUserHost = player.isHost }
-            let playerInGame = Player(name: player.uid, level: player.level)
+            let playerInGame = Player(from: player)
+            playerInGame.name = player.uid
             self.addPlayer(playerInGame)
         }
         

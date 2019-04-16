@@ -27,11 +27,19 @@ class Player: NSObject {
 
     init(from model: RoomPlayerModel) {
         name = model.name
-        level = 1
+        level = model.level
         isHost = model.isHost
-        hat = "none"
-        accessory = "none"
-        color = .yellow
+        hat = model.hat
+        accessory = model.accessory
+        color = SlimeColor(fromString: model.color)
+    }
+    
+    init(from character: UserCharacter) {
+        name = character.name
+        level = character.level
+        hat = character.hat
+        accessory = character.accessory
+        color = character.color
     }
     
 }

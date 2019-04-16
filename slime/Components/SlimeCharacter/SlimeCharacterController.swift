@@ -12,24 +12,54 @@ import RxSwift
 class SlimeCharacterController: Controller {
     private let disposeBag = DisposeBag()
     let view: SlimeCharacterView
-    private var character: Observable<UserCharacter>?
     
     init(withXib xibView: XibView) {
         view = xibView.getView()
     }
     
-    func bindTo(_ character: Observable<UserCharacter>) {
-        self.character = character
+    func bindTo(player: BehaviorSubject<Player?>) {
+        player.subscribe { event in
+            guard let optChar = event.element else {
+                return
+            }
+            guard let char = optChar else {
+                return
+            }
+            
+            self.configureForCharacter(player: char)
+        }.disposed(by: disposeBag)
+        
+        guard let unwrappedPlayer = try? player.value() else {
+            return
+        }
+        guard let truePlayer = unwrappedPlayer else {
+            return
+        }
+        configureForCharacter(player: truePlayer)
     }
     
-    func configure() {
-        character?.subscribe { event in
+    func bindTo(_ character: BehaviorSubject<UserCharacter>) {
+        character.subscribe { event in
             guard let char = event.element else {
                 return
             }
             
             self.configureForCharacter(char)
         }.disposed(by: disposeBag)
+        guard let unwrappedCharacter = try? character.value() else {
+            return
+        }
+        configureForCharacter(unwrappedCharacter)
+    }
+    
+    func configure() {
+        
+    }
+    
+    private func configureForCharacter(player: Player) {
+        configureColor(player.color)
+        configureHat(player.hat)
+        configureAccessory(player.accessory)
     }
     
     private func configureForCharacter(_ char: UserCharacter) {
