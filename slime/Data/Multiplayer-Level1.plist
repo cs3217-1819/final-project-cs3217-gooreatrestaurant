@@ -39,6 +39,8 @@
 	<key>border</key>
 	<array>
 		<array>
+            <string>{-105,30}</string>
+            <string>{-105,60}</string>
 			<string>{5,60}</string>
 			<string>{5,170}</string>
 			<string>{110,170}</string>
