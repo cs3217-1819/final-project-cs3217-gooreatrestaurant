@@ -16,7 +16,8 @@ class TextStyles {
         "h1": 28,
         "h2": 22,
         "h3": 20,
-        "hsub": 16
+        "hsub": 16,
+        "htiny": 10
     ]
     static let textStyles: [String: CGFloat] = [
         "p0": 22,

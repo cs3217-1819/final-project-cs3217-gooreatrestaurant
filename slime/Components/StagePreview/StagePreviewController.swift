@@ -23,6 +23,9 @@ class StagePreviewController: Controller {
     init(with view: UIView) {
         self.view = view
         
+        view.clipsToBounds = true
+        view.layer.cornerRadius = 8
+        
         backgroundView = UIView(frame: view.bounds.scaleY(by: 2))
         backgroundImageView = UIImageView(frame: backgroundView.bounds)
         backgroundImageView.contentMode = .scaleAspectFill

@@ -28,6 +28,8 @@ class LevelPlaceController: Controller {
             fatalError("Nib class is wrong")
         }
         view = trueView
+        view.frame.size = CGSize(width: 400, height: 200)
+        
         self.parent = parent
         self.level = level
         self.index = index

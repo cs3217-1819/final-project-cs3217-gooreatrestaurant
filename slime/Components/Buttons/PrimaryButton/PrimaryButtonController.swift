@@ -59,6 +59,11 @@ class PrimaryButtonController: Controller {
         self.label.onNext(label)
         return self
     }
+    
+    func set(style: String) -> PrimaryButtonController {
+        self.button.label.style = style
+        return self
+    }
 
     func onTap(_ callback: @escaping () -> Void) {
         buttonController.onTap(callback)
@@ -79,7 +84,11 @@ class PrimaryButtonController: Controller {
                     return
                 }
                 self.button.label.text = text
+                // Needed to retain strokewidth
                 self.button.label.strokeWidth = self.button.label.strokeWidth
+//                if let fontSize = self.size {
+//                    self.button.label.font = self.button.label.font.withSize(CGFloat(fontSize))
+//                }
             }.disposed(by: disposeBag)
     }
 }

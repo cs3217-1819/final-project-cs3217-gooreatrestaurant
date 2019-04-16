@@ -17,21 +17,22 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hDv-Sz-h8K" customClass="DesignableView" customModule="slime" customModuleProvider="target">
-                    <rect key="frame" x="72" y="36" width="250" height="303"/>
+                    <rect key="frame" x="72" y="36" width="284" height="303"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mp-host" translatesAutoresizingMaskIntoConstraints="NO" id="ivA-aL-AGh">
-                            <rect key="frame" x="16" y="16" width="218" height="200"/>
+                            <rect key="frame" x="16" y="16" width="252" height="200"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="200" id="KSw-Oc-qUU"/>
                             </constraints>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Host Room" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wou-GN-Kmo" customClass="TextLabel" customModule="slime" customModuleProvider="target">
-                            <rect key="frame" x="16" y="232" width="218" height="55"/>
+                            <rect key="frame" x="16" y="232" width="252" height="55"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="string" keyPath="style" value="h0"/>
+                                <userDefinedRuntimeAttribute type="string" keyPath="color" value="pink1"/>
                             </userDefinedRuntimeAttributes>
                         </label>
                     </subviews>
@@ -43,7 +44,6 @@
                         <constraint firstItem="Wou-GN-Kmo" firstAttribute="leading" secondItem="hDv-Sz-h8K" secondAttribute="leading" constant="16" id="Tl0-Uh-0NC"/>
                         <constraint firstAttribute="trailing" secondItem="ivA-aL-AGh" secondAttribute="trailing" constant="16" id="kO6-wg-vSU"/>
                         <constraint firstItem="ivA-aL-AGh" firstAttribute="leading" secondItem="hDv-Sz-h8K" secondAttribute="leading" constant="16" id="koG-vJ-2XB"/>
-                        <constraint firstAttribute="width" constant="250" id="vQF-T0-UzS"/>
                         <constraint firstAttribute="bottom" secondItem="Wou-GN-Kmo" secondAttribute="bottom" constant="16" id="wsT-SG-zhi"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
@@ -52,30 +52,29 @@
                     </userDefinedRuntimeAttributes>
                 </view>
                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IRH-9i-3FU" customClass="DesignableView" customModule="slime" customModuleProvider="target">
-                    <rect key="frame" x="490" y="36" width="250" height="303"/>
+                    <rect key="frame" x="456" y="36" width="284" height="303"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mp-join" translatesAutoresizingMaskIntoConstraints="NO" id="OWx-CI-PCU">
-                            <rect key="frame" x="16" y="16" width="218" height="200"/>
+                            <rect key="frame" x="16" y="16" width="252" height="200"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="200" id="pK8-6F-4ca"/>
                             </constraints>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Join Room" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="03o-Qx-jCQ" customClass="TextLabel" customModule="slime" customModuleProvider="target">
-                            <rect key="frame" x="16" y="232" width="218" height="55"/>
+                            <rect key="frame" x="16" y="232" width="252" height="55"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="string" keyPath="style" value="h0"/>
+                                <userDefinedRuntimeAttribute type="string" keyPath="color" value="green1"/>
                             </userDefinedRuntimeAttributes>
                         </label>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="250" id="0cO-vQ-riz"/>
                         <constraint firstItem="OWx-CI-PCU" firstAttribute="leading" secondItem="IRH-9i-3FU" secondAttribute="leading" constant="16" id="1AQ-tY-6XH"/>
                         <constraint firstItem="OWx-CI-PCU" firstAttribute="top" secondItem="IRH-9i-3FU" secondAttribute="top" constant="16" id="Dtf-Se-anz"/>
-                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="Qtr-Gq-6pn"/>
                         <constraint firstAttribute="trailing" secondItem="03o-Qx-jCQ" secondAttribute="trailing" constant="16" id="USy-ut-mu4"/>
                         <constraint firstItem="03o-Qx-jCQ" firstAttribute="leading" secondItem="IRH-9i-3FU" secondAttribute="leading" constant="16" id="hKR-dH-lXx"/>
                         <constraint firstAttribute="trailing" secondItem="OWx-CI-PCU" secondAttribute="trailing" constant="16" id="m5C-oV-mi7"/>
@@ -91,8 +90,10 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="IRH-9i-3FU" secondAttribute="trailing" constant="72" id="2iv-dn-4xR"/>
+                <constraint firstItem="IRH-9i-3FU" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.35" id="33Y-Oa-Xth"/>
                 <constraint firstItem="IRH-9i-3FU" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="36" id="AjX-Mo-pWy"/>
                 <constraint firstItem="hDv-Sz-h8K" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="36" id="CFx-uI-KkZ"/>
+                <constraint firstItem="hDv-Sz-h8K" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.35" id="YF5-ic-OQ7"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="hDv-Sz-h8K" secondAttribute="bottom" constant="36" id="dnq-qA-dWi"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="IRH-9i-3FU" secondAttribute="bottom" constant="36" id="lPq-en-JQ9"/>
                 <constraint firstItem="hDv-Sz-h8K" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="72" id="uID-A1-0gG"/>
@@ -103,6 +104,7 @@
                 <outlet property="hostRoomButton" destination="hDv-Sz-h8K" id="RUJ-Dm-sVj"/>
                 <outlet property="joinRoomButton" destination="IRH-9i-3FU" id="mMn-lZ-whH"/>
             </connections>
+            <point key="canvasLocation" x="137.59999999999999" y="151.57421289355324"/>
         </view>
     </objects>
     <resources>

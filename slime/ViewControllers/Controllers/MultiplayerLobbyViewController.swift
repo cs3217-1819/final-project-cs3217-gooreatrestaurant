@@ -47,13 +47,31 @@ class MultiplayerLobbyViewController: ViewController<MultiplayerLobbyView> {
         stagePreviewControl.configure()
     }
     
+    private func showStartButton() {
+        view.startButton.alpha = 1
+        view.startButton.isUserInteractionEnabled = true
+    }
+    
+    private func hideStartButton() {
+        view.startButton.alpha = 0
+        view.startButton.isUserInteractionEnabled = false
+    }
+    
+    private func hideChangeMapButton() {
+        view.stageChangeButton.alpha = 0
+    }
+    
     private func setupChangeMapButton() {
         let buttonController = PrimaryButtonController(usingXib: view.stageChangeButton)
             .set(label: "Change")
-            .set(color: .green)
+            .set(color: .purple)
+            .set(style: "hsub")
         
         buttonController.configure()
         buttonController.onTap {
+            guard self.isHost() else {
+                return
+            }
             let modalView = UIView.initFromNib("StageSelectModal") as! StageSelectModal
             modalView.snp.makeConstraints { make in
                 make.width.equalTo(450)
@@ -80,7 +98,7 @@ class MultiplayerLobbyViewController: ViewController<MultiplayerLobbyView> {
         guard let level = LevelsReader.getLevel(id: id) else {
             return
         }
-        // print("trying to read id: \(id) - preview: \(level.preview)")
+        
         stagePreviewController?.setStageName(name: level.preview)
     }
 
@@ -111,6 +129,10 @@ class MultiplayerLobbyViewController: ViewController<MultiplayerLobbyView> {
             self.setupRoomDetails(forRoom: room)
             if self.isHost() {
                 self.setupChangeMapButton()
+                self.showStartButton()
+            } else {
+                self.hideChangeMapButton()
+                self.hideStartButton()
             }
 
             if room.gameIsCreated {
@@ -152,7 +174,6 @@ class MultiplayerLobbyViewController: ViewController<MultiplayerLobbyView> {
         let controller = PrimaryButtonController(usingXib: view.startButton)
             .set(label: "Start")
             .set(color: .green)
-        
         controller.onTap {
             self.startGame()
         }

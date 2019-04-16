@@ -21,7 +21,7 @@
                     <color key="backgroundColor" name="selectedControlColor" catalog="System" colorSpace="catalog"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="rounded" value="YES"/>
-                        <userDefinedRuntimeAttribute type="string" keyPath="background" value="pink5"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="background" value="pink6"/>
                     </userDefinedRuntimeAttributes>
                 </view>
             </subviews>
