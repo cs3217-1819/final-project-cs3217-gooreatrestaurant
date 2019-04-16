@@ -49,10 +49,10 @@
                             <rect key="frame" x="8" y="56" width="286" height="69"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xNs-hy-aKp">
-                                    <rect key="frame" x="0.0" y="0.0" width="135" height="69"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="286" height="69"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Best Score" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9SF-yX-66G" customClass="TextLabel" customModule="slime" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="135" height="16"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="286" height="20.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -62,7 +62,7 @@
                                             </userDefinedRuntimeAttributes>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yev-62-VKF" customClass="TextLabel" customModule="slime" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="16" width="135" height="21.5"/>
+                                            <rect key="frame" x="0.0" y="20.5" width="286" height="20.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -79,24 +79,6 @@
                                         <constraint firstAttribute="trailing" secondItem="9SF-yX-66G" secondAttribute="trailing" id="Zrt-gf-9p7"/>
                                         <constraint firstItem="9SF-yX-66G" firstAttribute="leading" secondItem="xNs-hy-aKp" secondAttribute="leading" id="ll4-5Y-Rga"/>
                                         <constraint firstItem="Yev-62-VKF" firstAttribute="top" secondItem="9SF-yX-66G" secondAttribute="bottom" id="uqe-Lz-blb"/>
-                                    </constraints>
-                                </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fey-Em-mCu">
-                                    <rect key="frame" x="151" y="0.0" width="135" height="69"/>
-                                    <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wm9-6K-Oov" customClass="XibView" customModule="slime" customModuleProvider="target">
-                                            <rect key="frame" x="8" y="26.5" width="119" height="34.5"/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="string" keyPath="nibName" value="RatingView"/>
-                                            </userDefinedRuntimeAttributes>
-                                        </view>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="Wm9-6K-Oov" secondAttribute="trailing" constant="8" id="Fnn-jI-HXn"/>
-                                        <constraint firstAttribute="bottom" secondItem="Wm9-6K-Oov" secondAttribute="bottom" constant="8" id="SZj-t5-8HH"/>
-                                        <constraint firstItem="Wm9-6K-Oov" firstAttribute="leading" secondItem="fey-Em-mCu" secondAttribute="leading" constant="8" id="X0H-4c-1yw"/>
-                                        <constraint firstItem="Wm9-6K-Oov" firstAttribute="height" secondItem="fey-Em-mCu" secondAttribute="height" multiplier="0.5" id="iE9-dT-pWN"/>
                                     </constraints>
                                 </view>
                             </subviews>
@@ -133,7 +115,6 @@
                 <outlet property="bestScore" destination="Yev-62-VKF" id="1mX-gB-ArI"/>
                 <outlet property="levelId" destination="mff-ps-jFR" id="wlL-yW-siH"/>
                 <outlet property="levelName" destination="z0E-kD-p8u" id="amU-8m-R0y"/>
-                <outlet property="ratingView" destination="Wm9-6K-Oov" id="eNG-gm-JIp"/>
             </connections>
             <point key="canvasLocation" x="81.599999999999994" y="61.619190404797607"/>
         </view>

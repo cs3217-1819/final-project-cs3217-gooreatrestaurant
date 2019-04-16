@@ -193,7 +193,6 @@ class Slime: SKSpriteNode {
                 hatNode.position = StageConstants.hatOffset
                 hatNode.size = StageConstants.hatSize
                 hatNode.zRotation = -StageConstants.hatRotation
-                
                 hatNode.run(SKAction.repeatForever(generateFrames(size: StageConstants.hatSize)))
                 self.addChild(hatNode)
             }
@@ -206,8 +205,9 @@ class Slime: SKSpriteNode {
                 accessoryNode.size = StageConstants.accessorySize
                 accessoryNode.position = StageConstants.accessoryOffset
                 accessoryNode.zRotation = StageConstants.accessoryRotation
-                
                 accessoryNode.run(SKAction.repeatForever(generateFrames(size: StageConstants.accessorySize)))
+                
+                print(accessoryNode)
                 self.addChild(accessoryNode)
             }
         }
