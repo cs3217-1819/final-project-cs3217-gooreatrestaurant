@@ -95,15 +95,15 @@ class StageConstants {
     static let spaceshipZPos = CGFloat(0)
     static let ladderZPos = CGFloat(1)
     static let stationZPos = CGFloat(2)
-    static let mobileItemZPos = CGFloat(3)
+    static let mobileItemZPos = CGFloat(3) // possibly +orderZPos or +stationZPos
     static let joystickZPos = CGFloat(4)
     static let buttonZPos = CGFloat(4)
     static let slimeZPos = CGFloat(5)
-    static let blackBGZPos = CGFloat(8)
+    static let blackBGOpeningZPos = CGFloat(8)
     static let orderZPos = CGFloat(9)
-    static let countdownLabelZPos = CGFloat(10)
-    static let scoreLabelZPos = CGFloat(10)
-    static let readyNodeZPos = CGFloat(10)
+    static let countdownLabelZPos = CGFloat(20)
+    static let scoreLabelZPos = CGFloat(20)
+    static let readyNodeZPos = CGFloat(20)
 
     // gameplay related
     static let defaultOptionalProbability = 0.5
