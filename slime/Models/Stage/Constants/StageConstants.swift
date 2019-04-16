@@ -18,7 +18,7 @@ class StageConstants {
     static let maxYAxisUnits = ScreenSize.height
 
     static let speedMultiplier = CGFloat(4.5)
-    static let jumpSpeed = 25.0
+    static let jumpSpeed = 35.0
     
     // multiplayer stuff
     static let streamingInterval = 0.1 // in seconds
@@ -121,7 +121,7 @@ class StageConstants {
     static let greenBarPositionOQ = CGPoint(x: -15, y: -15)
     static let greenBarSizeOQ = CGSize(width: 30, height: 30)
     static let timerInterval = 1.0
-    static let cookingTimerInterval = 1.0 / 20.0
+    static let cookingTimerInterval = 0.05
 
     // general constant
     static let notFound = Int.min

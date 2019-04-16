@@ -47,8 +47,9 @@ class FryingEquipment: CookingEquipment {
         return false
     }
 
+    // 20 per seconds
     override func automaticProcessing() {
-        continueProcessing(withProgress: 100.0 / 40.0)
+        continueProcessing(withProgress: 100.0 / 80.0)
     }
 
     override func manualProcessing() {
