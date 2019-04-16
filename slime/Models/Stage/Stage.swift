@@ -885,6 +885,7 @@ class Stage: SKScene {
     
     // Deallocate stuff, invalidate timers
     private func cleanup() {
+        print("cleaning up")
         orderQueue.newOrderTimer.invalidate()
         orderQueue.orderQueueInvalidated = true
     }
