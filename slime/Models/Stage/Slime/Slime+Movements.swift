@@ -23,9 +23,9 @@ extension Slime {
             AudioMaster.instance.playSFX(name: "jump")
             let waitAction = SKAction.wait(forDuration: 0.1)
             let jumpAction = SKAction.run {
-                self.physicsBody?.velocity.dy = 450.0
+                self.physicsBody?.velocity.dy = StageConstants.jumpSpeed
             }
-            jumpAction.duration = 0.5
+            jumpAction.duration = StageConstants.jumpDuration
             let sequence = SKAction.sequence([waitAction, jumpAction])
             self.run(sequence)
         }

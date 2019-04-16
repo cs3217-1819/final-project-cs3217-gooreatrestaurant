@@ -18,7 +18,8 @@ class StageConstants {
     static let maxYAxisUnits = ScreenSize.height
 
     static let speedMultiplier: CGFloat = 6.0
-    static let jumpSpeed: CGFloat = 25
+    static let jumpSpeed: CGFloat = 450.0
+    static let jumpDuration: CGFloat = 0.5
     
     // multiplayer stuff
     static let streamingInterval = 0.1 // in seconds
