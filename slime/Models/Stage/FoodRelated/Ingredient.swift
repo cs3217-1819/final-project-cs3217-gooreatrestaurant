@@ -110,6 +110,10 @@ class Ingredient: MobileItem, Codable {
     func ruin() {
         self.type = .junk
         self.processed = []
+
+        // temporary, will change with junk image
+        self.texture = nil
+        self.color = .black
     }
 
     override func ableToInteract(withItem item: Item?) -> Bool {
