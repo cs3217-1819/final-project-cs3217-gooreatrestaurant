@@ -42,18 +42,35 @@
             <string>{-185,30}</string>
 		</array>
 		<array>
-			<string>{-70,-145}</string>
-			<string>{48,-145}</string>
-			<string>{48,-94}</string>
-			<string>{310,-94}</string>
-			<string>{310,100}</string>
+			<string>{-355,30}</string>
+			<string>{-355,-155}</string>
+            <string>{-185,-155}</string>
+            <string>{-185,-185}</string>
 		</array>
+        <array>
+            <string>{-285,-185}</string>
+            <string>{-285,-310}</string>
+            <string>{-110,-310}</string>
+            <string>{-110,-155}</string>
+            <string>{15,-155}</string>
+            <string>{15,-185}</string>
+        </array>
 		<array>
-			<string>{210,90}</string>
-			<string>{210,195}</string>
-			<string>{170,195}</string>
-			<string>{170,250}</string>
+			<string>{-90,-185}</string>
+            <string>{-90,-310}</string>
+            <string>{90,-310}</string>
+            <string>{90,-155}</string>
+            <string>{120,-155}</string>
+            <string>{120,-310}</string>
+            <string>{300,-310}</string>
+            <string>{300,-185}</string>
 		</array>
+        <array>
+            <string>{190,-185}</string>
+            <string>{190,-155}</string>
+            <string>{350,-155}</string>
+            <string>{350,100}</string>
+        </array>
 	</array>
 	<key>choppingEquipment</key>
 	<array/>
