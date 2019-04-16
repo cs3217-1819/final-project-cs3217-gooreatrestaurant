@@ -40,7 +40,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SMy-YL-xoX" customClass="DesignableView" customModule="slime" customModuleProvider="target">
                     <rect key="frame" x="260" y="190" width="80" height="80"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SlicedApple" translatesAutoresizingMaskIntoConstraints="NO" id="jon-sh-bd5">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Trashbin.png" translatesAutoresizingMaskIntoConstraints="NO" id="jon-sh-bd5">
                             <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                         </imageView>
                     </subviews>
@@ -82,7 +82,7 @@
         </view>
     </objects>
     <resources>
-        <image name="SlicedApple" width="1280" height="720"/>
+        <image name="Trashbin.png" width="512" height="512"/>
         <image name="crown" width="409.60000610351562" height="409.60000610351562"/>
         <image name="slime-blue" width="1024" height="1024"/>
     </resources>

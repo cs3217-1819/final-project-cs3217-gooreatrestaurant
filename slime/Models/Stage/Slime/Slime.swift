@@ -149,7 +149,6 @@ class Slime: SKSpriteNode {
         guard let color = self.player?.color else {
             fatalError("Player Color is not set in Slime!")
         }
-        print(color.toString())
 
         let slimeAnimatedAtlas = SKTextureAtlas(named: color.toAtlasName())
         var walkFrames: [SKTexture] = []
@@ -184,13 +183,18 @@ class Slime: SKSpriteNode {
                              resize: false,
                              restore: true)),
                  withKey: "walkingInPlaceSlime")
-
-
+        
+        
+        
         let hatNode = SKSpriteNode.init()
         if let hat = CosmeticConstants.hatsDict[player!.hat] {
             if (hat.image != nil) {
                 hatNode.texture = SKTexture(image: hat.image!)
-                hatNode.size = CGSize(width: 10, height: 10)
+                hatNode.position = StageConstants.hatOffset
+                hatNode.size = StageConstants.hatSize
+                hatNode.zRotation = -StageConstants.hatRotation
+                
+                hatNode.run(SKAction.repeatForever(generateFrames(size: StageConstants.hatSize)))
                 self.addChild(hatNode)
             }
         }
@@ -199,9 +203,22 @@ class Slime: SKSpriteNode {
         if let accessory = CosmeticConstants.accessoriesDict[player!.accessory] {
             if (accessory.image != nil) {
                 accessoryNode.texture = SKTexture(image: accessory.image!)
-                accessoryNode.size = CGSize(width: 10, height: 10)
+                accessoryNode.size = StageConstants.accessorySize
+                accessoryNode.position = StageConstants.accessoryOffset
+                accessoryNode.zRotation = StageConstants.accessoryRotation
+                
+                accessoryNode.run(SKAction.repeatForever(generateFrames(size: StageConstants.accessorySize)))
                 self.addChild(accessoryNode)
             }
         }
+    }
+    
+    private func generateFrames(size: CGSize) -> SKAction {
+        let nextFrame = SKAction.move(by: CGVector(dx: 0, dy: size.height * 0.2), duration: 0.2)
+        let backToFrame = SKAction.move(by: CGVector(dx: 0, dy: size.height * -0.2), duration: 0.2)
+        let idleFrame = SKAction.wait(forDuration: 0.2)
+        let frames = SKAction.sequence([idleFrame, nextFrame, backToFrame])
+        
+        return frames
     }
 }

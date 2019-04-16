@@ -40,6 +40,20 @@ class StageConstants {
 
     // elements size
     static let slimeSize = CGSize(width: 50, height: 50)
+    static var hatSize: CGSize {
+        return CGSize(width: slimeSize.width * 0.3, height: slimeSize.height * 0.3)
+    }
+    static var accessorySize: CGSize {
+        return CGSize(width: slimeSize.width * 0.2, height: slimeSize.height * 0.2)
+    }
+    static var hatOffset: CGPoint {
+        return CGPoint(x: 0.175 * slimeSize.width, y: 0.25 * slimeSize.height)
+    }
+    static var accessoryOffset: CGPoint {
+        return CGPoint(x: 0.25 * slimeSize.width, y: -0.05 * slimeSize.height)
+    }
+    static let hatRotation: CGFloat = 0.35
+    static let accessoryRotation: CGFloat = 0.5
     static let plateSize = CGSize(width: 60, height: 60)
     static let ingredientSize = CGSize(width: 50, height: 50)
     static let cookerSize = CGSize(width: 80, height: 80)
