@@ -27,6 +27,8 @@ class Spaceship: SKSpriteNode {
             texture = SpaceshipAtlas.textureNamed("Area-1")
         case "Level2":
             texture = SpaceshipAtlas.textureNamed("Area-2")
+        case "Multiplayer-Level1":
+            texture = SpaceshipAtlas.textureNamed("MP-Area-1")
         default:
             texture = SpaceshipAtlas.textureNamed("Area-1")
         }
@@ -149,6 +151,8 @@ class Spaceship: SKSpriteNode {
             texture = SpaceshipAtlas.textureNamed("Spaceship-1")
         case "Level2":
             texture = SpaceshipAtlas.textureNamed("Spaceship-2")
+        case "Multiplayer-Level1":
+            texture = SpaceshipAtlas.textureNamed("MP-Spaceship-1")
         default:
             texture = SpaceshipAtlas.textureNamed("Spaceship-1")
         }
