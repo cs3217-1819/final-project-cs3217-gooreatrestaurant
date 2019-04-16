@@ -33,6 +33,7 @@
 		1DE6FC65224D1D3900B36F48 /* Oven.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE6FC64224D1D3900B36F48 /* Oven.swift */; };
 		1DE6FC67224D1E3C00B36F48 /* FryingEquipment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE6FC66224D1E3C00B36F48 /* FryingEquipment.swift */; };
 		1DE6FC6B224D26A200B36F48 /* Trash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE6FC6A224D26A200B36F48 /* Trash.swift */; };
+		1DFB382D2265D7AD00F9995D /* trash.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1DFB382C2265D7AD00F9995D /* trash.mp3 */; };
 		3F1EE6CE45AA94FFF3DA1410 /* Pods_slimeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD598D8D4712AAF7695D5C8 /* Pods_slimeTests.framework */; };
 		84A297CC3884A9F329049AA5 /* Pods_slime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80487C6681A5E05D3D2137F7 /* Pods_slime.framework */; };
 		8B5B2005226470C400059756 /* Recipes.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 8B5B2004226470C400059756 /* Recipes.atlas */; };
@@ -255,7 +256,6 @@
 		ECF75F02224B17CA00537237 /* JoinRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF75F01224B17CA00537237 /* JoinRoomView.swift */; };
 		ECF75F04224B182400537237 /* JoinRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF75F03224B182400537237 /* JoinRoomViewController.swift */; };
 		ECF9876A2255C61700FE5577 /* CharacterCustomizationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECF987692255C61700FE5577 /* CharacterCustomizationView.xib */; };
-		ECFF2B6C22659B2D003DEAED /* trash.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = ECFF2B6B22659B2D003DEAED /* trash.mp3 */; };
 		ECFF2B732265A726003DEAED /* StagePreviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFF2B722265A726003DEAED /* StagePreviewController.swift */; };
 		ECFF2B762265B2B1003DEAED /* StageSelectorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECFF2B752265B2B1003DEAED /* StageSelectorView.xib */; };
 		ECFF2B782265B2BE003DEAED /* StageSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFF2B772265B2BE003DEAED /* StageSelectorView.swift */; };
@@ -310,6 +310,7 @@
 		1DE6FC64224D1D3900B36F48 /* Oven.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Oven.swift; sourceTree = "<group>"; };
 		1DE6FC66224D1E3C00B36F48 /* FryingEquipment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FryingEquipment.swift; sourceTree = "<group>"; };
 		1DE6FC6A224D26A200B36F48 /* Trash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trash.swift; sourceTree = "<group>"; };
+		1DFB382C2265D7AD00F9995D /* trash.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = trash.mp3; sourceTree = "<group>"; };
 		27C55F5E048F3C41A00644D4 /* Pods-slime.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-slime.debug.xcconfig"; path = "Pods/Target Support Files/Pods-slime/Pods-slime.debug.xcconfig"; sourceTree = "<group>"; };
 		5796C4DA33A739F68A11DCC5 /* Pods-slime.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-slime.release.xcconfig"; path = "Pods/Target Support Files/Pods-slime/Pods-slime.release.xcconfig"; sourceTree = "<group>"; };
 		773A5B5FFC68C9B4D85E485C /* Pods-slimeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-slimeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-slimeTests/Pods-slimeTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -540,7 +541,6 @@
 		ECF75F01224B17CA00537237 /* JoinRoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinRoomView.swift; sourceTree = "<group>"; };
 		ECF75F03224B182400537237 /* JoinRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinRoomViewController.swift; sourceTree = "<group>"; };
 		ECF987692255C61700FE5577 /* CharacterCustomizationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CharacterCustomizationView.xib; sourceTree = "<group>"; };
-		ECFF2B6B22659B2D003DEAED /* trash.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = trash.mp3; path = ../../../../../../../../Downloads/trash.mp3; sourceTree = "<group>"; };
 		ECFF2B722265A726003DEAED /* StagePreviewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StagePreviewController.swift; sourceTree = "<group>"; };
 		ECFF2B752265B2B1003DEAED /* StageSelectorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StageSelectorView.xib; sourceTree = "<group>"; };
 		ECFF2B772265B2BE003DEAED /* StageSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageSelectorView.swift; sourceTree = "<group>"; };
@@ -1136,6 +1136,7 @@
 		EC7168D5225DD286004EF2B0 /* SFX */ = {
 			isa = PBXGroup;
 			children = (
+				1DFB382C2265D7AD00F9995D /* trash.mp3 */,
 				EC470897226456D300F3BC19 /* chop.mp3 */,
 				EC470896226456D300F3BC19 /* jump.mp3 */,
 				EC470895226456D300F3BC19 /* kaching.mp3 */,
@@ -1150,7 +1151,6 @@
 				EC7168DE225DD3CE004EF2B0 /* gameover.mp3 */,
 				EC7168E1225DD3CE004EF2B0 /* joinroom.mp3 */,
 				EC7168E2225DD3CF004EF2B0 /* leftroom.mp3 */,
-				ECFF2B6B22659B2D003DEAED /* trash.mp3 */,
 				EC7168EA225DD571004EF2B0 /* bloop.mp3 */,
 				EC7168E0225DD3CE004EF2B0 /* success.mp3 */,
 			);
@@ -1515,7 +1515,6 @@
 				8BEDCD392247F10100E24A20 /* Level1.plist in Resources */,
 				EC1331A6226046B500EA382C /* TutorialScreenView.xib in Resources */,
 				EC0E31732252076600AF1254 /* ItemSelectorView.xib in Resources */,
-				ECFF2B6C22659B2D003DEAED /* trash.mp3 in Resources */,
 				EC21B4052242155600827121 /* LoadingScreenView.xib in Resources */,
 				ECD4555C2240F1FB006AF78D /* MultiplayerScreenView.xib in Resources */,
 				ECD4554D2240B0AF006AF78D /* Alert.xib in Resources */,
@@ -1529,6 +1528,7 @@
 				EC21B40022420CA700827121 /* LevelPlayButton.xib in Resources */,
 				EC449B8B223BACD500A8EA35 /* StoryModeLevelSelectView.xib in Resources */,
 				ECD45541223FA21E006AF78D /* Modal.xib in Resources */,
+				1DFB382D2265D7AD00F9995D /* trash.mp3 in Resources */,
 				EC47089A226456D300F3BC19 /* kaching.mp3 in Resources */,
 				8B5B203F2265AFED00059756 /* pastelGreen.atlas in Resources */,
 				EC449B8E223BAD4400A8EA35 /* MapDot.xib in Resources */,
@@ -1570,7 +1570,6 @@
 				EC7168E7225DD3CF004EF2B0 /* joinroom.mp3 in Resources */,
 				EC6E99F5224F2D1600A9554C /* ProgressBarView.xib in Resources */,
 				EC7168EB225DD571004EF2B0 /* bloop.mp3 in Resources */,
-				EC4708B22264B17C00F3BC19 /* trash.mp3 in Resources */,
 				8B5B203B2265AFD300059756 /* lightGreen.atlas in Resources */,
 				EC7168E7225DD3CF004EF2B0 /* joinroom.mp3 in Resources */,
 				8B5B2005226470C400059756 /* Recipes.atlas in Resources */,
