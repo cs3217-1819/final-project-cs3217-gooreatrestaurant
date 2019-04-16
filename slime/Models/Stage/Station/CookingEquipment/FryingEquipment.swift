@@ -14,7 +14,9 @@ class FryingEquipment: CookingEquipment {
         super.init(type: .frying,
                    inPosition: position,
                    withSize: size,
-                   canProcessIngredients: [.apple])
+                   canProcessIngredients: [.potato])
+        self.texture = kitchenwareAtlas.textureNamed("FryingPan")
+        self.size = CGSize(width: 100, height: 100)
     }
 
     required init?(coder aDecoder: NSCoder) {
