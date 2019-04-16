@@ -14,8 +14,12 @@ class Slime: SKSpriteNode {
 
     var player: Player?
 
-    init(inPosition position: CGPoint, withSize size: CGSize = StageConstants.slimeSize) {
-        let slimeAnimatedAtlas = SKTextureAtlas(named: "Slime")
+//    init(inPosition position: CGPoint, withSize size: CGSize = StageConstants.slimeSize) {
+//        guard let color = self.player?.color else {
+//            fatalError("Player Color is not set in Slime!")
+//        }
+
+        let slimeAnimatedAtlas = SKTextureAtlas(named: "yellow")
         var walkFrames: [SKTexture] = []
 
         let numImages = slimeAnimatedAtlas.textureNames.count
@@ -24,10 +28,9 @@ class Slime: SKSpriteNode {
             walkFrames.append(slimeAnimatedAtlas.textureNamed(slimeTextureName))
         }
 
-        let color = player?.color
-        guard let hat = CosmeticConstants.hatsDict[player!.hat] else {
-            fatalError()
-        }
+//        guard let hat = CosmeticConstants.hatsDict[player!.hat] else {
+//            fatalError()
+//        }
 
         super.init(texture: walkFrames[0], color: .clear, size: size)
 

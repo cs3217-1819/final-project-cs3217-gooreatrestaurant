@@ -67,6 +67,10 @@ import UIKit
         }
     }
 
+    func toAtlasName() -> String {
+        return toString()
+    }
+
     func getImage() -> UIImage? {
         switch(self) {
         case .yellow:
