@@ -904,6 +904,15 @@ class Stage: SKScene {
         orderQueue.orderQueueInvalidated = true
     }
 
+    func checkFoodName(ofFood food: Food) -> String? {
+        for recipe in orderQueue.possibleRecipes {
+            if recipe.possibleConsists(of: food) {
+                return recipe.recipeName
+            }
+        }
+        return nil
+    }
+
     open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let touch = touches.first {
             let touchPos = touch.location(in: (self.sceneCam)!)

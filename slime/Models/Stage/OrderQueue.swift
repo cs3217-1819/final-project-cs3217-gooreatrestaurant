@@ -199,6 +199,11 @@ class OrderQueue: SKSpriteNode, Codable {
                 print(err.localizedDescription)
             }
         }
+
+        guard nodeOrder.count > 0 else {
+            return
+        }
+
         //update positionings
         for i in 1...nodeOrder.count {
             nodeOrder[i-1].position = positionings[i-1]
