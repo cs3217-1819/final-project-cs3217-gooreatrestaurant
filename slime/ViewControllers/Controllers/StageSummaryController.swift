@@ -75,7 +75,7 @@ class StageSummaryController: ViewController<StageSummaryView> {
     }
     
     private func setupButton() {
-        let control = PrimaryButtonController(using: view.okButton)
+        let control = PrimaryButtonController(usingXib: view.okButton)
             .set(label: "OK")
             .set(color: .green)
         control.onTap {

@@ -3,7 +3,20 @@
         {
             "id": "mp1-1",
             "name": "Humble Beginnings",
-            "fileName": "Level1"
+            "fileName": "Level1",
+            "preview": "preview-level1"
+        },
+        {
+            "id": "mp1-2",
+            "name": "Humble Beginnings II",
+            "fileName": "Level1",
+            "preview": "preview-level1"
+        },
+        {
+            "id": "mp1-3",
+            "name": "Humble Beginnings III",
+            "fileName": "Level1",
+            "preview": "sliced-apple"
         }
     ]
 }

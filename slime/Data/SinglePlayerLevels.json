@@ -3,7 +3,8 @@
         {
             "id": "1-1",
             "name": "Humble Beginnings",
-            "fileName": "Level1"
+            "fileName": "Level1",
+            "preview": "preview-level1"
         }
     ]
 }

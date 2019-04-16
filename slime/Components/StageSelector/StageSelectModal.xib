@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="StageSelectModal" customModule="slime" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="475" height="250"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Level Select" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZDD-mU-aHu" customClass="TextLabel" customModule="slime" customModuleProvider="target">
+                    <rect key="frame" x="191" y="16" width="93" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="style" value="h0"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="color" value="pink1"/>
+                    </userDefinedRuntimeAttributes>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vLE-X1-FH0" customClass="XibView" customModule="slime" customModuleProvider="target">
+                    <rect key="frame" x="16" y="53" width="443" height="181"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="nibName" value="StageSelectorView"/>
+                    </userDefinedRuntimeAttributes>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="vLE-X1-FH0" secondAttribute="bottom" constant="16" id="8PR-sP-1Da"/>
+                <constraint firstItem="vLE-X1-FH0" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="E94-1t-kny"/>
+                <constraint firstItem="ZDD-mU-aHu" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="16" id="Z1w-UV-XM1"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="vLE-X1-FH0" secondAttribute="trailing" constant="16" id="huH-vB-vIW"/>
+                <constraint firstItem="ZDD-mU-aHu" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="vxc-Js-wks"/>
+                <constraint firstItem="vLE-X1-FH0" firstAttribute="top" secondItem="ZDD-mU-aHu" secondAttribute="bottom" constant="16" id="xYL-6K-5O2"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="levelPreviewsView" destination="vLE-X1-FH0" id="c1Q-pj-84F"/>
+            </connections>
+            <point key="canvasLocation" x="216" y="-22.938530734632685"/>
+        </view>
+    </objects>
+</document>

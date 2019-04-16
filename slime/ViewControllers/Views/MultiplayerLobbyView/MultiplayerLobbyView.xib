@@ -66,7 +66,7 @@
                                     <rect key="frame" x="0.0" y="74" width="362" height="160"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stage Preview" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mxc-XY-71s" customClass="TextLabel" customModule="slime" customModuleProvider="target">
-                                            <rect key="frame" x="8" y="8" width="346" height="22"/>
+                                            <rect key="frame" x="8" y="8" width="109.5" height="22"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="22" id="WXi-nn-9qJ"/>
                                             </constraints>
@@ -78,20 +78,34 @@
                                                 <userDefinedRuntimeAttribute type="string" keyPath="color" value="pink2"/>
                                             </userDefinedRuntimeAttributes>
                                         </label>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="preview-level1" translatesAutoresizingMaskIntoConstraints="NO" id="MjC-Nc-oJa">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bxL-sQ-36h">
                                             <rect key="frame" x="8" y="38" width="346" height="114"/>
-                                        </imageView>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h46-Z9-OGu" customClass="XibView" customModule="slime" customModuleProvider="target">
+                                            <rect key="frame" x="254" y="8" width="100" height="22"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="100" id="Ig7-iK-e6X"/>
+                                                <constraint firstAttribute="height" constant="22" id="aa1-Ae-1Ja"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="nibName" value="PrimaryButton"/>
+                                            </userDefinedRuntimeAttributes>
+                                        </view>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstItem="mxc-XY-71s" firstAttribute="leading" secondItem="6WS-DR-avb" secondAttribute="leading" constant="8" id="7Ae-zL-rcL"/>
-                                        <constraint firstItem="MjC-Nc-oJa" firstAttribute="top" secondItem="mxc-XY-71s" secondAttribute="bottom" constant="8" id="8BN-Wg-P6M"/>
-                                        <constraint firstAttribute="trailing" secondItem="MjC-Nc-oJa" secondAttribute="trailing" constant="8" id="G0f-YK-KDd"/>
                                         <constraint firstItem="mxc-XY-71s" firstAttribute="top" secondItem="6WS-DR-avb" secondAttribute="top" constant="8" id="HM8-O1-BCg"/>
-                                        <constraint firstAttribute="bottom" secondItem="MjC-Nc-oJa" secondAttribute="bottom" constant="8" id="VUU-IS-HxC"/>
-                                        <constraint firstItem="MjC-Nc-oJa" firstAttribute="leading" secondItem="6WS-DR-avb" secondAttribute="leading" constant="8" id="gNy-TE-khH"/>
+                                        <constraint firstItem="h46-Z9-OGu" firstAttribute="top" secondItem="6WS-DR-avb" secondAttribute="top" constant="8" id="TLl-kI-npi"/>
+                                        <constraint firstAttribute="trailing" secondItem="h46-Z9-OGu" secondAttribute="trailing" constant="8" id="YzV-2Q-mI3"/>
+                                        <constraint firstAttribute="bottom" secondItem="bxL-sQ-36h" secondAttribute="bottom" constant="8" id="aiI-29-0Fw"/>
+                                        <constraint firstItem="bxL-sQ-36h" firstAttribute="top" secondItem="mxc-XY-71s" secondAttribute="bottom" constant="8" id="d4J-HC-MhK"/>
+                                        <constraint firstItem="bxL-sQ-36h" firstAttribute="leading" secondItem="6WS-DR-avb" secondAttribute="leading" constant="8" id="dvz-Y5-D0T"/>
+                                        <constraint firstItem="bxL-sQ-36h" firstAttribute="top" secondItem="h46-Z9-OGu" secondAttribute="bottom" constant="8" id="kWJ-1R-Zhy"/>
                                         <constraint firstAttribute="height" constant="160" id="oRg-C4-JTh"/>
-                                        <constraint firstAttribute="trailing" secondItem="mxc-XY-71s" secondAttribute="trailing" constant="8" id="pl3-NP-ZH2"/>
+                                        <constraint firstAttribute="trailing" secondItem="bxL-sQ-36h" secondAttribute="trailing" constant="8" id="rdr-YE-5Hw"/>
                                     </constraints>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="boolean" keyPath="rounded" value="YES"/>
@@ -195,12 +209,11 @@
                 <outlet property="playerThreeView" destination="2bl-di-tcI" id="fS0-mP-YJ3"/>
                 <outlet property="playerTwoView" destination="6AJ-yG-Ws5" id="WQa-dT-8WO"/>
                 <outlet property="roomCodeLabel" destination="Jdl-rx-HXi" id="4Ib-dD-fZs"/>
+                <outlet property="stageChangeButton" destination="h46-Z9-OGu" id="EOb-9w-vWn"/>
+                <outlet property="stagePreviewView" destination="bxL-sQ-36h" id="eGw-NN-2Gs"/>
                 <outlet property="startButton" destination="rJd-Lo-QoD" id="yLI-Eb-OCV"/>
             </connections>
             <point key="canvasLocation" x="40" y="46.326836581709152"/>
         </view>
     </objects>
-    <resources>
-        <image name="preview-level1" width="245.75999450683594" height="245.75999450683594"/>
-    </resources>
 </document>

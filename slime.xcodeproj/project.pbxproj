@@ -33,6 +33,7 @@
 		1DE6FC65224D1D3900B36F48 /* Oven.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE6FC64224D1D3900B36F48 /* Oven.swift */; };
 		1DE6FC67224D1E3C00B36F48 /* FryingEquipment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE6FC66224D1E3C00B36F48 /* FryingEquipment.swift */; };
 		1DE6FC6B224D26A200B36F48 /* Trash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE6FC6A224D26A200B36F48 /* Trash.swift */; };
+		1DFB382D2265D7AD00F9995D /* trash.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1DFB382C2265D7AD00F9995D /* trash.mp3 */; };
 		3F1EE6CE45AA94FFF3DA1410 /* Pods_slimeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD598D8D4712AAF7695D5C8 /* Pods_slimeTests.framework */; };
 		84A297CC3884A9F329049AA5 /* Pods_slime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80487C6681A5E05D3D2137F7 /* Pods_slime.framework */; };
 		8B5B2005226470C400059756 /* Recipes.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 8B5B2004226470C400059756 /* Recipes.atlas */; };
@@ -147,10 +148,11 @@
 		EC47089C226456D300F3BC19 /* chop.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EC470897226456D300F3BC19 /* chop.mp3 */; };
 		EC4708A4226484DA00F3BC19 /* game-bgm.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EC4708A3226484DA00F3BC19 /* game-bgm.mp3 */; };
 		EC4708AA22648D2400F3BC19 /* LocalLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4708A922648D2400F3BC19 /* LocalLevel.swift */; };
-		EC4708AC22649C9F00F3BC19 /* MultiplayerLevels.json in Sources */ = {isa = PBXBuildFile; fileRef = EC4708AB22649C9F00F3BC19 /* MultiplayerLevels.json */; };
+		EC4708AC22649C9F00F3BC19 /* MultiplayerLevels.json in Resources */ = {isa = PBXBuildFile; fileRef = EC4708AB22649C9F00F3BC19 /* MultiplayerLevels.json */; };
 		EC4708B02264B17C00F3BC19 /* bad-order.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EC4708AD2264B17A00F3BC19 /* bad-order.mp3 */; };
 		EC4708B12264B17C00F3BC19 /* pickup.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EC4708AE2264B17B00F3BC19 /* pickup.mp3 */; };
-		EC4708B22264B17C00F3BC19 /* trash.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EC4708AF2264B17B00F3BC19 /* trash.mp3 */; };
+		EC48997E2265CAC900B14A92 /* StageSelectModal.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC48997D2265CAC900B14A92 /* StageSelectModal.xib */; };
+		EC4899802265CB6300B14A92 /* StageSelectModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC48997F2265CB6300B14A92 /* StageSelectModal.swift */; };
 		EC4924E42246163C007B9797 /* LevelPlaceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC4924E32246163C007B9797 /* LevelPlaceView.xib */; };
 		EC4924E8224618E6007B9797 /* LevelPlaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4924E7224618E6007B9797 /* LevelPlaceView.swift */; };
 		EC4924EB22461FEC007B9797 /* OrderBlob.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC4924EA22461FEC007B9797 /* OrderBlob.xib */; };
@@ -254,6 +256,12 @@
 		ECF75F02224B17CA00537237 /* JoinRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF75F01224B17CA00537237 /* JoinRoomView.swift */; };
 		ECF75F04224B182400537237 /* JoinRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF75F03224B182400537237 /* JoinRoomViewController.swift */; };
 		ECF9876A2255C61700FE5577 /* CharacterCustomizationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECF987692255C61700FE5577 /* CharacterCustomizationView.xib */; };
+		ECFF2B732265A726003DEAED /* StagePreviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFF2B722265A726003DEAED /* StagePreviewController.swift */; };
+		ECFF2B762265B2B1003DEAED /* StageSelectorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECFF2B752265B2B1003DEAED /* StageSelectorView.xib */; };
+		ECFF2B782265B2BE003DEAED /* StageSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFF2B772265B2BE003DEAED /* StageSelectorView.swift */; };
+		ECFF2B7A2265B417003DEAED /* StageCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECFF2B792265B417003DEAED /* StageCellView.xib */; };
+		ECFF2B7C2265B4CC003DEAED /* StageCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFF2B7B2265B4CC003DEAED /* StageCellView.swift */; };
+		ECFF2B7E2265B608003DEAED /* StageSelectorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFF2B7D2265B608003DEAED /* StageSelectorController.swift */; };
 		F92ECADF224BADEC0040A4E2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F92ECADE224BADEC0040A4E2 /* GoogleService-Info.plist */; };
 		F92ECAE2224BAE8F0040A4E2 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92ECAE1224BAE8F0040A4E2 /* Database.swift */; };
 		F92ECAE4224BAEBD0040A4E2 /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92ECAE3224BAEBD0040A4E2 /* Authentication.swift */; };
@@ -302,6 +310,7 @@
 		1DE6FC64224D1D3900B36F48 /* Oven.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Oven.swift; sourceTree = "<group>"; };
 		1DE6FC66224D1E3C00B36F48 /* FryingEquipment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FryingEquipment.swift; sourceTree = "<group>"; };
 		1DE6FC6A224D26A200B36F48 /* Trash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trash.swift; sourceTree = "<group>"; };
+		1DFB382C2265D7AD00F9995D /* trash.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = trash.mp3; sourceTree = "<group>"; };
 		27C55F5E048F3C41A00644D4 /* Pods-slime.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-slime.debug.xcconfig"; path = "Pods/Target Support Files/Pods-slime/Pods-slime.debug.xcconfig"; sourceTree = "<group>"; };
 		5796C4DA33A739F68A11DCC5 /* Pods-slime.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-slime.release.xcconfig"; path = "Pods/Target Support Files/Pods-slime/Pods-slime.release.xcconfig"; sourceTree = "<group>"; };
 		773A5B5FFC68C9B4D85E485C /* Pods-slimeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-slimeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-slimeTests/Pods-slimeTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -427,7 +436,8 @@
 		EC4708AB22649C9F00F3BC19 /* MultiplayerLevels.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = MultiplayerLevels.json; sourceTree = "<group>"; };
 		EC4708AD2264B17A00F3BC19 /* bad-order.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "bad-order.mp3"; sourceTree = "<group>"; };
 		EC4708AE2264B17B00F3BC19 /* pickup.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pickup.mp3; sourceTree = "<group>"; };
-		EC4708AF2264B17B00F3BC19 /* trash.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = trash.mp3; sourceTree = "<group>"; };
+		EC48997D2265CAC900B14A92 /* StageSelectModal.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StageSelectModal.xib; sourceTree = "<group>"; };
+		EC48997F2265CB6300B14A92 /* StageSelectModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageSelectModal.swift; sourceTree = "<group>"; };
 		EC4924E32246163C007B9797 /* LevelPlaceView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LevelPlaceView.xib; sourceTree = "<group>"; };
 		EC4924E7224618E6007B9797 /* LevelPlaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelPlaceView.swift; sourceTree = "<group>"; };
 		EC4924EA22461FEC007B9797 /* OrderBlob.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderBlob.xib; sourceTree = "<group>"; };
@@ -531,6 +541,12 @@
 		ECF75F01224B17CA00537237 /* JoinRoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinRoomView.swift; sourceTree = "<group>"; };
 		ECF75F03224B182400537237 /* JoinRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinRoomViewController.swift; sourceTree = "<group>"; };
 		ECF987692255C61700FE5577 /* CharacterCustomizationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CharacterCustomizationView.xib; sourceTree = "<group>"; };
+		ECFF2B722265A726003DEAED /* StagePreviewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StagePreviewController.swift; sourceTree = "<group>"; };
+		ECFF2B752265B2B1003DEAED /* StageSelectorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StageSelectorView.xib; sourceTree = "<group>"; };
+		ECFF2B772265B2BE003DEAED /* StageSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageSelectorView.swift; sourceTree = "<group>"; };
+		ECFF2B792265B417003DEAED /* StageCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StageCellView.xib; sourceTree = "<group>"; };
+		ECFF2B7B2265B4CC003DEAED /* StageCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageCellView.swift; sourceTree = "<group>"; };
+		ECFF2B7D2265B608003DEAED /* StageSelectorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageSelectorController.swift; sourceTree = "<group>"; };
 		F92ECADE224BADEC0040A4E2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F92ECAE1224BAE8F0040A4E2 /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		F92ECAE3224BAEBD0040A4E2 /* Authentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
@@ -798,6 +814,8 @@
 		EC38243D223882AF000D7148 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				ECFF2B742265B255003DEAED /* StageSelector */,
+				ECFF2B6D2265A4B8003DEAED /* StagePreview */,
 				EC5196EF22605A6A0083BC26 /* FlashingView */,
 				EC1331A42260469200EA382C /* TutorialScreenView */,
 				ECB57117225D6FFA0083E945 /* DialogBox */,
@@ -1118,6 +1136,7 @@
 		EC7168D5225DD286004EF2B0 /* SFX */ = {
 			isa = PBXGroup;
 			children = (
+				1DFB382C2265D7AD00F9995D /* trash.mp3 */,
 				EC470897226456D300F3BC19 /* chop.mp3 */,
 				EC470896226456D300F3BC19 /* jump.mp3 */,
 				EC470895226456D300F3BC19 /* kaching.mp3 */,
@@ -1128,7 +1147,6 @@
 				EC7168F022603AFD004EF2B0 /* done-loading.mp3 */,
 				EC4708AD2264B17A00F3BC19 /* bad-order.mp3 */,
 				EC4708AE2264B17B00F3BC19 /* pickup.mp3 */,
-				EC4708AF2264B17B00F3BC19 /* trash.mp3 */,
 				EC7168DF225DD3CE004EF2B0 /* error.mp3 */,
 				EC7168DE225DD3CE004EF2B0 /* gameover.mp3 */,
 				EC7168E1225DD3CE004EF2B0 /* joinroom.mp3 */,
@@ -1347,6 +1365,28 @@
 			path = PlayerBox;
 			sourceTree = "<group>";
 		};
+		ECFF2B6D2265A4B8003DEAED /* StagePreview */ = {
+			isa = PBXGroup;
+			children = (
+				ECFF2B722265A726003DEAED /* StagePreviewController.swift */,
+			);
+			path = StagePreview;
+			sourceTree = "<group>";
+		};
+		ECFF2B742265B255003DEAED /* StageSelector */ = {
+			isa = PBXGroup;
+			children = (
+				ECFF2B752265B2B1003DEAED /* StageSelectorView.xib */,
+				ECFF2B772265B2BE003DEAED /* StageSelectorView.swift */,
+				ECFF2B792265B417003DEAED /* StageCellView.xib */,
+				ECFF2B7B2265B4CC003DEAED /* StageCellView.swift */,
+				ECFF2B7D2265B608003DEAED /* StageSelectorController.swift */,
+				EC48997D2265CAC900B14A92 /* StageSelectModal.xib */,
+				EC48997F2265CB6300B14A92 /* StageSelectModal.swift */,
+			);
+			path = StageSelector;
+			sourceTree = "<group>";
+		};
 		F92ECAE0224BAE800040A4E2 /* Network */ = {
 			isa = PBXGroup;
 			children = (
@@ -1446,6 +1486,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EC3824282238803D000D7148 /* LaunchScreen.storyboard in Resources */,
+				EC4708AC22649C9F00F3BC19 /* MultiplayerLevels.json in Resources */,
 				EC38246D223A1803000D7148 /* Rubik-Bold.ttf in Resources */,
 				EC4708A4226484DA00F3BC19 /* game-bgm.mp3 in Resources */,
 				EC382470223A1803000D7148 /* Rubik-BlackItalic.ttf in Resources */,
@@ -1459,6 +1500,7 @@
 				EC470899226456D300F3BC19 /* oven-ding.mp3 in Resources */,
 				8B5B20352265AF9B00059756 /* green.atlas in Resources */,
 				EC38246C223A1803000D7148 /* Rubik-BoldItalic.ttf in Resources */,
+				ECFF2B762265B2B1003DEAED /* StageSelectorView.xib in Resources */,
 				EC449B87223BA49D00A8EA35 /* LevelSelectView.xib in Resources */,
 				EC0E3163224F610300AF1254 /* CharacterCreationView.xib in Resources */,
 				EC4708B02264B17C00F3BC19 /* bad-order.mp3 in Resources */,
@@ -1486,6 +1528,7 @@
 				EC21B40022420CA700827121 /* LevelPlayButton.xib in Resources */,
 				EC449B8B223BACD500A8EA35 /* StoryModeLevelSelectView.xib in Resources */,
 				ECD45541223FA21E006AF78D /* Modal.xib in Resources */,
+				1DFB382D2265D7AD00F9995D /* trash.mp3 in Resources */,
 				EC47089A226456D300F3BC19 /* kaching.mp3 in Resources */,
 				8B5B203F2265AFED00059756 /* pastelGreen.atlas in Resources */,
 				EC449B8E223BAD4400A8EA35 /* MapDot.xib in Resources */,
@@ -1521,17 +1564,18 @@
 				ECD4557622411340006AF78D /* UpButton.xib in Resources */,
 				EC7168DD225DD2A8004EF2B0 /* menu-bgm-alt.mp3 in Resources */,
 				EC38243F223882C5000D7148 /* PrimaryButton.xib in Resources */,
+				EC48997E2265CAC900B14A92 /* StageSelectModal.xib in Resources */,
 				EC7168E8225DD3CF004EF2B0 /* leftroom.mp3 in Resources */,
 				EC4708B12264B17C00F3BC19 /* pickup.mp3 in Resources */,
 				EC7168E7225DD3CF004EF2B0 /* joinroom.mp3 in Resources */,
 				EC6E99F5224F2D1600A9554C /* ProgressBarView.xib in Resources */,
 				EC7168EB225DD571004EF2B0 /* bloop.mp3 in Resources */,
-				EC4708B22264B17C00F3BC19 /* trash.mp3 in Resources */,
 				8B5B203B2265AFD300059756 /* lightGreen.atlas in Resources */,
 				EC7168E7225DD3CF004EF2B0 /* joinroom.mp3 in Resources */,
 				8B5B2005226470C400059756 /* Recipes.atlas in Resources */,
 				8B5B20332265AF8C00059756 /* red.atlas in Resources */,
 				EC3824232238803A000D7148 /* Main.storyboard in Resources */,
+				ECFF2B7A2265B417003DEAED /* StageCellView.xib in Resources */,
 				EC6E99F2224F2BFE00A9554C /* UserInfoView.xib in Resources */,
 				EC38245F223A17F7000D7148 /* Squidgy Slimes.ttf in Resources */,
 				8B5B20312265AA5D00059756 /* blue.atlas in Resources */,
@@ -1661,6 +1705,7 @@
 				EC38245C223A100B000D7148 /* TextStyles.swift in Sources */,
 				8BD816B3224262F100586180 /* AnalogJoystick.swift in Sources */,
 				ECBA67C72261C7AE007042A8 /* StageSummaryView.swift in Sources */,
+				ECFF2B7C2265B4CC003DEAED /* StageCellView.swift in Sources */,
 				F9F26FF2225DDA7A008BFD50 /* User.swift in Sources */,
 				1DD6EBE5224E76F0006FF6CD /* IngredientType.swift in Sources */,
 				EC57D2DC225C8B7400F26808 /* SlimeCharacterView.swift in Sources */,
@@ -1683,6 +1728,7 @@
 				EC382484223A2B6C000D7148 /* PlayMenuButtonController.swift in Sources */,
 				EC7168ED22603775004EF2B0 /* CosmeticConstants.swift in Sources */,
 				ECD455532240B5D1006AF78D /* AlertAction.swift in Sources */,
+				ECFF2B732265A726003DEAED /* StagePreviewController.swift in Sources */,
 				1DE6FC5A224CA45700B36F48 /* Station.swift in Sources */,
 				1D2202A1224AB5850080CF7D /* Stage.swift in Sources */,
 				1D22029C224AB5850080CF7D /* Ladder.swift in Sources */,
@@ -1705,6 +1751,7 @@
 				EC6E99FF224F4F0900A9554C /* DoubleExtension.swift in Sources */,
 				EC449B79223B82A600A8EA35 /* MainController.swift in Sources */,
 				F92ECAE2224BAE8F0040A4E2 /* Database.swift in Sources */,
+				ECFF2B7E2265B608003DEAED /* StageSelectorController.swift in Sources */,
 				EC7676CA225B58B300F6A450 /* CustomizationCosmeticViewController.swift in Sources */,
 				EC449B94223BB08700A8EA35 /* LevelDetailsBoxController.swift in Sources */,
 				ECF75F00224B131800537237 /* CodeInputController.swift in Sources */,
@@ -1719,6 +1766,7 @@
 				1D2202A2224AB5850080CF7D /* Ingredient.swift in Sources */,
 				ECD2442E224B108200767A56 /* NumberPadResponder.swift in Sources */,
 				EC6E99FB224F499400A9554C /* UserInfoView.swift in Sources */,
+				ECFF2B782265B2BE003DEAED /* StageSelectorView.swift in Sources */,
 				ECD2442C224B0D0800767A56 /* SlimeNumberPadController.swift in Sources */,
 				EC1331A8226046C600EA382C /* TutorialScreenView.swift in Sources */,
 				1D22029A224AB5850080CF7D /* Plate.swift in Sources */,
@@ -1748,6 +1796,7 @@
 				1DE6FC6B224D26A200B36F48 /* Trash.swift in Sources */,
 				EC21B409224217E200827121 /* LoadingScreenViewController.swift in Sources */,
 				EC5196F122605A7F0083BC26 /* FlashingController.swift in Sources */,
+				EC4899802265CB6300B14A92 /* StageSelectModal.swift in Sources */,
 				EC6E99EF224F256500A9554C /* LocalData.swift in Sources */,
 				EC6AC1D62254882900D95C90 /* ContextModalHandler.swift in Sources */,
 				1D2202A0224AB5850080CF7D /* Slime+Movements.swift in Sources */,
@@ -1777,7 +1826,6 @@
 				F92ECAE8224BAEEF0040A4E2 /* Game.swift in Sources */,
 				1DE6FC5C224CA46700B36F48 /* Table.swift in Sources */,
 				1DE6FC65224D1D3900B36F48 /* Oven.swift in Sources */,
-				EC4708AC22649C9F00F3BC19 /* MultiplayerLevels.json in Sources */,
 				EC0E3165224F611200AF1254 /* CharacterCreationView.swift in Sources */,
 				1D50BDFF2264B9B100AC195F /* Item.swift in Sources */,
 				EC38244B22389649000D7148 /* ImageProvider.swift in Sources */,
@@ -1982,7 +2030,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = CZ7H96C646;
+				DEVELOPMENT_TEAM = W76H98A34A;
 				INFOPLIST_FILE = slime/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2003,7 +2051,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = CZ7H96C646;
+				DEVELOPMENT_TEAM = W76H98A34A;
 				INFOPLIST_FILE = slime/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
