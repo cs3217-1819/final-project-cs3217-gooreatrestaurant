@@ -10,4 +10,7 @@ enum IngredientType: String, Codable {
     case junk
     case apple
     case dough
+    case potato
+    case lettuce
+    case carrot
 }

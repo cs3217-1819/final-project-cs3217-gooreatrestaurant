@@ -121,22 +121,28 @@
 			<array>
 				<dict>
 					<key>recipeName</key>
-					<string>ApplePie</string>
+					<string>Fries</string>
 				</dict>
 			</array>
 			<key>compulsoryIngredients</key>
 			<array>
 				<dict>
 					<key>type</key>
-					<string>apple</string>
+					<string>potato</string>
 					<key>processing</key>
-					<string>chopping,baking</string>
+					<string>chopping,frying</string>
 				</dict>
 				<dict>
 					<key>type</key>
-					<string>dough</string>
+					<string>potato</string>
 					<key>processing</key>
-					<string>baking</string>
+					<string>chopping,frying</string>
+				</dict>
+				<dict>
+					<key>type</key>
+					<string>potato</string>
+					<key>processing</key>
+					<string>chopping,frying</string>
 				</dict>
 			</array>
 		</dict>
@@ -145,22 +151,58 @@
 			<array>
 				<dict>
 					<key>recipeName</key>
-					<string>BakedApple</string>
+					<string>LettuceSalad</string>
 				</dict>
 			</array>
 			<key>compulsoryIngredients</key>
 			<array>
 				<dict>
 					<key>type</key>
-					<string>apple</string>
+					<string>lettuce</string>
 					<key>processing</key>
-					<string>baking</string>
+					<string>chopping</string>
 				</dict>
 				<dict>
 					<key>type</key>
-					<string>apple</string>
+					<string>lettuce</string>
 					<key>processing</key>
-					<string>baking</string>
+					<string>chopping</string>
+				</dict>
+				<dict>
+					<key>type</key>
+					<string>lettuce</string>
+					<key>processing</key>
+					<string>chopping</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>recipeName</key>
+			<array>
+				<dict>
+					<key>recipeName</key>
+					<string>TriSalad</string>
+				</dict>
+			</array>
+			<key>compulsoryIngredients</key>
+			<array>
+				<dict>
+					<key>type</key>
+					<string>carrot</string>
+					<key>processing</key>
+					<string>chopping</string>
+				</dict>
+				<dict>
+					<key>type</key>
+					<string>lettuce</string>
+					<key>processing</key>
+					<string>chopping</string>
+				</dict>
+				<dict>
+					<key>type</key>
+					<string>potato</string>
+					<key>processing</key>
+					<string>chopping</string>
 				</dict>
 			</array>
 		</dict>

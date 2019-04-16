@@ -24,10 +24,8 @@ class Spaceship: SKSpriteNode {
         var texture = SpaceshipAtlas.textureNamed("")
         switch self.levelName {
         case "Level1":
-            print("Level1")
             texture = SpaceshipAtlas.textureNamed("Area-1")
         case "Level2":
-            print("Level2")
             texture = SpaceshipAtlas.textureNamed("Area-2")
         default:
             texture = SpaceshipAtlas.textureNamed("Area-1")
@@ -148,10 +146,8 @@ class Spaceship: SKSpriteNode {
         var texture = SpaceshipAtlas.textureNamed("")
         switch self.levelName {
         case "Level1":
-            print("Level1")
             texture = SpaceshipAtlas.textureNamed("Spaceship-1")
         case "Level2":
-            print("Level2")
             texture = SpaceshipAtlas.textureNamed("Spaceship-2")
         default:
             texture = SpaceshipAtlas.textureNamed("Spaceship-1")

@@ -323,7 +323,7 @@ class Stage: SKScene {
                 let data = try? Data(contentsOf: levelDesignURL)
                 let decoder = PropertyListDecoder()
                 let value = try decoder.decode(SerializableGameData.self, from: data!)
-                spaceship.setLevelName(inString: "Level2")
+                spaceship.setLevelName(inString: levelName)
                 spaceship.addRoom()
                 
                 if !isMultiplayer {
