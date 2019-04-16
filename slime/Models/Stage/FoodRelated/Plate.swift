@@ -120,9 +120,17 @@ class Plate: MobileItem, Codable {
                 ingredientsAtlas = SKTextureAtlas(named: "BakedIngredients")
             } else if (inIngredient.processed[processedCount - 1] == CookingType.chopping) {
                 ingredientsAtlas = SKTextureAtlas(named: "SlicedIngredients")
+            }  else if (inIngredient.processed[processedCount - 1] == CookingType.frying) {
+                ingredientsAtlas = SKTextureAtlas(named: "FriedIngredients")
             }
         } else if (processedCount > 1){
-             ingredientsAtlas = SKTextureAtlas(named: "BakedSlicedIngredients")
+             if (inIngredient.processed.contains(CookingType.baking) &&
+                inIngredient.processed.contains(CookingType.chopping)) {
+                ingredientsAtlas = SKTextureAtlas(named: "BakedSlicedIngredients")
+             } else if(inIngredient.processed.contains(CookingType.chopping) &&
+                inIngredient.processed.contains(CookingType.frying)) {
+                ingredientsAtlas = SKTextureAtlas(named: "SlicedFriedIngredients")
+            }
         } else {
             ingredientsAtlas = SKTextureAtlas(named: "Ingredients")
         }

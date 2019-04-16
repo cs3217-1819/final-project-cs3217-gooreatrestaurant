@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import AVKit
 
 class FryingEquipment: CookingEquipment {
-
+    private var sfxPlayer: AVAudioPlayer?
     init(inPosition position: CGPoint, withSize size: CGSize = StageConstants.stationSize) {
         super.init(type: .frying,
                    inPosition: position,
@@ -21,6 +22,19 @@ class FryingEquipment: CookingEquipment {
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func onStartProcessing() {
+        sfxPlayer = AudioMaster.instance.playSeparateSFX(name: "frying")
+    }
+    
+    override func onEndProcessing() {
+        if let player = sfxPlayer {
+            sfxPlayer?.stop()
+            sfxPlayer = nil
+            AudioMaster.instance.playSFX(name: "oven-ding")
+        }
+        
     }
 
     override func denyProcessing(ofItem item: Item?) {

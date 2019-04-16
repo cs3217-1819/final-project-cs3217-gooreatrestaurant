@@ -62,6 +62,8 @@ class JoinRoomViewController: ViewController<JoinRoomView> {
 
         remember(codeInputController)
         remember(numberPadController)
+        
+        configureUpButton(to: .MultiplayerScreen)
     }
 
     private func showLoadingAlert(withDescription description: String) {
