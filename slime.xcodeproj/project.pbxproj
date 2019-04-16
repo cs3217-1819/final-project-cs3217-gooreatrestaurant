@@ -50,6 +50,7 @@
 		8B5B203B2265AFD300059756 /* lightGreen.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 8B5B203A2265AFD300059756 /* lightGreen.atlas */; };
 		8B5B203D2265AFE000059756 /* pastelPink.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 8B5B203C2265AFE000059756 /* pastelPink.atlas */; };
 		8B5B203F2265AFED00059756 /* pastelGreen.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 8B5B203E2265AFED00059756 /* pastelGreen.atlas */; };
+		8B5B20412265C84500059756 /* Level2.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8B5B20402265C84500059756 /* Level2.plist */; };
 		8B81EFBC224344AD007BFDB0 /* yellow.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 8B81EFBB224344AD007BFDB0 /* yellow.atlas */; };
 		8BD816AF22422C6700586180 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD816AE22422C6700586180 /* Extensions.swift */; };
 		8BD816B3224262F100586180 /* AnalogJoystick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD816B2224262F100586180 /* AnalogJoystick.swift */; };
@@ -322,6 +323,7 @@
 		8B5B203A2265AFD300059756 /* lightGreen.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = lightGreen.atlas; sourceTree = "<group>"; };
 		8B5B203C2265AFE000059756 /* pastelPink.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = pastelPink.atlas; sourceTree = "<group>"; };
 		8B5B203E2265AFED00059756 /* pastelGreen.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = pastelGreen.atlas; sourceTree = "<group>"; };
+		8B5B20402265C84500059756 /* Level2.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Level2.plist; sourceTree = "<group>"; };
 		8B81EFBB224344AD007BFDB0 /* yellow.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = yellow.atlas; sourceTree = "<group>"; };
 		8BD816AE22422C6700586180 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		8BD816B2224262F100586180 /* AnalogJoystick.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalogJoystick.swift; sourceTree = "<group>"; };
@@ -997,6 +999,7 @@
 			children = (
 				EC6E99E9224F21F900A9554C /* LocalData */,
 				8BEDCD382247F10100E24A20 /* Level1.plist */,
+				8B5B20402265C84500059756 /* Level2.plist */,
 				EC449B9A223BB9E900A8EA35 /* SinglePlayerLevels.json */,
 				EC6AC1D3225216EF00D95C90 /* SlimeColors.swift */,
 				EC4708AB22649C9F00F3BC19 /* MultiplayerLevels.json */,
@@ -1496,6 +1499,7 @@
 				8B5B202A2264D85000059756 /* Spaceship.atlas in Resources */,
 				8B5B200D22648BE300059756 /* BakedSlicedIngredients.atlas in Resources */,
 				EC7168EF22603AED004EF2B0 /* back.mp3 in Resources */,
+				8B5B20412265C84500059756 /* Level2.plist in Resources */,
 				EC47089C226456D300F3BC19 /* chop.mp3 in Resources */,
 				ECD4556C2240FBED006AF78D /* PlayerBox.xib in Resources */,
 				EC7168E4225DD3CF004EF2B0 /* gameover.mp3 in Resources */,

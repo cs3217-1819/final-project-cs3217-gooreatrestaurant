@@ -15,19 +15,7 @@ class Spaceship: SKSpriteNode {
 
     // position is in the center
     init(inPosition position: CGPoint, withSize size: CGSize) {
-        var texture = SpaceshipAtlas.textureNamed("")
-        switch self.levelName {
-        case "Level1":
-            print("Level1")
-            texture = SpaceshipAtlas.textureNamed("Spaceship-1")
-        case "Level2":
-            print("Level2")
-            texture = SpaceshipAtlas.textureNamed("Spaceship-2")
-        default:
-            texture = SpaceshipAtlas.textureNamed("Spaceship-1")
-        }
-        texture.filteringMode = .nearest
-        super.init(texture: texture, color: .clear, size: size)
+        super.init(texture: nil, color: .clear, size: size)
         self.position = CGPoint.zero
         self.zPosition = 0
     }
@@ -156,6 +144,21 @@ class Spaceship: SKSpriteNode {
 
     func setLevelName(inString: String) {
         self.levelName = inString
+
+        var texture = SpaceshipAtlas.textureNamed("")
+        switch self.levelName {
+        case "Level1":
+            print("Level1")
+            texture = SpaceshipAtlas.textureNamed("Spaceship-1")
+        case "Level2":
+            print("Level2")
+            texture = SpaceshipAtlas.textureNamed("Spaceship-2")
+        default:
+            texture = SpaceshipAtlas.textureNamed("Spaceship-1")
+        }
+        texture.filteringMode = .nearest
+
+        self.texture = texture
     }
 
     required init?(coder aDecoder: NSCoder) {
