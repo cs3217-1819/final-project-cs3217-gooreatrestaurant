@@ -319,12 +319,12 @@ class Stage: SKScene {
     }
 
     func generateLevel(inLevel levelName: String) {
-        if let levelDesignURL = Bundle.main.url(forResource: "Level2", withExtension: "plist") {
+        if let levelDesignURL = Bundle.main.url(forResource: levelName, withExtension: "plist") {
             do {
                 let data = try? Data(contentsOf: levelDesignURL)
                 let decoder = PropertyListDecoder()
                 let value = try decoder.decode(SerializableGameData.self, from: data!)
-                spaceship.setLevelName(inString: "Level2")
+                spaceship.setLevelName(inString: levelName)
                 spaceship.addRoom()
                 
                 if !isMultiplayer {
