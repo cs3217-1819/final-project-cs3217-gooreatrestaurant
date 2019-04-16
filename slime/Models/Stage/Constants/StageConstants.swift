@@ -18,7 +18,8 @@ class StageConstants {
     static let maxYAxisUnits = ScreenSize.height
 
     static let speedMultiplier: CGFloat = 6.0
-    static let jumpSpeed: CGFloat = 25
+    static let jumpSpeed: CGFloat = 450.0
+    static let jumpDuration: Double = 0.5
     
     // multiplayer stuff
     static let streamingInterval = 0.1 // in seconds
@@ -53,7 +54,7 @@ class StageConstants {
         return CGPoint(x: 0.25 * slimeSize.width, y: -0.05 * slimeSize.height)
     }
     static let hatRotation: CGFloat = 0.35
-    static let accessoryRotation: CGFloat = 0.5
+    static let accessoryRotation: CGFloat = -0.5
     static let plateSize = CGSize(width: 60, height: 60)
     static let ingredientSize = CGSize(width: 50, height: 50)
     static let cookerSize = CGSize(width: 80, height: 80)
@@ -95,15 +96,18 @@ class StageConstants {
     static let spaceshipZPos = CGFloat(0)
     static let ladderZPos = CGFloat(1)
     static let stationZPos = CGFloat(2)
-    static let mobileItemZPos = CGFloat(3)
+    static let mobileItemZPos = CGFloat(3) // possibly +orderZPos or +stationZPos
     static let joystickZPos = CGFloat(4)
     static let buttonZPos = CGFloat(4)
     static let slimeZPos = CGFloat(5)
-    static let blackBGZPos = CGFloat(8)
     static let orderZPos = CGFloat(9)
-    static let countdownLabelZPos = CGFloat(10)
-    static let scoreLabelZPos = CGFloat(10)
-    static let readyNodeZPos = CGFloat(10)
+    static let blackBGOpeningZPos = CGFloat(12)
+    static let blackBGEndingZPos = CGFloat(12)
+    static let countdownLabelZPos = CGFloat(20)
+    static let scoreLabelZPos = CGFloat(20)
+    static let readyNodeZPos = CGFloat(20)
+    static let endgameZPos = CGFloat(20)
+    static let endgameBasenodeZPos = CGFloat(20)
 
     // gameplay related
     static let defaultOptionalProbability = 0.5

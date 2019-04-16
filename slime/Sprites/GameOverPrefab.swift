@@ -22,11 +22,11 @@ class GameOverPrefab: SKSpriteNode {
         let baseNode = SKSpriteNode(texture: base)
         self.baseNode = baseNode
         baseNode.size = size
-        baseNode.zPosition = 10
+        baseNode.zPosition = StageConstants.endgameBasenodeZPos
 
         super.init(texture: base, color: color, size: size)
         self.position = CGPoint.zero
-        self.zPosition = 10
+        self.zPosition = StageConstants.endgameZPos
 
         let slime = SKSpriteNode(texture: UIAtlas.textureNamed("ShockedSlime"))
         slime.texture?.filteringMode = .nearest
@@ -35,7 +35,7 @@ class GameOverPrefab: SKSpriteNode {
 
         let blackBG = SKSpriteNode.init(color: .black, size: CGSize(width: ScreenSize.width, height: ScreenSize.height))
         blackBG.alpha = 0.5
-        blackBG.zPosition = 5
+        blackBG.zPosition = StageConstants.blackBGOpeningZPos
 
         baseNode.addChild(slime)
         self.addChild(blackBG)

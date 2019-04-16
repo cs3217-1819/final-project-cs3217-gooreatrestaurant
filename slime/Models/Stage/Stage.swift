@@ -879,7 +879,7 @@ class Stage: SKScene {
     lazy var blackBG: SKSpriteNode = {
         let blackBG = SKSpriteNode.init(color: .black, size: CGSize(width: ScreenSize.width, height: ScreenSize.height))
         blackBG.alpha = 0.5
-        blackBG.zPosition = StageConstants.blackBGZPos
+        blackBG.zPosition = StageConstants.blackBGOpeningZPos
         return blackBG
     }()
     

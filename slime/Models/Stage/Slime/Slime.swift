@@ -193,8 +193,10 @@ class Slime: SKSpriteNode {
                 hatNode.position = StageConstants.hatOffset
                 hatNode.size = StageConstants.hatSize
                 hatNode.zRotation = -StageConstants.hatRotation
-                hatNode.run(SKAction.move(by: CGVector(dx: 0, dy: StageConstants.hatSize.height * 0.4), duration: 0.05), completion: {
-                    hatNode.run(SKAction.repeatForever(self.generateFrames(size: StageConstants.hatSize)))
+                hatNode.run(SKAction.wait(forDuration: 0.2), completion: {
+                    hatNode.run(SKAction.move(by: CGVector(dx: 0, dy: StageConstants.hatSize.height * 0.4), duration: 0.05), completion: {
+                        hatNode.run(SKAction.repeatForever(self.generateFrames(size: StageConstants.hatSize)))
+                    })
                 })
                 
                 Timer.scheduledTimer(withTimeInterval: 2, repeats: false, block: { _ in
@@ -210,8 +212,10 @@ class Slime: SKSpriteNode {
                 accessoryNode.size = StageConstants.accessorySize
                 accessoryNode.position = StageConstants.accessoryOffset
                 accessoryNode.zRotation = StageConstants.accessoryRotation
-                accessoryNode.run(SKAction.move(by: CGVector(dx: 0, dy: StageConstants.accessorySize.height * 0.4), duration: 0.05), completion: {
-                    accessoryNode.run(SKAction.repeatForever(self.generateFrames(size: StageConstants.accessorySize)))
+                accessoryNode.run(SKAction.wait(forDuration: 0.2), completion: {
+                    accessoryNode.run(SKAction.move(by: CGVector(dx: 0, dy: StageConstants.accessorySize.height * 0.4), duration: 0.05), completion: {
+                        accessoryNode.run(SKAction.repeatForever(self.generateFrames(size: StageConstants.accessorySize)))
+                    })
                 })
                 Timer.scheduledTimer(withTimeInterval: 2, repeats: false, block: { _ in
                     self.addChild(accessoryNode)
