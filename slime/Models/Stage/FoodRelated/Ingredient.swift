@@ -84,9 +84,17 @@ class Ingredient: MobileItem, Codable {
                     ingredientsAtlas = SKTextureAtlas(named: "BakedIngredients")
                 } else if method == CookingType.chopping {
                     ingredientsAtlas = SKTextureAtlas(named: "SlicedIngredients")
+                } else if method == CookingType.frying {
+                    ingredientsAtlas = SKTextureAtlas(named: "FriedIngredients")
                 }
             } else {
-                ingredientsAtlas = SKTextureAtlas(named: "BakedSlicedIngredients")
+                if (processed.contains(CookingType.baking) &&
+                    processed.contains(CookingType.chopping)) {
+                    ingredientsAtlas = SKTextureAtlas(named: "BakedSlicedIngredients")
+                } else if(processed.contains(CookingType.chopping) &&
+                    processed.contains(CookingType.frying)) {
+                    ingredientsAtlas = SKTextureAtlas(named: "SlicedFriedIngredients")
+                }
             }
             var texture: SKTexture = SKTexture.init()
             texture = ingredientsAtlas.textureNamed(self.type.rawValue)
@@ -97,6 +105,11 @@ class Ingredient: MobileItem, Codable {
             //temp removal of texture
             self.texture = nil
         }
+    }
+
+    func ruin() {
+        self.type = .junk
+        self.processed = []
     }
 
     override func ableToInteract(withItem item: Item?) -> Bool {
