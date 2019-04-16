@@ -15,9 +15,9 @@ class Slime: SKSpriteNode {
     var player: Player?
 
     init(inPosition position: CGPoint, withSize size: CGSize = StageConstants.slimeSize) {
-//        guard let color = self.player?.color else {
-//            fatalError("Player Color is not set in Slime!")
-//        }
+        guard let color = self.player?.color else {
+            fatalError("Player Color is not set in Slime!")
+        }
 
         let slimeAnimatedAtlas = SKTextureAtlas(named: "angryRed")
         var walkFrames: [SKTexture] = []
