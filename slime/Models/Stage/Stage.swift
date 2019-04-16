@@ -724,14 +724,14 @@ class Stage: SKScene {
     lazy var interactButton: BDButton = {
         let texture = UIAtlas.textureNamed("InteractButton")
         var button = BDButton(inTexture: texture, buttonAction: {
-            self.slimeToControl?.interact(onInteractWithStation: { (station) in
-                if self.isMultiplayer { self.handleMultiplayerInteractWithStation(station) }
+            self.slimeToControl?.interact(onInteractWithStation: { (station, itemCarried) in
+                if self.isMultiplayer { self.handleMultiplayerInteractWithStation(station, itemCarried) }
             }, onPickUpItem: { (itemOnGround, itemPickedUp) in
                 if self.isMultiplayer { self.handleMultiplayerPickUpItem(itemOnGround, itemPickedUp) }
             }, onDropItem: { (item) in
                 if self.isMultiplayer { self.handleMultiplayerDropItem(item) }
-            }, onInteractWithItem: { (item) in
-                if self.isMultiplayer { self.handleMultiplayerInteractWithItem(item) }
+            }, onInteractWithItem: { (itemOnGround, itemCarried) in
+                if self.isMultiplayer { self.handleMultiplayerInteractWithItem(itemOnGround, itemCarried) }
             })
         })
         button.setScale(0.15)
@@ -746,21 +746,26 @@ class Stage: SKScene {
         guard let room = self.previousRoom else { return }
         guard let id = itemOnGround.id else { return }
         
-        database.removeStageItem(forGameId: room.id, withItemUid: id, { }) { (err) in
-            print(err.localizedDescription)
-        }
-        
-        database.updatePlayerHoldingItem(forGameId: room.id, toItem: itemPickedUp, { }) { (err) in
+        database.removeStageItem(forGameId: room.id, withItemUid: id, onItemAlreadyRemoved: {
+            database.updatePlayerHoldingItem(forGameId: room.id, toItem: "HAHAHA" as AnyObject, { }, { (err) in
+                print(err.localizedDescription)
+            })
+        }, onItemPickedUp: { (item) in
+            database.updatePlayerHoldingItem(forGameId: room.id, toItem: item, { }) { (err) in
+                print(err.localizedDescription)
+            }
+        }, { }) { (err) in
             print(err.localizedDescription)
         }
     }
     
-    private func handleMultiplayerInteractWithItem(_ item: MobileItem) {
+    private func handleMultiplayerInteractWithItem(_ itemOnGround: MobileItem, _ itemCarried: MobileItem?) {
         guard let database = self.db else { return }
         guard let room = self.previousRoom else { return }
-        guard let id = item.id else { return }
+        guard let id = itemOnGround.id else { return }
+        guard let item = itemCarried else { return }
         
-        database.updateStageItem(forGameId: room.id, withItem: item, withItemUid: id, { }) { (err) in
+        database.updateStageItem(forGameId: room.id, withItemOnGround: itemOnGround, withItemCarried: item, withItemUid: id, { }) { (err) in
             print(err.localizedDescription)
         }
         
@@ -786,10 +791,17 @@ class Stage: SKScene {
         }
     }
     
-    private func handleMultiplayerInteractWithStation(_ station: Station) {
+    private func handleMultiplayerInteractWithStation(_ station: Station, _ itemCarried: MobileItem?) {
         guard let database = self.db else { return }
         guard let room = self.previousRoom else { return }
         guard let id = station.id else { return }
+        
+        if let _ = station as? Table {
+            database.handleInteractWithTable(forGameId: room.id, forStation: id, itemCarried: itemCarried, { }) { (err) in
+                print(err.localizedDescription)
+            }
+            return
+        }
         
         if let item = station.itemInside {
             database.updateStationItemInside(forGameId: room.id, forStation: id, toItem: item, { }) { (err) in

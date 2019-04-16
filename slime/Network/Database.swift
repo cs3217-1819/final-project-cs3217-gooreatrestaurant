@@ -292,7 +292,9 @@ protocol GameDatabase {
     ///     - onComplete: the closure run when removing this
     ///       item is complete
     ///     - onError: a closure run when an error occurs
-    func removeStageItem(forGameId id: String, withItemUid uid: String, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void)
+    func removeStageItem(forGameId id: String, withItemUid uid: String, onItemAlreadyRemoved: @escaping () -> Void, onItemPickedUp: @escaping (MobileItem) -> Void, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void)
+    
+    func handleInteractWithTable(forGameId id: String, forStation station: String, itemCarried item: MobileItem?, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void)
     
     /// updates the values of the stage item inside
     /// the database. This fails if the referenced item
@@ -305,7 +307,7 @@ protocol GameDatabase {
     ///     - onComplete: a closure run when this process is
     ///       complete
     ///     - onError: a closure run when an error occurs
-    func updateStageItem(forGameId id: String, withItem item: AnyObject, withItemUid uid: String, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void)
+    func updateStageItem(forGameId id: String, withItemOnGround itemOnGround: AnyObject, withItemCarried itemCarried: AnyObject, withItemUid uid: String, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void)
     
     /// adds a score to the specified game id
     /// - Parameters:
