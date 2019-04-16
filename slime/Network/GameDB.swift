@@ -1018,7 +1018,7 @@ class GameDB: GameDatabase {
         self.observers.append(Observer(withHandle: notificationHandle, withRef: notificationRef))
         self.observers.append(Observer(withHandle: onStageItemAddedHandle, withRef: stageItemRef))
         self.observers.append(Observer(withHandle: onStageItemRemovedHandle, withRef: stageItemRef))
-        self.observers.appen(Observer(withHandle: onStageItemChangedHandle, withRef: stageItemRef))
+        self.observers.append(Observer(withHandle: onStageItemChangedHandle, withRef: stageItemRef))
         
         onComplete()
     }
@@ -1512,29 +1512,6 @@ struct Observer {
     init(withHandle handle: DatabaseHandle, withRef reference: DatabaseReference) {
         self.handle = handle
         self.reference = reference
-    }
-}
-
-/**
- serializes item types in game to JSON strings
- **/
-struct ItemSerializer {
-    static func serializeItem(forItem item: AnyObject, withType type: String) -> String {
-        switch (type) {
-        case FirebaseSystemValues.ItemTypes.plate.rawValue:
-            // serialize to plate
-            return ""
-        case FirebaseSystemValues.ItemTypes.ingredient.rawValue:
-            // serialize to ingredient
-            return ""
-        default:
-            // return none
-            return ""
-        }
-    }
-    
-    static func deserializeItem(forData data: String) -> (type: String, item: AnyObject) {
-        return (type: "", item: "hello" as AnyObject)
     }
 }
 
