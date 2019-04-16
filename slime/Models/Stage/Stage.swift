@@ -334,7 +334,8 @@ class Stage: SKScene {
                     for _ in room.players { spaceship.addSlime(inPosition: value.slimeInitPos) }
                     self.showReadyFlag()
                 }
-                
+
+                spaceship.setLevelName(inString: levelName)
                 spaceship.addWall(inCoord: value.border)
                 spaceship.addWall(inCoord: value.blockedArea)
                 spaceship.addLadder(inPositions: value.ladder)
