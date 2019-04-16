@@ -21,11 +21,6 @@ class ChoppingEquipment: CookingEquipment {
         fatalError("init(coder:) has not been implemented")
     }
 
-    override func ableToProcess(_ ingredient: Ingredient) -> Bool {
-        return super.ableToProcess(ingredient) &&
-               (ingredient.processed.count == 0 || ingredient.processed == [self.cookingType])
-    }
-
     override func onProgressProcessing() {
         AudioMaster.instance.playSFX(name: "chop")
     }
