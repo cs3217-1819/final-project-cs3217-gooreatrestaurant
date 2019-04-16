@@ -6,8 +6,6 @@
 	<string>{0,-50}</string>
 	<key>ladder</key>
 	<array>
-		<string>{-200,-41}</string>
-		<string>{-200,-100}</string>
 		<string>{-120,-270}</string>
 		<string>{-120,-180}</string>
 		<string>{-120,-90}</string>
@@ -19,11 +17,6 @@
 	</array>
 	<key>blockedArea</key>
 	<array>
-		<array>
-			<string>{-80,0}</string>
-			<string>{-40,0}</string>
-			<string>{-40,110}</string>
-		</array>
 	</array>
 	<key>border</key>
 	<array>
@@ -66,10 +59,22 @@
             <string>{300,-185}</string>
 		</array>
         <array>
-            <string>{190,-185}</string>
-            <string>{190,-155}</string>
+            <string>{195,-185}</string>
+            <string>{195,-155}</string>
             <string>{350,-155}</string>
-            <string>{350,100}</string>
+            <string>{350,35}</string>
+        </array>
+        <array>
+            <string>{195,35}</string>
+            <string>{195,45}</string>
+            <string>{300,45}</string>
+            <string>{300,160}</string>
+        </array>
+        <array>
+            <string>{80,160}</string>
+            <string>{80,45}</string>
+            <string>{115,45}</string>
+            <string>{115,35}</string>
         </array>
 	</array>
 	<key>choppingEquipment</key>
