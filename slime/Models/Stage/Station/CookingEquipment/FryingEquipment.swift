@@ -22,10 +22,10 @@ class FryingEquipment: CookingEquipment {
     }
 
     override func automaticProcessing() {
-        continueProcessing(withProgress: 10.0)
+        continueProcessing(withProgress: 100.0 / 40.0)
     }
 
     override func manualProcessing() {
-        continueProcessing(withProgress: 10.0)
+        continueProcessing(withProgress: 0)
     }
 }
