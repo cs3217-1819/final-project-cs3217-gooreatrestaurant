@@ -5,6 +5,12 @@
             "name": "Humble Beginnings",
             "fileName": "Level1",
             "preview": "preview-level1"
+        },
+        {
+            "id": "1-2",
+            "name": "HELP ME",
+            "fileName": "Level2",
+            "preview": "preview-level2"
         }
     ]
 }
