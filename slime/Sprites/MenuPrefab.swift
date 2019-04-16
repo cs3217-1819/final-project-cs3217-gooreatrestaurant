@@ -72,6 +72,16 @@ class MenuPrefab: SKSpriteNode, Codable {
                     cookingTypeImg.size = CGSize(width: 15, height: 15)
                     cookingTypeImg.position = CGPoint(x: 0, y: -15)
                     child.addChild(cookingTypeImg)
+                } else if (key.processed.contains(CookingType.frying)) {
+                    let cookingTypeImg = SKSpriteNode(texture: UIAtlas.textureNamed("Fry-BW"))
+                    cookingTypeImg.size = CGSize(width: 15, height: 15)
+                    cookingTypeImg.position = CGPoint(x: 0, y: -15)
+                    child.addChild(cookingTypeImg)
+                } else if (key.processed.contains(CookingType.chopping)) {
+                    let cookingTypeImg = SKSpriteNode(texture: UIAtlas.textureNamed("Knife-BW"))
+                    cookingTypeImg.size = CGSize(width: 15, height: 15)
+                    cookingTypeImg.position = CGPoint(x: 0, y: -15)
+                    child.addChild(cookingTypeImg)
                 }
                 i += 1
                 self.addChild(child)
