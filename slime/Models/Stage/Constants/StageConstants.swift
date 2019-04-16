@@ -114,7 +114,7 @@ class StageConstants {
     static let defaultTimeLimitOrder = CGFloat(45)
     static let minNumbersOfOrdersShown = 1
     static let maxNumbersOfOrdersShown = 6
-    static let orderComingInterval = 20.0
+    static let orderComingInterval = [30.0, 26.0, 23.0, 20.0]
     static let cookingTimerInterval = 0.05
 
     //OrderQueue and its components

@@ -217,7 +217,7 @@ class Slime: SKSpriteNode {
                         accessoryNode.run(SKAction.repeatForever(self.generateFrames(size: StageConstants.accessorySize)))
                     })
                 })
-                Timer.scheduledTimer(withTimeInterval: 0.6, repeats: false, block: { _ in
+                Timer.scheduledTimer(withTimeInterval: 2, repeats: false, block: { _ in
                     self.addChild(accessoryNode)
                 })
                 // self.addChild(accessoryNode)
