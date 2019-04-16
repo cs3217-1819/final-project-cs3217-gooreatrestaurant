@@ -176,10 +176,16 @@ class OrderQueue: SKSpriteNode, Codable {
     func removeMenuPrefab(inNum: Int) {
         //remove the node image and the list
         nodeOrder[inNum].removeFromParent()
-        nodeOrder.remove(at: inNum)
+        let node = nodeOrder.remove(at: inNum)
         
-        self.scoreToIncrease = calculateScore(timeLeft: nodeOrder[inNum].time)
-
+        self.scoreToIncrease = calculateScore(timeLeft: node.time)
+        if self.isMultiplayerEnabled {
+            let db = GameDB()
+            guard let id = gameId else { return }
+            db.addScore(by: scoreToIncrease, forGameId: id, { }) { (err) in
+                print(err.localizedDescription)
+            }
+        }
         //update positionings
         for i in 1...nodeOrder.count {
             nodeOrder[i-1].position = positionings[i-1]
