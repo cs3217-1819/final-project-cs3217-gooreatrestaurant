@@ -893,6 +893,11 @@ class Stage: SKScene {
     }
 
     func checkFoodName(ofFood food: Food) -> String? {
+        for recipe in orderQueue.possibleRecipes {
+            if recipe.possibleConsists(of: food) {
+                return recipe.recipeName
+            }
+        }
         return nil
     }
 

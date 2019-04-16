@@ -77,6 +77,7 @@ class Plate: MobileItem, Codable {
     func addIngredients(_ ingredient: Ingredient) {
         food.addIngredients(ingredient)
         addIngredientImage(inIngredient: ingredient)
+        print((self.scene as? Stage)?.checkFoodName(ofFood: food))
     }
 
     enum CodingKeys: String, CodingKey {

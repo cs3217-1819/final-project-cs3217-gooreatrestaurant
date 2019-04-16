@@ -61,6 +61,51 @@ class Recipe: NSObject, Codable {
         self.init(inRecipeName: nameOfRecipe, withCompulsoryIngredients: ingredients, withOptionalIngredients: optionalIngredients)
     }
 
+    func possibleConsists(of food: Food) -> Bool {
+        var ingredients = food.ingredientsList
+        var nonZeroIngredients = ingredients.count
+
+        for ingredient in originalCompulsoryIngredients {
+            guard ingredients[ingredient] != nil else {
+                return false
+            }
+
+            ingredients[ingredient]! -= 1
+            let remaining = ingredients[ingredient] ?? 0
+
+            guard remaining >= 0 else {
+                return false
+            }
+
+            if remaining == 0 {
+                nonZeroIngredients -= 1
+            }
+        }
+
+        if nonZeroIngredients == 0 {
+            return true
+        }
+
+        for (ingredient, _) in originalOptionalIngredients {
+            if ingredients[ingredient] == nil {
+                ingredients[ingredient] = 0
+            }
+
+            ingredients[ingredient]! -= 1
+
+            let remaining = ingredients[ingredient] ?? 0
+            if remaining == 0 {
+                nonZeroIngredients -= 1
+            }
+
+            if nonZeroIngredients == 0 {
+                return true
+            }
+        }
+
+        return false
+    }
+
     // To generate the same recipe but with the optional ingredients probability re-rolled again
     func regenerateRecipe() -> Recipe {
         return Recipe(inRecipeName: recipeName, withCompulsoryIngredients: originalCompulsoryIngredients,
