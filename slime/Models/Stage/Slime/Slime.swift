@@ -28,10 +28,6 @@ class Slime: SKSpriteNode {
             walkFrames.append(slimeAnimatedAtlas.textureNamed(slimeTextureName))
         }
 
-//        guard let hat = CosmeticConstants.hatsDict[player!.hat] else {
-//            fatalError()
-//        }
-
         super.init(texture: walkFrames[0], color: .clear, size: size)
 
         self.name = StageConstants.slimeName
@@ -58,6 +54,21 @@ class Slime: SKSpriteNode {
                              resize: false,
                              restore: true)),
                  withKey: "walkingInPlaceSlime")
+
+
+        let hatNode = SKSpriteNode.init()
+        if let hat = CosmeticConstants.hatsDict[player!.hat] {
+            hatNode.texture = SKTexture(image: hat.image!)
+            hatNode.size = CGSize(width: 10, height: 10)
+            self.addChild(hatNode)
+        }
+
+        let accessoryNode = SKSpriteNode.init()
+        if let accessory = CosmeticConstants.accessoriesDict[player!.accessory] {
+            accessoryNode.texture = SKTexture(image: accessory.image!)
+            accessoryNode.size = CGSize(width: 10, height: 10)
+            self.addChild(accessoryNode)
+        }
     }
 
     required init?(coder aDecoder: NSCoder) {
