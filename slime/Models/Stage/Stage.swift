@@ -174,14 +174,11 @@ class Stage: SKScene {
             self.notificationPrefab.show(withDescription: notification.description, ofType: type)
         }, onStageItemAdded: { (item) in
             // stage item added
-            print("stageItemAdded")
             self.handleStageItemAdded(forItem: item)
         }, onStageItemRemoved: { (item) in
             // stage item removed
-            print("stageItemRemoved")
             self.handleStageItemRemoved(forItem: item)
         }, onStageItemChanged: { (item) in
-            print("stageItemChanged")
             self.handleStageItemChanged(forItem: item)
         }, onComplete: {
             // this is run BEFORE the stage fully loads, and only after
@@ -220,7 +217,6 @@ class Stage: SKScene {
     }
     
     private func handleStageItemAdded(forItem item: StageItemModel) {
-        guard let userUid = GameAuth.currentUser?.uid else { return }
         let decoder = JSONDecoder()
         guard let data = item.encodedData.data(using: .utf8) else { return }
 
@@ -228,7 +224,6 @@ class Stage: SKScene {
             let plate = try? decoder.decode(Plate.self, from: data)
             guard let addedPlate = plate else { return }
             self.allStageItemsDict.updateValue(addedPlate as MobileItem, forKey: item.uid)
-            if item.lastInteractedBy.starts(with: userUid) { return }
             self.addChild(addedPlate)
         }
         
@@ -236,7 +231,6 @@ class Stage: SKScene {
             let ingredient = try? decoder.decode(Ingredient.self, from: data)
             guard let addedIngredient = ingredient else { return }
             self.allStageItemsDict.updateValue(addedIngredient as MobileItem, forKey: item.uid)
-            if item.lastInteractedBy.starts(with: userUid) { return }
             self.addChild(addedIngredient)
         }
     }
@@ -244,7 +238,6 @@ class Stage: SKScene {
     private func handleStageItemChanged(forItem item: StageItemModel) {
         let decoder = JSONDecoder()
         guard let data = item.encodedData.data(using: .utf8) else { return }
-        guard let userUid = GameAuth.currentUser?.uid else { return }
         
         if item.type == FirebaseSystemValues.ItemTypes.plate.rawValue {
             let plate = try? decoder.decode(Plate.self, from: data)
@@ -254,10 +247,11 @@ class Stage: SKScene {
                 currentPlate.removeFromParent()
             }
             self.allStageItemsDict.updateValue(addedPlate as MobileItem, forKey: item.uid)
-            if item.lastInteractedBy.starts(with: userUid) { return }
             self.addChild(addedPlate)
         }
         
+        // I think this wont even be executed but I just put in
+        // here just in case lol
         if item.type == FirebaseSystemValues.ItemTypes.ingredient.rawValue {
             let ingredient = try? decoder.decode(Ingredient.self, from: data)
             guard let addedIngredient = ingredient else { return }
@@ -775,11 +769,14 @@ class Stage: SKScene {
         guard let room = self.previousRoom else { return }
         guard let id = item.id else { return }
         
-        database.updatePlayerHoldingItem(forGameId: room.id, toItem: "BUH BUH Sling" as AnyObject, {
-            database.addStageItem(forGameId: room.id, withItem: item, withItemUid: id, { }) { (err) in
-                print(err.localizedDescription)
-            }
-        }) { (err) in
+        // remove from parent to prevent duplication
+        item.removeFromParent()
+        
+        database.updatePlayerHoldingItem(forGameId: room.id, toItem: "BUH BUH Sling" as AnyObject, { }) { (err) in
+            print(err.localizedDescription)
+        }
+        
+        database.addStageItem(forGameId: room.id, withItem: item, withItemUid: id, { }) { (err) in
             print(err.localizedDescription)
         }
     }
