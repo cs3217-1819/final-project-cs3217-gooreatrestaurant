@@ -34,10 +34,9 @@ class FryingEquipment: CookingEquipment {
             sfxPlayer = nil
             AudioMaster.instance.playSFX(name: "oven-ding")
         }
-        
     }
 
-    override func denyProcessing(ofItem item: Item?) {
+    override func denyProcessing(ofItem item: Item?) -> Bool {
         guard let ingredient = item as? Ingredient else {
             return false
         }

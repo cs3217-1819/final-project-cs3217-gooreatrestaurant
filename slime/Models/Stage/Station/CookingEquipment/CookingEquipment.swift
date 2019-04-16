@@ -94,7 +94,7 @@ class CookingEquipment: Station {
         return toTake
     }
 
-    func denyProcessing(ofItem item: Item?) {
+    func denyProcessing(ofItem item: Item?) -> Bool {
         return false
     }
 
