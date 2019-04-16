@@ -435,7 +435,10 @@ class GameDB: GameDatabase {
     /// - Returns:
     ///     - a dictionary representing the stations
     private func generateStationsDict(forMap map: String) -> [String : AnyObject] {
-        guard let levelDesignURL = Bundle.main.url(forResource: map, withExtension: "plist") else {
+        let level = LevelsReader.getLevel(id: map)
+        guard let fileName = level?.fileName else { return [:] }
+        
+        guard let levelDesignURL = Bundle.main.url(forResource: fileName, withExtension: "plist") else {
             return [:]
         }
         
@@ -523,7 +526,10 @@ class GameDB: GameDatabase {
     ///     - a Firebase ready dictionary
     ///       to be inserted into another dict
     private func createGamePlayersDict(forMap map: String, forPlayers players: [RoomPlayerModel]) -> [String : AnyObject] {
-        guard let levelDesignURL = Bundle.main.url(forResource: map, withExtension: "plist") else {
+        let level = LevelsReader.getLevel(id: map)
+        guard let fileName = level?.fileName else { return [:] }
+        
+        guard let levelDesignURL = Bundle.main.url(forResource: fileName, withExtension: "plist") else {
             return [:]
         }
         
@@ -1052,7 +1058,10 @@ class GameDB: GameDatabase {
     }
     
     private func generateStationIdList(fromMap map: String) -> [String] {
-        guard let levelDesignURL = Bundle.main.url(forResource: map, withExtension: "plist") else {
+        let level = LevelsReader.getLevel(id: map)
+        guard let plistFileName = level?.fileName else { return [] }
+        
+        guard let levelDesignURL = Bundle.main.url(forResource: plistFileName, withExtension: "plist") else {
             return []
         }
         
