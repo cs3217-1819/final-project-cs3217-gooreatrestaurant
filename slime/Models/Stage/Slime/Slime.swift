@@ -65,7 +65,10 @@ class Slime: SKSpriteNode {
     }
 
     func removeItem() {
-        self.removeAllChildren()
+        if let item = itemCarried {
+            self.removeChildren(in: [item])
+        }
+        
     }
 
     func takeItem(_ item: MobileItem?) {

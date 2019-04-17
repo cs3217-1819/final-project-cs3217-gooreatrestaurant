@@ -11,9 +11,9 @@ import RxSwift
 
 class StagePreviewController: Controller {
     let view: UIView
-    private let backgroundView: UIView
-    private let backgroundImageView: UIImageView
-    private let stageImageView: UIImageView
+    private var backgroundView: UIView!
+    private var backgroundImageView: UIImageView!
+    private var stageImageView: UIImageView!
     
     private let disposeBag = DisposeBag()
     
@@ -25,20 +25,17 @@ class StagePreviewController: Controller {
         
         view.clipsToBounds = true
         view.layer.cornerRadius = 8
-        
+    }
+    
+    func configure() {
         backgroundView = UIView(frame: view.bounds.scaleY(by: 2))
         backgroundImageView = UIImageView(frame: backgroundView.bounds)
         backgroundImageView.contentMode = .scaleAspectFill
         backgroundView.addSubview(backgroundImageView)
         
         stageImageView = UIImageView(frame: backgroundView.frame)
-        stageImageView.contentMode = .scaleAspectFit
+        stageImageView.contentMode = .scaleAspectFill
         backgroundView.addSubview(stageImageView)
-        
-        view.addSubview(backgroundView)
-    }
-    
-    func configure() {
         backgroundView.frame = backgroundView.frame.offsetBy(dx: 0, dy: -view.frame.height)
         
         UIView.animate(withDuration: 5.0, delay: 0.0, options: [.repeat, .autoreverse], animations: {

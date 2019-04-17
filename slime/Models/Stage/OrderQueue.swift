@@ -211,7 +211,7 @@ class OrderQueue: SKSpriteNode, Codable {
     }
 
     func calculateScore(timeLeft: CGFloat) -> Int {
-        let score = Int(timeLeft / StageConstants.defaultTimeLimitOrder * 100)
+        let score = 20 + Int(timeLeft / StageConstants.defaultTimeLimitOrder * 100)
         return score
     }
 

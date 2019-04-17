@@ -129,13 +129,17 @@ class MainController: UIViewController {
     }
 
     private func adjustBackground() {
-        if router.currentRoute == .TitleScreen {
+        switch(router.currentRoute) {
+        case .TitleScreen:
             bgControl?.toAlpha(1.0)
             bgControl?.transitionTo("background")
-        } else if router.currentRoute == .GameScreen || router.currentRoute == .MultiplayerGameScreen {
+        case .PlayScreen, .CreditsScreen, .SettingsScreen, .CharacterCustomizationScreen:
+            bgControl?.toAlpha(0.5)
+            bgControl?.transitionTo("background")
+        case .GameScreen, .MultiplayerGameScreen:
             bgControl?.toAlpha(1.0)
             bgControl?.transitionTo("black")
-        } else {
+        default:
             bgControl?.toAlpha(0.5)
             bgControl?.transitionTo("background-1")
         }

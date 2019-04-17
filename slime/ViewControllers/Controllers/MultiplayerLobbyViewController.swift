@@ -84,13 +84,19 @@ class MultiplayerLobbyViewController: ViewController<MultiplayerLobbyView> {
             modalView.layoutIfNeeded()
             let control = StageSelectorController(withXib: modalView.levelPreviewsView)
             control.levels = LevelsReader.readMultiplayerLevels()
+            
             control.onSelect { level in
                 self.context.db.changeRoomMap(fromRoomId: self.roomId, toMapId: level.id, { error in
                     fatalError(error.localizedDescription)
                 })
+                control.selectedLevelId.onNext(level.id)
                 self.context.modal.closeAlert()
             }
             control.configure()
+            
+            if let map = self.currentRoom?.map {
+                control.selectedLevelId.onNext(map)
+            }
             self.context.modal.showModal(view: modalView)
             self.selectorController = control
         }

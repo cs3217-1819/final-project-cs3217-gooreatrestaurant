@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina4_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -16,70 +16,223 @@
             <rect key="frame" x="0.0" y="0.0" width="812" height="375"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Credits" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fFS-hh-xwc" customClass="TextLabel" customModule="slime" customModuleProvider="target">
-                    <rect key="frame" x="36" y="36" width="55" height="20.5"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Credits" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fFS-hh-xwc" customClass="TextLabel" customModule="slime" customModuleProvider="target">
+                    <rect key="frame" x="36" y="36" width="119" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="string" keyPath="style" value="h0"/>
-                        <userDefinedRuntimeAttribute type="string" keyPath="color" value="white1"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="color" value="pink1"/>
                     </userDefinedRuntimeAttributes>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nVm-wz-Px7">
-                    <rect key="frame" x="36" y="92.5" width="740" height="246.5"/>
+                    <rect key="frame" x="36" y="88.5" width="740" height="250.5"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lim Hui Qi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WcV-rb-8KD" customClass="TextLabel" customModule="slime" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="0.0" width="78.5" height="20.5"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="string" keyPath="style" value="h1"/>
-                                <userDefinedRuntimeAttribute type="string" keyPath="color" value="white1"/>
-                            </userDefinedRuntimeAttributes>
-                        </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gabriel Tan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yh8-Kx-053" customClass="TextLabel" customModule="slime" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="36.5" width="86.5" height="20.5"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="string" keyPath="style" value="h1"/>
-                                <userDefinedRuntimeAttribute type="string" keyPath="color" value="white1"/>
-                            </userDefinedRuntimeAttributes>
-                        </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Anthony Tantra" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="geF-MT-8GR" customClass="TextLabel" customModule="slime" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="73" width="116.5" height="20.5"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="string" keyPath="style" value="h1"/>
-                                <userDefinedRuntimeAttribute type="string" keyPath="color" value="white1"/>
-                            </userDefinedRuntimeAttributes>
-                        </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="samuel henry kurniawan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OkJ-uc-BCZ" customClass="TextLabel" customModule="slime" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="109.5" width="185" height="20.5"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="string" keyPath="style" value="h1"/>
-                                <userDefinedRuntimeAttribute type="string" keyPath="color" value="white1"/>
-                            </userDefinedRuntimeAttributes>
-                        </label>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="m5r-D9-vqT">
+                            <rect key="frame" x="0.0" y="0.0" width="740" height="250.5"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5zW-8W-fvE" customClass="DesignableView" customModule="slime" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="179" height="250.5"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="slime-pastel-green" translatesAutoresizingMaskIntoConstraints="NO" id="IL5-bm-AH0">
+                                            <rect key="frame" x="16" y="8" width="147" height="147"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="IL5-bm-AH0" secondAttribute="height" id="b6R-4D-J68"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hui Qi" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kz9-Ob-ap8" customClass="TextLabel" customModule="slime" customModuleProvider="target">
+                                            <rect key="frame" x="8" y="163" width="163" height="33.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="style" value="h0"/>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="color" value="pink2"/>
+                                            </userDefinedRuntimeAttributes>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Game Designer" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uj2-LR-M09" customClass="TextLabel" customModule="slime" customModuleProvider="target">
+                                            <rect key="frame" x="8" y="204.5" width="163" height="19"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="color" value="pink3"/>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="style" value="p2"/>
+                                            </userDefinedRuntimeAttributes>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstItem="uj2-LR-M09" firstAttribute="leading" secondItem="5zW-8W-fvE" secondAttribute="leading" constant="8" id="3W8-Ld-5th"/>
+                                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="uj2-LR-M09" secondAttribute="bottom" constant="8" id="4BQ-Id-sl8"/>
+                                        <constraint firstItem="Kz9-Ob-ap8" firstAttribute="leading" secondItem="5zW-8W-fvE" secondAttribute="leading" constant="8" id="8HN-He-f2O"/>
+                                        <constraint firstAttribute="trailing" secondItem="Kz9-Ob-ap8" secondAttribute="trailing" constant="8" id="D32-8W-mrj"/>
+                                        <constraint firstAttribute="trailing" secondItem="uj2-LR-M09" secondAttribute="trailing" constant="8" id="LAc-qk-jYJ"/>
+                                        <constraint firstItem="IL5-bm-AH0" firstAttribute="leading" secondItem="5zW-8W-fvE" secondAttribute="leading" constant="16" id="Nhu-cJ-ZQc"/>
+                                        <constraint firstAttribute="trailing" secondItem="IL5-bm-AH0" secondAttribute="trailing" constant="16" id="Oag-H0-M3V"/>
+                                        <constraint firstItem="Kz9-Ob-ap8" firstAttribute="top" secondItem="IL5-bm-AH0" secondAttribute="bottom" constant="8" id="T4J-jb-hoU"/>
+                                        <constraint firstItem="IL5-bm-AH0" firstAttribute="top" secondItem="5zW-8W-fvE" secondAttribute="top" constant="8" id="Vb8-Da-WA8"/>
+                                        <constraint firstItem="uj2-LR-M09" firstAttribute="top" secondItem="Kz9-Ob-ap8" secondAttribute="bottom" constant="8" id="rB8-8F-j0g"/>
+                                    </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="rounded" value="YES"/>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="background" value="pink7"/>
+                                    </userDefinedRuntimeAttributes>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QX6-9X-2AQ" customClass="DesignableView" customModule="slime" customModuleProvider="target">
+                                    <rect key="frame" x="187" y="0.0" width="179" height="250.5"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="slime-pastel-pink" translatesAutoresizingMaskIntoConstraints="NO" id="ChJ-fW-gZf">
+                                            <rect key="frame" x="16" y="8" width="147" height="147"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="ChJ-fW-gZf" secondAttribute="height" id="gHu-LJ-B3L"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gabriel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QBo-zT-dzB" customClass="TextLabel" customModule="slime" customModuleProvider="target">
+                                            <rect key="frame" x="8" y="163" width="163" height="33.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="style" value="h0"/>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="color" value="pink2"/>
+                                            </userDefinedRuntimeAttributes>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UI/UX Designer" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z2Z-rU-dQD" customClass="TextLabel" customModule="slime" customModuleProvider="target">
+                                            <rect key="frame" x="8" y="204.5" width="163" height="19"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="color" value="pink3"/>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="style" value="p2"/>
+                                            </userDefinedRuntimeAttributes>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="QBo-zT-dzB" secondAttribute="trailing" constant="8" id="0FA-3R-eu6"/>
+                                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Z2Z-rU-dQD" secondAttribute="bottom" constant="8" id="7A8-ym-BTz"/>
+                                        <constraint firstItem="Z2Z-rU-dQD" firstAttribute="leading" secondItem="QX6-9X-2AQ" secondAttribute="leading" constant="8" id="GXn-Yi-xaK"/>
+                                        <constraint firstAttribute="trailing" secondItem="ChJ-fW-gZf" secondAttribute="trailing" constant="16" id="O20-UK-tnd"/>
+                                        <constraint firstAttribute="trailing" secondItem="Z2Z-rU-dQD" secondAttribute="trailing" constant="8" id="XZe-vZ-Gar"/>
+                                        <constraint firstItem="QBo-zT-dzB" firstAttribute="top" secondItem="ChJ-fW-gZf" secondAttribute="bottom" constant="8" id="ZGy-Oh-Sgd"/>
+                                        <constraint firstItem="ChJ-fW-gZf" firstAttribute="leading" secondItem="QX6-9X-2AQ" secondAttribute="leading" constant="16" id="gol-28-NCW"/>
+                                        <constraint firstItem="QBo-zT-dzB" firstAttribute="leading" secondItem="QX6-9X-2AQ" secondAttribute="leading" constant="8" id="usK-sO-WRG"/>
+                                        <constraint firstItem="Z2Z-rU-dQD" firstAttribute="top" secondItem="QBo-zT-dzB" secondAttribute="bottom" constant="8" id="yQI-wP-4SQ"/>
+                                        <constraint firstItem="ChJ-fW-gZf" firstAttribute="top" secondItem="QX6-9X-2AQ" secondAttribute="top" constant="8" id="zmC-SH-nrY"/>
+                                    </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="rounded" value="YES"/>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="background" value="pink7"/>
+                                    </userDefinedRuntimeAttributes>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QLw-gG-vAa" customClass="DesignableView" customModule="slime" customModuleProvider="target">
+                                    <rect key="frame" x="374" y="0.0" width="179" height="250.5"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="slime-red-angry" translatesAutoresizingMaskIntoConstraints="NO" id="mpv-eK-1W1">
+                                            <rect key="frame" x="16" y="8" width="147" height="147"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="mpv-eK-1W1" secondAttribute="height" id="VZE-qv-LD5"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Anthony" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M06-21-tpx" customClass="TextLabel" customModule="slime" customModuleProvider="target">
+                                            <rect key="frame" x="8" y="163" width="163" height="33.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="style" value="h0"/>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="color" value="pink2"/>
+                                            </userDefinedRuntimeAttributes>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Network Designer" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vhg-3k-iCb" customClass="TextLabel" customModule="slime" customModuleProvider="target">
+                                            <rect key="frame" x="8" y="204.5" width="163" height="19"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="color" value="pink3"/>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="style" value="p2"/>
+                                            </userDefinedRuntimeAttributes>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstItem="Vhg-3k-iCb" firstAttribute="top" secondItem="M06-21-tpx" secondAttribute="bottom" constant="8" id="FLa-rw-qgb"/>
+                                        <constraint firstItem="M06-21-tpx" firstAttribute="leading" secondItem="QLw-gG-vAa" secondAttribute="leading" constant="8" id="J6y-f2-8vY"/>
+                                        <constraint firstItem="M06-21-tpx" firstAttribute="top" secondItem="mpv-eK-1W1" secondAttribute="bottom" constant="8" id="Mrf-06-Yla"/>
+                                        <constraint firstAttribute="trailing" secondItem="mpv-eK-1W1" secondAttribute="trailing" constant="16" id="Rgz-Mc-Qty"/>
+                                        <constraint firstItem="mpv-eK-1W1" firstAttribute="top" secondItem="QLw-gG-vAa" secondAttribute="top" constant="8" id="Rqy-r8-WW4"/>
+                                        <constraint firstAttribute="trailing" secondItem="M06-21-tpx" secondAttribute="trailing" constant="8" id="SC0-a4-Dwl"/>
+                                        <constraint firstItem="mpv-eK-1W1" firstAttribute="leading" secondItem="QLw-gG-vAa" secondAttribute="leading" constant="16" id="Wme-E6-2fr"/>
+                                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Vhg-3k-iCb" secondAttribute="bottom" constant="8" id="bjX-jd-Xuh"/>
+                                        <constraint firstItem="Vhg-3k-iCb" firstAttribute="leading" secondItem="QLw-gG-vAa" secondAttribute="leading" constant="8" id="lqq-J0-Bun"/>
+                                        <constraint firstAttribute="trailing" secondItem="Vhg-3k-iCb" secondAttribute="trailing" constant="8" id="mGY-Ca-G3V"/>
+                                    </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="rounded" value="YES"/>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="background" value="pink7"/>
+                                    </userDefinedRuntimeAttributes>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dJS-h3-gZK" customClass="DesignableView" customModule="slime" customModuleProvider="target">
+                                    <rect key="frame" x="561" y="0.0" width="179" height="250.5"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="slime-light-green" translatesAutoresizingMaskIntoConstraints="NO" id="Xql-Qy-OHb">
+                                            <rect key="frame" x="16" y="8" width="147" height="147"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="Xql-Qy-OHb" secondAttribute="height" id="XZw-c1-A26"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Samuel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dRA-CM-cxx" customClass="TextLabel" customModule="slime" customModuleProvider="target">
+                                            <rect key="frame" x="8" y="163" width="163" height="33.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="style" value="h0"/>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="color" value="pink2"/>
+                                            </userDefinedRuntimeAttributes>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Game Designer" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sPg-fP-zmm" customClass="TextLabel" customModule="slime" customModuleProvider="target">
+                                            <rect key="frame" x="8" y="204.5" width="163" height="19"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="color" value="pink3"/>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="style" value="p2"/>
+                                            </userDefinedRuntimeAttributes>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstItem="sPg-fP-zmm" firstAttribute="top" secondItem="dRA-CM-cxx" secondAttribute="bottom" constant="8" id="LH9-z4-vYO"/>
+                                        <constraint firstItem="dRA-CM-cxx" firstAttribute="top" secondItem="Xql-Qy-OHb" secondAttribute="bottom" constant="8" id="LeQ-W1-AYm"/>
+                                        <constraint firstItem="Xql-Qy-OHb" firstAttribute="leading" secondItem="dJS-h3-gZK" secondAttribute="leading" constant="16" id="NqM-4F-e9C"/>
+                                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="sPg-fP-zmm" secondAttribute="bottom" constant="8" id="Rvs-hg-0FE"/>
+                                        <constraint firstAttribute="trailing" secondItem="sPg-fP-zmm" secondAttribute="trailing" constant="8" id="kKq-ga-wSh"/>
+                                        <constraint firstItem="sPg-fP-zmm" firstAttribute="leading" secondItem="dJS-h3-gZK" secondAttribute="leading" constant="8" id="kak-Fb-w6g"/>
+                                        <constraint firstItem="Xql-Qy-OHb" firstAttribute="top" secondItem="dJS-h3-gZK" secondAttribute="top" constant="8" id="lj4-hr-tcM"/>
+                                        <constraint firstAttribute="trailing" secondItem="dRA-CM-cxx" secondAttribute="trailing" constant="8" id="oes-Jm-gsM"/>
+                                        <constraint firstItem="dRA-CM-cxx" firstAttribute="leading" secondItem="dJS-h3-gZK" secondAttribute="leading" constant="8" id="uGZ-vX-LRJ"/>
+                                        <constraint firstAttribute="trailing" secondItem="Xql-Qy-OHb" secondAttribute="trailing" constant="16" id="znR-Tm-3Dg"/>
+                                    </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="rounded" value="YES"/>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="background" value="pink7"/>
+                                    </userDefinedRuntimeAttributes>
+                                </view>
+                            </subviews>
+                        </stackView>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstItem="OkJ-uc-BCZ" firstAttribute="leading" secondItem="nVm-wz-Px7" secondAttribute="leading" id="7R3-oz-98j"/>
-                        <constraint firstItem="yh8-Kx-053" firstAttribute="leading" secondItem="nVm-wz-Px7" secondAttribute="leading" id="8Mm-8B-x1L"/>
-                        <constraint firstItem="yh8-Kx-053" firstAttribute="top" secondItem="WcV-rb-8KD" secondAttribute="bottom" constant="16" id="DkG-1a-jTB"/>
-                        <constraint firstItem="OkJ-uc-BCZ" firstAttribute="top" secondItem="geF-MT-8GR" secondAttribute="bottom" constant="16" id="OH9-ib-pkR"/>
-                        <constraint firstItem="geF-MT-8GR" firstAttribute="leading" secondItem="nVm-wz-Px7" secondAttribute="leading" id="RG4-7h-xoH"/>
-                        <constraint firstItem="WcV-rb-8KD" firstAttribute="top" secondItem="nVm-wz-Px7" secondAttribute="top" id="eNU-yC-cxR"/>
-                        <constraint firstItem="geF-MT-8GR" firstAttribute="top" secondItem="yh8-Kx-053" secondAttribute="bottom" constant="16" id="gJI-wK-J28"/>
-                        <constraint firstItem="WcV-rb-8KD" firstAttribute="leading" secondItem="nVm-wz-Px7" secondAttribute="leading" id="wef-Pe-Yxl"/>
+                        <constraint firstItem="m5r-D9-vqT" firstAttribute="leading" secondItem="nVm-wz-Px7" secondAttribute="leading" id="7C1-zu-vsb"/>
+                        <constraint firstAttribute="trailing" secondItem="m5r-D9-vqT" secondAttribute="trailing" id="JO2-q6-6se"/>
+                        <constraint firstItem="m5r-D9-vqT" firstAttribute="top" secondItem="nVm-wz-Px7" secondAttribute="top" id="e1Z-TE-nkU"/>
+                        <constraint firstAttribute="bottom" secondItem="m5r-D9-vqT" secondAttribute="bottom" id="i47-wJ-a0T"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y7B-S8-gOS" customClass="DesignableView" customModule="slime" customModuleProvider="target">
@@ -117,16 +270,20 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
-                <outlet property="anthonyLabel" destination="geF-MT-8GR" id="2QX-Nw-k5I"/>
+                <outlet property="anthonyView" destination="QLw-gG-vAa" id="IYg-Qq-MxF"/>
                 <outlet property="backButton" destination="Y7B-S8-gOS" id="dS4-ZP-j5i"/>
-                <outlet property="gabrielLabel" destination="yh8-Kx-053" id="vne-Ho-iH9"/>
-                <outlet property="henryLabel" destination="OkJ-uc-BCZ" id="8dY-mk-ZGC"/>
-                <outlet property="huiqiLabel" destination="WcV-rb-8KD" id="9GK-EO-mjJ"/>
+                <outlet property="gabrielView" destination="QX6-9X-2AQ" id="Aad-ze-MUJ"/>
+                <outlet property="huiqiView" destination="5zW-8W-fvE" id="vhC-Fl-LrF"/>
+                <outlet property="samuelView" destination="dJS-h3-gZK" id="j2I-bR-RRf"/>
             </connections>
-            <point key="canvasLocation" x="129.59999999999999" y="152.47376311844079"/>
+            <point key="canvasLocation" x="110.19490254872565" y="164.80000000000001"/>
         </view>
     </objects>
     <resources>
         <image name="BackButton" width="512" height="512"/>
+        <image name="slime-light-green" width="1024" height="1024"/>
+        <image name="slime-pastel-green" width="1024" height="1024"/>
+        <image name="slime-pastel-pink" width="1024" height="1024"/>
+        <image name="slime-red-angry" width="1024" height="1024"/>
     </resources>
 </document>
