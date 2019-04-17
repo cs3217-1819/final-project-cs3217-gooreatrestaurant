@@ -37,19 +37,22 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IO1-fS-WYA" customClass="DesignableView" customModule="slime">
-                    <rect key="frame" x="352" y="36" width="424" height="303"/>
+                    <rect key="frame" x="352" y="62.5" width="424" height="250"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="imv-iR-Sv3">
-                            <rect key="frame" x="16" y="16" width="392" height="271"/>
+                            <rect key="frame" x="16" y="16" width="392" height="218"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
+                        <constraint firstItem="imv-iR-Sv3" firstAttribute="top" secondItem="IO1-fS-WYA" secondAttribute="top" constant="16" id="03K-kK-ryd"/>
+                        <constraint firstAttribute="bottom" secondItem="imv-iR-Sv3" secondAttribute="bottom" constant="16" id="0au-ta-QzX"/>
                         <constraint firstItem="imv-iR-Sv3" firstAttribute="leading" secondItem="IO1-fS-WYA" secondAttribute="leading" constant="16" id="CLz-lN-sc3"/>
-                        <constraint firstAttribute="bottom" secondItem="imv-iR-Sv3" secondAttribute="bottom" constant="16" id="Vzp-O6-gca"/>
-                        <constraint firstItem="imv-iR-Sv3" firstAttribute="top" secondItem="IO1-fS-WYA" secondAttribute="top" constant="16" id="mU0-nj-iUB"/>
+                        <constraint firstItem="imv-iR-Sv3" firstAttribute="centerY" secondItem="IO1-fS-WYA" secondAttribute="centerY" id="Xwe-k3-RVy"/>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="999" constant="250" id="lZ4-eb-58G"/>
                         <constraint firstAttribute="trailing" secondItem="imv-iR-Sv3" secondAttribute="trailing" constant="16" id="qC7-YQ-GQL"/>
+                        <constraint firstAttribute="height" constant="250" id="y6h-JK-A5m"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="string" keyPath="background" value="pink7"/>
@@ -63,9 +66,8 @@
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="wE0-l4-0hI" secondAttribute="bottom" constant="36" id="9Um-ok-29t"/>
                 <constraint firstItem="wE0-l4-0hI" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="36" id="CaE-FU-djs"/>
                 <constraint firstItem="wE0-l4-0hI" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="36" id="lZG-8b-ZM3"/>
+                <constraint firstItem="IO1-fS-WYA" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="tvT-d7-ZuM"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="IO1-fS-WYA" secondAttribute="trailing" constant="36" id="v0I-ce-No6"/>
-                <constraint firstItem="IO1-fS-WYA" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="36" id="wov-dN-GSS"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="IO1-fS-WYA" secondAttribute="bottom" constant="36" id="xhe-lR-wfs"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>

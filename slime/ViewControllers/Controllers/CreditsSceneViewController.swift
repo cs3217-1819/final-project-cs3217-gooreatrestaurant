@@ -14,11 +14,12 @@ class CreditsSceneViewController: ViewController<CreditsScreenView> {
     }
 
     override func configureSubviews() {
-        UIView.animate(withDuration: 1, delay: 0, options: [.autoreverse, .repeat], animations: {
-            self.view.huiqiLabel.frame = self.view.huiqiLabel.frame.offsetBy(dx: -50, dy: 0.0)
-            self.view.gabrielLabel.frame = self.view.gabrielLabel.frame.offsetBy(dx: -70, dy: 0.0)
-            self.view.anthonyLabel.frame = self.view.anthonyLabel.frame.offsetBy(dx: -60, dy: 0.0)
-            self.view.henryLabel.frame = self.view.henryLabel.frame.offsetBy(dx: -80, dy: 0.0)
+        UIView.animate(withDuration: 1.5, delay: 0, options: [.repeat, .autoreverse], animations: {
+            let rot = "\(0.1 * Double.pi)"
+            self.view.huiqiView.rotation = rot
+            self.view.gabrielView.rotation = rot
+            self.view.anthonyView.rotation = rot
+            self.view.samuelView.rotation = rot
         }, completion: nil)
 
         let controller = ButtonController(using: view.backButton)
