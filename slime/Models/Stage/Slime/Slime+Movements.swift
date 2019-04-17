@@ -2,9 +2,10 @@ import UIKit
 import SpriteKit
 
 extension Slime {
-    func resetMovement() {
+    func resetMovement(clampVelocity: Bool) {
         self.checkLadderInteraction()
         self.physicsBody?.affectedByGravity = !self.isContactingWithLadder
+        if !clampVelocity { return }
         if self.isContactingWithLadder {
             self.physicsBody?.velocity = CGVector(dx: 0.0, dy: 0.0)
         }

@@ -523,7 +523,14 @@ class Stage: SKScene {
     }
 
     override func didSimulatePhysics() {
-        for (_, slime) in self.allSlimesDict { slime.resetMovement() }
+        for (uid, slime) in self.allSlimesDict {
+            if uid != GameAuth.currentUser?.uid {
+                // not user
+                slime.resetMovement(clampVelocity: false)
+                continue
+            }
+            slime.resetMovement(clampVelocity: true)
+        }
         super.didSimulatePhysics()
     }
 
