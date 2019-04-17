@@ -791,7 +791,13 @@ class Stage: SKScene {
         guard let id = itemOnGround.id else { return }
         guard let item = itemCarried else { return }
         
-        database.updateStageItem(forGameId: room.id, withItemOnGround: itemOnGround, withItemCarried: item, withItemUid: id, { }) { (err) in
+        database.updateStageItem(forGameId: room.id, withItemOnGround: itemOnGround, withItemCarried: item, withItemUid: id, onItemChange: { (plate, item) in
+            guard let itemInteracted = item else { return }
+            plate.removeFromParent()
+            self.addChild(plate)
+            let _ = plate.interact(withItem: itemInteracted)
+            plate.removeFromParent()
+        }, { }) { (err) in
             print(err.localizedDescription)
         }
         
@@ -842,6 +848,11 @@ class Stage: SKScene {
                         })
                     }
                 }
+            }, onItemInteract: { (plate, item) in
+                plate.removeFromParent()
+                self.addChild(plate)
+                let _ = plate.interact(withItem: item)
+                plate.removeFromParent()
             }, {
                 // completion block
             }) { (err) in

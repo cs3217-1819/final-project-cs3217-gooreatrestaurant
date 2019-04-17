@@ -719,7 +719,7 @@ class GameDB: GameDatabase {
         })
     }
     
-    func updateStageItem(forGameId id: String, withItemOnGround itemOnGround: AnyObject, withItemCarried itemCarried: AnyObject, withItemUid uid: String, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void) {
+    func updateStageItem(forGameId id: String, withItemOnGround itemOnGround: AnyObject, withItemCarried itemCarried: AnyObject, withItemUid uid: String, onItemChange: @escaping (Plate, MobileItem?) -> Void, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void) {
         let ref = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, id, FirebaseKeys.games_stageItems, uid]))
         
         ref.runTransactionBlock({ (current) -> TransactionResult in
@@ -733,7 +733,8 @@ class GameDB: GameDatabase {
             
             guard let plate = self.convertEncodedDataToPlate(withEncodedData: encodedData) else { return TransactionResult.success(withValue: current) }
             
-            let _ = plate.interact(withItem: itemCarried as? MobileItem)
+//            let _ = plate.interact(withItem: itemCarried as? MobileItem)
+            onItemChange(plate, itemCarried as? MobileItem)
             
             guard let item = itemOnGround as? MobileItem else { return TransactionResult.success(withValue: current) }
             
@@ -1311,7 +1312,7 @@ class GameDB: GameDatabase {
         })
     }
     
-    func handleInteractWithTable(forGameId id: String, forStation station: String, itemCarried item: MobileItem?, onItemAlreadyRemoved: @escaping () -> Void, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void) {
+    func handleInteractWithTable(forGameId id: String, forStation station: String, itemCarried item: MobileItem?, onItemAlreadyRemoved: @escaping () -> Void, onItemInteract: @escaping (Plate, MobileItem) -> Void, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void) {
         let ref = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, id, FirebaseKeys.games_stations, station, FirebaseKeys.games_stations_itemInside]))
         
         ref.runTransactionBlock { (current) -> TransactionResult in
@@ -1361,7 +1362,8 @@ class GameDB: GameDatabase {
             } else if type == FirebaseSystemValues.ItemTypes.plate.rawValue {
                 guard let plate = self.decodeStringToItem(fromString: encodedString, forType: type) as? Plate else { return TransactionResult.success(withValue: current) }
                 if let itemCarried = item as? Ingredient {
-                    let _ = plate.interact(withItem: itemCarried)
+//                    let _ = plate.interact(withItem: itemCarried)
+                    onItemInteract(plate, itemCarried)
                     let res = self.convertGameItemToEncodedData(forGameItem: plate)
                     current.value = res
                     self.updatePlayerHoldingItem(forGameId: id, toItem: "OHOHA" as AnyObject, { }, { (err) in
