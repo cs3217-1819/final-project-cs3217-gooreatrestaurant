@@ -9,9 +9,9 @@
 import UIKit
 
 class CreditsScreenView: UIView {
-    @IBOutlet var huiqiLabel: TextLabel!
-    @IBOutlet var gabrielLabel: TextLabel!
-    @IBOutlet var anthonyLabel: TextLabel!
-    @IBOutlet var henryLabel: TextLabel!
     @IBOutlet var backButton: UIView!
+    @IBOutlet var huiqiView: DesignableView!
+    @IBOutlet var gabrielView: DesignableView!
+    @IBOutlet var anthonyView: DesignableView!
+    @IBOutlet var samuelView: DesignableView!
 }

@@ -29,7 +29,7 @@
                                     <nil key="highlightedColor"/>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="string" keyPath="style" value="h2"/>
-                                        <userDefinedRuntimeAttribute type="string" keyPath="color" value="white1"/>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="color" value="pink1"/>
                                     </userDefinedRuntimeAttributes>
                                 </label>
                             </subviews>
@@ -44,13 +44,13 @@
                             <rect key="frame" x="16" y="16" width="35" height="35"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZX6-3X-j6d" customClass="TextLabel" customModule="slime" customModuleProvider="target">
-                                    <rect key="frame" x="13.5" y="7" width="8" height="21"/>
+                                    <rect key="frame" x="15" y="7" width="5.5" height="21"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="string" keyPath="style" value="h2"/>
-                                        <userDefinedRuntimeAttribute type="string" keyPath="color" value="white3"/>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="color" value="pink2"/>
                                     </userDefinedRuntimeAttributes>
                                 </label>
                             </subviews>
@@ -77,7 +77,7 @@
                     </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="rounded" value="YES"/>
-                        <userDefinedRuntimeAttribute type="string" keyPath="background" value="pink6"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="background" value="pink7"/>
                     </userDefinedRuntimeAttributes>
                 </view>
             </subviews>

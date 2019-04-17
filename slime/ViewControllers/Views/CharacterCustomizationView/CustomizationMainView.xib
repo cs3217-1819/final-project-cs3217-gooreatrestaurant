@@ -13,48 +13,14 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CustomizationMainView" customModule="slime" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="403" height="317"/>
+            <rect key="frame" x="0.0" y="0.0" width="274" height="317"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ySu-P8-5Nj">
-                    <rect key="frame" x="0.0" y="64" width="403" height="253"/>
+                    <rect key="frame" x="0.0" y="64" width="274" height="253"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Statistics" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tOO-Yd-njQ" customClass="TextLabel" customModule="slime" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="0.0" width="403" height="24"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="24" id="F6v-zd-som"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="string" keyPath="style" value="h1"/>
-                                <userDefinedRuntimeAttribute type="string" keyPath="color" value="pink0"/>
-                            </userDefinedRuntimeAttributes>
-                        </label>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HB0-4y-O4V">
-                            <rect key="frame" x="0.0" y="24" width="403" height="64"/>
-                            <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To be implemented" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HZf-wb-23a" customClass="TextLabel" customModule="slime" customModuleProvider="target">
-                                    <rect key="frame" x="128.5" y="22" width="146.5" height="20.5"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <nil key="textColor"/>
-                                    <nil key="highlightedColor"/>
-                                    <userDefinedRuntimeAttributes>
-                                        <userDefinedRuntimeAttribute type="string" keyPath="style" value="h0"/>
-                                        <userDefinedRuntimeAttribute type="string" keyPath="color" value="white4"/>
-                                    </userDefinedRuntimeAttributes>
-                                </label>
-                            </subviews>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <constraints>
-                                <constraint firstItem="HZf-wb-23a" firstAttribute="centerY" secondItem="HB0-4y-O4V" secondAttribute="centerY" id="Lhv-xs-YEG"/>
-                                <constraint firstItem="HZf-wb-23a" firstAttribute="centerX" secondItem="HB0-4y-O4V" secondAttribute="centerX" id="Uwh-gv-xNu"/>
-                                <constraint firstAttribute="height" constant="64" id="ZZl-ov-JKb"/>
-                            </constraints>
-                        </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Customization" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wdg-zY-CQ9" customClass="TextLabel" customModule="slime" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="88" width="403" height="24"/>
+                            <rect key="frame" x="0.0" y="8" width="274" height="24"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="24" id="lMT-MJ-IcU"/>
                             </constraints>
@@ -67,13 +33,13 @@
                             </userDefinedRuntimeAttributes>
                         </label>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="2IK-hh-Yd1">
-                            <rect key="frame" x="0.0" y="120" width="403" height="133"/>
+                            <rect key="frame" x="0.0" y="40" width="274" height="100"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Tt-o5-wA1">
-                                    <rect key="frame" x="0.0" y="0.0" width="123.5" height="133"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="80.5" height="100"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Base" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="scJ-AR-LYv" customClass="TextLabel" customModule="slime" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="113" width="123.5" height="20"/>
+                                            <rect key="frame" x="0.0" y="80" width="80.5" height="20"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="20" id="Kju-Yk-MMP"/>
                                             </constraints>
@@ -86,10 +52,10 @@
                                             </userDefinedRuntimeAttributes>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rsk-jN-kFe" customClass="DesignableView" customModule="slime" customModuleProvider="target">
-                                            <rect key="frame" x="9.5" y="0.0" width="105" height="105"/>
+                                            <rect key="frame" x="4.5" y="0.0" width="72" height="72"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Apple" translatesAutoresizingMaskIntoConstraints="NO" id="QwT-CG-oXe">
-                                                    <rect key="frame" x="4" y="4" width="97" height="97"/>
+                                                    <rect key="frame" x="4" y="4" width="64" height="64"/>
                                                 </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -117,10 +83,10 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K2l-5w-Who">
-                                    <rect key="frame" x="139.5" y="0.0" width="124" height="133"/>
+                                    <rect key="frame" x="96.5" y="0.0" width="81" height="100"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hat" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lh5-K6-BgU" customClass="TextLabel" customModule="slime" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="113" width="124" height="20"/>
+                                            <rect key="frame" x="0.0" y="80" width="81" height="20"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="20" id="OjA-De-U97"/>
                                             </constraints>
@@ -133,10 +99,10 @@
                                             </userDefinedRuntimeAttributes>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ARe-bT-mU2" customClass="DesignableView" customModule="slime" customModuleProvider="target">
-                                            <rect key="frame" x="9.5" y="0.0" width="105" height="105"/>
+                                            <rect key="frame" x="4.5" y="0.0" width="72" height="72"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Apple" translatesAutoresizingMaskIntoConstraints="NO" id="AGf-J2-drH">
-                                                    <rect key="frame" x="4" y="4" width="97" height="97"/>
+                                                    <rect key="frame" x="4" y="4" width="64" height="64"/>
                                                 </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -164,10 +130,10 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e5s-9E-ECh">
-                                    <rect key="frame" x="279.5" y="0.0" width="123.5" height="133"/>
+                                    <rect key="frame" x="193.5" y="0.0" width="80.5" height="100"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Acc." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h7u-C1-W8x" customClass="TextLabel" customModule="slime" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="113" width="123.5" height="20"/>
+                                            <rect key="frame" x="0.0" y="80" width="80.5" height="20"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="20" id="Kjd-QY-ruG"/>
                                             </constraints>
@@ -180,10 +146,10 @@
                                             </userDefinedRuntimeAttributes>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uff-vE-yCQ" customClass="DesignableView" customModule="slime" customModuleProvider="target">
-                                            <rect key="frame" x="9" y="0.0" width="105" height="105"/>
+                                            <rect key="frame" x="4" y="0.0" width="72" height="72"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Apple" translatesAutoresizingMaskIntoConstraints="NO" id="tMu-Tu-3qq">
-                                                    <rect key="frame" x="4" y="4" width="97" height="97"/>
+                                                    <rect key="frame" x="4" y="4" width="64" height="64"/>
                                                 </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -211,36 +177,33 @@
                                     </constraints>
                                 </view>
                             </subviews>
+                            <constraints>
+                                <constraint firstAttribute="height" relation="lessThanOrEqual" constant="100" id="BYv-hx-bNr"/>
+                            </constraints>
                         </stackView>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="Wdg-zY-CQ9" secondAttribute="trailing" id="0TG-VL-Qwz"/>
-                        <constraint firstItem="HB0-4y-O4V" firstAttribute="top" secondItem="tOO-Yd-njQ" secondAttribute="bottom" id="5Sb-5c-EbO"/>
+                        <constraint firstItem="Wdg-zY-CQ9" firstAttribute="top" secondItem="ySu-P8-5Nj" secondAttribute="top" constant="8" id="BZF-Eg-eJ8"/>
                         <constraint firstItem="2IK-hh-Yd1" firstAttribute="leading" secondItem="ySu-P8-5Nj" secondAttribute="leading" id="C4B-Ed-Oap"/>
                         <constraint firstAttribute="trailing" secondItem="2IK-hh-Yd1" secondAttribute="trailing" id="PvC-QL-3cp"/>
-                        <constraint firstAttribute="trailing" secondItem="tOO-Yd-njQ" secondAttribute="trailing" id="UoG-T5-l3Y"/>
-                        <constraint firstItem="Wdg-zY-CQ9" firstAttribute="top" secondItem="HB0-4y-O4V" secondAttribute="bottom" id="cPa-cG-sgQ"/>
-                        <constraint firstItem="HB0-4y-O4V" firstAttribute="leading" secondItem="ySu-P8-5Nj" secondAttribute="leading" id="hJl-eI-tg6"/>
-                        <constraint firstItem="tOO-Yd-njQ" firstAttribute="top" secondItem="ySu-P8-5Nj" secondAttribute="top" id="lOg-yM-qDY"/>
+                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="2IK-hh-Yd1" secondAttribute="bottom" id="jVG-sY-l2l"/>
                         <constraint firstItem="Wdg-zY-CQ9" firstAttribute="leading" secondItem="ySu-P8-5Nj" secondAttribute="leading" id="pFM-Lb-XO2"/>
                         <constraint firstItem="2IK-hh-Yd1" firstAttribute="top" secondItem="Wdg-zY-CQ9" secondAttribute="bottom" constant="8" id="qp7-WR-FYE"/>
-                        <constraint firstItem="tOO-Yd-njQ" firstAttribute="leading" secondItem="ySu-P8-5Nj" secondAttribute="leading" id="uz8-6q-Ugt"/>
-                        <constraint firstAttribute="trailing" secondItem="HB0-4y-O4V" secondAttribute="trailing" id="xqj-1u-3uc"/>
-                        <constraint firstAttribute="bottom" secondItem="2IK-hh-Yd1" secondAttribute="bottom" id="zHV-8y-I7r"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nAq-Bu-5m4">
-                    <rect key="frame" x="0.0" y="0.0" width="403" height="48"/>
+                    <rect key="frame" x="0.0" y="0.0" width="274" height="48"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gabriel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1o0-XL-m0M" customClass="TextLabel" customModule="slime">
-                            <rect key="frame" x="64" y="0.0" width="339" height="48"/>
+                            <rect key="frame" x="64" y="0.0" width="210" height="48"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="string" keyPath="style" value="h0"/>
-                                <userDefinedRuntimeAttribute type="string" keyPath="color" value="pink4"/>
+                                <userDefinedRuntimeAttribute type="string" keyPath="color" value="pink2"/>
                             </userDefinedRuntimeAttributes>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e1g-Hc-agg" customClass="XibView" customModule="slime" customModuleProvider="target">
@@ -251,6 +214,10 @@
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="style" value="h1"/>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="color" value="pink2"/>
+                                    </userDefinedRuntimeAttributes>
                                 </label>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -300,7 +267,7 @@
                 <outlet property="levelProgressView" destination="e1g-Hc-agg" id="mhs-dh-v32"/>
                 <outlet property="nameLabel" destination="1o0-XL-m0M" id="NLv-S8-IDZ"/>
             </connections>
-            <point key="canvasLocation" x="61.600000000000001" y="44.527736131934034"/>
+            <point key="canvasLocation" x="-51.200000000000003" y="46.326836581709152"/>
         </view>
     </objects>
     <resources>
