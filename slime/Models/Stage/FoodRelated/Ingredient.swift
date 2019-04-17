@@ -111,8 +111,8 @@ class Ingredient: MobileItem, Codable {
         self.type = .junk
         self.processed = []
 
-        let ingredientsAtlas = SKTextureAtlas(named: "UI")
-        self.texture = ingredientsAtlas.textureNamed("Junk")
+        let ingredientsAtlas = SKTextureAtlas(named: "Ingredients")
+        self.texture = ingredientsAtlas.textureNamed("junk")
         self.color = .clear
     }
 
