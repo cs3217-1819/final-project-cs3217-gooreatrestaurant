@@ -145,8 +145,8 @@ class Ingredient: MobileItem, Codable {
             plate.removeFromParent()
             self.scene?.addChild(plate)
 
-            self.removeFromParent()
             plate.addIngredients(self)
+            self.removeFromParent()
 
             // remove again
             plate.removeFromParent()
