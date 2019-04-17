@@ -726,8 +726,8 @@ class Stage: SKScene {
         var button = BDButton(inTexture: texture, buttonAction: {
             self.slimeToControl?.interact(onInteractWithStation: { (station, itemCarried) in
                 if self.isMultiplayer { self.handleMultiplayerInteractWithStation(station, itemCarried) }
-            }, onPickUpItem: { (itemOnGround, itemPickedUp) in
-                if self.isMultiplayer { self.handleMultiplayerPickUpItem(itemOnGround, itemPickedUp) }
+            }, onPickUpItem: { (itemOnGround, itemPickedUp, itemCarried) in
+                if self.isMultiplayer { self.handleMultiplayerPickUpItem(itemOnGround, itemPickedUp, itemCarried) }
             }, onDropItem: { (item) in
                 if self.isMultiplayer { self.handleMultiplayerDropItem(item) }
             }, onInteractWithItem: { (itemOnGround, itemCarried) in
@@ -741,17 +741,26 @@ class Stage: SKScene {
         return button
     }()
 
-    private func handleMultiplayerPickUpItem(_ itemOnGround: MobileItem, _ itemPickedUp: MobileItem) {
+    private func handleMultiplayerPickUpItem(_ itemOnGround: MobileItem, _ itemPickedUp: MobileItem, _ itemCarried: MobileItem?) {
         guard let database = self.db else { return }
         guard let room = self.previousRoom else { return }
         guard let id = itemOnGround.id else { return }
         
         database.removeStageItem(forGameId: room.id, withItemUid: id, onItemAlreadyRemoved: {
-            database.updatePlayerHoldingItem(forGameId: room.id, toItem: "HAHAHA" as AnyObject, { }, { (err) in
-                print(err.localizedDescription)
-            })
+            if let _ = self.slimeToControl?.itemCarried as? Ingredient {
+                database.updatePlayerHoldingItem(forGameId: room.id, toItem: "BLAH BLAH" as AnyObject, { }, { (err) in
+                    print(err.localizedDescription)
+                })
+                return
+            }
+            
+            if let _ = self.slimeToControl?.itemCarried as? Plate {
+                database.updatePlayerHoldingItem(forGameId: room.id, toItem: itemPickedUp, { }, { (err) in
+                    print(err.localizedDescription)
+                })
+            }
         }, onItemPickedUp: { (item) in
-            database.updatePlayerHoldingItem(forGameId: room.id, toItem: item, { }) { (err) in
+            database.updatePlayerHoldingItem(forGameId: room.id, toItem: itemPickedUp, { }) { (err) in
                 print(err.localizedDescription)
             }
         }, { }) { (err) in
