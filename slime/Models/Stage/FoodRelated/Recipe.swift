@@ -70,7 +70,7 @@ class Recipe: NSObject, Codable {
                 return false
             }
 
-            ingredients[ingredient]! -= 1
+            ingredients[ingredient]? -= 1
             let remaining = ingredients[ingredient] ?? 0
 
             guard remaining >= 0 else {
@@ -91,7 +91,7 @@ class Recipe: NSObject, Codable {
                 ingredients[ingredient] = 0
             }
 
-            ingredients[ingredient]! -= 1
+            ingredients[ingredient]? -= 1
 
             let remaining = ingredients[ingredient] ?? 0
             if remaining == 0 {

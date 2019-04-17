@@ -111,9 +111,9 @@ class Ingredient: MobileItem, Codable {
         self.type = .junk
         self.processed = []
 
-        // temporary, will change with junk image
-        self.texture = nil
-        self.color = .black
+        let ingredientsAtlas = SKTextureAtlas(named: "UI")
+        self.texture = ingredientsAtlas.textureNamed("Junk")
+        self.color = .clear
     }
 
     override func ableToInteract(withItem item: Item?) -> Bool {
@@ -162,6 +162,21 @@ class Ingredient: MobileItem, Codable {
         }
 
         return self.type == other.type && self.processed == other.processed
+    }
+
+    override func deepCopy() -> MobileItem {
+        let selfCopy = Ingredient(type: self.type, inPosition: self.position)
+        selfCopy.id = self.id
+
+        for processing in self.processed {
+            selfCopy.cook(by: processing)
+        }
+
+        if let processing = currentProcessing {
+            selfCopy.cook(by: processing, withProgress: processingProgress)
+        }
+
+        return selfCopy
     }
 
     enum CodingKeys: String, CodingKey {

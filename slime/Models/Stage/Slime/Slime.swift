@@ -13,6 +13,7 @@ class Slime: SKSpriteNode {
     var isContactingWithLadder = false
 
     var player: Player?
+    private var lastItem: MobileItem?
 
     init(inPosition position: CGPoint, withSize size: CGSize = StageConstants.slimeSize) {
         super.init(texture: nil, color: .clear, size: size)
@@ -68,7 +69,6 @@ class Slime: SKSpriteNode {
         if let item = itemCarried {
             self.removeChildren(in: [item])
         }
-        
     }
 
     func takeItem(_ item: MobileItem?) {
@@ -86,8 +86,16 @@ class Slime: SKSpriteNode {
         return item
     }
 
+    func undoInteract() {
+        removeItem()
+        takeItem(lastItem)
+        lastItem = nil
+    }
+
     func interact(onInteractWithStation: @escaping (Station, MobileItem?) -> Void, onPickUpItem: @escaping (MobileItem, MobileItem, MobileItem?) -> Void, onDropItem: @escaping (MobileItem) -> Void, onInteractWithItem: @escaping (MobileItem, MobileItem?) -> Void) {
         guard let contactedBodies = self.physicsBody?.allContactedBodies() else { return }
+
+        lastItem = self.itemCarried?.deepCopy()
 
         for body in contactedBodies {
             guard let node = body.node else {
