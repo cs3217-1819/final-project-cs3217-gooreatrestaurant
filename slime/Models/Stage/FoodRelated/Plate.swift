@@ -84,6 +84,7 @@ class Plate: MobileItem, Codable {
         case id
         case position
         case listOfIngredients
+        case foodName
     }
 
     required convenience init(from decoder: Decoder) throws {
@@ -91,11 +92,30 @@ class Plate: MobileItem, Codable {
         let position = try values.decode(CGPoint.self, forKey: .position)
         let listOfIngredients = try values.decode([Ingredient].self, forKey: .listOfIngredients)
         let id = try values.decode(String.self, forKey: .id)
+        let foodName = try values.decode(String?.self, forKey: .foodName)
 
         self.init(inPosition: position)
         self.id = id
         
         for ingredient in listOfIngredients { self.addIngredients(ingredient) }
+
+        if let name = foodName {
+            self.food.name = name
+
+            let ingredientsAtlas = SKTextureAtlas(named: "Recipes")
+            var texture: SKTexture = SKTexture.init()
+            texture = ingredientsAtlas.textureNamed(name)
+
+            let image = SKSpriteNode(texture: texture)
+            foodImage = image
+            self.addChild(image)
+            foodImage?.position = CGPoint(x: 0, y: 30)
+            foodImage?.size = CGSize(width: 40, height: 40)
+
+            for ingredient in self.listOfIngredients {
+                ingredient.isHidden = true
+            }
+        }
     }
 
     func encode(to encoder: Encoder) throws {
@@ -104,6 +124,7 @@ class Plate: MobileItem, Codable {
         try container.encode(position, forKey: .position)
         try container.encode(listOfIngredients, forKey: .listOfIngredients)
         try container.encode(id, forKey: .id)
+        try container.encode(food.name, forKey: .foodName)
     }
 
     func addIngredientImage(inIngredient: Ingredient) {
@@ -120,7 +141,7 @@ class Plate: MobileItem, Codable {
 
         let foodName = (self.scene as? Stage)?.checkFoodName(ofFood: food)
 
-        if ((foodName == nil) != (foodImage == nil)) {
+        if (foodName != food.name) {
             recheckImages(ofFoodName: foodName)
         }
 
@@ -149,10 +170,13 @@ class Plate: MobileItem, Codable {
             foodImage?.position = CGPoint(x: 0, y: 30)
             foodImage?.size = CGSize(width: 40, height: 40)
 
+            food.name = name
+
         } else {
 
             foodImage?.removeFromParent()
             foodImage = nil
+            food.name = nil
 
             for ingredient in listOfIngredients {
                 ingredient.isHidden = false
