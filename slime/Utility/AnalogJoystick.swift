@@ -206,7 +206,8 @@ open class AnalogJoystick: SKNode {
 
     // MARK: - Overrides
     open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if let touch = touches.first, stick == atPoint(touch.location(in: self)) {
+        if let touch = touches.first {
+            //, stick == atPoint(touch.location(in: self))
             tracking = true
             beginHandler?()
         }
