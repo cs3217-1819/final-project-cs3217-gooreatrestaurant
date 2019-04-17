@@ -53,6 +53,8 @@ class GameViewController: ViewController<UIView> {
         stage.controller = self
         let skview = SKView(frame: CGRect(x: 0.0, y: 0.0, width: ScreenSize.width, height: ScreenSize.height))
         skview.presentScene(stage)
+        StageConstants.stage = stage
+        print("stage changed")
 //        skview.showsPhysics = true
 //        skview.showsFPS = true
 //        skview.showsNodeCount = true

@@ -11,7 +11,7 @@ import SpriteKit
 
 class Plate: MobileItem, Codable {
 
-    private var isComplete = false
+    private var foodImage: SKSpriteNode? = nil
     private(set) var food = Food()
     private(set) var listOfIngredients: [Ingredient] = []
 
@@ -78,7 +78,6 @@ class Plate: MobileItem, Codable {
     func addIngredients(_ ingredient: Ingredient) {
         food.addIngredients(ingredient)
         addIngredientImage(inIngredient: ingredient)
-        print((self.scene as? Stage)?.checkFoodName(ofFood: food))
     }
 
     enum CodingKeys: String, CodingKey {
@@ -111,8 +110,18 @@ class Plate: MobileItem, Codable {
         let ingredient = inIngredient.deepCopy() as? Ingredient ?? inIngredient
         listOfIngredients.append(ingredient)
 
+        if foodImage == nil {
+            ingredient.isHidden = false
+        }
+
         ingredient.size = CGSize(width: 30, height: 30)
         ingredient.taken(by: self)
+
+        let foodName = (StageConstants.stage)?.checkFoodName(ofFood: food)
+        print(foodName)
+        if ((foodName == nil) != (foodImage == nil)) {
+            recheckImages(ofFoodName: foodName)
+        }
 
         //repositioning
         if (listOfIngredients.count <= 6) {
@@ -122,11 +131,32 @@ class Plate: MobileItem, Codable {
     }
 
     private func recheckImages(ofFoodName foodName: String?) {
-        // if foodName == nil {
-        //     for ingredient in 
-        // } else {
 
-        // }
+        if let name = foodName {
+
+            for ingredient in listOfIngredients {
+                ingredient.isHidden = true
+            }
+
+            let ingredientsAtlas = SKTextureAtlas(named: "Recipes")
+            var texture: SKTexture = SKTexture.init()
+            texture = ingredientsAtlas.textureNamed(name)
+
+            let image = SKSpriteNode(texture: texture)
+            foodImage = image
+            self.addChild(image)
+            foodImage?.position = CGPoint(x: 0, y: 30)
+            foodImage?.size = CGSize(width: 40, height: 40)
+
+        } else {
+
+            foodImage?.removeFromParent()
+            foodImage = nil
+
+            for ingredient in listOfIngredients {
+                ingredient.isHidden = false
+            }
+        }
     }
 
     override func deepCopy() -> MobileItem {
