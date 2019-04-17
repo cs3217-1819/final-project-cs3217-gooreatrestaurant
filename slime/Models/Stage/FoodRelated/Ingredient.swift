@@ -164,6 +164,21 @@ class Ingredient: MobileItem, Codable {
         return self.type == other.type && self.processed == other.processed
     }
 
+    override func deepCopy() -> MobileItem {
+        let selfCopy = Ingredient(type: self.type, inPosition: self.position)
+        selfCopy.id = self.id
+
+        for processing in self.processed {
+            selfCopy.cook(by: processing)
+        }
+
+        if let processing = currentProcessing {
+            selfCopy.cook(by: processing, withProgress: processingProgress)
+        }
+
+        return selfCopy
+    }
+
     enum CodingKeys: String, CodingKey {
         case id
         case type

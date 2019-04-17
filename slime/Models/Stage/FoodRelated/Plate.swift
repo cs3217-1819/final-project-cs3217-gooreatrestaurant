@@ -82,29 +82,25 @@ class Plate: MobileItem, Codable {
 
     enum CodingKeys: String, CodingKey {
         case id
-        case food
         case position
         case listOfIngredients
     }
 
     required convenience init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        let food = try values.decode(Food.self, forKey: .food)
         let position = try values.decode(CGPoint.self, forKey: .position)
         let listOfIngredients = try values.decode([Ingredient].self, forKey: .listOfIngredients)
         let id = try values.decode(String.self, forKey: .id)
 
         self.init(inPosition: position)
         self.id = id
-        self.food = food
         
-        for ingredient in listOfIngredients { self.addIngredientImage(inIngredient: ingredient) }
+        for ingredient in listOfIngredients { self.addIngredients(ingredient) }
     }
 
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
 
-        try container.encode(food, forKey: .food)
         try container.encode(position, forKey: .position)
         try container.encode(listOfIngredients, forKey: .listOfIngredients)
         try container.encode(id, forKey: .id)
@@ -148,5 +144,16 @@ class Plate: MobileItem, Codable {
         }
 
         self.addChild(ingredient)
+    }
+
+    override func deepCopy() -> MobileItem {
+        let selfCopy = Plate(inPosition: self.position)
+        selfCopy.id = self.id
+
+        for ingredient in self.listOfIngredients {
+            selfCopy.addIngredients(ingredient)
+        }
+
+        return selfCopy
     }
 }
