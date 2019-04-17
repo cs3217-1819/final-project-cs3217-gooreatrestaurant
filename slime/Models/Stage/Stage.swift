@@ -117,7 +117,9 @@ class Stage: SKScene {
         database.observeGameState(forRoom: room, onPlayerUpdate: { (player) in
             guard let currentSlime = self.allSlimesDict[player.uid] else { return }
 
-            currentSlime.position = CGPoint(x: player.positionX, y: player.positionY)
+            let move = SKAction.move(to: CGPoint(x: player.positionX, y: player.positionY), duration: 0.1)
+            currentSlime.run(move)
+//            currentSlime.position = CGPoint(x: player.positionX, y: player.positionY)
             currentSlime.physicsBody?.velocity = CGVector(dx: player.velocityX, dy: player.velocityY)
             currentSlime.xScale = player.xScale
             self.handleSlimeItemChange(forSlime: currentSlime, forItem: player.holdingItem)
@@ -523,6 +525,7 @@ class Stage: SKScene {
     }
 
     override func didSimulatePhysics() {
+//        self.slimeToControl?.resetMovement(clampVelocity: true)
         for (uid, slime) in self.allSlimesDict {
             if uid != GameAuth.currentUser?.uid {
                 // not user
