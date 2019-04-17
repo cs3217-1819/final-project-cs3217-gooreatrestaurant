@@ -117,8 +117,9 @@ class Plate: MobileItem, Codable {
         ingredient.size = CGSize(width: 30, height: 30)
         ingredient.taken(by: self)
 
-        let foodName = (StageConstants.stage)?.checkFoodName(ofFood: food)
-        print(foodName)
+
+        let foodName = (self.scene as? Stage)?.checkFoodName(ofFood: food)
+
         if ((foodName == nil) != (foodImage == nil)) {
             recheckImages(ofFoodName: foodName)
         }
@@ -163,10 +164,13 @@ class Plate: MobileItem, Codable {
         let selfCopy = Plate(inPosition: self.position)
         selfCopy.id = self.id
 
+        self.addChild(selfCopy)
+
         for ingredient in self.listOfIngredients {
             selfCopy.addIngredients(ingredient)
         }
 
+        selfCopy.removeFromParent()
         return selfCopy
     }
 }

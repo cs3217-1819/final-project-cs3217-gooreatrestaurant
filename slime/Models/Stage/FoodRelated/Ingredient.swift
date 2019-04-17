@@ -141,8 +141,16 @@ class Ingredient: MobileItem, Codable {
                 return nil
             }
 
+            // to make sure plate is always in scene
+            plate.removeFromParent()
+            self.scene?.addChild(plate)
+
             self.removeFromParent()
             plate.addIngredients(self)
+
+            // remove again
+            plate.removeFromParent()
+
             return plate
         }
 
