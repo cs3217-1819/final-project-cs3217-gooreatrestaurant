@@ -11,6 +11,7 @@ import SpriteKit
 
 class Plate: MobileItem, Codable {
 
+    private var isComplete = false
     private(set) var food = Food()
     private(set) var listOfIngredients: [Ingredient] = []
 
@@ -107,43 +108,25 @@ class Plate: MobileItem, Codable {
     }
 
     func addIngredientImage(inIngredient: Ingredient) {
-        listOfIngredients.append(inIngredient)
+        let ingredient = inIngredient.deepCopy() as? Ingredient ?? inIngredient
+        listOfIngredients.append(ingredient)
 
-        var ingredientsAtlas = SKTextureAtlas.init()
-        let processedCount = inIngredient.processed.count
-
-        if (processedCount == 1) {
-            if (inIngredient.processed[processedCount - 1] == CookingType.baking) {
-                ingredientsAtlas = SKTextureAtlas(named: "BakedIngredients")
-            } else if (inIngredient.processed[processedCount - 1] == CookingType.chopping) {
-                ingredientsAtlas = SKTextureAtlas(named: "SlicedIngredients")
-            }  else if (inIngredient.processed[processedCount - 1] == CookingType.frying) {
-                ingredientsAtlas = SKTextureAtlas(named: "FriedIngredients")
-            }
-        } else if (processedCount > 1){
-             if (inIngredient.processed.contains(CookingType.baking) &&
-                inIngredient.processed.contains(CookingType.chopping)) {
-                ingredientsAtlas = SKTextureAtlas(named: "BakedSlicedIngredients")
-             } else if(inIngredient.processed.contains(CookingType.chopping) &&
-                inIngredient.processed.contains(CookingType.frying)) {
-                ingredientsAtlas = SKTextureAtlas(named: "SlicedFriedIngredients")
-            }
-        } else {
-            ingredientsAtlas = SKTextureAtlas(named: "Ingredients")
-        }
-
-        var texture: SKTexture = SKTexture.init()
-        texture = ingredientsAtlas.textureNamed(inIngredient.type.rawValue)
-
-        let ingredient = SKSpriteNode(texture: texture)
         ingredient.size = CGSize(width: 30, height: 30)
+        ingredient.taken(by: self)
 
         //repositioning
         if (listOfIngredients.count <= 6) {
             ingredient.position = positionings[listOfIngredients.count - 1]
         }
 
-        self.addChild(ingredient)
+    }
+
+    private func recheckImages(ofFoodName foodName: String?) {
+        // if foodName == nil {
+        //     for ingredient in 
+        // } else {
+
+        // }
     }
 
     override func deepCopy() -> MobileItem {

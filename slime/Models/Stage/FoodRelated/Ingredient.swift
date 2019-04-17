@@ -141,8 +141,8 @@ class Ingredient: MobileItem, Codable {
                 return nil
             }
 
-            plate.addIngredients(self)
             self.removeFromParent()
+            plate.addIngredients(self)
             return plate
         }
 
