@@ -83,7 +83,7 @@ class Slime: SKSpriteNode {
         return item
     }
 
-    func interact(onInteractWithStation: @escaping (Station, MobileItem?) -> Void, onPickUpItem: @escaping (MobileItem, MobileItem) -> Void, onDropItem: @escaping (MobileItem) -> Void, onInteractWithItem: @escaping (MobileItem, MobileItem?) -> Void) {
+    func interact(onInteractWithStation: @escaping (Station, MobileItem?) -> Void, onPickUpItem: @escaping (MobileItem, MobileItem, MobileItem?) -> Void, onDropItem: @escaping (MobileItem) -> Void, onInteractWithItem: @escaping (MobileItem, MobileItem?) -> Void) {
         guard let contactedBodies = self.physicsBody?.allContactedBodies() else { return }
 
         for body in contactedBodies {
@@ -101,7 +101,7 @@ class Slime: SKSpriteNode {
 
                 if let resultingItem = mobileItem.interact(withItem: itemToInteract) as? MobileItem {
                     AudioMaster.instance.playSFX(name: "pickup")
-                    onPickUpItem(mobileItem, resultingItem)
+                    onPickUpItem(mobileItem, resultingItem, itemToInteract)
                     self.takeItem(resultingItem)
                     return
                 }
