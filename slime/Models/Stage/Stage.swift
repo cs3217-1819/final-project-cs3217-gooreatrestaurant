@@ -765,9 +765,16 @@ class Stage: SKScene {
             }
             
             if let _ = self.slimeToControl?.itemCarried as? Plate {
-                database.updatePlayerHoldingItem(forGameId: room.id, toItem: itemPickedUp, { }, { (err) in
-                    print(err.localizedDescription)
-                })
+                self.slimeToControl?.undoInteract()
+                if let res = self.slimeToControl?.itemCarried {
+                    database.updatePlayerHoldingItem(forGameId: room.id, toItem: res, { }, { (err) in
+                        print(err.localizedDescription)
+                    })
+                } else {
+                    database.updatePlayerHoldingItem(forGameId: room.id, toItem: "BLAH BLAH" as AnyObject, { }, { (err) in
+                        print(err.localizedDescription)
+                    })
+                }
             }
         }, onItemPickedUp: { (item) in
             database.updatePlayerHoldingItem(forGameId: room.id, toItem: itemPickedUp, { }) { (err) in
@@ -816,7 +823,25 @@ class Stage: SKScene {
         guard let id = station.id else { return }
         
         if let _ = station as? Table {
-            database.handleInteractWithTable(forGameId: room.id, forStation: id, itemCarried: itemCarried, { }) { (err) in
+            database.handleInteractWithTable(forGameId: room.id, forStation: id, itemCarried: itemCarried, onItemAlreadyRemoved: {
+                // placeholder for STePS
+                if let _ = self.slimeToControl?.itemCarried as? Ingredient {
+                    database.updatePlayerHoldingItem(forGameId: room.id, toItem: "MUH MUH BRO" as AnyObject, { }, { (err) in
+                        print(err.localizedDescription)
+                    })
+                }
+                // placeholder for STePS
+                if let _ = self.slimeToControl?.itemCarried as? Plate {
+                    self.slimeToControl?.undoInteract()
+                    if let newPlate = self.slimeToControl?.itemCarried {
+                        database.updatePlayerHoldingItem(forGameId: room.id, toItem: newPlate, { }, { (err) in
+                            print(err.localizedDescription)
+                        })
+                    }
+                }
+            }, {
+                // completion block
+            }) { (err) in
                 print(err.localizedDescription)
             }
             return

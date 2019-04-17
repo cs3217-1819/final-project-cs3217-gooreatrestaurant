@@ -1311,7 +1311,7 @@ class GameDB: GameDatabase {
         })
     }
     
-    func handleInteractWithTable(forGameId id: String, forStation station: String, itemCarried item: MobileItem?, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void) {
+    func handleInteractWithTable(forGameId id: String, forStation station: String, itemCarried item: MobileItem?, onItemAlreadyRemoved: @escaping () -> Void, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void) {
         let ref = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, id, FirebaseKeys.games_stations, station, FirebaseKeys.games_stations_itemInside]))
         
         ref.runTransactionBlock { (current) -> TransactionResult in
@@ -1322,18 +1322,19 @@ class GameDB: GameDatabase {
             guard let encodedString = itemInside[FirebaseKeys.games_items_encodedData], let type = itemInside[FirebaseKeys.games_items_type] else { return TransactionResult.success(withValue: current) }
             
             if type == FirebaseSystemValues.ItemTypes.none.rawValue {
-                if let itemCarried = item {
-                    let res = self.convertGameItemToEncodedData(forGameItem: itemCarried)
-                    
-                    current.value = res
-                    self .updatePlayerHoldingItem(forGameId: id, toItem: "BAH BAH" as AnyObject, { }, { (err) in
-                        onError(err)
-                    })
-                    return TransactionResult.success(withValue: current)
-                }
-                self.updatePlayerHoldingItem(forGameId: id, toItem: "BOO BOO HOO" as AnyObject, { }, { (err) in
-                    onError(err)
-                })
+                onItemAlreadyRemoved()
+//                if let itemCarried = item {
+//                    let res = self.convertGameItemToEncodedData(forGameItem: itemCarried)
+//
+//                    current.value = res
+//                    self .updatePlayerHoldingItem(forGameId: id, toItem: "BAH BAH" as AnyObject, { }, { (err) in
+//                        onError(err)
+//                    })
+//                    return TransactionResult.success(withValue: current)
+//                }
+//                self.updatePlayerHoldingItem(forGameId: id, toItem: "BOO BOO HOO" as AnyObject, { }, { (err) in
+//                    onError(err)
+//                })
                 return TransactionResult.success(withValue: current)
             } else if type == FirebaseSystemValues.ItemTypes.ingredient.rawValue {
                 guard let ingredient = self.decodeStringToItem(fromString: encodedString, forType: type) as? Ingredient else { return TransactionResult.success(withValue: current) }
