@@ -87,10 +87,7 @@ class Slime: SKSpriteNode {
     }
 
     func undoInteract() {
-        if let item = itemCarried {
-            item.removeFromParent()
-        }
-
+        removeItem()
         takeItem(lastItem)
         lastItem = nil
     }
