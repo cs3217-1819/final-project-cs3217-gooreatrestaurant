@@ -111,9 +111,9 @@ class Ingredient: MobileItem, Codable {
         self.type = .junk
         self.processed = []
 
-        // temporary, will change with junk image
-        self.texture = nil
-        self.color = .black
+        let ingredientsAtlas = SKTextureAtlas(named: "UI")
+        self.texture = ingredientsAtlas.textureNamed("Junk")
+        self.color = .clear
     }
 
     override func ableToInteract(withItem item: Item?) -> Bool {
