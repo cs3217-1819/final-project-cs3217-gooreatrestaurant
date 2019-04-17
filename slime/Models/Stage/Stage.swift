@@ -825,8 +825,11 @@ class Stage: SKScene {
         if let _ = station as? Table {
             database.handleInteractWithTable(forGameId: room.id, forStation: id, itemCarried: itemCarried, onItemAlreadyRemoved: {
                 // placeholder for STePS
-                if let _ = self.slimeToControl?.itemCarried as? Ingredient {
+                if let ingredient = self.slimeToControl?.itemCarried as? Ingredient {
                     database.updatePlayerHoldingItem(forGameId: room.id, toItem: "MUH MUH BRO" as AnyObject, { }, { (err) in
+                        print(err.localizedDescription)
+                    })
+                    database.updateStationItemInside(forGameId: room.id, forStation: id, toItem: ingredient, { }, { (err) in
                         print(err.localizedDescription)
                     })
                 }

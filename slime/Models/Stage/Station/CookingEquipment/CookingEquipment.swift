@@ -82,7 +82,7 @@ class CookingEquipment: Station {
 
     // Take out the item inside this equipment
     // return the item as Item
-    func takeitemInside() -> Item? {
+    func seeItemInside() -> Item? {
         guard canTakeIngredient == true else {
             return nil
         }
@@ -90,7 +90,6 @@ class CookingEquipment: Station {
         guard let toTake = itemInside as? Item else {
             return nil
         }
-        self.removeItem()
         return toTake
     }
 
@@ -124,18 +123,22 @@ class CookingEquipment: Station {
             return nil
 
         } else if willProcess {
-            guard let toTake = takeitemInside() else {
+            guard let toTake = seeItemInside() else {
                 manualProcessing()
                 return nil
             }
+            self.removeItem()
             return toTake
 
         } else if willTakeIngredientToPlate {
-            guard let toAdd = takeitemInside() as? Ingredient else {
+            guard let toAdd = seeItemInside() as? Ingredient else {
                 return nil
             }
 
-            return toAdd.interact(withItem: item)
+            let result = toAdd.interact(withItem: item)
+            self.removeItem()
+
+            return result
         }
         return nil
     }
