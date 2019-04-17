@@ -294,7 +294,8 @@ protocol GameDatabase {
     ///     - onError: a closure run when an error occurs
     func removeStageItem(forGameId id: String, withItemUid uid: String, onItemAlreadyRemoved: @escaping () -> Void, onItemPickedUp: @escaping (MobileItem) -> Void, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void)
     
-    func handleInteractWithTable(forGameId id: String, forStation station: String, itemCarried item: MobileItem?, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void)
+    /// temporary function for STePS
+    func handleInteractWithTable(forGameId id: String, forStation station: String, itemCarried item: MobileItem?, onItemAlreadyRemoved: @escaping () -> Void, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void)
     
     /// updates the values of the stage item inside
     /// the database. This fails if the referenced item

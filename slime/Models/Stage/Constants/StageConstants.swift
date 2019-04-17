@@ -129,7 +129,4 @@ class StageConstants {
 
     // general constant
     static let notFound = Int.min
-
-    // stage
-    static var stage: Stage?
 }
