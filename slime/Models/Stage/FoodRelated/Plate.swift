@@ -117,12 +117,6 @@ class Plate: MobileItem, Codable {
         ingredient.size = CGSize(width: 30, height: 30)
         ingredient.taken(by: self)
 
-        let foodName = (StageConstants.stage)?.checkFoodName(ofFood: food)
-        print(foodName)
-        if ((foodName == nil) != (foodImage == nil)) {
-            recheckImages(ofFoodName: foodName)
-        }
-
         //repositioning
         if (listOfIngredients.count <= 6) {
             ingredient.position = positionings[listOfIngredients.count - 1]
