@@ -190,7 +190,6 @@ class OrderQueue: SKSpriteNode, Codable {
         //remove the node image and the list
         nodeOrder[inNum].removeFromParent()
         let node = nodeOrder.remove(at: inNum)
-        
         self.scoreToIncrease = calculateScore(timeLeft: node.time)
         if self.isMultiplayerEnabled {
             let db = GameDB()

@@ -957,11 +957,9 @@ class Stage: SKScene {
     
     // Deallocate stuff, invalidate timers
     private func cleanup() {
-        print("cleaning up")
         orderQueue.newOrderTimer.invalidate()
         orderQueue.orderQueueInvalidated = true
     }
-
     func checkFoodName(ofFood food: Food) -> String? {
         for recipe in orderQueue.possibleRecipes {
             if recipe.possibleConsists(of: food) {
