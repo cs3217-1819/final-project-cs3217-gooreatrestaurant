@@ -6,7 +6,7 @@
 //  Copyright © 2019 nus.cs3217.a0166733y. All rights reserved.
 //
 
-import Foundation
+import Firebase
 
 class GameAuth: GameAuthentication {
     public static func listenToAuthStateChange(_ onStateChange: @escaping (User) -> Void) {
