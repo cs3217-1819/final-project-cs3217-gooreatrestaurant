@@ -20,9 +20,7 @@ class OrderQueue: SKSpriteNode, Codable {
     var isMultiplayerEnabled = false
     var gameId: String?
     var orderQueueInvalidated: Bool = false
-
     var tempNode: SKSpriteNode = SKSpriteNode.init()
-
     var positionings = [CGPoint(x: ScreenSize.width * 0.5 - 180,
                                 y: ScreenSize.height * 0.5 - 40),
                         CGPoint(x: ScreenSize.width * 0.5 - 90,
@@ -41,7 +39,6 @@ class OrderQueue: SKSpriteNode, Codable {
     init(interval: Double) {
         self.interval = interval
         super.init(texture: nil, color: .clear, size: CGSize.zero)
-        
         self.position = CGPoint.zero
         self.name = StageConstants.orderQueueName
         self.zPosition = StageConstants.orderZPos
@@ -222,16 +219,13 @@ class OrderQueue: SKSpriteNode, Codable {
 
     required convenience init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-
         let possibleRecipes = try values.decode(Set<Recipe>.self, forKey: .possibleRecipes)
         let recipeOrdered = try values.decode([Recipe].self, forKey: .recipeOrdered)
         let nodeOrder = try values.decode([MenuPrefab].self, forKey: .nodeOrder)
-
         self.init(interval: StageConstants.orderComingInterval[0])
         self.possibleRecipes = possibleRecipes
         self.recipeOrdered = recipeOrdered
         self.nodeOrder = nodeOrder
-
         for prefab in nodeOrder {
             self.addChild(prefab)
         }
@@ -239,7 +233,6 @@ class OrderQueue: SKSpriteNode, Codable {
 
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-
         try container.encode(possibleRecipes, forKey: .possibleRecipes)
         try container.encode(recipeOrdered, forKey: .recipeOrdered)
         try container.encode(nodeOrder, forKey: .nodeOrder)

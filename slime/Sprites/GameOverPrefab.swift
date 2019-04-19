@@ -13,7 +13,6 @@ class GameOverPrefab: SKSpriteNode {
     var controller = GameViewController(with: UIView())
     var isMultiplayer: Bool = false
     var baseNode: SKSpriteNode?
-
     let UIAtlas = SKTextureAtlas(named: "UI")
     
     override init(texture: SKTexture?, color: UIColor, size: CGSize) {
@@ -36,7 +35,6 @@ class GameOverPrefab: SKSpriteNode {
         let blackBG = SKSpriteNode.init(color: .black, size: CGSize(width: ScreenSize.width, height: ScreenSize.height))
         blackBG.alpha = 0.5
         blackBG.zPosition = StageConstants.blackBGOpeningZPos
-
         baseNode.addChild(slime)
         self.addChild(blackBG)
     }
