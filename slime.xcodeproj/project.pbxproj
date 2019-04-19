@@ -272,6 +272,8 @@
 		F92ECAE6224BAEDB0040A4E2 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92ECAE5224BAEDB0040A4E2 /* Room.swift */; };
 		F92ECAE8224BAEEF0040A4E2 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92ECAE7224BAEEF0040A4E2 /* Game.swift */; };
 		F92ECAEA224D1B490040A4E2 /* FadeInOutSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92ECAE9224D1B490040A4E2 /* FadeInOutSegue.swift */; };
+		F98B1633226A138400421C6C /* GameDB+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98B1632226A138400421C6C /* GameDB+Utility.swift */; };
+		F98B1636226A139C00421C6C /* GameDB+Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98B1635226A139C00421C6C /* GameDB+Constants.swift */; };
 		F9D0E19A22637AC5003D0D02 /* NotificationPrefab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D0E19922637AC5003D0D02 /* NotificationPrefab.swift */; };
 		F9D0E1A42269EEB9003D0D02 /* Stage+Multiplayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D0E1A32269EEB9003D0D02 /* Stage+Multiplayer.swift */; };
 		F9D0E1A62269EEDC003D0D02 /* OrderQueue+Multiplayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D0E1A52269EEDC003D0D02 /* OrderQueue+Multiplayer.swift */; };
@@ -563,6 +565,8 @@
 		F92ECAE5224BAEDB0040A4E2 /* Room.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 		F92ECAE7224BAEEF0040A4E2 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		F92ECAE9224D1B490040A4E2 /* FadeInOutSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FadeInOutSegue.swift; sourceTree = "<group>"; };
+		F98B1632226A138400421C6C /* GameDB+Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameDB+Utility.swift"; sourceTree = "<group>"; };
+		F98B1635226A139C00421C6C /* GameDB+Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameDB+Constants.swift"; sourceTree = "<group>"; };
 		F9D0E19922637AC5003D0D02 /* NotificationPrefab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationPrefab.swift; sourceTree = "<group>"; };
 		F9D0E1A32269EEB9003D0D02 /* Stage+Multiplayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Stage+Multiplayer.swift"; sourceTree = "<group>"; };
 		F9D0E1A52269EEDC003D0D02 /* OrderQueue+Multiplayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OrderQueue+Multiplayer.swift"; sourceTree = "<group>"; };
@@ -1410,10 +1414,12 @@
 			children = (
 				F92ECAE1224BAE8F0040A4E2 /* Database.swift */,
 				F92ECAE3224BAEBD0040A4E2 /* Authentication.swift */,
+				F9F26FF1225DDA7A008BFD50 /* User.swift */,
 				F92ECAE5224BAEDB0040A4E2 /* Room.swift */,
 				F92ECAE7224BAEEF0040A4E2 /* Game.swift */,
 				F9F26FED22564873008BFD50 /* GameDB.swift */,
-				F9F26FF1225DDA7A008BFD50 /* User.swift */,
+				F98B1632226A138400421C6C /* GameDB+Utility.swift */,
+				F98B1635226A139C00421C6C /* GameDB+Constants.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -1728,6 +1734,7 @@
 				8BD816B3224262F100586180 /* AnalogJoystick.swift in Sources */,
 				ECBA67C72261C7AE007042A8 /* StageSummaryView.swift in Sources */,
 				ECFF2B7C2265B4CC003DEAED /* StageCellView.swift in Sources */,
+				F98B1633226A138400421C6C /* GameDB+Utility.swift in Sources */,
 				F9F26FF2225DDA7A008BFD50 /* User.swift in Sources */,
 				1DD6EBE5224E76F0006FF6CD /* IngredientType.swift in Sources */,
 				EC57D2DC225C8B7400F26808 /* SlimeCharacterView.swift in Sources */,
@@ -1868,6 +1875,7 @@
 				EC6E99F9224F2DDB00A9554C /* ProgressBarController.swift in Sources */,
 				EC6E99F7224F2DA200A9554C /* ProgressBarView.swift in Sources */,
 				EC7168CF225DD083004EF2B0 /* AudioMaster.swift in Sources */,
+				F98B1636226A139C00421C6C /* GameDB+Constants.swift in Sources */,
 				EC449B9E223BBA0300A8EA35 /* Level.swift in Sources */,
 				EC57D2E0225C8E5300F26808 /* SlimeCharacterController.swift in Sources */,
 				1D22029E224AB5850080CF7D /* CookingEquipment.swift in Sources */,

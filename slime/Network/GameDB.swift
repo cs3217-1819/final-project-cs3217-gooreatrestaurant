@@ -41,55 +41,6 @@ class GameDB: GameDatabase {
         self.observers.append(Observer(withHandle: handle, withRef: ref))
     }
     
-    /// factory function to create
-    /// a RoomModel object from a firebase dictionary
-    /// - Parameters:
-    ///     - forDict: the dictionary fetched from
-    ///       Firebase
-    /// - Returns:
-    ///     - a RoomModel object
-    private func firebaseRoomModelFactory(forDict roomDict: [String : AnyObject]) -> RoomModel {
-        // populate room object
-        let roomName = roomDict[FirebaseKeys.rooms_roomName] as? String ?? FirebaseSystemValues.defaultBlankString
-        let mapName = roomDict[FirebaseKeys.rooms_mapName] as? String ?? FirebaseSystemValues.defaultBlankString
-        let roomId = roomDict[FirebaseKeys.rooms_roomId] as? String ?? FirebaseSystemValues.defaultBlankString
-        let hasStarted = roomDict[FirebaseKeys.rooms_hasStarted] as? Bool ?? FirebaseSystemValues.defaultFalse
-        let isOpen = roomDict[FirebaseKeys.rooms_isOpen] as? Bool ?? FirebaseSystemValues.defaultFalse
-        let isGameCreated = roomDict[FirebaseKeys.rooms_isGameCreated] as? Bool ?? FirebaseSystemValues.defaultFalse
-        let players = roomDict[FirebaseKeys.rooms_players] as? [String: AnyObject] ?? [:]
-        
-        let roomRes = RoomModel(name: roomName, map: mapName, id: roomId, hasStarted: hasStarted, gameIsCreated: isGameCreated, isOpen: isOpen)
-        
-        for (playerUid, playerDescription) in players {
-            roomRes.addPlayer(self.firebaseRoomPlayerModelFactory(forUid: playerUid, forDescription: playerDescription))
-        }
-        
-        return roomRes
-    }
-    
-    /// factory function for RoomPlayer
-    /// from a dictionary and player's uid
-    /// - Parameters:
-    ///     - forUid: the player's uid
-    ///     - forDescription: the player's details
-    /// - Returns:
-    ///     - a RoomPlayerModel object
-    private func firebaseRoomPlayerModelFactory(forUid uid: String, forDescription playerDescription: AnyObject) -> RoomPlayerModel {
-        guard let description = playerDescription as? [String : AnyObject] else {
-            return RoomPlayerModel(uid: uid, isHost: false, isReady: false)
-        }
-        
-        let isHost = description[FirebaseKeys.rooms_players_isHost] as? Bool ?? FirebaseSystemValues.defaultFalse
-        let isReady = description[FirebaseKeys.rooms_players_isReady] as? Bool ?? FirebaseSystemValues.defaultFalse
-        let level = description[FirebaseKeys.rooms_players_level] as? Int ?? FirebaseSystemValues.users_defaultLevel
-        let name = description[FirebaseKeys.rooms_players_name] as? String ?? FirebaseSystemValues.users_defaultName
-        let hat = description[FirebaseKeys.rooms_players_hat] as? String ?? FirebaseSystemValues.users_defaultOutfit
-        let accessory = description[FirebaseKeys.rooms_players_accessory] as? String ?? FirebaseSystemValues.users_defaultOutfit
-        let color = description[FirebaseKeys.rooms_players_color] as? String ?? FirebaseSystemValues.users_defaultColor
-        
-        return RoomPlayerModel(uid: uid, isHost: isHost, isReady: isReady, name: name, color: color, hat: hat, accessory: accessory, level: level)
-    }
-
     func joinRoom(forRoomId id: String, withUser userChar: UserCharacter, _ onSuccess: @escaping () -> Void, _ onRoomFull: @escaping () -> Void, _ onRoomNotExist: @escaping () -> Void, _ onGameHasStarted: @escaping () -> Void, _ onError: @escaping (Error) -> Void) {
         let ref = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.rooms, id]))
 
@@ -149,26 +100,6 @@ class GameDB: GameDatabase {
         }) { (err) in
             onError(err)
         }
-    }
-
-    /// crates a dictionary which translates to
-    /// the firebase database reference for a
-    /// player description inside a room
-    /// - Parameters:
-    ///     - isHost: whether user is host
-    ///     - uid: the uid of the user
-    ///     - forUser: the user customization object
-    /// - Returns: a dictinoary ready to be inserted
-    private func createRoomPlayerDict(isHost: Bool, uid: String, forUser user: UserCharacter) -> [String : AnyObject] {
-        let newPlayerDescriptionDict: [String : AnyObject] = [FirebaseKeys.rooms_players_isHost: isHost as AnyObject,
-            FirebaseKeys.rooms_players_isReady: isHost as AnyObject,
-            FirebaseKeys.rooms_players_name: user.name as AnyObject,
-            FirebaseKeys.rooms_players_level: user.level as AnyObject,
-            FirebaseKeys.rooms_players_color: user.color.toString() as AnyObject,
-            FirebaseKeys.rooms_players_hat: user.hat as AnyObject,
-            FirebaseKeys.rooms_players_accessory: user.accessory as AnyObject]
-        
-        return newPlayerDescriptionDict
     }
 
     func changeRoomOpenState(forRoomId id: String, _ onError: @escaping (Error) -> Void) {
@@ -298,20 +229,6 @@ class GameDB: GameDatabase {
         }
     }
 
-    /// generates a random 5 digit string
-    /// id. This code can generate duplicates
-    /// and collisions might happen
-    /// - Returns: a 5 digit string id
-    private func generateRandomId() -> String {
-        var random: String = String(Int.random(in: 0 ..< 1000000))
-
-        while random.count < 6 {
-            random = "0\(random)"
-        }
-
-        return random
-    }
-
     func leaveRoom(fromRoomId id: String, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void) {
         guard let user = Auth.auth().currentUser else {
             print("Invalid user, unable to create room")
@@ -424,148 +341,6 @@ class GameDB: GameDatabase {
             }
 
             onComplete()
-        }
-    }
-    
-    /// generated a Firebase-ready dictionary
-    /// for the stations reference inside a game
-    /// - Parameters:
-    ///     - forMap: the map for which the dict
-    ///       is to be generated
-    /// - Returns:
-    ///     - a dictionary representing the stations
-    private func generateStationsDict(forMap map: String) -> [String : AnyObject] {
-        let level = LevelsReader.getLevel(id: map)
-        guard let fileName = level?.fileName else { return [:] }
-        
-        guard let levelDesignURL = Bundle.main.url(forResource: fileName, withExtension: "plist") else {
-            return [:]
-        }
-        
-        do {
-            let data = try? Data(contentsOf: levelDesignURL)
-            let decoder = PropertyListDecoder()
-            let value = try decoder.decode(SerializableGameData.self, from: data!)
-            
-            return parseStationsForDecodedData(data: value)
-        } catch {
-            print(error.localizedDescription)
-            return [:]
-        }
-    }
-    
-    /// a function that parses a decoded plist
-    /// data into a Firebase-ready dictionary
-    /// - Parameters:
-    ///     - data: an already decoded data
-    ///       of type SerializedGameData
-    /// - Returns:
-    ///     - a Firebase-ready dictionary for
-    ///       the stations inside the game
-    private func parseStationsForDecodedData(data: SerializableGameData) -> [String : AnyObject] {
-        var res: [String : AnyObject] = [:]
-        
-        let itemInsideDict = [FirebaseKeys.games_items_type: FirebaseSystemValues.ItemTypes.none.rawValue,
-                              FirebaseKeys.games_items_encodedData: FirebaseSystemValues.defaultNoItem]
-        
-        // table
-        for (index, _) in data.table.enumerated() {
-            let key = "\(FirebaseSystemValues.games_stations_table)-\(index)"
-            
-            let valueDict =
-                [FirebaseKeys.games_stations_type: FirebaseSystemValues.games_stations_table,
-                 FirebaseKeys.games_stations_isOccupied: FirebaseSystemValues.defaultFalse,
-                 FirebaseKeys.games_stations_itemInside: itemInsideDict] as [String : AnyObject]
-            
-            res.updateValue(valueDict as AnyObject, forKey: key)
-        }
-        
-        // frying equipment
-        for (index, _) in data.fryingEquipment.enumerated() {
-            let key = "\(FirebaseSystemValues.games_stations_fryingEquipment)-\(index)"
-            
-            let valueDict =
-                [FirebaseKeys.games_stations_type: FirebaseSystemValues.games_stations_fryingEquipment,
-                 FirebaseKeys.games_stations_isOccupied: FirebaseSystemValues.defaultFalse,
-                 FirebaseKeys.games_stations_itemInside: itemInsideDict] as [String : AnyObject]
-            
-            res.updateValue(valueDict as AnyObject, forKey: key)
-        }
-        
-        for (index, _) in data.oven.enumerated() {
-            let key = "\(FirebaseSystemValues.games_stations_oven)-\(index)"
-            
-            let valueDict =
-                [FirebaseKeys.games_stations_type: FirebaseSystemValues.games_stations_oven,
-                 FirebaseKeys.games_stations_isOccupied: FirebaseSystemValues.defaultFalse,
-                 FirebaseKeys.games_stations_itemInside: itemInsideDict] as [String : AnyObject]
-            
-            res.updateValue(valueDict as AnyObject, forKey: key)
-        }
-        
-        for (index, _) in data.choppingEquipment.enumerated() {
-            let key = "\(FirebaseSystemValues.games_stations_choppingEquipment)-\(index)"
-            
-            let valueDict =
-                [FirebaseKeys.games_stations_type: FirebaseSystemValues.games_stations_choppingEquipment,
-                 FirebaseKeys.games_stations_isOccupied: FirebaseSystemValues.defaultFalse,
-                 FirebaseKeys.games_stations_itemInside: itemInsideDict] as [String : AnyObject]
-            
-            res.updateValue(valueDict as AnyObject, forKey: key)
-        }
-        
-        return res
-    }
-
-    /// creates a Firebase-ready dictionary
-    /// for players inside a game
-    /// - Parameters:
-    ///     - isHost: whether the player
-    ///       to be generated is the host
-    /// - Returns:
-    ///     - a Firebase ready dictionary
-    ///       to be inserted into another dict
-    private func createGamePlayersDict(forMap map: String, forPlayers players: [RoomPlayerModel]) -> [String : AnyObject] {
-        let level = LevelsReader.getLevel(id: map)
-        guard let fileName = level?.fileName else { return [:] }
-        
-        guard let levelDesignURL = Bundle.main.url(forResource: fileName, withExtension: "plist") else {
-            return [:]
-        }
-        
-        do {
-            let data = try? Data(contentsOf: levelDesignURL)
-            let decoder = PropertyListDecoder()
-            let value = try decoder.decode(SerializableGameData.self, from: data!)
-            
-            let pos = NSCoder.cgPoint(for: value.slimeInitPos)
-            var playersDict: [String : AnyObject] = [:]
-            
-            for player in players {
-                let holdingItemDict = [FirebaseKeys.games_items_type: FirebaseSystemValues.ItemTypes.none.rawValue,
-                FirebaseKeys.games_items_encodedData: FirebaseSystemValues.defaultNoItem] as [String : AnyObject]
-                
-                let newGamePlayerDict =
-                    [FirebaseKeys.games_players_uid: player.uid,
-                     FirebaseKeys.games_players_isHost: player.isHost,
-                     FirebaseKeys.games_players_isReady: FirebaseSystemValues.defaultFalse,
-                     FirebaseKeys.games_players_isConnected: FirebaseSystemValues.defaultFalse,
-                     FirebaseKeys.games_players_positionX: pos.x,
-                     FirebaseKeys.games_players_positionY: pos.y,
-                     FirebaseKeys.games_players_holdingItem: holdingItemDict,
-                     FirebaseKeys.users_color: player.color,
-                     FirebaseKeys.users_name: player.name,
-                     FirebaseKeys.users_level: player.level,
-                     FirebaseKeys.users_hat: player.hat,
-                FirebaseKeys.users_accessory: player.accessory] as [String : AnyObject]
-                
-                playersDict.updateValue(newGamePlayerDict as AnyObject, forKey: player.uid)
-            }
-            
-            return playersDict
-        } catch {
-            print(error.localizedDescription)
-            return [:]
         }
     }
     
@@ -683,17 +458,6 @@ class GameDB: GameDatabase {
         }
     }
     
-    private func convertPlateToEncodedData(forPlate plate: Plate) -> String? {
-        let encoder = JSONEncoder()
-        
-        let data = try? encoder.encode(plate)
-        
-        guard let encodedData = data else { return nil }
-        guard let res = String(data: encodedData, encoding: .utf8) else { return nil }
-        
-        return res
-    }
-    
     func addStageItem(forGameId id: String, withItem item: AnyObject, withItemUid uid: String, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void) {
         let ref = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, id, FirebaseKeys.games_stageItems, uid]))
         
@@ -757,56 +521,6 @@ class GameDB: GameDatabase {
         })
     }
     
-    private func encodePlateToString(withPlate plate: Plate) -> String? {
-        let encoder = JSONEncoder()
-        
-        let data = try? encoder.encode(plate)
-        guard let encodedData = data else { return nil }
-        let string = String(data: encodedData, encoding: .utf8)
-        guard let res = string else { return nil }
-        
-        return res
-    }
-    
-    private func convertEncodedDataToPlate(withEncodedData string: String) -> Plate? {
-        let decoder = JSONDecoder()
-        
-        guard let data = string.data(using: .utf8) else { return nil }
-        let encodedPlate = try? decoder.decode(Plate.self, from: data)
-        guard let plate = encodedPlate else { return nil }
-        
-        return plate
-    }
-    
-    private func convertStageItemToEncodedData(withUid uid: String, withItem item: AnyObject) -> [String : String]? {
-        guard let userUid = GameAuth.currentUser?.uid else { return nil }
-        let encoder = JSONEncoder()
-        
-        if let ingredient = item as? Ingredient {
-            let data = try? encoder.encode(ingredient)
-            guard let result = data else { return nil }
-            guard let encodedItem = String(data: result, encoding: .utf8) else { return nil }
-            
-            return [FirebaseKeys.games_stageItems_uid: uid,
-                    FirebaseKeys.games_stageItems_type: FirebaseSystemValues.ItemTypes.ingredient.rawValue,
-                    FirebaseKeys.games_stageItems_encodedData: encodedItem,
-                    FirebaseKeys.games_stageItems_lastInteractedBy: userUid]
-        }
-        
-        if let plate = item as? Plate {
-            let data = try? encoder.encode(plate)
-            guard let result = data else { return nil }
-            guard let encodedItem = String(data: result, encoding: .utf8) else { return nil }
-            
-            return [FirebaseKeys.games_stageItems_uid: uid,
-                    FirebaseKeys.games_stageItems_type: FirebaseSystemValues.ItemTypes.plate.rawValue,
-                    FirebaseKeys.games_stageItems_encodedData: encodedItem,
-                    FirebaseKeys.games_stageItems_lastInteractedBy: userUid]
-        }
-        
-        return nil
-    }
-    
     func removeStageItem(forGameId id: String, withItemUid uid: String, onItemAlreadyRemoved: @escaping () -> Void, onItemPickedUp: @escaping (MobileItem) -> Void, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void) {
         let ref = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, id, FirebaseKeys.games_stageItems, uid]))
         
@@ -835,25 +549,6 @@ class GameDB: GameDatabase {
         })
     }
     
-    private func convertEncodedDataToMobileItem(forString string: String) -> MobileItem? {
-        let decoder = JSONDecoder()
-        
-        guard let data = string.data(using: .utf8) else { return nil }
-        let plate = try? decoder.decode(Plate.self, from: data)
-        
-        if let res = plate {
-            return res as MobileItem
-        }
-        
-        let ingredient = try? decoder.decode(Ingredient.self, from: data)
-        
-        if let res = ingredient {
-            return res as MobileItem
-        }
-        
-        return nil
-    }
-    
     func updateOrderQueue(forGameId id: String, withOrderQueue oq: OrderQueue, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void) {
         let ref = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, id, FirebaseKeys.games_orderQueue]))
         
@@ -875,17 +570,6 @@ class GameDB: GameDatabase {
             
             onComplete()
         }
-    }
-    
-    private func convertOrderQueueToEncodedData(forOrderQueue oq: OrderQueue) -> String? {
-        let encoder = JSONEncoder()
-        
-        let data = try? encoder.encode(oq)
-        
-        guard let encodedData = data else { return nil }
-        guard let res = String(data: encodedData, encoding: .utf8) else { return nil }
-        
-        return res
     }
 
     func changeRoomMap(fromRoomId id: String, toMapId mapId: String, _ onError: @escaping (Error) -> Void) {
@@ -1090,151 +774,6 @@ class GameDB: GameDatabase {
         onComplete()
     }
     
-    private func firebaseStageItemModelFactory(fromData data: [String : String]) -> StageItemModel {
-        let encodedData = data[FirebaseKeys.games_stageItems_encodedData] ?? ""
-        let type = data[FirebaseKeys.games_stageItems_type] ?? ""
-        let uid = data[FirebaseKeys.games_stageItems_uid] ?? ""
-        let lastInteractedBy = data[FirebaseKeys.games_stageItems_lastInteractedBy] ?? ""
-        
-        return StageItemModel(uid: uid, encodedData: encodedData, type: type, lastInteractedBy: lastInteractedBy)
-    }
-    
-    private func firebaseNotificationModelFactory(forData data: [String : String]) -> NotificationModel {
-        let description = data[FirebaseKeys.games_notifications_description] ?? ""
-        let type = data[FirebaseKeys.games_notifications_type] ?? "info"
-        
-        return NotificationModel(description: description, type: type)
-    }
-    
-    private func firebasePlateFactory(forEncodedString string: String) -> Plate? {
-        let decoder = JSONDecoder()
-        
-        let data = string.data(using: .utf8)
-        guard let decodedData = data else { return nil }
-        let res = try? decoder.decode(Plate.self, from: decodedData)
-        
-        guard let plate = res else { return nil }
-        
-        return plate
-    }
-    
-    private func generateStationIdList(fromMap map: String) -> [String] {
-        let level = LevelsReader.getLevel(id: map)
-        guard let plistFileName = level?.fileName else { return [] }
-        
-        guard let levelDesignURL = Bundle.main.url(forResource: plistFileName, withExtension: "plist") else {
-            return []
-        }
-        
-        var list: [String] = []
-        
-        do {
-            let data = try? Data(contentsOf: levelDesignURL)
-            let decoder = PropertyListDecoder()
-            let value = try decoder.decode(SerializableGameData.self, from: data!)
-            
-            for (index, _) in value.choppingEquipment.enumerated() {
-                list.append("\(FirebaseSystemValues.games_stations_choppingEquipment)-\(index)")
-            }
-            
-            for (index, _) in value.fryingEquipment.enumerated() {
-                list.append("\(FirebaseSystemValues.games_stations_fryingEquipment)-\(index)")
-            }
-            
-            for (index, _) in value.table.enumerated() {
-                list.append("\(FirebaseSystemValues.games_stations_table)-\(index)")
-            }
-            
-            for (index, _) in value.oven.enumerated() {
-                list.append("\(FirebaseSystemValues.games_stations_oven)-\(index)")
-            }
-            
-            return list
-        } catch {
-            print(error.localizedDescription)
-            return []
-        }
-    }
-    
-    private func firebaseOrderQueueFactory(forEncodedString string: String) -> OrderQueue? {
-        let decoder = JSONDecoder()
-        
-        let data = string.data(using: .utf8)
-        guard let decodedData = data else { return nil }
-        let oq = try? decoder.decode(OrderQueue.self, from: decodedData)
-        
-        guard let orderQueue = oq else { return nil }
-        
-        return orderQueue
-    }
-    
-    private func firebaseGameStationModelFactory(forDict stationDict: [String : AnyObject]) -> GameStationModel {
-        let stationType = stationDict[FirebaseKeys.games_stations_type] as? String ?? FirebaseSystemValues.defaultNoItem
-        let isOccupied = stationDict[FirebaseKeys.games_stations_isOccupied] as? Bool ?? FirebaseSystemValues.defaultFalse
-        let itemInsideDict = stationDict[FirebaseKeys.games_stations_itemInside] as? [String : AnyObject] ?? [:]
-        
-        let itemType = itemInsideDict[FirebaseKeys.games_items_type] as? String ?? FirebaseSystemValues.ItemTypes.none.rawValue
-        let encodedData = itemInsideDict[FirebaseKeys.games_items_encodedData] as? String ?? FirebaseSystemValues.defaultNoItem
-        
-        return GameStationModel(type: stationType, item: ItemModel(type: itemType, encodedData: encodedData), isOccupied: isOccupied)
-    }
-    
-    private func firebaseGamePlayerModelFactory(withPlayerUid uid: String, forDict playerDict: [String : AnyObject]) -> GamePlayerModel {
-        let positionX = playerDict[FirebaseKeys.games_players_positionX] as? CGFloat ?? FirebaseSystemValues.defaultCGFloat
-        let positionY = playerDict[FirebaseKeys.games_players_positionY] as? CGFloat ?? FirebaseSystemValues.defaultCGFloat
-        let velocityX = playerDict[FirebaseKeys.games_players_velocityX] as? CGFloat ?? FirebaseSystemValues.defaultCGFloat
-        let velocityY = playerDict[FirebaseKeys.games_players_velocityY] as? CGFloat ?? FirebaseSystemValues.defaultCGFloat
-        let xScale = playerDict[FirebaseKeys.games_players_xScale] as? CGFloat ?? FirebaseSystemValues.defaultCGFloat
-        let isConnected = playerDict[FirebaseKeys.games_players_isConnected] as? Bool ?? FirebaseSystemValues.defaultFalse
-        let isHost = playerDict[FirebaseKeys.games_players_isHost] as? Bool ?? FirebaseSystemValues.defaultFalse
-        let isReady = playerDict[FirebaseKeys.games_players_isReady] as? Bool ?? FirebaseSystemValues.defaultFalse
-        let name = playerDict[FirebaseKeys.users_name] as? String ?? FirebaseSystemValues.users_defaultName
-        let hat = playerDict[FirebaseKeys.users_hat] as? String ?? FirebaseSystemValues.users_defaultOutfit
-        let accessory = playerDict[FirebaseKeys.users_accessory] as? String ?? FirebaseSystemValues.users_defaultOutfit
-        let color = playerDict[FirebaseKeys.users_color] as? String ?? FirebaseSystemValues.users_defaultColor
-        let level = playerDict[FirebaseKeys.users_level] as? Int ?? FirebaseSystemValues.users_defaultLevel
-        
-        let holdItem = playerDict[FirebaseKeys.games_players_holdingItem] as? [String : String] ?? [:]
-        let itemType = holdItem[FirebaseKeys.games_items_type] ?? FirebaseSystemValues.ItemTypes.none.rawValue
-        let encodedData = holdItem[FirebaseKeys.games_items_encodedData] ?? FirebaseSystemValues.defaultNoItem
-        
-        return GamePlayerModel(uid: uid, posX: positionX, posY: positionY, vx: velocityX, vy: velocityY, xScale: xScale, holdingItem: ItemModel(type: itemType, encodedData: encodedData), isHost: isHost, isConnected: isConnected, isReady: isReady, name: name, hat: hat, accessory: accessory, color: color, level: level)
-    }
-    
-    /// a utility function to find the uid of
-    /// the host inside a room instance
-    /// - Parameters:
-    ///     - the room to be inspected
-    /// - Returns:
-    ///     - the uid of the host
-    private func hostInRoom(_ room: RoomModel) -> String {
-        for player in room.players {
-            if player.isHost { return player.uid }
-        }
-        
-        return FirebaseSystemValues.defaultBlankString
-    }
-
-    /// converts dictionary of order in Firebase
-    /// to a GameOrderModel type, can return nil
-    /// if result is invalid
-    /// - Parameters:
-    ///     - dict: a single instance of key value
-    ///       pair to be transformed
-    /// - Returns:
-    ///     - a GameOrderModel object, nil if invalid
-    private func convertOrderDictToOrder(dict: (key: String, value: AnyObject)) -> GameOrderModel? {
-        guard let orderInfo = dict.value as? [String : AnyObject] else {
-            return nil
-        }
-
-        let issueTime = orderInfo[FirebaseKeys.games_orders_issueTime] as? Double ?? 0.0
-        let timeLimit = orderInfo[FirebaseKeys.games_orders_timeLimit] as? Double ?? 0.0
-        let name = orderInfo[FirebaseKeys.games_orders_encodedRecipe] as? String ?? ""
-
-        return GameOrderModel(id: dict.key, name: name, issueTime: issueTime, timeLimit: timeLimit)
-    }
-    
     func sendNotification(forGameId id: String, withDescription description: String, withType type: String, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void) {
         let ref = dbRef.child(FirebaseKeys.joinKeys([FirebaseKeys.games, id, FirebaseKeys.games_notifications]))
         
@@ -1390,53 +929,6 @@ class GameDB: GameDatabase {
             
             return TransactionResult.success(withValue: current)
         }
-    }
-    
-    private func decodeStringToItem(fromString string: String, forType type: String) -> AnyObject? {
-        let decoder = JSONDecoder()
-        let encodedData = string.data(using: .utf8)
-        guard let data = encodedData else { return nil }
-        
-        if type == FirebaseSystemValues.ItemTypes.ingredient.rawValue {
-            let ingredient = try? decoder.decode(Ingredient.self, from: data)
-            guard let res = ingredient else { return nil }
-            return res
-        }
-        
-        if type == FirebaseSystemValues.ItemTypes.plate.rawValue {
-            let plate = try? decoder.decode(Plate.self, from: data)
-            guard let res = plate else { return nil }
-            return res
-        }
-        
-        return nil
-    }
-    
-    private func convertGameItemToEncodedData(forGameItem item: AnyObject) -> [String : String] {
-        var resultingDict = [FirebaseKeys.games_items_type: FirebaseSystemValues.ItemTypes.none.rawValue,
-                             FirebaseKeys.games_items_encodedData: FirebaseSystemValues.defaultNoItem]
-        
-        let encoder = JSONEncoder()
-        
-        if let ingredient = item as? Ingredient {
-            let data = try? encoder.encode(ingredient)
-            guard let result = data else { return resultingDict }
-            guard let encodedItem = String(data: result, encoding: .utf8) else { return resultingDict }
-            
-            resultingDict.updateValue(FirebaseSystemValues.ItemTypes.ingredient.rawValue, forKey: FirebaseKeys.games_items_type)
-            resultingDict.updateValue(encodedItem, forKey: FirebaseKeys.games_items_encodedData)
-        }
-        
-        if let plate = item as? Plate {
-            let data = try? encoder.encode(plate)
-            guard let result = data else { return resultingDict }
-            guard let encodedItem = String(data: result, encoding: .utf8) else { return resultingDict }
-            
-            resultingDict.updateValue(FirebaseSystemValues.ItemTypes.plate.rawValue, forKey: FirebaseKeys.games_items_type)
-            resultingDict.updateValue(encodedItem, forKey: FirebaseKeys.games_items_encodedData)
-        }
-        
-        return resultingDict
     }
     
     func addScore(by addedScore: Int, forGameId id: String, _ onComplete: @escaping () -> Void, _ onError: @escaping (Error) -> Void) {
@@ -1642,23 +1134,6 @@ class GameDB: GameDatabase {
             onError(err)
         }
     }
-    
-    /// factory method to generate user model
-    /// from a firebase dictionary
-    /// - Parameters:
-    ///     - forDict: the dictionary pulled from
-    ///       firebase for a user object
-    /// - Returns:
-    ///     - a UserModel object representing the dictionary
-    private func firebaseUserModelFactory(forDict dict: [String : AnyObject]) -> UserModel {
-        let name = dict[FirebaseKeys.users_name] as? String ?? FirebaseSystemValues.users_defaultName
-        let hat = dict[FirebaseKeys.users_hat] as? String ?? FirebaseSystemValues.users_defaultOutfit
-        let accessory = dict[FirebaseKeys.users_accessory] as? String ?? FirebaseSystemValues.users_defaultOutfit
-        let color = dict[FirebaseKeys.users_hat] as? String ?? FirebaseSystemValues.users_defaultColor
-        let level = dict[FirebaseKeys.users_level] as? Int ?? FirebaseSystemValues.users_defaultLevel
-        
-        return UserModel(name: name, level: level, hat: hat, accessory: accessory, color: color)
-    }
 
     func removeAllObservers() {
         for observer in self.observers { observer.reference.removeObserver(withHandle: observer.handle) }
@@ -1682,135 +1157,5 @@ struct Observer {
     init(withHandle handle: DatabaseHandle, withRef reference: DatabaseReference) {
         self.handle = handle
         self.reference = reference
-    }
-}
-
-enum GameTypes {
-    case single
-    case multiplayer
-}
-
-struct FirebaseSystemValues {
-    // game values
-    static let games_stations_fryingEquipment = "fryingEquipment"
-    static let games_stations_oven = "oven"
-    static let games_stations_table = "table"
-    static let games_stations_storeFront = "storeFront"
-    static let games_stations_choppingEquipment = "choppingEquipment"
-    static let games_stations_plateStorage = "plateStorage"
-    static let games_stations_trashBin = "trashBin"
-    
-    static let users_defaultOutfit = "none"
-    static let users_defaultName = "Generic Slime"
-    static let users_defaultColor = "green"
-    static let users_defaultLevel = 1
-    
-    static let defaultFalse = false
-    static let defaultBlankString = ""
-    static let defaultNoItem = "none"
-    static let defaultDouble = 0.0
-    static let defaultCGFloat = 0.0 as CGFloat
-    
-    enum ItemTypes: String {
-        case none
-        case plate
-        case ingredient
-    }
-}
-
-/**
- a list of constants representing all the
- Firebase keys currently available. The naming
- for the constants are dependent on how deep
- the keys are in the JSON tree.
- */
-struct FirebaseKeys {
-    // user keys
-    static let users = "users"
-    static let users_name = "name"
-    static let users_color = "color"
-    static let users_hat = "hat"
-    static let users_accessory = "accessory"
-    static let users_level = "level"
-    static let users_exp = "exp"
-    
-    // room keys
-    static let rooms = "rooms"
-    static let rooms_roomName = "room_name"
-    static let rooms_mapName = "map_name"
-    static let rooms_roomId = "room_id"
-    static let rooms_hasStarted = "has_started"
-    static let rooms_isOpen = "is_open"
-    static let rooms_isGameCreated = "is_game_created"
-    static let rooms_players = "players"
-    static let rooms_players_isReady = "is_ready"
-    static let rooms_players_isHost = "is_host"
-    static let rooms_players_name = "name"
-    static let rooms_players_level = "level"
-    static let rooms_players_hat = "hat"
-    static let rooms_players_color = "color"
-    static let rooms_players_accessory = "accessory"
-
-    // game keys
-    static let games = "games"
-    static let games_gameMap = "game_map"
-    static let games_hasEnded = "has_ended"
-    static let games_hasStarted = "has_started"
-    static let games_startTime = "start_time"
-    static let games_timeLeft = "time_left"
-    static let games_players = "players"
-    static let games_players_uid = "uid"
-    static let games_players_isHost = "is_host"
-    static let games_players_isConnected = "is_connected"
-    static let games_players_isReady = "is_ready"
-    static let games_players_holdingItem = "holding_item"
-    static let games_players_positionX = "position_x"
-    static let games_players_positionY = "position_y"
-    static let games_players_velocityX = "velocity_x"
-    static let games_players_velocityY = "velocity_y"
-    static let games_players_xScale = "x_scale"
-    static let games_score = "score"
-    static let games_stations = "stations"
-    static let games_stations_itemInside = "item_inside"
-    static let games_stations_isOccupied = "is_occupied"
-    static let games_stations_type = "type"
-    static let games_items_type = "type"
-    static let games_items_encodedData = "encoded_data"
-    //    static let games_objects = "objects"
-    static let games_orderQueue = "order_queue"
-    static let games_ordersSubmitted = "orders_submitted"
-    static let games_orders_encodedRecipe = "encoded_recipe"
-    static let games_orders_issueTime = "issue_time"
-    static let games_orders_timeLimit = "time_limit"
-    static let games_notifications = "notifications"
-    static let games_notifications_description = "description"
-    static let games_notifications_type = "type"
-    static let games_stageItems = "stage_items"
-    static let games_stageItems_uid = "uid"
-    static let games_stageItems_type = "type"
-    static let games_stageItems_encodedData = "encoded_data"
-    static let games_stageItems_lastInteractedBy = "last_interacted_by"
-    
-    // leaderboard stuff
-    static let scores = "scores"
-    static let scores_name = "scores_name"
-    static let scores_score = "scores_score"
-
-    // rejoin keys
-    static let rejoins = "rejoins"
-
-    /// joins keys with the required separator
-    /// - Parameters:
-    ///     - forKeys: an array of keys
-    /// - Returns:
-    ///     - a String representing the joined keys
-    static func joinKeys(_ keys: [String]) -> String {
-        var finalReference = ""
-
-        for key in keys {
-            finalReference = "\(finalReference)/\(key)"
-        }
-
-        return finalReference
     }
 }
