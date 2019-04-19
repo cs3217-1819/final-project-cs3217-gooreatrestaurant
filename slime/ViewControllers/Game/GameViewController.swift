@@ -11,8 +11,6 @@ import SpriteKit
 import AVFoundation
 
 class GameViewController: ViewController<UIView> {
-    
-    var db: GameDatabase = GameDB()
     private var stage: Stage!
     private var level: Level?
     private var player: Player?
@@ -58,10 +56,8 @@ class GameViewController: ViewController<UIView> {
 //        skview.showsNodeCount = true
         skview.isMultipleTouchEnabled = true
         view.addSubview(skview)
-
-        if isMultiplayer { if let room = self.previousRoom { stage.setupMultiplayer(forRoom: room) }}
-        if !isMultiplayer { stage.setupSinglePlayer(player: player!) }
         
+        stage.setupStage(forPlayer: player)
         stage.generateLevel(inLevel: levelFileName)
 
         //        newCollection.delegate = self

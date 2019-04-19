@@ -80,6 +80,16 @@ class Stage: SKScene {
         }
     }
     
+    func setupStage(forPlayer player: Player?) {
+        if isMultiplayer {
+            if let room = self.previousRoom { self.setupMultiplayer(forRoom: room) }
+            return
+        }
+        
+        guard let onlyPlayer = player else { return }
+        self.setupSinglePlayer(player: onlyPlayer)
+    }
+    
     func setupSinglePlayer(player: Player) {
         guard let onlyUser = GameAuth.currentUser else {
             return
