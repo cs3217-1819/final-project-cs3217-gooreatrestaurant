@@ -146,18 +146,14 @@ class OrderQueue: SKSpriteNode, Codable {
     // True if success, false if failed (no corresponding orders)
     func completeOrder(withFood food: Food) -> Bool {
         let ingredientsPrepared = food.ingredientsList
-
         guard let matchedOrder = recipeOrdered.firstIndex(where: { $0.ingredientsNeeded == ingredientsPrepared }) else {
             return false
         }
-
         recipeOrdered.remove(at: matchedOrder)
         removeMenuPrefab(inNum: matchedOrder)
-
         if recipeOrdered.count < StageConstants.maxNumbersOfOrdersShown {
             self.isMultiplayerEnabled ? self.multiplayerAddRandomOrder() : self.addRandomOrder()
         }
-
         return true
     }
 
@@ -167,16 +163,13 @@ class OrderQueue: SKSpriteNode, Codable {
         guard let matchedOrder = recipeOrdered.firstIndex(where: { $0 == recipe }) else {
             return
         }
-
         AudioMaster.instance.playSFX(name: "order-missed")
         recipeOrdered.remove(at: matchedOrder)
         removeMenuPrefab(inNum: matchedOrder)
-
         if recipeOrdered.count < StageConstants.minNumbersOfOrdersShown {
             self.isMultiplayerEnabled ? self.multiplayerAddRandomOrder() : self.addRandomOrder()
             return
         }
-        
         if self.isMultiplayerEnabled {
             self.multiplayerUpdateSelf()
             self.sendNotification(withDescription: "oops! you missed the \(recipe.recipeName) order!", withType: NotificationPrefab.NotificationTypes.warning.rawValue)
@@ -195,11 +188,9 @@ class OrderQueue: SKSpriteNode, Codable {
                 print(err.localizedDescription)
             }
         }
-
         guard nodeOrder.count > 0 else {
             return
         }
-
         //update positionings
         for i in 1...nodeOrder.count {
             nodeOrder[i-1].position = positionings[i-1]
