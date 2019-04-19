@@ -198,11 +198,7 @@ class Stage: SKScene {
     }
 
     func initializeOrders(withData data: [RecipeData]) {
-        if isMultiplayer && !isUserHost { return }
-        
-        if isMultiplayer {
-            if let id = self.previousRoom?.id { self.orderQueue.setMultiplayer(withGameId: id) }
-        }
+        if !self.checkMultiplayerInitializeOrders() { return }
         
         for datum in data {
             var recipeName: String = ""
@@ -312,21 +308,9 @@ class Stage: SKScene {
             levelScore += self.orderQueue.scoreToIncrease 
             scoreLabel.text = "Score: \(levelScore)"
             return true
-        } else {
-            // multiplayer serve food
-            guard let database = self.db else { return false }
-            guard let room = self.previousRoom else { return false }
-            
-            database.updatePlayerHoldingItem(forGameId: room.id, toItem: "BUH BUH SLIME" as AnyObject, { }) { (err) in
-                print(err.localizedDescription)
-            }
-
-            database.submitOrder(forGameId: room.id, withPlate: plate, { }) { (err) in
-                print(err.localizedDescription)
-            }
-            
-            return true
         }
+        
+        return self.multiplayerServe(forPlate: plate)
     }
 
     @objc func startCounter() {

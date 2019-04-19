@@ -16,6 +16,18 @@ extension Stage {
         self.showReadyFlag()
     }
     
+    func checkMultiplayerInitializeOrders() -> Bool {
+        if isMultiplayer && !isUserHost {
+            return false
+        }
+        
+        if isMultiplayer {
+            if let id = self.previousRoom?.id { self.orderQueue.setMultiplayer(withGameId: id) }
+        }
+        
+        return true
+    }
+    
     func delayMultiplayerJoinGame() {
         if !self.isMultiplayer { return }
         
@@ -137,6 +149,22 @@ extension Stage {
                 print(err.localizedDescription)
             })
         })
+    }
+    
+    func multiplayerServe(forPlate plate: Plate) -> Bool {
+        // multiplayer serve food
+        guard let database = self.db else { return false }
+        guard let room = self.previousRoom else { return false }
+        
+        database.updatePlayerHoldingItem(forGameId: room.id, toItem: "BUH BUH SLIME" as AnyObject, { }) { (err) in
+            print(err.localizedDescription)
+        }
+        
+        database.submitOrder(forGameId: room.id, withPlate: plate, { }) { (err) in
+            print(err.localizedDescription)
+        }
+        
+        return true
     }
     
     private func startStreamingSelf() {
