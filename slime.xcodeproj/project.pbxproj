@@ -273,6 +273,8 @@
 		F92ECAE8224BAEEF0040A4E2 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92ECAE7224BAEEF0040A4E2 /* Game.swift */; };
 		F92ECAEA224D1B490040A4E2 /* FadeInOutSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92ECAE9224D1B490040A4E2 /* FadeInOutSegue.swift */; };
 		F9D0E19A22637AC5003D0D02 /* NotificationPrefab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D0E19922637AC5003D0D02 /* NotificationPrefab.swift */; };
+		F9D0E1A42269EEB9003D0D02 /* Stage+Multiplayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D0E1A32269EEB9003D0D02 /* Stage+Multiplayer.swift */; };
+		F9D0E1A62269EEDC003D0D02 /* OrderQueue+Multiplayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D0E1A52269EEDC003D0D02 /* OrderQueue+Multiplayer.swift */; };
 		F9F26FEE22564873008BFD50 /* GameDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F26FED22564873008BFD50 /* GameDB.swift */; };
 		F9F26FF2225DDA7A008BFD50 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F26FF1225DDA7A008BFD50 /* User.swift */; };
 /* End PBXBuildFile section */
@@ -562,6 +564,8 @@
 		F92ECAE7224BAEEF0040A4E2 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		F92ECAE9224D1B490040A4E2 /* FadeInOutSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FadeInOutSegue.swift; sourceTree = "<group>"; };
 		F9D0E19922637AC5003D0D02 /* NotificationPrefab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationPrefab.swift; sourceTree = "<group>"; };
+		F9D0E1A32269EEB9003D0D02 /* Stage+Multiplayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Stage+Multiplayer.swift"; sourceTree = "<group>"; };
+		F9D0E1A52269EEDC003D0D02 /* OrderQueue+Multiplayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OrderQueue+Multiplayer.swift"; sourceTree = "<group>"; };
 		F9F26FED22564873008BFD50 /* GameDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDB.swift; sourceTree = "<group>"; };
 		F9F26FF1225DDA7A008BFD50 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -596,7 +600,9 @@
 				1D220290224AB5850080CF7D /* Ladder.swift */,
 				1D220299224AB5850080CF7D /* Spaceship.swift */,
 				1D220295224AB5850080CF7D /* Stage.swift */,
+				F9D0E1A32269EEB9003D0D02 /* Stage+Multiplayer.swift */,
 				1D3DAC0D2257930200491105 /* OrderQueue.swift */,
+				F9D0E1A52269EEDC003D0D02 /* OrderQueue+Multiplayer.swift */,
 			);
 			path = Stage;
 			sourceTree = "<group>";
@@ -1809,6 +1815,7 @@
 				1DE6FC63224D12F600B36F48 /* IngredientStorage.swift in Sources */,
 				8BD816AF22422C6700586180 /* Extensions.swift in Sources */,
 				EC4924EF22462174007B9797 /* OrderBlobController.swift in Sources */,
+				F9D0E1A42269EEB9003D0D02 /* Stage+Multiplayer.swift in Sources */,
 				1DE6FC6B224D26A200B36F48 /* Trash.swift in Sources */,
 				EC21B409224217E200827121 /* LoadingScreenViewController.swift in Sources */,
 				EC5196F122605A7F0083BC26 /* FlashingController.swift in Sources */,
@@ -1846,6 +1853,7 @@
 				1D50BDFF2264B9B100AC195F /* Item.swift in Sources */,
 				EC38244B22389649000D7148 /* ImageProvider.swift in Sources */,
 				EC38244322388389000D7148 /* XibView.swift in Sources */,
+				F9D0E1A62269EEDC003D0D02 /* OrderQueue+Multiplayer.swift in Sources */,
 				EC1B44AC225D83E800CBE688 /* Jokes.swift in Sources */,
 				ECD455692240FB23006AF78D /* MultiplayerLobbyViewController.swift in Sources */,
 				EC21B407224216C500827121 /* LoadingScreenView.swift in Sources */,

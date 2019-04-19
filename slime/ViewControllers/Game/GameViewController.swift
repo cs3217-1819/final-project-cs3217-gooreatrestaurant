@@ -59,7 +59,6 @@ class GameViewController: ViewController<UIView> {
         skview.isMultipleTouchEnabled = true
         view.addSubview(skview)
 
-        // TODO: multiplayer stuff, add all the players to stage, then the setupPlayers() will map the slime to player
         if isMultiplayer { if let room = self.previousRoom { stage.setupMultiplayer(forRoom: room) }}
         if !isMultiplayer { stage.setupSinglePlayer(player: player!) }
         
