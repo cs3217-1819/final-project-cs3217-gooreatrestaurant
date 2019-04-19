@@ -10,6 +10,9 @@ import Foundation
 import SpriteKit
 
 class MenuPrefab: SKSpriteNode, Codable {
+    //Variables needed for setting the positioning and sizing
+    static let dishSize = CGSize(width: 45, height: 45)
+    static let dishPosition = CGPoint(x: 0, y: 15)
     var randInt: Int
     var recipe: Recipe?
     var blackBar: SKSpriteNode
@@ -44,9 +47,9 @@ class MenuPrefab: SKSpriteNode, Codable {
         var texture: SKTexture = SKTexture.init()
         texture = ingredientsAtlas.textureNamed(recipe.recipeName)
         let dish = SKSpriteNode(texture: texture)
-        dish.position = CGPoint(x: 0, y: 15)
+        dish.position = MenuPrefab.dishPosition
+        dish.size = MenuPrefab.dishSize
         dish.zPosition = 5
-        dish.size = CGSize(width: 45, height: 45)
 
         for (key, _) in recipe.ingredientsNeeded {
             guard let ingredientCount = recipe.ingredientsNeeded[key] else {

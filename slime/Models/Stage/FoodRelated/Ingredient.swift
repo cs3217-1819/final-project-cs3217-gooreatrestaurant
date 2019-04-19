@@ -12,10 +12,9 @@ import SpriteKit
 class Ingredient: MobileItem, Codable {
     var type: IngredientType
     var processed: [CookingType] = []
-
     var currentProcessing: CookingType?
     var processingProgress = 0.0
-
+    //For rendering
     var blackBar = SKSpriteNode(imageNamed: "Black bar")
     var greenBar = SKSpriteNode(imageNamed: "Green bar")
 
@@ -102,7 +101,6 @@ class Ingredient: MobileItem, Codable {
         } else {
             greenBar.setScale(1)
             greenBar.yScale = CGFloat(processingProgress / 100.0) * greenBar.yScale
-            //temp removal of texture
             self.texture = nil
         }
     }
