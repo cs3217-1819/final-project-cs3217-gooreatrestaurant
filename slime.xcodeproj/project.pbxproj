@@ -272,7 +272,12 @@
 		F92ECAE6224BAEDB0040A4E2 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92ECAE5224BAEDB0040A4E2 /* Room.swift */; };
 		F92ECAE8224BAEEF0040A4E2 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92ECAE7224BAEEF0040A4E2 /* Game.swift */; };
 		F92ECAEA224D1B490040A4E2 /* FadeInOutSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92ECAE9224D1B490040A4E2 /* FadeInOutSegue.swift */; };
+		F98B1633226A138400421C6C /* GameDB+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98B1632226A138400421C6C /* GameDB+Utility.swift */; };
+		F98B1636226A139C00421C6C /* GameDB+Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98B1635226A139C00421C6C /* GameDB+Constants.swift */; };
+		F98B1638226A18F500421C6C /* GameAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98B1637226A18F500421C6C /* GameAuth.swift */; };
 		F9D0E19A22637AC5003D0D02 /* NotificationPrefab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D0E19922637AC5003D0D02 /* NotificationPrefab.swift */; };
+		F9D0E1A42269EEB9003D0D02 /* Stage+Multiplayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D0E1A32269EEB9003D0D02 /* Stage+Multiplayer.swift */; };
+		F9D0E1A62269EEDC003D0D02 /* OrderQueue+Multiplayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D0E1A52269EEDC003D0D02 /* OrderQueue+Multiplayer.swift */; };
 		F9F26FEE22564873008BFD50 /* GameDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F26FED22564873008BFD50 /* GameDB.swift */; };
 		F9F26FF2225DDA7A008BFD50 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F26FF1225DDA7A008BFD50 /* User.swift */; };
 /* End PBXBuildFile section */
@@ -561,7 +566,12 @@
 		F92ECAE5224BAEDB0040A4E2 /* Room.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 		F92ECAE7224BAEEF0040A4E2 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		F92ECAE9224D1B490040A4E2 /* FadeInOutSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FadeInOutSegue.swift; sourceTree = "<group>"; };
+		F98B1632226A138400421C6C /* GameDB+Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameDB+Utility.swift"; sourceTree = "<group>"; };
+		F98B1635226A139C00421C6C /* GameDB+Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameDB+Constants.swift"; sourceTree = "<group>"; };
+		F98B1637226A18F500421C6C /* GameAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameAuth.swift; sourceTree = "<group>"; };
 		F9D0E19922637AC5003D0D02 /* NotificationPrefab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationPrefab.swift; sourceTree = "<group>"; };
+		F9D0E1A32269EEB9003D0D02 /* Stage+Multiplayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Stage+Multiplayer.swift"; sourceTree = "<group>"; };
+		F9D0E1A52269EEDC003D0D02 /* OrderQueue+Multiplayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OrderQueue+Multiplayer.swift"; sourceTree = "<group>"; };
 		F9F26FED22564873008BFD50 /* GameDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDB.swift; sourceTree = "<group>"; };
 		F9F26FF1225DDA7A008BFD50 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -596,7 +606,9 @@
 				1D220290224AB5850080CF7D /* Ladder.swift */,
 				1D220299224AB5850080CF7D /* Spaceship.swift */,
 				1D220295224AB5850080CF7D /* Stage.swift */,
+				F9D0E1A32269EEB9003D0D02 /* Stage+Multiplayer.swift */,
 				1D3DAC0D2257930200491105 /* OrderQueue.swift */,
+				F9D0E1A52269EEDC003D0D02 /* OrderQueue+Multiplayer.swift */,
 			);
 			path = Stage;
 			sourceTree = "<group>";
@@ -1404,10 +1416,13 @@
 			children = (
 				F92ECAE1224BAE8F0040A4E2 /* Database.swift */,
 				F92ECAE3224BAEBD0040A4E2 /* Authentication.swift */,
+				F9F26FF1225DDA7A008BFD50 /* User.swift */,
 				F92ECAE5224BAEDB0040A4E2 /* Room.swift */,
 				F92ECAE7224BAEEF0040A4E2 /* Game.swift */,
 				F9F26FED22564873008BFD50 /* GameDB.swift */,
-				F9F26FF1225DDA7A008BFD50 /* User.swift */,
+				F98B1632226A138400421C6C /* GameDB+Utility.swift */,
+				F98B1635226A139C00421C6C /* GameDB+Constants.swift */,
+				F98B1637226A18F500421C6C /* GameAuth.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -1722,6 +1737,7 @@
 				8BD816B3224262F100586180 /* AnalogJoystick.swift in Sources */,
 				ECBA67C72261C7AE007042A8 /* StageSummaryView.swift in Sources */,
 				ECFF2B7C2265B4CC003DEAED /* StageCellView.swift in Sources */,
+				F98B1633226A138400421C6C /* GameDB+Utility.swift in Sources */,
 				F9F26FF2225DDA7A008BFD50 /* User.swift in Sources */,
 				1DD6EBE5224E76F0006FF6CD /* IngredientType.swift in Sources */,
 				EC57D2DC225C8B7400F26808 /* SlimeCharacterView.swift in Sources */,
@@ -1809,11 +1825,13 @@
 				1DE6FC63224D12F600B36F48 /* IngredientStorage.swift in Sources */,
 				8BD816AF22422C6700586180 /* Extensions.swift in Sources */,
 				EC4924EF22462174007B9797 /* OrderBlobController.swift in Sources */,
+				F9D0E1A42269EEB9003D0D02 /* Stage+Multiplayer.swift in Sources */,
 				1DE6FC6B224D26A200B36F48 /* Trash.swift in Sources */,
 				EC21B409224217E200827121 /* LoadingScreenViewController.swift in Sources */,
 				EC5196F122605A7F0083BC26 /* FlashingController.swift in Sources */,
 				EC4899802265CB6300B14A92 /* StageSelectModal.swift in Sources */,
 				EC6E99EF224F256500A9554C /* LocalData.swift in Sources */,
+				F98B1638226A18F500421C6C /* GameAuth.swift in Sources */,
 				EC6AC1D62254882900D95C90 /* ContextModalHandler.swift in Sources */,
 				1D2202A0224AB5850080CF7D /* Slime+Movements.swift in Sources */,
 				EC382482223A2AF5000D7148 /* PlayMenuButton.swift in Sources */,
@@ -1846,6 +1864,7 @@
 				1D50BDFF2264B9B100AC195F /* Item.swift in Sources */,
 				EC38244B22389649000D7148 /* ImageProvider.swift in Sources */,
 				EC38244322388389000D7148 /* XibView.swift in Sources */,
+				F9D0E1A62269EEDC003D0D02 /* OrderQueue+Multiplayer.swift in Sources */,
 				EC1B44AC225D83E800CBE688 /* Jokes.swift in Sources */,
 				ECD455692240FB23006AF78D /* MultiplayerLobbyViewController.swift in Sources */,
 				EC21B407224216C500827121 /* LoadingScreenView.swift in Sources */,
@@ -1860,6 +1879,7 @@
 				EC6E99F9224F2DDB00A9554C /* ProgressBarController.swift in Sources */,
 				EC6E99F7224F2DA200A9554C /* ProgressBarView.swift in Sources */,
 				EC7168CF225DD083004EF2B0 /* AudioMaster.swift in Sources */,
+				F98B1636226A139C00421C6C /* GameDB+Constants.swift in Sources */,
 				EC449B9E223BBA0300A8EA35 /* Level.swift in Sources */,
 				EC57D2E0225C8E5300F26808 /* SlimeCharacterController.swift in Sources */,
 				1D22029E224AB5850080CF7D /* CookingEquipment.swift in Sources */,

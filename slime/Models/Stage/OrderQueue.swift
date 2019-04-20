@@ -20,9 +20,7 @@ class OrderQueue: SKSpriteNode, Codable {
     var isMultiplayerEnabled = false
     var gameId: String?
     var orderQueueInvalidated: Bool = false
-
     var tempNode: SKSpriteNode = SKSpriteNode.init()
-
     var positionings = [CGPoint(x: ScreenSize.width * 0.5 - 180,
                                 y: ScreenSize.height * 0.5 - 40),
                         CGPoint(x: ScreenSize.width * 0.5 - 90,
@@ -41,7 +39,6 @@ class OrderQueue: SKSpriteNode, Codable {
     init(interval: Double) {
         self.interval = interval
         super.init(texture: nil, color: .clear, size: CGSize.zero)
-        
         self.position = CGPoint.zero
         self.name = StageConstants.orderQueueName
         self.zPosition = StageConstants.orderZPos
@@ -89,25 +86,6 @@ class OrderQueue: SKSpriteNode, Codable {
         self.addOrder(ofRecipe: randomRecipe)
     }
     
-    @objc
-    func multiplayerAddRandomOrder() {
-        guard let recipe = self.generateRandomRecipe() else { return }
-        self.addOrder(ofRecipe: recipe)
-        
-        if isMultiplayerEnabled {
-            multiplayerUpdateSelf()
-            sendNotification(withDescription: "someone ordered \(recipe.recipeName), chop chop!")
-        }
-    }
-    
-    private func sendNotification(withDescription description: String, withType type: String = NotificationPrefab.NotificationTypes.info.rawValue) {
-        let database = GameDB()
-        guard let id = self.gameId else { return }
-        database.sendNotification(forGameId: id, withDescription: description, withType: type, { }) { (err) in
-            print(err.localizedDescription)
-        }
-    }
-    
     func addPossibleRecipe(_ recipe: Recipe) {
         self.possibleRecipes.insert(recipe)
     }
@@ -137,30 +115,18 @@ class OrderQueue: SKSpriteNode, Codable {
         
         if isMultiplayerEnabled { multiplayerUpdateSelf() }
     }
-    
-    func multiplayerUpdateSelf() {
-        let db = GameDB()
-        guard let id = gameId else { return }
-        db.updateOrderQueue(forGameId: id, withOrderQueue: self, { }) { (err) in
-            print(err.localizedDescription)
-        }
-    }
 
     // True if success, false if failed (no corresponding orders)
     func completeOrder(withFood food: Food) -> Bool {
         let ingredientsPrepared = food.ingredientsList
-
         guard let matchedOrder = recipeOrdered.firstIndex(where: { $0.ingredientsNeeded == ingredientsPrepared }) else {
             return false
         }
-
         recipeOrdered.remove(at: matchedOrder)
         removeMenuPrefab(inNum: matchedOrder)
-
         if recipeOrdered.count < StageConstants.maxNumbersOfOrdersShown {
             self.isMultiplayerEnabled ? self.multiplayerAddRandomOrder() : self.addRandomOrder()
         }
-
         return true
     }
 
@@ -170,40 +136,27 @@ class OrderQueue: SKSpriteNode, Codable {
         guard let matchedOrder = recipeOrdered.firstIndex(where: { $0 == recipe }) else {
             return
         }
-
         AudioMaster.instance.playSFX(name: "order-missed")
         recipeOrdered.remove(at: matchedOrder)
         removeMenuPrefab(inNum: matchedOrder)
-
         if recipeOrdered.count < StageConstants.minNumbersOfOrdersShown {
             self.isMultiplayerEnabled ? self.multiplayerAddRandomOrder() : self.addRandomOrder()
             return
         }
-        
-        if self.isMultiplayerEnabled {
-            self.multiplayerUpdateSelf()
-            self.sendNotification(withDescription: "oops! you missed the \(recipe.recipeName) order!", withType: NotificationPrefab.NotificationTypes.warning.rawValue)
-        }
+        self.setMultiplayerTimeout(forRecipe: recipe)
     }
 
     func removeMenuPrefab(inNum: Int) {
         //remove the node image and the list
         nodeOrder[inNum].removeFromParent()
         let node = nodeOrder.remove(at: inNum)
-        
         self.scoreToIncrease = calculateScore(timeLeft: node.time)
-        if self.isMultiplayerEnabled {
-            let db = GameDB()
-            guard let id = gameId else { return }
-            db.addScore(by: scoreToIncrease, forGameId: id, { }) { (err) in
-                print(err.localizedDescription)
-            }
-        }
-
+        
+        self.multiplayerAddScore(by: scoreToIncrease)
+        
         guard nodeOrder.count > 0 else {
             return
         }
-
         //update positionings
         for i in 1...nodeOrder.count {
             nodeOrder[i-1].position = positionings[i-1]
@@ -223,16 +176,13 @@ class OrderQueue: SKSpriteNode, Codable {
 
     required convenience init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-
         let possibleRecipes = try values.decode(Set<Recipe>.self, forKey: .possibleRecipes)
         let recipeOrdered = try values.decode([Recipe].self, forKey: .recipeOrdered)
         let nodeOrder = try values.decode([MenuPrefab].self, forKey: .nodeOrder)
-
         self.init(interval: StageConstants.orderComingInterval[0])
         self.possibleRecipes = possibleRecipes
         self.recipeOrdered = recipeOrdered
         self.nodeOrder = nodeOrder
-
         for prefab in nodeOrder {
             self.addChild(prefab)
         }
@@ -240,7 +190,6 @@ class OrderQueue: SKSpriteNode, Codable {
 
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-
         try container.encode(possibleRecipes, forKey: .possibleRecipes)
         try container.encode(recipeOrdered, forKey: .recipeOrdered)
         try container.encode(nodeOrder, forKey: .nodeOrder)

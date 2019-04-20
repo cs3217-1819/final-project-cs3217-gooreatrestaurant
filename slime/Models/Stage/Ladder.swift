@@ -18,12 +18,10 @@ class Ladder: SKSpriteNode {
         self.name = StageConstants.ladderName
         self.position = position
         self.zPosition = StageConstants.ladderZPos
-
         self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 20, height: 90))
         self.physicsBody?.categoryBitMask = StageConstants.ladderCategory
         self.physicsBody?.isDynamic = false
     }
-
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

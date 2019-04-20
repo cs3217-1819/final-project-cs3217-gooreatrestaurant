@@ -10,19 +10,17 @@ import Foundation
 import SpriteKit
 
 class MenuPrefab: SKSpriteNode, Codable {
+    //Variables needed for setting the positioning and sizing
+    static let dishSize = CGSize(width: 45, height: 45)
+    static let dishPosition = CGPoint(x: 0, y: 15)
     var randInt: Int
-
     var recipe: Recipe?
-
     var blackBar: SKSpriteNode
     var greenBar: SKSpriteNode
     var timer: Timer =  Timer()
-
     var time: CGFloat = StageConstants.defaultTimeLimitOrder
     var duration: CGFloat = StageConstants.defaultTimeLimitOrder
-
     let UIAtlas = SKTextureAtlas(named: "UI")
-
     let positionings = [CGPoint(x: -25, y: -15),
                         CGPoint(x: -5, y: -15),
                         CGPoint(x: 15, y: -15)]
@@ -31,15 +29,10 @@ class MenuPrefab: SKSpriteNode, Codable {
         let randNum = Int.random(in: 1...4)
         let texture = UIAtlas.textureNamed("Menu-Slimes_" + String(randNum))
         texture.filteringMode = .nearest
-
         self.randInt = randNum
         self.blackBar = SKSpriteNode(imageNamed: "Black bar")
         self.greenBar = SKSpriteNode(imageNamed: "Green bar")
-
         super.init(texture: texture, color: color, size: size)
-        self.position = CGPoint(x: ScreenSize.width * 0.5 - 60,
-                                y: ScreenSize.height * 0.5 - 60)
-        self.zPosition = 8
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -53,37 +46,29 @@ class MenuPrefab: SKSpriteNode, Codable {
         let ingredientsAtlas = SKTextureAtlas(named: "Recipes")
         var texture: SKTexture = SKTexture.init()
         texture = ingredientsAtlas.textureNamed(recipe.recipeName)
-
         let dish = SKSpriteNode(texture: texture)
-        dish.position = CGPoint(x: 0, y: 15)
+        dish.position = MenuPrefab.dishPosition
+        dish.size = MenuPrefab.dishSize
         dish.zPosition = 5
-        dish.size = CGSize(width: 45, height: 45)
 
-        var i = 0
         for (key, _) in recipe.ingredientsNeeded {
             guard let ingredientCount = recipe.ingredientsNeeded[key] else {
                 continue
             }
-            for _ in 1...ingredientCount {
+            for i in 1...ingredientCount {
                 let child = addIngredient(withType: key.type.rawValue)
-                child.position = positionings[i]
+                child.position = positionings[i-1]
+                var cookingTypeImg = SKSpriteNode.init()
                 if (key.processed.contains(CookingType.baking)) {
-                    let cookingTypeImg = SKSpriteNode(texture: UIAtlas.textureNamed("Oven-BW"))
-                    cookingTypeImg.size = CGSize(width: 15, height: 15)
-                    cookingTypeImg.position = CGPoint(x: 0, y: -15)
-                    child.addChild(cookingTypeImg)
+                    cookingTypeImg = SKSpriteNode(texture: UIAtlas.textureNamed("Oven-BW"))
                 } else if (key.processed.contains(CookingType.frying)) {
-                    let cookingTypeImg = SKSpriteNode(texture: UIAtlas.textureNamed("Fry-BW"))
-                    cookingTypeImg.size = CGSize(width: 15, height: 15)
-                    cookingTypeImg.position = CGPoint(x: 0, y: -15)
-                    child.addChild(cookingTypeImg)
+                    cookingTypeImg = SKSpriteNode(texture: UIAtlas.textureNamed("Fry-BW"))
                 } else if (key.processed.contains(CookingType.chopping)) {
-                    let cookingTypeImg = SKSpriteNode(texture: UIAtlas.textureNamed("Knife-BW"))
-                    cookingTypeImg.size = CGSize(width: 15, height: 15)
-                    cookingTypeImg.position = CGPoint(x: 0, y: -15)
-                    child.addChild(cookingTypeImg)
+                    cookingTypeImg = SKSpriteNode(texture: UIAtlas.textureNamed("Knife-BW"))
                 }
-                i += 1
+                cookingTypeImg.size = CGSize(width: 15, height: 15)
+                cookingTypeImg.position = CGPoint(x: 0, y: -15)
+                child.addChild(cookingTypeImg)
                 self.addChild(child)
             }
         }
@@ -91,13 +76,11 @@ class MenuPrefab: SKSpriteNode, Codable {
         //Adding the countdown bar
         blackBar.position = StageConstants.blackBarPosOQ
         blackBar.size = StageConstants.blackBarSizeOQ
-        dish.addChild(blackBar)
-
         greenBar.anchorPoint = StageConstants.greenBarAnchorOQ
         greenBar.position = StageConstants.greenBarPositionOQ
         greenBar.size = StageConstants.greenBarSizeOQ
         blackBar.addChild(greenBar)
-
+        dish.addChild(blackBar)
         self.addChild(dish)
 
         timer = Timer.scheduledTimer(timeInterval: StageConstants.timerInterval,

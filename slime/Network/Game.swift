@@ -8,10 +8,6 @@
 
 import UIKit
 
-class GameModel {
-
-}
-
 struct ItemModel {
     var type: String = "none"
     var encodedData: String = "none"

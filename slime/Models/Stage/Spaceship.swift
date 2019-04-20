@@ -34,7 +34,6 @@ class Spaceship: SKSpriteNode {
         }
         texture.filteringMode = .nearest
         let room = SKSpriteNode(texture: texture)
-        room.position = CGPoint(x: 0, y: 0)
         room.size = self.levelName != "Multiplayer-Level1" ? StageConstants.gameAreaSize : CGSize(width: 1600, height: 800)
         room.zPosition = 1
         room.name = StageConstants.roomName
@@ -56,7 +55,6 @@ class Spaceship: SKSpriteNode {
             wallBorder.position = CGPoint(x: self.frame.midX, y: self.frame.midY)
             let ground = SKShapeNode(points: &gameAreaCoord, count: gameAreaCoord.count)
             wallBorder.physicsBody = SKPhysicsBody(edgeChainFrom: ground.path!)
-            //        wallBorder.physicsBody = SKPhysicsBody(edgeLoopFrom: ground.path!)
             wallBorder.physicsBody?.categoryBitMask = StageConstants.wallCategoryCollision
             wallBorder.physicsBody?.isDynamic = false
             self.addChild(wallBorder)
@@ -136,7 +134,7 @@ class Spaceship: SKSpriteNode {
 
     func addTrashBin(inPositions positions: [String]) {
         for (index, position) in positions.enumerated() {
-            let trashBin = Trash(inPosition: NSCoder.cgPoint(for: position), withSize: CGSize(width: 100, height: 100))
+            let trashBin = Trash(inPosition: NSCoder.cgPoint(for: position), withSize: StageConstants.trashBinSize)
             trashBin.id = "trashBin-\(index)"
             self.addChild(trashBin)
         }
@@ -144,7 +142,6 @@ class Spaceship: SKSpriteNode {
 
     func setLevelName(inString: String) {
         self.levelName = inString
-
         var texture = SpaceshipAtlas.textureNamed("")
         switch self.levelName {
         case "Level1":
@@ -158,7 +155,6 @@ class Spaceship: SKSpriteNode {
         }
         texture.filteringMode = .nearest
         self.size = self.levelName != "Multiplayer-Level1" ? StageConstants.gameAreaSize : CGSize(width: 1600, height: 800)
-
         self.texture = texture
     }
 
