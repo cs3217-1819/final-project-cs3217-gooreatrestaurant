@@ -80,8 +80,9 @@ class Stage: SKScene {
         }
     }
     
-    func setupStage(forPlayer player: Player?) {
+    func setupStage(forPlayer player: Player?, withMultiplayerRoom room: RoomModel?) {
         if isMultiplayer {
+            self.previousRoom = room
             if let room = self.previousRoom { self.setupMultiplayer(forRoom: room) }
             return
         }

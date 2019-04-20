@@ -57,7 +57,7 @@ class GameViewController: ViewController<UIView> {
         skview.isMultipleTouchEnabled = true
         view.addSubview(skview)
         
-        stage.setupStage(forPlayer: player)
+        stage.setupStage(forPlayer: player, withMultiplayerRoom: previousRoom)
         stage.generateLevel(inLevel: levelFileName)
 
         //        newCollection.delegate = self
