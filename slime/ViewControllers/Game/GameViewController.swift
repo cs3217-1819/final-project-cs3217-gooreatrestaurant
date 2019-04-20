@@ -44,7 +44,7 @@ class GameViewController: ViewController<UIView> {
             Logger.it.error("Level name should be set")
             fatalError()
         }
-        self.context.modal.closeAlert()
+        self.context.modal.closeAllModals()
         stage = Stage()
         stage.isMultiplayer = self.isMultiplayer
         stage.setupControl()

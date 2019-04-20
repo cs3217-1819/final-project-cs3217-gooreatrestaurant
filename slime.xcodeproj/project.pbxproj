@@ -102,16 +102,7 @@
 		EC38245A223A0F6F000D7148 /* UIText.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC382459223A0F6F000D7148 /* UIText.swift */; };
 		EC38245C223A100B000D7148 /* TextStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC38245B223A100B000D7148 /* TextStyles.swift */; };
 		EC38245F223A17F7000D7148 /* Squidgy Slimes.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EC38245E223A17F7000D7148 /* Squidgy Slimes.ttf */; };
-		EC38246A223A1803000D7148 /* Rubik-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EC382460223A1802000D7148 /* Rubik-Light.ttf */; };
 		EC38246B223A1803000D7148 /* Rubik-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EC382461223A1802000D7148 /* Rubik-Regular.ttf */; };
-		EC38246C223A1803000D7148 /* Rubik-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EC382462223A1802000D7148 /* Rubik-BoldItalic.ttf */; };
-		EC38246D223A1803000D7148 /* Rubik-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EC382463223A1802000D7148 /* Rubik-Bold.ttf */; };
-		EC38246E223A1803000D7148 /* Rubik-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EC382464223A1803000D7148 /* Rubik-Italic.ttf */; };
-		EC38246F223A1803000D7148 /* Rubik-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EC382465223A1803000D7148 /* Rubik-LightItalic.ttf */; };
-		EC382470223A1803000D7148 /* Rubik-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EC382466223A1803000D7148 /* Rubik-BlackItalic.ttf */; };
-		EC382471223A1803000D7148 /* Rubik-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EC382467223A1803000D7148 /* Rubik-MediumItalic.ttf */; };
-		EC382472223A1803000D7148 /* Rubik-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EC382468223A1803000D7148 /* Rubik-Medium.ttf */; };
-		EC382473223A1803000D7148 /* Rubik-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EC382469223A1803000D7148 /* Rubik-Black.ttf */; };
 		EC382475223A1AA4000D7148 /* ColorStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC382474223A1AA4000D7148 /* ColorStyles.swift */; };
 		EC382479223A1BE7000D7148 /* PrimaryButtonColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC382478223A1BE7000D7148 /* PrimaryButtonColor.swift */; };
 		EC38247D223A2344000D7148 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC38247C223A2344000D7148 /* UIColorExtension.swift */; };
@@ -271,7 +262,6 @@
 		F92ECAE4224BAEBD0040A4E2 /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92ECAE3224BAEBD0040A4E2 /* Authentication.swift */; };
 		F92ECAE6224BAEDB0040A4E2 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92ECAE5224BAEDB0040A4E2 /* Room.swift */; };
 		F92ECAE8224BAEEF0040A4E2 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92ECAE7224BAEEF0040A4E2 /* Game.swift */; };
-		F92ECAEA224D1B490040A4E2 /* FadeInOutSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92ECAE9224D1B490040A4E2 /* FadeInOutSegue.swift */; };
 		F98B1633226A138400421C6C /* GameDB+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98B1632226A138400421C6C /* GameDB+Utility.swift */; };
 		F98B1636226A139C00421C6C /* GameDB+Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98B1635226A139C00421C6C /* GameDB+Constants.swift */; };
 		F98B1638226A18F500421C6C /* GameAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98B1637226A18F500421C6C /* GameAuth.swift */; };
@@ -396,16 +386,7 @@
 		EC382459223A0F6F000D7148 /* UIText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIText.swift; sourceTree = "<group>"; };
 		EC38245B223A100B000D7148 /* TextStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextStyles.swift; sourceTree = "<group>"; };
 		EC38245E223A17F7000D7148 /* Squidgy Slimes.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Squidgy Slimes.ttf"; sourceTree = "<group>"; };
-		EC382460223A1802000D7148 /* Rubik-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Light.ttf"; sourceTree = "<group>"; };
 		EC382461223A1802000D7148 /* Rubik-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Regular.ttf"; sourceTree = "<group>"; };
-		EC382462223A1802000D7148 /* Rubik-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-BoldItalic.ttf"; sourceTree = "<group>"; };
-		EC382463223A1802000D7148 /* Rubik-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Bold.ttf"; sourceTree = "<group>"; };
-		EC382464223A1803000D7148 /* Rubik-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Italic.ttf"; sourceTree = "<group>"; };
-		EC382465223A1803000D7148 /* Rubik-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-LightItalic.ttf"; sourceTree = "<group>"; };
-		EC382466223A1803000D7148 /* Rubik-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-BlackItalic.ttf"; sourceTree = "<group>"; };
-		EC382467223A1803000D7148 /* Rubik-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-MediumItalic.ttf"; sourceTree = "<group>"; };
-		EC382468223A1803000D7148 /* Rubik-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Medium.ttf"; sourceTree = "<group>"; };
-		EC382469223A1803000D7148 /* Rubik-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Black.ttf"; sourceTree = "<group>"; };
 		EC382474223A1AA4000D7148 /* ColorStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorStyles.swift; sourceTree = "<group>"; };
 		EC382478223A1BE7000D7148 /* PrimaryButtonColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButtonColor.swift; sourceTree = "<group>"; };
 		EC38247C223A2344000D7148 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
@@ -565,7 +546,6 @@
 		F92ECAE3224BAEBD0040A4E2 /* Authentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
 		F92ECAE5224BAEDB0040A4E2 /* Room.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 		F92ECAE7224BAEEF0040A4E2 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
-		F92ECAE9224D1B490040A4E2 /* FadeInOutSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FadeInOutSegue.swift; sourceTree = "<group>"; };
 		F98B1632226A138400421C6C /* GameDB+Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameDB+Utility.swift"; sourceTree = "<group>"; };
 		F98B1635226A139C00421C6C /* GameDB+Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameDB+Constants.swift"; sourceTree = "<group>"; };
 		F98B1637226A18F500421C6C /* GameAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameAuth.swift; sourceTree = "<group>"; };
@@ -890,7 +870,6 @@
 				8BD816B2224262F100586180 /* AnalogJoystick.swift */,
 				ECD24423224B018800767A56 /* Controller.swift */,
 				ECD24425224B02C900767A56 /* Logger.swift */,
-				F92ECAE9224D1B490040A4E2 /* FadeInOutSegue.swift */,
 				8BEDCD42224E089A00E24A20 /* SerializableGameData.swift */,
 				EC6E99FE224F4F0900A9554C /* DoubleExtension.swift */,
 				EC81B7862254A09900B6F7EE /* TransitionConstants.swift */,
@@ -912,15 +891,6 @@
 		EC38245D223A17C7000D7148 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				EC382469223A1803000D7148 /* Rubik-Black.ttf */,
-				EC382466223A1803000D7148 /* Rubik-BlackItalic.ttf */,
-				EC382463223A1802000D7148 /* Rubik-Bold.ttf */,
-				EC382462223A1802000D7148 /* Rubik-BoldItalic.ttf */,
-				EC382464223A1803000D7148 /* Rubik-Italic.ttf */,
-				EC382460223A1802000D7148 /* Rubik-Light.ttf */,
-				EC382465223A1803000D7148 /* Rubik-LightItalic.ttf */,
-				EC382468223A1803000D7148 /* Rubik-Medium.ttf */,
-				EC382467223A1803000D7148 /* Rubik-MediumItalic.ttf */,
 				EC382461223A1802000D7148 /* Rubik-Regular.ttf */,
 				EC38245E223A17F7000D7148 /* Squidgy Slimes.ttf */,
 			);
@@ -1514,11 +1484,8 @@
 			files = (
 				EC3824282238803D000D7148 /* LaunchScreen.storyboard in Resources */,
 				EC4708AC22649C9F00F3BC19 /* MultiplayerLevels.json in Resources */,
-				EC38246D223A1803000D7148 /* Rubik-Bold.ttf in Resources */,
 				EC4708A4226484DA00F3BC19 /* game-bgm.mp3 in Resources */,
-				EC382470223A1803000D7148 /* Rubik-BlackItalic.ttf in Resources */,
 				EC7168F322603B08004EF2B0 /* selection.mp3 in Resources */,
-				EC382473223A1803000D7148 /* Rubik-Black.ttf in Resources */,
 				ECD455612240F499006AF78D /* MultiplayerLobbyView.xib in Resources */,
 				ECB57119225D702B0083E945 /* DialogBoxView.xib in Resources */,
 				ECD24431224B114400767A56 /* JoinRoomView.xib in Resources */,
@@ -1526,13 +1493,11 @@
 				EC4924EB22461FEC007B9797 /* OrderBlob.xib in Resources */,
 				EC470899226456D300F3BC19 /* oven-ding.mp3 in Resources */,
 				8B5B20352265AF9B00059756 /* green.atlas in Resources */,
-				EC38246C223A1803000D7148 /* Rubik-BoldItalic.ttf in Resources */,
 				ECFF2B762265B2B1003DEAED /* StageSelectorView.xib in Resources */,
 				EC449B87223BA49D00A8EA35 /* LevelSelectView.xib in Resources */,
 				EC0E3163224F610300AF1254 /* CharacterCreationView.xib in Resources */,
 				EC4708B02264B17C00F3BC19 /* bad-order.mp3 in Resources */,
 				EC4899822265FBB300B14A92 /* frying.mp3 in Resources */,
-				EC38246F223A1803000D7148 /* Rubik-LightItalic.ttf in Resources */,
 				8B5B202E2264F92F00059756 /* Kitchenware.atlas in Resources */,
 				F92ECADF224BADEC0040A4E2 /* GoogleService-Info.plist in Resources */,
 				EC47089B226456D300F3BC19 /* jump.mp3 in Resources */,
@@ -1561,7 +1526,6 @@
 				EC47089A226456D300F3BC19 /* kaching.mp3 in Resources */,
 				8B5B203F2265AFED00059756 /* pastelGreen.atlas in Resources */,
 				EC449B8E223BAD4400A8EA35 /* MapDot.xib in Resources */,
-				EC38246A223A1803000D7148 /* Rubik-Light.ttf in Resources */,
 				EC6E75522255CB9000B9C7CF /* CustomizationMainView.xib in Resources */,
 				EC57D2DE225C8B7B00F26808 /* SlimeCharacterView.xib in Resources */,
 				EC6E7558225A3A8000B9C7CF /* JokesSlimesView.xib in Resources */,
@@ -1577,7 +1541,6 @@
 				EC4924E42246163C007B9797 /* LevelPlaceView.xib in Resources */,
 				8B5B20092264759200059756 /* SlicedIngredients.atlas in Resources */,
 				ECA66DC2223D5DD100D1D0BC /* CreditsScreenView.xib in Resources */,
-				EC38246E223A1803000D7148 /* Rubik-Italic.ttf in Resources */,
 				8B5B203D2265AFE000059756 /* pastelPink.atlas in Resources */,
 				EC7676BF225B52CE00F6A450 /* CustomizationCosmeticView.xib in Resources */,
 				EC470898226456D300F3BC19 /* oven-timer.mp3 in Resources */,
@@ -1590,7 +1553,6 @@
 				ECF9876A2255C61700FE5577 /* CharacterCustomizationView.xib in Resources */,
 				EC7676C2225B542700F6A450 /* ItemBoxView.xib in Resources */,
 				8B81EFBC224344AD007BFDB0 /* yellow.atlas in Resources */,
-				EC382471223A1803000D7148 /* Rubik-MediumItalic.ttf in Resources */,
 				EC7168D4225DD281004EF2B0 /* menu-bgm.mp3 in Resources */,
 				ECD4557622411340006AF78D /* UpButton.xib in Resources */,
 				EC7168DD225DD2A8004EF2B0 /* menu-bgm-alt.mp3 in Resources */,
@@ -1613,7 +1575,6 @@
 				EC40E4AE223F97E50073D755 /* SettingsScreenView.xib in Resources */,
 				ECD24433224B11F800767A56 /* CodeInputView.xib in Resources */,
 				EC7168F122603AFE004EF2B0 /* done-loading.mp3 in Resources */,
-				EC382472223A1803000D7148 /* Rubik-Medium.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1753,7 +1714,6 @@
 				EC6E99E8224F1BB400A9554C /* LocalDataProvider.swift in Sources */,
 				F92ECAE4224BAEBD0040A4E2 /* Authentication.swift in Sources */,
 				ECD455652240F5B6006AF78D /* MultiplayerScreenViewController.swift in Sources */,
-				F92ECAEA224D1B490040A4E2 /* FadeInOutSegue.swift in Sources */,
 				EC1331AC22604CD400EA382C /* Tutorial.swift in Sources */,
 				EC38247D223A2344000D7148 /* UIColorExtension.swift in Sources */,
 				1DD6EBE7224E76FC006FF6CD /* CookingType.swift in Sources */,
@@ -2066,7 +2026,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = W76H98A34A;
+				DEVELOPMENT_TEAM = H8MD8RH9XR;
 				INFOPLIST_FILE = slime/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2087,7 +2047,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = W76H98A34A;
+				DEVELOPMENT_TEAM = H8MD8RH9XR;
 				INFOPLIST_FILE = slime/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

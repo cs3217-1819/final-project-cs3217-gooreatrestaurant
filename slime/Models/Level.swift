@@ -7,6 +7,7 @@
 //
 import Foundation
 
+// A struct for displaying level data on the UI.
 struct Level {
     var id: String
     var name: String
@@ -23,6 +24,7 @@ struct Level {
     }
 }
 
+// Serialized level data.
 struct SavedLevel: Codable {
     var id: String
     var name: String
@@ -30,17 +32,19 @@ struct SavedLevel: Codable {
     var preview: String
 }
 
+// Serialized array of level data.
 struct LevelsProvider: Codable {
     var levels: [SavedLevel]
 }
 
+// Utility class to read levels and their best scores.
 class LevelsReader {
     private static var multiplayerLevels: [Level]?
-    private static var singlePlayerLevels: [Level]?
     private init() {
         
     }
     
+    // Get a specified multiplayer level.
     public static func getLevel(id: String) -> Level? {
         let levels = LevelsReader.readMultiplayerLevels()
         for level in levels {
@@ -51,6 +55,7 @@ class LevelsReader {
         return nil
     }
     
+    // Get all multiplayer levels.
     public static func readMultiplayerLevels() -> [Level] {
         if let cachedLevels = LevelsReader.multiplayerLevels {
             return cachedLevels
@@ -73,10 +78,8 @@ class LevelsReader {
         return levels
     }
     
+    // Get all single-player levels.
     public static func readSinglePlayerLevels() -> [Level] {
-        if let cachedLevels = LevelsReader.singlePlayerLevels {
-            return cachedLevels
-        }
         guard let levelsProvider = LevelsReader.readLevelsData(fileName: "SinglePlayerLevels") else {
             return []
         }
@@ -90,10 +93,10 @@ class LevelsReader {
                               preview: savedLevel.preview)
             levels.append(level)
         }
-        LevelsReader.singlePlayerLevels = levels
         return levels
     }
     
+    // Read the levels data given the file name.
     private static func readLevelsData(fileName: String) -> LevelsProvider? {
         guard let url = Bundle.main.url(forResource: fileName, withExtension: "json") else {
             return nil

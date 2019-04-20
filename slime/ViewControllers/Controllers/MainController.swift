@@ -48,12 +48,13 @@ class MainController: UIViewController {
         setupHideKeyboardOnTap()
     }
 
+    // When the view is tapped, it closes any open keyboards.
     private func setupHideKeyboardOnTap() {
         self.view.addGestureRecognizer(self.endEditingRecognizer())
         self.navigationController?.navigationBar.addGestureRecognizer(self.endEditingRecognizer())
     }
 
-    /// Dismisses the keyboard from self.view
+    // Dismisses the keyboard from self.view
     private func endEditingRecognizer() -> UIGestureRecognizer {
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(self.view.endEditing(_:)))
         tap.cancelsTouchesInView = false

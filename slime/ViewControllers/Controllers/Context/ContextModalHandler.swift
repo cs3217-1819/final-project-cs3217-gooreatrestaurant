@@ -9,6 +9,7 @@
 import UIKit
 import RxSwift
 
+// Handles modal and alerts showing.
 class ContextModalHandler {
     private let baseView: UIView
     private var modalStack: [AnyObject] = []
@@ -17,6 +18,7 @@ class ContextModalHandler {
         self.baseView = baseView
     }
 
+    // Shows a view on the screen.
     func showView(view: UIView) {
         let controller = ModalController()
         controller.setContent(view)
@@ -25,10 +27,12 @@ class ContextModalHandler {
         remember(controller)
     }
 
+    // Shows a modal that can be closed by tapping outside the modal.
     func showModal(view: UIView) {
         showModal(view: view, closeOnOutsideTap: true)
     }
 
+    // Shows a modal.
     func showModal(view: UIView, closeOnOutsideTap: Bool) {
         let controller = ModalController()
         controller.setContent(view)
@@ -37,11 +41,13 @@ class ContextModalHandler {
         remember(controller)
     }
 
+    // Creates an alert to be presented later on.
     func createAlert() -> AlertController {
         let controller = ModalController()
         return AlertController(using: controller)
     }
 
+    // Present the given alert controller.
     func presentAlert(_ alert: AlertController) {
         alert.configure()
         alert.modalController.configure()
@@ -49,6 +55,7 @@ class ContextModalHandler {
         remember(alert)
     }
 
+    // Present an alert which can be closed by tapping outside the alert.
     func presentUnimportantAlert(_ alert: AlertController) {
         alert.configure()
         alert.modalController.configure()
@@ -56,6 +63,7 @@ class ContextModalHandler {
         remember(alert)
     }
 
+    // Remember past alerts and modals, but limited to 5 active modals.
     private func remember<T: Controller>(_ controller: T) {
         modalStack.append(controller)
         if modalStack.count > 5 {
@@ -63,7 +71,8 @@ class ContextModalHandler {
         }
     }
 
-    func closeAlert() {
+    // Close all alerts and modals.
+    func closeAllModals() {
         modalStack.forEach { control in
             if let modal = control as? ModalController {
                 modal.close()

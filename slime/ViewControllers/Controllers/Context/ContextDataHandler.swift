@@ -9,6 +9,7 @@
 import Foundation
 import RxSwift
 
+// Handles local data.
 class ContextDataHandler {
     private let disposeBag = DisposeBag()
     private(set) var userCharacter: BehaviorSubject<UserCharacter>?
@@ -17,6 +18,7 @@ class ContextDataHandler {
         setupAutosaveCharacter()
     }
 
+    // Creates a character and saves it.
     func createCharacter(named name: String, color: SlimeColor) {
         let char = UserCharacter(named: name)
         char.set(color: color)
@@ -25,6 +27,7 @@ class ContextDataHandler {
         Logger.it.info("Created character")
     }
 
+    // Load user data from storage and saves it for later use.
     func loadUserData() {
         guard let character = LocalData.it.getUserCharacter() else {
             return
@@ -40,6 +43,7 @@ class ContextDataHandler {
         }
     }
 
+    // Method to gain local character EXP.
     func gainCharacterExp(_ exp: Int) {
         guard let char = getChar() else {
             return
@@ -48,6 +52,7 @@ class ContextDataHandler {
         userCharacter?.onNext(char)
     }
 
+    // Method to change the local character's colour.
     func changeCharacterColor(_ color: SlimeColor) {
         guard let char = getChar() else {
             return
@@ -56,6 +61,7 @@ class ContextDataHandler {
         userCharacter?.onNext(char)
     }
     
+    // Method to change the local character's hat.
     func changeHat(_ name: String) {
         guard let char = getChar() else {
             return
@@ -64,6 +70,7 @@ class ContextDataHandler {
         userCharacter?.onNext(char)
     }
     
+    // Method to change the local characetr's accessory.
     func changeAccessory(_ name: String) {
         guard let char = getChar() else {
             return
@@ -72,12 +79,14 @@ class ContextDataHandler {
         userCharacter?.onNext(char)
     }
 
+    // Method to reset all local data.
     func resetData() {
         LocalData.it.resetData()
         userCharacter = nil
         Logger.it.info("Reset data")
     }
     
+    // Method to save the current character.
     private func saveCharacter() {
         guard let character = getChar() else {
             return
@@ -85,6 +94,7 @@ class ContextDataHandler {
         LocalData.it.saveCharacter(character)
     }
     
+    // Helper method to get the current character as an object.
     private func getChar() -> UserCharacter? {
         guard let optChar = try? userCharacter?.value() else {
             return nil
@@ -96,6 +106,7 @@ class ContextDataHandler {
         return char
     }
 
+    // Sets up saving whenever the character is changed.
     private func setupAutosaveCharacter() {
         userCharacter?.subscribe { event in
             guard let player = event.element else {

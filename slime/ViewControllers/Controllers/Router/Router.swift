@@ -8,6 +8,9 @@
 
 import UIKit
 
+// Route represents a route in the main router.
+// Each route is tied to a coordinate, which is used when
+// transitioning between scenes.
 enum Route {
     case TitleScreen
     case CharacterCreationScreen
@@ -56,6 +59,8 @@ enum Route {
     }
 }
 
+// Router is used to handle route changes.
+// It is not used for transition effects.
 class Router {
     var previousRoute: Route? {
         return transitionHandler.previousRoute

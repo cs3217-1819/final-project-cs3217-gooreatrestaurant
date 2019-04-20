@@ -17,12 +17,15 @@ class TextLabel: UILabel {
     // Cannot have dropdown as it is not supported,
     // use String - check the styles enum for what strings
     // are accepted
+    
+    // Use a specified style from the styles list if possible.
     @IBInspectable var style: String = "" {
         didSet {
             font = TextStyles.getStyle(style)
         }
     }
 
+    // Changes the text color to one from the colors list if possible.
     @IBInspectable var color: String = "" {
         didSet {
             guard let colorToSet = ColorStyles.getColor(color) else {
@@ -32,6 +35,7 @@ class TextLabel: UILabel {
         }
     }
     
+    // Changes the stroke width of the text.
     @IBInspectable var strokeWidth: CGFloat = 0 {
         didSet {
             guard let strokeColor = ColorStyles.getColor("white3") else {
@@ -58,12 +62,14 @@ class TextLabel: UILabel {
  */
 @IBDesignable
 class TextField: UITextField {
+    // Changes the style of the text.
     @IBInspectable var style: String = "" {
         didSet {
             font = TextStyles.getStyle(style)
         }
     }
 
+    // Changes the color of the text.
     @IBInspectable var color: String = "" {
         didSet {
             guard let colorToSet = ColorStyles.getColor(color) else {

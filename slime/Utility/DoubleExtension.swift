@@ -9,6 +9,8 @@
 import Foundation
 
 extension Double {
+    
+    // clamps the value from two sides
     func clamp(from minBound: Double, to maxBound: Double) -> Double {
         if self < minBound {
             return minBound

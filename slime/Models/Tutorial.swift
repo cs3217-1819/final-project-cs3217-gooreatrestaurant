@@ -8,6 +8,7 @@
 
 import UIKit
 
+// Tutorial struct for displaying in the UI.
 struct Tutorial {
     let image: UIImage?
     let title: String
@@ -20,6 +21,7 @@ struct Tutorial {
     }
 }
 
+// Constants for tutorials.
 enum TutorialConstants {
     static let cutApple = [
         Tutorial(imageNamed: "tut-cutapple-step-1", title: "Step 1", description: "Tap the interact button when you are next to the apple station."),

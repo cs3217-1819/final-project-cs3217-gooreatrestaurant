@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9DQ-ed-qhe">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9DQ-ed-qhe">
     <device id="retina5_9" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -34,34 +34,11 @@
                     </view>
                     <connections>
                         <outlet property="underlyingView" destination="F9O-Dm-JUO" id="Wdq-Um-Y5G"/>
-                        <segue destination="fx1-Mm-IkR" kind="custom" identifier="toGame" customClass="FadeInOutSegue" customModule="slime" customModuleProvider="target" id="25m-7d-rcI"/>
-                        <segue destination="fx1-Mm-IkR" kind="custom" identifier="toMultiplayerGame" customClass="FadeInOutSegue" customModule="slime" customModuleProvider="target" id="ViG-RC-2m5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cbT-e4-hjs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-681" y="49"/>
         </scene>
-        <!--Game View Controller-->
-        <scene sceneID="uG1-Lz-z43">
-            <objects>
-                <viewController id="fx1-Mm-IkR" customClass="GameViewController" customModule="slime" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="4eS-mt-sWe">
-                        <rect key="frame" x="0.0" y="0.0" width="812" height="375"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="2rh-ke-ZdO"/>
-                    </view>
-                    <connections>
-                        <segue destination="9DQ-ed-qhe" kind="custom" identifier="toMainScreen" customClass="FadeInOutSegue" customModule="slime" customModuleProvider="target" id="mb3-US-1F9"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="9Uf-8M-dqT" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="100" y="49"/>
-        </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="25m-7d-rcI"/>
-    </inferredMetricsTieBreakers>
 </document>

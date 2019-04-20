@@ -10,6 +10,8 @@ import UIKit
 import SnapKit
 
 extension UIView {
+    
+    // Initialize an UIView from a nib.
     class func initFromNib<T: UIView>(_ string: String) -> T {
         guard let nib = Bundle.main.loadNibNamed(string, owner: nil, options: nil)?[0] as? T else {
             fatalError("Unable to load nib")
@@ -17,6 +19,7 @@ extension UIView {
         return nib
     }
 
+    // Constraints all four sides to the parent.
     func constraintToParent() {
         self.snp.makeConstraints { make in
             make.top.equalToSuperview()
@@ -26,6 +29,7 @@ extension UIView {
         }
     }
 
+    // Constraints all four sides to the parent with a given padding.
     func constraintToParent(offset: CGFloat) {
         self.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(offset)
@@ -35,18 +39,20 @@ extension UIView {
         }
     }
 
+    // Centers the view to the parent by using AutoLayout constraints.
     func centerInParent() {
         self.snp.makeConstraints { make in
             make.center.equalToSuperview()
         }
     }
 
-    // debugging purposes
+    // For debugging purposes: Set a blue border around the view.
     func debug() {
         layer.borderColor = UIColor.blue.cgColor
         layer.borderWidth = 2.0
     }
 
+    // For debugging purposes: Set a green border around the view.
     func debug2() {
         layer.borderColor = UIColor.green.cgColor
         layer.borderWidth = 2.0
