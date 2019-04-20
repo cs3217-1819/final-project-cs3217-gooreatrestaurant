@@ -51,13 +51,14 @@ class MenuPrefab: SKSpriteNode, Codable {
         dish.size = MenuPrefab.dishSize
         dish.zPosition = 5
 
+        var i = 0
         for (key, _) in recipe.ingredientsNeeded {
             guard let ingredientCount = recipe.ingredientsNeeded[key] else {
                 continue
             }
-            for i in 1...ingredientCount {
+            for _ in 1...ingredientCount {
                 let child = addIngredient(withType: key.type.rawValue)
-                child.position = positionings[i-1]
+                child.position = positionings[i]
                 var cookingTypeImg = SKSpriteNode.init()
                 if (key.processed.contains(CookingType.baking)) {
                     cookingTypeImg = SKSpriteNode(texture: UIAtlas.textureNamed("Oven-BW"))
@@ -70,6 +71,7 @@ class MenuPrefab: SKSpriteNode, Codable {
                 cookingTypeImg.position = CGPoint(x: 0, y: -15)
                 child.addChild(cookingTypeImg)
                 self.addChild(child)
+                i += 1
             }
         }
 
