@@ -8,8 +8,10 @@
 
 import UIKit
 
+// A view with common styles for toggling and setting.
 @IBDesignable
 class DesignableView: UIView {
+    // Set the edges of the view to be rounded.
     @IBInspectable var rounded: Bool = false {
         didSet {
             if rounded {
@@ -20,6 +22,7 @@ class DesignableView: UIView {
         }
     }
 
+    // Set the background of the colour to a specified colour.
     @IBInspectable var background: String = "" {
         didSet {
             if let color = ColorStyles.getColor(background) {
@@ -28,6 +31,8 @@ class DesignableView: UIView {
         }
     }
 
+    // Rotate the view by a certain angle, in radians, or
+    // use directions to specify a preset rotation value.
     @IBInspectable var rotation: String = "" {
         didSet {
             if rotation == "left" {
@@ -45,6 +50,7 @@ class DesignableView: UIView {
         }
     }
     
+    // Flips the view along its x-axis.
     @IBInspectable var flipX: Bool = false {
         didSet {
             if flipX {

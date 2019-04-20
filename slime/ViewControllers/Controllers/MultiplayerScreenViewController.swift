@@ -31,7 +31,7 @@ class MultiplayerScreenViewController: ViewController<MultiplayerScreenView> {
             }
             
             self.context.db.createRoom(withRoomName: "Pros only", withMap: "mp1-1", withUser: userChar, { id in
-                self.context.modal.closeAlert()
+                self.context.modal.closeAllModals()
 
                 let vc: MultiplayerLobbyViewController = self.context.routeToAndPrepareFor(.MultiplayerLobby)
                 vc.setupRoom(withId: id)

@@ -8,6 +8,7 @@
 
 import UIKit
 
+// A utility class to provide standardized fonts for use.
 class TextStyles {
     private static let titleFontName = "SquidgySlimes"
     private static let readingFontName = "Rubik-Regular"
@@ -27,6 +28,7 @@ class TextStyles {
         "ptiny": 10
     ]
 
+    // Gets the style for a given string, usually specified in IB.
     static func getStyle(_ label: String) -> UIFont? {
         if let size = headerStyles[label] {
             return getTitleFont(size: size)
@@ -38,10 +40,12 @@ class TextStyles {
         return nil
     }
 
+    // Gets the font for a header-style text.
     private static func getTitleFont(size: CGFloat) -> UIFont {
         return getFont(name: titleFontName, size: size)
     }
 
+    // Gets the font for a paragraph-style text.
     private static func getReadingFont(size: CGFloat) -> UIFont {
         return getFont(name: readingFontName, size: size)
     }

@@ -66,7 +66,7 @@ class TextInputController: Controller {
             view.inputField.returnKeyType = .done
             let delegate = InputFieldDelegate(onReturn: {
                 self.view.inputField.resignFirstResponder()
-                self.context.modal.closeAlert()
+                self.context.modal.closeAllModals()
             })
             self.delegate = delegate
             view.inputField.delegate = delegate

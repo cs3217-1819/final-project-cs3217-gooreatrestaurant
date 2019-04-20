@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+// Player object for displaying in the UI.
 class Player: NSObject {
     var isHost = false
     var name: String

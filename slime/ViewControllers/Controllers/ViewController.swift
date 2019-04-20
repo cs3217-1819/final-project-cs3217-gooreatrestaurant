@@ -8,14 +8,25 @@
 
 import UIKit
 
+// Base VC class to inherit for all VCs used in the view hierarchy.
 class ViewController<View: UIView>: ViewControllerProtocol {
+    // The base view of the controller.
     internal var view: View
+    
+    // The context of the view controller.
     internal var context: Context!
+    
+    // A convenient variable to get the router from the context.
     internal var router: Router {
         return context.router
     }
+    
+    // This array stores all child controllers that need not be configured
+    // a second time. Storing the controllers ensures that callbacks are
+    // fired off.
     private var controllers: [AnyObject] = []
 
+    // Use a specified context object.
     func use(context: Context) {
         self.context = context
     }
@@ -28,10 +39,13 @@ class ViewController<View: UIView>: ViewControllerProtocol {
         super.init()
     }
 
+    // configureSubviews should be overridden to do setup.
     func configureSubviews() {
 
     }
 
+    // Convenient method to include a button at the center top of the
+    // view controller's view which routes to a given route.
     internal func configureUpButton(to route: Route) {
         let upButton = UIView.initFromNib("UpButton")
         let control = ButtonController(using: upButton)
@@ -52,6 +66,7 @@ class ViewController<View: UIView>: ViewControllerProtocol {
         view.layoutIfNeeded()
     }
 
+    // Creates and shows an up button which routes to the previous route.
     internal func configureUpButtonAsPrevious() {
         guard let previousRoute = router.previousRoute else {
             return
@@ -59,6 +74,7 @@ class ViewController<View: UIView>: ViewControllerProtocol {
         configureUpButton(to: previousRoute)
     }
 
+    // Convenience function to store an array of controller references.
     internal func rememberAll<ControllerType: Controller>(_ controllers: [ControllerType]) {
         self.controllers.append(contentsOf: controllers)
     }
@@ -72,12 +88,14 @@ class ViewController<View: UIView>: ViewControllerProtocol {
         return view
     }
 
+    // All children should call this, even if overridden, so memory is deallocated
+    // properly.
     func onDisappear() {
         view.removeFromSuperview()
         controllers = []
     }
 
     deinit {
-        print("VC Deinit")
+        Logger.it.info("VC Deinit")
     }
 }

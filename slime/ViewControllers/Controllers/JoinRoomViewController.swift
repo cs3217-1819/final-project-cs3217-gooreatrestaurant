@@ -41,18 +41,18 @@ class JoinRoomViewController: ViewController<JoinRoomView> {
             self.context.db.joinRoom(forRoomId: roomJoinId, withUser: userChar, {
                 let lobbyController: MultiplayerLobbyViewController = self.context.routeToAndPrepareFor(.MultiplayerLobby)
                 lobbyController.setupRoom(withId: roomJoinId)
-                self.context.modal.closeAlert()
+                self.context.modal.closeAllModals()
             }, {
                 // room contains 4 players already
-                self.context.modal.closeAlert()
+                self.context.modal.closeAllModals()
                 self.showErrorAlert(withDescription: "Room is full!")
             }, {
                 // room does not exist
-                self.context.modal.closeAlert()
+                self.context.modal.closeAllModals()
                 self.showErrorAlert(withDescription: "Room does not exist!!")
             }, {
                 // room has started game
-                self.context.modal.closeAlert()
+                self.context.modal.closeAllModals()
                 self.showErrorAlert(withDescription: "This room has started the game")
             }, { (err) in
                 self.showErrorAlert(withDescription: err.localizedDescription)

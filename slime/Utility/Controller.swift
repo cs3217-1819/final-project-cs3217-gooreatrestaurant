@@ -8,6 +8,7 @@
 
 import UIKit
 
+// A general Controller protocol for all controllers
 protocol Controller: AnyObject {
     associatedtype View: UIView
     var view: View { get }

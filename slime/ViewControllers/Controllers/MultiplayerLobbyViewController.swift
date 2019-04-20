@@ -90,7 +90,7 @@ class MultiplayerLobbyViewController: ViewController<MultiplayerLobbyView> {
                     fatalError(error.localizedDescription)
                 })
                 control.selectedLevelId.onNext(level.id)
-                self.context.modal.closeAlert()
+                self.context.modal.closeAllModals()
             }
             control.configure()
             
@@ -146,7 +146,7 @@ class MultiplayerLobbyViewController: ViewController<MultiplayerLobbyView> {
             }
 
             if room.gameIsCreated {
-                self.context.modal.closeAlert()
+                self.context.modal.closeAllModals()
                 self.setLoadingAlert(withDescription: "Pumping slimes into spaceship...")
                 self.presentActiveAlert(dismissible: false)
 

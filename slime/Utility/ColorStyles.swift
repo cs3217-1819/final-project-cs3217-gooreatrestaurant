@@ -8,6 +8,7 @@
 
 import UIKit
 
+// A utility class to provide standardized colors for use.
 class ColorStyles {
     static let whites: [String: UIColor] = [
         "white0": UIColor.white(intensity: .one),
@@ -60,6 +61,7 @@ class ColorStyles {
         yellows
     ]
 
+    // Gets the corresponding colour for a color code, usually specified in IB.
     static func getColor(_ colorCode: String) -> UIColor? {
         for dict in colorDicts {
             if let color = dict[colorCode] {

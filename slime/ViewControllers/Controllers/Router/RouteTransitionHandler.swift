@@ -8,6 +8,8 @@
 
 import RxSwift
 
+// The RouteTransitionHandler is a wrapper aronud RxSwift's
+// BehaviorSubject, with some convenience methods.
 class RouteTransitionHandler {
     private let disposeBag: DisposeBag = DisposeBag()
     private let route: BehaviorSubject<Route>

@@ -8,6 +8,7 @@
 
 import UIKit
 
+// A simple caching method for UIImages
 class ImageProvider {
     private(set) static var instance: ImageProvider = ImageProvider()
 

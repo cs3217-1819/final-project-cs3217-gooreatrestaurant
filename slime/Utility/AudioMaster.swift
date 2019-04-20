@@ -8,6 +8,7 @@
 
 import AVKit
 
+// Singleton class to manage audio effects.
 public class AudioMaster {
     public static let instance: AudioMaster = AudioMaster()
     private var bgAudioPlayer: AVAudioPlayer?
@@ -25,6 +26,7 @@ public class AudioMaster {
         aliasDict[alias] = name
     }
     
+    // Plays background music. Only one BGM can be playing at any given time.
     public func playBGM(name: String) {
         let trueName = getTrueName(name: name)
         if let bgName = bgResource, bgName == trueName {
@@ -45,10 +47,12 @@ public class AudioMaster {
         }
     }
     
+    // Stops the BGM.
     public func stopBGM() {
         bgAudioPlayer?.stop()
     }
     
+    // Plays a separate SFX, so multiple same SFX players can be played simultaneously.
     public func playSeparateSFX(name: String) -> AVAudioPlayer? {
         guard let sound = Bundle.main.path(forResource: name, ofType: "mp3") else {
             return nil
@@ -63,6 +67,8 @@ public class AudioMaster {
         }
     }
     
+    // Plays a given SFX. For this SFX, only 1 instance can be playing at the same time
+    // by using this method.
     public func playSFX(name: String) {
         let trueName = getTrueName(name: name)
         if let player = cache[trueName] {
@@ -86,6 +92,7 @@ public class AudioMaster {
         }
     }
     
+    // Utility function to get the true sound path for a certain name.
     private func getTrueName(name: String) -> String {
         if let trueName = aliasDict[name] {
             return trueName
