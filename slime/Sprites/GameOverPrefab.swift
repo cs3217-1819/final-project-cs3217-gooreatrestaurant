@@ -9,6 +9,15 @@
 import Foundation
 import SpriteKit
 
+/*
+ Game Over Prefab is for generating the end game scene at the end
+ This consists of:
+ - Base background
+ - Shocked Slime (just for graphics purposes)
+ - Replay button
+ - Back to main menu button
+ The game Over Prefab will be different in the single player and the multiplayer scene
+ */
 class GameOverPrefab: SKSpriteNode {
     var controller = GameViewController(with: UIView())
     var isMultiplayer: Bool = false
@@ -16,6 +25,7 @@ class GameOverPrefab: SKSpriteNode {
     let UIAtlas = SKTextureAtlas(named: "UI")
     
     override init(texture: SKTexture?, color: UIColor, size: CGSize) {
+        //Background
         let base = SKTexture(imageNamed: "Base")
         base.filteringMode = .nearest
         let baseNode = SKSpriteNode(texture: base)
@@ -27,11 +37,13 @@ class GameOverPrefab: SKSpriteNode {
         self.position = CGPoint.zero
         self.zPosition = StageConstants.endgameZPos
 
+        //Shocked Slime
         let slime = SKSpriteNode(texture: UIAtlas.textureNamed("ShockedSlime"))
         slime.texture?.filteringMode = .nearest
         slime.position = CGPoint.zero
         slime.size = CGSize(width: 220, height: 220)
 
+        //black background for blocking the rest of scene and buttons
         let blackBG = SKSpriteNode.init(color: .black, size: CGSize(width: ScreenSize.width, height: ScreenSize.height))
         blackBG.alpha = 0.5
         blackBG.zPosition = StageConstants.blackBGOpeningZPos
@@ -44,6 +56,7 @@ class GameOverPrefab: SKSpriteNode {
     }
     
     func initializeButtons() {
+        //Adding the buttons separately
         guard let baseNode = self.baseNode else { return }
         baseNode.addChild(titleLabel)
         baseNode.addChild(scoreLabel)
@@ -56,6 +69,7 @@ class GameOverPrefab: SKSpriteNode {
         self.isMultiplayer = true
     }
 
+    //Initializing the graphics that is needed for the prefab
     lazy var titleLabel: SKLabelNode = {
         var label = SKLabelNode(fontNamed: "SquidgySlimes")
         label.fontSize = CGFloat(60)

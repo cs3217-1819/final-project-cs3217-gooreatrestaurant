@@ -59,13 +59,6 @@ class GameViewController: ViewController<UIView> {
         
         stage.setupStage(forPlayer: player, withMultiplayerRoom: previousRoom)
         stage.generateLevel(inLevel: levelFileName)
-
-        //        newCollection.delegate = self
-        //        newCollection.dataSource = self
-        //        newCollection.register(IngredientsCell.self, forCellWithReuseIdentifier: "MyCell")
-        //        view.addSubview(newCollection)
-        //        setupCollection()
-
         stage.setupPlayers()
         stage.stageDidLoad()
     }
@@ -91,24 +84,3 @@ class GameViewController: ViewController<UIView> {
         print("Game VC deinit")
     }
 }
-
-//class CollectionDelegate: NSObject, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        // need to change this somehow since now there is minimum and maximum
-//        return StageConstants.minNumbersOfOrdersShown
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyCell", for: indexPath) as! IngredientsCell
-//        cell.imageView.image = UIImage(named: "Menu-Slimes_01")
-//        return cell
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        return CGSize(width: 100, height: 100)
-//    }
-//
-////    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-////        return UIEdgeInsets(top: 3, left: 3, bottom: 3, right: 3)
-////    }
-//}
