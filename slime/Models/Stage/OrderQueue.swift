@@ -48,8 +48,9 @@ class OrderQueue: SKSpriteNode, Codable {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func addPossibleRecipe(_ template: RecipeTemplate) {
+    func addPossibleTemplate(_ template: RecipeTemplate) {
         self.possibleRecipes.insert(template)
+        RecipeBook.allPossibleRecipes.insert(template)
     }
 
     // For the new order timer

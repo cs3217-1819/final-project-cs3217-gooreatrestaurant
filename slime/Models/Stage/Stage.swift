@@ -245,7 +245,7 @@ class Stage: SKScene {
             let template = RecipeTemplate(withRecipeName: recipeName,
                                           withCompulsoryIngredients: compulsoryIngredients,
                                           withOptionalIngredients: optionalIngredients)
-            self.orderQueue.addPossibleRecipe(template)
+            self.orderQueue.addPossibleTemplate(template)
         }
         self.orderQueue.initialize()
     }
@@ -491,15 +491,6 @@ class Stage: SKScene {
     private func cleanup() {
         orderQueue.newOrderTimer.invalidate()
         orderQueue.orderQueueInvalidated = true
-    }
-    
-    func checkFoodName(ofFood food: Food) -> String? {
-        for recipe in orderQueue.possibleRecipes {
-            if recipe.possibleConsists(of: food) {
-                return recipe.recipeName
-            }
-        }
-        return nil
     }
 
     open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

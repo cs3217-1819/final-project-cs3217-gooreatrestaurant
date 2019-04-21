@@ -138,7 +138,7 @@ class Plate: MobileItem, Codable {
         ingredient.size = CGSize(width: 30, height: 30)
         ingredient.taken(by: self)
 
-        let foodName = (self.scene as? Stage)?.checkFoodName(ofFood: food)
+        let foodName = RecipeBook.checkFoodName(ofFood: food)
 
         if (foodName != food.name) {
             recheckImages(ofFoodName: foodName)

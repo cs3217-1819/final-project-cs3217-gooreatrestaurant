@@ -9,5 +9,14 @@
 import UIKit
 
 class RecipeBook: NSObject {
+    static var allPossibleRecipes: Set<RecipeTemplate> = []
 
+    static func checkFoodName(ofFood food: Food) -> String? {
+        for template in RecipeBook.allPossibleRecipes {
+            if template.possibleConsists(of: food) {
+                return template.recipeName
+            }
+        }
+        return nil
+    }
 }
