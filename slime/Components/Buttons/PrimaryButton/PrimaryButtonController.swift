@@ -23,7 +23,7 @@ class PrimaryButtonController: Controller {
     }
     private let disposeBag = DisposeBag()
 
-    private let buttonController: ButtonController
+    private var buttonController: ButtonController
     private let button: PrimaryButton
     private var color = BehaviorSubject(value: PrimaryButtonColor.purple)
     private var label = BehaviorSubject(value: "")
@@ -39,10 +39,7 @@ class PrimaryButtonController: Controller {
     }
 
     init(usingXib view: XibView) {
-        guard let button = view.contentView as? PrimaryButton else {
-            fatalError("Content view is unavailable")
-        }
-        self.button = button
+        self.button = view.getView()
         buttonController = ButtonController(using: button)
     }
 
@@ -66,29 +63,26 @@ class PrimaryButtonController: Controller {
     }
 
     func onTap(_ callback: @escaping () -> Void) {
-        buttonController.onTap(callback)
+        buttonController.disposableOnTap(callback).disposed(by: disposeBag)
     }
 
     private func setupReactive() {
         color.asObservable()
-            .subscribe { event in
+            .subscribe { [weak self] event in
                 guard let color = event.element else {
                     return
                 }
-                self.button.buttonImage.image = color.image
+                self?.button.buttonImage.image = color.image
             }
             .disposed(by: disposeBag)
         label.asObservable()
-            .subscribe { event in
+            .subscribe { [weak self] event in
                 guard let text = event.element else {
                     return
                 }
-                self.button.label.text = text
+                self?.button.label.text = text
                 // Needed to retain strokewidth
-                self.button.label.strokeWidth = self.button.label.strokeWidth
-//                if let fontSize = self.size {
-//                    self.button.label.font = self.button.label.font.withSize(CGFloat(fontSize))
-//                }
+                self?.button.label.strokeWidth = self?.button.label.strokeWidth ?? 0
             }.disposed(by: disposeBag)
     }
 }

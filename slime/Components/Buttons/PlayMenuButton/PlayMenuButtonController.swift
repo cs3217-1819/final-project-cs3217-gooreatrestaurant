@@ -14,8 +14,8 @@ class PlayMenuButtonController: Controller {
         return button
     }
     private let disposeBag = DisposeBag()
-    private let buttonController: ButtonController
-    private let button: PlayMenuButton
+    private var buttonController: ButtonController
+    private weak var button: PlayMenuButton!
     private var title = BehaviorSubject(value: "")
     private var description = BehaviorSubject(value: "")
 
@@ -28,10 +28,7 @@ class PlayMenuButtonController: Controller {
     }
 
     init(using view: XibView) {
-        guard let button = view.contentView as? PlayMenuButton else {
-            fatalError("Content view is unavailable")
-        }
-        self.button = button
+        button = view.getView()
         buttonController = ButtonController(using: button)
     }
 
@@ -55,23 +52,23 @@ class PlayMenuButtonController: Controller {
     }
 
     func onTap(_ callback: @escaping () -> Void) {
-        buttonController.onTap(callback)
+        buttonController.disposableOnTap(callback).disposed(by: disposeBag)
     }
 
     private func setupReactive() {
         title.asObservable()
-            .subscribe { event in
+            .subscribe { [weak self] event in
                 guard let text = event.element else {
                     return
                 }
-                self.button.titleLabel.text = text
+                self?.button.titleLabel.text = text
             }.disposed(by: disposeBag)
         description.asObservable()
-            .subscribe { event in
+            .subscribe { [weak self] event in
                 guard let text = event.element else {
                     return
                 }
-                self.button.descriptionLabel.text = text
+                self?.button.descriptionLabel.text = text
             }.disposed(by: disposeBag)
     }
 }

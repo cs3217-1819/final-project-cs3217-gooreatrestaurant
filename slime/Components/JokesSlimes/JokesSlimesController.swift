@@ -28,11 +28,11 @@ class JokesSlimesController: Controller {
     
     func configure() {
         setupCharacters()
-        time(withTimeInterval: 1, repeats: false, block: {
-            self.performNextJoke()
+        time(withTimeInterval: 1, repeats: false, block: { [weak self] in
+            self?.performNextJoke()
             // Joke Interval
-            self.time(withTimeInterval: 7, repeats: true, block: {
-                self.performNextJoke()
+            self?.time(withTimeInterval: 7, repeats: true, block: { [weak self] in
+                self?.performNextJoke()
             })
         })
     }
@@ -82,12 +82,12 @@ class JokesSlimesController: Controller {
         pushDialog(text: joke.question, isLeft: true)
         
         // Then, wait for the reply
-        time(withTimeInterval: 2, repeats: false, block: {
-            self.pushDialog(text: joke.reply, isLeft: false)
+        time(withTimeInterval: 2, repeats: false, block: { [weak self] in
+            self?.pushDialog(text: joke.reply, isLeft: false)
             
             // Then, say the punchline
-            self.time(withTimeInterval: 2, repeats: false, block: {
-                self.pushDialog(text: joke.punchline, isLeft: true)
+            self?.time(withTimeInterval: 2, repeats: false, block: { [weak self] in
+                self?.pushDialog(text: joke.punchline, isLeft: true)
             })
         })
     }

@@ -37,14 +37,17 @@ class DialogBoxController: Controller {
             .takeWhile { x in
                 x <= self.text.count
             }
-            .subscribe { event in
+            .subscribe { [weak self] event in
+                guard let this = self else {
+                    return
+                }
                 guard let index = event.element else {
                     return
                 }
-                if index > self.text.count {
+                if index > this.text.count {
                     return
                 }
-                self.dialogText.onNext(String(self.text[0..<index]))
+                this.dialogText.onNext(String(this.text[0..<index]))
             }.disposed(by: disposeBag)
     }
     
@@ -56,11 +59,11 @@ class DialogBoxController: Controller {
     
     
     private func setupReactive() {
-        dialogText.distinctUntilChanged().subscribe { event in
+        dialogText.distinctUntilChanged().subscribe { [weak self] event in
             guard let text = event.element else {
                 return
             }
-            self.setNewText(text)
+            self?.setNewText(text)
         }.disposed(by: disposeBag)
     }
     
