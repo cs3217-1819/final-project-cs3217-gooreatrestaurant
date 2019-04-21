@@ -34,8 +34,8 @@ class PlayScreenViewController: ViewController<PlayScreenView> {
         _ = singlePlayerButtonController
             .set(title: "Single Player Mode")
             .set(description: "Cook up spectacular dishes!")
-        singlePlayerButtonController.onTap {
-            self.context.routeTo(.LevelSelect)
+        singlePlayerButtonController.onTap { [weak self] in
+            self?.context.routeTo(.LevelSelect)
         }
         let multiplayerButtonController = PlayMenuButtonController(using: view.multiplayerButton)
         multiplayerButtonController.configure()
@@ -43,8 +43,8 @@ class PlayScreenViewController: ViewController<PlayScreenView> {
             .set(title: "Multiplayer Mode")
             .set(description: "Wreck havoc with your friends!")
             .set(imageName: "slime-multiplayer")
-        multiplayerButtonController.onTap {
-            self.context.routeTo(.MultiplayerScreen)
+        multiplayerButtonController.onTap { [weak self] in
+            self?.context.routeTo(.MultiplayerScreen)
         }
 
         remember(singlePlayerButtonController)

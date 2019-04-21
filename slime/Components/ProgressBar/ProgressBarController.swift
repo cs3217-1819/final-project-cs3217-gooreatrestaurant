@@ -10,7 +10,10 @@ import UIKit
 import RxSwift
 
 class ProgressBarController: Controller {
-    let view: ProgressBarView
+    var view: ProgressBarView {
+        return _view
+    }
+    private weak var _view: ProgressBarView!
     private let disposeBag = DisposeBag()
     private let color: BehaviorSubject<UIColor> = BehaviorSubject(value: ColorStyles.getColor("pink4")!)
     private let maxValue: BehaviorSubject<Double>
@@ -23,11 +26,7 @@ class ProgressBarController: Controller {
         }
 
     init(usingXib xibView: XibView, currentValue: Double, maxValue: Double) {
-        guard let trueView = xibView.contentView as? ProgressBarView else {
-            Logger.it.error("Nib class is not correct")
-            fatalError()
-        }
-        view = trueView
+        _view = xibView.getView()
         self.currentValue = BehaviorSubject(value: currentValue)
         self.maxValue = BehaviorSubject(value: maxValue)
     }
@@ -54,18 +53,18 @@ class ProgressBarController: Controller {
 
     func configure() {
         createCircularPath()
-        progressValuePair.subscribe { event in
+        progressValuePair.subscribe { [weak self] event in
             guard let (oldValue, newValue) = event.element else {
                 return
             }
-            self.setProgressValue(from: oldValue, to: newValue)
+            self?.setProgressValue(from: oldValue, to: newValue)
         }.disposed(by: disposeBag)
-        color.distinctUntilChanged().subscribe { event in
+        color.distinctUntilChanged().subscribe { [weak self] event in
             guard let value = event.element else {
                 return
             }
-            self.view.trackLayer.strokeColor = value.withAlphaComponent(0.4).cgColor
-            self.view.progressLayer.strokeColor = value.cgColor
+            self?.view.trackLayer.strokeColor = value.withAlphaComponent(0.4).cgColor
+            self?.view.progressLayer.strokeColor = value.cgColor
         }.disposed(by: disposeBag)
     }
 

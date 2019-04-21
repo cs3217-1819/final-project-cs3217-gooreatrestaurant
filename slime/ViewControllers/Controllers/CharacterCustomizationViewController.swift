@@ -51,15 +51,18 @@ class CharacterCustomizationViewController: ViewController<CharacterCustomizatio
 
 
     private func setupReactive() {
-        route.distinctUntilChanged().subscribe { event in
+        route.distinctUntilChanged().subscribe { [weak self] event in
+            guard let this = self else {
+                return
+            }
             guard let route = event.element else {
                 return
             }
 
-            var memory = self.currentChildController
-            self.currentChildController = self.getControllerFor(route: route)
-            self.setupController(self.currentChildController)
-            self.innerRouter.setView(self.currentChildController.getView(),
+            var memory = this.currentChildController
+            this.currentChildController = this.getControllerFor(route: route)
+            this.setupController(this.currentChildController)
+            this.innerRouter.setView(this.currentChildController.getView(),
                                      direction: .right,
                                      onComplete: {
                                         memory?.onDisappear()

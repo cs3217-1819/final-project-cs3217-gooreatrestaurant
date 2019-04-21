@@ -57,6 +57,8 @@ class AlertController: Controller {
                 action.callback()
                 self.modalController.close()
             }
+            
+            remember(controller)
 
             view.actionStackView.addArrangedSubview(actionView)
         }

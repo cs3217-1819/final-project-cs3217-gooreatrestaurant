@@ -96,6 +96,6 @@ class ViewController<View: UIView>: ViewControllerProtocol {
     }
 
     deinit {
-        Logger.it.info("VC Deinit")
+        Logger.it.info("ViewController Deinit")
     }
 }

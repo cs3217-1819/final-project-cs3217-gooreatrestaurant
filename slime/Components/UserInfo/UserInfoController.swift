@@ -35,11 +35,11 @@ class UserInfoController: Controller {
     }
 
     private func setupReactive() {
-        character.subscribe { event in
+        character.subscribe { [weak self] event in
             guard let player = event.element else {
                 return
             }
-            self.refreshView(player: player)
+            self?.refreshView(player: player)
         }.disposed(by: disposeBag)
     }
 

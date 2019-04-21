@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  TitleScreenViewController.swift
 //  slime
 //
 //  Created by Gabriel Tan on 13/3/19.
@@ -25,8 +25,8 @@ class TitleScreenViewController: ViewController<TitleScreenView> {
         userInfoController.configure()
 
         let buttonController = ButtonController(using: view.userInfoView)
-        buttonController.onTap {
-            self.context.routeTo(.CharacterCustomizationScreen)
+        buttonController.onTap { [weak self] in
+            self?.context.routeTo(.CharacterCustomizationScreen)
         }
         remember(buttonController)
         remember(userInfoController)
@@ -37,28 +37,28 @@ class TitleScreenViewController: ViewController<TitleScreenView> {
             .set(color: .green)
             .set(label: "Play")
         playButtonController.configure()
-        playButtonController.onTap {
-            if self.context.data.userCharacter != nil {
+        playButtonController.onTap { [weak self] in
+            if self?.context.data.userCharacter != nil {
                 // user exists
-                self.context.routeTo(.PlayScreen)
+                self?.context.routeTo(.PlayScreen)
             } else {
                 // User does not exist, create it now
-                self.context.routeTo(.CharacterCreationScreen)
+                self?.context.routeTo(.CharacterCreationScreen)
             }
         }
         let settingsButtonController = PrimaryButtonController(usingXib: view.settingsButton)
             .set(color: .blue)
             .set(label: "Settings")
         settingsButtonController.configure()
-        settingsButtonController.onTap {
-            self.context.routeTo(.SettingsScreen)
+        settingsButtonController.onTap { [weak self] in
+            self?.context.routeTo(.SettingsScreen)
         }
         let creditsButtonController = PrimaryButtonController(usingXib: view.creditsButton)
             .set(color: .purple)
             .set(label: "Credits")
         creditsButtonController.configure()
-        creditsButtonController.onTap {
-            self.context.routeTo(.CreditsScreen)
+        creditsButtonController.onTap { [weak self] in
+            self?.context.routeTo(.CreditsScreen)
         }
 
         remember(playButtonController)
@@ -78,7 +78,10 @@ class TitleScreenViewController: ViewController<TitleScreenView> {
                 self.context.db.rejoinGame(forGameId: gameId, { (room) in
                     self.setLoadingAlert(withDescription: "Teleporting slime agent...")
                     self.presentActiveAlert(dismissible: false)
-                    self.context.segueToMultiplayerGame(forRoom: room, level: Level(id: "mp-1-1", name: "Level1", fileName: "Level1", bestScore: 0, preview: "preview-level1"))
+                    guard let level = LevelsReader.getLevel(id: room.map) else {
+                        return
+                    }
+                    self.context.segueToMultiplayerGame(forRoom: room, level: Level(id: level.id, name: level.name, fileName: level.fileName, bestScore: level.bestScore, preview: level.preview))
                 }, { (err) in
                     Logger.it.error("\(err)")
                 })
@@ -115,5 +118,10 @@ class TitleScreenViewController: ViewController<TitleScreenView> {
         self.activeAlert = self.context.modal.createAlert()
             .setTitle("Loading...")
             .setDescription(description)
+    }
+    
+    override func onDisappear() {
+        activeAlert = nil
+        super.onDisappear()
     }
 }
