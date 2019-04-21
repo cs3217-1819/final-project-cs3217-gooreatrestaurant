@@ -18,14 +18,6 @@ class GameViewController: ViewController<UIView> {
     // multiplayer stuff
     var isMultiplayer: Bool = false
     var previousRoom: RoomModel?
-    
-    let newCollection: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        let collection = UICollectionView(frame: CGRect(x: 0, y: 0, width: 0, height: 0), collectionViewLayout: layout)
-        collection.backgroundColor = UIColor.clear
-        collection.translatesAutoresizingMaskIntoConstraints = false
-        return collection
-    }()
 
     override func configureSubviews() {
         setupScene()
@@ -61,13 +53,6 @@ class GameViewController: ViewController<UIView> {
         stage.generateLevel(inLevel: levelFileName)
         stage.setupPlayers()
         stage.stageDidLoad()
-    }
-
-    func setupCollection() {
-        newCollection.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        newCollection.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        newCollection.heightAnchor.constraint(equalToConstant: 400).isActive = true
-        newCollection.widthAnchor.constraint(equalToConstant: 225).isActive = true
     }
 
     func segueToMainScreen(isMultiplayer: Bool) {

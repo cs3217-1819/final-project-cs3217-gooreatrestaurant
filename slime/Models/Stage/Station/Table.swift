@@ -37,27 +37,19 @@ class Table: Station {
         guard ableToInteract(withItem: item) == true else {
             return item
         }
-
         let willPut = (item != nil && self.itemInside == nil)
         let willInteract = self.itemInside?.ableToInteract(withItem: item) ?? false
-
         // Condition 1
         if willPut {
-
             guard let itemToPut = item as? MobileItem else {
                 return item
             }
-
             self.addItem(itemToPut)
             return nil
-
         // Condition 2 and 3 and 4
         } else if willInteract {
             return self.itemInside?.interact(withItem: item)
         }
-        
         return item
-
     }
-
 }

@@ -14,7 +14,6 @@ class PlateStorage: Station {
     // PlateStorage acts as "plate producer"
     // Requirements: There is no item given to the station (this station does not accept any item)
     // Returns: A plate
-
     override func ableToInteract(withItem item: Item?) -> Bool {
         if item == nil {
             return true

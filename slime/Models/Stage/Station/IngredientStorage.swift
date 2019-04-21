@@ -40,7 +40,6 @@ class IngredientStorage: Station {
         guard ableToInteract(withItem: item) == true else {
             return nil
         }
-        
         return Ingredient(type: self.type, inPosition: self.position)
     }
 }
