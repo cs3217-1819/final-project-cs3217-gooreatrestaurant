@@ -516,8 +516,4 @@ class Stage: SKScene {
     open override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
         analogJoystick.touchesCancelled(touches, with: event)
     }
-
-    deinit {
-        print("Stage Deinited")
-    }
 }
