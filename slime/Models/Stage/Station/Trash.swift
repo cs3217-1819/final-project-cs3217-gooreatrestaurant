@@ -12,9 +12,7 @@ import SpriteKit
 class Trash: Station {
     // Construct a trash
     override init(inPosition position: CGPoint, withSize size: CGSize) {
-
         super.init(inPosition: position, withSize: StageConstants.stationSize)
-
         let trashBin = SKSpriteNode(texture: kitchenwareAtlas.textureNamed("Trashbin"))
         trashBin.size = StageConstants.stationSize
         self.texture = trashBin.texture
@@ -29,7 +27,6 @@ class Trash: Station {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
     // Trash works by taking a non nil item discards it away
     // Requirement: item given is non-nil
     // Return: nil (the item given to the trash will be gone forever)

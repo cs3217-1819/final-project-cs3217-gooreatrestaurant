@@ -26,22 +26,18 @@ class StoreFront: Station {
         guard ableToInteract(withItem: item) == true else {
             return item
         }
-
         guard let plate = item as? Plate else {
             return item
         }
-
         guard let stage = self.scene as? Stage else {
             return item
         }
-        
         let successfullyServed = stage.serve(plate)
         if successfullyServed {
             AudioMaster.instance.playSFX(name: "kaching")
         } else {
             AudioMaster.instance.playSFX(name: "bad-order")
         }
-
         return nil
     }
 }
