@@ -71,6 +71,8 @@ class Stage: SKScene {
         
         self.sceneCam?.addChild(notificationPrefab)
         self.sceneCam?.addChild(orderQueue)
+
+        RecipeBook.allPossibleRecipes = []
     }
 
     override func update(_ currentTime: TimeInterval) {
@@ -513,5 +515,9 @@ class Stage: SKScene {
 
     open override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
         analogJoystick.touchesCancelled(touches, with: event)
+    }
+
+    deinit {
+        print("Stage Deinited")
     }
 }

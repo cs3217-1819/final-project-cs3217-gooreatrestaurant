@@ -64,7 +64,7 @@ class GameViewController: ViewController<UIView> {
                           isMultiplayer: self.isMultiplayer)
         })
     }
-    
+
     deinit {
         print("Game VC deinit")
     }
