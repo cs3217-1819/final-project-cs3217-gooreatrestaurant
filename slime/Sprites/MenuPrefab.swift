@@ -9,18 +9,28 @@
 import Foundation
 import SpriteKit
 
+/*
+ Menu Prefab is being used for rendering the orders
+ The logic for the orders itself is not being handled here as this is purely used for rendering.
+ This includes:
+ - The recipe image
+ - The ingredients images (capped at 3)
+ - The amount of time left for the menu
+ */
 class MenuPrefab: SKSpriteNode, Codable {
     //Variables needed for setting the positioning and sizing
     static let dishSize = CGSize(width: 45, height: 45)
     static let dishPosition = CGPoint(x: 0, y: 15)
     var randInt: Int
     var recipe: Recipe?
+    //Black bar and green bar are used for the timer countdown
     var blackBar: SKSpriteNode
     var greenBar: SKSpriteNode
     var timer: Timer =  Timer()
     var time: CGFloat = StageConstants.defaultTimeLimitOrder
     var duration: CGFloat = StageConstants.defaultTimeLimitOrder
     let UIAtlas = SKTextureAtlas(named: "UI")
+    //positionings to place the location of the ingredients
     let positionings = [CGPoint(x: -25, y: -15),
                         CGPoint(x: -5, y: -15),
                         CGPoint(x: 15, y: -15)]
@@ -39,6 +49,7 @@ class MenuPrefab: SKSpriteNode, Codable {
         fatalError("init(coder:) has not been implemented")
     }
 
+    //Use for adding the images for the recipe and ingredients
     func addRecipe(_ recipe: Recipe, inPosition: CGPoint) {
         self.position = inPosition
         self.recipe = recipe
@@ -46,11 +57,14 @@ class MenuPrefab: SKSpriteNode, Codable {
         let ingredientsAtlas = SKTextureAtlas(named: "Recipes")
         var texture: SKTexture = SKTexture.init()
         texture = ingredientsAtlas.textureNamed(recipe.recipeName)
+
+        //initializing recipe image
         let dish = SKSpriteNode(texture: texture)
         dish.position = MenuPrefab.dishPosition
         dish.size = MenuPrefab.dishSize
         dish.zPosition = 5
 
+        //To add the ingredient images and set the positions
         var i = 0
         for (key, _) in recipe.ingredientsNeeded {
             guard let ingredientCount = recipe.ingredientsNeeded[key] else {
@@ -85,6 +99,7 @@ class MenuPrefab: SKSpriteNode, Codable {
         dish.addChild(blackBar)
         self.addChild(dish)
 
+        //Start the timer once everything has been rendered
         timer = Timer.scheduledTimer(timeInterval: StageConstants.timerInterval,
                                      target: self,
                                      selector: #selector(countdown),
@@ -92,11 +107,13 @@ class MenuPrefab: SKSpriteNode, Codable {
                                      repeats: true)
     }
 
+    //Adding ingredient images
+    //Refactoring out this function from addRecipe to have a more modular structure
     func addIngredient(withType type: String) -> SKSpriteNode {
+        //Each ingredient comes with a black circle base at the back
         let blackCircle = SKSpriteNode(imageNamed: "Black Base Circle")
         blackCircle.position = CGPoint(x: 0, y: -10)
         blackCircle.size = CGSize(width: 20, height: 20)
-
         //Add the ingredients
         let ingredientsAtlas = SKTextureAtlas(named: "Ingredients")
         var texture: SKTexture = SKTexture.init()
@@ -104,7 +121,6 @@ class MenuPrefab: SKSpriteNode, Codable {
         let ingredient = SKSpriteNode(texture: texture)
         ingredient.size = CGSize(width: 15, height: 15)
         blackCircle.addChild(ingredient)
-
         return blackCircle
     }
 
