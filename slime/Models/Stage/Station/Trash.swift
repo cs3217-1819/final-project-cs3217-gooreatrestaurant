@@ -30,7 +30,6 @@ class Trash: Station {
     // Trash works by taking a non nil item discards it away
     // Requirement: item given is non-nil
     // Return: nil (the item given to the trash will be gone forever)
-
     override func ableToInteract(withItem item: Item?) -> Bool {
         if item == nil {
             return false
@@ -42,7 +41,6 @@ class Trash: Station {
         guard ableToInteract(withItem: item) == true else {
             return item
         }
-        
         AudioMaster.instance.playSFX(name: "trash")
         item?.removeFromParent()
         return nil

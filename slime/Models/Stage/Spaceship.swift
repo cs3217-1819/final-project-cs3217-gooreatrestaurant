@@ -9,6 +9,10 @@
 import UIKit
 import SpriteKit
 
+/*
+ Spaceship is for generating anything is needed for the level/stage
+ This is for initializing, such as rendering and positionings
+ */
 class Spaceship: SKSpriteNode {
     var levelName = ""
     let SpaceshipAtlas = SKTextureAtlas(named: "Spaceship")
