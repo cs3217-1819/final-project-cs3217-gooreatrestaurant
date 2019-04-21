@@ -242,9 +242,10 @@ class Stage: SKScene {
                 
                 optionalIngredients.append((item: ingredient, probability: probability))
             }
-            let recipe = Recipe(inRecipeName: recipeName, withCompulsoryIngredients: compulsoryIngredients,
-                                withOptionalIngredients: optionalIngredients)
-            self.orderQueue.addPossibleRecipe(recipe)
+            let template = RecipeTemplate(withRecipeName: recipeName,
+                                          withCompulsoryIngredients: compulsoryIngredients,
+                                          withOptionalIngredients: optionalIngredients)
+            self.orderQueue.addPossibleRecipe(template)
         }
         self.orderQueue.initialize()
     }

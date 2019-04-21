@@ -25,6 +25,8 @@
 		1DD6EBE1224E368C006FF6CD /* ChoppingEquipment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD6EBE0224E368C006FF6CD /* ChoppingEquipment.swift */; };
 		1DD6EBE5224E76F0006FF6CD /* IngredientType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD6EBE4224E76F0006FF6CD /* IngredientType.swift */; };
 		1DD6EBE7224E76FC006FF6CD /* CookingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD6EBE6224E76FC006FF6CD /* CookingType.swift */; };
+		1DE2369C226C83B10057B86A /* RecipeTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE2369B226C83B10057B86A /* RecipeTemplate.swift */; };
+		1DE2369E226C83D70057B86A /* RecipeBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE2369D226C83D70057B86A /* RecipeBook.swift */; };
 		1DE6FC5A224CA45700B36F48 /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE6FC59224CA45700B36F48 /* Station.swift */; };
 		1DE6FC5C224CA46700B36F48 /* Table.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE6FC5B224CA46700B36F48 /* Table.swift */; };
 		1DE6FC5E224CA4AD00B36F48 /* StoreFront.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE6FC5D224CA4AD00B36F48 /* StoreFront.swift */; };
@@ -299,6 +301,8 @@
 		1DD6EBE0224E368C006FF6CD /* ChoppingEquipment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoppingEquipment.swift; sourceTree = "<group>"; };
 		1DD6EBE4224E76F0006FF6CD /* IngredientType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientType.swift; sourceTree = "<group>"; };
 		1DD6EBE6224E76FC006FF6CD /* CookingType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookingType.swift; sourceTree = "<group>"; };
+		1DE2369B226C83B10057B86A /* RecipeTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RecipeTemplate.swift; path = slime/Models/Stage/FoodRelated/RecipeTemplate.swift; sourceTree = "<group>"; };
+		1DE2369D226C83D70057B86A /* RecipeBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RecipeBook.swift; path = slime/Models/Stage/FoodRelated/RecipeBook.swift; sourceTree = SOURCE_ROOT; };
 		1DE6FC59224CA45700B36F48 /* Station.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Station.swift; sourceTree = "<group>"; };
 		1DE6FC5B224CA46700B36F48 /* Table.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Table.swift; sourceTree = "<group>"; };
 		1DE6FC5D224CA4AD00B36F48 /* StoreFront.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreFront.swift; sourceTree = "<group>"; };
@@ -670,6 +674,7 @@
 				8B5B20322265AF8B00059756 /* red.atlas */,
 				8B5B20302265AA5D00059756 /* blue.atlas */,
 				8B81EFBB224344AD007BFDB0 /* yellow.atlas */,
+				1DE2369D226C83D70057B86A /* RecipeBook.swift */,
 			);
 			path = Slime;
 			sourceTree = "<group>";
@@ -759,6 +764,7 @@
 		EC3824112238803A000D7148 = {
 			isa = PBXGroup;
 			children = (
+				1DE2369B226C83B10057B86A /* RecipeTemplate.swift */,
 				EC38241C2238803A000D7148 /* slime */,
 				EC3824312238803D000D7148 /* slimeTests */,
 				EC38241B2238803A000D7148 /* Products */,
@@ -1702,6 +1708,7 @@
 				EC7676BA225A4A4B00F6A450 /* RouterController.swift in Sources */,
 				EC382475223A1AA4000D7148 /* ColorStyles.swift in Sources */,
 				F9F26FEE22564873008BFD50 /* GameDB.swift in Sources */,
+				1DE2369C226C83B10057B86A /* RecipeTemplate.swift in Sources */,
 				EC449B83223B917C00A8EA35 /* CGPointExtension.swift in Sources */,
 				EC1B44A8225D75B200CBE688 /* StringExtension.swift in Sources */,
 				EC81B7892254A3A600B6F7EE /* KeyboardService.swift in Sources */,
@@ -1765,6 +1772,7 @@
 				ECA66DC4223D5F4000D1D0BC /* CreditsScreenView.swift in Sources */,
 				EC0E316C224F641C00AF1254 /* TextInputController.swift in Sources */,
 				EC449B96223BB1D400A8EA35 /* StoryModeLevelSelectView.swift in Sources */,
+				1DE2369E226C83D70057B86A /* RecipeBook.swift in Sources */,
 				8BD816B922426D1400586180 /* BDButton.swift in Sources */,
 				EC0E316A224F61C500AF1254 /* TextInputView.swift in Sources */,
 				ECD24424224B018800767A56 /* Controller.swift in Sources */,
@@ -2018,7 +2026,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = CZ7H96C646;
+				DEVELOPMENT_TEAM = W76H98A34A;
 				INFOPLIST_FILE = slime/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2039,7 +2047,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = CZ7H96C646;
+				DEVELOPMENT_TEAM = W76H98A34A;
 				INFOPLIST_FILE = slime/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

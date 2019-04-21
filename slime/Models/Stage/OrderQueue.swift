@@ -10,7 +10,7 @@ import UIKit
 import SpriteKit
 
 class OrderQueue: SKSpriteNode, Codable {
-    var possibleRecipes: Set<Recipe> = []
+    var possibleRecipes: Set<RecipeTemplate> = []
     var recipeOrdered: [Recipe] = []
     var newOrderTimer: Timer = Timer()
     var nodeOrder: [MenuPrefab] = []
@@ -75,7 +75,7 @@ class OrderQueue: SKSpriteNode, Codable {
     }
 
     func generateRandomRecipe() -> Recipe? {
-        return self.possibleRecipes.randomElement()?.regenerateRecipe()
+        return self.possibleRecipes.randomElement()?.generateRecipe()
     }
 
     @objc
@@ -86,8 +86,8 @@ class OrderQueue: SKSpriteNode, Codable {
         self.addOrder(ofRecipe: randomRecipe)
     }
     
-    func addPossibleRecipe(_ recipe: Recipe) {
-        self.possibleRecipes.insert(recipe)
+    func addPossibleRecipe(_ template: RecipeTemplate) {
+        self.possibleRecipes.insert(template)
     }
     
     private func generateTimer() {
@@ -176,7 +176,7 @@ class OrderQueue: SKSpriteNode, Codable {
 
     required convenience init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        let possibleRecipes = try values.decode(Set<Recipe>.self, forKey: .possibleRecipes)
+        let possibleRecipes = try values.decode(Set<RecipeTemplate>.self, forKey: .possibleRecipes)
         let recipeOrdered = try values.decode([Recipe].self, forKey: .recipeOrdered)
         let nodeOrder = try values.decode([MenuPrefab].self, forKey: .nodeOrder)
         self.init(interval: StageConstants.orderComingInterval[0])
