@@ -127,8 +127,7 @@ class MenuPrefab: SKSpriteNode, Codable {
     @objc func countdown() {
         if (time > 0.0) {
             time -= CGFloat(1.0)
-            self.greenBar.size =  CGSize(width: greenBar.size.width,
-                                         height: StageConstants.greenBarSizeOQ.height * time / duration)
+            setGreenBarSize()
         } else {
             timer.invalidate()
             guard let parent = self.parent else {
@@ -143,6 +142,11 @@ class MenuPrefab: SKSpriteNode, Codable {
             }
             orderQueue.orderTimeOut(ofRecipe: thisRecipe)
         }
+    }
+
+    func setGreenBarSize() {
+        self.greenBar.size =  CGSize(width: greenBar.size.width,
+                                     height: StageConstants.greenBarSizeOQ.height * time / duration)
     }
 
     enum CodingKeys: String, CodingKey {
@@ -177,6 +181,7 @@ class MenuPrefab: SKSpriteNode, Codable {
                            selector: #selector(countdown),
                            userInfo: nil,
                            repeats: true)
+        self.setGreenBarSize()
     }
 
     func encode(to encoder: Encoder) throws {
